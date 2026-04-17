@@ -1,0 +1,11 @@
+views:
+  - type: table
+    name: Syntheses
+    filters:
+      and:
+        - file.folder.contains("syntheses")
+    order:
+      - file.name
+      - topic
+      - tags
+      - updated

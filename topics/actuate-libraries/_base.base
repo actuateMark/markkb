@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: actuate-libraries
+    filters:
+      and:
+        - file.folder.contains("topics/actuate-libraries")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

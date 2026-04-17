@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: Integrations
+    filters:
+      and:
+        - file.folder.contains("topics/integrations")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

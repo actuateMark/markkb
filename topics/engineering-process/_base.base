@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: engineering-process
+    filters:
+      and:
+        - file.folder.contains("topics/engineering-process")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

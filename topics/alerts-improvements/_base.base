@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: alerts-improvements
+    filters:
+      and:
+        - file.folder.contains("topics/alerts-improvements")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

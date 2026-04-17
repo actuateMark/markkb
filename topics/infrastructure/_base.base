@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: infrastructure
+    filters:
+      and:
+        - file.folder.contains("topics/infrastructure")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: autopatrol
+    filters:
+      and:
+        - file.folder.contains("topics/autopatrol")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

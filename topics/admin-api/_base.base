@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: admin-api
+    filters:
+      and:
+        - file.folder.contains("topics/admin-api")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

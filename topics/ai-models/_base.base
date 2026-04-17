@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: ai-models
+    filters:
+      and:
+        - file.folder.contains("topics/ai-models")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

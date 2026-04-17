@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: vms-connector
+    filters:
+      and:
+        - file.folder.contains("topics/vms-connector")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: product-roadmap
+    filters:
+      and:
+        - file.folder.contains("topics/product-roadmap")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

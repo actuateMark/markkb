@@ -1,0 +1,11 @@
+views:
+  - type: table
+    name: Sources
+    filters:
+      and:
+        - file.folder.contains("sources")
+    order:
+      - file.name
+      - topic
+      - tags
+      - ingested

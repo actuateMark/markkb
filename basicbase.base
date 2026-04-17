@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: Table
+    filters:
+      and:
+        - file.folder.startsWith("knowledgebase")
+        - '!file.name.startsWith("_")'
+    order:
+      - file.name
+      - tags
+      - updated
+      - type

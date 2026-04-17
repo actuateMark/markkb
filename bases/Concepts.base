@@ -1,0 +1,11 @@
+views:
+  - type: table
+    name: Concepts
+    filters:
+      and:
+        - file.folder.contains("concepts")
+    order:
+      - file.name
+      - topic
+      - tags
+      - updated

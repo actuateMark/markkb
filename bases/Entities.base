@@ -1,0 +1,11 @@
+views:
+  - type: table
+    name: Entities
+    filters:
+      and:
+        - file.folder.contains("entities")
+    order:
+      - file.name
+      - topic
+      - tags
+      - updated

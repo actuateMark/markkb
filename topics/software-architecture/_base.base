@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: software-architecture
+    filters:
+      and:
+        - file.folder.contains("topics/software-architecture")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

@@ -1,0 +1,14 @@
+views:
+  - type: table
+    name: All Notes
+    filters:
+      and:
+        - file.folder.contains("topics")
+        - '!file.name.startsWith("_")'
+        - '!file.name.startsWith("reading")'
+    order:
+      - file.name
+      - type
+      - topic
+      - tags
+      - updated

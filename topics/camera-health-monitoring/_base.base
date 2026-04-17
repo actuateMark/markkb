@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: camera-health-monitoring
+    filters:
+      and:
+        - file.folder.contains("topics/camera-health-monitoring")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

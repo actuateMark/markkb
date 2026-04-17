@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: external-api
+    filters:
+      and:
+        - file.folder.contains("topics/external-api")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

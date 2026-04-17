@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: actuate-platform
+    filters:
+      and:
+        - file.folder.contains("topics/actuate-platform")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

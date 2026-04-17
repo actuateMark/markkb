@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: watchman
+    filters:
+      and:
+        - file.folder.contains("topics/watchman")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

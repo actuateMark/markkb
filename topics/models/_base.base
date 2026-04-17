@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: Models
+    filters:
+      and:
+        - file.folder.contains("topics/models")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

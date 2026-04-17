@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: settings-automation
+    filters:
+      and:
+        - file.folder.contains("topics/settings-automation")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: inference-api
+    filters:
+      and:
+        - file.folder.contains("topics/inference-api")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

@@ -1,0 +1,13 @@
+views:
+  - type: table
+    name: Recent Changes
+    filters:
+      and:
+        - file.folder.contains("topics")
+        - '!file.name.startsWith("_")'
+        - '!file.name.startsWith("reading")'
+    order:
+      - file.name
+      - file.mtime
+      - type
+      - topic

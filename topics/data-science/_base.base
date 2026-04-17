@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: data-science
+    filters:
+      and:
+        - file.folder.contains("topics/data-science")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

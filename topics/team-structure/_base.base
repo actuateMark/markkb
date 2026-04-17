@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: team-structure
+    filters:
+      and:
+        - file.folder.contains("topics/team-structure")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

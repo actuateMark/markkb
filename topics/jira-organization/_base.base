@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: jira-organization
+    filters:
+      and:
+        - file.folder.contains("topics/jira-organization")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated
