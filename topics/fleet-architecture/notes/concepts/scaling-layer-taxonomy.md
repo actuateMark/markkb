@@ -6,6 +6,14 @@ tags: [autoscaling, hpa, vpa, karpenter, scaling-layers, fleet-design, decision-
 created: 2026-04-21
 updated: 2026-04-21
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/_summary.md
+  - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
+  - topics/fleet-architecture/notes/concepts/vpa-bimodal-workload-limitation.md
+  - topics/fleet-architecture/reading-list.md
+  - topics/video-processing/notes/concepts/eks-prod-node-pool-gpu-availability.md
+  - topics/video-processing/notes/syntheses/gpu-substrate-and-fleet-placement.md
+incoming_updated: 2026-05-01
 ---
 
 # Scaling-Layer Taxonomy (HPA + VPA + Karpenter)

@@ -6,6 +6,11 @@ tags: [watchman, on-premise, line-crossing, yolo, openvino, computer-vision, int
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
+  - topics/watchman/notes/entities/actuate-watchman-repo.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-watchman-internal

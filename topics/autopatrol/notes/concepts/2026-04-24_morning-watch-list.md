@@ -8,6 +8,12 @@ updated: 2026-04-23
 author: kb-bot
 status: active
 expires: 2026-04-25
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-23_cleanup-rollout-day.md
+  - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Morning Watch List — 2026-04-24

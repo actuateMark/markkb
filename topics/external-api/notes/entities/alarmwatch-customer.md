@@ -6,6 +6,12 @@ tags: [alarmwatch, crosbies, customer, new-zealand, schedule, arm-disarm]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/syntheses/integration-landscape.md
+  - topics/admin-api/notes/concepts/integration-architecture.md
+  - topics/external-api/notes/concepts/shared-auth-pattern.md
+  - topics/external-api/notes/entities/alarmquip-customer.md
+incoming_updated: 2026-05-01
 ---
 
 # AlarmWatch / Crosbies (NZ)

@@ -6,6 +6,9 @@ tags: [deployment, dynamodb, api-gateway, authorizer, debugging]
 created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot
+incoming:
+  - topics/inference-api/notes/entities/rust-lambda-authorizer.md
+incoming_updated: 2026-05-01
 ---
 
 # Dev Deployment Issues (April 2026)

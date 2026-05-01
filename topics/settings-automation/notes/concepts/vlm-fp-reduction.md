@@ -4,6 +4,18 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [settings-automation, vlm, false-positive, fp-reduction, mvp, filter]
+incoming:
+  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
+  - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
+  - topics/autopatrol/notes/concepts/vlm-integration.md
+  - topics/aws-cost/notes/syntheses/cost-architecture.md
+  - topics/data-science/notes/syntheses/model-lifecycle.md
+  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
+  - topics/settings-automation/_summary.md
+  - topics/team-structure/notes/entities/alena-prashkovich.md
+  - topics/team-structure/notes/entities/carlos-torres.md
+  - topics/team-structure/notes/entities/clarissa-herman.md
+incoming_updated: 2026-05-01
 ---
 
 # VLM False Positive Reduction

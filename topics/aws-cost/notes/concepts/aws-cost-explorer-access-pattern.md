@@ -6,6 +6,12 @@ tags: [aws, cost-explorer, observability, skills, cost-analysis]
 created: 2026-04-22
 updated: 2026-04-22
 author: kb-bot
+incoming:
+  - topics/aws-cost/_summary.md
+  - topics/aws-cost/notes/concepts/2026-04-23_s3-tier3-breakdown.md
+  - topics/aws-cost/notes/syntheses/2026-04-23_s3-tier3-cost-investigation.md
+  - topics/aws-cost/notes/syntheses/2026-04-27_aws-cost-topic-spinoff.md
+incoming_updated: 2026-05-01
 ---
 
 # AWS Cost Explorer Access Pattern

@@ -6,6 +6,12 @@ tags: [code-review, checklist, quality]
 created: 2026-04-14
 updated: 2026-04-23
 author: kb-bot
+incoming:
+  - topics/engineering-process/_summary.md
+  - topics/engineering-process/notes/entities/agent-actuate-pr-reviewer.md
+  - topics/engineering-process/notes/entities/agents-catalog.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_architecture-enforcement.md
+incoming_updated: 2026-05-01
 ---
 
 # Code Review Checklist

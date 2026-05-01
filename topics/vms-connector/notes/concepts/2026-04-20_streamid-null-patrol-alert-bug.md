@@ -10,6 +10,18 @@ discovered: 2026-04-20
 created: 2026-04-20
 updated: 2026-04-20
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-21_cleanup-lambda-stage-verify.md
+  - topics/autopatrol/notes/syntheses/2026-04-17_stale-schedule-cleanup-design.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
+  - topics/engineering-process/notes/syntheses/2026-04-20_lambda-creation-and-tuning-playbook.md
+  - topics/personal-notes/notes/daily/2026-04-20.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/releases/notes/entities/2026-04-20_vms-connector-pr-1654.md
+  - topics/vms-connector/_summary.md
+  - topics/vms-connector/notes/concepts/2026-04-20_dev-powerplus-ssl-cert-verify-failure.md
+incoming_updated: 2026-05-01
 ---
 
 # streamId-null rejection in Immix patrol alert dispatch

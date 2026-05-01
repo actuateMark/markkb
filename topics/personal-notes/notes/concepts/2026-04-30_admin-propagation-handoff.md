@@ -6,6 +6,10 @@ tags: [handoff, admin-api, autopatrol, cascade, data-model, propagation, plannin
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
+incoming:
+  - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Handoff — Admin-side state propagation + DB patch + data model deep dive

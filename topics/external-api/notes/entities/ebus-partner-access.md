@@ -7,6 +7,14 @@ jira: "ENG-126"
 created: 2026-04-17
 updated: 2026-04-17
 author: kb-bot
+incoming:
+  - topics/external-api/notes/concepts/2026-04-30_v5-detect-quick-reference.md
+  - topics/external-api/notes/concepts/partner-api-credential-runbook.md
+  - topics/inference-api/notes/concepts/2026-04-29_v5-slicing-as-parameter.md
+  - topics/personal-notes/notes/daily/2026-04-17.md
+  - topics/personal-notes/notes/daily/2026-04-23.md
+  - topics/personal-notes/notes/daily/2026-04-29.md
+incoming_updated: 2026-05-01
 ---
 
 # EBUS Partner Dev API Access

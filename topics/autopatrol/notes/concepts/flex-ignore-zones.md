@@ -4,6 +4,13 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [autopatrol, ignore-zones, flex-iz, cameras, scheduling, api]
+incoming:
+  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
+  - topics/product-roadmap/notes/concepts/revenue-drivers.md
+  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
+  - topics/team-structure/notes/entities/brad-murphy.md
+  - topics/vms-connector/notes/concepts/ignore-zones.md
+incoming_updated: 2026-05-01
 ---
 
 # Flex Ignore Zones

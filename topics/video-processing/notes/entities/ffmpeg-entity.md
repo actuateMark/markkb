@@ -6,6 +6,18 @@ tags: [ffmpeg, libav, codec, transcode, hwaccel]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/admin-api/notes/entities/actuate-monitoring-api.md
+  - topics/data-science/notes/entities/ds-analysis-microservice.md
+  - topics/engineering-process/notes/syntheses/2026-04-21_rd-agent-pilot-learnings.md
+  - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
+  - topics/infrastructure/notes/entities/create-detection-window.md
+  - topics/infrastructure/notes/entities/reusable-github-actions.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/av1-vp9-future.md
+  - topics/video-processing/notes/concepts/codecs-overview.md
+incoming_updated: 2026-05-01
 ---
 
 # FFmpeg

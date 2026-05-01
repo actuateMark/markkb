@@ -4,6 +4,17 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [risk, operations, infrastructure, process]
+incoming:
+  - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+  - topics/aws-cost/_summary.md
+  - topics/integrations/evalink/evalink-integration/notes/concepts/alarm-push-pattern.md
+  - topics/product-roadmap/notes/concepts/revenue-drivers.md
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+  - topics/team-structure/notes/entities/jacob-weiss.md
+  - topics/team-structure/notes/entities/jessica-bae.md
+  - topics/team-structure/notes/entities/mark-barbera.md
+  - topics/team-structure/notes/entities/tatiana-hanazaki.md
+incoming_updated: 2026-05-01
 ---
 
 # Active Risks (April 2026)

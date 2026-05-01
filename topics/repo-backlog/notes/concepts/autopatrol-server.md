@@ -15,6 +15,12 @@ high_impact_issue_numbers: []
 lhf_issue_numbers: [17]
 stale_issue_numbers: []
 full_issue_numbers: [17]
+incoming:
+  - topics/autopatrol/notes/concepts/autopatrol-alert-lifecycle.md
+  - topics/autopatrol/notes/entities/todo-list.md
+  - topics/autopatrol/notes/syntheses/2026-04-16_deferred-alert-race-condition.md
+  - topics/team-structure/notes/entities/clarissa-herman.md
+incoming_updated: 2026-05-01
 ---
 
 # autopatrol-server backlog

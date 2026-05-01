@@ -7,6 +7,9 @@ created: 2026-05-01
 updated: 2026-05-01
 author: kb-bot
 status: blocked
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-05-01
 ---
 
 # Overnight Health Check 2026-05-01

@@ -6,6 +6,18 @@ tags: [proposal, fleet, hybrid, sidecar, smart-puller, detection-core, statefuls
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/_summary.md
+  - topics/fleet-architecture/notes/concepts/blacklist-filter-locality.md
+  - topics/fleet-architecture/notes/concepts/customer-site-connectivity.md
+  - topics/fleet-architecture/notes/concepts/k8s-controller-selection-guide.md
+  - topics/fleet-architecture/notes/concepts/k8s-placement-primitives.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_frame-transport-comparison.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-17_preliminary-pilot-option.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_fleet-proposal-rescore-with-delta.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
+incoming_updated: 2026-05-01
 ---
 
 # Proposal E — Hybrid Sidecar

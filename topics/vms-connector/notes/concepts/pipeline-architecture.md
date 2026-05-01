@@ -11,6 +11,18 @@ sources:
   - "[[worklog-puller-tier-list]]"
   - "[[worklog-frame-gap-buffering]]"
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/notes/concepts/image-cache-strategies.md
+  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
+  - topics/data-science/notes/concepts/line-crossing-detection.md
+  - topics/engineering-process/notes/syntheses/2026-04-14_connector-library-deployment-lifecycle.md
+  - topics/vms-connector/notes/concepts/adaptive-temperature.md
+  - topics/vms-connector/notes/concepts/filter-pipeline-ordering.md
+  - topics/vms-connector/notes/concepts/ignore-zones.md
+  - topics/vms-connector/notes/concepts/memory-management.md
+incoming_updated: 2026-05-01
 ---
 
 # Pipeline Architecture

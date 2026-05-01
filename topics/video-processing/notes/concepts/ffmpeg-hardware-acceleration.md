@@ -6,6 +6,18 @@ tags: [ffmpeg, hwaccel, nvdec, nvenc, vaapi, qsv, videotoolbox, gpu]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/connector-docker-system-deps.md
+  - topics/video-processing/notes/concepts/eks-prod-node-pool-gpu-availability.md
+  - topics/video-processing/notes/concepts/ffmpeg-command-anatomy.md
+  - topics/video-processing/notes/concepts/ffmpeg-filtergraphs.md
+  - topics/video-processing/notes/concepts/ffmpeg-libav-libraries.md
+  - topics/video-processing/notes/concepts/ffmpeg-python-bindings.md
+  - topics/video-processing/notes/entities/ffmpeg-entity.md
+  - topics/video-processing/notes/syntheses/actuate-build-vs-buy-tradeoffs.md
+incoming_updated: 2026-05-01
 ---
 
 # [[ffmpeg-entity|FFmpeg]] hardware acceleration

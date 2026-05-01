@@ -5,6 +5,14 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [model, yolov5, intruder, production]
+incoming:
+  - topics/ai-models/notes/concepts/confidence-threshold-calibration.md
+  - topics/ai-models/notes/entities/intruder-v8-model.md
+  - topics/data-science/notes/concepts/detection-pipeline.md
+  - topics/data-science/notes/concepts/motion-detection-challenge.md
+  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+  - topics/team-structure/notes/entities/vlad-sapeshka.md
+incoming_updated: 2026-05-01
 ---
 
 # Intruder v5 Model (intruder-384h-512w-svc)

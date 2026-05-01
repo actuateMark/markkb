@@ -7,6 +7,14 @@ jira: "ENG-106"
 created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot
+incoming:
+  - topics/autopatrol/_summary.md
+  - topics/autopatrol/notes/entities/todo-list.md
+  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
+  - topics/releases/notes/entities/2026-04-20_vms-connector-pr-1654.md
+  - topics/vms-connector/notes/concepts/connector-factory.md
+  - topics/vms-connector/notes/concepts/s3-frame-fallback.md
+incoming_updated: 2026-05-01
 ---
 
 # Generic Patrol Mode

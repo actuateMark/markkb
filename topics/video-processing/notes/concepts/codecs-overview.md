@@ -6,6 +6,18 @@ tags: [codec, h264, h265, mjpeg, av1, compression]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/av1-vp9-future.md
+  - topics/video-processing/notes/concepts/containers-overview.md
+  - topics/video-processing/notes/concepts/ffmpeg-command-anatomy.md
+  - topics/video-processing/notes/concepts/ffmpeg-hardware-acceleration.md
+  - topics/video-processing/notes/concepts/ffmpeg-python-bindings.md
+  - topics/video-processing/notes/concepts/frame-extraction-strategies.md
+  - topics/video-processing/notes/concepts/gop-keyframe-fundamentals.md
+  - topics/video-processing/notes/concepts/gst-rtsp-h264-only-audit.md
+  - topics/video-processing/notes/concepts/gstreamer-vs-ffmpeg.md
+incoming_updated: 2026-05-01
 ---
 
 # Codecs Overview

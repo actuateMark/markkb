@@ -4,6 +4,17 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [chm, health-checks, connectivity, scene-change, stream-quality, recording, motion]
+incoming:
+  - topics/camera-health-monitoring/notes/concepts/healthcheck-architecture.md
+  - topics/camera-health-monitoring/notes/entities/scene-change-detection.md
+  - topics/camera-health-monitoring/sources/worklog-chm-email-design.md
+  - topics/camera-health-monitoring/sources/worklog-dashboard-spec.md
+  - topics/camera-health-monitoring/sources/worklog-hard-drive-health-fields.md
+  - topics/camera-health-monitoring/sources/worklog-integration-diagnostics.md
+  - topics/camera-health-monitoring/sources/worklog-project-structure.md
+  - topics/camera-health-monitoring/sources/worklog-setup-procedure.md
+  - topics/camera-health-monitoring/sources/worklog-sudden-scene-change.md
+incoming_updated: 2026-05-01
 ---
 
 # Health Check Types

@@ -6,6 +6,12 @@ tags: [aws, rekognition, ml, video-analytics, kvs, content-moderation, custom-la
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/syntheses/actuate-build-vs-buy-tradeoffs.md
+  - topics/video-processing/notes/syntheses/aws-video-services-decision-matrix.md
+incoming_updated: 2026-05-01
 ---
 
 # AWS Rekognition Video

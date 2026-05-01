@@ -6,6 +6,18 @@ tags: [kubernetes, graceful-shutdown, sigterm, prestop, checkpoint, stateful, tr
 created: 2026-04-21
 updated: 2026-04-21
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/_summary.md
+  - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
+  - topics/fleet-architecture/notes/concepts/k8s-controller-selection-guide.md
+  - topics/fleet-architecture/notes/concepts/k8s-placement-primitives.md
+  - topics/fleet-architecture/notes/concepts/tracker-snapshot-schema.md
+  - topics/fleet-architecture/notes/concepts/vpa-bimodal-workload-limitation.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_graceful-failover-design.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
+  - topics/fleet-architecture/reading-list.md
+incoming_updated: 2026-05-01
 ---
 
 # Pod Termination Sequence & Stateful Checkpoint Handshake

@@ -6,6 +6,9 @@ tags: [onboarding, cameras, nvr, admin, fastapi, vpn, automation]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+incoming_updated: 2026-05-01
 ---
 
 # admin-auto-onboarding

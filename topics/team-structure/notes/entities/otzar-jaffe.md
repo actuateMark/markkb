@@ -4,6 +4,15 @@ author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
 tags: [person, data-science, ppf, site-classification, yolov8, ignore-zones, classifyr]
+incoming:
+  - topics/data-science/notes/entities/spektar.md
+  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+  - topics/settings-automation/_summary.md
+  - topics/settings-automation/notes/concepts/pixels-per-foot.md
+  - topics/team-structure/_summary.md
+  - topics/team-structure/notes/entities/carlos-torres.md
+  - topics/team-structure/notes/entities/jessica-bae.md
+incoming_updated: 2026-05-01
 ---
 
 # Otzar Jaffe

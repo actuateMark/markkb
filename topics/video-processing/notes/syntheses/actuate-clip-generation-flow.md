@@ -7,6 +7,18 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 related: [[immix-mp4-mux-downstream]]
+incoming:
+  - _index.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/ffmpeg-filtergraphs.md
+  - topics/video-processing/notes/concepts/hls-and-dash.md
+  - topics/video-processing/notes/concepts/immix-mp4-mux-downstream.md
+  - topics/video-processing/notes/concepts/mjpeg-and-still-image-formats.md
+  - topics/video-processing/notes/entities/aws-mediaconvert-entity.md
+  - topics/video-processing/notes/entities/aws-mediapackage-entity.md
+  - topics/video-processing/notes/syntheses/actuate-build-vs-buy-tradeoffs.md
+incoming_updated: 2026-05-01
 ---
 
 # Actuate Clip Generation Flow

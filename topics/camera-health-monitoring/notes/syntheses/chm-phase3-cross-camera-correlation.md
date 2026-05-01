@@ -6,6 +6,10 @@ tags: [synthesis, chm, diagnostics, proposal, phase-3]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase1-network-probe.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase2-stream-probe.md
+incoming_updated: 2026-05-01
 ---
 
 # CHM Phase 3: Cross-Camera Correlation -- NVR and Network Failure Detection

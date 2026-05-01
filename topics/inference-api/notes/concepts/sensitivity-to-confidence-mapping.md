@@ -4,6 +4,12 @@ topic: inference-api
 author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
+incoming:
+  - topics/inference-api/_summary.md
+  - topics/inference-api/notes/concepts/2026-04-29_v5-slicing-as-parameter.md
+  - topics/inference-api/sources/deep-dive-filter-chain.md
+  - topics/inference-api/sources/deep-dive-v4-endpoints.md
+incoming_updated: 2026-05-01
 ---
 
 # Sensitivity-to-Confidence Mapping

@@ -5,6 +5,10 @@ created: 2026-04-13
 updated: 2026-04-13
 tags: [evalink, integration, alarms, sqs, architecture]
 confluence: "https://actuate-team.atlassian.net/wiki/spaces/Integratio/pages/232325125"
+incoming:
+  - topics/actuate-platform/notes/concepts/data-flow-architecture.md
+  - topics/team-structure/notes/entities/laura-reno.md
+incoming_updated: 2026-05-01
 ---
 
 # Alarm Push Pattern (Evalink)

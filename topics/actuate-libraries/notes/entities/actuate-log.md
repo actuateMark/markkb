@@ -6,6 +6,12 @@ tags: [library, utility, logging, log-adapter, structured-logging]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/_summary.md
+  - topics/actuate-libraries/notes/concepts/dependency-graph.md
+  - topics/actuate-libraries/notes/concepts/dev-workflow.md
+  - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
+incoming_updated: 2026-05-01
 ---
 
 ## Purpose

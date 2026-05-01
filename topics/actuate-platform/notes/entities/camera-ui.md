@@ -6,6 +6,10 @@ tags: [react, spa, camera-management, frontend, typescript, zustand, parcel, aws
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
+  - topics/camera-health-monitoring/notes/entities/health-report.md
+incoming_updated: 2026-05-01
 ---
 
 # Camera UI

@@ -6,6 +6,13 @@ tags: [frame-storage, proposals, design-delta, s3-api-cost, in-cluster-blob, con
 created: 2026-04-22
 updated: 2026-04-22
 author: kb-bot
+incoming:
+  - topics/aws-cost/notes/concepts/2026-04-23_s3-tier3-breakdown.md
+  - topics/aws-cost/notes/syntheses/2026-04-23_s3-tier3-cost-investigation.md
+  - topics/aws-cost/notes/syntheses/2026-04-28_s3-cost-reduction-action-plan.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
+  - topics/personal-notes/notes/daily/2026-04-22.md
+incoming_updated: 2026-05-01
 ---
 
 # Frame-Storage Design-Deltas per Fleet Proposal

@@ -9,6 +9,10 @@ sources:
   - "[[worklog-optimization-research]]"
   - "[[worklog-tech-doc-video-pipeline]]"
 author: kb-bot
+incoming:
+  - topics/vms-connector/notes/concepts/filter-pipeline-ordering.md
+  - topics/vms-connector/notes/syntheses/performance-optimization-landscape.md
+incoming_updated: 2026-05-01
 ---
 
 # Motion Detection Internals

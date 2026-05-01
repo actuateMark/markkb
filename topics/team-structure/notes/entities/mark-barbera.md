@@ -4,6 +4,18 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [person, engineering, autopatrol, ebus, chm]
+incoming:
+  - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+  - topics/alerts-improvements/notes/concepts/immix-dispatch.md
+  - topics/camera-health-monitoring/_summary.md
+  - topics/integrations/ebus/notes/concepts/phase1-vs-phase2.md
+  - topics/personal-notes/_summary.md
+  - topics/product-roadmap/notes/concepts/active-risks.md
+  - topics/product-roadmap/notes/concepts/revenue-drivers.md
+  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
+  - topics/team-structure/_summary.md
+  - topics/team-structure/notes/entities/brad-murphy.md
+incoming_updated: 2026-05-01
 ---
 
 # Mark Barbera

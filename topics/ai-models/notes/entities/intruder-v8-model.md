@@ -5,6 +5,17 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [model, yolov8, intruder, rollout]
+incoming:
+  - topics/ai-models/notes/concepts/confidence-threshold-calibration.md
+  - topics/ai-models/notes/concepts/model-evaluation-framework.md
+  - topics/ai-models/notes/concepts/shadow-testing-methodology.md
+  - topics/ai-models/notes/entities/intruder-v5-model.md
+  - topics/ai-models/notes/entities/weapon-v8-model.md
+  - topics/data-science/notes/concepts/detection-pipeline.md
+  - topics/data-science/notes/concepts/evaluation-tiers.md
+  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+  - topics/team-structure/notes/entities/vlad-sapeshka.md
+incoming_updated: 2026-05-01
 ---
 
 # Intruder v8 Model (int07-actuate003-v8)

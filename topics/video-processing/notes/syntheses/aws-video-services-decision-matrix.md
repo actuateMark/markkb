@@ -6,6 +6,18 @@ tags: [aws, decision-matrix, build-vs-buy, kvs, mediaconvert, medialive, mediapa
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - _index.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/entities/aws-ivs-entity.md
+  - topics/video-processing/notes/entities/aws-kvs-entity.md
+  - topics/video-processing/notes/entities/aws-medialive-entity.md
+  - topics/video-processing/notes/entities/aws-rekognition-video-entity.md
+  - topics/video-processing/notes/syntheses/actuate-build-vs-buy-tradeoffs.md
+  - topics/video-processing/notes/syntheses/actuate-clip-generation-flow.md
+  - topics/video-processing/notes/syntheses/kvs-webrtc-as-fleet-frame-plane.md
+incoming_updated: 2026-05-01
 ---
 
 # AWS Video Services Decision Matrix (for Actuate)

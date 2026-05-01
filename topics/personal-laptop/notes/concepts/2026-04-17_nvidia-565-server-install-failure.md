@@ -6,6 +6,9 @@ tags: [nvidia, gpu, ubuntu, suspend, incident, kernel-modules]
 created: 2026-04-17
 updated: 2026-04-17
 author: kb-bot
+incoming:
+  - topics/personal-laptop/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 Automatic nvidia driver update attempted 565-server install, failed mid-transaction, left GPU in broken state. Recovery via upgrade to 580-open (prebuilt modules) succeeded and is now stable.

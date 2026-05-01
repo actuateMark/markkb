@@ -6,6 +6,18 @@ tags: [failover, checkpointing, state, botsort, windows, resume, high-availabili
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/_summary.md
+  - topics/fleet-architecture/notes/concepts/k8s-placement-primitives.md
+  - topics/fleet-architecture/notes/concepts/pod-termination-sequence.md
+  - topics/fleet-architecture/notes/concepts/tracker-snapshot-schema.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_frame-transport-comparison.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-a-minimal-split.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-d-event-driven.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-e-hybrid-sidecar.md
+incoming_updated: 2026-05-01
 ---
 
 # Graceful Failover Design

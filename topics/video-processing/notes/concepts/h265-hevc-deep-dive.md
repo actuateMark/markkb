@@ -6,6 +6,18 @@ tags: [codec, h265, hevc, surveillance, licensing]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/syntheses/2026-04-21_rd-agent-pilot-learnings.md
+  - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/av1-vp9-future.md
+  - topics/video-processing/notes/concepts/codecs-overview.md
+  - topics/video-processing/notes/concepts/containers-overview.md
+  - topics/video-processing/notes/concepts/eks-prod-node-pool-gpu-availability.md
+  - topics/video-processing/notes/concepts/ffmpeg-command-anatomy.md
+  - topics/video-processing/notes/concepts/ffmpeg-hardware-acceleration.md
+incoming_updated: 2026-05-01
 ---
 
 # H.265 / HEVC Deep Dive

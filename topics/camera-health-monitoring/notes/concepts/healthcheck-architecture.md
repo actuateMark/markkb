@@ -4,6 +4,14 @@ author: kb-bot
 created: 2026-04-14
 updated: 2026-04-14
 tags: [chm, architecture, flask, dynamodb, healthcheck-runners, dependency-tree]
+incoming:
+  - topics/camera-health-monitoring/sources/worklog-chm-email-design.md
+  - topics/camera-health-monitoring/sources/worklog-dashboard-spec.md
+  - topics/camera-health-monitoring/sources/worklog-healthcheck-job-design.md
+  - topics/camera-health-monitoring/sources/worklog-integration-diagnostics.md
+  - topics/camera-health-monitoring/sources/worklog-project-structure.md
+  - topics/camera-health-monitoring/sources/worklog-setup-procedure.md
+incoming_updated: 2026-05-01
 ---
 
 # Healthcheck Architecture

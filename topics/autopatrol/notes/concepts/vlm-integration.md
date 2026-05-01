@@ -4,6 +4,15 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [autopatrol, vlm, prompt-engineering, qwen, gemma, models]
+incoming:
+  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
+  - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
+  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
+  - topics/settings-automation/notes/concepts/vlm-fp-reduction.md
+  - topics/team-structure/notes/entities/alena-prashkovich.md
+  - topics/team-structure/notes/entities/jessica-bae.md
+  - topics/vms-connector/notes/syntheses/connector-evolution.md
+incoming_updated: 2026-05-01
 ---
 
 # VLM Integration

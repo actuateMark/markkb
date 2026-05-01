@@ -6,6 +6,9 @@ tags: [repo, classifier, dinov2, lora, person-detection, yolo, surveillance, fas
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/data-science/notes/entities/actuate-labeling-tool.md
+incoming_updated: 2026-05-01
 ---
 
 # person-classifier

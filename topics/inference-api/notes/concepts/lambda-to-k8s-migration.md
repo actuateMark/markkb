@@ -6,6 +6,10 @@ tags: [lambda, kubernetes, migration, infrastructure, eks, cancelled]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/syntheses/integration-landscape.md
+  - topics/external-api/notes/concepts/shared-auth-pattern.md
+incoming_updated: 2026-05-01
 ---
 
 # Lambda to Kubernetes Migration — CANCELLED

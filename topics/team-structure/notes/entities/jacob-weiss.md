@@ -4,6 +4,16 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [person, engineering, leadership, infrastructure, security]
+incoming:
+  - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+  - topics/jira-organization/_summary.md
+  - topics/jira-organization/notes/concepts/confluence-spaces-map.md
+  - topics/jira-organization/notes/concepts/jira-reorg-proposal.md
+  - topics/product-roadmap/notes/concepts/active-risks.md
+  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
+  - topics/team-structure/_summary.md
+  - topics/watchman/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # Jacob Weiss

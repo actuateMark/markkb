@@ -6,6 +6,16 @@ tags: [library, camera-stream, motion-detection, frame-differencing, computer-vi
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/_summary.md
+  - topics/actuate-libraries/notes/concepts/dependency-graph.md
+  - topics/actuate-libraries/notes/entities/actuate-imutils.md
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase5-frame-probe.md
+  - topics/vms-connector/notes/concepts/motion-detection-internals.md
+  - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
+  - topics/vms-connector/notes/syntheses/performance-optimization-landscape.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-movement

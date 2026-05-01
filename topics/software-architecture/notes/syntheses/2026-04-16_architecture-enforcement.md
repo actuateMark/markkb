@@ -6,6 +6,18 @@ tags: [architecture, enforcement, fitness-functions, import-linter, ci-gates, bo
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - _index.md
+  - topics/fleet-architecture/notes/concepts/library-decomposition-required.md
+  - topics/fleet-architecture/notes/concepts/observability-and-tracing.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/software-architecture/_summary.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_code-health-dashboard.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_metrics-to-track.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_tech-debt-agent.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_tooling-landscape.md
+incoming_updated: 2026-05-01
 ---
 
 # Architecture Enforcement & Fitness Functions

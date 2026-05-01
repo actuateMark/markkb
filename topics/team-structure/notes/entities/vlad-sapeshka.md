@@ -4,6 +4,10 @@ author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
 tags: [person, data-science, yam, model-evaluation, shadow-testing]
+incoming:
+  - topics/data-science/notes/entities/spektar.md
+  - topics/team-structure/notes/entities/zack-schmidt.md
+incoming_updated: 2026-05-01
 ---
 
 # Vlad Sapeshka

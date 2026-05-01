@@ -6,6 +6,13 @@ tags: [minipc, api, fastapi, dashboard-check, observations, swagger, cross-sessi
 created: 2026-04-29
 updated: 2026-04-29
 author: kb-bot
+incoming:
+  - topics/personal-laptop/_summary.md
+  - topics/personal-laptop/notes/concepts/2026-04-28_handoff-repos-dashboard-phase-2-code-health.md
+  - topics/personal-laptop/notes/concepts/2026-04-29_repos-dashboard-followups.md
+  - topics/personal-notes/notes/daily/2026-04-28.md
+  - topics/personal-notes/notes/daily/2026-04-29.md
+incoming_updated: 2026-05-01
 ---
 
 # Minipc API surface

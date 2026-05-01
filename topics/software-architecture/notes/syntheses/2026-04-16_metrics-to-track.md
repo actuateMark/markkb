@@ -6,6 +6,18 @@ tags: [metrics, code-health, tech-debt, complexity, coverage, architecture]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - _index.md
+  - topics/engineering-process/notes/entities/agent-issue-auditor.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/software-architecture/_summary.md
+  - topics/software-architecture/notes/concepts/2026-04-23_sketch-findings-metrics.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_architecture-enforcement.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_code-health-dashboard.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_tech-debt-agent.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_tooling-landscape.md
+incoming_updated: 2026-05-01
 ---
 
 # Code Health Metrics to Track

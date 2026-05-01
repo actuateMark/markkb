@@ -8,6 +8,13 @@ updated: 2026-04-14
 author: kb-bot
 sources:
   - "[[worklog-temperature-adaptive-processing]]"
+incoming:
+  - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
+  - topics/integrations/rtsp/notes/syntheses/rtsp-robustness-enhancement-plan.md
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+  - topics/vms-connector/notes/syntheses/connector-evolution.md
+  - topics/vms-connector/notes/syntheses/performance-optimization-landscape.md
+incoming_updated: 2026-05-01
 ---
 
 # Adaptive Temperature (Frame Processing)

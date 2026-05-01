@@ -6,6 +6,15 @@ tags: [integration, bold, alarm-sender, components]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/notes/entities/actuate-config.md
+  - topics/actuate-platform/notes/concepts/job-executor-architecture.md
+  - topics/admin-api/notes/concepts/integration-architecture.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-diagnostics-gap-analysis.md
+  - topics/fleet-architecture/notes/concepts/downstream-consumer-impact.md
+  - topics/integrations/bold/_summary.md
+  - topics/vms-connector/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # Bold Integration Components

@@ -6,6 +6,18 @@ tags: [codec, av1, vp9, aomedia, future]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/syntheses/2026-04-21_rd-agent-pilot-learnings.md
+  - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/codecs-overview.md
+  - topics/video-processing/notes/concepts/containers-overview.md
+  - topics/video-processing/notes/concepts/eks-prod-node-pool-gpu-availability.md
+  - topics/video-processing/notes/concepts/gst-rtsp-h264-only-audit.md
+  - topics/video-processing/notes/concepts/h265-hevc-deep-dive.md
+  - topics/video-processing/notes/concepts/hardware-accelerated-codecs.md
+incoming_updated: 2026-05-01
 ---
 
 # AV1 / VP9 — The Future We're Not in Yet

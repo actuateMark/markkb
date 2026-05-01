@@ -9,6 +9,10 @@ sources:
   - "[[worklog-tech-doc-video-pipeline]]"
   - "[[worklog-rearch-main-loop]]"
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/concepts/autopatrol-alert-lifecycle.md
+  - topics/autopatrol/notes/syntheses/2026-04-16_deferred-alert-race-condition.md
+incoming_updated: 2026-05-01
 ---
 
 # Sliding Window Mechanics

@@ -6,6 +6,18 @@ tags: [tooling, static-analysis, linting, architecture, testing, security, dashb
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - _index.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/software-architecture/_summary.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_architecture-enforcement.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_code-health-dashboard.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_metrics-to-track.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_tech-debt-agent.md
+  - topics/software-architecture/notes/syntheses/2026-04-17_local-sketches-plan.md
+  - topics/software-architecture/reading-list.md
+incoming_updated: 2026-05-01
 ---
 
 # Code Health Tooling Landscape & Reading List

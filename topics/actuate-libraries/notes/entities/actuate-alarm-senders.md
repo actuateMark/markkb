@@ -6,6 +6,18 @@ tags: [library, integration-alerting, alarm-sender, alert-dispatch, factory-patt
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/_summary.md
+  - topics/actuate-libraries/notes/concepts/dependency-graph.md
+  - topics/actuate-libraries/notes/concepts/dev-workflow.md
+  - topics/actuate-libraries/notes/concepts/observer-pattern.md
+  - topics/actuate-libraries/notes/entities/actuate-connector-observers.md
+  - topics/actuate-libraries/notes/entities/actuate-daos.md
+  - topics/actuate-libraries/notes/entities/actuate-event-listener.md
+  - topics/actuate-libraries/notes/entities/actuate-integration-calls.md
+  - topics/actuate-libraries/notes/entities/actuate-notification.md
+  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-alarm-senders

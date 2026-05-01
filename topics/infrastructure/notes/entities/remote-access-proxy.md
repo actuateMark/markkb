@@ -6,6 +6,10 @@ tags: [remote-access, kvs, mqtt, wireguard, rtsp, edge, streaming, ecs, eks]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/personal-laptop/notes/concepts/2026-04-23_firebat-minipc-network-setup.md
+  - topics/personal-laptop/notes/syntheses/2026-04-23_firebat-minipc-as-claude-dev-box.md
+incoming_updated: 2026-05-01
 ---
 
 # Remote Access Proxy (RAP)

@@ -6,6 +6,11 @@ tags: [monitoring, new-relic, nrql, connector, deployment, observability, autopa
 created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot
+incoming:
+  - topics/operational-health/notes/syntheses/2026-04-23_dashboard-sketch.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Connector Fleet Monitoring via New Relic

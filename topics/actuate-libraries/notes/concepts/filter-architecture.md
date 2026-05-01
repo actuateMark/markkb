@@ -4,6 +4,16 @@ topic: actuate-libraries
 author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
+incoming:
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/fleet-architecture/notes/concepts/library-decomposition-required.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-d-event-driven.md
+  - topics/vms-connector/notes/concepts/motion-detection-internals.md
+  - topics/vms-connector/notes/concepts/sliding-window-mechanics.md
+  - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
+  - topics/vms-connector/notes/syntheses/performance-optimization-landscape.md
+incoming_updated: 2026-05-01
 ---
 
 # Filter Architecture

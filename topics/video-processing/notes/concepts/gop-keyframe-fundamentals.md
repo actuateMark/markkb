@@ -6,6 +6,18 @@ tags: [gop, keyframe, idr, latency, decode]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase2-stream-probe.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/codecs-overview.md
+  - topics/video-processing/notes/concepts/cv2-videocapture-internals.md
+  - topics/video-processing/notes/concepts/ffmpeg-command-anatomy.md
+  - topics/video-processing/notes/concepts/frame-extraction-strategies.md
+  - topics/video-processing/notes/concepts/h264-deep-dive.md
+  - topics/video-processing/notes/concepts/h265-hevc-deep-dive.md
+  - topics/video-processing/notes/concepts/hardware-accelerated-codecs.md
+incoming_updated: 2026-05-01
 ---
 
 # GOP and Keyframe Fundamentals

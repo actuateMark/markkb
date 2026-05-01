@@ -7,6 +7,15 @@ jira: "ENG-147"
 created: 2026-04-20
 updated: 2026-04-20
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/syntheses/2026-04-21_rd-agent-pilot-learnings.md
+  - topics/engineering-process/reading-list.md
+  - topics/fleet-architecture/_pilot-2026-04-21-staged.md
+  - topics/personal-laptop/notes/concepts/2026-04-27_handoff-rd-autoresearch.md
+  - topics/personal-notes/notes/daily/2026-04-20.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Multi-agent / multi-model routing for KB source research

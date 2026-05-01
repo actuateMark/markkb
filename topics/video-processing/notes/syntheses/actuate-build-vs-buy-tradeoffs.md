@@ -6,6 +6,17 @@ tags: [actuate, build-vs-buy, aws, mediaconvert, kvs, ivs, mediapackage, hwaccel
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - _index.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/ffmpeg-hardware-acceleration.md
+  - topics/video-processing/notes/concepts/hardware-accelerated-codecs.md
+  - topics/video-processing/notes/syntheses/actuate-clip-generation-flow.md
+  - topics/video-processing/notes/syntheses/actuate-frame-ingest-decode-paths.md
+  - topics/video-processing/notes/syntheses/actuate-video-pipeline-walkthrough.md
+  - topics/video-processing/notes/syntheses/aws-video-services-decision-matrix.md
+incoming_updated: 2026-05-01
 ---
 
 # Actuate Build-vs-Buy Tradeoffs

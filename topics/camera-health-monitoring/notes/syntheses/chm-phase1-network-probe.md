@@ -6,6 +6,14 @@ tags: [synthesis, chm, diagnostics, proposal, phase-1, rtsp]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/camera-health-monitoring/notes/syntheses/chm-end-to-end-flow.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase2-stream-probe.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase3-cross-camera-correlation.md
+  - topics/integrations/rtsp/notes/entities/rtsp-enhancement-issues.md
+  - topics/integrations/rtsp/notes/syntheses/rtsp-robustness-enhancement-plan.md
+  - topics/personal-notes/notes/daily/2026-04-20.md
+incoming_updated: 2026-05-01
 ---
 
 # CHM Phase 1: NetworkProbe -- Root Cause Diagnosis for Connectivity Failures

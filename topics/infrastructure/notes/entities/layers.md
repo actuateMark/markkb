@@ -6,6 +6,10 @@ tags: [lambda, aws, python, lambda-layers, requests]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/video-processing/notes/concepts/connector-decoder-routing-map.md
+  - topics/video-processing/notes/syntheses/kvs-webrtc-as-fleet-frame-plane.md
+incoming_updated: 2026-05-01
 ---
 
 # layers

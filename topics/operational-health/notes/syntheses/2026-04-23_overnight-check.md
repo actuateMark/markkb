@@ -7,6 +7,11 @@ created: 2026-04-23
 updated: 2026-04-23
 author: kb-bot
 status: degraded
+incoming:
+  - topics/operational-health/notes/concepts/2026-04-23_oom-surge-connector-limit-drift.md
+  - topics/operational-health/notes/syntheses/2026-04-24_overnight-check.md
+  - topics/personal-notes/notes/daily/2026-04-23.md
+incoming_updated: 2026-05-01
 ---
 
 # Overnight Health Check 2026-04-23

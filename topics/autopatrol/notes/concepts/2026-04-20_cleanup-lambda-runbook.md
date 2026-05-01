@@ -6,6 +6,18 @@ tags: [runbook, ops, lambda, sqs, dynamodb, autopatrol, cleanup, immix]
 created: 2026-04-20
 updated: 2026-04-20
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-21_cleanup-lambda-stage-verify.md
+  - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
+  - topics/autopatrol/notes/syntheses/2026-04-23_alarm-dashboard-sketch.md
+  - topics/engineering-process/notes/concepts/2026-04-20_overnight-check-skill-pattern.md
+  - topics/personal-laptop/notes/concepts/2026-04-30_morning-prep-scripts-runbook.md
+  - topics/personal-notes/notes/concepts/2026-04-29_cleanup-handoff.md
+  - topics/personal-notes/notes/daily/2026-04-23.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/runbooks/_backlog.md
+  - topics/runbooks/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # AutoPatrol Stale-Schedule Cleanup Lambda — Operations Runbook

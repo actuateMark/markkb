@@ -7,6 +7,10 @@ status: backlog
 created: 2026-04-23
 updated: 2026-04-23
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-23_cleanup-rollout-day.md
+  - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
+incoming_updated: 2026-05-01
 ---
 
 # Feature Request — Ad-Hoc Connector Pod Redeploy via API

@@ -6,6 +6,9 @@ tags: [synthesis, cross-topic, onboarding, admin-api, connector-deployer, settin
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+incoming_updated: 2026-05-01
 ---
 
 # Camera Onboarding End-to-End

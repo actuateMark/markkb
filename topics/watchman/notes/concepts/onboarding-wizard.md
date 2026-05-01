@@ -4,6 +4,14 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [watchman, onboarding, byod, wireguard, ux, f-001]
+incoming:
+  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
+  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
+  - topics/repo-backlog/notes/concepts/actuate_admin.md
+  - topics/settings-automation/notes/concepts/pixels-per-foot.md
+  - topics/team-structure/notes/entities/brian-leary.md
+  - topics/watchman/notes/concepts/patrol-vs-active-modes.md
+incoming_updated: 2026-05-01
 ---
 
 # Onboarding Wizard

@@ -6,6 +6,12 @@ tags: [gstreamer, rtsp, h265, silent-failure, audit, follow-up]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/video-processing/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # [[gstreamer-entity|GStreamer]] [[rtsp-deep-dive|RTSP]] [[h264-deep-dive|H.264]]-only Silent Failure Audit

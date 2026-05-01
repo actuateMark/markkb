@@ -6,6 +6,13 @@ author: kb-bot
 created: 2026-04-16
 updated: 2026-04-16
 tags: [nrql, data-model, attributes, logs, new-relic]
+incoming:
+  - topics/new-relic/_summary.md
+  - topics/new-relic/notes/concepts/nr-connector-query-cookbook.md
+  - topics/new-relic/notes/concepts/nr-log-level-strategy.md
+  - topics/new-relic/notes/concepts/nr-programmatic-deep-links.md
+  - topics/new-relic/notes/concepts/nrql-efficient-query-patterns.md
+incoming_updated: 2026-05-01
 ---
 
 # Actuate New Relic Data Model

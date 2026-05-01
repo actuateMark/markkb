@@ -5,6 +5,13 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [line-crossing, tracking, trajectory, observer, alert-reduction]
+incoming:
+  - topics/data-science/notes/concepts/botsort-tracking.md
+  - topics/data-science/notes/concepts/detection-pipeline.md
+  - topics/team-structure/notes/entities/tatiana-hanazaki.md
+  - topics/watchman/notes/entities/actuate-watchman-internal.md
+  - topics/watchman/notes/entities/actuate-watchman-repo.md
+incoming_updated: 2026-05-01
 ---
 
 # Line Crossing Detection

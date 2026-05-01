@@ -4,6 +4,14 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [person, engineering, admin-api, database, backend, autopatrol]
+incoming:
+  - topics/actuate-platform/notes/concepts/data-flow-architecture.md
+  - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+  - topics/admin-api/notes/concepts/integration-architecture.md
+  - topics/product-roadmap/notes/concepts/active-risks.md
+  - topics/product-roadmap/notes/concepts/revenue-drivers.md
+  - topics/team-structure/notes/entities/mark-barbera.md
+incoming_updated: 2026-05-01
 ---
 
 # Tatiana Hanazaki

@@ -6,6 +6,9 @@ tags: [async, asyncio, performance, fastapi, concurrency]
 created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot
+incoming:
+  - topics/engineering-process/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # Async Concurrency Patterns for FastAPI

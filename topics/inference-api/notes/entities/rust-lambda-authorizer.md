@@ -6,6 +6,18 @@ tags: [rust, lambda, authorizer, dynamodb, rbac, api-gateway]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/concepts/rbac-model.md
+  - topics/actuate-platform/notes/syntheses/integration-landscape.md
+  - topics/admin-api/notes/concepts/integration-architecture.md
+  - topics/external-api/notes/concepts/partner-api-credential-runbook.md
+  - topics/external-api/notes/concepts/shared-auth-pattern.md
+  - topics/external-api/notes/entities/alarmwatch-customer.md
+  - topics/inference-api/notes/concepts/2026-04-14_dev-deployment-issues.md
+  - topics/inference-api/notes/concepts/api-key-lifecycle.md
+  - topics/inference-api/notes/syntheses/2026-04-13_v5-revised-architecture-plan.md
+  - topics/inference-api/notes/syntheses/2026-04-14_v5-implementation-complete.md
+incoming_updated: 2026-05-01
 ---
 
 # Rust Lambda Authorizer

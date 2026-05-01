@@ -6,6 +6,11 @@ tags: [synthesis, aws, cost, spinoff, attack-plan, s3, ebs, eks, right-sizing, r
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/aws-cost/_summary.md
+  - topics/aws-cost/notes/syntheses/2026-04-28_s3-cost-reduction-action-plan.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+incoming_updated: 2026-05-01
 ---
 
 # AWS Cost — Topic Spinoff + Right-Sizing Attack Plan (2026-04-27)

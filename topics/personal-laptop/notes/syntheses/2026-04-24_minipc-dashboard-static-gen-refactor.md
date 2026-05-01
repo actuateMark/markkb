@@ -7,6 +7,16 @@ jira: ""
 created: 2026-04-24
 updated: 2026-04-24
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/syntheses/2026-04-30_three-tier-routine-check-pattern.md
+  - topics/personal-laptop/notes/concepts/2026-04-27_handoff-repos-architectural-dashboard.md
+  - topics/personal-laptop/notes/concepts/2026-04-29_minipc-api-surface.md
+  - topics/personal-laptop/notes/syntheses/2026-04-24_skills-audit-script-candidates.md
+  - topics/personal-laptop/notes/syntheses/2026-04-27_minipc-tooling-improvements.md
+  - topics/personal-notes/notes/daily/2026-04-24.md
+  - topics/personal-notes/notes/daily/2026-04-29.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Minipc dashboard — static-gen refactor

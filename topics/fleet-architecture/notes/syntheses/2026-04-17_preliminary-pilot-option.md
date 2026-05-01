@@ -6,6 +6,10 @@ tags: [pilot, poc, prototype, architecture, fleet, option]
 created: 2026-04-17
 updated: 2026-04-17
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/_summary.md
+  - topics/fleet-architecture/reading-list.md
+incoming_updated: 2026-05-01
 ---
 
 # Preliminary Pilot Option

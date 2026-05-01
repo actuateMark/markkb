@@ -6,6 +6,14 @@ tags: [library, integration-alerting, analytics, event-pipeline, sqs]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/_summary.md
+  - topics/actuate-libraries/notes/concepts/dependency-graph.md
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+  - topics/data-science/notes/syntheses/model-lifecycle.md
+  - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-event-listener

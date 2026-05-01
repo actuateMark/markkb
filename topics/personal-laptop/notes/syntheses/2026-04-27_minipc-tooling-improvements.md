@@ -6,6 +6,17 @@ tags: [minipc, dashboard-check, obsidian, kb-lint, claude-usage, observability, 
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/concepts/2026-04-28_minting-github-pats-for-automation.md
+  - topics/personal-laptop/notes/concepts/2026-04-27_handoff-rd-autoresearch.md
+  - topics/personal-laptop/notes/concepts/2026-04-27_handoff-repos-architectural-dashboard.md
+  - topics/personal-laptop/notes/concepts/2026-04-28_handoff-repos-dashboard-phase-2-code-health.md
+  - topics/personal-laptop/notes/concepts/2026-04-29_minipc-api-surface.md
+  - topics/personal-laptop/notes/syntheses/2026-04-28_long-lived-credentials-on-headless-boxes.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/personal-notes/notes/daily/2026-04-28.md
+  - topics/personal-notes/notes/daily/2026-04-29.md
+incoming_updated: 2026-05-01
 ---
 
 # Minipc tooling improvements — 2026-04-27 batch

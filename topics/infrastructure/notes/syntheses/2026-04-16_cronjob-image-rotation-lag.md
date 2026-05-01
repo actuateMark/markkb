@@ -6,6 +6,9 @@ tags: [connector_deployer, cronjob, kubernetes, autopatrol, image-pull-policy, r
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-05-01
 ---
 
 # 3.5-Hour Stale-Code Rotation After Stage Deploy

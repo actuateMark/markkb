@@ -4,6 +4,14 @@ topic: actuate-libraries
 author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
+incoming:
+  - topics/actuate-libraries/notes/entities/actuate-connector-observers.md
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/fleet-architecture/notes/concepts/library-decomposition-required.md
+  - topics/vms-connector/notes/concepts/filter-pipeline-ordering.md
+  - topics/vms-connector/notes/concepts/sliding-window-mechanics.md
+  - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
+incoming_updated: 2026-05-01
 ---
 
 # Observer Pattern

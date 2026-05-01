@@ -7,6 +7,18 @@ created: 2026-04-23
 updated: 2026-04-23
 author: kb-bot
 status: sketch
+incoming:
+  - topics/engineering-process/_summary.md
+  - topics/engineering-process/notes/concepts/2026-04-23_release-acceptance-criteria.md
+  - topics/engineering-process/notes/syntheses/2026-04-14_feature-development-lifecycle.md
+  - topics/operational-health/notes/concepts/2026-04-23_dashboard-phase-1b-pickup.md
+  - topics/operational-health/notes/concepts/2026-04-24_dashboard-1b-continuation.md
+  - topics/operational-health/notes/concepts/2026-04-27_dashboard-signal-cookbook.md
+  - topics/operational-health/notes/syntheses/2026-04-24_overnight-check.md
+  - topics/personal-notes/notes/daily/2026-04-23.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Operational Dashboard — Local Static HTML Sketch

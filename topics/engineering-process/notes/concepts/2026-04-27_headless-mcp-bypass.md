@@ -6,6 +6,10 @@ tags: [automation, mcp, new-relic, atlassian, headless, subagent, cron, runbook]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+incoming_updated: 2026-05-01
 ---
 
 # Headless MCP-bypass auth flow

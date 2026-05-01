@@ -6,6 +6,10 @@ tags: [autopatrol, alert-lifecycle, immix, vms-connector, alarm-senders, deferre
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/autopatrol/_summary.md
+  - topics/autopatrol/notes/entities/todo-list.md
+incoming_updated: 2026-05-01
 ---
 
 # AutoPatrol Alert Lifecycle

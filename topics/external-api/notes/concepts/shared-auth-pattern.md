@@ -6,6 +6,14 @@ tags: [auth, api-gateway, rust, authorizer, architecture, pattern]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/admin-api/notes/concepts/integration-architecture.md
+  - topics/external-api/notes/entities/alarmquip-customer.md
+  - topics/external-api/notes/entities/alarmwatch-customer.md
+  - topics/inference-api/notes/entities/rust-lambda-authorizer.md
+  - topics/integrations/ebus/notes/concepts/ebus-ui-config-mapping.md
+  - topics/integrations/ebus/notes/concepts/phase1-vs-phase2.md
+incoming_updated: 2026-05-01
 ---
 
 # Shared Auth Pattern

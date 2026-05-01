@@ -6,6 +6,10 @@ tags: [tenant, sync, suspended, onboarder, cleanup-lambda, admin, gap, finding, 
 created: 2026-04-28
 updated: 2026-04-28
 author: kb-bot
+- Error: File "2026-04-28_tenant-status-sync-gap" not found.
+incoming:
+  - Error: File "2026-04-28_tenant-status-sync-gap" not found.
+incoming_updated: 2026-05-01
 ---
 
 # Tenant-Status Sync Gap

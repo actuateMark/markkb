@@ -4,6 +4,12 @@ author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
 tags: [labeling, annotation, ground-truth, sagemaker, training-data]
+incoming:
+  - topics/data-science/_summary.md
+  - topics/data-science/notes/concepts/training-pipeline-architecture.md
+  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+  - topics/data-science/notes/syntheses/model-lifecycle.md
+incoming_updated: 2026-05-01
 ---
 
 # Spektar

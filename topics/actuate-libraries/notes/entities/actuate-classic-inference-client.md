@@ -6,6 +6,16 @@ tags: [library, ai-inference, legacy, deprecated, yolo]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/_summary.md
+  - topics/actuate-libraries/notes/concepts/dependency-graph.md
+  - topics/actuate-libraries/notes/concepts/filter-architecture.md
+  - topics/actuate-libraries/notes/concepts/inference-client-evolution.md
+  - topics/data-science/notes/syntheses/model-lifecycle.md
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+  - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
+  - topics/vms-connector/notes/syntheses/performance-optimization-landscape.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-classic-inference-client

@@ -6,6 +6,12 @@ tags: [skills, claude-code, automation, minipc, audit]
 created: 2026-04-24
 updated: 2026-04-24
 author: kb-bot
+incoming:
+  - topics/personal-laptop/notes/syntheses/2026-04-27_iam-rolesanywhere-minipc.md
+  - topics/personal-laptop/notes/syntheses/2026-04-27_minipc-tooling-improvements.md
+  - topics/personal-laptop/notes/syntheses/2026-04-30_firebat-script-conversion-candidates.md
+  - topics/runbooks/notes/concepts/2026-04-29_credential-expiry-recovery.md
+incoming_updated: 2026-05-01
 ---
 
 # Skills audit — script-able vs LLM-required

@@ -5,6 +5,12 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [fdmd, motion-detection, clip-based, rtsp, stationary-filter]
+incoming:
+  - topics/ai-models/notes/entities/intruder-v5-model.md
+  - topics/data-science/notes/concepts/botsort-tracking.md
+  - topics/data-science/notes/concepts/detection-pipeline.md
+  - topics/data-science/notes/concepts/line-crossing-detection.md
+incoming_updated: 2026-05-01
 ---
 
 # Motion Detection Challenge

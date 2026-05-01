@@ -6,6 +6,9 @@ tags: [vlm, vllm, sqs, dynamodb, keda, autopatrol, watchman, qwen, inference, ar
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+incoming_updated: 2026-05-01
 ---
 
 # VLM Pipeline Architecture

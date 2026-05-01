@@ -6,6 +6,13 @@ tags: [onboarding, developer-tools, aws, eks, macos]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/ai-models/notes/entities/ds-server-container.md
+  - topics/engineering-process/notes/concepts/2026-04-17_local-testing-strategies-per-repo.md
+  - topics/engineering-process/notes/entities/dev-test-tooling-pattern.md
+  - topics/personal-laptop/notes/syntheses/2026-04-23_firebat-minipc-as-claude-dev-box.md
+incoming_updated: 2026-05-01
 ---
 
 # dev-environment

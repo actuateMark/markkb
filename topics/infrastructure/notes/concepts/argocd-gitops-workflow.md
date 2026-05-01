@@ -3,6 +3,9 @@ type: concept
 author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
+incoming:
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+incoming_updated: 2026-05-01
 ---
 
 # ArgoCD GitOps Workflow

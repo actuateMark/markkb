@@ -6,6 +6,15 @@ tags: [config, admin-api, schedule, eng-96, propagation, site-context]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/_summary.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-a-minimal-split.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-d-event-driven.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-e-hybrid-sidecar.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
+incoming_updated: 2026-05-01
 ---
 
 # Config & Schedule Propagation

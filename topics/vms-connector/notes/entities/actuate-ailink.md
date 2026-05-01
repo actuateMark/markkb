@@ -6,6 +6,12 @@ tags: [repo, websocket, python, ailink, vms-integration, clips, video-analysis]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/alert-ui.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase-review-findings.md
+  - topics/infrastructure/notes/entities/reusable-github-actions.md
+  - topics/watchman/notes/entities/watchman-repo.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate_ailink

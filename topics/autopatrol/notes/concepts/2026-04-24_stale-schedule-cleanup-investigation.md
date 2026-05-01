@@ -6,6 +6,10 @@ tags: [autopatrol, cleanup-lambda, investigation, stale-schedules, zombie-tasks,
 created: 2026-04-24
 updated: 2026-04-24
 author: kb-bot
+- Error: File "2026-04-24_stale-schedule-cleanup-investigation" not found.
+incoming:
+  - Error: File "2026-04-24_stale-schedule-cleanup-investigation" not found.
+incoming_updated: 2026-05-01
 ---
 
 # Stale AutoPatrol schedule & zombie-task investigation

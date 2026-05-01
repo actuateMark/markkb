@@ -6,6 +6,10 @@ tags: [firebat, scripts, token-spend, automation, scheduled-tasks]
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/syntheses/2026-04-30_three-tier-routine-check-pattern.md
+  - topics/personal-laptop/notes/concepts/2026-04-30_morning-prep-scripts-runbook.md
+incoming_updated: 2026-05-01
 ---
 
 # Firebat scheduled tasks — script-conversion candidates

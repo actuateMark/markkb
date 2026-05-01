@@ -6,6 +6,12 @@ tags: [inference, client, cli, batch, parquet, duckdb, shadow-testing, python]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/ai-models/notes/entities/ds-server-container.md
+  - topics/data-science/notes/concepts/evaluation-tiers.md
+  - topics/data-science/notes/entities/actuate-eval.md
+  - topics/data-science/notes/entities/shadow-test-pipeline.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-inference

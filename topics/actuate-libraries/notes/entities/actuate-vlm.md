@@ -6,6 +6,18 @@ tags: [library, ai-inference, vlm, vision-language-model, sqs, dynamodb, async-p
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/_summary.md
+  - topics/actuate-libraries/notes/concepts/inference-client-evolution.md
+  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
+  - topics/ai-models/notes/concepts/vlm-pipeline-architecture.md
+  - topics/ai-models/notes/entities/ds-smart-alert-supervisor.md
+  - topics/ai-models/notes/entities/qwen3vl-aws.md
+  - topics/ai-models/notes/entities/vlm-eval-visualizer.md
+  - topics/ai-models/notes/entities/vlm-inference.md
+  - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
+  - topics/aws-cost/notes/syntheses/cost-architecture.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-vlm

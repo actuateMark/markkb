@@ -4,6 +4,9 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [confluence, documentation, tooling, organization]
+incoming:
+  - topics/jira-organization/notes/concepts/jira-reorg-proposal.md
+incoming_updated: 2026-05-01
 ---
 
 # Confluence Spaces Map

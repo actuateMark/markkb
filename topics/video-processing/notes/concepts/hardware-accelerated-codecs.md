@@ -6,6 +6,18 @@ tags: [hwaccel, nvenc, nvdec, vaapi, quicksync, videotoolbox, gpu]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/integrations/rtsp/notes/entities/rtsp-components.md
+  - topics/integrations/rtsp/notes/syntheses/rtsp-robustness-enhancement-plan.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/av1-vp9-future.md
+  - topics/video-processing/notes/concepts/codecs-overview.md
+  - topics/video-processing/notes/concepts/connector-decoder-routing-map.md
+  - topics/video-processing/notes/concepts/connector-docker-system-deps.md
+  - topics/video-processing/notes/concepts/containers-overview.md
+  - topics/video-processing/notes/concepts/eks-prod-node-pool-gpu-availability.md
+incoming_updated: 2026-05-01
 ---
 
 # Hardware-Accelerated [[codecs-overview|Codecs]]

@@ -6,6 +6,15 @@ tags: [ffmpeg, python, pyav, opencv, imageio, moviepy, bindings]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/ffmpeg-command-anatomy.md
+  - topics/video-processing/notes/concepts/ffmpeg-filtergraphs.md
+  - topics/video-processing/notes/concepts/ffmpeg-libav-libraries.md
+  - topics/video-processing/notes/concepts/immix-mp4-mux-downstream.md
+  - topics/video-processing/notes/entities/ffmpeg-entity.md
+  - topics/video-processing/notes/entities/imageio-entity.md
+incoming_updated: 2026-05-01
 ---
 
 # [[ffmpeg-entity|FFmpeg]] Python bindings — decision matrix

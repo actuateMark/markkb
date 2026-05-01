@@ -7,6 +7,18 @@ created: 2026-04-24
 updated: 2026-04-24
 author: kb-bot
 staleness_warning: "This catalog is point-in-time as of 2026-04-24. Endpoints are registered in actuate_admin/api/urls.py and grow / change regularly. Recheck the source before relying on any specific path shape."
+incoming:
+  - topics/actuate-libraries/notes/concepts/dependency-graph.md
+  - topics/camera-health-monitoring/notes/entities/health-report.md
+  - topics/external-api/notes/entities/actuate-external-api-repo.md
+  - topics/integrations/ajax/_summary.md
+  - topics/integrations/ajax/notes/entities/ajax-components.md
+  - topics/integrations/evalink/evalink-integration/notes/concepts/alarm-push-pattern.md
+  - topics/personal-notes/notes/daily/2026-04-24.md
+  - topics/team-structure/notes/entities/clarissa-herman.md
+  - topics/team-structure/notes/entities/paolo-zilioti.md
+  - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
+incoming_updated: 2026-05-01
 ---
 
 # Actuate Admin API — endpoint catalog

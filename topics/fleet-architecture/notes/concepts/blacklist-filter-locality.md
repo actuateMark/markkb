@@ -6,6 +6,13 @@ tags: [blacklist, state-locality, filters, verification, camera-worker]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/_summary.md
+  - topics/fleet-architecture/notes/concepts/downstream-consumer-impact.md
+  - topics/fleet-architecture/notes/concepts/library-decomposition-required.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-a-minimal-split.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
+incoming_updated: 2026-05-01
 ---
 
 # BlacklistFilter Locality — Verification Finding

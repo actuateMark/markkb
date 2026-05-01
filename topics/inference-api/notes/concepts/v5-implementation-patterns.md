@@ -6,6 +6,15 @@ tags: [v5, patterns, implementation, reference]
 created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/concepts/async-concurrency-patterns.md
+  - topics/engineering-process/notes/concepts/external-documentation-standards.md
+  - topics/engineering-process/notes/concepts/pydantic-schema-as-contract.md
+  - topics/engineering-process/notes/entities/dev-test-tooling-pattern.md
+  - topics/engineering-process/notes/entities/skill-api-endpoint-development.md
+  - topics/engineering-process/notes/syntheses/2026-04-14_feature-development-lifecycle.md
+  - topics/inference-api/notes/concepts/2026-04-17_v5-motion-plus-500-fix.md
+incoming_updated: 2026-05-01
 ---
 
 # v5 Implementation Patterns Reference

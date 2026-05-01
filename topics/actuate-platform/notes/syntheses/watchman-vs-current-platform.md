@@ -6,6 +6,9 @@ tags: [synthesis, cross-topic, watchman, b2b, b2b2b, immix, architecture, compar
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-05-01
 ---
 
 # Watchman vs Current Platform

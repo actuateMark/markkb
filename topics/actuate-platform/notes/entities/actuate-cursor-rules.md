@@ -6,6 +6,9 @@ tags: [cursor, claude-code, ai-tooling, rules, skills, slash-commands, openspec]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/actuate-claude-agents.md
+incoming_updated: 2026-05-01
 ---
 
 # Actuate Cursor Rules

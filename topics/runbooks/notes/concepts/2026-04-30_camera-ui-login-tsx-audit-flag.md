@@ -6,6 +6,12 @@ tags: [runbook, camera-ui, git, hygiene, audit-flag, process]
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-30.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/runbooks/_backlog.md
+  - topics/runbooks/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # Camera-ui `Login.tsx` audit-flag

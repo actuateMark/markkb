@@ -6,6 +6,9 @@ tags: [lambda, python, sns, slack, redis, sam, notifications, monitoring]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/infrastructure/notes/entities/new-relic.md
+incoming_updated: 2026-05-01
 ---
 
 # SNS to Slack

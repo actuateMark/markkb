@@ -6,6 +6,9 @@ tags: [depth-estimation, pixels-per-foot, machine-learning, python, torch]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/team-structure/notes/entities/otzar-jaffe.md
+incoming_updated: 2026-05-01
 ---
 
 # ppf (Pixels Per Foot)

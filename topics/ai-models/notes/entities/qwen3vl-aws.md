@@ -6,6 +6,13 @@ tags: [repo, vlm, qwen, vllm, ec2, api, vision-language-model, inference]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/ai-models/notes/concepts/vlm-pipeline-architecture.md
+  - topics/team-structure/notes/entities/alena-prashkovich.md
+  - topics/team-structure/notes/entities/carlos-torres.md
+  - topics/team-structure/notes/entities/clarissa-herman.md
+incoming_updated: 2026-05-01
 ---
 
 # qwen3vl-aws

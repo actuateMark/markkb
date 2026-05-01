@@ -6,6 +6,14 @@ tags: [autopatrol, alert-lifecycle, race-condition, deferred-alerts, investigati
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/autopatrol/_summary.md
+  - topics/autopatrol/notes/concepts/autopatrol-alert-lifecycle.md
+  - topics/autopatrol/notes/entities/todo-list.md
+  - topics/infrastructure/notes/syntheses/2026-04-16_cronjob-image-rotation-lag.md
+  - topics/personal-notes/notes/daily/2026-04-20.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+incoming_updated: 2026-05-01
 ---
 
 # Deferred Alert Race Condition at Patrol Exit

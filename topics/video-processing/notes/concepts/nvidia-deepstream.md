@@ -6,6 +6,17 @@ tags: [deepstream, nvidia, gstreamer, gpu, inference, nvinfer, streammux, video-
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/gstreamer-pipeline-model.md
+  - topics/video-processing/notes/concepts/gstreamer-vs-ffmpeg.md
+  - topics/video-processing/notes/concepts/hardware-accelerated-codecs.md
+  - topics/video-processing/notes/entities/gstreamer-entity.md
+  - topics/video-processing/notes/syntheses/actuate-build-vs-buy-tradeoffs.md
+  - topics/video-processing/notes/syntheses/actuate-video-pipeline-walkthrough.md
+  - topics/video-processing/notes/syntheses/gpu-substrate-and-fleet-placement.md
+incoming_updated: 2026-05-01
 ---
 
 # NVIDIA DeepStream SDK

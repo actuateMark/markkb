@@ -8,6 +8,12 @@ updated: 2026-04-24
 author: kb-bot
 status: ready-to-pick-up
 supersedes: "[[2026-04-23_dashboard-phase-1b-pickup]]"
+incoming:
+  - topics/operational-health/notes/concepts/2026-04-27_dashboard-signal-cookbook.md
+  - topics/personal-notes/notes/daily/2026-04-24.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Dashboard Phase 1b — Continuation Pickup

@@ -6,6 +6,9 @@ tags: [smtp, frame-receiver, eks, kubernetes, argocd, motion-signals, ecr]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/team-structure/notes/entities/paolo-zilioti.md
+incoming_updated: 2026-05-01
 ---
 
 # Frame Receiver SMTP V2

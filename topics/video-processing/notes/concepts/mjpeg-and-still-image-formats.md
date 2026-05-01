@@ -6,6 +6,18 @@ tags: [codec, mjpeg, jpeg, intra, surveillance, turbojpeg]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/notes/entities/actuate-integration-calls.md
+  - topics/actuate-libraries/notes/entities/actuate-pullers.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase2-stream-probe.md
+  - topics/integrations/eagle-eye/_summary.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/av1-vp9-future.md
+  - topics/video-processing/notes/concepts/codecs-overview.md
+  - topics/video-processing/notes/concepts/connector-decoder-routing-map.md
+  - topics/video-processing/notes/concepts/connector-docker-system-deps.md
+  - topics/video-processing/notes/concepts/gop-keyframe-fundamentals.md
+incoming_updated: 2026-05-01
 ---
 
 # MJPEG and Still-Image Formats

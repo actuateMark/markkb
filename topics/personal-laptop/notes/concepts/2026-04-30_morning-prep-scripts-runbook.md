@@ -6,6 +6,11 @@ tags: [runbook, ops, firebat, morning-prep, scripts, repo-scan, jira-sync, autop
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/syntheses/2026-04-30_three-tier-routine-check-pattern.md
+  - topics/personal-laptop/notes/syntheses/2026-04-30_firebat-script-conversion-candidates.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Morning-prep scripts — operations runbook

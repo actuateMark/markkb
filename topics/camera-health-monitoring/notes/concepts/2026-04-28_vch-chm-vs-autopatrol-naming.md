@@ -7,6 +7,10 @@ jira: "AUTO-566, AUTO-567"
 created: 2026-04-28
 updated: 2026-04-28
 author: kb-bot
+incoming:
+  - topics/camera-health-monitoring/_summary.md
+  - topics/personal-notes/notes/daily/2026-04-28.md
+incoming_updated: 2026-05-01
 ---
 
 # VCH and CHM Do Not Run ML Models

@@ -6,6 +6,18 @@ tags: [proposal, fleet, stage-fleets, microservices, redis-streams]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/_summary.md
+  - topics/fleet-architecture/notes/concepts/blacklist-filter-locality.md
+  - topics/fleet-architecture/notes/concepts/customer-site-connectivity.md
+  - topics/fleet-architecture/notes/concepts/k8s-controller-selection-guide.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_frame-transport-comparison.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-d-event-driven.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-17_preliminary-pilot-option.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
+  - topics/fleet-architecture/reading-list.md
+incoming_updated: 2026-05-01
 ---
 
 # Proposal B — Stage Fleets

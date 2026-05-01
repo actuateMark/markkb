@@ -6,6 +6,18 @@ tags: [library, integration-alerting, vms, api-client, camera-integration]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/_summary.md
+  - topics/actuate-libraries/notes/concepts/dependency-graph.md
+  - topics/actuate-platform/notes/syntheses/integration-landscape.md
+  - topics/integrations/ajax/_summary.md
+  - topics/integrations/autopatrol-integration/_summary.md
+  - topics/integrations/autopatrol-integration/notes/entities/autopatrol-integration-components.md
+  - topics/integrations/avigilon/_summary.md
+  - topics/integrations/bold/_summary.md
+  - topics/integrations/digital-watchdog/_summary.md
+  - topics/integrations/eagle-eye/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-integration-calls

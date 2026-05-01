@@ -6,6 +6,12 @@ tags: [evaluation, mAP, mcnemar, shadow-testing, genesis, confidence-sweep, poin
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/ai-models/notes/concepts/confidence-threshold-calibration.md
+  - topics/ai-models/notes/concepts/shadow-testing-methodology.md
+  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+incoming_updated: 2026-05-01
 ---
 
 # Evaluation Tiers: The 6-Level Framework

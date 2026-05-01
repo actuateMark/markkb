@@ -6,6 +6,11 @@ tags: [autopatrol, audit, db, customer, schedule, propagation, planning, mgmt-co
 created: 2026-04-30
 updated: 2026-05-01
 author: kb-bot
+incoming:
+  - topics/admin-api/notes/concepts/release-flow-stage-first.md
+  - topics/personal-notes/notes/concepts/2026-04-30_admin-propagation-handoff.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # AutoPatrol state-mismatch audit — `manage.py audit_autopatrol_state`

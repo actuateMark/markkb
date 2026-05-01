@@ -4,6 +4,10 @@ author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
 tags: [person, engineering, autopatrol, infrastructure, vlm, inference]
+incoming:
+  - topics/jira-organization/notes/concepts/confluence-spaces-map.md
+  - topics/settings-automation/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # Clarissa Herman

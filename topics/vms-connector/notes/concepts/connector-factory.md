@@ -6,6 +6,18 @@ tags: [connector, factory-pattern, integration, vms]
 created: 2026-04-13
 updated: 2026-04-14
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/notes/concepts/image-cache-strategies.md
+  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/actuate-platform/notes/syntheses/integration-landscape.md
+  - topics/autopatrol/notes/concepts/generic-patrol-mode.md
+  - topics/fleet-architecture/notes/concepts/library-decomposition-required.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-a-minimal-split.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
+  - topics/integrations/genetec/notes/entities/genetec-components.md
+  - topics/integrations/luxriot/notes/entities/luxriot-components.md
+incoming_updated: 2026-05-01
 ---
 
 # Connector Factory Pattern

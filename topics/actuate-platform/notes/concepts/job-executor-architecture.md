@@ -6,6 +6,9 @@ tags: [job-executor, django-q, scheduler, workflows, job-factory, migration]
 created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot
+incoming:
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+incoming_updated: 2026-05-01
 ---
 
 # Job Executor Architecture

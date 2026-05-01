@@ -4,6 +4,13 @@ topic: inference-api
 author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
+incoming:
+  - topics/inference-api/_summary.md
+  - topics/inference-api/notes/concepts/2026-04-17_v5-motion-plus-500-fix.md
+  - topics/inference-api/notes/concepts/multi-model-inference.md
+  - topics/inference-api/notes/concepts/sensitivity-to-confidence-mapping.md
+  - topics/inference-api/sources/deep-dive-v4-endpoints.md
+incoming_updated: 2026-05-01
 ---
 
 # InferenceContext Pattern

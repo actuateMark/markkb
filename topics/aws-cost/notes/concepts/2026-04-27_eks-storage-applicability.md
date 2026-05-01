@@ -6,6 +6,13 @@ tags: [aws, eks, ebs, efs, snapshots, applicability, cost-optimization]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/aws-cost/_summary.md
+  - topics/aws-cost/notes/syntheses/2026-04-27_aws-cost-topic-spinoff.md
+  - topics/aws-cost/notes/syntheses/2026-04-28_s3-cost-reduction-action-plan.md
+  - topics/aws-cost/sources/2026-04-27_eks-cost-opt-storage.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+incoming_updated: 2026-05-01
 ---
 
 # EKS Storage Cost-Opt — Actuate Applicability

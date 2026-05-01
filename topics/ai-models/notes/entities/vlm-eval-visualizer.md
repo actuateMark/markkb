@@ -6,6 +6,12 @@ tags: [repo, vlm, streamlit, evaluation, labeling, dynamodb, alert-verification]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/ai-models/notes/concepts/vlm-pipeline-architecture.md
+  - topics/ai-models/notes/entities/ds-smart-alert-supervisor.md
+  - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
+  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+incoming_updated: 2026-05-01
 ---
 
 # vlm-eval-visualizer

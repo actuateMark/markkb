@@ -4,6 +4,15 @@ author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
 tags: [person, data-science, yam, weapon-model, testing, productionization]
+incoming:
+  - topics/ai-models/notes/concepts/model-evaluation-framework.md
+  - topics/ai-models/notes/entities/intruder-v8-model.md
+  - topics/ai-models/notes/entities/weapon-v8-model.md
+  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+  - topics/team-structure/notes/entities/carlos-torres.md
+  - topics/team-structure/notes/entities/michael-aleksa.md
+  - topics/team-structure/notes/entities/vlad-sapeshka.md
+incoming_updated: 2026-05-01
 ---
 
 # Zack Schmidt

@@ -6,6 +6,18 @@ tags: [botsort, tracker, serialization, snapshot, failover, state]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/_summary.md
+  - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
+  - topics/fleet-architecture/notes/concepts/pod-termination-sequence.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_graceful-failover-design.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-d-event-driven.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-e-hybrid-sidecar.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
+incoming_updated: 2026-05-01
 ---
 
 # BoTSORT Tracker Snapshot Schema

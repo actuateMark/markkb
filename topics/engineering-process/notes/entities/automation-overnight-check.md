@@ -6,6 +6,18 @@ tags: [automation, systemd, overnight-check, operational-health, claude-headless
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/concepts/2026-04-20_overnight-check-skill-pattern.md
+  - topics/engineering-process/notes/concepts/2026-04-27_headless-mcp-bypass.md
+  - topics/engineering-process/notes/entities/automation-jira-sync.md
+  - topics/engineering-process/notes/entities/skill-daily-scope.md
+  - topics/operational-health/_summary.md
+  - topics/operational-health/notes/syntheses/2026-04-16_overnight-check.md
+  - topics/operational-health/notes/syntheses/2026-04-17_overnight-check-followup.md
+  - topics/operational-health/notes/syntheses/2026-04-24_overnight-check.md
+  - topics/operational-health/notes/syntheses/2026-04-27_overnight-check.md
+  - topics/operational-health/notes/syntheses/2026-04-28_overnight-check.md
+incoming_updated: 2026-05-01
 ---
 
 # Automation: overnight-check

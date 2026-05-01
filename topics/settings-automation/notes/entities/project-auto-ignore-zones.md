@@ -6,6 +6,9 @@ tags: [repo, langgraph, agent, ignore-zones, sam, segmentation, scene-classifica
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/team-structure/notes/entities/otzar-jaffe.md
+incoming_updated: 2026-05-01
 ---
 
 # project-auto-ignore-zones

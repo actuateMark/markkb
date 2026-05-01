@@ -6,6 +6,12 @@ tags: [adr, architecture, decisions, documentation]
 created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/architecture-decision-records.md
+  - topics/engineering-process/_summary.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Architecture Decision Records

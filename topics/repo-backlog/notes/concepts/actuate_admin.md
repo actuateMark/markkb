@@ -15,6 +15,18 @@ high_impact_issue_numbers: [2310, 1085, 899, 2230, 307]
 lhf_issue_numbers: [2239, 2233, 2177, 2310, 2238, 2237, 2230, 2224, 1165, 1145]
 stale_issue_numbers: [306, 337, 336, 308, 416, 307, 471, 395, 448, 488, 446, 507, 514, 510, 551, 512, 571, 570, 564, 585, 594, 218, 663, 697, 694, 705, 734, 899, 809, 955, 956, 879, 707, 699, 1025, 1018, 1085, 1075, 1145, 1151, 1165]
 full_issue_numbers: [2310, 2239, 2238, 2237, 2233, 2230, 2224, 2177, 1165, 1151, 1145, 1085, 1075, 1025, 1018, 956, 955, 899, 879, 809, 734, 707, 705, 699, 697, 694, 663, 594, 585, 571, 570, 564, 551, 514, 512, 510, 507, 488, 471, 448, 446, 416, 395, 337, 336, 308, 307, 306, 218]
+incoming:
+  - topics/actuate-platform/notes/concepts/data-flow-architecture.md
+  - topics/actuate-platform/notes/entities/actuate-admin-api.md
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/admin-api/notes/concepts/release-flow-stage-first.md
+  - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
+  - topics/engineering-process/notes/concepts/2026-04-17_local-testing-strategies-per-repo.md
+  - topics/engineering-process/notes/entities/agent-actuate-pr-reviewer.md
+  - topics/infrastructure/notes/entities/reusable-github-actions.md
+  - topics/personal-laptop/notes/concepts/2026-04-27_handoff-repos-architectural-dashboard.md
+  - topics/personal-laptop/notes/concepts/2026-04-28_handoff-repos-dashboard-phase-2-code-health.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate_admin backlog

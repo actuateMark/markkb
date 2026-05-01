@@ -6,6 +6,15 @@ tags: [decode, frame-extraction, pyav, opencv, skip-frame, gop, strategy, decisi
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/connector-decoder-routing-map.md
+  - topics/video-processing/notes/concepts/cv2-videocapture-internals.md
+  - topics/video-processing/notes/entities/opencv-entity.md
+  - topics/video-processing/notes/entities/pyav-entity.md
+  - topics/video-processing/notes/syntheses/actuate-video-pipeline-walkthrough.md
+incoming_updated: 2026-05-01
 ---
 
 # Frame extraction strategies

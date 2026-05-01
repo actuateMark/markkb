@@ -6,6 +6,12 @@ updated: 2026-04-13
 tags: [morphean, integration, architecture, cloud, videor]
 confluence: "https://actuate-team.atlassian.net/wiki/spaces/Integratio/pages/400261121"
 jira: "PROD-67"
+incoming:
+  - topics/actuate-platform/notes/concepts/data-flow-architecture.md
+  - topics/integrations/morphean/notes/concepts/edge-hardware-track.md
+  - topics/product-roadmap/notes/concepts/revenue-drivers.md
+  - topics/team-structure/notes/entities/laura-reno.md
+incoming_updated: 2026-05-01
 ---
 
 # Cloud-to-Cloud Architecture (Morphean)

@@ -6,6 +6,14 @@ tags: [dashboard-check, signals, cookbook, runbook, observability, monitoring, n
 created: 2026-04-27
 updated: 2026-04-28
 author: kb-bot
+incoming:
+  - topics/personal-laptop/notes/concepts/2026-04-27_handoff-repos-architectural-dashboard.md
+  - topics/personal-laptop/notes/concepts/2026-04-28_handoff-repos-dashboard-phase-2-code-health.md
+  - topics/personal-laptop/notes/concepts/2026-04-29_minipc-api-surface.md
+  - topics/personal-laptop/notes/concepts/2026-04-29_repos-dashboard-followups.md
+  - topics/personal-laptop/notes/syntheses/2026-04-27_minipc-tooling-improvements.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+incoming_updated: 2026-05-01
 ---
 
 # Dashboard signal cookbook

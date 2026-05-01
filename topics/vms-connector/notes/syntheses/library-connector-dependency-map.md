@@ -6,6 +6,11 @@ tags: [synthesis, cross-topic, dependencies, actuate-libraries, pipeline, critic
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/concepts/generic-patrol-mode.md
+  - topics/engineering-process/notes/syntheses/2026-04-14_connector-library-deployment-lifecycle.md
+  - topics/vms-connector/notes/syntheses/connector-evolution.md
+incoming_updated: 2026-05-01
 ---
 
 # Library-Connector Dependency Map

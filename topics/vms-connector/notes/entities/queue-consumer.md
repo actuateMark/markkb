@@ -6,6 +6,15 @@ tags: [queue-consumer, sqs, alerts, integrations, immix, ecs, docker]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/notes/entities/actuate-pullers.md
+  - topics/actuate-libraries/notes/entities/actuate-queue-consumer.md
+  - topics/actuate-platform/notes/concepts/job-executor-architecture.md
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/actuate-platform/notes/syntheses/integration-landscape.md
+  - topics/integrations/evalink/notes/entities/evalink-components.md
+  - topics/vms-connector/notes/concepts/sliding-window-mechanics.md
+incoming_updated: 2026-05-01
 ---
 
 ## Overview

@@ -6,6 +6,10 @@ tags: [agent, pr-review, security, code-review, context-protection]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/entities/agent-issue-auditor.md
+  - topics/engineering-process/notes/entities/agents-catalog.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-pr-reviewer

@@ -4,6 +4,16 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [chm, sift, scene-change, actuate-suddenscenechange, computer-vision]
+incoming:
+  - topics/actuate-libraries/notes/entities/actuate-daos.md
+  - topics/actuate-libraries/notes/entities/actuate-healthcheck-objects.md
+  - topics/actuate-libraries/notes/entities/actuate-suddenscenechange.md
+  - topics/camera-health-monitoring/_summary.md
+  - topics/camera-health-monitoring/notes/concepts/chm-rd-opportunities.md
+  - topics/camera-health-monitoring/notes/concepts/health-check-types.md
+  - topics/team-structure/notes/entities/mark-barbera.md
+  - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
+incoming_updated: 2026-05-01
 ---
 
 # Scene Change Detection

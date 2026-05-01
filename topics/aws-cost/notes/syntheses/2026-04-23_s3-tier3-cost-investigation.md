@@ -8,6 +8,18 @@ updated: 2026-04-23
 author: kb-bot
 jira: ""
 status: active
+incoming:
+  - topics/aws-cost/_dive-queue.md
+  - topics/aws-cost/_summary.md
+  - topics/aws-cost/notes/concepts/2026-04-23_s3-tier3-breakdown.md
+  - topics/aws-cost/notes/concepts/2026-04-27_eks-storage-applicability.md
+  - topics/aws-cost/notes/concepts/2026-04-30_dashboard-cost-signal-expansion.md
+  - topics/aws-cost/notes/syntheses/2026-04-27_aws-cost-topic-spinoff.md
+  - topics/aws-cost/notes/syntheses/2026-04-28_s3-cost-reduction-action-plan.md
+  - topics/aws-cost/sources/2026-04-27_eks-cost-opt-storage.md
+  - topics/aws-cost/sources/2026-04-27_s3-cost-optimization.md
+  - topics/aws-cost/sources/2026-04-27_s3-intelligent-tiering.md
+incoming_updated: 2026-05-01
 ---
 
 # S3 Tier3 Cost Investigation — Lifecycle-Expiration Is the Driver

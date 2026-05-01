@@ -6,6 +6,11 @@ tags: [database, postgresql, performance, aurora, cte, bug]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+  - topics/team-structure/notes/entities/tatiana-hanazaki.md
+incoming_updated: 2026-05-01
 ---
 
 # Database Performance -- Recursive CTE CPU Spike

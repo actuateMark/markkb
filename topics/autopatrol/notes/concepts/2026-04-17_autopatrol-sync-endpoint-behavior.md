@@ -6,6 +6,15 @@ tags: [autopatrol, admin-api, sync, deletion-safety, dead-code]
 created: 2026-04-17
 updated: 2026-04-17
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
+  - topics/autopatrol/notes/entities/autopatrol-onboarder.md
+  - topics/autopatrol/notes/entities/todo-list.md
+  - topics/autopatrol/notes/syntheses/2026-04-17_stale-schedule-cleanup-design.md
+  - topics/engineering-process/notes/syntheses/2026-04-20_lambda-creation-and-tuning-playbook.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # AutoPatrol Sync Endpoint: Create/Update Only, No Deletions

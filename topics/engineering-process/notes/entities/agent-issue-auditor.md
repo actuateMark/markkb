@@ -6,6 +6,13 @@ tags: [agent, issue-hygiene, github, backlog, proposed]
 created: 2026-04-17
 updated: 2026-04-17
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/entities/agents-catalog.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/software-architecture/_summary.md
+  - topics/software-architecture/notes/syntheses/2026-04-17_issue-hygiene-plan.md
+incoming_updated: 2026-05-01
 ---
 
 # issue-auditor (proposed)

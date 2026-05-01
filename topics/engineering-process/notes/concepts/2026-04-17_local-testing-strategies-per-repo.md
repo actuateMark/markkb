@@ -6,6 +6,13 @@ tags: [testing, local-dev, validation, actuate_admin, vms-connector, ds-terrafor
 created: 2026-04-17
 updated: 2026-04-17
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-20_cleanup-lambda-runbook.md
+  - topics/autopatrol/notes/syntheses/2026-04-17_stale-schedule-cleanup-design.md
+  - topics/engineering-process/notes/concepts/2026-04-23_release-acceptance-criteria.md
+  - topics/engineering-process/notes/syntheses/2026-04-20_lambda-creation-and-tuning-playbook.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+incoming_updated: 2026-05-01
 ---
 
 # Local Testing Strategies Per Repo

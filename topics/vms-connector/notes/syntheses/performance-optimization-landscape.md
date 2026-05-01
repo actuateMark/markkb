@@ -12,6 +12,17 @@ sources:
   - "[[worklog-tech-doc-video-pipeline]]"
   - "[[worklog-temperature-adaptive-processing]]"
 author: kb-bot
+incoming:
+  - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase7-historical-trending.md
+  - topics/fleet-architecture/_summary.md
+  - topics/fleet-architecture/notes/concepts/inference-api-interaction.md
+  - topics/fleet-architecture/notes/concepts/memory-and-fork-safety.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-d-event-driven.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-e-hybrid-sidecar.md
+  - topics/integrations/rtsp/notes/syntheses/rtsp-robustness-enhancement-plan.md
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+incoming_updated: 2026-05-01
 ---
 
 # Performance Optimization Landscape

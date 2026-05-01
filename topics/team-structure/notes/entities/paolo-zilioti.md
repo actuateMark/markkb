@@ -4,6 +4,9 @@ author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
 tags: [person, engineering, admin-api, integrations, vms, smtp]
+incoming:
+  - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+incoming_updated: 2026-05-01
 ---
 
 # Paolo Zilioti

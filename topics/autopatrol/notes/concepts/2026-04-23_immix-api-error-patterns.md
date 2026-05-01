@@ -6,6 +6,10 @@ tags: [immix, integration, api-quirks, cleanup-lambda, error-handling]
 created: 2026-04-23
 updated: 2026-04-29
 author: kb-bot
+- Error: File "2026-04-23_immix-api-error-patterns" not found.
+incoming:
+  - Error: File "2026-04-23_immix-api-error-patterns" not found.
+incoming_updated: 2026-05-01
 ---
 
 # Immix API — error patterns for missing schedules

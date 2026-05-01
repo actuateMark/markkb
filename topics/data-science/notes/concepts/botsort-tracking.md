@@ -5,6 +5,11 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [tracking, botsort, loitering, dwell-time, observer]
+incoming:
+  - topics/data-science/notes/concepts/detection-pipeline.md
+  - topics/data-science/notes/concepts/line-crossing-detection.md
+  - topics/infrastructure/notes/concepts/vpa-behavior.md
+incoming_updated: 2026-05-01
 ---
 
 # BoTSORT Tracking for Loitering

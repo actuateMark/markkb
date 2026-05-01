@@ -6,6 +6,9 @@ tags: [admin-api, new-relic, nerdgraph, deep-links, monitoring]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/new-relic/notes/concepts/nr-programmatic-deep-links.md
+incoming_updated: 2026-05-01
 ---
 
 # Admin API: New Relic Integration

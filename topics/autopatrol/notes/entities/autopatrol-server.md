@@ -6,6 +6,12 @@ tags: [autopatrol, server, analysis, flask, sqs, neptune, computer-vision]
 created: 2026-04-13
 updated: 2026-04-14
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/concepts/autopatrol-alert-lifecycle.md
+  - topics/autopatrol/notes/entities/todo-list.md
+  - topics/autopatrol/notes/syntheses/2026-04-16_deferred-alert-race-condition.md
+  - topics/team-structure/notes/entities/clarissa-herman.md
+incoming_updated: 2026-05-01
 ---
 
 ## Overview

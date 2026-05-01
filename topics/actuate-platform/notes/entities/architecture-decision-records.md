@@ -6,6 +6,11 @@ tags: [adr, architecture, decisions, documentation, ai-agents]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/engineering-process/notes/syntheses/2026-04-14_feature-development-lifecycle.md
+  - topics/inference-api/notes/syntheses/2026-04-13_v5-revised-architecture-plan.md
+incoming_updated: 2026-05-01
 ---
 
 # architecture-decision-records

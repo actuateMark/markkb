@@ -5,6 +5,18 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [pipeline, detection, yolo, fdmd, observers, architecture]
+incoming:
+  - topics/actuate-libraries/notes/concepts/filter-architecture.md
+  - topics/actuate-platform/notes/syntheses/integration-landscape.md
+  - topics/ai-models/notes/concepts/confidence-threshold-calibration.md
+  - topics/ai-models/notes/concepts/model-evaluation-framework.md
+  - topics/ai-models/notes/concepts/shadow-testing-methodology.md
+  - topics/ai-models/notes/concepts/vlm-pipeline-architecture.md
+  - topics/ai-models/notes/entities/intruder-v5-model.md
+  - topics/ai-models/notes/entities/weapon-v8-model.md
+  - topics/alerts-improvements/notes/concepts/immix-dispatch.md
+  - topics/camera-health-monitoring/notes/concepts/healthcheck-architecture.md
+incoming_updated: 2026-05-01
 ---
 
 # Detection Pipeline

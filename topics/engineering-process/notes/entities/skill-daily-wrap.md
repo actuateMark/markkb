@@ -6,6 +6,18 @@ tags: [skill, daily-ritual, archive, personal-workflow]
 created: 2026-04-17
 updated: 2026-04-20
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/entities/skill-daily-scope.md
+  - topics/engineering-process/notes/entities/skill-todos-add.md
+  - topics/engineering-process/notes/entities/skill-todos-audit.md
+  - topics/personal-notes/_summary.md
+  - topics/personal-notes/notes/daily/2026-04-17.md
+  - topics/personal-notes/notes/daily/2026-04-22.md
+  - topics/personal-notes/notes/daily/2026-04-23.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/personal-notes/notes/daily/2026-04-30.md
+  - topics/personal-notes/notes/daily/README.md
+incoming_updated: 2026-05-01
 ---
 
 # /daily-wrap

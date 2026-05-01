@@ -15,6 +15,9 @@ high_impact_issue_numbers: [48, 44, 46]
 lhf_issue_numbers: [48, 46, 44]
 stale_issue_numbers: []
 full_issue_numbers: [48, 46, 44]
+incoming:
+  - topics/repo-backlog/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-inference-api backlog

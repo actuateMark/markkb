@@ -6,6 +6,13 @@ tags: [repo, vlm, alert-verification, heuristics, streamlit, qwen, surveillance,
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/ai-models/notes/concepts/vlm-pipeline-architecture.md
+  - topics/ai-models/notes/entities/qwen3vl-aws.md
+  - topics/ai-models/notes/entities/vlm-eval-visualizer.md
+  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+incoming_updated: 2026-05-01
 ---
 
 # ds-smart-alert-supervisor

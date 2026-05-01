@@ -7,6 +7,10 @@ jira: ["AUTO-566", "AUTO-567", "AUTO-553", "AUTO-525"]
 created: 2026-04-28
 updated: 2026-04-29
 author: kb-bot
+- Error: File "2026-04-28_failed-patrol-investigation-handoff" not found.
+incoming:
+  - Error: File "2026-04-28_failed-patrol-investigation-handoff" not found.
+incoming_updated: 2026-05-01
 ---
 
 # AutoPatrol Failed-Patrol Investigation — Handoff

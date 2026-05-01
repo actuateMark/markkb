@@ -6,6 +6,18 @@ tags: [skill, daily-ritual, planning, personal-workflow]
 created: 2026-04-17
 updated: 2026-04-17
 author: kb-bot
+incoming:
+  - topics/aws-cost/notes/concepts/aws-cost-explorer-access-pattern.md
+  - topics/engineering-process/notes/concepts/2026-04-27_headless-mcp-bypass.md
+  - topics/engineering-process/notes/entities/skill-daily-wrap.md
+  - topics/engineering-process/notes/entities/skill-repo-scan.md
+  - topics/engineering-process/notes/entities/skill-todos-add.md
+  - topics/engineering-process/notes/entities/skill-todos-audit.md
+  - topics/engineering-process/notes/syntheses/2026-04-30_three-tier-routine-check-pattern.md
+  - topics/personal-laptop/notes/concepts/2026-04-30_morning-prep-scripts-runbook.md
+  - topics/personal-laptop/notes/syntheses/2026-04-30_firebat-script-conversion-candidates.md
+  - topics/personal-notes/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # /daily-scope

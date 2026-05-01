@@ -5,6 +5,12 @@ created: 2026-04-13
 updated: 2026-04-13
 tags: [jira, process, reorganization, tooling]
 confluence: "https://actuate-team.atlassian.net/wiki/spaces/CAJP/pages/426213378"
+incoming:
+  - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+  - topics/jira-organization/notes/concepts/confluence-spaces-map.md
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+  - topics/team-structure/notes/entities/jacob-weiss.md
+incoming_updated: 2026-05-01
 ---
 
 # Jira Reorganization Proposal

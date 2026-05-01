@@ -6,6 +6,18 @@ author: kb-bot
 created: 2026-04-16
 updated: 2026-04-16
 tags: [nrql, connector, cookbook, queries, new-relic, monitoring, autopatrol]
+incoming:
+  - _index.md
+  - topics/engineering-process/notes/concepts/2026-04-27_headless-mcp-bypass.md
+  - topics/engineering-process/notes/entities/agent-nrql-investigator.md
+  - topics/engineering-process/notes/entities/agents-catalog.md
+  - topics/fleet-architecture/notes/concepts/observability-and-tracing.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
+  - topics/new-relic/_summary.md
+  - topics/new-relic/notes/concepts/actuate-nr-data-model.md
+  - topics/new-relic/notes/concepts/nr-log-level-strategy.md
+incoming_updated: 2026-05-01
 ---
 
 # New Relic Connector Query Cookbook

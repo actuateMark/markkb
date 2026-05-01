@@ -6,6 +6,13 @@ tags: [docker, dockerfile, system-deps, ffmpeg, gstreamer, nvidia, libturbojpeg,
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/eks-prod-node-pool-gpu-availability.md
+  - topics/video-processing/notes/syntheses/gpu-substrate-and-fleet-placement.md
+incoming_updated: 2026-05-01
 ---
 
 # Connector Docker Image: Video-Processing System Deps Audit

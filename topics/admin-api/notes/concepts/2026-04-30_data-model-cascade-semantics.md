@@ -6,6 +6,12 @@ tags: [data-model, cascade, soft-delete, autopatrol, customer, schedule, camera,
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
+incoming:
+  - topics/admin-api/notes/concepts/release-flow-stage-first.md
+  - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
+  - topics/personal-notes/notes/concepts/2026-04-30_admin-propagation-handoff.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Admin data model — cascade and soft-delete semantics (seed)

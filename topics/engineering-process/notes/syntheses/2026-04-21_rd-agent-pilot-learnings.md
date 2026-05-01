@@ -7,6 +7,13 @@ jira: ""
 created: 2026-04-21
 updated: 2026-04-21
 author: kb-bot
+incoming:
+  - _research-inbox/README.md
+  - topics/fleet-architecture/reading-list.md
+  - topics/personal-laptop/notes/concepts/2026-04-27_handoff-rd-autoresearch.md
+  - topics/personal-notes/notes/daily/2026-04-21.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+incoming_updated: 2026-05-01
 ---
 
 # R&D Agent Set Pilot — Learnings (frame-storage pilot, 2026-04-21)

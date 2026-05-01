@@ -6,6 +6,9 @@ tags: [synthesis, cross-topic, b2b2b, b2b, watchman, immix, autopatrol, go-to-ma
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+incoming_updated: 2026-05-01
 ---
 
 # B2B2B vs B2B Go-to-Market

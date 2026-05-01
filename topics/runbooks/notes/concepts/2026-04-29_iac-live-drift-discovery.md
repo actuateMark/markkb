@@ -6,6 +6,11 @@ tags: [runbook, terraform, terragrunt, iam, iac-drift, import, ds-terraform-eks-
 created: 2026-04-29
 updated: 2026-04-29
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-29.md
+  - topics/runbooks/_backlog.md
+  - topics/runbooks/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # IaC vs live-AWS drift discovery & remediation

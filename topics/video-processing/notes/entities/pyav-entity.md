@@ -6,6 +6,18 @@ tags: [pyav, libav, ffmpeg, python, decode, frame-extraction, library]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/notes/entities/actuate-pullers.md
+  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
+  - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_fleet-proposal-rescore-with-delta.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
+  - topics/integrations/autopatrol-integration/_summary.md
+  - topics/integrations/autopatrol-integration/notes/entities/autopatrol-integration-components.md
+  - topics/integrations/rtsp/_summary.md
+  - topics/integrations/rtsp/notes/entities/rtsp-components.md
+incoming_updated: 2026-05-01
 ---
 
 # PyAV

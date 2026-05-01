@@ -5,6 +5,16 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [model, yolov8, weapon, deployment]
+incoming:
+  - topics/ai-models/notes/concepts/confidence-threshold-calibration.md
+  - topics/ai-models/notes/concepts/model-evaluation-framework.md
+  - topics/ai-models/notes/entities/intruder-v8-model.md
+  - topics/data-science/notes/concepts/detection-pipeline.md
+  - topics/data-science/notes/concepts/evaluation-tiers.md
+  - topics/data-science/notes/concepts/training-pipeline-architecture.md
+  - topics/team-structure/notes/entities/carlos-torres.md
+  - topics/team-structure/notes/entities/zack-schmidt.md
+incoming_updated: 2026-05-01
 ---
 
 # Weapon v8 Model (weapon-v8-XL-736)

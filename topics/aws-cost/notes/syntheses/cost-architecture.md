@@ -6,6 +6,15 @@ tags: [synthesis, cross-topic, cost, infrastructure, eks, gpu, dynamodb, shardin
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/aws-cost/_summary.md
+  - topics/aws-cost/notes/concepts/2026-04-27_eks-storage-applicability.md
+  - topics/aws-cost/notes/syntheses/2026-04-27_aws-cost-topic-spinoff.md
+  - topics/aws-cost/notes/syntheses/2026-04-28_s3-cost-reduction-action-plan.md
+  - topics/aws-cost/sources/2026-04-27_eks-cost-opt-storage.md
+  - topics/aws-cost/sources/2026-04-29_minio-self-hosted-s3-tutorial.md
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+incoming_updated: 2026-05-01
 ---
 
 # Cost Architecture

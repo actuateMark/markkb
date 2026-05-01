@@ -6,6 +6,17 @@ tags: [v5, api-design, detection, ebus, external-api]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/external-api/notes/concepts/2026-04-30_v5-detect-quick-reference.md
+  - topics/external-api/notes/concepts/shared-auth-pattern.md
+  - topics/external-api/notes/entities/alarmquip-customer.md
+  - topics/inference-api/notes/concepts/2026-04-29_v5-slicing-as-parameter.md
+  - topics/inference-api/notes/concepts/inference-context-pattern.md
+  - topics/inference-api/notes/concepts/multi-model-inference.md
+  - topics/inference-api/sources/deep-dive-v4-endpoints.md
+  - topics/integrations/ebus/notes/concepts/ebus-ui-config-mapping.md
+  - topics/personal-notes/notes/daily/2026-04-29.md
+incoming_updated: 2026-05-01
 ---
 
 # v5 Unified Detection API Design

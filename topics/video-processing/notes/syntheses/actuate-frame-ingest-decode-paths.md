@@ -6,6 +6,18 @@ tags: [actuate, decode, puller, integration, rtsp, kvs, websocket, mjpeg, autopa
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - _index.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/codecs-overview.md
+  - topics/video-processing/notes/concepts/connector-decoder-routing-map.md
+  - topics/video-processing/notes/concepts/containers-overview.md
+  - topics/video-processing/notes/concepts/ffmpeg-hardware-acceleration.md
+  - topics/video-processing/notes/concepts/ffmpeg-libav-libraries.md
+  - topics/video-processing/notes/concepts/ffmpeg-python-bindings.md
+  - topics/video-processing/notes/concepts/frame-extraction-strategies.md
+incoming_updated: 2026-05-01
 ---
 
 # Actuate Frame Ingest & Decode Paths

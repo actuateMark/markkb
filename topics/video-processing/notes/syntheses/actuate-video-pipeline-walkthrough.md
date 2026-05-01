@@ -6,6 +6,18 @@ tags: [actuate, pipeline, walkthrough, decode, frame-flow, alert, immix]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - _index.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/gstreamer-pipeline-model.md
+  - topics/video-processing/notes/concepts/gstreamer-vs-ffmpeg.md
+  - topics/video-processing/notes/concepts/nvidia-deepstream.md
+  - topics/video-processing/notes/concepts/protocol-latency-comparison.md
+  - topics/video-processing/notes/syntheses/actuate-build-vs-buy-tradeoffs.md
+  - topics/video-processing/notes/syntheses/actuate-clip-generation-flow.md
+  - topics/video-processing/notes/syntheses/actuate-frame-ingest-decode-paths.md
+incoming_updated: 2026-05-01
 ---
 
 # Actuate Video Pipeline Walkthrough

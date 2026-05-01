@@ -6,6 +6,18 @@ tags: [agents, subagents, claude-code, workflow, routing, new-relic]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/engineering-process/_summary.md
+  - topics/engineering-process/notes/entities/agent-actuate-pr-reviewer.md
+  - topics/engineering-process/notes/entities/agent-connector-pipeline-expert.md
+  - topics/engineering-process/notes/entities/agent-issue-auditor.md
+  - topics/engineering-process/notes/entities/agent-jira-landscape.md
+  - topics/engineering-process/notes/entities/agent-kb-scribe.md
+  - topics/engineering-process/notes/entities/agent-nrql-investigator.md
+  - topics/engineering-process/notes/entities/agent-release-chain-watcher.md
+  - topics/engineering-process/notes/entities/automation-jira-sync.md
+  - topics/engineering-process/notes/entities/automation-overnight-check.md
+incoming_updated: 2026-05-01
 ---
 
 # Agents Catalog

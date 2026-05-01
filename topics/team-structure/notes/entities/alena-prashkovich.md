@@ -4,6 +4,14 @@ author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
 tags: [person, data-science, vlm, prompt-engineering, camera-screening]
+incoming:
+  - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
+  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+  - topics/jira-organization/notes/concepts/confluence-spaces-map.md
+  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
+  - topics/team-structure/_summary.md
+  - topics/team-structure/notes/entities/carlos-torres.md
+incoming_updated: 2026-05-01
 ---
 
 # Alena Prashkovich

@@ -6,6 +6,16 @@ tags: [rescore, evaluation, proposal-comparison, ce-grounded, synthesizer-pilot-
 created: 2026-04-22
 updated: 2026-04-22
 author: kb-bot
+incoming:
+  - topics/aws-cost/_summary.md
+  - topics/aws-cost/notes/concepts/2026-04-23_s3-tier3-breakdown.md
+  - topics/aws-cost/notes/syntheses/2026-04-23_s3-tier3-cost-investigation.md
+  - topics/aws-cost/notes/syntheses/2026-04-27_aws-cost-topic-spinoff.md
+  - topics/aws-cost/notes/syntheses/2026-04-28_s3-cost-reduction-action-plan.md
+  - topics/personal-notes/notes/daily/2026-04-22.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Fleet Proposal Re-Score with 2026-04-22 Delta + Real CE Data

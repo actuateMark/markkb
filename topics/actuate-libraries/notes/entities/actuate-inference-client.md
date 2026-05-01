@@ -6,6 +6,18 @@ tags: [library, ai-inference, http-client, model-serving, async]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/_summary.md
+  - topics/actuate-libraries/notes/concepts/dependency-graph.md
+  - topics/actuate-libraries/notes/concepts/filter-architecture.md
+  - topics/actuate-libraries/notes/concepts/inference-client-evolution.md
+  - topics/ai-models/notes/entities/intruder-v5-model.md
+  - topics/ai-models/notes/entities/weapon-v8-model.md
+  - topics/data-science/notes/concepts/detection-pipeline.md
+  - topics/data-science/notes/syntheses/model-lifecycle.md
+  - topics/fleet-architecture/notes/concepts/inference-api-interaction.md
+  - topics/team-structure/notes/entities/michael-aleksa.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-inference-client

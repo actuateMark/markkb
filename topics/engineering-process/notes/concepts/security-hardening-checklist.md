@@ -6,6 +6,17 @@ tags: [security, hardening, validation, checklist]
 created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot
+incoming:
+  - topics/engineering-process/_summary.md
+  - topics/engineering-process/notes/concepts/2026-04-27_headless-mcp-bypass.md
+  - topics/engineering-process/notes/concepts/2026-04-28_minting-github-pats-for-automation.md
+  - topics/engineering-process/notes/entities/agent-actuate-pr-reviewer.md
+  - topics/engineering-process/notes/entities/agent-issue-auditor.md
+  - topics/engineering-process/notes/entities/agents-catalog.md
+  - topics/engineering-process/notes/entities/skill-api-endpoint-development.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Security Hardening Checklist

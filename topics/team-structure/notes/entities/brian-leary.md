@@ -4,6 +4,12 @@ author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
 tags: [person, leadership, product, watchman, pricing, strategy]
+incoming:
+  - topics/jira-organization/notes/concepts/confluence-spaces-map.md
+  - topics/product-roadmap/notes/concepts/revenue-drivers.md
+  - topics/team-structure/notes/entities/laura-reno.md
+  - topics/watchman/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # Brian Leary

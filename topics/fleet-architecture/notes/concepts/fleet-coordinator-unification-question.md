@@ -6,6 +6,9 @@ tags: [fleet, coordinator, control-plane, unification, proposal-comparison, open
 created: 2026-04-22
 updated: 2026-04-22
 author: kb-bot
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-05-01
 ---
 
 # Fleet-Coordinator Unification Question

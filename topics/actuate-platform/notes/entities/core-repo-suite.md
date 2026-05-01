@@ -6,6 +6,15 @@ tags: [repos, github, development, reference]
 created: 2026-04-15
 updated: 2026-04-22
 author: kb-bot
+incoming:
+  - topics/infrastructure/notes/syntheses/2026-04-16_cronjob-image-rotation-lag.md
+  - topics/personal-laptop/notes/concepts/2026-04-27_handoff-repos-architectural-dashboard.md
+  - topics/personal-notes/notes/daily/2026-04-22.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/product-roadmap/notes/concepts/2026-04-23_feature-request-ad-hoc-connector-redeploy-api.md
+  - topics/runbooks/notes/concepts/2026-04-29_iac-live-drift-discovery.md
+incoming_updated: 2026-05-01
 ---
 
 # Core Repository Suite

@@ -6,6 +6,18 @@ tags: [latency, transport, decision-matrix, comparison, autopatrol]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - _index.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/hls-and-dash.md
+  - topics/video-processing/notes/concepts/mpeg-ts-over-udp.md
+  - topics/video-processing/notes/concepts/rtmp-and-srt.md
+  - topics/video-processing/notes/concepts/rtsp-deep-dive.md
+  - topics/video-processing/notes/concepts/webrtc-deep-dive.md
+  - topics/video-processing/notes/syntheses/actuate-build-vs-buy-tradeoffs.md
+  - topics/video-processing/notes/syntheses/actuate-frame-ingest-decode-paths.md
+  - topics/video-processing/notes/syntheses/frame-transport-payload-formats.md
+incoming_updated: 2026-05-01
 ---
 
 # Protocol Latency Comparison

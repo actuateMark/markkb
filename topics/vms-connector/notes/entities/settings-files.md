@@ -6,6 +6,13 @@ tags: [vms-connector, configuration, json, camera-settings, monitoring]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
+  - topics/aws-cost/notes/syntheses/cost-architecture.md
+  - topics/engineering-process/notes/concepts/code-review-checklist.md
+  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
+incoming_updated: 2026-05-01
 ---
 
 # settings-files

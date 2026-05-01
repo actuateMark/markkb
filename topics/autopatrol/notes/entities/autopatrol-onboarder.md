@@ -6,6 +6,18 @@ tags: [autopatrol, lambda, onboarding, sync, immix, admin-api]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-17_autopatrol-sync-endpoint-behavior.md
+  - topics/autopatrol/notes/concepts/2026-04-17_onboarder-nr-instrumentation-gap.md
+  - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
+  - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
+  - topics/autopatrol/notes/entities/todo-list.md
+  - topics/autopatrol/notes/syntheses/2026-04-17_stale-schedule-cleanup-design.md
+  - topics/autopatrol/notes/syntheses/2026-04-23_alarm-dashboard-sketch.md
+  - topics/autopatrol/notes/syntheses/2026-04-23_postmortem-onboarder-healthcheck.md
+  - topics/engineering-process/notes/concepts/2026-04-17_local-testing-strategies-per-repo.md
+  - topics/engineering-process/notes/syntheses/2026-04-20_lambda-creation-and-tuning-playbook.md
+incoming_updated: 2026-05-01
 ---
 
 ## Overview

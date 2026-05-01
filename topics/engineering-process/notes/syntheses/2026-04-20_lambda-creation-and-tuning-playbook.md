@@ -6,6 +6,18 @@ tags: [lambda, aws, sqs, dynamodb, iam, deploy, local-testing, playbook, event-d
 created: 2026-04-20
 updated: 2026-04-20
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-20_cleanup-lambda-runbook.md
+  - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
+  - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
+  - topics/autopatrol/notes/syntheses/2026-04-17_stale-schedule-cleanup-design.md
+  - topics/engineering-process/notes/concepts/2026-04-20_overnight-check-skill-pattern.md
+  - topics/engineering-process/notes/concepts/2026-04-23_release-acceptance-criteria.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/runbooks/_backlog.md
+  - topics/runbooks/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # Lambda Creation + Tuning Playbook

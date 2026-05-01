@@ -6,6 +6,10 @@ tags: [pattern, skills, claude-code, ops, health-check, observability, playbook]
 created: 2026-04-20
 updated: 2026-04-20
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
+  - topics/engineering-process/notes/concepts/2026-04-23_release-acceptance-criteria.md
+incoming_updated: 2026-05-01
 ---
 
 # Pattern: Building an Overnight-Check Skill Per Project/Repo

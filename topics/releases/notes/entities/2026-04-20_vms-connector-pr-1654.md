@@ -10,6 +10,14 @@ status: deployed-monitoring
 created: 2026-04-20
 updated: 2026-04-20
 author: kb-bot
+incoming:
+  - topics/engineering-process/_summary.md
+  - topics/personal-notes/notes/daily/2026-04-20.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/releases/_summary.md
+  - topics/vms-connector/notes/concepts/2026-04-20_dev-powerplus-ssl-cert-verify-failure.md
+  - topics/vms-connector/notes/concepts/2026-04-20_streamid-null-patrol-alert-bug.md
+incoming_updated: 2026-05-01
 ---
 
 # vms-connector PR #1654: stage → rearchitecture

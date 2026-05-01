@@ -6,6 +6,9 @@ tags: [dashboard, cost, ce, drift, observability, signals, dashboard-check]
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-30.md
+incoming_updated: 2026-05-01
 ---
 
 # Dashboard cost-signal expansion

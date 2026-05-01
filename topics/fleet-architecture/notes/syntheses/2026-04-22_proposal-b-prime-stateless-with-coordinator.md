@@ -6,6 +6,9 @@ tags: [proposal, fleet, stage-fleets, coordinator, b-prime, conditional-promotio
 created: 2026-04-22
 updated: 2026-04-22
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Proposal B-prime — Stage Fleets with Blob Coordinator

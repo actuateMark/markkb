@@ -6,6 +6,9 @@ tags: [synthesis, cross-topic, pipeline, detection, alert, end-to-end, frame-pro
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/notes/concepts/downstream-consumer-impact.md
+incoming_updated: 2026-05-01
 ---
 
 # How a Frame Becomes an Alert

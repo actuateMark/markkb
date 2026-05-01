@@ -7,6 +7,15 @@ jira: "ENG-126"
 created: 2026-04-17
 updated: 2026-04-17
 author: kb-bot
+incoming:
+  - topics/external-api/notes/concepts/2026-04-30_v5-detect-quick-reference.md
+  - topics/external-api/notes/entities/ebus-partner-access.md
+  - topics/inference-api/notes/concepts/api-key-lifecycle.md
+  - topics/personal-notes/notes/daily/2026-04-17.md
+  - topics/personal-notes/notes/daily/2026-04-23.md
+  - topics/runbooks/_backlog.md
+  - topics/runbooks/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # Partner API Credential Runbook

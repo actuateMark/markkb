@@ -6,6 +6,9 @@ tags: [synthesis, rtsp, robustness, reliability, observability, proposal]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/integrations/rtsp/notes/entities/rtsp-enhancement-issues.md
+incoming_updated: 2026-05-01
 ---
 
 # RTSP Robustness Enhancement Plan

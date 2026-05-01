@@ -6,6 +6,9 @@ tags: [postgresql, rds, backup, restore, docker, database, camera-admin]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/admin-api/notes/entities/admin-auto-onboarding.md
+incoming_updated: 2026-05-01
 ---
 
 # Actuate Admin RDS

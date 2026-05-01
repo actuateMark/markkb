@@ -7,6 +7,13 @@ jira: ""
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/syntheses/decode-locality-per-proposal.md
+incoming_updated: 2026-05-01
 ---
 
 # Frame-Transport Payload Formats: Codec × Transport Bridge to Fleet Architecture

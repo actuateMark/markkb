@@ -6,6 +6,12 @@ tags: [pydantic, api-design, validation, schema, json-schema]
 created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot
+incoming:
+  - topics/engineering-process/_summary.md
+  - topics/engineering-process/notes/entities/agent-actuate-pr-reviewer.md
+  - topics/engineering-process/notes/entities/agents-catalog.md
+  - topics/engineering-process/notes/entities/skill-api-endpoint-development.md
+incoming_updated: 2026-05-01
 ---
 
 # Pydantic Schema-as-Contract Pattern

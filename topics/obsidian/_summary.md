@@ -46,6 +46,12 @@ Full command list: `obsidian --help`. Output formats: most commands accept `form
 
 The KB has ~1050 notes across ~30 topics with ~1300 unique tags. Recursive Grep across that surface is expensive in tokens. The CLI exposes structured discovery primitives (tags, backlinks, search, unresolved/orphans/deadends) that return ranked answers in one call. The KB skills (`/kb-relink`, `/kb-lint`, `/kb-lookup`, `/kb-ask`, `kb-scribe` agent) all prefer the CLI over recursive Grep when the CLI is available — see [[2026-04-30_kb-skill-cli-retrofit]] for the per-skill mapping and the install/availability check pattern they share.
 
+## Context-efficient retrieval recipe
+
+The canonical pattern for querying the KB without burning context lives at [[2026-05-01_context-efficient-kb-retrieval]] — a cost-ordered ladder (read summary → tag query → backlinks → search → file read), the per-skill integration status, and the structural choices (slug-style anchors, path-form topic links, threshold-gated tag enrichment) that make tier-2/tier-3 queries actually return useful results.
+
+Before reaching for a recursive grep, walk the ladder. The 2026-05-01 [[2026-04-30_kb-skill-cli-retrofit|CLI retrofit]] + relink pass built up the link/tag graph that makes tier 2-3 cheap and accurate.
+
 ## Easy-win backlog (track new ones here as they surface)
 
 When discovering a new "this skill could use the CLI but doesn't yet" gap, list it here as a checkbox so it's reachable from this summary. Promote to a synthesis note when more than a couple are accumulating.
@@ -54,6 +60,10 @@ When discovering a new "this skill could use the CLI but doesn't yet" gap, list 
 - [ ] `/kb-recap` — currently uses `find -mtime`; could pair with `obsidian files` for vault-wide listing (low value but consistent)
 - [ ] Daily-note auto-tagging — when `/daily-wrap` writes the day's note, run `obsidian tags counts` to surface which `#workstream-NN` tags were used today vs last week (light analytics, no code change needed yet)
 - [ ] `obsidian properties` to validate frontmatter schema across the vault — could feed `/kb-lint` Check 2
+- [ ] **"Quick lookup" sub-section in topic `_summary.md`** — hand-curated top-3 entities + top-3 syntheses; cheapest entry for cross-topic queries
+- [ ] **Backlink-summary frontmatter field** — periodic script populates `incoming: [...]` from `obsidian backlinks`; LLM reads frontmatter and sees referrer set without a separate CLI call
+- [ ] **`/kb-explore` skill** — given a term, walk the link graph N hops with bounded token cost; designed for LLM-driven exploration
+- [ ] **Token-budget declarations in skill metadata** — each SKILL.md declares `expected_tokens: N` so Claude can pick the cheapest skill that answers the question
 
 ## Related
 

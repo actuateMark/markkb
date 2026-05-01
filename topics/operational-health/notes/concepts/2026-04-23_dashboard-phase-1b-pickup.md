@@ -7,6 +7,11 @@ created: 2026-04-23
 updated: 2026-04-23
 author: kb-bot
 status: ready-to-pick-up
+incoming:
+  - topics/operational-health/notes/concepts/2026-04-24_dashboard-1b-continuation.md
+  - topics/operational-health/notes/syntheses/2026-04-23_dashboard-sketch.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+incoming_updated: 2026-05-01
 ---
 
 # Dashboard Phase 1b — Pickup Guide

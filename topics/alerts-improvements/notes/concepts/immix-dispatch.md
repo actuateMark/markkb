@@ -4,6 +4,10 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [alerts, immix, dispatch, integration, payload, bounding-boxes, autopatrol]
+incoming:
+  - topics/alerts-improvements/_summary.md
+  - topics/autopatrol/notes/concepts/vlm-integration.md
+incoming_updated: 2026-05-01
 ---
 
 # Immix Dispatch

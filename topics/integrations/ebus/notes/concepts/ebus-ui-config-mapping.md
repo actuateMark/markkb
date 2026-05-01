@@ -6,6 +6,9 @@ tags: [ebus, ui, configuration, vms, accellence, v5]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/integrations/ebus/notes/concepts/phase1-vs-phase2.md
+incoming_updated: 2026-05-01
 ---
 
 # EBUS UI Configuration Mapping

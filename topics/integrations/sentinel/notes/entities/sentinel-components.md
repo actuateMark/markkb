@@ -6,6 +6,18 @@ tags: [integration, sentinel, alarm-sender, components]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/notes/entities/actuate-blur.md
+  - topics/actuate-libraries/notes/entities/actuate-config.md
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
+  - topics/admin-api/notes/concepts/integration-architecture.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-diagnostics-gap-analysis.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase4-generic-diagnostics.md
+  - topics/data-science/notes/concepts/detection-pipeline.md
+  - topics/data-science/notes/concepts/motion-detection-challenge.md
+incoming_updated: 2026-05-01
 ---
 
 # Sentinel Integration Components

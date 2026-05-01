@@ -6,6 +6,16 @@ tags: [aws, medialive, live, encoding, channels, broadcast, statmux]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/mpeg-ts-over-udp.md
+  - topics/video-processing/notes/entities/aws-elemental-live-entity.md
+  - topics/video-processing/notes/entities/aws-ivs-entity.md
+  - topics/video-processing/notes/entities/aws-mediaconvert-entity.md
+  - topics/video-processing/notes/syntheses/actuate-build-vs-buy-tradeoffs.md
+  - topics/video-processing/notes/syntheses/aws-video-services-decision-matrix.md
+incoming_updated: 2026-05-01
 ---
 
 # AWS Elemental MediaLive

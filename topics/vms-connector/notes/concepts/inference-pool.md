@@ -6,6 +6,18 @@ tags: [connector, inference, async, AIMD, congestion-control, httpx]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
+  - topics/autopatrol/notes/concepts/generic-patrol-mode.md
+  - topics/fleet-architecture/notes/concepts/inference-api-interaction.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-e-hybrid-sidecar.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_fleet-proposal-rescore-with-delta.md
+  - topics/video-processing/notes/syntheses/decode-locality-per-proposal.md
+incoming_updated: 2026-05-01
 ---
 
 # AsyncInferencePool AIMD Congestion Control

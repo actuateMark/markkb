@@ -8,6 +8,18 @@ updated: 2026-04-23
 author: kb-bot
 severity: medium
 duration_hours: ~47
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
+  - topics/autopatrol/notes/concepts/2026-04-23_cleanup-rollout-day.md
+  - topics/autopatrol/notes/concepts/2026-04-24_morning-watch-list.md
+  - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
+  - topics/autopatrol/notes/entities/autopatrol-onboarder.md
+  - topics/engineering-process/_summary.md
+  - topics/engineering-process/notes/syntheses/2026-04-14_feature-development-lifecycle.md
+  - topics/operational-health/notes/concepts/2026-04-23_dashboard-phase-1b-pickup.md
+  - topics/operational-health/notes/concepts/2026-04-24_dashboard-1b-continuation.md
+  - topics/operational-health/notes/concepts/2026-04-27_dashboard-signal-cookbook.md
+incoming_updated: 2026-05-01
 ---
 
 # Post-Mortem — AutoPatrol Onboarder Silent Failure

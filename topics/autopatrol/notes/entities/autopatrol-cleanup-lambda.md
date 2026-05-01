@@ -7,6 +7,18 @@ status: live-stage-enabled
 created: 2026-04-17
 updated: 2026-04-23
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/actuate-admin-api.md
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/autopatrol/notes/concepts/2026-04-17_no-patrols-emit-points.md
+  - topics/autopatrol/notes/concepts/2026-04-17_onboarder-nr-instrumentation-gap.md
+  - topics/autopatrol/notes/concepts/2026-04-20_cleanup-lambda-runbook.md
+  - topics/autopatrol/notes/concepts/2026-04-21_cleanup-lambda-stage-verify.md
+  - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
+  - topics/autopatrol/notes/concepts/2026-04-23_cleanup-rollout-day.md
+  - topics/autopatrol/notes/concepts/2026-04-24_morning-watch-list.md
+  - topics/autopatrol/notes/entities/autopatrol-onboarder.md
+incoming_updated: 2026-05-01
 ---
 
 # AutoPatrol Cleanup Lambda

@@ -9,6 +9,10 @@ sources:
   - "[[worklog-tech-doc-video-pipeline]]"
   - "[[worklog-rearch-main-loop]]"
 author: kb-bot
+incoming:
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+  - topics/vms-connector/notes/syntheses/performance-optimization-landscape.md
+incoming_updated: 2026-05-01
 ---
 
 # Filter Pipeline Ordering

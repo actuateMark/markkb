@@ -6,6 +6,13 @@ tags: [new-relic, deep-links, urls, admin-integration, tooling]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - _index.md
+  - topics/admin-api/notes/entities/admin-nr-integration.md
+  - topics/engineering-process/notes/entities/agent-nrql-investigator.md
+  - topics/engineering-process/notes/entities/agents-catalog.md
+  - topics/fleet-architecture/notes/concepts/observability-and-tracing.md
+incoming_updated: 2026-05-01
 ---
 
 # New Relic Programmatic Deep Links

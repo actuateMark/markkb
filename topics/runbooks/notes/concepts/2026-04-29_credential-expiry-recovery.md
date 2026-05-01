@@ -6,6 +6,12 @@ tags: [runbook, auth, aws, sso, mcp, atlassian, newrelic, github, kubefwd, prefl
 created: 2026-04-29
 updated: 2026-04-29
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-29.md
+  - topics/runbooks/_backlog.md
+  - topics/runbooks/_summary.md
+  - topics/runbooks/notes/concepts/2026-04-30_detecting-jira-sync-staleness.md
+incoming_updated: 2026-05-01
 ---
 
 # Credential & MCP-server expiry recovery

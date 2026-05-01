@@ -6,6 +6,16 @@ tags: [gstreamer, pipeline, elements, pads, caps, bus, states, appsrc, appsink]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/ffmpeg-filtergraphs.md
+  - topics/video-processing/notes/concepts/gst-rtsp-h264-only-audit.md
+  - topics/video-processing/notes/concepts/gstreamer-vs-ffmpeg.md
+  - topics/video-processing/notes/concepts/nvidia-deepstream.md
+  - topics/video-processing/notes/entities/gstreamer-entity.md
+  - topics/video-processing/notes/syntheses/actuate-build-vs-buy-tradeoffs.md
+  - topics/video-processing/notes/syntheses/actuate-frame-ingest-decode-paths.md
+incoming_updated: 2026-05-01
 ---
 
 # [[gstreamer-entity|GStreamer]] Pipeline Model

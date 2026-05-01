@@ -6,6 +6,10 @@ tags: [cleanup-lambda, anomaly-reset, vch, flapper, investigation, finding, auto
 created: 2026-04-28
 updated: 2026-04-28
 author: kb-bot
+- Error: File "2026-04-28_chronic-flapper-investigation" not found.
+incoming:
+  - Error: File "2026-04-28_chronic-flapper-investigation" not found.
+incoming_updated: 2026-05-01
 ---
 
 # Chronic Flapper Investigation — Cleanup Lambda Anomaly-Reset Repeat Offenders

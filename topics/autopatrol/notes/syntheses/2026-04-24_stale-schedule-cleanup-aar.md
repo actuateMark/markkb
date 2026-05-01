@@ -6,6 +6,10 @@ tags: [autopatrol, vch, cleanup-lambda, sweep, aar, post-mortem, stale-schedules
 created: 2026-04-24
 updated: 2026-04-27
 author: kb-bot
+- Error: File "2026-04-24_stale-schedule-cleanup-aar" not found.
+incoming:
+  - Error: File "2026-04-24_stale-schedule-cleanup-aar" not found.
+incoming_updated: 2026-05-01
 ---
 
 # AAR — stale AutoPatrol/VCH schedule cleanup sweep (2026-04-24)

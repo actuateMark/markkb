@@ -6,6 +6,18 @@ tags: [chm, diagnostics, architecture, healthcheck]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/camera-health-monitoring/notes/syntheses/chm-end-to-end-flow.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase1-network-probe.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase2-stream-probe.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase3-cross-camera-correlation.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase4-generic-diagnostics.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase5-frame-probe.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase6-smtp-ailink-diagnostics.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase7-historical-trending.md
+  - topics/camera-health-monitoring/reading-list.md
+incoming_updated: 2026-05-01
 ---
 
 # CHM Diagnostics Architecture

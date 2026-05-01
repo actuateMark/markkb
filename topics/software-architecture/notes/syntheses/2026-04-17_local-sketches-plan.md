@@ -6,6 +6,15 @@ tags: [sketch, prototype, dashboard, tech-debt, enforcement, metrics, tooling]
 created: 2026-04-17
 updated: 2026-04-23
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/personal-notes/notes/daily/2026-04-23.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/software-architecture/_summary.md
+  - topics/software-architecture/notes/concepts/2026-04-23_sketch-findings-metrics.md
+  - topics/software-architecture/reading-list.md
+incoming_updated: 2026-05-01
 ---
 
 # Local Sketches Plan

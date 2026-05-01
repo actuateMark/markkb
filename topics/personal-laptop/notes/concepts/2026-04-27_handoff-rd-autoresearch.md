@@ -7,6 +7,10 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 status: ready-to-pick-up
+incoming:
+  - topics/personal-laptop/notes/syntheses/2026-04-27_minipc-tooling-improvements.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+incoming_updated: 2026-05-01
 ---
 
 # Handoff — R&D auto-research surface (#70)

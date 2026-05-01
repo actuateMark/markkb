@@ -6,6 +6,10 @@ tags: [training, sagemaker, ultralytics, neuronx, inferentia, labeling, spektar,
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/data-science/notes/concepts/evaluation-tiers.md
+  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+incoming_updated: 2026-05-01
 ---
 
 # Training Pipeline Architecture

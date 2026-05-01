@@ -6,6 +6,9 @@ tags: [synthesis, cross-topic, architecture, pipeline, sharding, inference, mult
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-05-01
 ---
 
 # Connector Evolution

@@ -3,6 +3,16 @@ type: concept
 author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
+incoming:
+  - topics/engineering-process/notes/concepts/2026-04-23_release-acceptance-criteria.md
+  - topics/fleet-architecture/notes/concepts/memory-and-fork-safety.md
+  - topics/fleet-architecture/notes/concepts/scaling-layer-taxonomy.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-a-minimal-split.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+incoming_updated: 2026-05-01
 ---
 
 # VPA Behavior

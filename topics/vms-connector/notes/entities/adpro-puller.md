@@ -6,6 +6,10 @@ tags: [rust, ffi, adpro, video-streaming, rtsp, cross-compilation, wine]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/integrations/adpro/_summary.md
+  - topics/integrations/adpro/notes/entities/adpro-components.md
+incoming_updated: 2026-05-01
 ---
 
 # Adpro Puller

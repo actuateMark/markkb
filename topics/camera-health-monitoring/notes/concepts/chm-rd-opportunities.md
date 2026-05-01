@@ -6,6 +6,12 @@ tags: [chm, diagnostics, rd, opportunities, roadmap]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase2-stream-probe.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase3-cross-camera-correlation.md
+  - topics/camera-health-monitoring/reading-list.md
+incoming_updated: 2026-05-01
 ---
 
 # CHM R&D Opportunities

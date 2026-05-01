@@ -6,6 +6,18 @@ tags: [repo, vlm, vllm, inference, sqs, dynamodb, kubernetes, docker, gpu, autop
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/notes/entities/actuate-vlm.md
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/ai-models/notes/concepts/vlm-pipeline-architecture.md
+  - topics/ai-models/notes/entities/ds-smart-alert-supervisor.md
+  - topics/ai-models/notes/entities/qwen3vl-aws.md
+  - topics/ai-models/notes/entities/vlm-eval-visualizer.md
+  - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
+  - topics/aws-cost/notes/syntheses/cost-architecture.md
+  - topics/settings-automation/notes/concepts/vlm-fp-reduction.md
+  - topics/team-structure/notes/entities/clarissa-herman.md
+incoming_updated: 2026-05-01
 ---
 
 # vlm-inference

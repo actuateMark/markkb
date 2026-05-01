@@ -6,6 +6,11 @@ tags: [synthesis, chm, diagnostics, proposal, phase-4]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase5-frame-probe.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase6-smtp-ailink-diagnostics.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase7-historical-trending.md
+incoming_updated: 2026-05-01
 ---
 
 # CHM Phase 4: GenericDiagnostics -- Replacing DummyDiagnostics

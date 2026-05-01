@@ -6,6 +6,18 @@ tags: [hardware, edge-device, tailscale, obsidian, nm-networking, claude-code-re
 created: 2026-04-23
 updated: 2026-04-23
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/concepts/2026-04-28_minting-github-pats-for-automation.md
+  - topics/engineering-process/notes/syntheses/2026-04-30_three-tier-routine-check-pattern.md
+  - topics/personal-laptop/notes/concepts/2026-04-30_morning-prep-scripts-runbook.md
+  - topics/personal-laptop/notes/syntheses/2026-04-24_minipc-dashboard-static-gen-refactor.md
+  - topics/personal-laptop/notes/syntheses/2026-04-27_minipc-tooling-improvements.md
+  - topics/personal-laptop/notes/syntheses/2026-04-28_long-lived-credentials-on-headless-boxes.md
+  - topics/personal-notes/notes/daily/2026-04-23.md
+  - topics/personal-notes/notes/daily/2026-04-29.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Firebat minipc as always-on Claude dev box

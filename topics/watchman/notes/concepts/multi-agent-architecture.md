@@ -4,6 +4,18 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [watchman, agents, architecture, orchestration, multi-agent]
+incoming:
+  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
+  - topics/alerts-improvements/notes/concepts/alert-muting.md
+  - topics/alerts-improvements/notes/concepts/immix-dispatch.md
+  - topics/autopatrol/notes/concepts/flex-ignore-zones.md
+  - topics/settings-automation/notes/concepts/vlm-fp-reduction.md
+  - topics/team-structure/notes/entities/brad-murphy.md
+  - topics/team-structure/notes/entities/brian-leary.md
+  - topics/team-structure/notes/entities/laura-reno.md
+  - topics/watchman/notes/concepts/onboarding-wizard.md
+  - topics/watchman/notes/concepts/patrol-vs-active-modes.md
+incoming_updated: 2026-05-01
 ---
 
 # Multi-Agent Architecture

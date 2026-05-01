@@ -6,6 +6,9 @@ tags: [lambda, python, mp4, opencv, ffmpeg, dynamodb, s3, sam]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-05-01
 ---
 
 # Create Detection Window

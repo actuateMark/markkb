@@ -7,6 +7,18 @@ jira: ""
 created: 2026-04-17
 updated: 2026-04-20
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-17_autopatrol-sync-endpoint-behavior.md
+  - topics/autopatrol/notes/concepts/2026-04-17_no-patrols-emit-points.md
+  - topics/autopatrol/notes/concepts/2026-04-17_onboarder-nr-instrumentation-gap.md
+  - topics/autopatrol/notes/concepts/2026-04-20_cleanup-lambda-runbook.md
+  - topics/autopatrol/notes/concepts/2026-04-21_cleanup-lambda-stage-verify.md
+  - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
+  - topics/autopatrol/notes/concepts/2026-04-24_morning-watch-list.md
+  - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
+  - topics/autopatrol/notes/entities/autopatrol-onboarder.md
+  - topics/autopatrol/notes/entities/todo-list.md
+incoming_updated: 2026-05-01
 ---
 
 # AutoPatrol Stale-Schedule Cleanup — Event-Driven Design

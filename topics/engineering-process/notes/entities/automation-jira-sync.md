@@ -6,6 +6,18 @@ tags: [automation, systemd, jira-sync, mark-todos, three-tier-pattern, pure-scri
 created: 2026-04-16
 updated: 2026-04-30
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/concepts/2026-04-27_headless-mcp-bypass.md
+  - topics/engineering-process/notes/entities/skill-daily-scope.md
+  - topics/engineering-process/notes/entities/skill-repo-scan.md
+  - topics/engineering-process/notes/entities/skill-todos-audit.md
+  - topics/personal-laptop/notes/concepts/2026-04-30_morning-prep-scripts-runbook.md
+  - topics/personal-laptop/notes/syntheses/2026-04-30_firebat-script-conversion-candidates.md
+  - topics/personal-notes/_summary.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Automation: jira-sync

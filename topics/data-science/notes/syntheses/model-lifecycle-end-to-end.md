@@ -6,6 +6,13 @@ tags: [synthesis, cross-topic, model-lifecycle, training, evaluation, deployment
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/ai-models/notes/concepts/confidence-threshold-calibration.md
+  - topics/ai-models/notes/concepts/vlm-pipeline-architecture.md
+  - topics/data-science/notes/concepts/evaluation-tiers.md
+  - topics/data-science/notes/concepts/training-pipeline-architecture.md
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+incoming_updated: 2026-05-01
 ---
 
 # Model Lifecycle End-to-End

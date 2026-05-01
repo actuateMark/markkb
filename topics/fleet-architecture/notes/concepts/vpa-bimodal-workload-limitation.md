@@ -6,6 +6,17 @@ tags: [vpa, autoscaling, eng-78, burst-workload, resource-requests, over-provisi
 created: 2026-04-21
 updated: 2026-04-21
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/_summary.md
+  - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
+  - topics/fleet-architecture/notes/concepts/memory-and-fork-safety.md
+  - topics/fleet-architecture/notes/concepts/scaling-layer-taxonomy.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-e-hybrid-sidecar.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
+  - topics/fleet-architecture/reading-list.md
+  - topics/fleet-architecture/sources/axis-av1-surveillance.md
+incoming_updated: 2026-05-01
 ---
 
 # VPA Bimodal Workload Limitation (ENG-78 Root Cause)

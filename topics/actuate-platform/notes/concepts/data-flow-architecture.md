@@ -5,6 +5,18 @@ created: 2026-04-13
 updated: 2026-04-13
 tags: [architecture, data-flow, platform, pipeline]
 confluence: "https://actuate-team.atlassian.net/wiki/spaces/EDOCS/pages/497319963"
+incoming:
+  - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+  - topics/alerts-improvements/sources/worklog-immix-after-action.md
+  - topics/fleet-architecture/notes/concepts/config-and-schedule-propagation.md
+  - topics/integrations/bold/sources/worklog-bold-microservice-design.md
+  - topics/integrations/evalink/evalink-integration/notes/concepts/alarm-push-pattern.md
+  - topics/integrations/morphean/notes/concepts/cloud-to-cloud-architecture.md
+  - topics/product-roadmap/notes/concepts/active-risks.md
+  - topics/product-roadmap/notes/concepts/revenue-drivers.md
+  - topics/team-structure/notes/entities/michael-aleksa.md
+  - topics/team-structure/notes/entities/tatiana-hanazaki.md
+incoming_updated: 2026-05-01
 ---
 
 # Data Flow Architecture

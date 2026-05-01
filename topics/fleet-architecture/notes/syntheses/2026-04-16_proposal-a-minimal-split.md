@@ -6,6 +6,18 @@ tags: [proposal, fleet, minimal-split, redis-streams, incremental]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/_summary.md
+  - topics/fleet-architecture/notes/concepts/customer-site-connectivity.md
+  - topics/fleet-architecture/notes/concepts/k8s-controller-selection-guide.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_frame-transport-comparison.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-17_preliminary-pilot-option.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
+  - topics/fleet-architecture/reading-list.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/video-processing/notes/syntheses/decode-locality-per-proposal.md
+incoming_updated: 2026-05-01
 ---
 
 # Proposal A — Minimal Split

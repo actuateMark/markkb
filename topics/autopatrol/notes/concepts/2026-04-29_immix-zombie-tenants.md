@@ -8,6 +8,10 @@ confluence: ""
 created: 2026-04-29
 updated: 2026-04-29
 author: kb-bot
+- Error: File "2026-04-29_immix-zombie-tenants" not found.
+incoming:
+  - Error: File "2026-04-29_immix-zombie-tenants" not found.
+incoming_updated: 2026-05-01
 ---
 
 # Immix API contract violation — connector-flow tenant_ids return no data

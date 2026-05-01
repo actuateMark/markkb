@@ -6,6 +6,18 @@ tags: [opencv, cv2, videocapture, ffmpeg, gstreamer, rtsp, decode, gotchas]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/connector-decoder-routing-map.md
+  - topics/video-processing/notes/concepts/frame-extraction-strategies.md
+  - topics/video-processing/notes/concepts/gst-rtsp-h264-only-audit.md
+  - topics/video-processing/notes/concepts/rtsp-deep-dive.md
+  - topics/video-processing/notes/entities/imageio-entity.md
+  - topics/video-processing/notes/entities/opencv-entity.md
+  - topics/video-processing/notes/syntheses/actuate-clip-generation-flow.md
+  - topics/video-processing/notes/syntheses/actuate-frame-ingest-decode-paths.md
+  - topics/video-processing/notes/syntheses/actuate-video-pipeline-walkthrough.md
+incoming_updated: 2026-05-01
 ---
 
 # `cv2.VideoCapture` internals and gotchas

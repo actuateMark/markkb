@@ -6,6 +6,18 @@ tags: [ffmpeg, libav, libavcodec, libavformat, library, c-api]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/cv2-videocapture-internals.md
+  - topics/video-processing/notes/concepts/ffmpeg-filtergraphs.md
+  - topics/video-processing/notes/concepts/ffmpeg-hardware-acceleration.md
+  - topics/video-processing/notes/concepts/ffmpeg-python-bindings.md
+  - topics/video-processing/notes/concepts/gstreamer-pipeline-model.md
+  - topics/video-processing/notes/concepts/gstreamer-vs-ffmpeg.md
+  - topics/video-processing/notes/entities/ffmpeg-entity.md
+  - topics/video-processing/notes/entities/gstreamer-entity.md
+  - topics/video-processing/notes/entities/pyav-entity.md
+incoming_updated: 2026-05-01
 ---
 
 # [[ffmpeg-entity|FFmpeg]] libav* libraries

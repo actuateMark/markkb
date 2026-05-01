@@ -6,6 +6,13 @@ tags: [synthesis, chm, diagnostics, proposal, phase-2]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/camera-health-monitoring/notes/syntheses/chm-end-to-end-flow.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase1-network-probe.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase3-cross-camera-correlation.md
+  - topics/integrations/rtsp/notes/entities/rtsp-enhancement-issues.md
+  - topics/integrations/rtsp/notes/syntheses/rtsp-robustness-enhancement-plan.md
+incoming_updated: 2026-05-01
 ---
 
 # CHM Phase 2: StreamProbe -- Exposing Stream Metadata to Diagnostics

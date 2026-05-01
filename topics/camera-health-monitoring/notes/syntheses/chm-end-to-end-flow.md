@@ -6,6 +6,9 @@ tags: [synthesis, chm, flow, architecture, baseline-reference, dynamodb]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-05-01
 ---
 
 # CHM End-to-End Flow: From CronJob to Alert Email

@@ -6,6 +6,11 @@ tags: [runbook, autopatrol, vms-connector, cleanup-lambda, stage, verify, vch]
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-30.md
+  - topics/runbooks/_backlog.md
+  - topics/runbooks/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # Stage→cleanup VCH no_patrols verify

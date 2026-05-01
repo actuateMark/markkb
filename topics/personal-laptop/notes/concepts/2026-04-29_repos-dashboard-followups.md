@@ -7,6 +7,11 @@ created: 2026-04-29
 updated: 2026-04-29
 author: kb-bot
 status: queued
+incoming:
+  - topics/personal-laptop/notes/concepts/2026-04-29_minipc-api-surface.md
+  - topics/personal-notes/notes/daily/2026-04-29.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # /app/repos dashboard — follow-up backlog

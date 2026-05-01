@@ -6,6 +6,9 @@ tags: [connector, repo, architecture, development]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-05-01
 ---
 
 # vms-connector Repository

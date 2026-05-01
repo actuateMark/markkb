@@ -6,6 +6,9 @@ tags: [lambda, python, dynamodb, s3, presigned-urls, api-gateway, alert-ui]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/infrastructure/notes/entities/create-detection-window.md
+incoming_updated: 2026-05-01
 ---
 
 # Frame Fetcher V3

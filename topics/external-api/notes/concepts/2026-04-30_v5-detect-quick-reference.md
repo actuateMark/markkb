@@ -6,6 +6,9 @@ tags: [v5, partner-docs, integration, quick-start]
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-05-01
 ---
 
 # v5 `/detect` Quick Reference

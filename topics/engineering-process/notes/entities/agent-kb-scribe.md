@@ -6,6 +6,11 @@ tags: [agent, knowledge-base, obsidian, documentation, write]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/entities/agents-catalog.md
+  - topics/engineering-process/notes/entities/automation-overnight-check.md
+  - topics/engineering-process/notes/syntheses/2026-04-21_rd-agent-pilot-learnings.md
+incoming_updated: 2026-05-01
 ---
 
 # kb-scribe

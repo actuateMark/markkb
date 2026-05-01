@@ -6,6 +6,18 @@ tags: [evaluation, mAP, mcnemar, wilcoxon, precision-recall, metrics, cli, pytho
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/ai-models/notes/concepts/model-evaluation-framework.md
+  - topics/ai-models/notes/concepts/shadow-testing-methodology.md
+  - topics/ai-models/notes/entities/actuate-inference.md
+  - topics/ai-models/notes/entities/intruder-v5-model.md
+  - topics/ai-models/notes/entities/intruder-v8-model.md
+  - topics/ai-models/notes/entities/weapon-v8-model.md
+  - topics/data-science/notes/concepts/evaluation-tiers.md
+  - topics/data-science/notes/concepts/training-pipeline-architecture.md
+  - topics/data-science/notes/entities/shadow-test-pipeline.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-eval

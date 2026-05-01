@@ -6,6 +6,18 @@ tags: [repo, vue, frontend, alerts, s3, vite]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/concepts/data-flow-architecture.md
+  - topics/actuate-platform/notes/concepts/rbac-model.md
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
+  - topics/admin-api/notes/entities/actuate-monitoring-api.md
+  - topics/external-api/notes/entities/actuate-external-api-repo.md
+  - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_fleet-proposal-rescore-with-delta.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
+incoming_updated: 2026-05-01
 ---
 
 # alert-ui

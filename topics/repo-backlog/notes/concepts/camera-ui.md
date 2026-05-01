@@ -15,6 +15,10 @@ high_impact_issue_numbers: [538, 535]
 lhf_issue_numbers: [535, 538]
 stale_issue_numbers: []
 full_issue_numbers: [538, 535]
+incoming:
+  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
+  - topics/camera-health-monitoring/notes/entities/health-report.md
+incoming_updated: 2026-05-01
 ---
 
 # camera-ui backlog

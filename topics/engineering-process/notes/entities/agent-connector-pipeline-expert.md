@@ -6,6 +6,10 @@ tags: [agent, vms-connector, actuate-libraries, codebase-exploration, read-only]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/entities/agents-catalog.md
+  - topics/personal-notes/notes/daily/2026-04-28.md
+incoming_updated: 2026-05-01
 ---
 
 # connector-pipeline-expert

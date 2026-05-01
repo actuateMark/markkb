@@ -4,6 +4,11 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [settings-automation, ppf, pixels-per-foot, camera-settings, datasets, otzar]
+incoming:
+  - topics/settings-automation/_summary.md
+  - topics/settings-automation/notes/entities/ppf-repo.md
+  - topics/team-structure/notes/entities/otzar-jaffe.md
+incoming_updated: 2026-05-01
 ---
 
 # Pixels Per Foot

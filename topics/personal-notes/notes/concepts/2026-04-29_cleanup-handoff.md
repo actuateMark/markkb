@@ -6,6 +6,11 @@ tags: [handoff, cleanup-lambda, tenant-cascade, vch, dashboard, mark-todos, in-f
 created: 2026-04-29
 updated: 2026-04-29
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/concepts/2026-04-30_admin-propagation-handoff.md
+  - topics/personal-notes/notes/daily/2026-04-29.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-01
 ---
 
 # Session Handoff — Cleanup Lambda Tenant Cascade + VCH Emit Fix + Dashboard Tuning

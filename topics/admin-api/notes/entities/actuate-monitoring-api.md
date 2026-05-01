@@ -6,6 +6,13 @@ tags: [repo, django, python, monitoring, camera-admin, rest-api]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/entities/alert-ui.md
+  - topics/external-api/notes/entities/actuate-external-api-repo.md
+  - topics/infrastructure/notes/entities/reusable-github-actions.md
+  - topics/vms-connector/notes/entities/actuate-ailink.md
+  - topics/watchman/notes/entities/watchman-repo.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate_monitoring_api

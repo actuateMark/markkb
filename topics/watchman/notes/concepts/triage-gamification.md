@@ -4,6 +4,16 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 tags: [watchman, gamification, triage, engagement, learning-agent, ux]
+incoming:
+  - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
+  - topics/alerts-improvements/notes/concepts/immix-dispatch.md
+  - topics/autopatrol/notes/concepts/vlm-integration.md
+  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
+  - topics/settings-automation/notes/concepts/vlm-fp-reduction.md
+  - topics/team-structure/notes/entities/brian-leary.md
+  - topics/watchman/_summary.md
+  - topics/watchman/notes/concepts/multi-agent-architecture.md
+incoming_updated: 2026-05-01
 ---
 
 # Triage Gamification

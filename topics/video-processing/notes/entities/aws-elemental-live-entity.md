@@ -6,6 +6,13 @@ tags: [aws, elemental, on-prem, encoder, broadcast, hardware-appliance]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/entities/aws-mediaconvert-entity.md
+  - topics/video-processing/notes/entities/aws-medialive-entity.md
+  - topics/video-processing/notes/syntheses/aws-video-services-decision-matrix.md
+incoming_updated: 2026-05-01
 ---
 
 # AWS Elemental Live (on-prem)

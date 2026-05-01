@@ -6,6 +6,12 @@ tags: [library, camera-stream, scene-change, camera-disturbance, computer-vision
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/_summary.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase5-frame-probe.md
+  - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-suddenscenechange

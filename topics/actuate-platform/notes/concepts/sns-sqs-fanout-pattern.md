@@ -6,6 +6,11 @@ tags: [sns, sqs, messaging, fan-out, fan-in, architecture, decoupling]
 created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot
+incoming:
+  - topics/actuate-platform/sources/alert-senders.md
+  - topics/infrastructure/sources/deployer-queue-consumer.md
+  - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
+incoming_updated: 2026-05-01
 ---
 
 # SNS/SQS Fan-out/Fan-in Pattern

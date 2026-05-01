@@ -7,6 +7,9 @@ created: 2026-04-17
 updated: 2026-04-17
 author: kb-bot
 status: active
+incoming:
+  - topics/operational-health/_summary.md
+incoming_updated: 2026-05-01
 ---
 
 # Overnight Check Follow-Up 2026-04-17

@@ -6,6 +6,18 @@ tags: [release, acceptance-criteria, post-deploy, verification, process]
 created: 2026-04-23
 updated: 2026-04-23
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-23_cleanup-rollout-day.md
+  - topics/autopatrol/notes/entities/autopatrol-onboarder.md
+  - topics/autopatrol/notes/syntheses/2026-04-23_alarm-dashboard-sketch.md
+  - topics/autopatrol/notes/syntheses/2026-04-23_postmortem-onboarder-healthcheck.md
+  - topics/engineering-process/_summary.md
+  - topics/engineering-process/notes/concepts/code-review-checklist.md
+  - topics/engineering-process/notes/syntheses/2026-04-14_feature-development-lifecycle.md
+  - topics/operational-health/notes/concepts/2026-04-23_dashboard-phase-1b-pickup.md
+  - topics/operational-health/notes/concepts/2026-04-23_oom-surge-connector-limit-drift.md
+  - topics/operational-health/notes/concepts/2026-04-24_dashboard-1b-continuation.md
+incoming_updated: 2026-05-01
 ---
 
 # Release Acceptance Criteria

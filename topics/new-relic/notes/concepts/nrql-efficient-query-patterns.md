@@ -6,6 +6,18 @@ author: kb-bot
 created: 2026-04-16
 updated: 2026-04-16
 tags: [nrql, query-optimization, context-management, new-relic, observability]
+incoming:
+  - _index.md
+  - topics/aws-cost/notes/concepts/aws-cost-explorer-access-pattern.md
+  - topics/engineering-process/notes/entities/agent-nrql-investigator.md
+  - topics/engineering-process/notes/entities/agents-catalog.md
+  - topics/fleet-architecture/notes/concepts/observability-and-tracing.md
+  - topics/new-relic/_summary.md
+  - topics/new-relic/notes/concepts/actuate-nr-data-model.md
+  - topics/new-relic/notes/concepts/nr-connector-query-cookbook.md
+  - topics/new-relic/notes/concepts/nr-log-level-strategy.md
+  - topics/new-relic/notes/concepts/nr-programmatic-deep-links.md
+incoming_updated: 2026-05-01
 ---
 
 # NRQL Efficient Query Patterns

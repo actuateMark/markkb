@@ -6,6 +6,13 @@ tags: [integration, softguard, alarm-sender, components]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
+incoming:
+  - topics/actuate-libraries/notes/entities/actuate-config.md
+  - topics/admin-api/notes/concepts/integration-architecture.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-diagnostics-gap-analysis.md
+  - topics/integrations/softguard/_summary.md
+  - topics/vms-connector/notes/entities/queue-consumer.md
+incoming_updated: 2026-05-01
 ---
 
 # Softguard Integration Components

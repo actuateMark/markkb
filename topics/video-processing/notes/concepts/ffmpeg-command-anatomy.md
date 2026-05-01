@@ -6,6 +6,14 @@ tags: [ffmpeg, cli, transcode, recipes]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/ffmpeg-filtergraphs.md
+  - topics/video-processing/notes/concepts/ffmpeg-hardware-acceleration.md
+  - topics/video-processing/notes/concepts/ffmpeg-libav-libraries.md
+  - topics/video-processing/notes/entities/ffmpeg-entity.md
+  - topics/video-processing/notes/syntheses/actuate-clip-generation-flow.md
+incoming_updated: 2026-05-01
 ---
 
 # [[ffmpeg-entity|FFmpeg]] command anatomy

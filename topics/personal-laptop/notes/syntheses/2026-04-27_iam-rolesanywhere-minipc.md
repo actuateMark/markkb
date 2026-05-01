@@ -6,6 +6,12 @@ tags: [aws, iam, rolesanywhere, minipc, security, automation, dashboard-check]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
+incoming:
+  - topics/operational-health/notes/concepts/2026-04-27_dashboard-signal-cookbook.md
+  - topics/personal-laptop/notes/syntheses/2026-04-27_minipc-tooling-improvements.md
+  - topics/personal-laptop/notes/syntheses/2026-04-28_long-lived-credentials-on-headless-boxes.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+incoming_updated: 2026-05-01
 ---
 
 # IAM Roles Anywhere for the minipc — unattended AWS auth without static keys

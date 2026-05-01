@@ -6,6 +6,9 @@ tags: [watchman, on-premise, line-crossing, yolo, openvino, computer-vision, edg
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
+incoming:
+  - topics/watchman/notes/entities/actuate-watchman-internal.md
+incoming_updated: 2026-05-01
 ---
 
 # actuate-watchman
