@@ -56,14 +56,14 @@ The connector is not an island. Three product platforms ([[watchman/_summary|Wat
 - **Migration signal:** AutoPatrol is the biggest integration concern.
 
 ### D — Event-Driven
-- **[[watchman-repo|Watchman]]:** events from observer fleet. S3 ref pattern means frame clips might land in a different bucket (or S3 Express bucket) — [[watchman-repo|Watchman]] may need to know about it. **Audit frame-URL construction** in Watchman and the connector's clip-generation path.
+- **[[watchman-repo|Watchman]]:** events from observer fleet. S3 ref pattern means frame clips might land in a different bucket (or S3 Express bucket) — [[watchman-repo|Watchman]] may need to know about it. **Audit frame-URL construction** in [[watchman-repo|Watchman]] and the connector's clip-generation path.
 - **AutoPatrol:** frame pulls via puller fleet.
 - **CHM:** healthcheck has an NATS-subject of its own, or bypasses the bus.
 - **Alert integrations:** unchanged.
-- **Migration signal:** clip storage location change needs Watchman coordination.
+- **Migration signal:** clip storage location change needs [[watchman-repo|Watchman]] coordination.
 
 ### E — Hybrid Sidecar
-- **Watchman:** events from detection core fleet. Unchanged contract.
+- **[[watchman-repo|Watchman]]:** events from detection core fleet. Unchanged contract.
 - **AutoPatrol:** smart puller handles patrol; AutoPatrolConnectorFactory moves into smart puller — same pattern as A.
 - **CHM:** healthcheck runs in smart puller alongside FDMD. Potential synergy — motion detection primitives already useful to CHM for scene-change.
 - **Alert integrations:** alert-dispatch fleet change is transparent to integrations (same SQS FIFO queues).

@@ -10,7 +10,7 @@ author: kb-bot
 
 # RTSP Integration
 
-[[rtsp-deep-dive|RTSP]] (Real Time Streaming Protocol) is the **default and fallback integration type** in Actuate. Any camera or VMS that exposes an RTSP or HTTP video stream URL can be onboarded using this integration, making it the most widely deployed type. It is also the underlying frame ingestion method for many named VMS integrations (Eagle Eye, Digital Watchdog, Avigilon, Genetec, Salient, etc.) that use RTSP URLs obtained via their respective integration calls.
+[[rtsp-deep-dive|RTSP]] (Real Time Streaming Protocol) is the **default and fallback integration type** in Actuate. Any camera or VMS that exposes an [[rtsp-deep-dive|RTSP]] or HTTP video stream URL can be onboarded using this integration, making it the most widely deployed type. It is also the underlying frame ingestion method for many named VMS integrations (Eagle Eye, Digital Watchdog, Avigilon, Genetec, Salient, etc.) that use [[rtsp-deep-dive|RTSP]] URLs obtained via their respective integration calls.
 
 ## Components
 
@@ -18,9 +18,9 @@ author: kb-bot
 
 All defined in [[actuate-pullers]] under the `url/` directory. The [[rtsp-deep-dive|RTSP]] integration has the most puller variants of any integration:
 
-- **UrlFramePuller** (`url_puller.py`): The primary puller. Uses [[opencv-entity|OpenCV]] (`cv2.VideoCapture`) to decode RTSP/HTTP streams. Handles connection retries, FPS calibration (grabs sample frames to measure native FPS), broken stream detection and reconnection, and frame submission at the configured rate. Supports Digital Watchdog Nx proxy sleep delays.
+- **UrlFramePuller** (`url_puller.py`): The primary puller. Uses [[opencv-entity|OpenCV]] (`cv2.VideoCapture`) to decode [[rtsp-deep-dive|RTSP]]/HTTP streams. Handles connection retries, FPS calibration (grabs sample frames to measure native FPS), broken stream detection and reconnection, and frame submission at the configured rate. Supports Digital Watchdog Nx proxy sleep delays.
 
-- **AvUrlFramePuller** (`av_url_puller.py`): Alternative puller using the [[pyav-entity|PyAV]] library (`av.open`) instead of OpenCV. Reads PTS timestamps from video packets for more accurate frame timing. Supports configurable retry intervals with exponential backoff, TLS certificate verification bypass, and RTSP transport options (TCP/UDP). Includes a `read_time_from_packet` mode for VMS-synchronized timestamps.
+- **AvUrlFramePuller** (`av_url_puller.py`): Alternative puller using the [[pyav-entity|PyAV]] library (`av.open`) instead of [[opencv-entity|OpenCV]]. Reads PTS timestamps from video packets for more accurate frame timing. Supports configurable retry intervals with exponential backoff, TLS certificate verification bypass, and [[rtsp-deep-dive|RTSP]] transport options (TCP/UDP). Includes a `read_time_from_packet` mode for VMS-synchronized timestamps.
 
 - **GstUrlFramePuller** (`gst_url_puller.py`): GStreamer-based puller using `GStreamerInputPipeline`. Receives frames via callback rather than polling. Supports FPS downsampling at the [[gstreamer-entity|GStreamer]] level for reduced CPU usage.
 
@@ -34,7 +34,7 @@ All defined in [[actuate-pullers]] under the `url/` directory. The [[rtsp-deep-d
 
 ### RTSPConnectorConfig (config)
 
-Defined in [[actuate-config]] at `connector/rtsp/rtsp_config.py`. The `RTSPCustomerConfig` extends `CustomerConfig` with `protocol` (defaults to "rtsp"), optional `use_motion` with associated `motion_port`, `http_motion_port`, `smtp_port`, or `smtp_auth_port` for motion trigger sources, and `motion_interval`. Also supports `use_motion_sqs` for SQS-based motion signals. `RTSPCamera` adds `username`, `password`, and `base_url` fields.
+Defined in [[actuate-config]] at `connector/rtsp/rtsp_config.py`. The `RTSPCustomerConfig` extends `CustomerConfig` with `protocol` (defaults to "[[rtsp-deep-dive|rtsp]]"), optional `use_motion` with associated `motion_port`, `http_motion_port`, `smtp_port`, or `smtp_auth_port` for motion trigger sources, and `motion_interval`. Also supports `use_motion_sqs` for SQS-based motion signals. `RTSPCamera` adds `username`, `password`, and `base_url` fields.
 
 ## Auth Method
 
@@ -42,4 +42,4 @@ Camera-level credentials embedded in the [[rtsp-deep-dive|RTSP]] URL or passed a
 
 ## Architecture
 
-The [[vms-connector]] selects the appropriate URL puller variant based on the customer's configuration (motion mode, preferred decoder library, special customer overrides). [[rtsp-deep-dive|RTSP]] streams are consumed directly from cameras or NVRs. Alert delivery is handled by whatever monitoring sender is configured for the site. The RTSP integration has no alarm sender or integration calls component of its own.
+The [[vms-connector]] selects the appropriate URL puller variant based on the customer's configuration (motion mode, preferred decoder library, special customer overrides). [[rtsp-deep-dive|RTSP]] streams are consumed directly from cameras or NVRs. Alert delivery is handled by whatever monitoring sender is configured for the site. The [[rtsp-deep-dive|RTSP]] integration has no alarm sender or integration calls component of its own.

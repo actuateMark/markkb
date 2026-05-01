@@ -12,7 +12,7 @@ author: kb-bot
 
 ## Overview
 
-Motion+ is a detection product tier that combines FDMD motion detection with the intruder YOLO model, specifically designed for clip-based camera connections where frames arrive in sporadic bursts. It addresses the fundamental challenge that approximately 32,000 cameras on the platform run on clip-based connections (SMTP, AILink, Sentinel) where frames arrive minutes apart, breaking FDMD's temporal assumptions designed for continuous RTSP streams.
+Motion+ is a detection product tier that combines FDMD motion detection with the intruder YOLO model, specifically designed for clip-based camera connections where frames arrive in sporadic bursts. It addresses the fundamental challenge that approximately 32,000 cameras on the platform run on clip-based connections (SMTP, AILink, [[sentinel-components|Sentinel]]) where frames arrive minutes apart, breaking FDMD's temporal assumptions designed for continuous [[rtsp-deep-dive|RTSP]] streams.
 
 ## How It Works
 
@@ -36,7 +36,7 @@ http://intruder-384h-512w-svc.ds-model-prod.svc.cluster.local:8080/infer
 
 ## Pipeline Position
 
-Frames enter through clip-based connectors (SMTP, AILink, Sentinel) in the [[vms-connector]]. The [[data-science/_summary|Data Science Methodology]] processes them with modified behavior: FDMD may be skipped or use cumulative mode, YOLO inference runs normally, but the stationary filter and IOU filter are bypassed. The sliding window, ignore zones, and confidence filters still apply. Alerts follow the standard path to S3 and SQS.
+Frames enter through clip-based connectors (SMTP, AILink, [[sentinel-components|Sentinel]]) in the [[vms-connector]]. The [[data-science/_summary|Data Science Methodology]] processes them with modified behavior: FDMD may be skipped or use cumulative mode, YOLO inference runs normally, but the stationary filter and IOU filter are bypassed. The sliding window, [[ignore-zones|ignore zones]], and confidence filters still apply. Alerts follow the standard path to S3 and SQS.
 
 ## Observers and Products
 
@@ -54,5 +54,5 @@ Motion+ is **active in production** serving the clip-based camera fleet. Ongoing
 ## Related Topics
 
 - [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
-- [[data-science/_summary|Data Science Methodology]] -- motion detection challenge and pipeline architecture
+- [[data-science/_summary|Data Science Methodology]] -- [[motion-detection-challenge|motion detection challenge]] and [[pipeline-architecture|pipeline architecture]]
 - [[models/intruder-v5]] -- the underlying intruder model

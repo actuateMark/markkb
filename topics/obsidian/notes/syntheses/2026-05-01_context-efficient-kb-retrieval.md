@@ -11,7 +11,7 @@ incoming:
 incoming_updated: 2026-05-01
 ---
 
-The KB is meant to be queried by LLMs without burning context. Every time a skill walks the vault recursively (`grep -r` over 1050 files, reading every frontmatter), the conversation pays in tokens. The Obsidian CLI plus a richer link/tag graph (post-2026-05-01 [[2026-04-30_kb-skill-cli-retrofit|retrofit]] + relink pass) lets us answer the same questions in 1-3 structured calls. This synthesis captures the canonical retrieval recipe and the design choices that support it.
+The KB is meant to be queried by LLMs without burning context. Every time a skill walks the vault recursively (`grep -r` over 1050 files, reading every frontmatter), the conversation pays in tokens. The [[obsidian-cli|Obsidian CLI]] plus a richer link/tag graph (post-2026-05-01 [[2026-04-30_kb-skill-cli-retrofit|retrofit]] + relink pass) lets us answer the same questions in 1-3 structured calls. This synthesis captures the canonical retrieval recipe and the design choices that support it.
 
 ## The retrieval cost ladder
 
@@ -60,7 +60,7 @@ For "What's stale / broken in the KB?": single call, no traversal:
 
 ## Why the link graph matters
 
-Tier 3 (backlinks) only works when notes actually link to each other. Before the 2026-05-01 relink pass, prose mentioning "Evalink" rarely linked to `[[evalink-components]]`, so `obsidian backlinks file=evalink-components` returned almost nothing. After the pass:
+Tier 3 (backlinks) only works when notes actually link to each other. Before the 2026-05-01 relink pass, prose mentioning "[[evalink-components|Evalink]]" rarely linked to `[[evalink-components]]`, so `obsidian backlinks file=evalink-components` returned almost nothing. After the pass:
 
 | Anchor | Backlinks before | Backlinks after |
 |---|---:|---:|
@@ -99,7 +99,7 @@ These are baked into the KB conventions and the [[skill-kb-relink|kb-relink driv
 
 2. **Topic summaries linked via path syntax** — `[[admin-api/_summary|Actuate Admin API]]` instead of bare `[[admin-api/_summary|Actuate Admin API]]`. The bare form was unresolved (no `admin-api.md` exists); path form resolves and is indexed by Obsidian.
 
-3. **Aliases curated in `aliases.yaml`** — adds the prose forms ("Evalink", "KVS", "Watchman") that don't slug-derive from the anchor's filename. Lets the relinker fill in cross-topic references that would otherwise stay unlinked.
+3. **Aliases curated in `aliases.yaml`** — adds the prose forms ("[[evalink-components|Evalink]]", "[[kvs-components|KVS]]", "[[watchman-repo|Watchman]]") that don't slug-derive from the anchor's filename. Lets the relinker fill in cross-topic references that would otherwise stay unlinked.
 
 4. **Tags follow `<topic>` or `<service>` form** — `#vms-connector`, `#new-relic`, `#evalink`. Hyphenated, lowercase. Makes `obsidian tag name=#X` predictable.
 

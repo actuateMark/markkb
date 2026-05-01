@@ -10,7 +10,7 @@ author: kb-bot
 
 # Bold Integration
 
-[[bold-components|Bold]] (Manitou) is a professional alarm monitoring platform. Actuate integrates with Bold as an alert destination, sending AI-generated detection events over a **raw TCP socket** using the SIA protocol with XML-formatted packets.
+[[bold-components|Bold]] (Manitou) is a professional alarm monitoring platform. Actuate integrates with [[bold-components|Bold]] as an alert destination, sending AI-generated detection events over a **raw TCP socket** using the SIA protocol with XML-formatted packets.
 
 ## Components
 
@@ -20,7 +20,7 @@ Defined in [[actuate-alarm-senders]] at `bold/bold_alert_sender.py`. Extends `At
 
 ### BoldSocket
 
-A helper class in the same file that handles the low-level TCP communication with the Bold Manitou receiver. Key characteristics:
+A helper class in the same file that handles the low-level TCP communication with the [[bold-components|Bold]] Manitou receiver. Key characteristics:
 
 - **Protocol:** SIA-format XML packets wrapped with STX (`\x02`) and ETX (`\x03`) framing characters.
 - **Connection:** Opens a new TCP socket connection for each alert, sends the packet, waits for acknowledgment, then disconnects.
@@ -28,19 +28,19 @@ A helper class in the same file that handles the low-level TCP communication wit
 - **Heartbeat support:** `sendHeartBeat()` can send keepalive packets.
 - **Image support:** Has methods for base64-encoding images (`processImage`, `addBinary`, `addData`) though image attachment is currently commented out in `sendBoldAlert` -- only the URL is sent.
 
-Config fields: `recipients[].server` (IP), `recipients[].port`, `recipients[].id` (Bold account ID), `recipients[].alarmtype` (SIA event code, default `RP`).
+Config fields: `recipients[].server` (IP), `recipients[].port`, `recipients[].id` ([[bold-components|Bold]] account ID), `recipients[].alarmtype` (SIA event code, default `RP`).
 
 ## Auth Method
 
-No API authentication. [[bold-components|Bold]] uses the `ID` field in the XML packet to identify the monitored account/site. Network-level access to the Bold receiver's TCP port is the only requirement.
+No API authentication. [[bold-components|Bold]] uses the `ID` field in the XML packet to identify the monitored account/site. Network-level access to the [[bold-components|Bold]] receiver's TCP port is the only requirement.
 
 ## Alert Delivery
 
-Unlike most monitoring integrations that use the SQS event-listener pattern, [[bold-components|Bold]] alerts go **directly over TCP** from the [[vms-connector]] process. The `BoldSocket` opens a connection, sends the XML packet, receives the response, and closes. This means alert delivery is synchronous within the `MultiAlertSender` thread pool -- if the Bold server is slow or unreachable, it blocks the sender thread for that camera.
+Unlike most monitoring integrations that use the SQS event-listener pattern, [[bold-components|Bold]] alerts go **directly over TCP** from the [[vms-connector]] process. The `BoldSocket` opens a connection, sends the XML packet, receives the response, and closes. This means alert delivery is synchronous within the `MultiAlertSender` thread pool -- if the [[bold-components|Bold]] server is slow or unreachable, it blocks the sender thread for that camera.
 
 ## Architecture
 
-The alarm sender factory in [[actuate-alarm-senders]] instantiates `BoldAlertSender` when a [[bold-components|Bold]] alert config is present. The sender receives `ses_client`, `s3_dao`, and `enriched_frames_dao` dependencies (inherited from `AttachmentAlertSender`), though frame attachment is not currently active. There are no integration calls or puller components -- Bold is a send-only monitoring integration.
+The alarm sender factory in [[actuate-alarm-senders]] instantiates `BoldAlertSender` when a [[bold-components|Bold]] alert config is present. The sender receives `ses_client`, `s3_dao`, and `enriched_frames_dao` dependencies (inherited from `AttachmentAlertSender`), though frame attachment is not currently active. There are no integration calls or puller components -- [[bold-components|Bold]] is a send-only monitoring integration.
 
 ## Relationship to Other Components
 

@@ -16,10 +16,10 @@ Coverage scope (see [[reading-list]] for alternatives + peripheral tools):
 
 - **Tools / libraries:** [[ffmpeg-entity|FFmpeg]], [[gstreamer-entity|GStreamer]], [[opencv-entity|OpenCV]], [[pyav-entity|PyAV]], [[imageio-entity|imageio]]
 - **AWS managed services:** [[aws-kvs-entity|Kinesis Video Streams]], Elemental [[aws-mediaconvert-entity|MediaConvert]] / [[aws-medialive-entity|MediaLive]] / [[aws-mediapackage-entity|MediaPackage]], [[aws-elemental-live-entity|Elemental Live]] (on-prem), [[aws-rekognition-video-entity|Rekognition Video]], IVS
-- **Codecs:** [[h264-deep-dive|H.264]], [[h265-hevc-deep-dive|H.265]] / HEVC, [[av1-vp9-future|AV1]], VP9, [[mjpeg-and-still-image-formats|MJPEG]]
-- **Containers:** MP4, MKV, MPEG-TS, fMP4, WebM
-- **Transport protocols:** [[rtsp-deep-dive|RTSP]], [[rtmp-and-srt|RTMP]], HLS, [[hls-and-dash|DASH]], [[webrtc-deep-dive|WebRTC]], SRT, [[mpeg-ts-over-udp|MPEG-TS over UDP]]
-- **Hardware acceleration:** NVENC / NVDEC, [[nvidia-deepstream|NVIDIA DeepStream]], QuickSync, VAAPI, AMF, [[hardware-accelerated-codecs|VideoToolbox]]
+- **Codecs:** [[h264-deep-dive|H.264]], [[h265-hevc-deep-dive|H.265]] / [[h265-hevc-deep-dive|HEVC]], [[av1-vp9-future|AV1]], [[av1-vp9-future|VP9]], [[mjpeg-and-still-image-formats|MJPEG]]
+- **Containers:** MP4, MKV, [[mpeg-ts-over-udp|MPEG-TS]], fMP4, WebM
+- **Transport protocols:** [[rtsp-deep-dive|RTSP]], [[rtmp-and-srt|RTMP]], [[hls-and-dash|HLS]], [[hls-and-dash|DASH]], [[webrtc-deep-dive|WebRTC]], [[rtmp-and-srt|SRT]], [[mpeg-ts-over-udp|MPEG-TS over UDP]]
+- **Hardware acceleration:** [[hardware-accelerated-codecs|NVENC]] / [[hardware-accelerated-codecs|NVDEC]], [[nvidia-deepstream|NVIDIA DeepStream]], [[hardware-accelerated-codecs|QuickSync]], [[hardware-accelerated-codecs|VAAPI]], AMF, [[hardware-accelerated-codecs|VideoToolbox]]
 - **Out of scope:** non-AWS clouds (Azure Media Services, GCP Video Intelligence) -- listed in reading list only for awareness
 
 ## Why this topic exists
@@ -87,7 +87,7 @@ video-processing/
 3. **Transport**: the latency floor for each protocol we support, and which integration uses which.
 4. **AWS managed**: which managed service would replace which piece of homegrown code, and what's the cost/lock-in tradeoff?
 5. **Hardware accel**: do our EKS nodes have GPU encode/decode? Are we using it? Should we?
-6. **Strategic**: can we get to <500ms end-to-end live preview? Is [[webrtc-deep-dive|WebRTC]] the lever? Is [[kvs-components|KVS]] WebRTC the lever?
+6. **Strategic**: can we get to <500ms end-to-end live preview? Is [[webrtc-deep-dive|WebRTC]] the lever? Is [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] the lever?
 
 ## Status
 

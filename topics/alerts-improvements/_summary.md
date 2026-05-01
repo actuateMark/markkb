@@ -31,6 +31,6 @@ Improving the alerting pipeline -- [[alert-muting|alert muting]], [[immix-dispat
 - **AIM-11** -- Camera/Alert Grouping
 
 ### Related Work in ED Project
-Alert muting is also tracked in ED:
-- **ED-12** (Jessica Bae, In Progress) -- Alert Muting (parent)
+[[alert-muting|Alert muting]] is also tracked in ED:
+- **ED-12** ([[jessica-bae|Jessica Bae]], In Progress) -- [[alert-muting|Alert Muting]] (parent)
 - **ED-27/28/30/31** -- Implementation subtasks (all unassigned)

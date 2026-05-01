@@ -175,5 +175,5 @@ A healthy patrol with deferred alerts should produce this sequence for EACH dete
 - [[s3-frame-fallback]] — frame cache eviction fix for deferred alerts
 - [[sliding-window-mechanics]] — window lifecycle and threshold gating
 - [[actuate-alarm-senders]] — sender implementations
-- [[autopatrol-server]] — summary analysis and PATROL_SUMMARY raise
+- [[knowledgebase/topics/autopatrol/notes/entities/autopatrol-server]] — summary analysis and PATROL_SUMMARY raise
 - [[2026-04-16_deferred-alert-race-condition]] — investigation of lost person alert

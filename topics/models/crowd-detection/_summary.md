@@ -43,7 +43,7 @@ In [[actuate-libraries|actuate-config]]'s `StreamDeploymentConfig`, if `crowd` a
 
 ## Pipeline Position
 
-Crowd detection sits in the post-processing pipeline of the [[data-science/_summary|Data Science Methodology]], executed by `CrowdViolationPresentStep`. It runs after the standard filters (confidence, ignore zones, IOU, stationary) and before the sliding window. The step operates on the already-filtered `raw_model_response`, examining all pairs of person detections for proximity violations. Crowd detections are appended to the model response, then processed by the sliding window like any other label.
+Crowd detection sits in the post-processing pipeline of the [[data-science/_summary|Data Science Methodology]], executed by `CrowdViolationPresentStep`. It runs after the standard filters (confidence, [[ignore-zones|ignore zones]], IOU, stationary) and before the sliding window. The step operates on the already-filtered `raw_model_response`, examining all pairs of person detections for proximity violations. Crowd detections are appended to the model response, then processed by the sliding window like any other label.
 
 ## Products and Observers
 
@@ -56,6 +56,6 @@ Crowd detection is **active in production**. It uses the same underlying intrude
 ## Related Topics
 
 - [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
-- [[data-science/_summary|Data Science Methodology]] -- detection pipeline
+- [[data-science/_summary|Data Science Methodology]] -- [[detection-pipeline|detection pipeline]]
 - [[models/intruder-v5]] -- the underlying person detection model
 - [[models/fall-detection]] -- another derived product using intruder model output

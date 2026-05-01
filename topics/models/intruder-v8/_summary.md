@@ -12,7 +12,7 @@ author: kb-bot
 
 ## Overview
 
-The intruder v8 model (`int07-actuate003-v8`) is the approved next-generation intruder detection model, built on the YOLOv8 architecture. It has been validated through the DS team's full multi-level evaluation framework and is approved to replace the current production [[models/intruder-v5|intruder v5 model]]. As of April 2026, the rollout epic (AI-180) is defined but all 13 sub-tasks remain in "To Do" status.
+The [[intruder-v8-model|intruder v8 model]] (`int07-actuate003-v8`) is the approved next-generation intruder detection model, built on the YOLOv8 architecture. It has been validated through the DS team's full multi-level evaluation framework and is approved to replace the current production [[models/intruder-v5|intruder v5 model]]. As of April 2026, the rollout epic (AI-180) is defined but all 13 sub-tasks remain in "To Do" status.
 
 ## Detection Classes
 
@@ -41,7 +41,7 @@ The v8 model was also evaluated for UK/EU cameras alongside the bespoke `euromod
 
 ## Rollout Plan (AI-180)
 
-The rollout contains 13 sub-tasks: deploy v8 endpoint, build container, register model, create v8-calibrated sensitivity settings, pilot site selection, model-aware sensitivity, bulk model swap tooling, decouple raw metrics, and model change audit trail. **Vlad (Uladzimir Sapeshka)** owns v8 performance evaluation; **Zack Schmidt** owns the broader YAM epic.
+The rollout contains 13 sub-tasks: deploy v8 endpoint, build container, register model, create v8-calibrated sensitivity settings, pilot site selection, model-aware sensitivity, bulk model swap tooling, decouple raw metrics, and model change audit trail. **Vlad (Uladzimir Sapeshka)** owns v8 performance evaluation; **[[zack-schmidt|Zack Schmidt]]** owns the broader YAM epic.
 
 ## YAM Re-evaluation (AI-211)
 
@@ -59,6 +59,6 @@ The v8 model will slot into the same [[data-science/_summary|Data Science Method
 ## Related Topics
 
 - [[ai-models/_summary|AI Models & Evaluation]] -- model catalog and evaluation methodology
-- [[data-science/_summary|Data Science Methodology]] -- detection pipeline and training infrastructure
+- [[data-science/_summary|Data Science Methodology]] -- [[detection-pipeline|detection pipeline]] and training infrastructure
 - [[models/intruder-v5]] -- the current production model being replaced
 - [[models/weapon-v8]] -- sibling v8 model for weapon detection

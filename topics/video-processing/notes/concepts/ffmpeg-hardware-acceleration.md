@@ -76,13 +76,13 @@ Actuate does **CPU inference** (numpy egress to [[opencv-entity|OpenCV]] / YOLO 
 |--------|----------|-----------------|---------------|---------------|
 | **NVIDIA [[hardware-accelerated-codecs|NVDEC]]/[[hardware-accelerated-codecs|NVENC]]** | Any modern NVIDIA GPU (T4/L4/A10/RTX/...) | `cuda` | `h264_cuvid`, `hevc_cuvid`, `mjpeg_cuvid`, `vp9_cuvid`, `av1_cuvid` | `h264_nvenc`, `hevc_nvenc`, `av1_nvenc` |
 | **Intel [[hardware-accelerated-codecs|QuickSync]]** | Intel iGPU + Arc | `qsv` | `h264_qsv`, `hevc_qsv`, `av1_qsv` | `h264_qsv`, `hevc_qsv`, `av1_qsv` |
-| **VAAPI** | AMD/Intel on Linux (and others) | `vaapi` | `h264_vaapi`, `hevc_vaapi` | `h264_vaapi`, `hevc_vaapi` |
+| **[[hardware-accelerated-codecs|VAAPI]]** | AMD/Intel on Linux (and others) | `vaapi` | `h264_vaapi`, `hevc_vaapi` | `h264_vaapi`, `hevc_vaapi` |
 | **AMD AMF** | AMD GPU on Windows / Linux | `amf` | (decoders limited) | `h264_amf`, `hevc_amf`, `av1_amf` |
 | **Apple [[hardware-accelerated-codecs|VideoToolbox]]** | macOS / iOS | `videotoolbox` | `h264_videotoolbox`, `hevc_videotoolbox` | `h264_videotoolbox`, `hevc_videotoolbox` |
 | **D3D11VA / DXVA2** | Windows generic | `d3d11va`, `dxva2` | dispatched via `h264` etc. | (decode-only) |
 | **Vulkan Video** | Recent NVIDIA/AMD/Intel (frontier) | `vulkan` | nascent | nascent |
 
-[[hardware-accelerated-codecs|NVENC]]/NVDEC and QSV are the production options on AWS. VAAPI mostly comes up with on-prem AMD/Intel boxes. [[hardware-accelerated-codecs|VideoToolbox]] is for developer laptops.
+[[hardware-accelerated-codecs|NVENC]]/[[hardware-accelerated-codecs|NVDEC]] and QSV are the production options on AWS. [[hardware-accelerated-codecs|VAAPI]] mostly comes up with on-prem AMD/Intel boxes. [[hardware-accelerated-codecs|VideoToolbox]] is for developer laptops.
 
 ## Actuate's hwaccel configuration
 

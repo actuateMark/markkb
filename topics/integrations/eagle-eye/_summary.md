@@ -31,13 +31,13 @@ Defined in [[actuate-integration-calls]] at `eagle_eye/eagle_eye_calls.py`. Modu
 
 **v2:**
 - `get_token_v2()` -- Two-step authenticate + authorize flow using API key header, returns auth_key cookie and brand subdomain
-- `get_url()` -- Builds RTSP stream URL via `/api/v2/media/cameras/{id}/streams` (with special [[mjpeg-and-still-image-formats|MJPEG]] fallback for Acadian-Monitoring)
+- `get_url()` -- Builds [[rtsp-deep-dive|RTSP]] stream URL via `/api/v2/media/cameras/{id}/streams` (with special [[mjpeg-and-still-image-formats|MJPEG]] fallback for Acadian-Monitoring)
 - `get_camera_list_v2()` -- Device list endpoint
 
 **v3 (current):**
 - `get_token()` -- OAuth2 refresh token grant via `auth.eagleeyenetworks.com`, base64-encoded app_name:api_key
 - `get_base_url()` -- Discovers customer-specific API hostname via `/api/v3.0/clientSettings`
-- `get_url_v3()` -- Retrieves RTSP URL from `/api/v3.0/feeds` endpoint, supports proxy token fallback for multi-account setups
+- `get_url_v3()` -- Retrieves [[rtsp-deep-dive|RTSP]] URL from `/api/v3.0/feeds` endpoint, supports proxy token fallback for multi-account setups
 - `get_camera_list()` -- Paginated camera list via `/api/v3.0/cameras`
 - `camera_exists_v3()` -- Camera existence check with false-negative safety (returns True on errors)
 - `get_proxy_tokens()` / `get_users()` -- Reseller proxy token generation for multi-account management

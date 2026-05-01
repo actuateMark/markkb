@@ -51,15 +51,15 @@ Where AWS managed video services could replace homegrown code in our connector /
 
 | Option | Latency | Per-stream cost | Lock-in | Maintenance burden |
 |---|---|---|---|---|
-| **[[kvs-components|KVS]] WebRTC** | 1-3s | per-minute streaming + per-MB out | medium | low (managed) |
+| **[[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]]** | 1-3s | per-minute streaming + per-MB out | medium | low (managed) |
 | **IVS Real-Time** | 1-3s | per-participant-minute | medium | low (managed) |
 | **Self-hosted SFU (Janus / LiveKit / Pion)** | 1-3s | EC2 + bandwidth only | low | high (we own the SFU) |
 | **Re-stream [[rtsp-deep-dive|RTSP]] via TURN** | 3-8s | bandwidth only | low | medium |
 | **[[hls-and-dash|HLS]]** | 6-30s | S3 + CloudFront | none | low | -- but **too slow for the dispatcher use case** ([[hls-and-dash]]) |
 
-**The right move.** This is the **most strategically interesting** item on the list. Live preview is a feature customers actively ask for. KVS WebRTC is the lowest-friction managed path; the producer SDK is C++/Java/[[gstreamer-entity|GStreamer]] (the Python `boto3` client is *not* a producer client -- see reading-list note). That means **bringing KVS WebRTC live-preview in would be a net-new component, not a swap-out of existing code.**
+**The right move.** This is the **most strategically interesting** item on the list. Live preview is a feature customers actively ask for. [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] is the lowest-friction managed path; the producer SDK is C++/Java/[[gstreamer-entity|GStreamer]] (the Python `boto3` client is *not* a producer client -- see reading-list note). That means **bringing [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] live-preview in would be a net-new component, not a swap-out of existing code.**
 
-**Investigation deliverable.** A spike with a single test camera: route its [[rtsp-deep-dive|RTSP]] through the existing [[pyav-entity|PyAV]] decoder, then re-publish to a KVS WebRTC signalling channel via the [[gstreamer-entity|GStreamer]] KVS Producer plugin. Measure end-to-end latency to a Chrome dispatcher. If <2s, consider productionizing.
+**Investigation deliverable.** A spike with a single test camera: route its [[rtsp-deep-dive|RTSP]] through the existing [[pyav-entity|PyAV]] decoder, then re-publish to a [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] signalling channel via the [[gstreamer-entity|GStreamer]] [[kvs-components|KVS]] Producer plugin. Measure end-to-end latency to a Chrome dispatcher. If <2s, consider productionizing.
 
 ### C. Cross-fleet frame transport -- motivated by [[fleet-architecture/_summary]] -- KVS WebRTC viable?
 
@@ -98,15 +98,15 @@ then `cv2.imdecode` the JPEG buffer back to numpy at line 119. **JPEG encode in 
 1. **[[gstreamer-entity|GStreamer]] caps fix.** Terminate the pipeline at `appsink` with `caps="video/x-raw,format=BGR"` and skip `jpegenc` entirely. The `appsink` buffer is then a raw BGR plane; `np.frombuffer + reshape` produces the numpy array directly. No JPEG round-trip. Lowest-effort fix, stays in [[gstreamer-entity|GStreamer]].
 2. **Move KVS to PyAV-on-MKV.** KVS streams are MKV containing [[h264-deep-dive|H.264]] / [[h265-hevc-deep-dive|H.265]]. [[pyav-entity|PyAV]] can demux MKV byte streams via a custom `AvIOContext` reading from the boto3 `kinesis-video-media` GetMedia stream. This unifies the KVS path with the [[rtsp-deep-dive|RTSP]] path -- same decoder substrate, same hardware-accel logic, same fMP4-style edge-case handling. Higher effort, but eliminates the [[gstreamer-entity|GStreamer]] dependency for KVS entirely.
 
-**The right move.** Option 1 first (low-risk, weeks not months). Option 2 as a follow-on if we want to deprecate GStreamer for KVS.
+**The right move.** Option 1 first (low-risk, weeks not months). Option 2 as a follow-on if we want to deprecate [[gstreamer-entity|GStreamer]] for KVS.
 
 **Investigation deliverable.** A spike: change `kvs_ingestor.py` to terminate at raw BGR `appsink`. Measure CPU before/after on a representative KVS-heavy customer. Expected savings: 10-25% per-stream CPU on the KVS path. See [[gstreamer-entity]], [[gstreamer-pipeline-model]], [[pyav-entity]], [[aws-kvs-entity]].
 
 ### F. Hardware-accel substrate -- EC2 G5/G6/L4 + NVIDIA Container Toolkit -- do we use NVENC/NVDEC today?
 
-**State today.** Hardware-acceleration **detection** is implemented in `actuate-libraries/actuate-pullers/src/actuate_pullers/url/av_url_puller.py:527-607`. The detection runs on puller init: `nvidia-smi -L`, `ffmpeg -hide_banner -hwaccels`, `lspci`, each with `timeout=5`. Priority: macOS [[hardware-accelerated-codecs|VideoToolbox]] → NVIDIA CUDA → Intel VAAPI → AMD AMF.
+**State today.** Hardware-acceleration **detection** is implemented in `actuate-libraries/actuate-pullers/src/actuate_pullers/url/av_url_puller.py:527-607`. The detection runs on puller init: `nvidia-smi -L`, `ffmpeg -hide_banner -hwaccels`, `lspci`, each with `timeout=5`. Priority: macOS [[hardware-accelerated-codecs|VideoToolbox]] → NVIDIA CUDA → Intel [[hardware-accelerated-codecs|VAAPI]] → AMD AMF.
 
-The HW decoder table at `av_url_puller.py:24-77` enumerates the codec × hwaccel matrix. The per-hwaccel options dict at line 412-494 sets `hwaccel=<type>`, `hwaccel_device=/dev/dri/renderD128` for VAAPI, etc. So the code **can** drive [[hardware-accelerated-codecs|NVDEC]].
+The HW decoder table at `av_url_puller.py:24-77` enumerates the codec × hwaccel matrix. The per-hwaccel options dict at line 412-494 sets `hwaccel=<type>`, `hwaccel_device=/dev/dri/renderD128` for [[hardware-accelerated-codecs|VAAPI]], etc. So the code **can** drive [[hardware-accelerated-codecs|NVDEC]].
 
 **But.** `hwaccel_output_format` is **deliberately not set** at line 454-456, 432-434. The comment says GPU-memory frames break `frame.to_ndarray()`. This means even when we hardware-decode, frames round-trip CPU memory. We get the *decode* speedup but not the zero-copy benefit; for many workloads the CPU copy is the dominant cost.
 
@@ -122,7 +122,7 @@ The HW decoder table at `av_url_puller.py:24-77` enumerates the codec × hwaccel
 **Investigation deliverable.** Three concrete checks:
 1. SSH to a production connector pod, run `nvidia-smi`, check for an actual GPU.
 2. Read the connector EKS node-group Terraform in `ds-terraform-eks-v2/stages/prod/*` to see what instance families are in use.
-3. Profile a single high-bitrate [[h264-deep-dive|H.264]] [[rtsp-deep-dive|RTSP]] stream through the connector with `py-spy` on a representative pod. Confirm whether `_decode_packet` is showing CPU time (software decode) or whether NVDEC kernels are firing.
+3. Profile a single high-bitrate [[h264-deep-dive|H.264]] [[rtsp-deep-dive|RTSP]] stream through the connector with `py-spy` on a representative pod. Confirm whether `_decode_packet` is showing CPU time (software decode) or whether [[hardware-accelerated-codecs|NVDEC]] kernels are firing.
 
 ## Prioritized "next investigations" list
 

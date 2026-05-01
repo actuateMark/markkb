@@ -10,7 +10,7 @@ author: kb-bot
 
 # Sentinel Integration
 
-[[sentinel-components|Sentinel]] is a professional alarm monitoring platform. Actuate integrates with Sentinel as an alert destination, delivering AI detection events from the video analytics pipeline into the Sentinel monitoring workflow.
+[[sentinel-components|Sentinel]] is a professional alarm monitoring platform. Actuate integrates with [[sentinel-components|Sentinel]] as an alert destination, delivering AI detection events from the video analytics pipeline into the [[sentinel-components|Sentinel]] monitoring workflow.
 
 ## Components
 
@@ -20,7 +20,7 @@ Defined in [[actuate-alarm-senders]] at `sentinel/sentinel_alert_sender.py`. Ext
 
 The alert payload uses a **pipe-delimited format**: `EventType=Actuate|Event={event}|CameraName={name}|Text={text}`. The `Event` field is mapped from Actuate detection labels via `label_to_event()`, which translates labels into Sentinel-specific event types:
 
-| Actuate Label | Sentinel Event |
+| Actuate Label | [[sentinel-components|Sentinel]] Event |
 |---|---|
 | intruder, bike, vehicle | Intruder |
 | gun, pistol | Gun |
@@ -45,7 +45,7 @@ No explicit API authentication. Alert delivery relies on network-level access to
 
 ## Architecture
 
-[[sentinel-components|Sentinel]] alerts flow through the standard [[actuate-alarm-senders]] pipeline: the `MultiAlertSender` calls `SentinelAlertSender.send()`, which enqueues to an SQS FIFO queue. The event-listener service dequeues, retrieves and annotates frames from S3/DynamoDB, and delivers the formatted alert with image attachments to the Sentinel monitoring platform. The sender is instantiated by the alarm sender factory in [[actuate-alarm-senders]] when a Sentinel alert config is present. There are no integration calls or puller components for Sentinel -- it is a send-only monitoring integration.
+[[sentinel-components|Sentinel]] alerts flow through the standard [[actuate-alarm-senders]] pipeline: the `MultiAlertSender` calls `SentinelAlertSender.send()`, which enqueues to an SQS FIFO queue. The event-listener service dequeues, retrieves and annotates frames from S3/DynamoDB, and delivers the formatted alert with image attachments to the [[sentinel-components|Sentinel]] monitoring platform. The sender is instantiated by the alarm sender factory in [[actuate-alarm-senders]] when a [[sentinel-components|Sentinel]] alert config is present. There are no integration calls or puller components for [[sentinel-components|Sentinel]] -- it is a send-only monitoring integration.
 
 ## Relationship to Other Components
 

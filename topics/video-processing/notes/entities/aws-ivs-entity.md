@@ -105,4 +105,4 @@ The honest "could it replace homegrown live-preview if/when we build that?" disc
 
 **Verdict (subjective):** **plausible to evaluate, not obviously the right answer.** [[aws-kvs-entity]] [[webrtc-deep-dive|WebRTC]] actually fits Actuate's shape better — it's already AWS-native, we're already in [[kvs-components|KVS]], and [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] is priced per-channel-minute rather than per-participant. IVS makes more sense for a customer-public live-preview product than for an internal dispatcher live-preview tool.
 
-The real comparison to do at evaluate-time is **[[kvs-components|KVS]] WebRTC vs IVS Real-Time vs self-hosted Pion/LiveKit** — see [[aws-video-services-decision-matrix]] and [[fleet-architecture/_summary]] for the substrate question.
+The real comparison to do at evaluate-time is **[[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] vs IVS Real-Time vs self-hosted Pion/LiveKit** — see [[aws-video-services-decision-matrix]] and [[fleet-architecture/_summary]] for the substrate question.

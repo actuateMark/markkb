@@ -34,7 +34,7 @@ Automated reports currently landing here:
 | `overnight-check-followup` | Ad-hoc (same day, ~11:00 EDT) | Manual KB update after verification |
 
 Recent incidents with follow-ups:
-- [[2026-04-17_overnight-check-followup|2026-04-17 Follow-Up]] — Evalink deviceId validation, EKS CPU pressure, VMS relay recovery
+- [[2026-04-17_overnight-check-followup|2026-04-17 Follow-Up]] — [[evalink-components|Evalink]] deviceId validation, EKS CPU pressure, VMS relay recovery
 
 ### `notes/concepts/`
 

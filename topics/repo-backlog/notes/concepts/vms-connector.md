@@ -122,8 +122,8 @@ _(none)_
 | 1652 | [[Cleanup] Fix bare except: blocks in [[rtsp-deep-dive|RTSP]] puller code](https://github.com/aegissystems/vms-connector/issues/1652) | — | — | 15d | 15d |
 | 1651 | [[Enhancement] [[rtsp-deep-dive|RTSP]]: Connection health scoring and graceful degradation](https://github.com/aegissystems/vms-connector/issues/1651) | — | — | 15d | 15d |
 | 1650 | [[Enhancement] [[rtsp-deep-dive|RTSP]]: Transport fallback chain (TCP → UDP → interleaved)](https://github.com/aegissystems/vms-connector/issues/1650) | — | — | 15d | 15d |
-| 1649 | [[Enhancement] RTSP: Error code classification (401/403/453/461)](https://github.com/aegissystems/vms-connector/issues/1649) | — | — | 15d | 15d |
-| 1648 | [[Enhancement] RTSP: Exponential backoff with jitter on reconnection](https://github.com/aegissystems/vms-connector/issues/1648) | — | — | 15d | 15d |
+| 1649 | [[Enhancement] [[rtsp-deep-dive|RTSP]]: Error code classification (401/403/453/461)](https://github.com/aegissystems/vms-connector/issues/1649) | — | — | 15d | 15d |
+| 1648 | [[Enhancement] [[rtsp-deep-dive|RTSP]]: Exponential backoff with jitter on reconnection](https://github.com/aegissystems/vms-connector/issues/1648) | — | — | 15d | 15d |
 | 1647 | [[BUG] [[hikcentral-components|HikCentral]] healthcheck NoneType when API response data is null](https://github.com/aegissystems/vms-connector/issues/1647) | — | — | 15d | 15d |
 | 1646 | [[BUG] Exacq healthcheck KeyError 'Cameras' when API response format differs](https://github.com/aegissystems/vms-connector/issues/1646) | — | — | 15d | 15d |
 | 1645 | [[BUG] DW healthcheck NoneType error when config fields missing](https://github.com/aegissystems/vms-connector/issues/1645) | — | — | 15d | 15d |

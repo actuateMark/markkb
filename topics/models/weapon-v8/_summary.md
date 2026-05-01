@@ -12,7 +12,7 @@ author: kb-bot
 
 ## Overview
 
-The weapon v8 model (`weapon-v8-XL-736`) is a YOLOv8 **XL** weapon detection model trained by **Carlos Torres**. It represents a major upgrade over the previous v5 weapon model, described internally as an "improvement by many orders of magnitude." The deployment decision has been made, tracked under **PROD-98**.
+The [[weapon-v8-model|weapon v8 model]] (`weapon-v8-XL-736`) is a YOLOv8 **XL** weapon detection model trained by **[[carlos-torres|Carlos Torres]]**. It represents a major upgrade over the previous v5 weapon model, described internally as an "improvement by many orders of magnitude." The deployment decision has been made, tracked under **PROD-98**.
 
 ## Detection Classes
 
@@ -48,11 +48,11 @@ A key finding during evaluation: most v5 weapon false positives were **single-fr
 
 ## Pipeline Position
 
-Weapon detection runs through the same [[data-science/_summary|Data Science Methodology]] as intruder detection but as a separate feature deployment with its own model, FPS, and thresholds. The pipeline applies `RawModelFilterStep`, ignore zones, IOU, `StationaryFilterStep`, then the sliding window. Weapon alerts are flagged as `threat` type in [[actuate-libraries|actuate-config]]'s `StreamDeploymentConfig`, which forces `live_alert = True`.
+Weapon detection runs through the same [[data-science/_summary|Data Science Methodology]] as intruder detection but as a separate feature deployment with its own model, FPS, and thresholds. The pipeline applies `RawModelFilterStep`, [[ignore-zones|ignore zones]], IOU, `StationaryFilterStep`, then the sliding window. Weapon alerts are flagged as `threat` type in [[actuate-libraries|actuate-config]]'s `StreamDeploymentConfig`, which forces `live_alert = True`.
 
 ## Current Status
 
-The deployment decision has been made. The model is in the process of being deployed to production. Carlos Torres trained the model and is involved in deployment alongside Zack Schmidt, who owns weapon model decisions.
+The deployment decision has been made. The model is in the process of being deployed to production. [[carlos-torres|Carlos Torres]] trained the model and is involved in deployment alongside [[zack-schmidt|Zack Schmidt]], who owns weapon model decisions.
 
 ## Related Jira
 
@@ -61,5 +61,5 @@ The deployment decision has been made. The model is in the process of being depl
 ## Related Topics
 
 - [[ai-models/_summary|AI Models & Evaluation]] -- model catalog and evaluation methodology
-- [[data-science/_summary|Data Science Methodology]] -- detection pipeline
+- [[data-science/_summary|Data Science Methodology]] -- [[detection-pipeline|detection pipeline]]
 - [[models/intruder-v8]] -- sibling v8 model for intruder detection

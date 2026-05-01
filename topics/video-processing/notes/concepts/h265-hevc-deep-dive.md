@@ -40,7 +40,7 @@ The biggest structural changes from [[h264-deep-dive|H.264]]:
 
 **Parameter set hierarchy.** [[h264-deep-dive|H.264]] has SPS + PPS. H.265 adds **VPS** (Video Parameter Set) above SPS. VPS describes the layered structure (scalability / multi-view), most surveillance streams have a single trivial VPS. Decoder still needs all three before it can decode.
 
-The cumulative effect: the same scene at the same perceptual quality is roughly half the bitrate. A 4 Mbps H.264 stream becomes a 2 Mbps H.265 stream — meaningful for bandwidth-constrained sites with large camera counts.
+The cumulative effect: the same scene at the same perceptual quality is roughly half the bitrate. A 4 Mbps [[h264-deep-dive|H.264]] stream becomes a 2 Mbps H.265 stream — meaningful for bandwidth-constrained sites with large camera counts.
 
 ## The patent thicket
 

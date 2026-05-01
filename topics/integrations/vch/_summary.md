@@ -10,7 +10,7 @@ author: kb-bot
 
 # VCH (Virtual Camera Healthcheck) Integration
 
-VCH (Virtual Camera Healthcheck) is a **special-purpose integration type** in the Actuate platform dedicated to camera health monitoring rather than threat detection. While standard integration types (RTSP, Milestone, Orchid, etc.) focus on pulling video frames for AI inference, VCH focuses on verifying that camera streams are healthy, connected, and producing usable video.
+VCH (Virtual Camera Healthcheck) is a **special-purpose integration type** in the Actuate platform dedicated to camera health monitoring rather than threat detection. While standard integration types ([[rtsp-deep-dive|RTSP]], Milestone, Orchid, etc.) focus on pulling video frames for AI inference, VCH focuses on verifying that camera streams are healthy, connected, and producing usable video.
 
 ## Purpose
 
@@ -18,7 +18,7 @@ VCH powers the [[camera-health-monitoring/_summary|Camera Health Monitoring (H1.
 
 - **Connectivity checks** -- verifying that the camera stream can be reached and is returning frames
 - **Stream quality checks** -- measuring actual FPS, resolution, and detecting broken or degraded streams
-- **Scene change detection** -- identifying when a camera's field of view has shifted unexpectedly (configurable sensitivity: low/medium/high)
+- **[[scene-change-detection|Scene change detection]]** -- identifying when a camera's field of view has shifted unexpectedly (configurable sensitivity: low/medium/high)
 - **Motion status monitoring** -- confirming that the camera is detecting scene motion (static feeds may indicate a problem)
 - **Recording checks** -- verifying that the VMS is recording properly
 - **Image quality checks** -- validating minimum resolution thresholds (default 360p)
@@ -41,4 +41,4 @@ The `actuate-healthmonitoring` library provides the `MessageSender` and `OneoffA
 
 ## Architecture
 
-VCH runs as a connector instance within the [[vms-connector]] infrastructure, using the same deployment and configuration pipeline as regular detection connectors. The key difference is in the processing path: instead of feeding frames into detection models, VCH feeds them into health check routines that evaluate stream and camera health. Results are reported through health monitoring email/SMS alerts and stored in the camera status DAO. VCH is complementary to detection connectors -- a site can have both a detection connector (e.g., RTSP or Milestone) and a VCH connector running against the same cameras.
+VCH runs as a connector instance within the [[vms-connector]] infrastructure, using the same deployment and configuration pipeline as regular detection connectors. The key difference is in the processing path: instead of feeding frames into detection models, VCH feeds them into health check routines that evaluate stream and camera health. Results are reported through health monitoring email/SMS alerts and stored in the camera status DAO. VCH is complementary to detection connectors -- a site can have both a detection connector (e.g., [[rtsp-deep-dive|RTSP]] or Milestone) and a VCH connector running against the same cameras.

@@ -79,7 +79,7 @@ The current platform's settings file is a 150+ field specification that encodes 
 
 ### Shared Infrastructure
 
-Despite the radically different user experience, [[watchman-repo|Watchman]]'s onboarding still terminates in the same backend: a [[vms-connector]] deployment, [[actuate-libraries]] pipeline, `ds-model-prod` inference, DynamoDB/S3 storage, and SQS alert delivery. The [[connector-deployer]] will likely still create the K8s resources -- the difference is that the deployment request is generated automatically by the [[onboarding-wizard|onboarding wizard]] rather than manually by an admin user. The question is whether the current deployer's API contract (stage, architecture, NAT, WireGuard flag, image tag) can absorb the self-service flow without significant modification, or whether Watchman needs its own deployment orchestrator.
+Despite the radically different user experience, [[watchman-repo|Watchman]]'s onboarding still terminates in the same backend: a [[vms-connector]] deployment, [[actuate-libraries]] pipeline, `ds-model-prod` inference, DynamoDB/S3 storage, and SQS alert delivery. The [[connector-deployer]] will likely still create the K8s resources -- the difference is that the deployment request is generated automatically by the [[onboarding-wizard|onboarding wizard]] rather than manually by an admin user. The question is whether the current deployer's API contract (stage, architecture, NAT, WireGuard flag, image tag) can absorb the self-service flow without significant modification, or whether [[watchman-repo|Watchman]] needs its own deployment orchestrator.
 
 ## Implications
 

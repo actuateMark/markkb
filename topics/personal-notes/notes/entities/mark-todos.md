@@ -1073,6 +1073,10 @@ Consumed items get `[x]` and **immediately move to that day's daily note's `## C
 - When a new high-level TODO appears, add it via [[skill-todos-add|/todos-add]] — don't let work accumulate in chat-only form.
 - Periodic audit (~weekly) via [[skill-todos-audit|/todos-audit]] — catches stale workstreams, orphaned Jira tickets, untracked branches, priority drift.
 - Cross-repo opportunity sweep via [[skill-repo-scan|/repo-scan]] — surfaces high-impact + low-hanging-fruit GitHub issues that aren't assigned to Mark.
+- **Weekly KB-tooling health check** via `~/bin/kb-tools-health` (or `ssh mork-firebat 'systemctl --user list-timers kb-*'`) — verifies the two firebat-side daily systemd timers are alive and converging:
+  - `kb-relink.timer` (03:00 UTC daily) — Passes 1+2+3: wikilinks, tags, bare-topic rewrites
+  - `kb-incoming-refresh.timer` (03:30 UTC daily) — Pass 4: backlink snapshot to frontmatter
+  Healthy = both fired within last 36h AND recent runs show `wikilink_proposals/tag_proposals/incoming_updates` trending toward 0 (steady-state KB). If STALE: check `journalctl --user -u kb-relink -u kb-incoming-refresh` on firebat for failures, or that `~/.local/skills/kb-relink/relink.py` is current. See [[2026-05-01_context-efficient-kb-retrieval]] for the architecture this maintains.
 - **Items in "Not-Yet-Prioritized" are not tracked in Jira** — if one becomes urgent, create a ticket and promote to a §N workstream.
 - **Daily-note `topics:` + `workstreams:` frontmatter is the cross-reference primary key.** `grep -l "topic: autopatrol" topics/personal-notes/notes/daily/*.md` answers "what days touched X". Tag rigorously.
 

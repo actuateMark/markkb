@@ -16,7 +16,7 @@ Loitering detection identifies people or vehicles that remain in a monitored are
 
 ## Architecture
 
-Loitering does not use a separate inference model. It uses the output of the intruder model (currently [[models/intruder-v5|intruder-384h-512w-svc]], transitioning to [[models/intruder-v8|int07-actuate003-v8]]) and applies BoTSORT tracking on top. BoTSORT (Bag of Tricks for SORT) associates detections to existing tracks using three signals:
+Loitering does not use a separate inference model. It uses the output of the intruder model (currently [[models/intruder-v5|intruder-384h-512w-svc]], transitioning to [[models/intruder-v8|int07-actuate003-v8]]) and applies [[botsort-tracking|BoTSORT tracking]] on top. BoTSORT (Bag of Tricks for SORT) associates detections to existing tracks using three signals:
 
 1. **Motion prediction** -- Kalman filter predicts where each track should appear
 2. **Appearance features** -- Visual re-identification embeddings for re-association after occlusion
@@ -39,11 +39,11 @@ The stationary filter is applied only on the **first frame** of a tracking seque
 
 ## Configuration
 
-Loitering is configured in settings.json with `loiterer` or `vehicle_loiterer` in the `metrics` block. Key settings: `frame_thresh` (dwell time in frames), `thresh=1`/`denominator=1` (single confirmed frame triggers since temporal gating is in the observer). Product-specific ignore zones can be set via `polygonal_zones` within the loiterer metric.
+Loitering is configured in settings.json with `loiterer` or `vehicle_loiterer` in the `metrics` block. Key settings: `frame_thresh` (dwell time in frames), `thresh=1`/`denominator=1` (single confirmed frame triggers since temporal gating is in the observer). Product-specific [[ignore-zones|ignore zones]] can be set via `polygonal_zones` within the loiterer metric.
 
 ## Pipeline Position
 
-Within the [[data-science/_summary|Data Science Methodology]], loitering observers sit at the observer layer. Filtered YOLO detections (after stationary, confidence, ignore zones, IOU, blacklist filters) are fed to the BoTSORT tracker. When the observer triggers, it injects a `loiterer` or `vehicle_loiterer` label into the pipeline results, which then passes through the sliding window and alert generation.
+Within the [[data-science/_summary|Data Science Methodology]], loitering observers sit at the observer layer. Filtered YOLO detections (after stationary, confidence, [[ignore-zones|ignore zones]], IOU, blacklist filters) are fed to the BoTSORT tracker. When the observer triggers, it injects a `loiterer` or `vehicle_loiterer` label into the pipeline results, which then passes through the sliding window and alert generation.
 
 ## Current Status
 
@@ -52,6 +52,6 @@ Loitering detection is **active in production**. The observers are automatically
 ## Related Topics
 
 - [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
-- [[data-science/_summary|Data Science Methodology]] -- BoTSORT tracking and detection pipeline
+- [[data-science/_summary|Data Science Methodology]] -- [[botsort-tracking|BoTSORT tracking]] and [[detection-pipeline|detection pipeline]]
 - [[models/intruder-v5]] -- the underlying detection model
 - [[models/line-crossing]] -- alternative tracking-based product

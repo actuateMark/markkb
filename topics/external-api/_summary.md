@@ -17,10 +17,10 @@ A strategic initiative (ENG-122) to expose **generic, partner-facing APIs** beyo
 
 | Ticket | Endpoint Type | Customer | Assignee | Status |
 |--------|--------------|----------|----------|--------|
-| **ENG-126** | Detection (v5 API) | [[integrations/ebus/_summary|EBUS]] | Mark Barbera | To Do — [[ebus-partner-access|dev key live]] |
-| **ENG-123** | Schedule Management | AlarmWatch / Crosbies (NZ) | Vinicius Flores | In Progress (PR #4 merged) |
-| **ENG-124** | Image Ingestion (SMTP alt) | Alarmquip (AU) | Unassigned | To Do |
-| **ENG-125** | Arm/Disarm Per Site | AlarmWatch | Vinicius Flores | To Do |
+| **ENG-126** | Detection (v5 API) | [[integrations/ebus/_summary|EBUS]] | [[mark-barbera|Mark Barbera]] | To Do — [[ebus-partner-access|dev key live]] |
+| **ENG-123** | Schedule Management | [[alarmwatch-customer|AlarmWatch / Crosbies (NZ)]] | [[vinicius-flores|Vinicius Flores]] | In Progress (PR #4 merged) |
+| **ENG-124** | Image Ingestion (SMTP alt) | [[alarmquip-customer|Alarmquip (AU)]] | Unassigned | To Do |
+| **ENG-125** | Arm/Disarm Per Site | AlarmWatch | [[vinicius-flores|Vinicius Flores]] | To Do |
 | **ENG-132** | Harden Admin API + alarm clip fetch | -- | Unassigned | To Do |
 | **ENG-133** | Add ID field for v4 endpoints | RuggedNetworks | Unassigned | To Do |
 
@@ -50,8 +50,8 @@ This pattern applies to both the [[inference-api/_summary|Actuate Inference API]
 - Open question: should `/schedule` and `/flex-schedule` be AlarmWatch-only?
 
 **Arm/Disarm (ENG-34 / ENG-125):**
-- Vinicius Flores working on this in parallel
-- For AlarmWatch customer
+- [[vinicius-flores|Vinicius Flores]] working on this in parallel
+- For [[alarmwatch-customer|AlarmWatch customer]]
 
 ## Not a Single Project
 

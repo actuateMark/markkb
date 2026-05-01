@@ -32,7 +32,7 @@ After commit `788bed7` changed chip generation from processed_frame to original 
 Large epic with 13 sub-tasks: deploy v8 endpoint, build container, register model, create v8-calibrated sensitivity settings, pilot site selection, model-aware sensitivity, bulk model swap tooling, decouple raw metrics, model change audit trail. **All still To Do.**
 
 ### Weapon v8 Deployment (PROD-98)
-New YOLOv8 XL weapon model trained by Carlos Torres. "Improvement by many orders of magnitude" over v5. New confidence thresholds: HIGH=0.65, MED=0.60, LOW=0.55. Most old-model FP were single-frame spikes eliminated by sliding window filter.
+New YOLOv8 XL weapon model trained by [[carlos-torres|Carlos Torres]]. "Improvement by many orders of magnitude" over v5. New confidence thresholds: HIGH=0.65, MED=0.60, LOW=0.55. Most old-model FP were single-frame spikes eliminated by sliding window filter.
 
 ### UK/EU Bespoke Model
 After 2 labeling/training cycles, bespoke model didn't outperform generalist. Decision: deploy `int07-actuate003-v8` to UK/EU now, continue bespoke effort with larger dataset.
@@ -67,16 +67,16 @@ The DS team uses a rigorous multi-level framework:
 - **URL pattern:** `http://{model}-svc.ds-model-{env}.svc.cluster.local:8080/infer`
 - **Client:** `actuate-inference-client` (KubernetesModelUri)
 - **Local dev:** `kubefwd svc -n ds-model-prod --tui`
-- **VLM inference:** K8s via SQS queues, vLLM backend, EC2 g5.2xlarge (~$1.21/hr)
+- **[[vlm-inference|VLM inference]]:** K8s via SQS queues, vLLM backend, EC2 g5.2xlarge (~$1.21/hr)
 
 ## Key People
 
 | Person | Focus |
 |--------|-------|
 | Uladzimir Sapeshka (Vlad) | YAM evaluation, v8 performance, shadow testing |
-| Zack Schmidt | YAM epic owner, weapon model decisions |
-| Alena Prashkovich | UK camera screening, prompt engineering |
+| [[zack-schmidt|Zack Schmidt]] | YAM epic owner, weapon model decisions |
+| [[alena-prashkovich|Alena Prashkovich]] | UK camera screening, prompt engineering |
 | Mladen Lukic | UK/EU bespoke model labeling, point-based annotation |
-| Otzar Jaffe | PPF pipeline, site classification, model merging |
-| Carlos Torres | Weapon model training, VLM FP filter, model routing |
-| Laura Reno | Release communications |
+| [[otzar-jaffe|Otzar Jaffe]] | PPF pipeline, site classification, model merging |
+| [[carlos-torres|Carlos Torres]] | Weapon model training, VLM FP filter, model routing |
+| [[laura-reno|Laura Reno]] | Release communications |

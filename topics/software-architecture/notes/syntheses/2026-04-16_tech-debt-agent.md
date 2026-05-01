@@ -24,8 +24,6 @@ incoming_updated: 2026-05-01
 
 A headless AI agent that periodically patrols Actuate codebases for tech debt, style drift, architecture violations, and stale artifacts. It files findings as GitHub issues — never auto-commits or auto-merges.
 
-> **Sketch status (2026-04-22):** Scaffolded as the `software_arch_sketches.debt` module in `/home/mork/work/software-arch-sketches/`. Emits `data/debt-report.md` (human-readable) + `data/debt-metrics.json` (structured). Real patrol heuristics (TODO/FIXME/HACK/XXX grep + count, large-function detection via radon, git-log-based stale-file detection) are the next step. **The headless-Claude variant from this synthesis's design is v2**; v1 is heuristic-only. See [[2026-04-17_local-sketches-plan]].
-
 ---
 
 ## Philosophy

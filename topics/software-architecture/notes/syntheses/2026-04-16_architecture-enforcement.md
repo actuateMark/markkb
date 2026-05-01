@@ -24,8 +24,6 @@ incoming_updated: 2026-05-01
 
 How to encode architectural intent as executable tests so violations fail the build, not the review. Based on the "fitness function" concept from *Building Evolutionary Architectures* (Ford, Parsons, Kua) — adapted for Python/FastAPI/UV monorepo stacks.
 
-> **Sketch status (2026-04-22):** Scaffolded as the `software_arch_sketches.enforcement` module in `/home/mork/work/software-arch-sketches/`. Emits `data/violations.json` envelope. Real fitness-function logic (AST-based layer-import checks — e.g. `camera/` must not import from `sender/` in vms-connector) is the next step. Target input repo: `vms-connector` — has clear camera/pipeline/observer/sender layering with obvious violation targets. See [[2026-04-17_local-sketches-plan]].
-
 ---
 
 ## The Problem

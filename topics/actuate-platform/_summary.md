@@ -61,9 +61,9 @@ User Interfaces
 - **Account:** 388576304176
 - **Primary region:** us-west-2
 - **EU region:** eu-west-1 (GDPR)
-- **Orchestration:** EKS (ArgoCD GitOps)
+- **Orchestration:** EKS ([[argocd|ArgoCD]] GitOps)
 - **Data stores:** DynamoDB, S3, SQS, SNS, PostgreSQL (RDS), ElastiCache
-- **Monitoring:** New Relic, CloudWatch, Datadog
+- **Monitoring:** [[new-relic|New Relic]], CloudWatch, Datadog
 
 ## Products
 
@@ -73,7 +73,7 @@ User Interfaces
 | Intruder+ | Person + vehicle (7 classes) | Same model, different label filtering |
 | Vehicle | Vehicle classes only | Same model, label-filtered |
 | Weapon | Firearm detection | weapon-v8-XL-736 (deploying) |
-| Loitering | Person/vehicle dwell time | Intruder model + BoTSORT tracking |
+| Loitering | Person/vehicle dwell time | Intruder model + [[botsort-tracking|BoTSORT tracking]] |
 | Line Crossing | Directional crossing | Intruder model + TrajectoryManager |
 | Motion+ | Motion-triggered detection | Intruder model + FDMD |
 | Fire/Smoke | Fire detection | Dedicated fire model |
@@ -84,7 +84,7 @@ User Interfaces
 
 ## Strategic Direction
 
-- **Current:** B2B2B via monitoring center partners (Immix, EMCS, Sentinel, etc.)
+- **Current:** B2B2B via monitoring center partners (Immix, EMCS, [[sentinel-components|Sentinel]], etc.)
 - **Next:** [[watchman/_summary|Actuate Watchman]] -- B2B direct to commercial businesses (AI-powered virtual security operator)
 - **Near-term:** [[external-api/_summary|External API Initiative]] initiative exposing partner-facing APIs (EBUS, AlarmWatch, Alarmquip)
 

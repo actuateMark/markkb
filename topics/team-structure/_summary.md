@@ -68,4 +68,4 @@ Several people span multiple initiatives:
 - **[[alena-prashkovich|Alena Prashkovich]]:** AUTO + AI
 - **[[otzar-jaffe|Otzar Jaffe]]:** AI + SA + AUTO
 - **[[mark-barbera|Mark Barbera]]:** AUTO + CS3 + ENG (EBUS)
-- **[[laura-reno|Laura Reno]]:** SA + AI + CS3 + Watchman
+- **[[laura-reno|Laura Reno]]:** SA + AI + CS3 + [[watchman-repo|Watchman]]

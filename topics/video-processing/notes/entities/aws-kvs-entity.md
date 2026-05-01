@@ -86,6 +86,6 @@ The **JPEG re-encode round-trip** is a known inefficiency: we go MKV([[h264-deep
 
 The [[kvs-components|KVS]] puller is **conditionally imported** (`__init__.py:1-56` does a `try/except ImportError` on PyGObject) so connector pods without GStreamer-Python bindings still build. This means a missing system library silently disables [[kvs-components|KVS]] ingest at startup — see [[vms-connector/_summary]] for the broader puller-registry pattern.
 
-KVS [[webrtc-deep-dive|WebRTC]] is **not** used in Actuate today. It is the plausible substrate for fleet-pod-to-fleet-pod live-frame transport ([[fleet-architecture/_summary]]) and for any future "live preview from monitoring center" UI; flagged in [[aws-video-services-decision-matrix]] as an evaluate-next candidate.
+[[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] is **not** used in Actuate today. It is the plausible substrate for fleet-pod-to-fleet-pod live-frame transport ([[fleet-architecture/_summary]]) and for any future "live preview from monitoring center" UI; flagged in [[aws-video-services-decision-matrix]] as an evaluate-next candidate.
 
-Reading-list pointers: KVS Producer SDK (C++/Java/[[gstreamer-entity|GStreamer]] plugin), KVS [[webrtc-deep-dive|WebRTC]] signaling channels, KVS architecture & pricing docs — all in [[reading-list]] under "AWS-specific reading".
+Reading-list pointers: [[kvs-components|KVS]] Producer SDK (C++/Java/[[gstreamer-entity|GStreamer]] plugin), [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] signaling channels, [[kvs-components|KVS]] architecture & pricing docs — all in [[reading-list]] under "AWS-specific reading".

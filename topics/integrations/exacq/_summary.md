@@ -30,12 +30,12 @@ Returns a tuple `(exacq_streaming, stream_url)` where `exacq_streaming` indicate
 
 Defined in [[actuate-config]] at `connector/exacq/exacq_config.py`. Extends `BaseConnectorConfig` with Exacq-specific typed config classes:
 
-- `ExacqCustomerConfig` -- adds `username`, `password`, `server_ip`, `server_port`, `server` (server name), `stream_port` (for RTSP), and optional `use_motion`/`motion_interval` fields.
+- `ExacqCustomerConfig` -- adds `username`, `password`, `server_ip`, `server_port`, `server` (server name), `stream_port` (for [[rtsp-deep-dive|RTSP]]), and optional `use_motion`/`motion_interval` fields.
 - `ExacqCamera` -- adds `width`, `height`, `camera_id`, `format`, and `quality` fields per camera.
 
 ### Puller
 
-No dedicated Exacq puller class. The [[vms-connector]] uses `exacq_utils.get_session_id` and `get_stream_url` to obtain a URL, then feeds it to either the RTSP puller or HTTP/URL puller from [[actuate-pullers]] depending on the stream format.
+No dedicated Exacq puller class. The [[vms-connector]] uses `exacq_utils.get_session_id` and `get_stream_url` to obtain a URL, then feeds it to either the [[rtsp-deep-dive|RTSP]] puller or HTTP/URL puller from [[actuate-pullers]] depending on the stream format.
 
 ### Alarm Sender
 
@@ -47,7 +47,7 @@ No Exacq-specific alarm sender. Alert delivery uses whichever monitoring sender 
 
 ## Key Config Fields
 
-`server_ip`, `server_port`, `server` (server name), `username`, `password`, `stream_port` (for [[rtsp-deep-dive|RTSP]] format 5). Per-camera: `camera_id`, `format` (5=RTSP, 7=HTTP stream, others=JPEG), `width`, `height`, `quality`.
+`server_ip`, `server_port`, `server` (server name), `username`, `password`, `stream_port` (for [[rtsp-deep-dive|RTSP]] format 5). Per-camera: `camera_id`, `format` (5=[[rtsp-deep-dive|RTSP]], 7=HTTP stream, others=JPEG), `width`, `height`, `quality`.
 
 ## Relationship to Other Components
 

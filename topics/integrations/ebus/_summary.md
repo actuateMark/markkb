@@ -24,7 +24,7 @@ EBUS is the **first consumer** of the [[external-api/_summary|External API Initi
 - `GET /v5/models` -- lists available detection models with their detection classes and data schemas
 - `POST /v5/detect` -- unified inference endpoint (model specified via `model_id` in request body)
 
-**EBUS UI Configuration Mapping:**
+**[[ebus-ui-config-mapping|EBUS UI Configuration Mapping]]:**
 | EBUS Setting | Maps To |
 |-------------|---------|
 | Server Configuration URI | `/v5/models` |
@@ -47,18 +47,18 @@ EBUS sends **video clips** to Actuate; Actuate pushes alerts back via REST API.
 
 Two paths under consideration:
 1. EBUS -> Actuate -> EBUS (SMTP/FTP)
-2. Camera -> Actuate -> EBUS (SMTP/RTSP)
+2. Camera -> Actuate -> EBUS (SMTP/[[rtsp-deep-dive|RTSP]])
 
 ## Jira Tickets
 
 | Ticket | Project | Status | Assignee | Summary |
 |--------|---------|--------|----------|---------|
 | **ED-4** | EU Deployment | In Progress | Unassigned | Parent: EBUS Integration |
-| **ED-32** | EU Deployment | In Progress | Mark Barbera | Phase 1 API Integration |
+| **ED-32** | EU Deployment | In Progress | [[mark-barbera|Mark Barbera]] | Phase 1 API Integration |
 | **ED-33** | EU Deployment | To Do | Unassigned | Investigate direct integration options |
 | **ED-37** | EU Deployment | To Do | Unassigned | Testing Criteria |
 | **ED-38** | EU Deployment | To Do | Unassigned | Testing Execution |
-| **ENG-126** | Engineering | To Do | Mark Barbera | v5 API spec (technical implementation) |
+| **ENG-126** | Engineering | To Do | [[mark-barbera|Mark Barbera]] | v5 API spec (technical implementation) |
 
 ## Key Design Decisions
 

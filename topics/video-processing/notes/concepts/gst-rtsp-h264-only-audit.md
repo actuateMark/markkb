@@ -48,10 +48,10 @@ Real counts come from `admin-api` Postgres: `SELECT integration_type, COUNT(*) F
 
 Industry baseline as of 2026: [[h265-hevc-deep-dive|H.265]] / [[h265-hevc-deep-dive|HEVC]] is the **default codec on most cameras shipped after ~2020**. Specifically on integrations the connector commonly speaks to:
 
-- **Hikvision / [[hikcentral-components|HikCentral]]** — HEVC ("[[h265-hevc-deep-dive|H.265]]+") is the default for all current Hikvision IP cameras, and the Hikvision-derived rebrand fleet (LTS, Honeywell mid-tier, many ODM brands) ships the same default.
-- **Avigilon** — HEVC standard on H5A-era and newer; [[h264-deep-dive|H.264]] still configurable but not the default.
-- **Genetec / Omnicast** — codec is camera-driven, not VMS-driven; the fleet skews HEVC for newer deployments.
-- **Eagle Eye Networks** — bridge transcodes; outbound stream is typically [[h264-deep-dive|H.264]] but newer V3 paths can pass through HEVC.
+- **Hikvision / [[hikcentral-components|HikCentral]]** — [[h265-hevc-deep-dive|HEVC]] ("[[h265-hevc-deep-dive|H.265]]+") is the default for all current Hikvision IP cameras, and the Hikvision-derived rebrand fleet (LTS, Honeywell mid-tier, many ODM brands) ships the same default.
+- **Avigilon** — [[h265-hevc-deep-dive|HEVC]] standard on H5A-era and newer; [[h264-deep-dive|H.264]] still configurable but not the default.
+- **Genetec / Omnicast** — codec is camera-driven, not VMS-driven; the fleet skews [[h265-hevc-deep-dive|HEVC]] for newer deployments.
+- **Eagle Eye Networks** — bridge transcodes; outbound stream is typically [[h264-deep-dive|H.264]] but newer V3 paths can pass through [[h265-hevc-deep-dive|HEVC]].
 - **Digital Watchdog / Salient / Luxriot / Exacq / OpenEye / [[video-insight-components|Video Insight]]** — same camera-driven story; on premise [[h265-hevc-deep-dive|H.265]] share is high and growing.
 
 So if `GstUrlFramePuller` *were* wired into any of the modern-VMS integrations, the [[h265-hevc-deep-dive|H.265]] silent-failure share would be substantial (50%+ for [[hikcentral-components|HikCentral]]/Avigilon, lower elsewhere). See [[h265-hevc-deep-dive]] and [[rtsp-deep-dive]] for codec details.

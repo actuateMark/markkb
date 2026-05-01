@@ -58,11 +58,11 @@ Alerts are delivered through an **SQS FIFO (First-In-First-Out) queue** rather t
 | **API token** | Authentication credential for the [[evalink-components|Evalink]] REST API |
 | **Device ID** | [[evalink-components|Evalink]]'s identifier for the alarm source device, mapped to the Actuate site |
 
-Additionally, an **Evalink company ID** is stored to map the Actuate customer/site to the correct Evalink tenant. The configuration is moving from camera-level to site-level granularity (tracked in UI-204 and UI-202), which simplifies setup -- operators configure Evalink once per site rather than per camera.
+Additionally, an **[[evalink-components|Evalink]] company ID** is stored to map the Actuate customer/site to the correct [[evalink-components|Evalink]] tenant. The configuration is moving from camera-level to site-level granularity (tracked in UI-204 and UI-202), which simplifies setup -- operators configure [[evalink-components|Evalink]] once per site rather than per camera.
 
 ### The EvalinkAlertConfig Alarm Sender
 
-The `EvalinkAlertConfig` class in `actuate-alarm-senders` handles the specifics of formatting Actuate alerts into Evalink's expected payload format and making the outbound REST POST. It follows the same sender interface as Immix, [[sentinel-components|Sentinel]], Milestone, webhook, and the other 20+ sender types.
+The `EvalinkAlertConfig` class in `actuate-alarm-senders` handles the specifics of formatting Actuate alerts into [[evalink-components|Evalink]]'s expected payload format and making the outbound REST POST. It follows the same sender interface as Immix, [[sentinel-components|Sentinel]], Milestone, webhook, and the other 20+ sender types.
 
 ## Current Status
 

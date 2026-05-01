@@ -62,6 +62,6 @@ Blacklist Re-ID is **active in production** for cameras with `use_blacklist: tru
 ## Related Topics
 
 - [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
-- [[data-science/_summary|Data Science Methodology]] -- detection pipeline
+- [[data-science/_summary|Data Science Methodology]] -- [[detection-pipeline|detection pipeline]]
 - [[models/intruder-v5]] -- the underlying person detection model
 - [[models/loitering]] -- another observer-based product

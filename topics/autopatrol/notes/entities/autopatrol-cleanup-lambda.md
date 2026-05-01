@@ -25,7 +25,7 @@ incoming_updated: 2026-05-01
 
 SQS-driven AWS Lambda that soft-deletes `AutoPatrolSchedule` rows whose Immix-side schedules have been Paused / Suspended / Removed / Deleted / 404'd. Sibling to [[autopatrol-onboarder]] in the `autopatrol_onboarder` repo.
 
-**Status (2026-04-27T14:31Z):** Live in stage with `CLEANUP_ENABLED=true`, `CLEANUP_TARGET_HOURS=18`. **76 disables in audit** (`disabled_by=cleanup_lambda`) — 1 driven by the Lambda itself (pk=235 / `636be1ba`, 2026-04-23T23:03Z) + 75 via a manual ad-hoc sweep 2026-04-24T14:46Z using authoritative tenants from `s3://actuate-settings/` settings.json. 727 cameras freed across 41 customer sites and 11 Immix tenants. **Paused-as-active fix shipped 2026-04-27 (PR #9):** `_check_immix` now correctly distinguishes Paused/Suspended (customer-controlled, anomaly-reset path) from Removed/Deleted (genuine disable). Validated via synthetic invoke against pk=597 — anomaly-reset fired, no disable. An earlier flawed 19-schedule first-attempt (DDB-biased tenant discovery — 14 of 19 misclassified) was fully rolled back before the corrected sweep ran. Full after-action: [[2026-04-24_stale-schedule-cleanup-aar]]. Prod US scale-up (Step F) still blocked on ad-hoc pod redeploy mechanism; Prod EU (Step G) needs net-new regional infra.
+**Status (2026-04-23T18:12Z):** Live in stage with `CLEANUP_ENABLED=true`, `CLEANUP_TARGET_HOURS=18`. 0 disables all-time — every threshold hit so far has been anomaly-reset because Immix returns Active. Full audit: `GET /api/auto_patrol_schedule/?disabled_by=cleanup_lambda` → 0 rows. Prod US scale-up (Step F) is scoped as a follow-up blocked on an ad-hoc pod redeploy mechanism. Prod EU (Step G) needs net-new regional infra.
 
 ## PRs (all merged)
 
@@ -122,7 +122,7 @@ Threshold is stored on the DDB row on first sighting via `if_not_exists(threshol
 
 Every threshold hit → Lambda calls `AutoPatrolAPI.get_schedule(tenant_id, schedule_id)`:
 - Immix returns 200 with `scheduleStatus ∈ {Active, Awaiting}` → **anomaly reset** (bucket cleared, no disable). Log: `"anomaly: bucket=… threshold hit but Immix reports schedule … still active — resetting … bucket"`
-- Immix returns 200 with `scheduleStatus ∈ {Suspended, Paused, Removed, Deleted}` OR 404 OR **400** → **disable fires**. PATCH payload is `{scheduleStatus: "Deleted", disabledBy: "cleanup_lambda", disabledAt: <iso>}`. The admin view's post-save hook runs `deploy_schedule_settings(call_deployer=True)` → `model.deploy()` → `should_undeploy=True` → `model.undeploy()` tears down the connector container. Lambda then round-trip GETs to verify all three fields stuck; on mismatch raises `_TransientError` for SQS retry → DLQ. Log line format: `disabled admin schedule_pk=… (verified: scheduleStatus=Deleted disabledBy=cleanup_lambda disabledAt=…)`. Also Slack post to `#autopatrol-sync` + NR custom event `AutoPatrolScheduleDisabled`. See [[2026-04-23_immix-api-error-patterns]] for the full catalog of Immix response patterns.
+- Immix returns 200 with `scheduleStatus ∈ {Suspended, Paused, Removed, Deleted}` OR 404 → **disable fires**. Log: `"disabled admin schedule_pk=…"` + Slack post to `#autopatrol-sync` + NR custom event `AutoPatrolScheduleDisabled`.
 - Immix returns 5xx / timeout → **transient** → SQS redelivers. PR #5's retry-idempotency guard (`last_message_id` + DDB `ConditionExpression`) prevents counter double-count on redelivery.
 
 **Manager audit:** `GET /api/auto_patrol_schedule/?disabled_by=cleanup_lambda` → returns all schedules ever disabled by this Lambda. **Currently 0 rows** (2026-04-23).

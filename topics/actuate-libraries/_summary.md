@@ -78,7 +78,7 @@ author: kb-bot
 | Package | Version | Purpose |
 |---------|---------|---------|
 | [[actuate-log]] | 1.0.2 | Logging configuration, ActuateLogAdapter |
-| [[actuate-viz]] | 1.1.5 | Detection bounding box drawing, ignore zones, trajectories |
+| [[actuate-viz]] | 1.1.5 | Detection bounding box drawing, [[ignore-zones|ignore zones]], trajectories |
 | [[actuate-network]] | 1.0.4 | VPC subnet overlap checks, VPN route integration |
 | [[actuate-wireguard]] | 1.0.9 | WireGuard tunnel management, Teltonika RMS |
 | [[actuate-tests]] | 0.0.3 | Shared test utilities and sample data |

@@ -28,7 +28,7 @@ Defined in [[actuate-config]] at `connector/salient/salient_config.py`. The conf
 
 ### Puller
 
-Salient uses the standard [[rtsp-deep-dive|RTSP]] URL-based pullers from [[actuate-pullers]] (`UrlFramePuller`, `AvUrlFramePuller`, or `GstUrlFramePuller`). No Salient-specific puller exists -- RTSP stream URLs are constructed by the [[vms-connector]] using the camera's `server_address`, `camera_id`, and customer credentials.
+Salient uses the standard [[rtsp-deep-dive|RTSP]] URL-based pullers from [[actuate-pullers]] (`UrlFramePuller`, `AvUrlFramePuller`, or `GstUrlFramePuller`). No Salient-specific puller exists -- [[rtsp-deep-dive|RTSP]] stream URLs are constructed by the [[vms-connector]] using the camera's `server_address`, `camera_id`, and customer credentials.
 
 ## Auth Method
 

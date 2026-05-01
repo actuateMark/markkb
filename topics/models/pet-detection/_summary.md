@@ -34,7 +34,7 @@ Per-label confidence thresholds are configured in `raw_metrics` within each came
 
 ## Pipeline Position
 
-Pet detection runs through the [[data-science/_summary|Data Science Methodology]] as a separate feature deployment with its own model, FPS, and thresholds. The processing chain is: frame ingestion, FDMD motion detection, YOLO inference on the pet model, then post-processing filters (confidence, ignore zones, IOU, stationary). The standard sliding window handles alert generation.
+Pet detection runs through the [[data-science/_summary|Data Science Methodology]] as a separate feature deployment with its own model, FPS, and thresholds. The processing chain is: frame ingestion, FDMD motion detection, YOLO inference on the pet model, then post-processing filters (confidence, [[ignore-zones|ignore zones]], IOU, stationary). The standard sliding window handles alert generation.
 
 ## Products and Observers
 
@@ -51,5 +51,5 @@ Pet detection is listed among the specialised models in the [[ai-models/_summary
 ## Related Topics
 
 - [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
-- [[data-science/_summary|Data Science Methodology]] -- detection pipeline architecture
+- [[data-science/_summary|Data Science Methodology]] -- detection [[pipeline-architecture|pipeline architecture]]
 - [[models/intruder-v5]] -- the primary intruder model that pet detection complements

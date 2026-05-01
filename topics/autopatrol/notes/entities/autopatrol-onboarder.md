@@ -4,7 +4,7 @@ type: entity
 topic: autopatrol
 tags: [autopatrol, lambda, onboarding, sync, immix, admin-api]
 created: 2026-04-13
-updated: 2026-04-13
+updated: 2026-04-17
 author: kb-bot
 incoming:
   - topics/autopatrol/notes/concepts/2026-04-17_autopatrol-sync-endpoint-behavior.md
@@ -73,8 +73,14 @@ Manual deploy scripts are also available: `deploy.sh` (dev), `deploy_prod.sh` (U
 
 ## Architecture Patterns
 
-- **Deletion safety**: The `allow_deletion` flag in the site sync payload defaults to `true` but is flipped to `false` whenever any immix fetch failed during the run. This prevents partial data from causing the Admin API to delete sites that were simply unreachable.
-- **Retry with backoff**: Transient failures (5xx, timeouts) retry up to 3 times with a 2-second delay. Permanent failures (400/401/403/404) are skipped immediately -- this distinguishes deleted tenants from temporarily unavailable ones.
+- **No deletion via sync** (2026-04-17 correction): earlier versions of this page described an `allow_deletion` flag as controlling whether admin deletes missing sites. That's **not what admin does**. The `auto_patrol/sync/` serializer creates and updates sites but never calls any deletion method — the three `cleanup_*()` methods on `AutoPatrolSync` are dead code (grep-verified in `actuate_admin`). The `allow_deletion` field added on branch `fix/handle-deleted-sites` is ignored on admin side. Site creation is the sole reason the sync call exists. See [[2026-04-17_autopatrol-sync-endpoint-behavior]] for the full trace.
+- **Per-schedule soft-delete happens elsewhere**: the actual deletion path for stale schedules is the new [[autopatrol-cleanup-lambda]] — event-driven from the VMS-connector, with Immix confirmation before any PATCH. See [[2026-04-17_stale-schedule-cleanup-design]].
+- **Retry with backoff**: Transient failures (5xx, timeouts) retry up to 3 times with a 2-second delay. Permanent failures (400/401/403/404) are skipped immediately — this distinguishes deleted tenants from temporarily unavailable ones.
 - **Per-contract isolation**: Exceptions in one contract's processing are caught and logged, allowing the rest to proceed.
 - **Dry run mode**: All write operations check the `dry_run` flag, enabling safe production testing without side effects.
 - **Multi-region support**: The `AdminApiHandler` constructor switches base URLs based on region (EU uses `admin.actuateui.eu`).
+- **NR instrumentation gap**: the deployed Lambda currently has no NR telemetry (`ServerlessSample` / `AwsLambdaInvocation` both empty). See [[2026-04-17_onboarder-nr-instrumentation-gap]] — fix is bundled with the cleanup Lambda rollout.
+
+## Incidents
+
+- **2026-04-23 silent-failure** — a healthcheck early-return guard added in the 2026-04-21 cleanup-Lambda merge silently disabled every 5-min onboarder invocation for ~47 hours. Users couldn't activate new schedules. Hotfix PR #4. Full write-up: [[2026-04-23_postmortem-onboarder-healthcheck]]. Rules derived: [[2026-04-23_release-acceptance-criteria]], hard rule in the repo's `CLAUDE.md` against aborting on HTTP failures.

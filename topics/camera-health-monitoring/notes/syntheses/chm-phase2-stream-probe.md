@@ -46,8 +46,8 @@ From source code analysis of `actuate_pullers.url.av_url_puller.AvUrlFramePuller
 | `video_stream.codec_context.height` | [[pyav-entity|PyAV]] codec context | `int` | Pixel height |
 | `video_stream.codec_context.pix_fmt` | [[pyav-entity|PyAV]] codec context | `str` | `"yuv420p"`, `"yuvj420p"` |
 | `video_stream.codec_context.profile` | [[pyav-entity|PyAV]] codec context | `str` | `"High"`, `"Main"`, `"Baseline"` |
-| `video_stream.average_rate` | PyAV stream | `Fraction` | Declared FPS from stream header |
-| `video_stream.time_base` | PyAV stream | `Fraction` | Timestamp resolution |
+| `video_stream.average_rate` | [[pyav-entity|PyAV]] stream | `Fraction` | Declared FPS from stream header |
+| `video_stream.time_base` | [[pyav-entity|PyAV]] stream | `Fraction` | Timestamp resolution |
 | `bandwidth_tracker.get_bandwidth_kbps()` | `BandwidthTracker` | `float` | Current window bandwidth in kbps |
 | `bandwidth_tracker.get_last_bandwidth_kbps()` | `BandwidthTracker` | `float` | Last reported window bandwidth |
 | `bandwidth_tracker.get_total_bytes()` | `BandwidthTracker` | `int` | Total bytes since puller start |

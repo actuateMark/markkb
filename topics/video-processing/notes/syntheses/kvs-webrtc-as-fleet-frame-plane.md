@@ -44,7 +44,7 @@ Once signaling completes, media flows **peer-to-peer** (if both sides can negoti
 
 - **Cost:** [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] charges per-signaling-channel-minute plus per-GB TURN relay. For 100 cameras × 10 inference consumers, that's 100 channels open continuously — each consuming channel-minutes. Compare against Redis Streams (one [[kvs-components|KVS]] pod, amortized CPU/memory), NATS JetStream (same), or SNS+SQS (per-message, but extremely cheap at volume). [[webrtc-deep-dive|WebRTC]]'s TURN relay is an extra step only if NAT forces it; for pod-to-pod in EKS, direct UDP (via Calico/Cilium) or simple TCP (Redis/NATS) is cheaper.
 - **Latency variance:** [[webrtc-deep-dive|WebRTC]]'s sub-second floor is good, but the protocol's jitter buffer adds adaptive buffering (30–150ms depending on network noise). For a frame-at-a-time "newest frame only" ingest, you don't need that buffer; you'd want the lowest-latency raw-bytes transport. NATS JetStream or Redis Streams with subject-keying lets you subscribe to "latest camera X", not "all frames X ordered".
-- **Producer-side stack:** WebRTC needs an encoder ([[h264-deep-dive|H.264]] / [[av1-vp9-future|VP9]]). In the puller pod, you either encode [[rtsp-deep-dive|RTSP]]→[[h264-deep-dive|H.264]] (extra CPU, already done for inference anyway), or push raw frames (WebRTC doesn't have an ergonomic raw-frame codec path). The cognitive and operational load is higher than "write bytes to Redis list".
+- **Producer-side stack:** [[webrtc-deep-dive|WebRTC]] needs an encoder ([[h264-deep-dive|H.264]] / [[av1-vp9-future|VP9]]). In the puller pod, you either encode [[rtsp-deep-dive|RTSP]]→[[h264-deep-dive|H.264]] (extra CPU, already done for inference anyway), or push raw frames ([[webrtc-deep-dive|WebRTC]] doesn't have an ergonomic raw-frame codec path). The cognitive and operational load is higher than "write bytes to Redis list".
 
 **Verdict: ❌ Probably not.** Redis Streams, NATS JetStream, or even SNS+SQS are the right shapes for high-volume every-frame inter-pod transport.
 
@@ -52,22 +52,22 @@ Once signaling completes, media flows **peer-to-peer** (if both sides can negoti
 
 **Model:** puller pod (or inference consumer) has a live [[h264-deep-dive|H.264]] stream; dispatcher's browser needs to see it sub-second. Typically one operator viewing one camera.
 
-**Could [[kvs-components|KVS]] WebRTC work?** Yes, exactly. This is what KVS WebRTC was built for.
+**Could [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] work?** Yes, exactly. This is what [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] was built for.
 
 **Why it's strong:**
 
 - **Latency:** 400ms–1s is acceptable for a human watching an event unfold in real time. Not as fast as RTSP-direct-to-VMS (often unavailable), much better than [[hls-and-dash|HLS]]/[[hls-and-dash|DASH]] (2–5s realistic).
 - **Browser-native:** JavaScript `RTCPeerConnection` API works in all modern browsers. AWS SDK handles the signaling. No custom WebSocket server or TURN infrastructure to operate.
 - **Costs are reasonable:** If only "active alert" cameras stream (not all cameras simultaneously), the channel-minute cost is predictable. TURN relay kicks in only for ~10–15% of client pairs.
-- **Producer path is natural:** [[h264-deep-dive|H.264]] encoder already exists in the pipeline; WebRTC-encode a copy to a KVS signaling channel as a secondary output.
+- **Producer path is natural:** [[h264-deep-dive|H.264]] encoder already exists in the pipeline; WebRTC-encode a copy to a [[kvs-components|KVS]] signaling channel as a secondary output.
 
-**Verdict: ✅ Plausible and worth a spike.** This is a live-preview-to-dispatcher use case Actuate doesn't have today (operators see alert clips, not live video). KVS WebRTC would be the simplest AWS-native path.
+**Verdict: ✅ Plausible and worth a spike.** This is a live-preview-to-dispatcher use case Actuate doesn't have today (operators see alert clips, not live video). [[kvs-components|KVS]] WebRTC would be the simplest AWS-native path.
 
 ### 3. [[watchman-repo|Watchman]] live-view / real-time monitoring
 
 **Model:** A VLM (vision language model) agent watches a live frame stream and reasons about it in real time. Today, [[watchman-repo|Watchman]] processes alert clips after the fact; for live triage, you want the agent to see frames now.
 
-**Could KVS WebRTC work?** Yes, same mechanics as #2.
+**Could [[kvs-components|KVS]] WebRTC work?** Yes, same mechanics as #2.
 
 **Why it's plausible:**
 
@@ -96,7 +96,7 @@ Once signaling completes, media flows **peer-to-peer** (if both sides can negoti
 
 ### Redis Streams / NATS JetStream for inter-pod, IVS Real-Time for browser
 
-Some teams split the problem: use a message bus (Redis / NATS) for pod-to-pod frame transport (case #1), and a separate service (IVS Real-Time or KVS [[webrtc-deep-dive|WebRTC]]) only for the outbound-to-browser legs (cases #2, #3). This is feasible but adds complexity — you're managing two transport [[layers]].
+Some teams split the problem: use a message bus (Redis / NATS) for pod-to-pod frame transport (case #1), and a separate service (IVS Real-Time or [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]]) only for the outbound-to-browser legs (cases #2, #3). This is feasible but adds complexity — you're managing two transport [[layers]].
 
 ## Cost shape
 

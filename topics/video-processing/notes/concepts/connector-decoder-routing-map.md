@@ -35,20 +35,20 @@ This concept note enumerates every `integration_type` branch, traces the exact p
 | `salient` | `salient/salient_factory.py` | `SalientCamera` | `AvUrlFramePuller` / `MotionBasedAvUrlFramePuller` | [[pyav-entity|PyAV]] | [[rtsp-deep-dive|RTSP]] | Yes | **Migrated** |
 | `milestone` | `milestone/milestone_factory.py` | `MilestoneCamera` | `MilestoneJpgFramePuller` | [[opencv-entity|OpenCV]] (`cv2.imdecode`) over Milestone proprietary TLS/XML+JPEG | TCP socket + Milestone XML framing | No | Permanent — proprietary protocol |
 | `avigilon` | `avigilon/avigilon_factory.py` | `AvigilonCamera` | `AvUrlFramePuller` / `MotionBasedAvUrlFramePuller` | [[pyav-entity|PyAV]] | [[rtsp-deep-dive|RTSP]] | Yes | **Migrated** |
-| `video_insight` | `video_insight/video_insight_factory.py` | `VideoInsightCamera` | `AvUrlFramePuller` | PyAV | RTSP | Yes | **Migrated** |
-| `luxriot` | `luxriot/luxriot_factory.py` | `LuxriotCamera` | `AvUrlFramePuller` / `MotionBasedAvUrlFramePuller` | PyAV | RTSP | Yes | **Migrated** |
-| `genetec` | `genetec/genetec_factory.py` | `GenetecCamera` | `AvUrlFramePuller` / `MotionBasedAvUrlFramePuller` | PyAV | RTSP | Yes | **Migrated** |
-| `exacq` | `exacq/exacq_factory.py` | `ExacqCamera` | `AvUrlFramePuller` (video stream) **or** `JpgFrameQueuePuller` (JPEG stream) | PyAV **or** [[opencv-entity|OpenCV]] `cv2.imdecode` | RTSP **or** HTTP [[mjpeg-and-still-image-formats|MJPEG]] | Yes (PyAV path only) | Mixed; JPEG path unavoidable |
+| `video_insight` | `video_insight/video_insight_factory.py` | `VideoInsightCamera` | `AvUrlFramePuller` | [[pyav-entity|PyAV]] | [[rtsp-deep-dive|RTSP]] | Yes | **Migrated** |
+| `luxriot` | `luxriot/luxriot_factory.py` | `LuxriotCamera` | `AvUrlFramePuller` / `MotionBasedAvUrlFramePuller` | [[pyav-entity|PyAV]] | [[rtsp-deep-dive|RTSP]] | Yes | **Migrated** |
+| `genetec` | `genetec/genetec_factory.py` | `GenetecCamera` | `AvUrlFramePuller` / `MotionBasedAvUrlFramePuller` | [[pyav-entity|PyAV]] | [[rtsp-deep-dive|RTSP]] | Yes | **Migrated** |
+| `exacq` | `exacq/exacq_factory.py` | `ExacqCamera` | `AvUrlFramePuller` (video stream) **or** `JpgFrameQueuePuller` (JPEG stream) | [[pyav-entity|PyAV]] **or** [[opencv-entity|OpenCV]] `cv2.imdecode` | [[rtsp-deep-dive|RTSP]] **or** HTTP [[mjpeg-and-still-image-formats|MJPEG]] | Yes (PyAV path only) | Mixed; JPEG path unavoidable |
 | `openeye` | `openeye/openeye_factory.py` | `OpeneyeCamera` | `AvUrlFramePuller` / `MotionBasedAvUrlFramePuller` | PyAV | RTSP | Yes | **Migrated** |
 | `orchid` | `orchid/orchid_factory.py` | `OrchidCamera` | `OrchidJpgFrameQueuePuller` | `requests` HTTP + [[opencv-entity|OpenCV]] `cv2.imdecode` | HTTP JPEG polling | No | Permanent — Orchid offers no RTSP route from us |
 | `star4live` | `star4live/star4live_factory.py` | `Star4LiveCamera` | `SocketPuller` | [[opencv-entity|OpenCV]] `cv2.VideoCapture` on Unix-pipe | Unix domain socket from Star4Live SDK sidecar | No (cv2 software) | Bespoke — sidecar feeds raw |
 | `video` | `video/videoclip_factory.py` | `VideoClipCamera` (or `VerifierCamera` in robo) | `S3FramePuller` (default) / `UrlFramePuller`+`MotionBasedUrlFramePuller` / `GenesisUrlFramePuller` (verifier branch) | [[opencv-entity|OpenCV]] (`cv2.VideoCapture` on downloaded clip) | S3-backed MP4 clips | No | Batch verifier — [[opencv-entity|OpenCV]] is acceptable for clips |
 | `eagle_eye` / `eagle_eye_v3` | `eagle_eye/eagle_eye_factory.py` | `EagleEyeCamera` | `AvUrlFramePuller` / `MotionBasedAvUrlFramePuller` | PyAV | HTTPS preview MP4 (Eagle Eye HTTP) | Yes | **Migrated** |
-| `hikcentral` | `hikcentral/hikcentral_factory.py` | `HikcentralCamera` | `AvUrlFramePuller` (default) **or** `OnOffMotionBasedUrlFramePuller` (motion) | PyAV **or** **legacy OpenCV `UrlFramePuller`** | RTSP | Partial (motion path is OpenCV) | **Half-migrated — motion path still legacy** |
+| `hikcentral` | `hikcentral/hikcentral_factory.py` | `HikcentralCamera` | `AvUrlFramePuller` (default) **or** `OnOffMotionBasedUrlFramePuller` (motion) | PyAV **or** **legacy [[opencv-entity|OpenCV]] `UrlFramePuller`** | RTSP | Partial (motion path is [[opencv-entity|OpenCV]]) | **Half-migrated — motion path still legacy** |
 | `kvs` | `kvs/kvs_factory.py` | `KvsCamera` | `KVSFramePuller` (`KVSFramePuller`+`KvsIngestor`) | PyAV (over [[kvs-components|KVS]] [[hls-and-dash|HLS]]/GetMedia output) | [[aws-kvs-entity|AWS KVS]] | Yes (PyAV) | **Migrated** |
 | `vch` | `autopatrol/vch_factory.py` | `VCHCamera` | `AutopatrolWebSocketStreamPuller` (subclass of `AvUrlFramePuller`) | PyAV (fMP4 over WebSocket) | Immix WebSocket fMP4 (~2 s burst) | Yes | **Migrated** (PyAV under WS) |
 | `autopatrol` | `autopatrol/autopatrol_factory.py` | `AutoPatrolCamera` | `AutopatrolWebSocketStreamPuller` (subclass of `AvUrlFramePuller`); `WebcamFramePuller` only when `customer.local && use_webcam` | PyAV | Immix WebSocket fMP4 (~10 s patrol) | Yes | **Migrated** |
-| `SMTP_per_camera` / `ajax` | `smtp/smtp_factory.py` | `SMTPCamera` | `VideoQueueFramePuller` | OpenCV (`cv2.VideoCapture` on staged MP4) | SMTP-attached MP4 → local file → cv2 | No | Batch — OpenCV is acceptable for MP4 files |
+| `SMTP_per_camera` / `ajax` | `smtp/smtp_factory.py` | `SMTPCamera` | `VideoQueueFramePuller` | [[opencv-entity|OpenCV]] (`cv2.VideoCapture` on staged MP4) | SMTP-attached MP4 → local file → cv2 | No | Batch — [[opencv-entity|OpenCV]] is acceptable for MP4 files |
 
 Patrol (non-Immix) integration uses `connector_factories/patrol/patrol_factory.py` → `PatrolCamera` → currently only `AvUrlFramePuller` (`inner_integration_type == "rtsp"`); other inner types raise.
 
@@ -68,9 +68,9 @@ The `sqs_video` factory (`connector_factories/sqs_video/sqs_factory.py`) is **de
 - `S3FramePuller` (video/robo) — S3-staged clip; same reasoning as VideoQueue.
 - `KVSFramePuller` — wraps [[kvs-components|KVS]] GetMedia/[[hls-and-dash|HLS]] into a [[pyav-entity|PyAV]] decode; KVS-specific transport but [[pyav-entity|PyAV]] under the hood.
 - `SocketPuller` (star4live) — Star4Live SDK is a vendor sidecar that pipes raw frames to a Unix socket. [[opencv-entity|cv2]] decoding from the pipe is the contract.
-- `AutopatrolWebSocketStreamPuller` — subclasses `AvUrlFramePuller` and feeds fMP4 chunks from the websocket into PyAV. Already on the new path.
+- `AutopatrolWebSocketStreamPuller` — subclasses `AvUrlFramePuller` and feeds fMP4 chunks from the websocket into [[pyav-entity|PyAV]]. Already on the new path.
 
-**The [[gstreamer-entity|GStreamer]] `GstUrlFramePuller` is unused.** It exists in `actuate-pullers` (`actuate_pullers/url/gst_url_puller.py`) and is gated behind a `try/except` import (`actuate_pullers/__init__.py:18`) so missing [[gstreamer-entity|GStreamer]] doesn't break the package, but **no integration in vms-connector calls it**. The [[h264-deep-dive|H.264]]-only limitation noted in scout context never materialised as production debt because the migration target was PyAV, not [[gstreamer-entity|GStreamer]]. Deleting it from `actuate-pullers` is a tidy follow-up — but low priority while it's quietly behind a feature gate.
+**The [[gstreamer-entity|GStreamer]] `GstUrlFramePuller` is unused.** It exists in `actuate-pullers` (`actuate_pullers/url/gst_url_puller.py`) and is gated behind a `try/except` import (`actuate_pullers/__init__.py:18`) so missing [[gstreamer-entity|GStreamer]] doesn't break the package, but **no integration in vms-connector calls it**. The [[h264-deep-dive|H.264]]-only limitation noted in scout context never materialised as production debt because the migration target was [[pyav-entity|PyAV]], not [[gstreamer-entity|GStreamer]]. Deleting it from `actuate-pullers` is a tidy follow-up — but low priority while it's quietly behind a feature gate.
 
 ## Recommendations
 

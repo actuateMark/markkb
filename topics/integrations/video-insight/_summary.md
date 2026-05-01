@@ -10,7 +10,7 @@ author: kb-bot
 
 # Video Insight Integration
 
-[[video-insight-components|Video Insight]] (now part of Panasonic i-PRO) is an on-premise video management system. The Actuate integration connects to Video Insight's REST API for authentication and camera management, then uses [[rtsp-deep-dive|RTSP]] streams for frame ingestion via standard URL-based pullers.
+[[video-insight-components|Video Insight]] (now part of Panasonic i-PRO) is an on-premise video management system. The Actuate integration connects to [[video-insight-components|Video Insight]]'s REST API for authentication and camera management, then uses [[rtsp-deep-dive|RTSP]] streams for frame ingestion via standard URL-based pullers.
 
 ## Components
 
@@ -26,7 +26,7 @@ Defined in [[actuate-config]] at `connector/video_insight/video_insight_config.p
 
 ### Puller
 
-[[video-insight-components|Video Insight]] uses the standard [[rtsp-deep-dive|RTSP]] URL-based pullers from [[actuate-pullers]] (`UrlFramePuller`, `AvUrlFramePuller`, or `GstUrlFramePuller`). No Video Insight-specific puller exists -- stream URLs are obtained via the Video Insight API and passed to the generic URL puller infrastructure.
+[[video-insight-components|Video Insight]] uses the standard [[rtsp-deep-dive|RTSP]] URL-based pullers from [[actuate-pullers]] (`UrlFramePuller`, `AvUrlFramePuller`, or `GstUrlFramePuller`). No Video Insight-specific puller exists -- stream URLs are obtained via the [[video-insight-components|Video Insight]] API and passed to the generic URL puller infrastructure.
 
 ## Auth Method
 

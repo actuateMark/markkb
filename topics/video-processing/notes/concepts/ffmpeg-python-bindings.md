@@ -95,7 +95,7 @@ for i, frame in enumerate(reader):
 
 ### 4. [[opencv-entity|OpenCV]]'s `cv2.VideoCapture` (`pip install opencv-python`)
 
-**What it is:** [[opencv-entity|OpenCV]] ships with [[ffmpeg-entity|FFmpeg]] statically bundled into the wheel. `cv2.VideoCapture` is [[opencv-entity|OpenCV]]'s video reader; on Linux the default backend is the bundled FFmpeg (libavformat + libavcodec).
+**What it is:** [[opencv-entity|OpenCV]] ships with [[ffmpeg-entity|FFmpeg]] statically bundled into the wheel. `cv2.VideoCapture` is [[opencv-entity|OpenCV]]'s video reader; on Linux the default backend is the bundled [[ffmpeg-entity|FFmpeg]] (libavformat + libavcodec).
 
 ```python
 import cv2
@@ -109,13 +109,13 @@ while True:
 **Strengths:**
 - Most familiar API in CV land — every tutorial uses it.
 - Frames come out as BGR numpy arrays directly, ready for [[opencv-entity|OpenCV]] / inference.
-- Bundled FFmpeg means no system dependency wrestling.
+- Bundled [[ffmpeg-entity|FFmpeg]] means no system dependency wrestling.
 - Backend selection via `cv2.CAP_FFMPEG`, `cv2.CAP_GSTREAMER`, etc. — flexible.
 
 **Weaknesses:**
 - Almost no control over codec parameters or hwaccel beyond the env-var sledgehammer (`OPENCV_FFMPEG_CAPTURE_OPTIONS=rtsp_transport;tcp`).
 - Silent stream failures — `cap.read()` returns `(False, None)` with no diagnostic info.
-- Bundled FFmpeg may lack hardware [[codecs-overview|codecs]]; system FFmpeg may have [[hardware-accelerated-codecs|NVENC]]/[[hardware-accelerated-codecs|NVDEC]] but you're not using it.
+- Bundled [[ffmpeg-entity|FFmpeg]] may lack hardware [[codecs-overview|codecs]]; system [[ffmpeg-entity|FFmpeg]] may have [[hardware-accelerated-codecs|NVENC]]/[[hardware-accelerated-codecs|NVDEC]] but you're not using it.
 - Dropped frames often invisible. Latency creep on [[rtsp-deep-dive|RTSP]] is hard to debug.
 
 **Use when:** You're doing CV inference on ad-hoc clips and want zero setup; or you're maintaining legacy code that already uses it. **Avoid for new live-stream production paths** unless you've benchmarked and accepted the limits.

@@ -24,8 +24,6 @@ incoming_updated: 2026-05-01
 
 What to measure, why it matters, and how to collect it. Organized by category from most actionable to most strategic. All metrics should be tracked as **trends over time** — a single snapshot is useless; the direction tells you whether you're winning or losing.
 
-> **Sketch status (2026-04-22):** Scaffolded as the `software_arch_sketches.metrics` module in `/home/mork/work/software-arch-sketches/`. Emits a well-shaped `data/metrics.json` envelope (generated-at, input-repo, status=stub). Real complexity (`radon cc`) + coverage (`coverage.xml` parse) collection is the next step — `radon` is already a dep. Target input repo: `vms-connector`. See [[2026-04-17_local-sketches-plan]].
-
 ---
 
 ## 1. Code Complexity

@@ -41,7 +41,7 @@ Per-label confidence thresholds are configured in `raw_metrics` within each came
 
 ## Pipeline Position
 
-Thermal intruder detection follows the same [[data-science/_summary|Data Science Methodology]] architecture as standard intruder detection: frame ingestion, FDMD motion detection, YOLO inference on the thermal model, then post-processing filters (confidence, ignore zones, IOU, stationary), and sliding window alert generation. The same observers (PersonLoitererObserver, VehicleLoitererObserver, LineCrossingObserver, BlacklistObserver) from [[actuate-libraries|actuate-connector-observers]] can be attached to thermal cameras.
+Thermal intruder detection follows the same [[data-science/_summary|Data Science Methodology]] architecture as standard intruder detection: frame ingestion, FDMD motion detection, YOLO inference on the thermal model, then post-processing filters (confidence, [[ignore-zones|ignore zones]], IOU, stationary), and sliding window alert generation. The same observers (PersonLoitererObserver, VehicleLoitererObserver, LineCrossingObserver, BlacklistObserver) from [[actuate-libraries|actuate-connector-observers]] can be attached to thermal cameras.
 
 ## Use Cases
 
@@ -60,6 +60,6 @@ The thermal intruder model is listed as an active specialised model in the [[ai-
 ## Related Topics
 
 - [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
-- [[data-science/_summary|Data Science Methodology]] -- detection pipeline architecture
+- [[data-science/_summary|Data Science Methodology]] -- detection [[pipeline-architecture|pipeline architecture]]
 - [[models/intruder-v5]] -- the standard optical intruder model
 - [[models/fire-detection]] -- another specialised detection model

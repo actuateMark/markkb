@@ -53,17 +53,17 @@ Release-train, **stage-first**: feature → `staging` → `main`. CI workflow `P
 
 ## Key People
 
-- **Tatiana Hanazaki** -- Core maintainer (3,336 commits)
-- **Paolo Zilioti** -- (458 commits)
-- **actuateMark / Mark Barbera** -- (311 commits)
-- **jacob-aegis / Jacob Weiss** -- (173 commits)
+- **[[tatiana-hanazaki|Tatiana Hanazaki]]** -- Core maintainer (3,336 commits)
+- **[[paolo-zilioti|Paolo Zilioti]]** -- (458 commits)
+- **actuateMark / [[mark-barbera|Mark Barbera]]** -- (311 commits)
+- **jacob-aegis / [[jacob-weiss|Jacob Weiss]]** -- (173 commits)
 - **Angela Wang** -- (85 commits)
 
 ## Current Focus (April 2026)
 
 - **AutoPatrol dev settings** (`feature/autopatrol-dev-settings`) -- endpoint_stage, queue_stage config on Customer model
 - **Line crossing separation** (PROD-116) -- decoupling from intruder product
-- **Database performance** -- BACK-623 / BT-926: recursive CTE in `get_descendants()` causing Aurora CPU spikes (98.7%). Needs index on `inframap_group.parent_id` + caching.
+- **[[database-performance|Database performance]]** -- BACK-623 / BT-926: recursive CTE in `get_descendants()` causing Aurora CPU spikes (98.7%). Needs index on `inframap_group.parent_id` + caching.
 - **Django upgrade** (BACK-604) -- in QA/QC
 - **Monitoring API upgrade** (BACK-638) -- in progress
 

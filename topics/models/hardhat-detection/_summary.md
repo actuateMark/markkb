@@ -34,7 +34,7 @@ Per-label confidence thresholds are configured in `raw_metrics` within each came
 
 ## Pipeline Position
 
-Hard hat detection runs through the [[data-science/_summary|Data Science Methodology]] as a separate feature deployment with its own model, FPS, and thresholds. The processing chain follows the standard path: frame ingestion, FDMD motion detection, YOLO inference on the hardhat model, then post-processing filters (confidence, ignore zones, IOU, stationary), and sliding window alert generation.
+Hard hat detection runs through the [[data-science/_summary|Data Science Methodology]] as a separate feature deployment with its own model, FPS, and thresholds. The processing chain follows the standard path: frame ingestion, FDMD motion detection, YOLO inference on the hardhat model, then post-processing filters (confidence, [[ignore-zones|ignore zones]], IOU, stationary), and sliding window alert generation.
 
 ## Products and Observers
 
@@ -57,6 +57,6 @@ Hard hat detection is listed as an active specialised model in the [[ai-models/_
 ## Related Topics
 
 - [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
-- [[data-science/_summary|Data Science Methodology]] -- detection pipeline architecture
+- [[data-science/_summary|Data Science Methodology]] -- detection [[pipeline-architecture|pipeline architecture]]
 - [[models/intruder-v5]] -- the primary intruder model that runs alongside hardhat
 - [[models/fire-detection]] -- another specialised safety model

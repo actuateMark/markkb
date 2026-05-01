@@ -127,5 +127,5 @@ The fix for the race condition also addresses several observability gaps:
 
 - [[s3-frame-fallback]] — previous fix for frame cache eviction in deferred alerts (same flush path)
 - [[sliding-window-mechanics]] — window lifecycle and deferred alert gating
-- [[autopatrol-server]] — only sends PATROL_SUMMARY, not per-detection alerts
+- [[knowledgebase/topics/autopatrol/notes/entities/autopatrol-server]] — only sends PATROL_SUMMARY, not per-detection alerts
 - [[actuate-alarm-senders]] — AutoPatrolAlertSender implementation

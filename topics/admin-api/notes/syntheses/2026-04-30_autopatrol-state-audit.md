@@ -243,22 +243,51 @@ for t in tenants[:20]:
 | Cohort B per-customer histogram skewed (one customer with 50 orphans) | Manual review of the outlier before patch; may indicate a broken onboarder run we should investigate first |
 | Cohort D > 0 | Onboarder bug — investigate before the propagation hook design (hook would mask it) |
 
-## TBD — prod run results (paste here)
+## Prod run results — 2026-05-01
 
-> Structural placeholder. Fill in once `python manage.py audit_autopatrol_state` has been run on prod admin (after the staging→main release-train cut). Until this section has numbers, treat the propagation-hook ADR and reconcile-patch design as **blocked**.
+> Reached prod after v2.7.3 release-train (PR #2395) merged to main 2026-05-01T15:27Z. The actuate_admin US deployment is on ECS Fargate with `enableExecuteCommand: false`, so the audit was run via `aws ecs run-task --overrides` invoking the audit command in a one-off task. Output captured via firelens → New Relic. EU run was via `kubectl exec` on the EU `camera-admin` namespace (`inference-eks-Xp5O`).
+
+### EU prod (kubectl exec)
 
 ```
-# paste raw command output here
-
-# also fill in:
-# Cohort A count: ...
-# Cohort B count + distinct_customers: ...
-# Cohort C count: ...
-# Cohort D count: ...
-# Tenant-root summary (cohort E): ...
+Cohort A (active=False, is_deleted=False, autopatrol): count=2
+  - pk=38818 name='2 Fuller Road - Bergvliet' active=False is_deleted=False cams_active=8
+  - pk=38819 name='Immix Nottingham Office' active=False is_deleted=False cams_active=10
 ```
 
-**Then:** resolve the [[#Open question — prod orphan-state shape]] above against the actual numbers, decide whether the orphan filter holds or needs redefining, and only then proceed to the propagation-hook ADR and reconcile-patch design.
+Small population, 2 customers — handle case-by-case if needed.
+
+### US prod (ECS run-task `83d18219`, 2026-05-01T16:10Z)
+
+```
+Cohort B (orphan schedules, schedule_id empty or null): count=0 distinct_customers=0
+Cohort C (customers with ONLY orphan schedules): count=0
+Cohort D (active autopatrol customers with zero schedules): count=4
+  - pk=41798 name='CC260' active=True is_deleted=False group_id=46630
+  - pk=35923 name='Alibi Vigilant - TEST - TO BE DISABLED' active=True is_deleted=False
+  - pk=39845 name='TRAVIS TEST' active=True is_deleted=False group_id=44544
+  - pk=39416 name='StoredVideo' active=True is_deleted=False group_id=44087
+```
+
+3 of 4 Cohort D customers are clearly test entries; only `CC260` (pk=41798) might warrant follow-up.
+
+### Resolution: the orphan signal is NOT `schedule_id=''`
+
+**Cohort B = 0 in prod** disproves the original hypothesis. No row in `inframap_autopatrolschedule` has empty or null `schedule_id`; every row has a UUID-formatted Immix ID.
+
+The first US pre-flight (which printed all 445 schedules due to a related-manager bug — see PR #2396) revealed many rows with **`schedule_status='Deleted' AND is_deleted=False`** — i.e., the admin record of Immix telling us the schedule was deleted, but the local row hasn't been soft-deleted to mirror that.
+
+**New hypothesis for the real orphan signal:** `schedule_status IN ('Deleted', 'Removed') AND is_deleted=False`. That matches the "schedules deleted on Immix side, admin shows orphan rows" symptom from the handoff for 39221/41260.
+
+### Pending
+
+1. **[[https://github.com/aegissystems/actuate_admin/pull/2396|PR #2396]]** — fixes the `--customer_id` related-manager bug. `c.autopatrol_schedules.with_deleted()` chains `SoftDeleteManager.with_deleted()` (which calls `super().get_queryset()`) onto the related manager, **bypassing the FK filter** and returning the entire 445-row table instead of the customer's schedules. Replaced with `AutoPatrolSchedule.objects.with_deleted().filter(customer_id=c.pk)`. Once merged + released, re-run pre-flight on 39221 to see its **actual** schedules and confirm the new hypothesis.
+
+2. **Follow-up after #2396 lands:** redefine Cohort B/C filters to use `schedule_status__in=['Deleted','Removed'] AND is_deleted=False`. Re-run on prod. **Then** numbers feed the propagation-hook ADR + reconcile-patch design.
+
+3. **Cohort A on US** wasn't run yet — defer until #2396 is in (low cost to bundle).
+
+The propagation-hook ADR + reconcile-patch design remain **blocked** until the orphan filter is corrected and re-run.
 
 ## Cross-references
 

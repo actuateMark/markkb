@@ -24,8 +24,6 @@ incoming_updated: 2026-05-01
 
 A catalog of tools for code quality, architecture enforcement, tech debt tracking, and automated review — organized by category with adoption recommendations for the Actuate Python/FastAPI/UV monorepo stack.
 
-> **Sketch status (2026-04-22):** Scaffolded as the `software_arch_sketches.tooling` module in `/home/mork/work/software-arch-sketches/`. Emits `data/tools/_index.json`; per-tool runner subprocess wrappers are the next step. **Candidate starter tools (pick 2-3)**: `ruff` (linter — already installed via dev deps), `radon` (complexity — already a runtime dep), `vulture` (dead code), `bandit` (security), `pydeps` ([[dependency-graph|dependency graph]]). Per-tool output lands in `data/tools/<name>.json`. See [[2026-04-17_local-sketches-plan]].
-
 ---
 
 ## Current Actuate Setup (April 2026)

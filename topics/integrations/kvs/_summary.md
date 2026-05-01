@@ -10,7 +10,7 @@ author: kb-bot
 
 # KVS Integration
 
-Amazon [[aws-kvs-entity|Kinesis Video Streams]] ([[kvs-components|KVS]]) is an AWS managed service for ingesting, storing, and processing real-time video streams. Actuate integrates with KVS as a video source, pulling frames from KVS streams for AI analytics. This is used when cameras or edge devices publish video directly to AWS rather than exposing [[rtsp-deep-dive|RTSP]] endpoints.
+Amazon [[aws-kvs-entity|Kinesis Video Streams]] ([[kvs-components|KVS]]) is an AWS managed service for ingesting, storing, and processing real-time video streams. Actuate integrates with [[kvs-components|KVS]] as a video source, pulling frames from [[kvs-components|KVS]] streams for AI analytics. This is used when cameras or edge devices publish video directly to AWS rather than exposing [[rtsp-deep-dive|RTSP]] endpoints.
 
 ## Components
 
@@ -23,14 +23,14 @@ Defined in [[actuate-pullers]] at `kvs/kvs_puller.py`. Extends `BasePuller`. Wra
 Defined in [[actuate-pullers]] at `kvs/kvs_ingestor.py`. The core streaming engine that:
 
 1. **Connects to [[kvs-components|KVS]]** via `boto3` -- creates a `kinesisvideo` client, obtains a `GET_MEDIA` data endpoint, then calls `get_media()` with `StartSelector: NOW` to begin reading the live stream.
-2. **Builds a [[gstreamer-entity|GStreamer]] pipeline** -- `appsrc ! matroskademux ! decodebin ! videoconvert ! jpegenc ! queue ! appsink`. Raw MKV bytes from KVS are pushed into `appsrc`; decoded JPEG frames come out of `appsink`.
-3. **Feeds data in a background thread** -- `feed_kvs_data()` runs in a daemon thread, reading chunks (default 64KB) from the KVS payload and pushing them as GStreamer buffers.
+2. **Builds a [[gstreamer-entity|GStreamer]] pipeline** -- `appsrc ! matroskademux ! decodebin ! videoconvert ! jpegenc ! queue ! appsink`. Raw MKV bytes from [[kvs-components|KVS]] are pushed into `appsrc`; decoded JPEG frames come out of `appsink`.
+3. **Feeds data in a background thread** -- `feed_kvs_data()` runs in a daemon thread, reading chunks (default 64KB) from the [[kvs-components|KVS]] payload and pushing them as [[gstreamer-entity|GStreamer]] buffers.
 4. **Delivers frames via callback** -- `on_new_sample()` pulls frames from the sink, decodes the JPEG buffer into an [[opencv-entity|OpenCV]] numpy array, and invokes the registered `frame_callback`.
 5. **Auto-reconnects** -- on stream interruption or errors, resets the pipeline, re-obtains the media client endpoint, and recreates the pipeline.
 
 ### KvsConnectorConfig
 
-Defined in [[actuate-config]] at `connector/kvs/kvs_config.py`. Extends `BaseConnectorConfig`. The `KvsCamera` class maps `camera_name` from the settings to `kvs_stream_name`, which is the KVS stream identifier passed to the puller. Uses the standard `CustomerConfig` with no additional customer-level fields.
+Defined in [[actuate-config]] at `connector/kvs/kvs_config.py`. Extends `BaseConnectorConfig`. The `KvsCamera` class maps `camera_name` from the settings to `kvs_stream_name`, which is the [[kvs-components|KVS]] stream identifier passed to the puller. Uses the standard `CustomerConfig` with no additional customer-level fields.
 
 ### Alarm Sender
 

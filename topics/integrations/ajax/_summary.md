@@ -10,7 +10,7 @@ author: kb-bot
 
 # Ajax Integration
 
-[[ajax-components|Ajax Systems]] is a security hardware manufacturer producing wireless alarm systems, hubs, and video devices (NVRs / "video edges"). Actuate integrates with Ajax primarily to provision ONVIF users, discover cameras, and build [[rtsp-deep-dive|RTSP]] URLs so that Ajax video-edge devices can be onboarded into the Actuate pipeline.
+[[ajax-components|Ajax Systems]] is a security hardware manufacturer producing wireless alarm systems, hubs, and video devices (NVRs / "video edges"). Actuate integrates with [[ajax-components|Ajax]] primarily to provision ONVIF users, discover cameras, and build [[rtsp-deep-dive|RTSP]] URLs so that [[ajax-components|Ajax]] video-edge devices can be onboarded into the Actuate pipeline.
 
 ## Components
 
@@ -21,12 +21,12 @@ Defined in [[actuate-integration-calls]] at `ajax/ajax.py`. The `AjaxCalls` clas
 - **Login** -- authenticates with username + password hash to obtain a session token.
 - **Hub discovery** -- lists hubs for a user and resolves a hub by name to its ID.
 - **ONVIF user management** -- creates ONVIF users on video-edge devices so Actuate can pull [[rtsp-deep-dive|RTSP]] streams.
-- **RTSP URL construction** -- combines the video edge's IP address, RTSP port, channel ID, and ONVIF credentials into an `rtsp://` URL (`rtsp://[User]:[Pass]@[IP]:[Port]/[channelId]_[m|s]`).
+- **[[rtsp-deep-dive|RTSP]] URL construction** -- combines the video edge's IP address, [[rtsp-deep-dive|RTSP]] port, channel ID, and ONVIF credentials into an `rtsp://` URL (`rtsp://[User]:[Pass]@[IP]:[Port]/[channelId]_[m|s]`).
 - **Camera enumeration** -- retrieves cameras attached to a hub for automated onboarding.
 
 ### Puller
 
-No dedicated Ajax puller exists. Once an RTSP URL is constructed via `AjaxCalls`, the standard RTSP puller in [[actuate-pullers]] handles frame ingestion.
+No dedicated [[ajax-components|Ajax]] puller exists. Once an [[rtsp-deep-dive|RTSP]] URL is constructed via `AjaxCalls`, the standard [[rtsp-deep-dive|RTSP]] puller in [[actuate-pullers]] handles frame ingestion.
 
 ### Alarm Sender
 

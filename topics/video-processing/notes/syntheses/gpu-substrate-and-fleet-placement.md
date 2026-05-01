@@ -43,7 +43,7 @@ Only the [[hardware-accelerated-codecs|NVDEC]] side; no [[hardware-accelerated-c
 | **Inf2 / Trn2** | Inferentia / Trainium | **No [[hardware-accelerated-codecs|NVDEC]]** (AWS chips) | — | — | **Not viable for decode** |
 | **Graviton G5g** | T4 on ARM | T4 [[hardware-accelerated-codecs|NVDEC]] (ARM path thinner) | 1 | — | ARM ecosystem not broadly tested; document constraint |
 
-**Throughput reality**: L4 [[hardware-accelerated-codecs|NVDEC]] handles ~1080p @ 1080 fps [[h264-deep-dive|H.264]] (multiple concurrent streams, hardware-shared). Pod density per GPU matters — very high per-pod camera counts may queue on decode engine capacity. This is a PoC discovery point: do we hit NVDEC saturation first or CPU/inference first?
+**Throughput reality**: L4 [[hardware-accelerated-codecs|NVDEC]] handles ~1080p @ 1080 fps [[h264-deep-dive|H.264]] (multiple concurrent streams, hardware-shared). Pod density per GPU matters — very high per-pod camera counts may queue on decode engine capacity. This is a PoC discovery point: do we hit [[hardware-accelerated-codecs|NVDEC]] saturation first or CPU/inference first?
 
 ## Cost and density trade-off
 

@@ -12,7 +12,7 @@ author: kb-bot
 
 ## Overview
 
-The intruder v5 model (`intruder-384h-512w-svc`) is the current **production** intruder detection model deployed across the Actuate platform. Built on the YOLOv5 architecture, it serves as the primary model behind intruder, vehicle, and bike detection for the vast majority of customer cameras. The model name encodes its input resolution: 384 pixels high by 512 pixels wide.
+The [[intruder-v5-model|intruder v5 model]] (`intruder-384h-512w-svc`) is the current **production** intruder detection model deployed across the Actuate platform. Built on the YOLOv5 architecture, it serves as the primary model behind intruder, vehicle, and bike detection for the vast majority of customer cameras. The model name encodes its input resolution: 384 pixels high by 512 pixels wide.
 
 ## Detection Classes
 
@@ -34,7 +34,7 @@ Per-label confidence thresholds are configured in `raw_metrics` within each came
 
 ## Pipeline Position
 
-Frames flow through the [[data-science/_summary|Data Science Methodology]]: camera ingestion, FDMD motion detection, YOLO inference on this model, then post-processing filters (stationary, confidence, ignore zones, IOU, blacklist). Filtered detections reach product-specific observers. The model feeds into the IntruderObserver sliding window, PersonLoitererObserver, VehicleLoitererObserver, LineCrossingObserver, CrowdViolationPresentStep, and BlacklistObserver depending on which products are configured.
+Frames flow through the [[data-science/_summary|Data Science Methodology]]: camera ingestion, FDMD motion detection, YOLO inference on this model, then post-processing filters (stationary, confidence, [[ignore-zones|ignore zones]], IOU, blacklist). Filtered detections reach product-specific observers. The model feeds into the IntruderObserver sliding window, PersonLoitererObserver, VehicleLoitererObserver, LineCrossingObserver, CrowdViolationPresentStep, and BlacklistObserver depending on which products are configured.
 
 ## Products Using This Model
 
@@ -52,5 +52,5 @@ The v5 model is **active in production** but scheduled for replacement by the [[
 ## Related Topics
 
 - [[ai-models/_summary|AI Models & Evaluation]] -- broader model catalog and evaluation methodology
-- [[data-science/_summary|Data Science Methodology]] -- detection pipeline and training infrastructure
+- [[data-science/_summary|Data Science Methodology]] -- [[detection-pipeline|detection pipeline]] and training infrastructure
 - [[models/intruder-v8]] -- the approved successor model

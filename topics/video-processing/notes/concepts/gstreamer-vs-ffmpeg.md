@@ -114,7 +114,7 @@ The Actuate decision pattern, made explicit:
 2. **Reach for [[gstreamer-entity|GStreamer]]** when you need protocol bridging (`appsrc`/`appsink` integration with non-FFmpeg sources, [[kvs-components|KVS]], future [[rtmp-and-srt|SRT]]/[[webrtc-deep-dive|WebRTC]]/NDI), batched multi-stream pipelines ([[nvidia-deepstream|DeepStream]]), or runtime hardware-accel swapping.
 3. **Reach for [[ffmpeg-entity|FFmpeg]] CLI** for batch transcodes (clip generation, archive re-encoding).
 
-The KVS path's decode→jpegenc→imdecode round-trip (see [[gstreamer-pipeline-model]] Actuate touchpoints) is a sign that the GStreamer choice there has cost -- a PyAV-based KVS path could remove the round-trip and the runtime plugin dependency.
+The [[kvs-components|KVS]] path's decode→jpegenc→imdecode round-trip (see [[gstreamer-pipeline-model]] Actuate touchpoints) is a sign that the [[gstreamer-entity|GStreamer]] choice there has cost -- a PyAV-based [[kvs-components|KVS]] path could remove the round-trip and the runtime plugin dependency.
 
 ## Related notes
 

@@ -12,7 +12,7 @@ author: kb-bot
 
 # Actuate Inference API
 
-FastAPI-based REST service that accepts JPEG images and returns object detection results. Deployed as AWS Lambda (container image via Mangum adapter) behind API Gateway with a Rust Lambda authorizer. **Lambda deployment is permanent** — there is no planned migration to Kubernetes.
+FastAPI-based REST service that accepts JPEG images and returns object detection results. Deployed as AWS Lambda (container image via Mangum adapter) behind API Gateway with a [[rust-lambda-authorizer|Rust Lambda authorizer]]. **Lambda deployment is permanent** — there is no planned migration to Kubernetes.
 
 ## Architecture
 
@@ -67,14 +67,14 @@ Unified generic detection endpoint for [[external-api/_summary|External API Init
 | 1 | Filter consolidation with [[actuate-libraries]] | Can run in parallel |
 | 2 | v5 unified endpoint (`POST /v5/detect`, `GET /v5/models`) | **Deployed to dev 2026-04-14. 104 tests, live regression passing.** |
 | 3 | API key subkey generation endpoints | Future |
-| 4 | Ignore zones (via `data` JSON extension), dependency trimming | Future |
+| 4 | [[ignore-zones|Ignore zones]] (via `data` JSON extension), dependency trimming | Future |
 
 **Cancelled from original plan:** Lambda-to-K8s migration (ADR-001 denied), dynamic K8s model discovery (ADR-003 postponed), per-customer response format (ADR-005 — everyone gets same format), metadata caching, actuate-admin auth complexity.
 
 ## Key People
 
-- **Michael Aleksa** — Primary developer (219 commits)
-- **Mark Barbera** — Assigned to ED-32 (v5 API)
+- **[[michael-aleksa|Michael Aleksa]]** — Primary developer (219 commits)
+- **[[mark-barbera|Mark Barbera]]** — Assigned to ED-32 (v5 API)
 
 ## Related Repos
 
@@ -93,4 +93,4 @@ Unified generic detection endpoint for [[external-api/_summary|External API Init
 
 ## External References
 
-- [EBUS UI Mapping (Integrations space)](https://actuate-team.atlassian.net/wiki/spaces/Integratio/pages/493092870) -- Phase 1 API-to-EBUS mapping, updated 2026-04-13 by Laura Reno
+- [EBUS UI Mapping (Integrations space)](https://actuate-team.atlassian.net/wiki/spaces/Integratio/pages/493092870) -- Phase 1 API-to-EBUS mapping, updated 2026-04-13 by [[laura-reno|Laura Reno]]

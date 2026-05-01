@@ -28,7 +28,7 @@ Defined in [[actuate-config]] at `connector/openeye/openeye_config.py`. Extends 
 
 No dedicated OpenEye puller class. Depending on the connectivity mode:
 - **Direct mode**: The [[vms-connector]] constructs an [[rtsp-deep-dive|RTSP]] or HTTP URL from the customer config and uses the standard puller from [[actuate-pullers]].
-- **OWS mode**: The connector uses the OWS cloud API to obtain a streaming URL, which is then consumed by the standard URL/RTSP puller.
+- **OWS mode**: The connector uses the OWS cloud API to obtain a streaming URL, which is then consumed by the standard URL/[[rtsp-deep-dive|RTSP]] puller.
 
 ### Integration Calls
 

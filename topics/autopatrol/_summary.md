@@ -17,44 +17,44 @@ Automated patrol scheduling product that runs camera patrols, generates clips, a
 
 ### 1. Flex Ignore Zones (Dominant workstream)
 Multiple IZ presets per camera, selectable per schedule, with full API + frontend + settings generation.
-- **Brad Murphy:** Frontend components (AUTO-446, 427, 424, 425, 493)
+- **[[brad-murphy|Brad Murphy]]:** Frontend components (AUTO-446, 427, 424, 425, 493)
 - **Tatiana:** API calls (AUTO-500)
 - **Victoria Peccia:** QA (AUTO-408, 444, 426)
 
 ### 2. VLM Integration
-- **Alena Prashkovich:** Prompt Engineering Phase III wrapping up (AUTO-474)
-- **Jessica Bae:** VLM-based alerting frontend planning (AUTO-420)
+- **[[alena-prashkovich|Alena Prashkovich]]:** Prompt Engineering Phase III wrapping up (AUTO-474)
+- **[[jessica-bae|Jessica Bae]]:** VLM-based alerting frontend planning (AUTO-420)
 - Models in evaluation: Qwen3-VL-8B-Instruct, Qwen2.5-VL-32B-Instruct-AWQ, Gemma-3-12B-IT-FP8
 
 ### 3. Immix Integration
-- **Mark Barbera:** Bounding boxes on AP clips to Immix (AUTO-351, ready to deploy)
+- **[[mark-barbera|Mark Barbera]]:** Bounding boxes on AP clips to Immix (AUTO-351, ready to deploy)
 
 ### 4. Deployment Integration
-- **Clarissa Herman:** AP Server/MS integration (AUTO-449)
+- **[[clarissa-herman|Clarissa Herman]]:** AP Server/MS integration (AUTO-449)
 
 ### 5. Alert Lifecycle Race Condition (Identified April 16, 2026)
 - **Deferred alerts fired via `flush_deferred_alerts()` can be lost at patrol exit** — executor tasks killed by process exit before Immix API call completes. See [[2026-04-16_deferred-alert-race-condition]] and [[autopatrol-alert-lifecycle]].
 - Fix in progress: drain executor after flush before allowing process exit.
 
 ### 6. Generic Patrol Mode (Shipped April 2026)
-- **Mark Barbera:** Shipped in PR #1639 to stage (April 13, 2026). See [[generic-patrol-mode]] for architecture.
+- **[[mark-barbera|Mark Barbera]]:** Shipped in PR #1639 to stage (April 13, 2026). See [[generic-patrol-mode]] for architecture.
   - ENG-106 (Done) — `PatrolCamera`, `PatrolSiteManager`, `PatrolFactory`, `PatrolCameraMixin` extraction
-  - ENG-107 (Done) — async inference pool with AIMD concurrency, multi-product camera fixes
-  - ENG-93 (Done) — S3 frame fallback for deferred alerts
+  - ENG-107 (Done) — async [[inference-pool|inference pool]] with AIMD concurrency, multi-product camera fixes
+  - ENG-93 (Done) — [[s3-frame-fallback|S3 frame fallback]] for deferred alerts
   - ENG-95 (Done) — `queue_stage`/`endpoint_stage` config routing, replaces customer name check
 
 ## Key People
 
 | Person | Focus |
 |--------|-------|
-| Brad Murphy | Frontend (flex IZ, bulk updates, AP schedules) |
+| [[brad-murphy|Brad Murphy]] | Frontend (flex IZ, bulk updates, AP schedules) |
 | Victoria Peccia | QA (IZ presets, flex IZ) |
 | Tatiana | Backend (AP-specific flex IZ API) |
-| Alena Prashkovich | DS (VLM prompt engineering) |
-| Clarissa Herman | Integration (deployment x AP Server/MS) |
-| Jessica Bae | Frontend planning (VLM alerting) |
-| Mark Barbera | Immix bounding boxes, generic patrol |
-| Otzar Jaffe | ML (YOLOv8 entrance model, datasets) |
+| [[alena-prashkovich|Alena Prashkovich]] | DS (VLM prompt engineering) |
+| [[clarissa-herman|Clarissa Herman]] | Integration (deployment x AP Server/MS) |
+| [[jessica-bae|Jessica Bae]] | Frontend planning (VLM alerting) |
+| [[mark-barbera|Mark Barbera]] | Immix bounding boxes, generic patrol |
+| [[otzar-jaffe|Otzar Jaffe]] | ML (YOLOv8 entrance model, datasets) |
 
 ## 50+ Open Issues
 
@@ -65,4 +65,4 @@ Most active initiative by issue count. Hot items:
 
 ## Relationship to [[watchman/_summary|Actuate Watchman]]
 
-AutoPatrol's patrol scheduling microservice will be adapted for Watchman's Patrol Agent (continuous adaptive scheduling instead of Immix-triggered scheduling). AutoPatrol's context synthesis and recommendation infrastructure feeds into Watchman's Assessment and Recommendation agents.
+AutoPatrol's patrol scheduling microservice will be adapted for [[watchman-repo|Watchman]]'s Patrol Agent (continuous adaptive scheduling instead of Immix-triggered scheduling). AutoPatrol's context synthesis and recommendation infrastructure feeds into [[watchman-repo|Watchman]]'s Assessment and Recommendation agents.

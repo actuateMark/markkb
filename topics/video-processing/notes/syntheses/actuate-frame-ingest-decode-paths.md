@@ -67,7 +67,7 @@ The migration from [[opencv-entity|OpenCV]] to [[pyav-entity|PyAV]] is **incompl
 - Different codec coverage. [[pyav-entity|PyAV]] decodes [[h265-hevc-deep-dive|H.265]]/[[h265-hevc-deep-dive|HEVC]] correctly with an explicit performance warning at `av_url_puller.py:910-913`. [[opencv-entity|OpenCV]]'s [[h265-hevc-deep-dive|H.265]] support depends on its [[ffmpeg-entity|FFmpeg]] build and is less predictable.
 - Different reconnect / failure semantics. The [[opencv-entity|OpenCV]] path has a hack to rewrite URLs with `videocodec=h264&` on connection failure (`url_puller.py:150-151, 1121-1122`); the [[pyav-entity|PyAV]] path doesn't need it.
 - Different rotation / sidedata handling. [[pyav-entity|PyAV]] reads MP4 display matrix and applies `cv2.rotate` (`av_url_puller.py:139-171`); [[opencv-entity|OpenCV]] silently ignores rotation metadata.
-- Different memory profile. PyAV detects fMP4 and recycles the demuxer every ~5 minutes (`av_url_puller.py:496-503, 1158-1185`) to flush the libavformat `mov` demuxer's `frag_index` (~5-10 MB/hr leak on Avigilon streams). OpenCV's wrapper of the same libavformat doesn't expose this.
+- Different memory profile. [[pyav-entity|PyAV]] detects fMP4 and recycles the demuxer every ~5 minutes (`av_url_puller.py:496-503, 1158-1185`) to flush the libavformat `mov` demuxer's `frag_index` (~5-10 MB/hr leak on Avigilon streams). [[opencv-entity|OpenCV]]'s wrapper of the same libavformat doesn't expose this.
 
 Operationally this means: **the same camera, on two slightly different integration_types, can hit either decoder path, and behave differently.** Worth a tracked epic to finish the migration.
 

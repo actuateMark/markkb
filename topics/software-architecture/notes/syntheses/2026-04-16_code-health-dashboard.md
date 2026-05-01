@@ -24,8 +24,6 @@ incoming_updated: 2026-05-01
 
 A single-pane-of-glass for code health across all Actuate repositories. Consolidates static analysis, test coverage, architecture conformance, dependency health, and tech debt trends into one extensible view.
 
-> **Sketch status (2026-04-22):** Scaffolded as the `software_arch_sketches.dashboard` module in `/home/mork/work/software-arch-sketches/` (repo root). Flask app with Chart.js-from-CDN shell; reads `/api/data` JSON aggregated from the other 4 sketches. `make serve` on `localhost:8000`. **Stub only** — no real data wired yet. See [[2026-04-17_local-sketches-plan]] "Shared substrate decisions (RESOLVED 2026-04-22)" for the substrate choices.
-
 ---
 
 ## Design Goals

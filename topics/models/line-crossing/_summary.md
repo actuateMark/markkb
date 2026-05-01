@@ -12,7 +12,7 @@ author: kb-bot
 
 ## Overview
 
-Line crossing detection identifies when a tracked object crosses a customer-defined virtual line in the camera's field of view. Unlike intruder detection (presence-based) or loitering (dwell-time-based), line crossing requires **directional trajectory analysis** -- the system determines that an object moved from one side of a line to the other. This product is implemented in the `LineCrossingObserver` using a `TrajectoryManager` component in [[actuate-libraries|actuate-connector-observers]].
+[[line-crossing-detection|Line crossing detection]] identifies when a tracked object crosses a customer-defined virtual line in the camera's field of view. Unlike intruder detection (presence-based) or loitering (dwell-time-based), line crossing requires **directional trajectory analysis** -- the system determines that an object moved from one side of a line to the other. This product is implemented in the `LineCrossingObserver` using a `TrajectoryManager` component in [[actuate-libraries|actuate-connector-observers]].
 
 ## Architecture
 
@@ -69,6 +69,6 @@ Line crossing is **active in production** and showing strong results in reducing
 ## Related Topics
 
 - [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
-- [[data-science/_summary|Data Science Methodology]] -- trajectory-based detection and pipeline architecture
+- [[data-science/_summary|Data Science Methodology]] -- trajectory-based detection and [[pipeline-architecture|pipeline architecture]]
 - [[models/loitering]] -- alternative tracking-based product using BoTSORT
 - [[models/intruder-v5]] -- the underlying detection model
