@@ -15,7 +15,7 @@ The journey of a YOLO model from initial research through production deployment 
 ## Phase 1: Data Collection and Labeling
 
 ### Tools
-- **Spektar** -- Actuate's labeling platform where annotators mark bounding boxes on sampled frames.
+- **[[spektar|Spektar]]** -- Actuate's labeling platform where annotators mark bounding boxes on sampled frames.
 - **[[training-data-sampler]]** -- Generates batches (the smallest unit of training data) from production frames. Batches are grouped into Data Packs (thematic collections, e.g., construction sites) and Data Decks (logical collections of packs).
 - **[[actuate-data-registry-dvc]]** -- DVC-based data registry for versioning and tracking datasets on S3.
 
@@ -44,7 +44,7 @@ Named presets control resolution and loss weights: `baseline`, `quick_test`, `sm
 - **NeuronX compilation** -- Compiles trained models for AWS Inferentia2/Trainium via `compile_neuronx.py` for production deployment.
 
 ### Example: Weapon v8
-Carlos Torres trained `weapon-v8-XL-736` using YOLOv8 XL architecture at 736px resolution. The model showed "improvement by many orders of magnitude" over v5, with new confidence thresholds: HIGH=0.65, MED=0.60, LOW=0.55.
+[[carlos-torres|Carlos Torres]] trained `weapon-v8-XL-736` using YOLOv8 XL architecture at 736px resolution. The model showed "improvement by many orders of magnitude" over v5, with new confidence thresholds: HIGH=0.65, MED=0.60, LOW=0.55.
 
 ## Phase 3: Evaluation
 
@@ -68,7 +68,7 @@ Actuate uses a rigorous multi-level evaluation framework with multiple statistic
 ### Level 4: Shadow Testing
 - **Tool:** [[shadow-test-pipeline]]
 - **Method:** Run DEV model alongside PROD on real traffic. The pipeline queries AWS Athena for alert data, classifies alerts as prod/dev based on model identifiers, matches them using sliding-window + greedy algorithm (25s time delta, 0.3 IoU threshold), and identifies alerts unique to each model.
-- **Labeling:** Manual TP/FP labeling via OpenCV tools, Streamlit interface, or Encord integration.
+- **Labeling:** Manual TP/FP labeling via [[opencv-entity|OpenCV]] tools, Streamlit interface, or Encord integration.
 - **Output:** Statistical comparison of false positive and false negative rates between models.
 
 ### Level 5: Confidence Threshold Sweep
@@ -86,19 +86,19 @@ The v8 model (`int07-actuate003-v8`) passed frame-level evaluation and was "appr
 Trained and Neuron-compiled models are packaged into [[ds-server-container]] Docker images. The Rust-based inference server runs on AWS Inferentia2 instances (NeuronCores). Model-specific images layer on top of a base inference server image. The companion `slicing_server` runs on Graviton4 for SAHI-style tiling.
 
 ### Kubernetes Deployment
-Models deploy to the `ds-model-prod` namespace (or `ds-model-dev` for testing). Each model gets a K8s Service with a URL pattern: `http://{model}-svc.ds-model-{env}.svc.cluster.local:8080/infer`. ArgoCD manages GitOps deployments from the `kubernetes-deployments` repo.
+Models deploy to the `ds-model-prod` namespace (or `ds-model-dev` for testing). Each model gets a K8s Service with a URL pattern: `http://{model}-svc.ds-model-{env}.svc.cluster.local:8080/infer`. [[argocd|ArgoCD]] manages GitOps deployments from the `kubernetes-deployments` repo.
 
 ### Client Configuration
 The [[vms-connector]] reaches models through [[actuate-inference-client]] or [[actuate-classic-inference-client]] using `KubernetesModelUri`. The model endpoint is specified in the site's `settings.json` via [[actuate-config]]. Changing which model a site uses requires updating the settings and restarting the connector.
 
 ### VLM Deployment
-Vision Language Models (Qwen3-VL-8B, etc.) for the VLM FP reduction filter deploy on K8s with vLLM backend on EC2 g5.2xlarge instances (~$1.21/hr). Communication is via SQS queues and DynamoDB polling through [[actuate-vlm]].
+Vision Language Models (Qwen3-VL-8B, etc.) for the [[vlm-fp-reduction|VLM FP reduction]] filter deploy on K8s with vLLM backend on EC2 g5.2xlarge instances (~$1.21/hr). Communication is via SQS queues and DynamoDB polling through [[actuate-vlm]].
 
 ## Phase 5: Monitoring and Retirement
 
 ### Production Monitoring
 - **Shadow testing (ongoing):** Even after deployment, shadow testing can continue to compare the production model against experimental successors.
-- **New Relic / CloudWatch / Datadog:** [[actuate-monitoring]] reports inference latency, error rates, and throughput.
+- **[[new-relic|New Relic]] / CloudWatch / Datadog:** [[actuate-monitoring]] reports inference latency, error rates, and throughput.
 - **[[actuate-event-listener]]:** Analytics events track per-model, per-camera detection rates for anomaly detection.
 
 ### YAM Re-evaluation
@@ -114,8 +114,8 @@ When a successor model is validated (e.g., v8 replacing v5 for intruder), the ol
 
 | Phase | People |
 |---|---|
-| Data & Labeling | Mladen Lukic (point-based annotation), Alena Prashkovich (UK camera screening) |
-| Training | Carlos Torres (weapon), Otzar Jaffe (PPF, model merging), DS team |
-| Evaluation | Uladzimir Sapeshka / Vlad (YAM, shadow testing), Zack Schmidt (decisions) |
-| Deployment | Engineering team, [[connector-deployer]], ArgoCD |
-| Monitoring | Platform engineering, New Relic dashboards |
+| Data & Labeling | Mladen Lukic (point-based annotation), [[alena-prashkovich|Alena Prashkovich]] (UK camera screening) |
+| Training | [[carlos-torres|Carlos Torres]] (weapon), [[otzar-jaffe|Otzar Jaffe]] (PPF, model merging), DS team |
+| Evaluation | Uladzimir Sapeshka / Vlad (YAM, shadow testing), [[zack-schmidt|Zack Schmidt]] (decisions) |
+| Deployment | Engineering team, [[connector-deployer]], [[argocd|ArgoCD]] |
+| Monitoring | Platform engineering, [[new-relic|New Relic]] dashboards |

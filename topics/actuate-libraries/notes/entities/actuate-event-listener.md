@@ -62,7 +62,7 @@ Application Code -> EventLibrary.send_event()
 
 ## Consumers
 
-- [[actuate-alarm-senders]] -- `EventListenerAlertSender` and its subclasses (Immix, Milestone, HikCentral, EagleEye, Evalink, LISA, AutoPatrol) use `EventListener` to dispatch alerts via SQS
+- [[actuate-alarm-senders]] -- `EventListenerAlertSender` and its subclasses (Immix, Milestone, [[hikcentral-components|HikCentral]], EagleEye, [[evalink-components|Evalink]], LISA, AutoPatrol) use `EventListener` to dispatch alerts via SQS
 - `vms-connector` and other connector services -- emit site-level and camera-level analytics events
 - Any Actuate service that needs to write to the analytics events table
 

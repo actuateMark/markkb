@@ -128,7 +128,7 @@ This is the single biggest hidden cost. Mitigations:
 | **ElastiCache for Redis** (cluster mode, multi-AZ with automatic failover) | Managed, TLS, IAM auth via Secrets Manager, AZ-aware primaries, VPC-peered with EKS | Pay-per-node, limited control over Redis config, cross-AZ replication traffic is chargeable | **Recommended** — ops savings outweigh cost premium |
 | **Bitnami Redis Helm** (in-cluster StatefulSet on EBS gp3) | Lower latency (pod-to-pod within AZ), no ElastiCache markup | We own the failover/backup story; operational toil | Skip unless ElastiCache proves unviable |
 
-**Cluster mode sharding strategy:** shard by `camera_id` hash. A single site's cameras spread across shards, so no site dominates a single shard. Stream keys: `frame:cam:{camera_id}` — one stream per camera.
+**Cluster mode [[sharding]] strategy:** shard by `camera_id` hash. A single site's cameras spread across shards, so no site dominates a single shard. Stream keys: `frame:cam:{camera_id}` — one stream per camera.
 
 **AUTH:** token in AWS Secrets Manager, injected via ExternalSecrets or CSI driver. TLS in transit mandatory.
 
@@ -186,7 +186,7 @@ Given VPC CNI (AWS default for EKS), pod-to-pod within a node is via `veth` pair
 
 For any proposal that transports frames over the network:
 
-1. **Zone-aware pod scheduling** — `topology.kubernetes.io/zone` label on pods; matched producer/consumer pairs share a zone
+1. **Zone-aware pod scheduling** — `topology.kubernetes.io/zone` label on pods; matched producer/consumer pairs share a zone via [[pod-affinity-anti-affinity]] + topology-spread (`whenUnsatisfiable: ScheduleAnyway`, not `DoNotSchedule` — the latter wedges the scheduler under capacity pressure and is almost never what you want for cost-driven topology hints)
 2. **Topology-aware routing** — `service.kubernetes.io/topology-aware-hints: auto` on services so pods preferentially hit same-AZ backends
 3. **Pod anti-affinity** across zones for HA, but with topology spread constraint `whenUnsatisfiable: ScheduleAnyway` so we don't wedge on capacity
 4. **ElastiCache primary locality** — pin a primary per AZ where practical; replicas across AZs for durability
@@ -203,7 +203,7 @@ For any proposal that transports frames over the network:
 
 ## Open questions
 
-- Redis cluster sharding strategy if we pick Redis: by `camera_id` hash (spreads sites across shards, avoids hot keys if a few sites dominate).
+- Redis cluster [[sharding]] strategy if we pick Redis: by `camera_id` hash (spreads sites across shards, avoids hot keys if a few sites dominate).
 - Do we need TLS between pods and ElastiCache? **Yes** — we're on a shared VPC with other workloads. 10-15% CPU overhead is acceptable.
 - S3 Express per-AZ proliferation — if we have cameras across 3 AZs we need 3 buckets with lifecycle rules. Confirm we can script this cleanly via Terraform.
 - Multi-region — out of scope. All fleet infra is single-region per cluster.

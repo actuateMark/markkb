@@ -2,7 +2,7 @@
 title: "CHM Phase 1: NetworkProbe -- Root Cause Diagnosis for Connectivity Failures"
 type: synthesis
 topic: camera-health-monitoring
-tags: [synthesis, chm, diagnostics, proposal, phase-1]
+tags: [synthesis, chm, diagnostics, proposal, phase-1, rtsp]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
@@ -14,9 +14,9 @@ author: kb-bot
 
 When a camera goes offline today, CHM tells operators THAT it is down but not WHY. The root cause is invisible, and operators receive a generic "Camera offline" email with no actionable remediation path.
 
-The current [[rtsp-components|RTSP]] diagnostics implementation (`RTSPDiagnostics.test_rtsp_connection()`) performs an HTTP GET to the camera's `base_url` -- a fundamentally wrong protocol for RTSP cameras that communicate over TCP port 554 using the RTSP DESCRIBE/SETUP/PLAY handshake. The HTTP GET will fail on any camera that does not also serve an HTTP interface, producing a misleading `ConnectionRefused` or timeout error that says nothing about the actual RTSP reachability.
+The current [[rtsp-components|RTSP]] diagnostics implementation (`RTSPDiagnostics.test_rtsp_connection()`) performs an HTTP GET to the camera's `base_url` -- a fundamentally wrong protocol for [[rtsp-deep-dive|RTSP]] cameras that communicate over TCP port 554 using the [[rtsp-deep-dive|RTSP]] DESCRIBE/SETUP/PLAY handshake. The HTTP GET will fail on any camera that does not also serve an HTTP interface, producing a misleading `ConnectionRefused` or timeout error that says nothing about the actual [[rtsp-deep-dive|RTSP]] reachability.
 
-Worse, 24 integrations fall through to [[chm-diagnostics-architecture|DummyDiagnostics]] in the `DiagnosticRunner.get_runner()` dispatch -- a complete no-op that returns `healthcheck_data` unchanged. Every integration besides Digital Watchdog, Exacq, Milestone, Avigilon, and RTSP receives zero diagnostic enrichment. This includes high-volume integrations like [[salient-components|Salient]], [[hikcentral-components|HikCentral]], [[eagle-eye-components|Eagle Eye]], [[genetec-components|Genetec]], [[orchid-components|Orchid]], [[kvs-components|KVS]], and all alarm-sender-only types.
+Worse, 24 integrations fall through to [[chm-diagnostics-architecture|DummyDiagnostics]] in the `DiagnosticRunner.get_runner()` dispatch -- a complete no-op that returns `healthcheck_data` unchanged. Every integration besides Digital Watchdog, Exacq, Milestone, Avigilon, and [[rtsp-deep-dive|RTSP]] receives zero diagnostic enrichment. This includes high-volume integrations like [[salient-components|Salient]], [[hikcentral-components|HikCentral]], [[eagle-eye-components|Eagle Eye]], [[genetec-components|Genetec]], [[orchid-components|Orchid]], [[kvs-components|KVS]], and all alarm-sender-only types.
 
 The result: operators cannot distinguish between DNS failure, firewall blocking, WireGuard tunnel death, credential expiry, or the camera itself being powered off. Every failure mode presents identically as "Camera offline."
 
@@ -83,7 +83,16 @@ class NetworkProbe:
 
 **`wireguard_check(camera_ip)`** -- Queries [[actuate-wireguard]] `WireGuardDAO.get_all_tunnels()`, matches the camera IP against each tunnel's `subnets` list using `ipaddress.ip_address(camera_ip) in ipaddress.ip_network(subnet)`. If a matching tunnel is found, checks `WireGuardTunnel.last_handshake`: if `last_handshake` is `None` or older than 180 seconds from now, the tunnel is considered stale. Returns the tunnel name, last handshake age, and tunnel status from the `tunnel_status` field.
 
-**`tls_check(ip, port)`** -- Creates an `ssl.SSLContext`, connects, and inspects the server certificate for validity window and expiry. Relevant for HTTPS-based NVR APIs (DW, Milestone, Exacq).
+**`tls_check(ip, port, hostname=None)`** -- Creates an `ssl.SSLContext` (default context, system CA bundle), connects, and inspects:
+- **Certificate validity window and expiry** (`notBefore` / `notAfter`) -- flags certs expiring within 30 days
+- **Hostname match** against `servername` / SNI (wildcards honored) -- emits `TLS_HOSTNAME_MISMATCH`
+- **Chain completeness** -- requests the full chain from the server; if chain length is 1 (leaf only) AND verification fails with `SSL_ERROR_VERIFY_FAILED` / "unable to get local issuer certificate" / "unable to verify the first certificate", emits `TLS_CHAIN_INCOMPLETE` and records the leaf's issuer (usually a commercial intermediate CA that the server is failing to serve)
+- **Trust path** -- on verification failure not covered above: distinguishes `TLS_SELF_SIGNED`, `TLS_EXPIRED`, `TLS_NOT_YET_VALID`, `TLS_UNKNOWN_CA`
+- **Clock skew guard** -- records local system time; flags `TLS_CLOCK_SKEW` if cert is "not yet valid" but the server's `Date` header (from a side-channel HTTP HEAD if needed) is fine
+
+Emits a `classification` token (one of `TLS_OK`, `TLS_EXPIRED`, `TLS_CHAIN_INCOMPLETE`, `TLS_SELF_SIGNED`, `TLS_HOSTNAME_MISMATCH`, `TLS_CLOCK_SKEW`, `TLS_UNKNOWN_CA`) so third-party escalation tickets can carry a machine-readable root-cause fingerprint instead of "TLS failed."
+
+**Relevant for:** HTTPS-based NVR APIs (DW, Milestone, Exacq), WSS stream endpoints routed via third-party providers (e.g. `dev.powerplus.com` -- see case study in [[chm-enhanced-diagnostics-proposal]] and [[2026-04-20_dev-powerplus-ssl-cert-verify-failure]]).
 
 ### Diagnostic Cascade
 
@@ -156,7 +165,7 @@ def run_cascade(self, hostname, rtsp_port=554, expected_ip=None):
 
 ### RTSPDiagnostics Changes
 
-`RTSPDiagnostics.connectivity_diagnostics()` replaces the HTTP GET with a `NetworkProbe.run_cascade()` call. The current `test_rtsp_connection()` method is deprecated. If the cascade reports TCP reachability on port 554, the method additionally performs an RTSP DESCRIBE via a lightweight socket send/recv to test RTSP-level authentication (401 -> `"credentials"` alert topic, 453 -> `"insufficient_bandwidth"`).
+`RTSPDiagnostics.connectivity_diagnostics()` replaces the HTTP GET with a `NetworkProbe.run_cascade()` call. The current `test_rtsp_connection()` method is deprecated. If the cascade reports TCP reachability on port 554, the method additionally performs an [[rtsp-deep-dive|RTSP]] DESCRIBE via a lightweight socket send/recv to test RTSP-level authentication (401 -> `"credentials"` alert topic, 453 -> `"insufficient_bandwidth"`).
 
 ### GenericDiagnostics Replaces DummyDiagnostics
 
@@ -186,7 +195,26 @@ healthcheck_data.diagnostics["network"] = {
 }
 ```
 
-This data is logged to New Relic for fleet-wide queryability and used by alert generators for enriched email subjects.
+For TLS failures specifically (e.g. against a WSS stream endpoint):
+```python
+healthcheck_data.diagnostics["network"] = {
+    "hostname": "dev.powerplus.com",
+    "resolved_ip": "...",
+    "dns_ok": True,
+    "tcp_443_ok": True,
+    "tls_ok": False,
+    "tls_classification": "TLS_CHAIN_INCOMPLETE",
+    "tls_leaf_subject": "CN=*.powerplus.com",
+    "tls_leaf_issuer": "Sectigo Public Server Authentication CA DV R36",
+    "tls_chain_length": 1,
+    "tls_openssl_verify_code": 21,
+    "tls_human_detail": "Server returned leaf cert only; Sectigo intermediate missing. Client cannot verify chain.",
+    "root_cause": "TLS chain incomplete: dev.powerplus.com missing Sectigo DV R36 intermediate",
+    "suggested_alert_topic": "tls_chain_incomplete"
+}
+```
+
+This data is logged to [[new-relic|New Relic]] for fleet-wide queryability and used by alert generators for enriched email subjects.
 
 ## Alert Improvement
 
@@ -194,9 +222,11 @@ This data is logged to New Relic for fleet-wide queryability and used by alert g
 |----------|--------|-------|
 | WireGuard tunnel down | "Camera offline" | "WireGuard tunnel 'site-alpha' is down (5 cameras affected)" |
 | DNS failure | "Camera offline" | "DNS cannot resolve camera hostname 'cam-lobby.site.local'" |
-| Firewall blocking | "Camera offline" | "Camera responds to ping but RTSP port 554 is blocked" |
-| Service crash | "Camera offline" | "Port 554 connection refused -- RTSP service not running" |
-| Credentials expired | "Camera offline" | "RTSP authentication failed (HTTP 401)" |
+| Firewall blocking | "Camera offline" | "Camera responds to ping but [[rtsp-deep-dive|RTSP]] port 554 is blocked" |
+| Service crash | "Camera offline" | "Port 554 connection refused -- [[rtsp-deep-dive|RTSP]] service not running" |
+| Credentials expired | "Camera offline" | "[[rtsp-deep-dive|RTSP]] authentication failed (HTTP 401)" |
+| TLS chain incomplete | "Camera offline (37 days, no frames, healthcheck sentinel values)" | "TLS_CHAIN_INCOMPLETE: server missing intermediate (leaf signed by Sectigo DV R36); frame retrieval impossible until server serves full chain" |
+| Cert expired / self-signed | "Camera offline" | "TLS_EXPIRED: leaf cert expired 2026-04-10" or "TLS_SELF_SIGNED: cert chain ends in self-signed leaf, not in any public root CA" |
 
 ## Performance Budget
 
@@ -209,10 +239,10 @@ This data is logged to New Relic for fleet-wide queryability and used by alert g
 
 3-5 days, broken down as:
 - Day 1: `NetworkProbe` class with `dns_resolve`, `tcp_probe`, `ping` methods + unit tests
-- Day 2: `wireguard_check` integration with [[actuate-wireguard]] `WireGuardDAO` + `tls_check`
+- Day 2: `wireguard_check` integration with [[actuate-wireguard]] `WireGuardDAO` + `tls_check` (including chain-completeness detection and `TLS_*` classification tokens per [[2026-04-20_dev-powerplus-ssl-cert-verify-failure]] case study)
 - Day 3: `run_cascade` logic, caching, `GenericDiagnostics` class
 - Day 4: Wire into `RTSPDiagnostics`, update `DiagnosticRunner` fallback, integration test
-- Day 5: Alert template updates, data model population, New Relic logging
+- Day 5: Alert template updates, data model population, [[new-relic|New Relic]] logging
 
 ## Files to Create/Modify
 
@@ -235,3 +265,5 @@ This data is logged to New Relic for fleet-wide queryability and used by alert g
 - [[chm-phase2-stream-probe]] -- Phase 2: stream metadata surfacing
 - [[chm-phase3-cross-camera-correlation]] -- Phase 3: NVR/subnet failure grouping
 - [[actuate-wireguard]] -- WireGuardDAO, WireGuardTunnel model with `last_handshake` and `subnets` fields
+- [[2026-04-20_dev-powerplus-ssl-cert-verify-failure]] -- concrete case study for `tls_check`'s chain-completeness detection; 37-day misdiagnosis avoided by the TLS layer of this cascade
+- [[mark-todos]] §2d -- AP/VCH alert-flow diagnostic-enhancement workstream; Phase 1 `tls_check` is the direct implementation of what that workstream needs for the PowerPlus case

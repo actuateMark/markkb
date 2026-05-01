@@ -30,7 +30,7 @@ async def decode_frames(frames):
     results = await asyncio.gather(*tasks)
 ```
 
-**When to use:** PIL image operations, OpenCV frame processing, heavy serialization, any function that takes >5ms and doesn't need the event loop.
+**When to use:** PIL image operations, [[opencv-entity|OpenCV]] frame processing, heavy serialization, any function that takes >5ms and doesn't need the event loop.
 
 **Caveat:** Thread pool has a default size of `min(32, os.cpu_count() + 4)`. On Lambda with 1 vCPU, that's 5 threads. Don't queue hundreds of tasks.
 

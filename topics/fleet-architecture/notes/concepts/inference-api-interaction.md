@@ -16,7 +16,7 @@ Every fleet proposal calls the inference API. The AIMD-controlled `AsyncInferenc
 
 - **Inference API** is a Lambda-deployed FastAPI service — [[inference-api/_summary]]. It is permanent K8s-exempt; connector pods call it via HTTPS.
 - **`AsyncInferencePool`** — [[vms-connector/notes/concepts/inference-pool]] — consolidates all HTTP inference calls onto a single asyncio event loop in a daemon thread. AIMD (Additive Increase Multiplicative Decrease) congestion control: window starts 48, floor 8, ceiling 200; target 200 ms latency.
-- **ds-server-container** — Rust YOLO inference server (separate from the Lambda API for some workloads). Per-model.
+- **[[ds-server-container]]** — Rust YOLO inference server (separate from the Lambda API for some workloads). Per-model.
 
 ## Per-proposal placement
 

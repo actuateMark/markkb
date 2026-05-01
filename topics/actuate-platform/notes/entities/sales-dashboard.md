@@ -42,3 +42,7 @@ Key operational note: the `reports@actuate.ai` Snowflake account locks after mul
 - **Ordway** -- billing/revenue source of truth
 - **Snowflake (GOLD database)** -- analytics warehouse for site hierarchy and usage
 - **Admin Postgres** -- used by supplementary scripts like `reconcile_cameras.py`
+
+## Related Topics
+
+- [[aws-cost/_summary]] — cost-research topic. This dashboard is the operational surface that exposes per-site daily AWS cost data (compute / inference / slicing / storage) to the team. The data ingest pipeline (S3 CSV feed in `actuate-sales-dashboard` bucket) is where Cost Explorer numbers become per-site rows. Live UI is auth-walled (Cognito) at <https://sales-dashboard.internal.actuateui.net/> — schema documented above.

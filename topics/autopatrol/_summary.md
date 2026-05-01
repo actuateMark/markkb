@@ -63,6 +63,6 @@ Most active initiative by issue count. Hot items:
 - AUTO-446/500 (High, In Progress) -- Flex IZ on AP schedules
 - AUTO-474 (Medium, In Progress) -- Prompt Engineering Phase III
 
-## Relationship to [[watchman]]
+## Relationship to [[watchman/_summary|Actuate Watchman]]
 
 AutoPatrol's patrol scheduling microservice will be adapted for Watchman's Patrol Agent (continuous adaptive scheduling instead of Immix-triggered scheduling). AutoPatrol's context synthesis and recommendation infrastructure feeds into Watchman's Assessment and Recommendation agents.

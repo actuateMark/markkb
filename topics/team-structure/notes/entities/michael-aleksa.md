@@ -8,7 +8,7 @@ tags: [person, engineering, inference, ml]
 
 # Michael Aleksa
 
-Michael Aleksa is a software engineer at Actuate whose primary focus is the **inference pipeline** -- the system that runs ML models against camera frames in real time. He is the primary developer on [[inference-api]], the external partner-facing FastAPI service deployed on AWS Lambda.
+Michael Aleksa is a software engineer at Actuate whose primary focus is the **inference pipeline** -- the system that runs ML models against camera frames in real time. He is the primary developer on [[inference-api/_summary|Actuate Inference API]], the external partner-facing FastAPI service deployed on AWS Lambda.
 
 ## Current Work (April 2026)
 
@@ -22,7 +22,7 @@ Michael's active sprint centers on three high-priority tickets:
 
 Michael works primarily within the **ds-model-prod** Kubernetes namespace, where Rust-based YOLO model servers handle inference. His code touches:
 
-- **actuate-inference-client** -- the Python client that [[vms-connector]] pods use to call model servers.
+- **[[actuate-inference-client]]** -- the Python client that [[vms-connector]] pods use to call model servers.
 - **actuate-inference-api** -- the external-facing FastAPI application (Mangum + Lambda container) that partners like EBUS and AlarmWatch use for on-demand detection.
 - **Model server orchestration** -- coordinating which model version (v5 vs v8) serves which product (intruder, weapon, fire).
 
@@ -33,5 +33,5 @@ Michael collaborates closely with the Data Science team, particularly on the v8 
 ## See Also
 
 - [[data-flow-architecture]] -- where inference fits in the overall pipeline
-- [[actuate-platform]] -- service inventory
+- [[actuate-platform/_summary|Actuate Platform Overview]] -- service inventory
 - [[yam-connector]] -- the YAM initiative

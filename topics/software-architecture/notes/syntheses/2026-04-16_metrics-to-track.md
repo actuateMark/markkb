@@ -12,6 +12,8 @@ author: kb-bot
 
 What to measure, why it matters, and how to collect it. Organized by category from most actionable to most strategic. All metrics should be tracked as **trends over time** — a single snapshot is useless; the direction tells you whether you're winning or losing.
 
+> **Sketch status (2026-04-22):** Scaffolded as the `software_arch_sketches.metrics` module in `/home/mork/work/software-arch-sketches/`. Emits a well-shaped `data/metrics.json` envelope (generated-at, input-repo, status=stub). Real complexity (`radon cc`) + coverage (`coverage.xml` parse) collection is the next step — `radon` is already a dep. Target input repo: `vms-connector`. See [[2026-04-17_local-sketches-plan]].
+
 ---
 
 ## 1. Code Complexity
@@ -61,7 +63,7 @@ Measures coupling, freshness, and security of dependencies.
 | **Unused dependencies** | Declared but never imported | deptry | 0 |
 | **Outdated dependencies** | How far behind latest | pip-audit, dependabot | < 2 minor versions behind |
 | **Known vulnerabilities** | CVEs in dependency tree | pip-audit, safety, snyk | 0 critical/high |
-| **Internal coupling** | Cross-package imports in monorepo | import-linter, custom | Must follow declared dependency graph |
+| **Internal coupling** | Cross-package imports in monorepo | import-linter, custom | Must follow declared [[dependency-graph|dependency graph]] |
 | **Circular dependencies** | A imports B imports A | pydeps, import-linter | 0 |
 
 **Why:** Every dependency is an attack surface, a maintenance burden, and a coupling point. Unused deps are free to remove. Vulnerable deps are urgent. Circular deps create untestable tangles.

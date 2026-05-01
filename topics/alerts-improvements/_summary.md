@@ -11,7 +11,7 @@ author: kb-bot
 
 # Alerts Improvements (H1.3)
 
-Improving the alerting pipeline -- alert muting, Immix dispatch, SMTP enhancements, clip/in-frame display, user permissions, camera/alert grouping.
+Improving the alerting pipeline -- [[alert-muting|alert muting]], [[immix-dispatch|Immix dispatch]], SMTP enhancements, clip/in-frame display, user permissions, camera/alert grouping.
 
 ## Status: Effectively Stalled (April 2026)
 
@@ -25,8 +25,8 @@ Improving the alerting pipeline -- alert muting, Immix dispatch, SMTP enhancemen
 - AIM-45 -- SMTP Enhancements (updated September 2025)
 
 ### Key Planned Work
-- **AIM-91** (Jessica Bae) -- Receive alarm schedule signals from Immix
-- **AIM-7** -- Scheduled alert muting
+- **AIM-91** ([[jessica-bae|Jessica Bae]]) -- Receive alarm schedule signals from Immix
+- **AIM-7** -- Scheduled [[alert-muting|alert muting]]
 - **AIM-6** -- "Mute Alerts" configuration (labeled REQFE)
 - **AIM-11** -- Camera/Alert Grouping
 

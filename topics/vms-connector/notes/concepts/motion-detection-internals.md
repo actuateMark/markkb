@@ -62,7 +62,7 @@ The background frame is updated when motion is detected and at least 1 second ha
 
 ## GPU CUDA Variant
 
-`GPUFrameDiffMotionDetector` extends the CPU implementation with OpenCV CUDA operations. When `cv2.cuda.getCudaEnabledDeviceCount() > 0`, it uses GPU-accelerated paths for:
+`GPUFrameDiffMotionDetector` extends the CPU implementation with [[opencv-entity|OpenCV]] CUDA operations. When `cv2.cuda.getCudaEnabledDeviceCount() > 0`, it uses GPU-accelerated paths for:
 
 - **Grayscale conversion:** `cv2.cuda.cvtColor()` on a `GpuMat`.
 - **Gaussian blur:** Pre-created `cv2.cuda.createGaussianFilter()` applied via CUDA stream.
@@ -80,7 +80,7 @@ Graceful fallback: if any GPU operation fails (driver errors, OOM, resource cont
 
 ## Ignore Zone Integration
 
-Motion detection honours two types of ignore zones, applied before contour extraction:
+Motion detection honours two types of [[ignore-zones|ignore zones]], applied before contour extraction:
 
 - **Polygonal zones:** Defined per-camera in [[actuate-config]], converted from RLE format to pixel coordinates, then burned into a binary mask via `cv2.fillPoly()`. The mask is applied to the threshold image, zeroing out motion in ignored regions.
 - **Box zones:** Legacy format, applied by directly zeroing rectangular regions in the threshold image.

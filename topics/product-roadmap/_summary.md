@@ -21,17 +21,17 @@ author: kb-bot
 
 | Initiative | Project | Status | Key Metric |
 |-----------|---------|--------|------------|
-| [[camera-health-monitoring]] (H1.1) | CS3 | Maintenance mode | Launched, scene change differentiator |
-| [[autopatrol]] (H1.2) | AUTO | Active (50+ issues) | Flex IZ dominant, VLM next wave |
-| [[alerts-improvements]] (H1.3) | AIM | Stalled (25/29 unassigned) | Low staffing |
-| [[settings-automation]] (H1.4) | SA | Planning (VLM MVP defining) | PPF active, recommender planned |
+| [[camera-health-monitoring/_summary|Camera Health Monitoring (H1.1)]] (H1.1) | CS3 | Maintenance mode | Launched, scene change differentiator |
+| [[autopatrol/_summary|AutoPatrol (H1.2)]] (H1.2) | AUTO | Active (50+ issues) | Flex IZ dominant, VLM next wave |
+| [[alerts-improvements/_summary|Alerts Improvements (H1.3)]] (H1.3) | AIM | Stalled (25/29 unassigned) | Low staffing |
+| [[settings-automation/_summary|Settings Automation (H1.4)]] (H1.4) | SA | Planning (VLM MVP defining) | PPF active, recommender planned |
 
 ## Major Product Tracks
 
 | Product | Status | Key Facts |
 |---------|--------|-----------|
-| [[watchman]] | ASAP priority | AI-powered virtual security operator, multi-agent, 10-20 beta sites |
-| [[external-api]] | In progress | 6 workstreams (detection, scheduling, image ingestion, arm/disarm) |
+| [[watchman/_summary|Actuate Watchman]] | ASAP priority | AI-powered virtual security operator, multi-agent, 10-20 beta sites |
+| [[external-api/_summary|External API Initiative]] | In progress | 6 workstreams (detection, scheduling, image ingestion, arm/disarm) |
 | Fire Detection | In progress | Standalone/add-on. Laura Reno leading launch plan. |
 | Line Crossing | Near-GA | Beta complete (86-98% alert reduction). Separating from intruder (PROD-116). |
 | Loitering | Rework draft | BoTSORT tracking improvement completed |

@@ -13,7 +13,7 @@ author: kb-bot
 
 ## What Changed (2026-04-13)
 
-The original ED-32 plan had 4 phases culminating in a Lambda-to-K8s migration with dynamic model discovery. After team review of the architecture decision records, the scope was significantly narrowed:
+The original ED-32 plan had 4 phases culminating in a Lambda-to-K8s migration with dynamic model discovery. After team review of the [[architecture-decision-records|architecture decision records]], the scope was significantly narrowed:
 
 ### Cancelled
 - **Lambda-to-K8s migration** (ADR-001 denied) — staying on Lambda permanently
@@ -50,7 +50,7 @@ The `data` field in the POST body is a freeform JSON object whose schema is defi
 - Same `InferenceContext` and `ModelContext` for frame processing
 - Same filter pipeline (LabelFilter, LabelwiseConfidenceFilter, FdmdStationaryFilter, IoUFilter)
 - Same API Gateway `{proxy+}` route catches `/v5/*` automatically
-- Same Rust Lambda authorizer validates API keys
+- Same [[rust-lambda-authorizer|Rust Lambda authorizer]] validates API keys
 
 ### Model Registry as Code
 Models are defined statically — a registry data structure that maps `model_id` to: display name, description, detection classes, expected `data` schema, inference client type, and default parameters. This replaces v4's implicit "one endpoint per model" pattern with an explicit, queryable registry.

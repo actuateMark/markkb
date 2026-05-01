@@ -2,7 +2,7 @@
 title: "CHM Phase 7: Historical Trending -- Degradation Detection"
 type: synthesis
 topic: camera-health-monitoring
-tags: [synthesis, chm, diagnostics, proposal, phase-7]
+tags: [synthesis, chm, diagnostics, proposal, phase-7, dynamodb]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
@@ -114,7 +114,7 @@ healthcheck_data.diagnostics["trending"] = {
 
 ### Dashboard: New Relic NRQL Queries
 
-Trending data logged to New Relic enables visualization and fleet-wide degradation queries:
+Trending data logged to [[new-relic|New Relic]] enables visualization and fleet-wide degradation queries:
 
 ```sql
 -- Cameras with blur degradation over last 7 days
@@ -151,7 +151,7 @@ DynamoDB on-demand pricing for 108M items with 90-day TTL: ~$25/month for writes
 
 ## Effort Estimate
 
-1-2 weeks. Breakdown: 2 days for DynamoDB table creation, TrendCollector, and metric recording. 2 days for TrendAnalyzer baseline computation and degradation detection logic. 1 day for `BaseHealthcheckCamera` integration and alert generator wiring. 1-2 days for New Relic logging and NRQL dashboard queries. 2-3 days for threshold tuning, consecutive-run logic testing, and production validation across a representative camera sample.
+1-2 weeks. Breakdown: 2 days for DynamoDB table creation, TrendCollector, and metric recording. 2 days for TrendAnalyzer baseline computation and degradation detection logic. 1 day for `BaseHealthcheckCamera` integration and alert generator wiring. 1-2 days for [[new-relic|New Relic]] logging and NRQL dashboard queries. 2-3 days for threshold tuning, consecutive-run logic testing, and production validation across a representative camera sample.
 
 ## Related
 

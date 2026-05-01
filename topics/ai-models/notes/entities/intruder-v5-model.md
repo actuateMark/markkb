@@ -41,7 +41,7 @@ Requests are routed through the [[actuate-inference-client]] library, which wrap
 
 Frame-level evaluation uses the [[actuate-eval]] tool against labeled datasets of 28,828+ images, measuring mAP@0.5. The v5 model's mAP scores established the baseline that the successor [[intruder-v8-model]] had to exceed before being approved for rollout.
 
-The model feeds into a multi-stage [[detection-pipeline]]: raw frames pass through [[motion-detection-challenge|FDMD motion detection]], then the YOLO inference result is filtered by a stationary filter, confidence filter, ignore zones, IOU filter, and blacklist filter before reaching product-specific observers.
+The model feeds into a multi-stage [[detection-pipeline]]: raw frames pass through [[motion-detection-challenge|FDMD motion detection]], then the YOLO inference result is filtered by a stationary filter, confidence filter, [[ignore-zones|ignore zones]], IOU filter, and blacklist filter before reaching product-specific observers.
 
 ## Succession Plan
 

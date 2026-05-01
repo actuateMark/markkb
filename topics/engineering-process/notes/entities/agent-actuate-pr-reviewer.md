@@ -18,7 +18,7 @@ Actuate-specific PR reviewer. Applies the KB's written standards, not generic be
 
 ## When to Use
 
-- Any PR in `/home/mork/work/` repos (vms-connector, actuate_admin, actuate-inference-api, actuate-libraries, etc.)
+- Any PR in `/home/mork/work/` repos (vms-connector, [[actuate_admin]], actuate-inference-api, actuate-libraries, etc.)
 - Pre-merge security audit of a branch
 - Review of a specific file/module against the security checklist
 

@@ -10,7 +10,7 @@ author: kb-bot
 
 # Rust Lambda Authorizer
 
-The Rust Lambda Authorizer is a custom AWS API Gateway authorizer that sits in front of the [[inference-api]] (and potentially other [[external-api]] endpoints). It validates every inbound request before it reaches the FastAPI application layer.
+The Rust Lambda Authorizer is a custom AWS API Gateway authorizer that sits in front of the [[inference-api/_summary|Actuate Inference API]] (and potentially other [[external-api/_summary|External API Initiative]] endpoints). It validates every inbound request before it reaches the FastAPI application layer.
 
 ## Request Flow
 
@@ -24,7 +24,7 @@ The authorizer extracts the API key from the request and performs a lookup again
 
 ## DynamoDB Lookup
 
-API keys and their associated roles are stored in the `InferenceAPIAuth-{stage}` DynamoDB table (where stage is `prod`, `dev`, etc.). The [[admin-api]] is responsible for creating and managing these API keys -- when a key is provisioned in the Admin API, it is written to DynamoDB, and the Rust authorizer reads from that same table at request time.
+API keys and their associated roles are stored in the `InferenceAPIAuth-{stage}` DynamoDB table (where stage is `prod`, `dev`, etc.). The [[admin-api/_summary|Actuate Admin API]] is responsible for creating and managing these API keys -- when a key is provisioned in the Admin API, it is written to DynamoDB, and the Rust authorizer reads from that same table at request time.
 
 This decoupled design means the authorizer has no direct dependency on the Admin API at runtime; it only needs read access to DynamoDB.
 
@@ -48,7 +48,7 @@ The role attached to an API key determines which models and endpoints the caller
 
 ## Shared Auth Pattern
 
-The [[external-api]] initiative is standardizing all public-facing services on this same `API Gateway -> Rust Lambda Authorizer -> backend` pattern. Whether the schedule management and image ingestion endpoints (served by [[admin-api]]) will share this exact authorizer or use a separate instance is still TBD. See [[shared-auth-pattern]] for details.
+The [[external-api/_summary|External API Initiative]] initiative is standardizing all public-facing services on this same `API Gateway -> Rust Lambda Authorizer -> backend` pattern. Whether the schedule management and image ingestion endpoints (served by [[admin-api/_summary|Actuate Admin API]]) will share this exact authorizer or use a separate instance is still TBD. See [[shared-auth-pattern]] for details.
 
 ## Docs Authorizer (Basic Auth)
 

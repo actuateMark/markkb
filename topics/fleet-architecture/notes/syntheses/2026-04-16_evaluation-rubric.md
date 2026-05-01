@@ -98,7 +98,7 @@ Before PoCs exist, score the current site-per-pod monolith against the rubric. T
 | Dimension | Score | Notes |
 |-----------|------:|-------|
 | Independent scalability | 0 | Everything scales as a site-pod unit |
-| Cost reduction | 4 | VPA over-provisions; sharding overhead |
+| Cost reduction | 4 | VPA over-provisions; [[sharding]] overhead |
 | Failure isolation | 0 | Site-pod crash = whole site dark |
 | Operational simplicity | 8 | No new infra; one service type |
 | Migration risk | 10 | Baseline — no migration cost at all |
@@ -124,6 +124,6 @@ That's the bar to beat. Anything scoring near this is a regression in net utilit
 
 ## Out of scope for rubric
 
-- Fit with downstream products (Watchman, AutoPatrol, etc.) — should be considered in selection discussion but is hard to score objectively
+- Fit with downstream products ([[watchman-repo|Watchman]], AutoPatrol, etc.) — should be considered in selection discussion but is hard to score objectively
 - Team preference / developer happiness — important, but not a rubric line
 - Customer-visible behavior changes — must be flagged per proposal but not weighted in the composite

@@ -35,8 +35,8 @@ Based on NR data (volume of impact):
 
 | Priority | Phase | Rationale |
 |----------|-------|-----------|
-| **0** | Prerequisites | `HealthcheckDataPacket.diagnostics` extension, fix 3 production bugs (DW/HikCentral/Exacq), investigate "No runner available" pattern |
-| **1** | Phase 1: NetworkProbe | Foundational, fixes RTSP BadStatusLine (102/week) |
+| **0** | Prerequisites | `HealthcheckDataPacket.diagnostics` extension, fix 3 production bugs (DW/[[hikcentral-components|HikCentral]]/Exacq), investigate "No runner available" pattern |
+| **1** | Phase 1: NetworkProbe | Foundational, fixes [[rtsp-deep-dive|RTSP]] BadStatusLine (102/week) |
 | **2** | Phase 4: GenericDiagnostics | **Promoted** -- 18K+ skips/week, lowest effort (1-2 days) |
 | **3** | Phase 2: StreamProbe | Low effort, prerequisite for Phase 7 |
 | **4** | Phase 6: SMTP/AILink | **Promoted** -- covers ~32K cameras (fleet majority) |
@@ -70,13 +70,13 @@ Based on NR data (volume of impact):
 
 ### Phase 5 (Frame Probe)
 - Fix BlurHandler DynamoDB constructor issue: use static method or pass existing instance
-- Clarify frame buffer memory management (10 frames = ~60MB at 1080p)
+- Clarify frame buffer [[memory-management|memory management]] (10 frames = ~60MB at 1080p)
 - Add reconciliation with existing VIDEO_LOSS alert (avoid duplicates)
 
 ### Phase 6 (SMTP/AILink)
 - Clarify SQS queue architecture: shared FIFO vs per-camera queues
 - Fix gap analysis tier reference (SMTP cameras ≠ SMTP alarm senders)
-- Add effort for actuate_ailink API discovery
+- Add effort for [[actuate-ailink|actuate_ailink]] API discovery
 
 ### Phase 7 (Historical Trending)
 - Revise DynamoDB cost: ~$100/month not $30/month (reads dominate)
@@ -89,7 +89,7 @@ Based on NR data (volume of impact):
 | Bug | Integration | Count/Week | Likely Fix |
 |-----|------------|------------|------------|
 | `NoneType.lower` | DW | 184 | Null check on config fields in `dw_diagnostics.py` |
-| `NoneType not subscriptable` | HikCentral | 167 | Null check on API response in `hikcentral` calls |
+| `NoneType not subscriptable` | [[hikcentral-components|HikCentral]] | 167 | Null check on API response in `hikcentral` calls |
 | `KeyError: 'Cameras'` | Exacq | 163 | Defensive parsing in `exacq_diagnostics.py` |
 
 These are ~500 errors/week from missing null checks. Quick defensive fixes, independent of the phase work.
@@ -98,12 +98,12 @@ These are ~500 errors/week from missing null checks. Quick defensive fixes, inde
 
 | NR Finding | Validated Phase | Status |
 |------------|----------------|--------|
-| RTSP BadStatusLine (102/week) | Phase 1 | Directly addressed |
+| [[rtsp-deep-dive|RTSP]] BadStatusLine (102/week) | Phase 1 | Directly addressed |
 | "No runner available" (18K+/week) | Phase 4 | Addressed (partially -- needs investigation) |
 | connector-12749 (9.3K unable to connect) | Phase 3 | Would collapse to 1 alert |
 | AXISP3265V stuck 264+ runs | **None** | Needs escalation logic (add to Phase 7) |
 | Scene change detections trending up | Phase 5 (IR mode suppression) | Would reduce false positives |
-| DW/HikCentral/Exacq errors (500/week) | **Pre-phase bug fixes** | Quick defensive coding |
+| DW/[[hikcentral-components|HikCentral]]/Exacq errors (500/week) | **Pre-phase bug fixes** | Quick defensive coding |
 
 ## Critical Path
 

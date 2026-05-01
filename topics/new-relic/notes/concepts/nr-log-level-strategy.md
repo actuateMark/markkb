@@ -70,7 +70,7 @@ WARNING-level logs indicate issues that the connector is handling gracefully -- 
 |---|---|---|
 | `yolo call failed with status code 500. updating ip` | Model server returned 500; connector will retry with an updated IP | Transient. Only investigate if sustained for >15 minutes -- indicates model server instability. |
 | `unable to connect, sleeping 60s before retry` | Camera stream connection failed; connector is backing off | Normal for cameras that go offline periodically. Not actionable unless the site should be live. |
-| `broken stream, restarting` | RTSP stream dropped; connector is reconnecting | Expected behaviour for unreliable camera streams. |
+| `broken stream, restarting` | [[rtsp-deep-dive|RTSP]] stream dropped; connector is reconnecting | Expected behaviour for unreliable camera streams. |
 | `frame skip` / `frame drop` | Processing fell behind the stream rate | Usually transient under load. Sustained drops may indicate undersized containers. |
 
 ### When to Query WARNINGs

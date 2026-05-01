@@ -14,7 +14,7 @@ VCH (Virtual Camera Healthcheck) is a **special-purpose integration type** in th
 
 ## Purpose
 
-VCH powers the [[camera-health-monitoring]] feature set. Instead of running detection models on video frames, VCH connectors run a suite of automated health checks on each camera stream, including:
+VCH powers the [[camera-health-monitoring/_summary|Camera Health Monitoring (H1.1)]] feature set. Instead of running detection models on video frames, VCH connectors run a suite of automated health checks on each camera stream, including:
 
 - **Connectivity checks** -- verifying that the camera stream can be reached and is returning frames
 - **Stream quality checks** -- measuring actual FPS, resolution, and detecting broken or degraded streams

@@ -15,7 +15,7 @@ BoTSORT (Bag of Tricks for SORT) is the multi-object tracking algorithm used by 
 
 ## How Tracking Works in the Pipeline
 
-Within the [[detection-pipeline]], tracking sits inside the observer layer. After raw YOLO detections pass through post-processing filters (stationary, confidence, ignore zones, IOU, blacklist), the filtered detections for each frame are fed to the BoTSORT tracker. The tracker maintains a set of **tracks** -- each track represents a single real-world object persisting across frames.
+Within the [[detection-pipeline]], tracking sits inside the observer layer. After raw YOLO detections pass through post-processing filters (stationary, confidence, [[ignore-zones|ignore zones]], IOU, blacklist), the filtered detections for each frame are fed to the BoTSORT tracker. The tracker maintains a set of **tracks** -- each track represents a single real-world object persisting across frames.
 
 BoTSORT associates detections to existing tracks using a combination of:
 

@@ -49,7 +49,7 @@ Still used by existing `vms-connector` deployments that have not migrated to the
 
 ## Notable Patterns
 
-- TurboJPEG is used opportunistically (2-3x faster JPEG encoding) with graceful fallback to OpenCV.
+- TurboJPEG is used opportunistically (2-3x faster JPEG encoding) with graceful fallback to [[opencv-entity|OpenCV]].
 - DNS-based server discovery with `dnspython` resolves model service endpoints, caching results in a TTL cache.
 - Heavy coupling to `actuate-config` and `actuate-daos` makes this client harder to test and reuse compared to the newer client.
 - The `call_yolo()` signature accepts many parameters (14+), reflecting accumulated feature flags over time.

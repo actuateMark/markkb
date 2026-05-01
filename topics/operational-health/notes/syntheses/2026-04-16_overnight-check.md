@@ -11,7 +11,7 @@ status: failed
 
 # FAILED: Overnight Check 2026-04-16
 
-The automated overnight check failed at 2026-04-16T17:59:28-04:00.
+The automated [[automation-overnight-check|overnight check]] failed at 2026-04-16T17:59:28-04:00.
 
 - **Exit code:** 1
 - **Host:** mork-ThinkPad-P14s-Gen-5

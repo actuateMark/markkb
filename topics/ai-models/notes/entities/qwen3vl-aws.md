@@ -16,7 +16,7 @@ Standalone deployment of Qwen3-VL-8B-Instruct-FP8 on an AWS EC2 `g5.2xlarge` ins
 
 ## Purpose
 
-Provides a direct HTTP API for VLM inference without the SQS/DynamoDB queue machinery. Useful for interactive or low-latency use cases where callers want synchronous responses rather than the asynchronous poll-based pattern of `vlm-inference`.
+Provides a direct HTTP API for [[vlm-inference|VLM inference]] without the SQS/DynamoDB queue machinery. Useful for interactive or low-latency use cases where callers want synchronous responses rather than the asynchronous poll-based pattern of `vlm-inference`.
 
 ## API Details
 
@@ -60,6 +60,6 @@ This repo predates the Kubernetes-based [[vlm-inference]] pipeline and serves a 
 
 ## Related
 
-- [[vlm-inference]] -- queue-based VLM inference workers (production path)
+- [[vlm-inference]] -- queue-based [[vlm-inference|VLM inference]] workers (production path)
 - [[actuate-vlm]] -- client library for the queue-based pipeline
-- [[ds-smart-alert-supervisor]] -- uses VLM inference for alert verification
+- [[ds-smart-alert-supervisor]] -- uses [[vlm-inference|VLM inference]] for alert verification

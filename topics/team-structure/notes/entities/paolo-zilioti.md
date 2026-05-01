@@ -20,15 +20,15 @@ Paolo leads the YoursIx VMS integration under ticket ENG-118. YoursIx is a Video
 
 ## SMTP Clips (ENG-29)
 
-Paolo works on SMTP-based clip ingestion under ticket ENG-29. The SMTP pathway allows cameras to send alert clips via email, which Actuate's [[frame-receiver-smtp-v2]] service receives and processes. This is an alternative ingestion path to the VMS connector pipeline, commonly used by standalone cameras without a VMS.
+Paolo works on SMTP-based clip ingestion under ticket ENG-29. The SMTP pathway allows cameras to send alert clips via email, which Actuate's [[frame-receiver-smtp-v2]] service receives and processes. This is an alternative ingestion path to the [[vms-connector|VMS connector]] pipeline, commonly used by standalone cameras without a VMS.
 
 ## Ajax and StarFM Integration (ED-2)
 
-Under the EU Deployment project, Paolo handles Ajax alarm panel and StarFM integration (ED-2). Ajax is a European wireless alarm system manufacturer, and StarFM is a monitoring platform. These integrations extend Actuate's reach into the European security market.
+Under the EU Deployment project, Paolo handles [[ajax-components|Ajax]] alarm panel and StarFM integration (ED-2). [[ajax-components|Ajax]] is a European wireless alarm system manufacturer, and StarFM is a monitoring platform. These integrations extend Actuate's reach into the European security market.
 
 ## See Also
 
 - [[actuate-admin-api]] -- the codebase he dominates
 - [[vms-connector]] -- the connector ecosystem for VMS integrations
 - [[frame-receiver-smtp-v2]] -- SMTP clip ingestion service
-- [[multi-region-deployment]] -- EU deployment context for Ajax/StarFM
+- [[multi-region-deployment]] -- EU deployment context for [[ajax-components|Ajax]]/StarFM

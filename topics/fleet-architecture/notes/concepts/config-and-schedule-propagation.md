@@ -100,7 +100,7 @@ Properties:
 ## Hot-path config — what proposals must respect
 
 - **Arm/disarm state** (ENG-96 territory): read per-frame essentially; must be fast + consistent
-- **Camera zones** (ignore zones, detection zones): read per-frame; mostly static but support hot-reload
+- **Camera zones** ([[ignore-zones|ignore zones]], detection zones): read per-frame; mostly static but support hot-reload
 - **Model thresholds** (confidence, IOU): read per-inference; static most of the time
 - **Integration credentials** (SMTP, API tokens): read per-alert; slow-changing; secrets-grade
 

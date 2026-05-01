@@ -36,4 +36,4 @@ The key limitation of this sender is that it requires pre-configured alarm entit
 
 ## Integration Calls and Frame Pulling
 
-Genetec does not have a dedicated integration-calls module or custom puller class. Camera streams are accessed via RTSP URLs constructed at connector startup using the Security Center SDK credentials. The Genetec Web SDK on port 4590 is used exclusively for alarm delivery. Camera discovery and stream URL resolution are handled in the connector factory code within `vms-connector` rather than in a shared library module.
+Genetec does not have a dedicated integration-calls module or custom puller class. Camera streams are accessed via [[rtsp-deep-dive|RTSP]] URLs constructed at connector startup using the Security Center SDK credentials. The Genetec Web SDK on port 4590 is used exclusively for alarm delivery. Camera discovery and stream URL resolution are handled in the [[connector-factory|connector factory]] code within `vms-connector` rather than in a shared library module.

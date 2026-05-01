@@ -34,7 +34,7 @@ This bypass is essential because the stationary filter's purpose is to suppress 
 
 ## Pipeline Position
 
-Fire detection runs through the [[data-science|detection pipeline]] as a separate feature deployment with its own model, FPS, and thresholds. The processing chain is: frame ingestion, FDMD motion detection, YOLO inference on the fire model, then post-processing filters. The stationary filter step is bypassed for fire/smoke labels, but other filters (confidence, ignore zones, IOU) still apply. Alerts pass through the standard sliding window step.
+Fire detection runs through the [[data-science/_summary|Data Science Methodology]] as a separate feature deployment with its own model, FPS, and thresholds. The processing chain is: frame ingestion, FDMD motion detection, YOLO inference on the fire model, then post-processing filters. The stationary filter step is bypassed for fire/smoke labels, but other filters (confidence, ignore zones, IOU) still apply. Alerts pass through the standard sliding window step.
 
 ## Configuration
 
@@ -46,10 +46,10 @@ Fire detection uses the standard IntruderObserver sliding window pattern rather 
 
 ## Current Status
 
-The fire model is **active in production** as one of the specialised models in the Actuate platform. It is listed among the "Other" models in the [[ai-models]] model catalog alongside hardhat, thermal intruder, and package detection.
+The fire model is **active in production** as one of the specialised models in the Actuate platform. It is listed among the "Other" models in the [[ai-models/_summary|AI Models & Evaluation]] model catalog alongside hardhat, thermal intruder, and package detection.
 
 ## Related Topics
 
-- [[ai-models]] -- model catalog
-- [[data-science]] -- detection pipeline architecture
+- [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
+- [[data-science/_summary|Data Science Methodology]] -- detection pipeline architecture
 - [[models/intruder-v5]] -- primary intruder model that fire detection coexists with

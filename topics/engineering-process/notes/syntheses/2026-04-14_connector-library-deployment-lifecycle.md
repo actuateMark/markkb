@@ -26,7 +26,7 @@ The vms-connector is not a standalone application. It consumes 30+ packages from
 - Dependency pin updates in the connector
 - Docker image builds for 2+ architectures
 - Kubernetes deployment rollout across staging and production fleets
-- New Relic monitoring across multiple site deployments
+- [[new-relic|New Relic]] monitoring across multiple site deployments
 
 Skipping or reordering steps causes real failures: broken stable publishes, dev pins reaching production, merge conflicts from stale branches, or silent regressions in the fleet.
 
@@ -59,7 +59,7 @@ Run `uv lock` (with CodeArtifact auth if needed), commit both `pyproject.toml` a
 
 Dev pins are allowed on `stage`. Deploy the connector branch to staging sites and validate:
 - Factory initialization succeeds
-- No new ERROR patterns in New Relic
+- No new ERROR patterns in [[new-relic|New Relic]]
 - Feature works end-to-end (e.g., patrol runs complete, alerts fire)
 - Memory and performance are stable
 

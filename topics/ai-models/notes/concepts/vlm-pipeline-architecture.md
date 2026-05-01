@@ -12,7 +12,7 @@ author: kb-bot
 
 ## Overview
 
-Vision-Language Models (VLMs) serve a dual role in the Actuate platform: reducing false positives in the **AutoPatrol** automated monitoring workflow, and powering the **Watchman** assessment agent that provides scene-level understanding of security alerts. The VLM pipeline is architecturally distinct from the YOLO-based [[detection-pipeline]] -- it is asynchronous, queue-driven, and runs on GPU instances rather than Inferentia2.
+Vision-Language Models (VLMs) serve a dual role in the Actuate platform: reducing false positives in the **AutoPatrol** automated monitoring workflow, and powering the **[[watchman-repo|Watchman]]** assessment agent that provides scene-level understanding of security alerts. The VLM pipeline is architecturally distinct from the YOLO-based [[detection-pipeline]] -- it is asynchronous, queue-driven, and runs on GPU instances rather than Inferentia2.
 
 ## Architecture: Queue-Driven Inference
 
@@ -43,7 +43,7 @@ Each model gets its own SQS FIFO queue, Docker image tag, and Kubernetes deploym
 
 ### actuate-vlm (Client Library)
 
-The Python client library that submits VLM requests from the connector pipeline or other services. It handles image upload to S3 (with content-hash deduplication), SQS message formatting, and result retrieval via DynamoDB polling or webhook callback. Both the AutoPatrol and Watchman use cases call through this library.
+The Python client library that submits VLM requests from the connector pipeline or other services. It handles image upload to S3 (with content-hash deduplication), SQS message formatting, and result retrieval via DynamoDB polling or webhook callback. Both the AutoPatrol and [[watchman-repo|Watchman]] use cases call through this library.
 
 ### vlm-inference (GPU Worker)
 
@@ -78,7 +78,7 @@ The AutoPatrol pipeline sends alert frames through [[actuate-vlm]] to the VLM qu
 
 ### Watchman Assessment Agent
 
-The Watchman use case is more sophisticated. Rather than simple pass/suppress decisions, the VLM acts as an **assessment agent** that provides structured scene analysis: what objects are present, what activity is occurring, risk assessment, and recommended actions. This powers automated report generation and intelligent escalation.
+The [[watchman-repo|Watchman]] use case is more sophisticated. Rather than simple pass/suppress decisions, the VLM acts as an **assessment agent** that provides structured scene analysis: what objects are present, what activity is occurring, risk assessment, and recommended actions. This powers automated report generation and intelligent escalation.
 
 [[ds-smart-alert-supervisor]] implements frame-level alert verification combining detection heuristics (N-out-of-M frame rules, confidence thresholds) with VLM-based verification. It supports sliding window verification with persistence rules and specialised prompts per objective type (intruder, vehicle, loiterer). For vehicle objectives, prompts prioritise first-frame vs. last-frame cumulative motion analysis, and a `vehicle_moving_positive_override` can override a "No" verdict when structured sections describe movement.
 
@@ -98,7 +98,7 @@ The [[qwen3vl-aws]] repo provides a simpler, non-Kubernetes alternative: a direc
 
 ## Deployment and Promotion
 
-Deployment flows through ArgoCD via the `kubernetes-deployments` repo. Dev and prod are separate deployments controlled by `cluster-values.yaml`. Promoting a model to production means setting `enabled: true` on the prod instance block and merging the PR. The build script (`scripts/build-and-push.sh` in [[vlm-inference]]) handles SQS queue creation, DLQ setup, S3 lifecycle policies, HuggingFace token management, base image detection, Docker build, and ECR push.
+Deployment flows through [[argocd|ArgoCD]] via the `kubernetes-deployments` repo. Dev and prod are separate deployments controlled by `cluster-values.yaml`. Promoting a model to production means setting `enabled: true` on the prod instance block and merging the PR. The build script (`scripts/build-and-push.sh` in [[vlm-inference]]) handles SQS queue creation, DLQ setup, S3 lifecycle policies, HuggingFace token management, base image detection, Docker build, and ECR push.
 
 ## Evaluation
 

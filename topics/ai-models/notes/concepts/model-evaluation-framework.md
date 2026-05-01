@@ -50,7 +50,7 @@ A model must demonstrate improvement (or at minimum parity) at each tier before 
 ## Key People
 
 - **Uladzimir Sapeshka (Vlad)** -- runs evaluations and shadow tests
-- **Zack Schmidt** -- owns model decisions for YAM and weapon
+- **[[zack-schmidt|Zack Schmidt]]** -- owns model decisions for YAM and weapon
 - **Mladen Lukic** -- developed point-based annotation method
 
 ## Related Notes

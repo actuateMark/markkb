@@ -1,0 +1,17 @@
+# Transient artifacts produced by kb-relink runs
+_relink-progress.json
+_relink-report.md
+
+# Python cache (defensive — should never be in vault)
+__pycache__/
+*.py[cod]
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Editor temp / backup files
+*.tmp
+*.swp
+*.swo
+*~

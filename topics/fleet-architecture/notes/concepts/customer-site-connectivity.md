@@ -21,7 +21,7 @@ From general platform knowledge (see [[vms-connector/_summary]], [[infrastructur
 
 ### 1. Public / internet-accessible VMS
 - VMS endpoint has a public IP or hostname reachable from AWS
-- Examples: cloud VMS platforms (Eagle Eye, Genetec Cloud via their APIs), some RTSP feeds with port-forwarded public exposure
+- Examples: cloud VMS platforms (Eagle Eye, Genetec Cloud via their APIs), some [[rtsp-deep-dive|RTSP]] feeds with port-forwarded public exposure
 - **Implication for fleet:** puller can run on any pod in any AZ. Cross-AZ is not a concern for connectivity; egress is via NAT gateway or VPC-native internet gateway.
 - **Cost:** NAT gateway processing charges (~$0.045/GB) if egress goes via NAT. Consider VPC-native Internet Gateway for public VMS integrations to avoid NAT costs.
 

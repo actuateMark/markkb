@@ -2,7 +2,7 @@
 title: "VCH Integration Components"
 type: entity
 topic: integrations/vch
-tags: [integration, vch, components]
+tags: [integration, vch, components, autopatrol]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
@@ -60,4 +60,4 @@ VCH uses `AutoPatrolConnectorConfig` from [[actuate-config]] (`actuate_config/co
 
 ## Sharding
 
-VCH is excluded from the standard sharding logic in `factory.py` -- `get_sharding_strategy` returns 2000 for `vch`, meaning all cameras run in a single process.
+VCH is excluded from the standard [[sharding]] logic in `factory.py` -- `get_sharding_strategy` returns 2000 for `vch`, meaning all cameras run in a single process.

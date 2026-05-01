@@ -46,7 +46,7 @@ Reading the factory code from the return statement upward reveals the execution 
 
 ### Tier 2: Geometry -- Static Zones (Steps 3-6)
 
-**`IgnorePolygonalZonesStep`** and **`IgnoreMotionPolygonalZonesStep`** use Shapely polygon intersection to remove detections falling within configured ignore zones. The polygons are pre-computed at pipeline construction from [[actuate-config]] zone definitions, so the per-frame cost is just the `polygon.contains(point)` or `polygon.intersection(box)` check per detection. `TagZonesStep` is similar but tags detections with zone metadata rather than filtering them out. These steps use `PolygonZoneMixin` for shared geometry logic.
+**`IgnorePolygonalZonesStep`** and **`IgnoreMotionPolygonalZonesStep`** use Shapely polygon intersection to remove detections falling within configured [[ignore-zones|ignore zones]]. The polygons are pre-computed at pipeline construction from [[actuate-config]] zone definitions, so the per-frame cost is just the `polygon.contains(point)` or `polygon.intersection(box)` check per detection. `TagZonesStep` is similar but tags detections with zone metadata rather than filtering them out. These steps use `PolygonZoneMixin` for shared geometry logic.
 
 Cost: O(n * z) where n = detections and z = zones. Typically 0-5 zones per camera, making this cheap in practice.
 
@@ -83,7 +83,7 @@ When a feature deployment is `is_line_crossing_only`, the pipeline short-circuit
 The ordering follows a strict cost-reduction principle: each tier eliminates detections that would otherwise flow into more expensive downstream tiers. In a worst-case frame with 50 raw YOLO detections:
 
 1. RawModelFilter eliminates ~20 (low confidence, wrong labels) -- 30 remain
-2. Polygon zones eliminate ~3 (in ignore zones) -- 27 remain
+2. Polygon zones eliminate ~3 (in [[ignore-zones|ignore zones]]) -- 27 remain
 3. IOU eliminates ~10 (duplicates from previous frames) -- 17 remain
 4. Blacklist flags ~2 (known objects) -- 15 remain for stationary check
 5. Stationary filter eliminates ~8 (no motion overlap) -- 7 confirmed detections

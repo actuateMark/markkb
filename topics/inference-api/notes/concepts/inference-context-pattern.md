@@ -34,7 +34,7 @@ All getters are lazy with `if self._field is None: compute()` guards.
 ## Key Methods
 
 - **`get_processed_frames()`** -- async, downloads URLs if needed, caches result
-- **`get_frame_differences()`** -- async, calls `get_processed_frames()` then `compute_frame_differences()`. Uses OpenCV `cv2.absdiff` between consecutive frames, re-encodes as JPEG bytes.
+- **`get_frame_differences()`** -- async, calls `get_processed_frames()` then `compute_frame_differences()`. Uses [[opencv-entity|OpenCV]] `cv2.absdiff` between consecutive frames, re-encodes as JPEG bytes.
 - **`get_frames_for_model(frame_type)`** -- dispatcher: `"frame_differences"` returns diffs, anything else returns processed originals
 - **`get_confidence_data()`** -- sync, calls the configured confidence function with sensitivity
 

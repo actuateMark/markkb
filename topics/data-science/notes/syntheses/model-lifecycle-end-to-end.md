@@ -29,13 +29,13 @@ Sampled media is uploaded to the `actuate-training-data-new` S3 bucket for label
 
 Two labeling platforms serve different needs:
 
-- **[[actuate-labeling-tool]]** (Spektar) -- Self-hosted Label Studio with custom RBAC, audit logging, and GDPR compliance. Used for internal bounding-box annotation by the DS team.
+- **[[actuate-labeling-tool]]** ([[spektar|Spektar]]) -- Self-hosted Label Studio with custom RBAC, audit logging, and GDPR compliance. Used for internal bounding-box annotation by the DS team.
 - **Encord** -- External labeling platform for larger-scale or outsourced annotation. [[training-data-sampler]] has native Encord integration (project creation, media upload, label retrieval via ontology hashes and workflow templates).
 
 For rapid evaluation cycles, **Mladen Lukic's point-based annotation** method uses centroid marking instead of full bounding boxes, dramatically accelerating turnaround. This was critical during the UK/EU bespoke model experiments where multiple iterations needed quick feedback (Confluence: "A High-Speed Framework for Model Evaluation: Point-Based Annotation").
 
 **Key repos:** `aegissystems/actuate-labeling-tool`, Encord (external)
-**Key people:** Mladen Lukic (point-based annotation), Alena Prashkovich (UK camera screening)
+**Key people:** Mladen Lukic (point-based annotation), [[alena-prashkovich|Alena Prashkovich]] (UK camera screening)
 
 ## Phase 3: Data Versioning
 
@@ -62,7 +62,7 @@ Key configuration levers:
 All experiments tracked in Weights & Biases.
 
 **Key repo:** `aegissystems/ds-training-pipeline`
-**Key people:** Carlos Torres (weapon model), Otzar Jaffe (PPF, model merging)
+**Key people:** [[carlos-torres|Carlos Torres]] (weapon model), [[otzar-jaffe|Otzar Jaffe]] (PPF, model merging)
 
 ## Phase 5: Evaluation
 
@@ -82,7 +82,7 @@ Shadow testing (Tier 5) is the most production-representative: the candidate run
 The February 2026 shadow test (Confluence: "DEV vs PROD Shadow Test Evaluation") compared `int07-actuate003-v8` vs `intruder-384h-512w-svc` at the alert-sequence level, leading to v8 approval. [[confidence-threshold-calibration]] determines per-model, per-label operating points from the Tier 4 sweep.
 
 **Key repos:** `aegissystems/actuate-eval`, `aegissystems/shadow-test-pipeline`, `aegissystems/shadow-testing-stats`
-**Key people:** Uladzimir Sapeshka / Vlad (evaluation, shadow testing), Zack Schmidt (model decisions)
+**Key people:** Uladzimir Sapeshka / Vlad (evaluation, shadow testing), [[zack-schmidt|Zack Schmidt]] (model decisions)
 
 ## Phase 6: Deployment
 
@@ -91,7 +91,7 @@ Trained and NeuronX-compiled models are packaged into [[ds-server-container]] Do
 - **inference_server** (x86_64, Inferentia2) -- core YOLO inference
 - **slicing_server** (aarch64, Graviton4) -- SAHI-style tiling proxy for high-resolution frames
 
-Model-specific images layer on top of a base inference server image, are pushed to ECR, and deployed to the `ds-model-prod` Kubernetes namespace via ArgoCD from the `kubernetes-deployments` repo. Each model gets a Service at `http://{model}-svc.ds-model-prod.svc.cluster.local:8080/infer`.
+Model-specific images layer on top of a base inference server image, are pushed to ECR, and deployed to the `ds-model-prod` Kubernetes namespace via [[argocd|ArgoCD]] from the `kubernetes-deployments` repo. Each model gets a Service at `http://{model}-svc.ds-model-prod.svc.cluster.local:8080/infer`.
 
 VLM models ([[vlm-pipeline-architecture]]) follow a separate deployment path: Docker images with vLLM backend, deployed to K8s with KEDA autoscaling from SQS queue depth, writing results to DynamoDB.
 
@@ -103,7 +103,7 @@ After deployment, the model enters ongoing monitoring:
 
 - **Shadow testing (ongoing):** The same [[shadow-test-pipeline]] infrastructure can run continuous comparison against experimental successors
 - **YAM re-evaluation (AI-211):** When code changes affect the inference path (e.g., commit `788bed7` changing chip generation to original-frame resolution), all endpoints need re-evaluation -- currently the highest-priority initiative
-- **Observability:** New Relic, CloudWatch, and Datadog track inference latency, error rates, and throughput via [[actuate-monitoring]]
+- **Observability:** [[new-relic|New Relic]], CloudWatch, and Datadog track inference latency, error rates, and throughput via [[actuate-monitoring]]
 - **Analytics:** [[actuate-event-listener]] tracks per-model, per-camera detection rates for anomaly detection
 - **[[ds-analysis-microservice]]:** Enables controlled single-variable experiments on pipeline components (FDMD, filters, slicing, loiterer) against production baselines
 
@@ -122,7 +122,7 @@ When a successor passes all evaluation gates, the old model transitions out:
 
 ### Provenance
 
-Every deployed model traces back to: exact training data (DVC commit in [[actuate-data-registry-dvc]]), training configuration (W&B run ID), evaluation results (mAP JSON, shadow test reports), and deployment manifest (ArgoCD sync).
+Every deployed model traces back to: exact training data (DVC commit in [[actuate-data-registry-dvc]]), training configuration (W&B run ID), evaluation results (mAP JSON, shadow test reports), and deployment manifest ([[argocd|ArgoCD]] sync).
 
 ### Model-Aware Sensitivity
 
@@ -130,7 +130,7 @@ The v8 rollout requires the platform to know which model serves each camera, bec
 
 ### VLM Integration
 
-[[vlm-pipeline-architecture|VLMs]] operate as a post-alert layer. They do not replace the YOLO pipeline but augment it with scene-level understanding for FP reduction (AutoPatrol) and structured assessment (Watchman). Their lifecycle is parallel but simpler: HuggingFace model selection, vLLM deployment, evaluation via [[vlm-eval-visualizer]] and [[ds-smart-alert-supervisor]].
+[[vlm-pipeline-architecture|VLMs]] operate as a post-alert layer. They do not replace the YOLO pipeline but augment it with scene-level understanding for FP reduction (AutoPatrol) and structured assessment ([[watchman-repo|Watchman]]). Their lifecycle is parallel but simpler: HuggingFace model selection, vLLM deployment, evaluation via [[vlm-eval-visualizer]] and [[ds-smart-alert-supervisor]].
 
 ## Related Notes
 

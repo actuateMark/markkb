@@ -36,7 +36,7 @@ The repo is a Cargo workspace with 8 Rust crates -- 6 libraries and 2 binaries:
 
 ## Development Workflow
 
-All Cargo commands run inside a Docker-based dev container via `bin/cargo-docker`. The `justfile` provides recipes: `just build-builder` builds the dev environment, `just dev-container-up` starts the long-running container, and `just validate` runs clippy, tests, formatting, and doc checks. A pre-commit hook is available to run validation automatically.
+All Cargo commands run inside a Docker-based dev container via `bin/cargo-docker`. The `justfile` provides recipes: `just build-builder` builds the [[dev-environment|dev environment]], `just dev-container-up` starts the long-running container, and `just validate` runs clippy, tests, formatting, and doc checks. A pre-commit hook is available to run validation automatically.
 
 ## Container Build Pipeline
 

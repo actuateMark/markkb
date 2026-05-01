@@ -17,13 +17,13 @@ The detection pipeline is the end-to-end processing chain that transforms raw ca
 
 ### 1. Frame Ingestion
 
-Camera streams enter the system through the **VMS Connector** layer. Supported protocols include RTSP (continuous streaming), SMTP (email-based clips), AILink, and Sentinel. The ingestion method determines frame cadence: RTSP cameras deliver continuous frames, while SMTP and clip-based cameras deliver frames in bursts separated by minutes of silence. This distinction has major implications for downstream stages, especially [[motion-detection-challenge|motion detection]].
+Camera streams enter the system through the **[[vms-connector|VMS Connector]]** layer. Supported protocols include [[rtsp-deep-dive|RTSP]] (continuous streaming), SMTP (email-based clips), AILink, and [[sentinel-components|Sentinel]]. The ingestion method determines frame cadence: [[rtsp-deep-dive|RTSP]] cameras deliver continuous frames, while SMTP and clip-based cameras deliver frames in bursts separated by minutes of silence. This distinction has major implications for downstream stages, especially [[motion-detection-challenge|motion detection]].
 
 ### 2. FDMD Motion Detection
 
 The **Frame Difference Motion Detector (FDMD)** identifies regions of the frame where motion has occurred, producing **motion polygons**. Only regions with detected motion are forwarded for inference, reducing unnecessary GPU load.
 
-FDMD was originally designed for continuous RTSP streams. Approximately 32,000 cameras on the platform use clip-based connections where frames arrive minutes apart, breaking FDMD's temporal assumptions. See [[motion-detection-challenge]] for the ongoing fixes (cumulative blob, single-frame skip).
+FDMD was originally designed for continuous [[rtsp-deep-dive|RTSP]] streams. Approximately 32,000 cameras on the platform use clip-based connections where frames arrive minutes apart, breaking FDMD's temporal assumptions. See [[motion-detection-challenge]] for the ongoing fixes (cumulative blob, single-frame skip).
 
 ### 3. YOLO Model Inference
 
@@ -40,7 +40,7 @@ Raw YOLO detections pass through a chain of filters that suppress false positive
 
 - **Stationary Filter** -- compares bounding boxes against FDMD motion polygons; if a detection overlaps significantly with a non-motion area, it is suppressed (catches parked cars, static objects)
 - **Confidence Filter** -- applies the configured sensitivity threshold (HIGH/MEDIUM/LOW maps to a confidence cutoff)
-- **Ignore Zones** -- customer-configured regions of the frame to exclude from detections
+- **[[ignore-zones|Ignore Zones]]** -- customer-configured regions of the frame to exclude from detections
 - **IOU Filter** -- deduplicates overlapping detections
 - **Blacklist Filter** -- suppresses detections matching known nuisance patterns
 

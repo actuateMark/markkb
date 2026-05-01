@@ -42,7 +42,7 @@ The rollout epic contains **13 sub-tasks**:
 - Decouple raw metrics from model version for clean comparison
 - Establish model change audit trail
 
-**Uladzimir Sapeshka (Vlad)** owns v8 performance evaluation, while **Zack Schmidt** owns the broader YAM epic.
+**Uladzimir Sapeshka (Vlad)** owns v8 performance evaluation, while **[[zack-schmidt|Zack Schmidt]]** owns the broader YAM epic.
 
 ## YAM Re-evaluation Dependency (AI-211)
 

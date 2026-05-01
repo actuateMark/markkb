@@ -41,7 +41,7 @@ Per-label confidence thresholds are configured in `raw_metrics` within each came
 
 ## Pipeline Position
 
-Thermal intruder detection follows the same [[data-science|detection pipeline]] architecture as standard intruder detection: frame ingestion, FDMD motion detection, YOLO inference on the thermal model, then post-processing filters (confidence, ignore zones, IOU, stationary), and sliding window alert generation. The same observers (PersonLoitererObserver, VehicleLoitererObserver, LineCrossingObserver, BlacklistObserver) from [[actuate-libraries|actuate-connector-observers]] can be attached to thermal cameras.
+Thermal intruder detection follows the same [[data-science/_summary|Data Science Methodology]] architecture as standard intruder detection: frame ingestion, FDMD motion detection, YOLO inference on the thermal model, then post-processing filters (confidence, ignore zones, IOU, stationary), and sliding window alert generation. The same observers (PersonLoitererObserver, VehicleLoitererObserver, LineCrossingObserver, BlacklistObserver) from [[actuate-libraries|actuate-connector-observers]] can be attached to thermal cameras.
 
 ## Use Cases
 
@@ -55,11 +55,11 @@ Thermal intruder detection is configured as a feature deployment in settings.jso
 
 ## Current Status
 
-The thermal intruder model is listed as an active specialised model in the [[ai-models]] model catalog. It serves customers with thermal camera installations for nighttime and low-visibility security monitoring.
+The thermal intruder model is listed as an active specialised model in the [[ai-models/_summary|AI Models & Evaluation]] model catalog. It serves customers with thermal camera installations for nighttime and low-visibility security monitoring.
 
 ## Related Topics
 
-- [[ai-models]] -- model catalog
-- [[data-science]] -- detection pipeline architecture
+- [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
+- [[data-science/_summary|Data Science Methodology]] -- detection pipeline architecture
 - [[models/intruder-v5]] -- the standard optical intruder model
 - [[models/fire-detection]] -- another specialised detection model

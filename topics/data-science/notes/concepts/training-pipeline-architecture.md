@@ -24,7 +24,7 @@ Sampled media is uploaded to the `actuate-training-data-new` S3 bucket, ready fo
 
 Labeling happens through two platforms, depending on the project:
 
-- **[[actuate-labeling-tool]]** (internally branded as Spektar) -- a self-hosted Label Studio deployment with custom RBAC, audit logging, and GDPR compliance. Used for internal annotation of bounding boxes on sampled frames.
+- **[[actuate-labeling-tool]]** (internally branded as [[spektar|Spektar]]) -- a self-hosted Label Studio deployment with custom RBAC, audit logging, and GDPR compliance. Used for internal annotation of bounding boxes on sampled frames.
 - **Encord** -- an external labeling platform used for larger-scale or outsourced annotation. The [[training-data-sampler]] has native Encord integration: it creates Encord projects, uploads media, and retrieves completed labels. Encord uses ontology hashes (defaulting to a 7-class + cover ontology) and configurable labeling workflows.
 
 **Point-based annotation** (developed by Mladen Lukic) offers a lighter-weight alternative where annotators mark object centroids rather than full bounding boxes. This dramatically accelerates labeling for evaluation purposes, though full bounding box labels remain necessary for training. See [[model-evaluation-framework]] for details on point-based evaluation.
@@ -70,11 +70,11 @@ The compiled model is packaged into a Docker image via [[ds-server-container]]'s
 - **inference_server** (x86_64) -- runs YOLO on Inferentia2 `inf2.*` instances for native-resolution images
 - **slicing_server** (aarch64) -- runs on Graviton4 for SAHI-style tiling of high-resolution frames, dispatching tiles to the inference server
 
-Images are pushed to ECR and deployed to the `ds-model-prod` Kubernetes namespace via ArgoCD from the `kubernetes-deployments` repo. Each model gets a K8s Service at `http://{model}-svc.ds-model-prod.svc.cluster.local:8080/infer`.
+Images are pushed to ECR and deployed to the `ds-model-prod` Kubernetes namespace via [[argocd|ArgoCD]] from the `kubernetes-deployments` repo. Each model gets a K8s Service at `http://{model}-svc.ds-model-prod.svc.cluster.local:8080/infer`.
 
 ## Concrete Example: Weapon v8
 
-1. **Data**: Carlos Torres assembled weapon training data via [[training-data-sampler]] and [[actuate-data-registry-dvc]]
+1. **Data**: [[carlos-torres|Carlos Torres]] assembled weapon training data via [[training-data-sampler]] and [[actuate-data-registry-dvc]]
 2. **Training**: YOLOv8 XL at 736px resolution using `recall_map50` fitness on SageMaker
 3. **Evaluation**: Passed [[model-evaluation-framework]] -- frame-level mAP via [[actuate-eval]], FP stress testing on Genesis sets, confidence threshold sweep yielding HIGH=0.65/MED=0.60/LOW=0.55
 4. **Compilation**: NeuronX compilation for Inferentia2
@@ -85,7 +85,7 @@ Images are pushed to ECR and deployed to the `ds-model-prod` Kubernetes namespac
 - [[ds-training-pipeline]] -- training repo details
 - [[actuate-data-registry-dvc]] -- data versioning
 - [[training-data-sampler]] -- production data sampling
-- [[actuate-labeling-tool]] -- Spektar labeling platform
+- [[actuate-labeling-tool]] -- [[spektar|Spektar]] labeling platform
 - [[ds-server-container]] -- inference serving layer
 - [[model-evaluation-framework]] -- evaluation gates between training and deployment
 - [[model-lifecycle-end-to-end]] -- full lifecycle synthesis

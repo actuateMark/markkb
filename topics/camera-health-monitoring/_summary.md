@@ -18,10 +18,10 @@ Monitors camera connectivity, recording status, image quality, scene changes, an
 **Maintenance mode** -- 1 issue In Progress, 5 items ready to deploy but unreleased.
 
 ### In Progress
-- **CS3-300** (Brad Murphy) -- Operator/activity logging
+- **CS3-300** ([[brad-murphy|Brad Murphy]]) -- Operator/activity logging
 
 ### Ready to Deploy
-- CS3-430 -- Account for dummy incident type in CHM API (Mark Barbera)
+- CS3-430 -- Account for dummy incident type in CHM API ([[mark-barbera|Mark Barbera]])
 - CS3-303 -- Disable/delete schedules for CHM-only sites (Victoria)
 - CS3-31 (Highest) -- Auto-update reference images (Mark Barbera)
 - CS3-58 -- Configuration per camera (Mark Barbera)
@@ -34,7 +34,11 @@ Monitors camera connectivity, recording status, image quality, scene changes, an
 
 ## Detection Capabilities
 
-Uses `actuate-suddenscenechange` (SIFT-based) for camera tampering/scene change detection. Health data stored in DynamoDB (Healthcheck, SceneChange tables).
+Uses `actuate-suddenscenechange` (SIFT-based) for camera tampering/[[scene-change-detection|scene change detection]]. Health data stored in DynamoDB (Healthcheck, SceneChange tables).
+
+**Important:** VCH and CHM **do not run ML inference**. They share a K8s CronJob naming suffix (`-chm-cronjob`) with AutoPatrol, which creates observability confusion. When filtering logs for ML misconfiguration, explicitly filter for AutoPatrol containers only. See [[2026-04-28_vch-chm-vs-autopatrol-naming]].
+
+
 
 ## 50 Open Issues
 

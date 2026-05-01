@@ -23,7 +23,7 @@ This race condition is particularly damaging for connectors because each pod man
 
 ## Mid-Run Downscaling
 
-VPA can also **downscale resources while a pod is actively processing**. If a connector is mid-inference-burst and VPA decides the pod's historical average warrants lower limits, it evicts the pod. The connector loses all in-memory state: camera connections, BoTSORT tracking histories, sliding window positions, and stationary filter baselines. Rebuilding this state takes minutes and causes a gap in detection coverage.
+VPA can also **downscale resources while a pod is actively processing**. If a connector is mid-inference-burst and VPA decides the pod's historical average warrants lower limits, it evicts the pod. The connector loses all in-memory state: camera connections, [[botsort-tracking|BoTSORT tracking]] histories, sliding window positions, and stationary filter baselines. Rebuilding this state takes minutes and causes a gap in detection coverage.
 
 ## Proposed Fix: In-Place Pod Resize (ENG-79)
 

@@ -32,7 +32,7 @@ Legacy function in `secrets.py`. Uses a module-level boto3 session and a `secret
 
 ## Consumers
 
-actuate-admin-api (`AdminApi` uses `SecretManager` for API tokens), actuate-daos (`AdminDAO` uses `SecretManager` for Postgres credentials), actuate-wireguard (`WireGuardDAO` for DB credentials), actuate-monitoring (`NewRelicMonitor` uses `get_secret` for New Relic keys).
+[[actuate-admin-api]] (`AdminApi` uses `SecretManager` for API tokens), [[actuate-daos]] (`AdminDAO` uses `SecretManager` for Postgres credentials), [[actuate-wireguard]] (`WireGuardDAO` for DB credentials), [[actuate-monitoring]] (`NewRelicMonitor` uses `get_secret` for [[new-relic|New Relic]] keys).
 
 ## Notable Patterns
 

@@ -12,7 +12,7 @@ author: kb-bot
 
 ## Overview
 
-The hard hat detection model identifies whether individuals on camera are wearing hard hats or other required personal protective equipment (PPE). It serves construction sites, industrial facilities, and other workplaces where PPE compliance monitoring is required. The model is listed as `hardhat` in the [[ai-models]] model catalog among the specialised models alongside fire, thermal intruder, and package detection.
+The hard hat detection model identifies whether individuals on camera are wearing hard hats or other required personal protective equipment (PPE). It serves construction sites, industrial facilities, and other workplaces where PPE compliance monitoring is required. The model is listed as `hardhat` in the [[ai-models/_summary|AI Models & Evaluation]] model catalog among the specialised models alongside fire, thermal intruder, and package detection.
 
 ## Detection Classes
 
@@ -34,7 +34,7 @@ Per-label confidence thresholds are configured in `raw_metrics` within each came
 
 ## Pipeline Position
 
-Hard hat detection runs through the [[data-science|detection pipeline]] as a separate feature deployment with its own model, FPS, and thresholds. The processing chain follows the standard path: frame ingestion, FDMD motion detection, YOLO inference on the hardhat model, then post-processing filters (confidence, ignore zones, IOU, stationary), and sliding window alert generation.
+Hard hat detection runs through the [[data-science/_summary|Data Science Methodology]] as a separate feature deployment with its own model, FPS, and thresholds. The processing chain follows the standard path: frame ingestion, FDMD motion detection, YOLO inference on the hardhat model, then post-processing filters (confidence, ignore zones, IOU, stationary), and sliding window alert generation.
 
 ## Products and Observers
 
@@ -52,11 +52,11 @@ Hard hat detection is configured as a feature deployment in settings.json with P
 
 ## Current Status
 
-Hard hat detection is listed as an active specialised model in the [[ai-models]] model catalog. It serves customers with PPE compliance requirements across construction and industrial sites.
+Hard hat detection is listed as an active specialised model in the [[ai-models/_summary|AI Models & Evaluation]] model catalog. It serves customers with PPE compliance requirements across construction and industrial sites.
 
 ## Related Topics
 
-- [[ai-models]] -- model catalog
-- [[data-science]] -- detection pipeline architecture
+- [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
+- [[data-science/_summary|Data Science Methodology]] -- detection pipeline architecture
 - [[models/intruder-v5]] -- the primary intruder model that runs alongside hardhat
 - [[models/fire-detection]] -- another specialised safety model

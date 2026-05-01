@@ -16,7 +16,7 @@ Streamlit application for reviewing security alerts alongside VLM (Vision Langua
 
 ## Purpose
 
-After VLM inference runs on security camera alerts, someone needs to verify whether the model's verdicts are correct. This tool presents each alert in an embedded Actuate UI iframe, fetches the corresponding `vlm_detail` and `vlm_verdict` from the `WindowIdsV2` DynamoDB table, and lets the reviewer label each alert as TP or FP with a single keypress.
+After [[vlm-inference|VLM inference]] runs on security camera alerts, someone needs to verify whether the model's verdicts are correct. This tool presents each alert in an embedded Actuate UI iframe, fetches the corresponding `vlm_detail` and `vlm_verdict` from the `WindowIdsV2` DynamoDB table, and lets the reviewer label each alert as TP or FP with a single keypress.
 
 ## Features
 

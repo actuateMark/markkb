@@ -39,7 +39,7 @@ Each extends `HealthcheckPacket` with type-specific logic:
 - `ConnectivityPacket` -- camera reachability
 - `StreamQualityPacket` -- stream bitrate/resolution validation
 - `MotionStatusPacket` -- motion detection health
-- `SceneChangePacket` -- sudden scene change detection
+- `SceneChangePacket` -- sudden [[scene-change-detection|scene change detection]]
 - `RecordingPacket` -- recording status verification
 - `ServerStatusPacket` -- VMS server reachability
 - `AlertDataPacket` -- alert payload carrier
@@ -63,7 +63,7 @@ None. This is a pure data-object library with zero external dependencies.
 
 ## Consumers
 
-actuate-daos (`HealthcheckDAO` stores these), actuate-healthmonitoring (creates and evaluates them), vms-connector healthcheck workers, actuate-config (`HealthcheckDataPacket` imports `CameraConfig` and `CustomerConfig`).
+[[actuate-daos]] (`HealthcheckDAO` stores these), [[actuate-healthmonitoring]] (creates and evaluates them), vms-connector healthcheck workers, [[actuate-config]] (`HealthcheckDataPacket` imports `CameraConfig` and `CustomerConfig`).
 
 ## Notable Patterns
 

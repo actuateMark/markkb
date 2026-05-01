@@ -26,7 +26,7 @@
 
 ## Products & Initiatives
 - [[watchman/_summary|Watchman]] -- AI-powered virtual security operator (ASAP priority, multi-agent)
-- [[autopatrol/_summary|AutoPatrol (H1.2)]] -- automated patrol + VLM analysis (50+ open issues)
+- [[knowledgebase/topics/autopatrol/_summary|AutoPatrol (H1.2)]] -- automated patrol + VLM analysis (50+ open issues)
 - [[camera-health-monitoring/_summary|Camera Health Monitoring (H1.1)]] -- connectivity/scene change monitoring
 - [[alerts-improvements/_summary|Alerts Improvements (H1.3)]] -- alert muting, Immix dispatch (stalled)
 - [[settings-automation/_summary|Settings Automation (H1.4)]] -- VLM FP reduction, PPF, recommender
@@ -76,13 +76,28 @@
   - [[new-relic/notes/concepts/nr-connector-query-cookbook|Connector Query Cookbook]] -- ready-to-paste templates
   - [[new-relic/notes/concepts/nr-programmatic-deep-links|Programmatic Deep Links]] -- URL generation for admin integration
 
+## Knowledge Base Tooling
+- [[obsidian/_summary|Obsidian]] -- the app + companion CLI that back this KB; install paths on laptop and firebat, capability matrix, KB-skill integration
+  - [[obsidian-cli|Obsidian CLI]] -- entity note: capability matrix, firebat container wrapper, common patterns
+  - [[2026-04-30_kb-skill-cli-retrofit|KB Skill / Agent CLI Retrofit]] -- 2026-04-30 sweep replacing recursive Grep with `obsidian` CLI calls in kb-* skills
+
+## Video Processing
+- [[video-processing/_summary|Video Processing]] -- codecs, containers, transport, FFmpeg, GStreamer, OpenCV, AWS video services, mapped onto Actuate use cases
+  - [[actuate-video-pipeline-walkthrough|Actuate Video Pipeline Walkthrough]] -- end-to-end map of one frame's life
+  - [[actuate-frame-ingest-decode-paths|Frame Ingest & Decode Paths]] -- per-integration decoder strategy table
+  - [[actuate-clip-generation-flow|Clip Generation Flow]] -- where MP4s come from (and don't)
+  - [[actuate-build-vs-buy-tradeoffs|Build vs Buy Tradeoffs]] -- AWS managed-service replacement candidates
+  - [[aws-video-services-decision-matrix|AWS Video Services Decision Matrix]] -- 13 use cases × 9 services
+  - [[protocol-latency-comparison|Protocol Latency Comparison]] -- RTSP/RTMP/HLS/WebRTC/SRT/KVS latency floors
+  - [[gstreamer-vs-ffmpeg|GStreamer vs FFmpeg]] -- opinionated selection policy
+
 ## Software Architecture & Governance
-- [[software-architecture/_summary|Software Architecture Health & Governance]] -- code health, architecture enforcement, tech debt automation
-  - [[software-architecture/notes/syntheses/2026-04-16_code-health-dashboard|Code Health Dashboard]] -- extensible dashboard consolidating all quality metrics
-  - [[software-architecture/notes/syntheses/2026-04-16_tooling-landscape|Tooling Landscape & Reading List]] -- catalog of analysis, enforcement, and monitoring tools
-  - [[software-architecture/notes/syntheses/2026-04-16_metrics-to-track|Metrics to Track]] -- complexity, coverage, coupling, debt, architecture conformance
-  - [[software-architecture/notes/syntheses/2026-04-16_architecture-enforcement|Architecture Enforcement]] -- fitness functions, import linting, CI gates
-  - [[software-architecture/notes/syntheses/2026-04-16_tech-debt-agent|Automated Tech Debt Agent]] -- headless AI agent for codebase patrol
+- [[knowledgebase/topics/software-architecture/_summary|Software Architecture Health & Governance]] -- code health, architecture enforcement, tech debt automation
+  - [[2026-04-16_code-health-dashboard|Code Health Dashboard]] -- extensible dashboard consolidating all quality metrics
+  - [[2026-04-16_tooling-landscape|Tooling Landscape & Reading List]] -- catalog of analysis, enforcement, and monitoring tools
+  - [[2026-04-16_metrics-to-track|Metrics to Track]] -- complexity, coverage, coupling, debt, architecture conformance
+  - [[2026-04-16_architecture-enforcement|Architecture Enforcement]] -- fitness functions, import linting, CI gates
+  - [[2026-04-16_tech-debt-agent|Automated Tech Debt Agent]] -- headless AI agent for codebase patrol
 - [[fleet-architecture/_summary|Fleet Architecture Redesign]] -- 5 candidate architectures (A-E) to replace the site-per-pod monolith, with PoC specs and evaluation rubric
 
 ## Organization

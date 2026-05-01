@@ -10,7 +10,7 @@ author: kb-bot
 
 # actuate-watchman
 
-The public-facing Watchman repository providing an on-premise video analytics platform for line crossing detection. It combines motion detection, YOLO-based object detection, and object tracking into a three-stage pipeline designed for surveillance deployments at customer sites.
+The public-facing [[watchman-repo|Watchman]] repository providing an on-premise video analytics platform for [[line-crossing-detection|line crossing detection]]. It combines motion detection, YOLO-based object detection, and object tracking into a three-stage pipeline designed for surveillance deployments at customer sites.
 
 **Repo:** `aegissystems/actuate-watchman` (GitHub, private)
 **Language:** Python
@@ -22,7 +22,7 @@ The system processes video through three sequential stages:
 
 1. **Motion Detection** -- Frame differencing (FDMD) identifies frames containing movement. Additional detectors include Simple, Motion Filter, and SOF. Static frames are skipped entirely to save compute.
 2. **Object Detection** -- YOLO inference runs only on frames with detected motion. Supports both PyTorch and OpenVINO backends with INT8 quantization for edge hardware.
-3. **Line Crossing Detection** -- Tracked objects are monitored against user-defined crossing lines. Counts are emitted when an object trajectory intersects a line boundary.
+3. **[[line-crossing-detection|Line Crossing Detection]]** -- Tracked objects are monitored against user-defined crossing lines. Counts are emitted when an object trajectory intersects a line boundary.
 
 ## Key Features
 

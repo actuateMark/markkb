@@ -11,7 +11,7 @@ tags: [model, yolov8, weapon, deployment]
 
 ## Overview
 
-`weapon-v8-XL-736` is a YOLOv8 **XL** weapon detection model trained by **Carlos Torres**. It represents a major upgrade over the previous v5 weapon model, described internally as an "improvement by many orders of magnitude." The decision to deploy has been made, tracked under **PROD-98**.
+`weapon-v8-XL-736` is a YOLOv8 **XL** weapon detection model trained by **[[carlos-torres|Carlos Torres]]**. It represents a major upgrade over the previous v5 weapon model, described internally as an "improvement by many orders of magnitude." The decision to deploy has been made, tracked under **PROD-98**.
 
 ## Architecture
 
@@ -39,7 +39,7 @@ The combination of the v8 model's inherently lower FP rate and the sliding windo
 
 ## Deployment Status (PROD-98)
 
-The deployment decision has been made. The model will be hosted in the `ds-model-prod` Kubernetes namespace following the standard inference URL pattern used by the [[actuate-inference-client]]. Carlos Torres, who trained the model, is involved in the deployment process alongside Zack Schmidt, who owns weapon model decisions.
+The deployment decision has been made. The model will be hosted in the `ds-model-prod` Kubernetes namespace following the standard inference URL pattern used by the [[actuate-inference-client]]. [[carlos-torres|Carlos Torres]], who trained the model, is involved in the deployment process alongside [[zack-schmidt|Zack Schmidt]], who owns weapon model decisions.
 
 ## Evaluation Methodology
 

@@ -5,7 +5,7 @@ topic: new-relic
 author: kb-bot
 created: 2026-04-16
 updated: 2026-04-16
-tags: [nrql, connector, cookbook, queries, new-relic, monitoring]
+tags: [nrql, connector, cookbook, queries, new-relic, monitoring, autopatrol]
 ---
 
 # New Relic Connector Query Cookbook
@@ -244,6 +244,73 @@ SELECT uniqueCount(message) FROM Log
 WHERE cluster_name = 'Connector-EKS'
 SINCE 1 hour ago
 FACET namespace LIMIT 30
+```
+
+---
+
+## actuate_admin Containers in NR
+
+**Confirmed via direct query 2026-04-29.** Admin-side logs in NR are scattered across multiple containers — there is **no single "admin pod" container_name**. Avoid these traps:
+
+- **`prod_camera_admin` does not exist** — agents have hallucinated this name in past investigations. Direct `count(*)` returns zero.
+- **The production camera-admin Django web pod is NOT forwarded to NR.** This is the pod that serves API requests like `PATCH /api/auto_patrol_product_metric/{id}/` and runs the synchronous + threaded portions of `AutoPatrolProductMetric.save()` → `deploy_schedule_settings()` → `_delayed_deploy_settings()` thread. **Its logs are NOT queryable here.** Use CloudWatch / kubectl / admin pod stderr for those.
+- Only **staging** has a queryable admin web pod: `container_name = 'camera-admin-staging'` in `namespace = 'camera-admin-staging'` (~4.7k logs/24h).
+
+**What IS in NR for admin-side debugging (verified live volumes 2026-04-29):**
+
+| Container | 24h log volume | What it is | When to query |
+|---|---|---|---|
+| `djangoq` | ~210k | Django Q background workers (production). Runs scheduled jobs like `schedules_redeploy`, batch operations. | Scheduled / cron-driven admin work. Does NOT include the `_delayed_deploy_settings` thread (raw `Thread`, not django-q task) |
+| `autopatrol-server` | ~9.5k | SQS consumer that processes patrol task results, writes patrol summaries to S3, calls Immix `update_patrol`. | Patrol completion lifecycle, Immix API responses (incl. `update patrol response: ...`) |
+| `camera-admin-staging` | ~4.7k | Stage admin web pod. Mirrors prod admin code paths but only for stage traffic. | Verifying admin-side fixes on stage before prod |
+| `admin-auto-onboarding-schools` | ~8.6k | Onboarding cronjob for schools integration | Schools-specific onboarding issues |
+| `admin-auto-onboarding-federated` | ~5.4k | Federated onboarding cronjob | Federated auth / multi-tenant issues |
+| `admin-auto-onboarding-vpn-checker` | ~5.2k | VPN reachability checker | Network connectivity issues for onboarded sites |
+| `admin-auto-onboarding-gun` | ~4.8k | Gun-detection product onboarding | Gun-product-specific onboarding |
+| `admin-auto-onboarding-group-site` | ~70 | Group/site onboarding | Customer-group provisioning |
+| `actuate-admin-rds` | ~220 | DB / migration layer | Schema migrations, DB connectivity |
+| `djangoq-scaler` | ~10 | KEDA autoscaler for djangoq | Scaling events on the worker pool |
+
+**Standard query template for admin-side investigations:**
+
+```sql
+SELECT message, timestamp FROM Log
+WHERE cluster_name = 'Connector-EKS'
+  AND container_name = 'djangoq'  -- or other admin container per table above
+  AND message LIKE '%<search_term>%'
+SINCE 1 hour ago LIMIT 20
+```
+
+**Time-window guidance:** Scoped queries to a single admin container resolve fine for 24h windows. Unscoped fleet-wide LIKE queries against admin containers time out at >2 days (NRDB:1109). Always scope to `container_name`.
+
+**Observability gap callout:** Customer save attempts on [[actuate-config]] (PATCH `/api/auto_patrol_product_metric/{id}/`) hit the production camera-admin web pod whose logs are NOT in NR. To debug "customer save didn't propagate" issues:
+- Check `djangoq` for any post-save background task triggered by the save
+- Check `autopatrol-server` for any patrol-side downstream effect
+- For the actual web request and the `_delayed_deploy_settings` thread output, you need CloudWatch on the admin pod or admin pod stderr via kubectl
+
+This gap should be tracked separately — forwarding the prod web pod logs to NR would close it. See AUTO-566 for context where this gap blocked investigation.
+
+**Stage workaround for autopatrol deploy debugging:** `camera-admin-staging` DOES log autopatrol settings deploys. Useful for reproducing config-sync issues with full traceability. The key log lines are:
+
+- `INFO settings_generator Uploading settings to: <key>, len: <bytes>` — fired by `_deploy_settings` → `SettingsGenerator.deploy_settings_autopatrol` (`settings_generator.py:1027`). One per S3 PUT.
+- `RuntimeError: <container_name> error in settings generation: <messages>` — fired by `generate_autopatrol` (`settings_generator.py:1010-1013`) when `self.messages` accumulated errors. **This is the signature of the silent-failure mode in `_delayed_deploy_settings` thread.** If the `RuntimeError` propagates up through the thread and dies in stderr, no S3 PUT happens.
+
+```sql
+-- Catch deploy errors on stage:
+SELECT message FROM Log
+WHERE cluster_name = 'Connector-EKS'
+  AND container_name = 'camera-admin-staging'
+  AND (message LIKE '%error in settings generation%'
+    OR message LIKE '%Traceback%'
+    OR (message LIKE '%settings_generator%' AND level = 'ERROR'))
+SINCE 7 days ago LIMIT 20
+
+-- All autopatrol uploads for a stage site:
+SELECT message, timestamp FROM Log
+WHERE cluster_name = 'Connector-EKS'
+  AND container_name = 'camera-admin-staging'
+  AND message LIKE '%Uploading settings to: staging-connector-<site>-autopatrol-%'
+SINCE 1 day ago LIMIT 50
 ```
 
 ---

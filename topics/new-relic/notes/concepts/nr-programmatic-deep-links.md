@@ -42,14 +42,14 @@ Short codes are the ONLY working method for interactive NR links. Created manual
 
 Created manually via NR UI "Share" button. No programmatic API.
 
-**Already in use in [[admin-api]]** (`actuate_admin/inframap/sites/customer/customer_menu.py`):
+**Already in use in [[admin-api/_summary|Actuate Admin API]]** (`actuate_admin/inframap/sites/customer/customer_menu.py`):
 
 | Short Code | Dashboard |
 |------------|-----------|
 | `onenr.io/0oQDWaDr5jy` | AI Link logs |
 | `onenr.io/0oR80yXMaRG` | Motion chart |
 | `onenr.io/0Zw0NrkdDjv` | AI Link deployment |
-| `onenr.io/0VRVLxG1xQa` | Sentinel deployment |
+| `onenr.io/0VRVLxG1xQa` | [[sentinel-components|Sentinel]] deployment |
 | `onenr.io/0Bj3yglpGwX` | K8s cluster dashboard |
 
 **How to create new ones:** Open any NR view → click "Share" → "Get permalink" → copy the `onenr.io` URL.

@@ -45,8 +45,8 @@ Both extend their respective base classes without adding custom fields.
 
 ## Alarm Sending and Frame Pulling
 
-OpenEye does not have a dedicated alarm sender class in `actuate-alarm-senders`. Alert delivery for OpenEye deployments uses the generic URL-based puller infrastructure. The URL puller modules (`url_puller_motion_onoff.py`, `av_url_puller.py`, `url_puller_motion.py`) contain references to OpenEye in their implementations, indicating that OpenEye streams are consumed via HTTP URL polling or RTSP depending on the deployment mode. In OWS mode, stream URLs are obtained through the OWS cloud API; in on-premises mode, streams are accessed directly from the NVR.
+OpenEye does not have a dedicated alarm sender class in `actuate-alarm-senders`. Alert delivery for OpenEye deployments uses the generic URL-based puller infrastructure. The URL puller modules (`url_puller_motion_onoff.py`, `av_url_puller.py`, `url_puller_motion.py`) contain references to OpenEye in their implementations, indicating that OpenEye streams are consumed via HTTP URL polling or [[rtsp-deep-dive|RTSP]] depending on the deployment mode. In OWS mode, stream URLs are obtained through the OWS cloud API; in on-premises mode, streams are accessed directly from the NVR.
 
 ## Integration Calls
 
-There is no dedicated OpenEye integration-calls module. API interactions with the OWS cloud platform (authentication, stream URL retrieval, camera discovery) are handled in the connector factory code within `vms-connector` rather than in the shared library.
+There is no dedicated OpenEye integration-calls module. API interactions with the OWS cloud platform (authentication, stream URL retrieval, camera discovery) are handled in the [[connector-factory|connector factory]] code within `vms-connector` rather than in the shared library.

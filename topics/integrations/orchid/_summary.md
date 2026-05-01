@@ -10,7 +10,7 @@ author: kb-bot
 
 # Orchid Integration
 
-Orchid is an on-premise video management system (VMS). The Actuate integration uses Orchid's **low-bandwidth HTTP streaming API** to pull JPEG frames from cameras, making it one of the few integrations with a dedicated, VMS-specific puller rather than using generic RTSP streams.
+Orchid is an on-premise video management system (VMS). The Actuate integration uses Orchid's **low-bandwidth HTTP streaming API** to pull JPEG frames from cameras, making it one of the few integrations with a dedicated, VMS-specific puller rather than using generic [[rtsp-deep-dive|RTSP]] streams.
 
 ## Components
 
@@ -34,4 +34,4 @@ Defined in [[actuate-config]] at `connector/orchid/orchid_config.py`. The `Orchi
 
 ## Architecture
 
-The [[vms-connector]] instantiates `OrchidJpgFrameQueuePuller` per camera during startup. Unlike most VMS integrations that use generic RTSP URL pullers, Orchid requires its own puller because it exposes a proprietary HTTP-based frame delivery API rather than standard RTSP streams. There is no Orchid-specific alarm sender or integration calls module -- alerts flow through whatever monitoring sender (Immix, webhook, etc.) is configured for the site. There are also no Orchid entries in [[actuate-integration-calls]].
+The [[vms-connector]] instantiates `OrchidJpgFrameQueuePuller` per camera during startup. Unlike most VMS integrations that use generic [[rtsp-deep-dive|RTSP]] URL pullers, Orchid requires its own puller because it exposes a proprietary HTTP-based frame delivery API rather than standard RTSP streams. There is no Orchid-specific alarm sender or integration calls module -- alerts flow through whatever monitoring sender (Immix, webhook, etc.) is configured for the site. There are also no Orchid entries in [[actuate-integration-calls]].

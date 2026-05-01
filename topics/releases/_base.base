@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: releases
+    filters:
+      and:
+        - file.folder.contains("topics/releases")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

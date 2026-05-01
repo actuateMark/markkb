@@ -30,4 +30,4 @@ The config uses `self.config.recipient` (singular, not plural) -- a single recip
 
 ## Auth Method
 
-Authentication details are encapsulated in the `recipient` config object and handled by the downstream queue consumer when making API calls to Evalink. The sender itself does not directly authenticate -- it only queues the alert data along with the recipient configuration.
+Authentication details are encapsulated in the `recipient` config object and handled by the downstream [[queue-consumer|queue consumer]] when making API calls to Evalink. The sender itself does not directly authenticate -- it only queues the alert data along with the recipient configuration.

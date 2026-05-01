@@ -13,7 +13,7 @@ Track B of the [[integrations/morphean/_summary|Morphean]] -- deploying Actuate 
 
 ## Problem Statement
 
-Not all cameras in Morphean/VIDEOR's install base support cloud video streaming. Many legacy analog or older IP cameras are behind constrained networks or lack the firmware to push RTSP streams to a cloud endpoint. The [[cloud-to-cloud-architecture]] (Track A) requires cameras to stream to Morphean's VideoProtector cloud, which is not feasible for these legacy deployments.
+Not all cameras in Morphean/VIDEOR's install base support cloud video streaming. Many legacy analog or older IP cameras are behind constrained networks or lack the firmware to push [[rtsp-deep-dive|RTSP]] streams to a cloud endpoint. The [[cloud-to-cloud-architecture]] (Track A) requires cameras to stream to Morphean's VideoProtector cloud, which is not feasible for these legacy deployments.
 
 Track B solves this by bringing Actuate's inference to the camera's network edge, processing video locally and only sending alert metadata (detections, thumbnails) upstream.
 
@@ -30,7 +30,7 @@ The combination of Toradex Verdin + DeepX allows running Actuate's detection mod
 
 The edge device runs a local variant of the Actuate processing pipeline:
 
-1. **Local VMS integration** -- The edge device connects to cameras via the on-premises VMS (or directly via RTSP on the local network).
+1. **Local VMS integration** -- The edge device connects to cameras via the on-premises VMS (or directly via [[rtsp-deep-dive|RTSP]] on the local network).
 2. **Local inference** -- Frames are processed by Actuate models running on the DeepX accelerator. No video leaves the local network.
 3. **Alert upstream** -- Only detection metadata and alert thumbnails are sent to Actuate's cloud (or to Morphean's platform) for alerting and dashboard display.
 

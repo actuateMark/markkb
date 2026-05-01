@@ -73,7 +73,7 @@ The DS team's evaluation methodology is a ladder of six increasingly production-
 
 McNemar's test constructs a 2x2 contingency table of discordant pairs (cases where one model gets it right and the other gets it wrong) and tests whether the asymmetry is statistically significant. This is more powerful than comparing raw accuracy numbers because it controls for scene difficulty. See [[shadow-testing-methodology]] for the full statistical treatment.
 
-The [[shadow-test-pipeline]] automates the full workflow: querying AWS Athena for alert data, classifying alerts as prod/dev based on model identifier substrings in `custcam_id`, matching paired alerts using a sliding-window + greedy algorithm (25s time delta, 0.3 IoU threshold), downloading frames, and presenting them for manual TP/FP labeling via OpenCV tools, Streamlit interface, or Encord integration.
+The [[shadow-test-pipeline]] automates the full workflow: querying AWS Athena for alert data, classifying alerts as prod/dev based on model identifier substrings in `custcam_id`, matching paired alerts using a sliding-window + greedy algorithm (25s time delta, 0.3 IoU threshold), downloading frames, and presenting them for manual TP/FP labeling via [[opencv-entity|OpenCV]] tools, Streamlit interface, or Encord integration.
 
 **When used:** The most production-representative evaluation tier. Applied to validate [[intruder-v8-model]] before rollout approval. The February 2026 shadow test run compared `int07-actuate003-v8` (DEV) against `intruder-384h-512w-svc` (PROD) at the alert-sequence level. **Uladzimir Sapeshka (Vlad)** is the primary owner of shadow test execution and analysis.
 

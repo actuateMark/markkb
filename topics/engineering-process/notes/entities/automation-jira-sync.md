@@ -2,25 +2,36 @@
 title: "Automation: jira-sync"
 type: entity
 topic: engineering-process
-tags: [automation, systemd, jira-sync, mark-todos, claude-headless]
+tags: [automation, systemd, jira-sync, mark-todos, three-tier-pattern, pure-script]
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-04-30
 author: kb-bot
 ---
 
 # Automation: jira-sync
 
-Daily `systemd` user timer that refreshes the "Current Jira Queue (auto-synced)" section in [[mark-todos]] with Mark's currently-assigned Jira tickets. Second of the automated-job family — follows the pattern set by [[automation-overnight-check]].
+Daily refresh of the "Current Jira Queue (auto-synced)" section in [[mark-todos]] with Mark's currently-assigned Jira tickets. **Pure-Python (no Claude tokens) as of 2026-04-30** — converted from the LLM-driven wrapper per the [[2026-04-30_three-tier-routine-check-pattern|three-tier routine check pattern]].
+
+## Tier model
+
+| Tier | Where | Cadence | Notes |
+|------|-------|---------|-------|
+| **Tier 1 (canonical)** | Firebat: `~/bin/jira-sync.sh` + `jira-sync.timer` | daily 06:30 ET | Always-on box runs first; idempotency guard makes later runs no-ops |
+| **Tier 2 (fallback)** | Laptop: `~/bin/jira-sync.sh` + `jira-sync.timer` | daily 10:37 ET | Skips if Tier 1 already synced today |
+| Tier 3 | n/a — no `/jira-sync` skill exists | — | Failure surfaces in `topics/operational-health/notes/syntheses/{date}_jira-sync.md` |
+
+Both tiers run the same Python source from `/home/mork/work/local_network_scripts/files/jira-sync.sh`. Source-of-truth deployment via `phase-13-tasks.sh`.
 
 ## When It Fires
 
-- **Daily at 10:37 `America/New_York`** — off-minute, DST-aware
-- `Persistent=true` — fires on next boot if the machine was off at 10:37
-- `RandomizedDelaySec=60` jitter
+- **Firebat — 06:30 `America/New_York` daily** (Tier 1 canonical)
+- **Laptop — 10:37 `America/New_York` daily** (Tier 2 fallback)
+- `Persistent=true` on both — fires on next boot if machine was off at the scheduled time
+- `RandomizedDelaySec` jitter (60-120s) on both
 
 ## What It Produces
 
-Replaces the content between the `<!-- BEGIN-AUTOSYNC-JIRA -->` and `<!-- END-AUTOSYNC-JIRA -->` sentinels inside `/home/mork/Documents/worklog/knowledgebase/topics/team-structure/notes/entities/mark-todos.md`.
+Replaces the content between the `<!-- BEGIN-AUTOSYNC-JIRA -->` and `<!-- END-AUTOSYNC-JIRA -->` sentinels inside `/home/mork/Documents/worklog/knowledgebase/topics/personal-notes/notes/entities/mark-todos.md`.
 
 The replacement groups tickets by status (Ready to Deploy / In Progress & In Review / To Do / Open / Other), with a per-ticket row of `Ticket | Priority | Type | Summary`. Tickets already referenced in the file's workstream sections (§1, §2, §3) get an inline `*(tracked in §N)*` marker.
 
@@ -28,37 +39,32 @@ The frontmatter `updated:` field is also updated to the sync date.
 
 ## Failure Behavior
 
-**Fail-closed.** The wrapper backs up `mark-todos.md` before running. If `claude -p` exits non-zero, or the expected sentinels go missing, or the `Last synced:` line doesn't match today's date:
+**Fail-closed.** The script keeps an in-memory backup of `mark-todos.md` before any mutation. On any error (Atlassian API failure, splice failure, sentinel-missing):
 
-1. `mark-todos.md` is restored from the backup (no partial mutation).
-2. A `FAILED: Jira Sync {date}` note is written to `topics/operational-health/notes/syntheses/{date}_jira-sync.md` with stderr inline.
+1. `mark-todos.md` is restored from the in-memory backup (atomic `os.replace` on the splice — no torn writes possible).
+2. A `FAILED: Jira Sync {date}` note is written to `topics/operational-health/notes/syntheses/{date}_jira-sync.md` with the Python traceback inline.
 3. journalctl logs the non-zero exit.
 
-Same visibility principle as overnight-check — user sees failures in the morning KB scan.
+The 7-day-retention backups also exist at `~/.local/state/jira-sync/mark-todos.{date}.bak` for manual restoration if needed.
 
 ## Files
 
 | Path | Role |
 |------|------|
-| `/home/mork/bin/jira-sync.sh` | Wrapper; backs up, invokes `claude -p`, verifies outcome, restores on failure |
+| `~/bin/jira-sync.sh` | Pure-Python script; fetches via Atlassian REST, splices into mark-todos.md atomically |
 | `~/.config/systemd/user/jira-sync.service` | oneshot service unit |
-| `~/.config/systemd/user/jira-sync.timer` | daily timer |
-| `~/.local/state/jira-sync/{date}.stdout` | raw claude stdout |
-| `~/.local/state/jira-sync/{date}.stderr` | raw claude stderr |
+| `~/.config/systemd/user/jira-sync.timer` | daily timer (06:30 ET on Firebat, 10:37 ET on laptop) |
+| `~/.local/state/jira-sync/{date}.stdout` | rendered section (for diagnostic) |
+| `~/.local/state/jira-sync/{date}.stderr` | run log + tracebacks |
 | `~/.local/state/jira-sync/mark-todos.{date}.bak` | pre-sync backup (7-day retention) |
+| `~/bin/jira-sync.sh.llm-version-bak` | prior LLM wrapper, kept on laptop for reference |
 
 ## Dependencies
 
-- `claude` CLI at `/home/mork/.local/bin/claude`
-- Atlassian MCP authenticated (same account as the interactive session — `mark@actuate.ai` / cloudId `4776db4d-ed60-472d-91ac-28ea15902e45`)
-- Permission allowlist in `~/.claude/settings.json` covering:
-  - `mcp__atlassian__searchJiraIssuesUsingJql`
-  - `mcp__atlassian__atlassianUserInfo`
-  - `mcp__atlassian__getAccessibleAtlassianResources`
-  - `Edit(/home/mork/Documents/worklog/knowledgebase/**)`
-  - `Read(/home/mork/Documents/worklog/knowledgebase/**)`
-- `--add-dir $KB_ROOT` on the `claude -p` invocation to satisfy the headless sandbox write check
-- Linger enabled (`loginctl enable-linger mork`) for laptop-closed runs
+- Python 3 stdlib only (`urllib`, `json`, `re`, `tempfile`)
+- `~/.config/atlassian/api-token` — Basic auth `{email, token, site}` JSON. Same credential the previous wrapper used via `atlassian_query.py`.
+- Linger enabled (`loginctl enable-linger mork`) for runs while machine is sleeping (laptop) or closed.
+- **No** Claude CLI required. **No** MCP server required. **No** allowlists or sandbox tweaks.
 
 ## JQL
 
@@ -86,7 +92,7 @@ The replacement target in `mark-todos.md` is identified by:
 2. `journalctl --user -u jira-sync.service --since '24 hours ago'`
 3. `cat ~/.local/state/jira-sync/{date}.stderr`
 4. Manual rerun: `/home/mork/bin/jira-sync.sh`
-5. If mark-todos.md is corrupted: `cp ~/.local/state/jira-sync/mark-todos.{date}.bak /home/mork/Documents/worklog/knowledgebase/topics/team-structure/notes/entities/mark-todos.md`
+5. If mark-todos.md is corrupted: `cp ~/.local/state/jira-sync/mark-todos.{date}.bak /home/mork/Documents/worklog/knowledgebase/topics/personal-notes/notes/entities/mark-todos.md`
 
 ## How to Disable / Re-Enable
 
@@ -100,7 +106,18 @@ systemctl --user enable --now jira-sync.timer
 
 ## How to Change the JQL
 
-Edit `/home/mork/bin/jira-sync.sh` — the `PROMPT=$(cat <<'EOF' ... EOF)` block, specifically the `jql:` field. Consider updating this entity note's "JQL" section if the query changes materially.
+Edit `/home/mork/work/local_network_scripts/files/jira-sync.sh` — the JQL string inside `main()` near the `jira_search(...)` call. Re-deploy via `phase-13-tasks.sh` (or scp to both Firebat + laptop manually). Update the JQL section above if the query changes materially.
+
+## Conversion notes (2026-04-30)
+
+The previous version wrapped `claude -p` with a prompt instructing it to call `python3 ~/.claude/lib/atlassian_query.py search "<JQL>"`, parse JSON, format markdown between sentinels, and emit to stdout. Wrapper then spliced.
+
+Replaced with deterministic Python that does the same work without the LLM round-trip:
+- Calls Atlassian REST directly (urllib + basic-auth from `~/.config/atlassian/api-token`); no module dependencies beyond stdlib.
+- Buckets tickets by status name into Ready to Deploy / In Progress & In Review / To Do / Open / Other.
+- Computes `*(tracked in §N)*` annotation by scanning mark-todos.md once for `## N. ...` headings + `[A-Z]+-\d+` ticket keys, **stopping at the BEGIN-AUTOSYNC-JIRA sentinel** so the previous sync's annotations don't poison the mapping (this was a quiet bug in the LLM version — it tended to attribute every open ticket to whatever § appeared just before the autosync block).
+- Idempotency guard: skips if `**Last synced:** TODAY` already present and section is well-formed. `--force` bypasses.
+- Token cost: $0/run (was ~$0.02-0.04). Runtime: ~2s (was ~30-60s).
 
 ## Related
 

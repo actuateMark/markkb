@@ -57,5 +57,5 @@ Note the strict `numpy <2.0` pin, which ensures compatibility with the matrix op
 ## Notable Patterns
 
 - This is a near-verbatim fork of the upstream `filterpy` (MIT-licensed), re-packaged under the `actuate_filterpy` namespace for monorepo compatibility.
-- Requires Python 3.12+ (stricter than most other actuate libraries which require 3.11+).
+- Requires Python 3.12+ (stricter than most other [[actuate-libraries|actuate libraries]] which require 3.11+).
 - The numpy <2.0 constraint is critical because numpy 2.0 changed array casting behavior that breaks some matrix operations in the filter implementations.

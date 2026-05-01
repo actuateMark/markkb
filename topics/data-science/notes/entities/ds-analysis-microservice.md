@@ -18,7 +18,7 @@ The Actuate connector pipeline has multiple tunable components (puller, FDMD, fi
 
 ## Testable Components
 
-- **Puller** -- FFmpeg parameters, stream stability, resource usage.
+- **Puller** -- [[ffmpeg-entity|FFmpeg]] parameters, stream stability, resource usage.
 - **FDMD** (Frame Difference Motion Detection) -- `min_area`, `pixel_sensitivity`, code variants.
 - **Filters** -- IOU filter, Blacklist filter, Stationary filter (`stationary` vs `stationary_cumulative` behavior).
 - **Slicing** -- `num_slices` comparison for high-resolution image tiling.
@@ -42,7 +42,7 @@ RESTful API with endpoints for: health/readiness probes (`/healthz`, `/readyz`),
 
 ## Deployment
 
-Deployed to EKS via ArgoCD. Helm chart lives in the [[kubernetes-deployments]] repo. Internal URL: `https://ds-analysis.internal.actuateui.net/`. Requires IAM permissions for S3 (analysis bucket) and ECR. Enabled per-cluster via `cluster-values.yaml` under `actuate.applications.dsAnalysisMicroservice`.
+Deployed to EKS via [[argocd|ArgoCD]]. Helm chart lives in the [[kubernetes-deployments]] repo. Internal URL: `https://ds-analysis.internal.actuateui.net/`. Requires IAM permissions for S3 (analysis bucket) and ECR. Enabled per-cluster via `cluster-values.yaml` under `actuate.applications.dsAnalysisMicroservice`.
 
 ## Development
 

@@ -44,7 +44,7 @@ All library test suites that need shared test infrastructure. Import patterns:
 - `from actuate_tests.helper import get_base_config, get_file_path`
 - `from actuate_tests.sample_data import raw_model_response_staged`
 
-actuate-config lists actuate-tests as a dev dependency.
+[[actuate-config]] lists actuate-tests as a dev dependency.
 
 ## Notable Patterns
 

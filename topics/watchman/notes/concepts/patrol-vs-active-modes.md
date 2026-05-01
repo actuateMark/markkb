@@ -8,11 +8,11 @@ tags: [watchman, modes, patrol, active-monitoring, site-supervisor]
 
 # Patrol vs Active Monitoring Modes
 
-[[watchman]] operates in two distinct modes that mirror how a human security operator would shift attention between routine scanning and incident response. The [[multi-agent-architecture|Site Supervisor Agent]] governs transitions between them.
+[[watchman/_summary|Actuate Watchman]] operates in two distinct modes that mirror how a human security operator would shift attention between routine scanning and incident response. The [[multi-agent-architecture|Site Supervisor Agent]] governs transitions between them.
 
 ## Patrol Mode
 
-Patrol Mode is the default, low-activity state. The [[autopatrol|Patrol Agent]] sweeps cameras on adaptive 5-15 minute cycles, sampling each feed and looking for anomalies. The cycle frequency is not fixed -- it adapts based on the time of day, historical activity patterns from the [[multi-agent-architecture|Site Context Agent]], and recent event density.
+Patrol Mode is the default, low-activity state. The [[autopatrol/_summary|AutoPatrol (H1.2)]] sweeps cameras on adaptive 5-15 minute cycles, sampling each feed and looking for anomalies. The cycle frequency is not fixed -- it adapts based on the time of day, historical activity patterns from the [[multi-agent-architecture|Site Context Agent]], and recent event density.
 
 During Patrol Mode the system is conservative with resources. Not every camera is analysed simultaneously; the Patrol Agent rotates through them, prioritising cameras that historically see more activity or that cover higher-value zones (as configured during the [[onboarding-wizard]] protection priorities step). Anomalies detected during patrol are flagged to the Assessment Agent for severity scoring, but the system does not yet commit to full real-time correlation across all cameras.
 
@@ -43,4 +43,4 @@ This two-mode design avoids the cost of running full real-time analysis 24/7 (wh
 
 ## Adaptive Frequency
 
-The Patrol Agent's sweep frequency is not static. The Site Context Agent builds a rhythm model for each site -- learning when activity peaks occur, when the site is empty, and when transitions happen (opening hours, shift changes). Patrol cycles tighten during historically active periods and relax during quiet ones. This adaptive scheduling is an evolution of the scheduling logic already proven in [[autopatrol]].
+The Patrol Agent's sweep frequency is not static. The Site Context Agent builds a rhythm model for each site -- learning when activity peaks occur, when the site is empty, and when transitions happen (opening hours, shift changes). Patrol cycles tighten during historically active periods and relax during quiet ones. This adaptive scheduling is an evolution of the scheduling logic already proven in [[autopatrol/_summary|AutoPatrol (H1.2)]].

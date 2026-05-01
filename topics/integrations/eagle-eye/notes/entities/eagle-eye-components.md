@@ -36,9 +36,9 @@ The `eagle_eye_calls` module is the most comprehensive integration-calls module,
 ### Camera and Stream Discovery
 
 - **v3 cameras**: `get_camera_list()` paginates through `/api/v3.0/cameras` with status, notes, and capabilities. Returns a name-to-ID dictionary.
-- **v3 feeds**: `get_url_v3()` fetches RTSP stream URLs from `/api/v3.0/feeds` for a given camera and resolution type. Falls back to proxy tokens if the primary token has no access.
+- **v3 feeds**: `get_url_v3()` fetches [[rtsp-deep-dive|RTSP]] stream URLs from `/api/v3.0/feeds` for a given camera and resolution type. Falls back to proxy tokens if the primary token has no access.
 - **v2 cameras**: `get_camera_list_v2()` and `get_url()` use the legacy `/g/device/list` and `/api/v2/media/cameras` endpoints.
-- **Camera Manager**: `get_camera_manager_list()` and `get_camera_manager_url()` query the Camera Manager REST API for camera lists and RTSP URLs.
+- **Camera Manager**: `get_camera_manager_list()` and `get_camera_manager_url()` query the Camera Manager REST API for camera lists and [[rtsp-deep-dive|RTSP]] URLs.
 
 ### Multi-Account Support
 

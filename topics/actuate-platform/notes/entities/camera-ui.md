@@ -10,7 +10,7 @@ author: kb-bot
 
 # Camera UI
 
-Camera UI (`actuate-camera-ui`) is the primary React single-page application for Actuate AI's security camera management platform. It provides operators with tools to manage sites, view and triage alerts, configure camera settings, define ignore zones, manage patrols, and view analytics dashboards. The current version is 4.23.3.
+Camera UI (`actuate-camera-ui`) is the primary React single-page application for Actuate AI's security camera management platform. It provides operators with tools to manage sites, view and triage alerts, configure camera settings, define [[ignore-zones|ignore zones]], manage patrols, and view analytics dashboards. The current version is 4.23.3.
 
 ## Tech Stack
 
@@ -24,7 +24,7 @@ Camera UI (`actuate-camera-ui`) is the primary React single-page application for
 - **Charts**: Chart.js / react-chartjs-2 and Recharts for analytics
 - **Forms**: Formik + Yup for validation
 - **Testing**: Jest + React Testing Library. Coverage thresholds enforced at 60% (branches, functions, lines, statements). Reports uploaded to Codecov on PRs to `develop` and `main`
-- **Container**: Node 18.10.0 Docker image, with a Podman-based local dev workflow
+- **Container**: Node 18.10.0 Docker image, with a Podman-based local [[dev-workflow|dev workflow]]
 
 ## Pages and Features
 
@@ -32,7 +32,7 @@ The `src/Components/pages/` directory contains the major feature areas:
 
 - **Alerts** -- alert viewing and triage with video playback. Uses the [[monitoring-api]] alert endpoints
 - **Sites** -- site management with an about page and site-level Zustand store
-- **EditIgnoreZones** -- polygon editor for camera ignore zones using normalized coordinates (0-1 range) with a 30px canvas padding offset
+- **EditIgnoreZones** -- polygon editor for camera [[ignore-zones|ignore zones]] using normalized coordinates (0-1 range) with a 30px canvas padding offset
 - **EditCamera** -- camera settings editor
 - **EditLineCrossings** -- line crossing configuration
 - **Patrols** -- patrol scheduling and management
@@ -53,7 +53,7 @@ Camera UI is deployed to AWS S3 behind CloudFront. The `develop` branch deploys 
 ## Key Patterns and Gotchas
 
 - **localStorage coupling**: Preview URLs, camera info, and ignore zone data are passed between components via localStorage. This is a legacy pattern that complicates debugging.
-- **Coordinate handling**: Ignore zones use a 30px padding offset on the canvas. Points are incremented by 30 on load and decremented on save. Camera images are resized to 720px width with preserved aspect ratio via `adjustDimensions`.
+- **Coordinate handling**: [[ignore-zones|Ignore zones]] use a 30px padding offset on the canvas. Points are incremented by 30 on load and decremented on save. Camera images are resized to 720px width with preserved aspect ratio via `adjustDimensions`.
 - **Brand colors**: `actuate-blue` (#001943), `actuate-orange` (#FF8400), `actuate-grey` (#E5E5E5). Fonts are Mulish (primary) and Roboto (secondary).
 
 ## Related

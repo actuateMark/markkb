@@ -26,12 +26,12 @@ Defined in [[actuate-integration-calls]] at `eagle_eye/eagle_eye_calls.py`. Modu
 
 **Camera Manager (legacy):**
 - `get_camera_manager_token()` -- OAuth2 password grant with app_name/api_key as Basic auth
-- `get_camera_manager_url()` -- Retrieves RTSP stream URL for a camera
+- `get_camera_manager_url()` -- Retrieves [[rtsp-deep-dive|RTSP]] stream URL for a camera
 - `get_camera_manager_list()` -- Lists all cameras
 
 **v2:**
 - `get_token_v2()` -- Two-step authenticate + authorize flow using API key header, returns auth_key cookie and brand subdomain
-- `get_url()` -- Builds RTSP stream URL via `/api/v2/media/cameras/{id}/streams` (with special MJPEG fallback for Acadian-Monitoring)
+- `get_url()` -- Builds RTSP stream URL via `/api/v2/media/cameras/{id}/streams` (with special [[mjpeg-and-still-image-formats|MJPEG]] fallback for Acadian-Monitoring)
 - `get_camera_list_v2()` -- Device list endpoint
 
 **v3 (current):**
@@ -51,7 +51,7 @@ Defined in [[actuate-integration-calls]] at `eagle_eye/eagle_eye_calls.py`. Modu
 
 ## Architecture
 
-The [[vms-connector]] uses Eagle Eye integration calls during startup to authenticate, discover the base URL, retrieve camera lists, and construct stream URLs. RTSP streams are then consumed by standard URL-based pullers in [[actuate-pullers]] (no Eagle Eye-specific puller exists). When detections occur, the `EagleEyeAlertSender` enqueues events to SQS for the event-listener to deliver back to Eagle Eye.
+The [[vms-connector]] uses Eagle Eye integration calls during startup to authenticate, discover the base URL, retrieve camera lists, and construct stream URLs. [[rtsp-deep-dive|RTSP]] streams are then consumed by standard URL-based pullers in [[actuate-pullers]] (no Eagle Eye-specific puller exists). When detections occur, the `EagleEyeAlertSender` enqueues events to SQS for the event-listener to deliver back to Eagle Eye.
 
 ## Relationship to Other Components
 

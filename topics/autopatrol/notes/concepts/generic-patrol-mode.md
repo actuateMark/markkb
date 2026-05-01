@@ -2,7 +2,7 @@
 title: "Generic Patrol Mode"
 type: concept
 topic: autopatrol
-tags: [patrol, generic-patrol, architecture, mixin, connector-factory]
+tags: [patrol, generic-patrol, architecture, mixin, connector-factory, immix]
 jira: "ENG-106"
 created: 2026-04-14
 updated: 2026-04-14
@@ -19,7 +19,7 @@ Holds all shared run-loop logic. It launches a puller thread, drives a frame-pro
 
 ## PatrolCamera
 
-The generic subclass. Uses `AvUrlFramePuller` for RTSP streams, designed so other pullers can be added without touching Immix code. Instantiated by `PatrolConnectorFactory`, which generates its own `patrol_id` locally (a UUID, no Immix API call) and reads settings via `PatrolConnectorConfig`.
+The generic subclass. Uses `AvUrlFramePuller` for [[rtsp-deep-dive|RTSP]] streams, designed so other pullers can be added without touching Immix code. Instantiated by `PatrolConnectorFactory`, which generates its own `patrol_id` locally (a UUID, no Immix API call) and reads settings via `PatrolConnectorConfig`.
 
 ## Config Layer
 
@@ -33,7 +33,7 @@ Prior to this change, patrol mode required `integration_type: autopatrol`. Gener
 
 ## Related
 
-- [[autopatrol]] — parent product
+- [[autopatrol/_summary|AutoPatrol (H1.2)]] — parent product
 - [[connector-factory]] — routing by integration_type
 - [[inference-pool]] — AIMD concurrency for multi-product patrols
-- [[library-connector-dependency-map]] — actuate-config and actuate-daos changes
+- [[library-connector-dependency-map]] — [[actuate-config]] and [[actuate-daos]] changes

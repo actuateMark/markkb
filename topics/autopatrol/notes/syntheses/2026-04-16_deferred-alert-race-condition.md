@@ -2,7 +2,7 @@
 title: "Investigation: Deferred Alert Race Condition at Patrol Exit"
 type: synthesis
 topic: autopatrol
-tags: [autopatrol, alert-lifecycle, race-condition, deferred-alerts, investigation, vms-connector]
+tags: [autopatrol, alert-lifecycle, race-condition, deferred-alerts, investigation, vms-connector, immix]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot

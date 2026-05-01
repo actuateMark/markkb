@@ -27,7 +27,7 @@ Authentication is simplified by running as an extension of the main Admin app (s
 - **Database:** PostgreSQL (via `psycopg` 3.x)
 - **Caching:** Redis (>=4.0, <8.0)
 - **API docs:** drf-yasg (Swagger/OpenAPI)
-- **Video processing:** FFmpeg (via `ffmpeg-python`), OpenCV (headless), NumPy
+- **Video processing:** [[ffmpeg-entity|FFmpeg]] (via `ffmpeg-python`), [[opencv-entity|OpenCV]] (headless), NumPy
 - **Testing:** Pytest + pytest-django, tox, coverage
 - **Code quality:** SonarQube
 
@@ -61,7 +61,7 @@ Four GitHub Actions workflows: `main.yml`, `develop.yml`, `staging.yml`, `sonar.
 
 ## Dependencies
 
-- **Actuate libraries** (from CodeArtifact): `actuate-secrets`, `actuate-event-listener`, `actuate-viz`, `actuate-inference-objects`
+- **[[actuate-libraries|Actuate libraries]]** (from CodeArtifact): `actuate-secrets`, `actuate-event-listener`, `actuate-viz`, `actuate-inference-objects`
 - Django ecosystem: allauth, cors-headers, environ, filter, mptt, simple-history
 - `boto3`, `gunicorn`, `redis`, `pyjwt`
 

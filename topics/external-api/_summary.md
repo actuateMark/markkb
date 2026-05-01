@@ -17,7 +17,7 @@ A strategic initiative (ENG-122) to expose **generic, partner-facing APIs** beyo
 
 | Ticket | Endpoint Type | Customer | Assignee | Status |
 |--------|--------------|----------|----------|--------|
-| **ENG-126** | Detection (v5 API) | [[integrations/ebus/_summary|EBUS]] | Mark Barbera | To Do |
+| **ENG-126** | Detection (v5 API) | [[integrations/ebus/_summary|EBUS]] | Mark Barbera | To Do — [[ebus-partner-access|dev key live]] |
 | **ENG-123** | Schedule Management | AlarmWatch / Crosbies (NZ) | Vinicius Flores | In Progress (PR #4 merged) |
 | **ENG-124** | Image Ingestion (SMTP alt) | Alarmquip (AU) | Unassigned | To Do |
 | **ENG-125** | Arm/Disarm Per Site | AlarmWatch | Vinicius Flores | To Do |
@@ -32,7 +32,7 @@ The team is standardizing all public-facing services on:
 Client -> AWS API Gateway (REST) -> Rust Lambda Authorizer -> K8s pods (via VPC Link + ALB)
 ```
 
-This pattern applies to both the [[inference-api]] and the Admin-based external endpoints. Whether they share the same Rust authorizer is TBD.
+This pattern applies to both the [[inference-api/_summary|Actuate Inference API]] and the Admin-based external endpoints. Whether they share the same Rust authorizer is TBD.
 
 ## Key Design Decisions (from ENG-126)
 
@@ -56,8 +56,8 @@ This pattern applies to both the [[inference-api]] and the Admin-based external 
 ## Not a Single Project
 
 "External API" is **not a separate codebase** -- it's an umbrella initiative spanning:
-- [[inference-api]] (v5 detection endpoints)
-- [[admin-api]] (schedule, arm/disarm, image ingestion endpoints)
+- [[inference-api/_summary|Actuate Inference API]] (v5 detection endpoints)
+- [[admin-api/_summary|Actuate Admin API]] (schedule, arm/disarm, image ingestion endpoints)
 - Shared auth infrastructure (Rust authorizers, DynamoDB)
 
 The term `actuate-external-api` appears in architecture docs as a reference to this pattern, but there is no standalone repo by that name.

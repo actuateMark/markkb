@@ -44,7 +44,7 @@ actuate-network (v1.0.4) provides VPC-wide network conflict validation. It check
 
 ## Consumers
 
-actuate-wireguard (imports all validation functions and uses them in WireGuardDAO), Camera Admin Django backend (catches ValueError and converts to Django ValidationError).
+[[actuate-wireguard]] (imports all validation functions and uses them in WireGuardDAO), Camera Admin Django backend (catches ValueError and converts to Django ValidationError).
 
 ## Notable Patterns
 

@@ -8,11 +8,11 @@ tags: [watchman, gamification, triage, engagement, learning-agent, ux]
 
 # Triage Gamification
 
-[[watchman]] incorporates an XP and streak system into its triage workflow to drive operator engagement. The core problem it addresses: if operators ignore alerts, the entire value proposition of proactive monitoring collapses. Gamification creates a lightweight incentive loop that rewards consistent, timely triage behaviour.
+[[watchman/_summary|Actuate Watchman]] incorporates an XP and streak system into its triage workflow to drive operator engagement. The core problem it addresses: if operators ignore alerts, the entire value proposition of proactive monitoring collapses. Gamification creates a lightweight incentive loop that rewards consistent, timely triage behaviour.
 
 ## The Engagement Problem
 
-Watchman's target KPI is >70% of events triaged within 1 hour. Without engagement mechanics, alert fatigue sets in quickly -- operators learn to ignore notifications, and the system degrades to the same "cameras record but nobody watches" failure mode that Watchman exists to solve. The gamification layer is designed to make triage feel rewarding rather than burdensome.
+[[watchman-repo|Watchman]]'s target KPI is >70% of events triaged within 1 hour. Without engagement mechanics, alert fatigue sets in quickly -- operators learn to ignore notifications, and the system degrades to the same "cameras record but nobody watches" failure mode that [[watchman-repo|Watchman]] exists to solve. The gamification layer is designed to make triage feel rewarding rather than burdensome.
 
 ## XP System
 
@@ -21,13 +21,13 @@ Operators earn experience points (XP) for triaging events. The system likely wei
 - **Consistency** -- daily engagement matters more than sporadic bursts
 - **Quality** -- accurate triage feedback (confirmed threat vs false positive) contributes to the [[multi-agent-architecture|Learning Agent's]] accuracy model
 
-XP accumulation is visible in the ghost tile dashboard -- the always-visible stats panel in Watchman's terminal-style UI. This gives operators a persistent sense of progress without requiring them to navigate away from the main workflow.
+XP accumulation is visible in the ghost tile dashboard -- the always-visible stats panel in [[watchman-repo|Watchman]]'s terminal-style UI. This gives operators a persistent sense of progress without requiring them to navigate away from the main workflow.
 
 ## Streak Mechanics
 
 Streaks reward consecutive days (or shifts) of meeting triage thresholds. Breaking a streak creates a mild loss-aversion incentive to maintain engagement. This is a well-established pattern from consumer apps (Duolingo, fitness trackers) applied to a B2B security context.
 
-The streak counter is likely displayed prominently in the dashboard and may factor into the daily AI-generated digest that Watchman produces for each site.
+The streak counter is likely displayed prominently in the dashboard and may factor into the daily AI-generated digest that [[watchman-repo|Watchman]] produces for each site.
 
 ## Learning Agent Feedback Loop
 
@@ -41,8 +41,8 @@ This creates a virtuous cycle: operators are incentivised to triage promptly and
 
 ## UI Integration
 
-The triage workflow uses Watchman's agentic-first terminal-style interface. Events appear in a queue; operators can triage via the terminal input bar (chat-style commands) or structured UI controls. The ghost tile dashboard surfaces XP, streak count, and engagement stats as persistent overlays, keeping the gamification layer visible without dominating the screen.
+The triage workflow uses [[watchman-repo|Watchman]]'s agentic-first terminal-style interface. Events appear in a queue; operators can triage via the terminal input bar (chat-style commands) or structured UI controls. The ghost tile dashboard surfaces XP, streak count, and engagement stats as persistent overlays, keeping the gamification layer visible without dominating the screen.
 
 ## Design Philosophy
 
-Applying gamification to B2B security operations is unconventional. The design philosophy appears to be that small-business operators (Watchman targets businesses with 4-30 cameras) are not trained security professionals -- they are shop owners, property managers, and facility staff. The gamification meets them where they are, borrowing patterns from consumer software to make a professional tool feel approachable.
+Applying gamification to B2B security operations is unconventional. The design philosophy appears to be that small-business operators ([[watchman-repo|Watchman]] targets businesses with 4-30 cameras) are not trained security professionals -- they are shop owners, property managers, and facility staff. The gamification meets them where they are, borrowing patterns from consumer software to make a professional tool feel approachable.

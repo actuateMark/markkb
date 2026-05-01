@@ -9,7 +9,7 @@ confluence: "https://actuate-team.atlassian.net/wiki/spaces/Integratio/pages/232
 
 # Alarm Push Pattern (Evalink)
 
-The [[integrations/evalink/_summary|Evalink]] uses an **outbound REST push** pattern to deliver Actuate alerts to Evalink's alarm management console. This is one of 25+ alarm sender types implemented in the `actuate-alarm-senders` codebase and serves as a representative example of how Actuate delivers alerts to external monitoring center platforms.
+The [[integrations/evalink/_summary|Evalink]] uses an **outbound REST push** pattern to deliver Actuate alerts to [[evalink-components|Evalink]]'s alarm management console. This is one of 25+ alarm sender types implemented in the `actuate-alarm-senders` codebase and serves as a representative example of how Actuate delivers alerts to external monitoring center platforms.
 
 ## Pattern Overview
 
@@ -46,27 +46,27 @@ Alerts are delivered through an **SQS FIFO (First-In-First-Out) queue** rather t
 
 ### Site-Level Configuration
 
-Evalink configuration is managed at the **site level** in the Actuate Admin API, with three key fields:
+[[evalink-components|Evalink]] configuration is managed at the **site level** in the [[actuate-admin-api|Actuate Admin API]], with three key fields:
 
 | Field | Purpose |
 |-------|---------|
-| **Server URL** | The Evalink API endpoint for this customer's alarm management instance |
-| **API token** | Authentication credential for the Evalink REST API |
-| **Device ID** | Evalink's identifier for the alarm source device, mapped to the Actuate site |
+| **Server URL** | The [[evalink-components|Evalink]] API endpoint for this customer's alarm management instance |
+| **API token** | Authentication credential for the [[evalink-components|Evalink]] REST API |
+| **Device ID** | [[evalink-components|Evalink]]'s identifier for the alarm source device, mapped to the Actuate site |
 
 Additionally, an **Evalink company ID** is stored to map the Actuate customer/site to the correct Evalink tenant. The configuration is moving from camera-level to site-level granularity (tracked in UI-204 and UI-202), which simplifies setup -- operators configure Evalink once per site rather than per camera.
 
 ### The EvalinkAlertConfig Alarm Sender
 
-The `EvalinkAlertConfig` class in `actuate-alarm-senders` handles the specifics of formatting Actuate alerts into Evalink's expected payload format and making the outbound REST POST. It follows the same sender interface as Immix, Sentinel, Milestone, webhook, and the other 20+ sender types.
+The `EvalinkAlertConfig` class in `actuate-alarm-senders` handles the specifics of formatting Actuate alerts into Evalink's expected payload format and making the outbound REST POST. It follows the same sender interface as Immix, [[sentinel-components|Sentinel]], Milestone, webhook, and the other 20+ sender types.
 
 ## Current Status
 
-The Evalink integration is **near-production / shipped** -- the oldest integration doc dates to December 2025. The initial customer is **Protectas**, a Swiss security company. Adam Kawczynski is handling support for the Evalink trial (BT-902, BACK-630), and there are integration failures in the support queue flagged as a risk (see [[active-risks]]).
+The [[evalink-components|Evalink]] integration is **near-production / shipped** -- the oldest integration doc dates to December 2025. The initial customer is **Protectas**, a Swiss security company. Adam Kawczynski is handling support for the [[evalink-components|Evalink]] trial (BT-902, BACK-630), and there are integration failures in the support queue flagged as a risk (see [[active-risks]]).
 
 ## Generalizability
 
-While this note focuses on Evalink, the SQS FIFO -> queue_consumer -> alarm sender pattern is the **standard delivery mechanism** for all of Actuate's alert integrations. The same architecture delivers alerts to Immix (~$800K revenue channel), Sentinel, Milestone, webhooks, and others. Understanding the Evalink instance is understanding the general pattern.
+While this note focuses on [[evalink-components|Evalink]], the SQS FIFO -> queue_consumer -> alarm sender pattern is the **standard delivery mechanism** for all of Actuate's alert integrations. The same architecture delivers alerts to Immix (~$800K revenue channel), [[sentinel-components|Sentinel]], Milestone, webhooks, and others. Understanding the [[evalink-components|Evalink]] instance is understanding the general pattern.
 
 ## See Also
 

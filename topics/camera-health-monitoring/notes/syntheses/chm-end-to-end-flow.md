@@ -2,7 +2,7 @@
 title: "CHM End-to-End Flow: From CronJob to Alert Email"
 type: synthesis
 topic: camera-health-monitoring
-tags: [synthesis, chm, flow, architecture, baseline-reference]
+tags: [synthesis, chm, flow, architecture, baseline-reference, dynamodb]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
@@ -143,14 +143,14 @@ When a runner's `check()` calls `DiagnosticRunner().run_diagnostic()`, the runne
 | `avigilon` | [[AvigilonDiagnostics]] | Stub implementations (see [[chm-diagnostics-gap-analysis]]) |
 | All others | [[DummyDiagnostics]] | No-op passthrough |
 
-Local RTSP mode uses `DummyDiagnostics` to avoid real network calls during development.
+Local [[rtsp-deep-dive|RTSP]] mode uses `DummyDiagnostics` to avoid real network calls during development.
 
 ## 7. Incident Lifecycle
 
 Each runner manages incidents in DynamoDB via `BaseHealthcheckRunner` methods:
 
-- **`create_incident()`**: Writes a new record with `status=ongoing`, capturing site/camera IDs, error type, and diagnostic data. Fires a New Relic metric in a background thread.
-- **`update_incident()`**: Updates `last_updated_timestamp`, optionally sets `end_timestamp` and transitions status. Also fires New Relic metric.
+- **`create_incident()`**: Writes a new record with `status=ongoing`, capturing site/camera IDs, error type, and diagnostic data. Fires a [[new-relic|New Relic]] metric in a background thread.
+- **`update_incident()`**: Updates `last_updated_timestamp`, optionally sets `end_timestamp` and transitions status. Also fires [[new-relic|New Relic]] metric.
 - **State machine**: `ongoing` -> `pending` -> `resolved`. The `pending` state is a grace period -- scene change and connectivity runners auto-resolve `pending` incidents after 1 day.
 - **`check_unsent_emails()`**: After `incident_analysis()`, this method catches incidents whose open or close emails failed to send in a prior run and re-triggers them by setting `current_run_status` to OPENED or RESOLVED.
 
@@ -170,7 +170,7 @@ After all cameras complete, `send_healthcheck_results()` calls `alert_aggregator
 - **DynamoDB healthcheck records**: `save_healthcheck()` writes per-camera results (connectivity, stream quality, motion, scene change, recording, error text) via `healthcheck_dao.update_healthcheck()`.
 - **DynamoDB incidents**: Created/updated by each runner's `incident_analysis()` (see section 7).
 - **S3 frame storage**: Blurred/blank frames saved to `spray_bucket` during `image_quality_check()`. Scene change background and detected frames saved by the SAC detector bank.
-- **New Relic metrics**: `put_healthcheck_run()` fires per-camera and per-check-type metrics. `put_healthcheck_incident()` fires on incident create/update as fire-and-forget daemon threads.
+- **[[new-relic|New Relic]] metrics**: `put_healthcheck_run()` fires per-camera and per-check-type metrics. `put_healthcheck_incident()` fires on incident create/update as fire-and-forget daemon threads.
 
 ## 10. Cleanup
 

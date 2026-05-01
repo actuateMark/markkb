@@ -43,7 +43,7 @@ The end-to-end data flow through the Actuate platform, from camera stream ingest
 
 ### Stage 1-2: Ingestion
 
-The [[vms-connector]] is the entry point. Deployed as K8s Deployments or CronJobs (one per site) in the `rearchitecture` namespace, each connector pod runs `actuate-pullers` to ingest frames from cameras. Actuate supports 19+ VMS types plus direct RTSP, SMTP clips, and AILink. For the [[integrations/morphean/_summary|Morphean]], ingestion happens from Morphean's cloud rather than directly from cameras (see [[cloud-to-cloud-architecture]]).
+The [[vms-connector]] is the entry point. Deployed as K8s Deployments or CronJobs (one per site) in the `rearchitecture` namespace, each connector pod runs `actuate-pullers` to ingest frames from cameras. Actuate supports 19+ VMS types plus direct [[rtsp-deep-dive|RTSP]], SMTP clips, and AILink. For the [[integrations/morphean/_summary|Morphean]], ingestion happens from Morphean's cloud rather than directly from cameras (see [[cloud-to-cloud-architecture]]).
 
 ### Stage 3: Motion Pre-Filter
 
@@ -71,16 +71,16 @@ Confirmed detections are written to **DynamoDB** tables (WindowIds, DetectedV2, 
 
 ### Stage 10-11: Delivery
 
-The `queue_consumer` (K8s pod) reads from SQS FIFO and dispatches to the appropriate alarm sender from `actuate-alarm-senders` (25+ types). See [[alarm-push-pattern]] for details on the Evalink example of this delivery mechanism.
+The `queue_consumer` (K8s pod) reads from SQS FIFO and dispatches to the appropriate alarm sender from `actuate-alarm-senders` (25+ types). See [[alarm-push-pattern]] for details on the [[evalink-components|Evalink]] example of this delivery mechanism.
 
 ## Configuration Layer
 
-Orthogonal to the data flow, the [[admin-api]] (Django 6.0 + DRF on ECS, maintained by [[tatiana-hanazaki]]) manages all configuration: customers, sites, cameras, analytics settings, schedules, integrations, and users. The `connector_deployer` service manages connector pod lifecycle based on Admin API configuration.
+Orthogonal to the data flow, the [[admin-api/_summary|Actuate Admin API]] (Django 6.0 + DRF on ECS, maintained by [[tatiana-hanazaki]]) manages all configuration: customers, sites, cameras, analytics settings, schedules, integrations, and users. The `connector_deployer` service manages connector pod lifecycle based on Admin API configuration.
 
 ## User Interfaces
 
-- **alert-ui / camera-ui** -- Web dashboards for monitoring and camera management
-- **actuate_admin** -- Django admin portal + REST API
+- **[[alert-ui]] / camera-ui** -- Web dashboards for monitoring and camera management
+- **[[actuate_admin]]** -- Django admin portal + REST API
 - **actuate-inference-api** -- External partner API (FastAPI on Lambda, see [[vinicius-flores]] and [[michael-aleksa]])
 
 ## See Also
@@ -88,4 +88,4 @@ Orthogonal to the data flow, the [[admin-api]] (Django 6.0 + DRF on ECS, maintai
 - [[multi-region-deployment]] -- where this pipeline runs
 - [[alarm-push-pattern]] -- detailed look at the delivery stage
 - [[cloud-to-cloud-architecture]] -- variant ingestion path for Morphean
-- [[actuate-platform]] -- service inventory
+- [[actuate-platform/_summary|Actuate Platform Overview]] -- service inventory

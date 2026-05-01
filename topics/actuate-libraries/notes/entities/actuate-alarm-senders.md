@@ -51,7 +51,7 @@ BaseAlertSender (abstract)
 | Sender | Integration Target | Dependencies |
 |---|---|---|
 | `ImmixAlertSender` | Immix alarm monitoring | `ses_client`, `s3_dao`, `enriched_frames_dao` |
-| `BoldAlertSender` | Bold alarm monitoring | `ses_client`, `s3_dao`, `enriched_frames_dao` |
+| `BoldAlertSender` | [[bold-components|Bold]] alarm monitoring | `ses_client`, `s3_dao`, `enriched_frames_dao` |
 | `SesAlertSender` | Email via AWS SES | `ses_client`, `s3_dao`, `enriched_frames_dao` |
 | `SmsAlertSender` | SMS via AWS SNS | `sns_client` |
 | `SnsTopicAlertSender` | Generic SNS topic | `sns_client` |
@@ -67,15 +67,15 @@ BaseAlertSender (abstract)
 | `CommandCentralAlertSender` | Motorola CommandCentral | -- |
 | `TCPAlertSender` | Raw TCP socket alert | -- |
 | `SureviewAlertSender` | SureView Immix | `ses_client`, `s3_dao`, `enriched_frames_dao` |
-| `SentinelAlertSender` | Sentinel monitoring | `s3_dao`, `enriched_frames_dao` |
+| `SentinelAlertSender` | [[sentinel-components|Sentinel]] monitoring | `s3_dao`, `enriched_frames_dao` |
 | `PatriotAlertSender` | Patriot monitoring | `s3_dao`, `enriched_frames_dao` |
 | `UsMonitoringAlertSender` | US Monitoring | `s3_dao`, `enriched_frames_dao` |
-| `SoftguardAlertSender` | Softguard monitoring | `s3_dao`, `enriched_frames_dao` |
+| `SoftguardAlertSender` | [[softguard-components|Softguard]] monitoring | `s3_dao`, `enriched_frames_dao` |
 | `EagleEyeAlertSender` | Eagle Eye Networks | -- |
 | `AutoPatrolAlertSender` | AutoPatrol/Immix Connect | `connector_config`, `dao_manager`, `camera_config` |
-| `EvalinkAlertSender` | Evalink alarm platform | -- |
+| `EvalinkAlertSender` | [[evalink-components|Evalink]] alarm platform | -- |
 | `LisaAlertSender` | LISA alarm receiver | -- |
-| `HikcentralAlertSender` | HikCentral VMS | -- |
+| `HikcentralAlertSender` | [[hikcentral-components|HikCentral]] VMS | -- |
 | `SysAidAlertSender` | SysAid (CHM only) | -- |
 
 ## Key Classes

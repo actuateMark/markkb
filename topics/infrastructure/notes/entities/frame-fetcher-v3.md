@@ -10,7 +10,7 @@ author: kb-bot
 
 # Frame Fetcher V3
 
-AWS Lambda that serves the alert UI by resolving frame and clip metadata from DynamoDB and returning S3 presigned URLs. It is the read-path backend for alert windows, livestream frames, MP4 clips, and AI Link ground-truth playback.
+AWS Lambda that serves the [[alert-ui|alert UI]] by resolving frame and clip metadata from DynamoDB and returning S3 presigned URLs. It is the read-path backend for alert windows, livestream frames, MP4 clips, and AI Link ground-truth playback.
 
 **Repository:** `aegissystems/frame_fetcher_v3`
 **Runtime:** Python 3.13 (managed with `uv`)
@@ -22,7 +22,7 @@ The handler receives API Gateway events and routes GET/POST requests through a f
 - **Window frames** -- queries `EnrichedFrameV2` or `DetectedFrameV2` (age-based table selection: <24h prefers enriched, older uses detection with fallback) and returns presigned URLs for each frame.
 - **MP4 clips** -- looks up `WindowIdsV2` for `mp4_path`; if none exists, asynchronously invokes `create_detection_window` to regenerate. Windows <1 hour old return an empty list by design. Cold-archived objects return `"cold"`.
 - **Livestream** -- returns the latest frame(s) for a `custcam_id` within a configurable `fetch_horizon_hrs`.
-- **AI Link** -- loads clips from `AILink_GroundTruth`, choosing between standard and Sentinel/YourSix buckets based on username.
+- **AI Link** -- loads clips from `AILink_GroundTruth`, choosing between standard and [[sentinel-components|Sentinel]]/YourSix buckets based on username.
 - **Authentication** -- shared-password and opaque-token model stored in `AuthorizationV2`. Recent windows (<1 hour) auto-mint tokens; older windows require the password flow.
 
 ## DynamoDB Tables

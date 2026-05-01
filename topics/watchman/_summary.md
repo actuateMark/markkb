@@ -23,7 +23,7 @@ author: kb-bot
 - Global video surveillance market: $56-74B (2024)
 - Less than 1% of surveillance video is monitored live
 - RVM services cost $50-150+/camera/month -- inaccessible to most businesses
-- Watchman creates a **new market category**: affordable proactive monitoring for businesses with 4-30 cameras
+- [[watchman-repo|Watchman]] creates a **new market category**: affordable proactive monitoring for businesses with 4-30 cameras
 - **Go-to-market pivot:** from B2B2B (via Immix/monitoring centers) to **B2B direct** to commercial businesses
 
 ## Architecture -- Three Layers
@@ -66,7 +66,7 @@ author: kb-bot
 1. Deployment type selection
 2. WireGuard tunnel setup
 3. WiFi configuration
-4. Camera discovery (ONVIF/RTSP)
+4. Camera discovery (ONVIF/[[rtsp-deep-dive|RTSP]])
 5. Site type classification
 6. Camera selection + naming/zone assignment
 7. Emergency contacts (up to 5)
@@ -90,14 +90,14 @@ author: kb-bot
 ## What's Genuinely New vs Reused
 
 **Reused:** WireGuard tunnels, connector pipeline, AI models, AutoPatrol scheduling, VLM FP filter, CHM patterns
-**New:** Multi-agent orchestration, two-track precursor/threat routing, compound cross-camera severity scoring, multi-tier escalation with auto-escalation, triage gamification, terminal-style UI, BYOD self-service onboarding
+**New:** Multi-agent orchestration, two-track precursor/threat routing, compound cross-camera severity scoring, multi-tier escalation with auto-escalation, [[triage-gamification|triage gamification]], terminal-style UI, BYOD self-service onboarding
 
 ## Team
 
-- **Brian Leary** -- Product lead, PRD author
-- **Laura Reno** -- Document owner, MVP Requirements + Agent Specs
-- **Jacob Weiss** -- Engineering (infrastructure, security)
-- **Brad Murphy** -- Frontend
+- **[[brian-leary|Brian Leary]]** -- Product lead, PRD author
+- **[[laura-reno|Laura Reno]]** -- Document owner, MVP Requirements + Agent Specs
+- **[[jacob-weiss|Jacob Weiss]]** -- Engineering (infrastructure, security)
+- **[[brad-murphy|Brad Murphy]]** -- Frontend
 - **Tatiana** -- Engineering
-- **Michael Aleksa** -- Engineering
+- **[[michael-aleksa|Michael Aleksa]]** -- Engineering
 - **Jagadish** -- AI/ML

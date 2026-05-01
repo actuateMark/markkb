@@ -29,7 +29,7 @@ The job executor is the planned centralized system for running all scheduled and
 - **Infrastructure checks**: duplicate containers, old containers, CPU/memory review, connection checks.
 - **Camera operations**: status checks, stream checks, YOLO instances, configuration, motion triggers.
 - **Onboarding**: AWS/NewRelic log activation, camera configuration, auto-onboard validation.
-- **Integrations**: Bold heartbeat, auto-training workflow, CRM sync, per-integration healthchecks.
+- **Integrations**: [[bold-components|Bold]] heartbeat, auto-training workflow, CRM sync, per-integration healthchecks.
 
 ## Migration Strategy
 
@@ -40,7 +40,7 @@ Jobs are tiered by admin dependency:
 
 ## Queue Consumer Reliability
 
-The queue consumer (K8s pod reading SQS FIFO) is the execution engine for alert delivery and other queued work. Operational incidents with the Immix integration exposed several reliability gaps in the original design:
+The [[queue-consumer|queue consumer]] (K8s pod reading SQS FIFO) is the execution engine for alert delivery and other queued work. Operational incidents with the Immix integration exposed several reliability gaps in the original design:
 
 - No healthcheck on the consumer itself, so failures went undetected.
 - No exception recovery -- transient errors crashed the entire consumer.
@@ -57,5 +57,5 @@ When a healthcheck targets a customer, the scheduler pulls all sites for that cu
 - [[job-executor-plan|Job Executor Project Plan]] -- full catalog and migration analysis
 - [[django-q-scheduler-architecture|Django-Q Scheduler Architecture]] -- scheduler design and factory pattern
 - [[lambda-function-catalog|Lambda Function Catalog]] -- Lambda candidates for migration
-- [[worklog-immix-after-action]] -- queue consumer operational lessons
+- [[worklog-immix-after-action]] -- [[queue-consumer|queue consumer]] operational lessons
 - [[worklog-healthcheck-job-design]] -- healthcheck job scheduling patterns

@@ -37,4 +37,4 @@ The `avigilon_utils` module provides a single utility function: `camera_exists_a
 
 ## Frame Pulling
 
-Avigilon does not have a custom puller class. Video frames are pulled via the generic RTSP/URL puller infrastructure, using stream URLs constructed from the ACC API endpoint and session credentials at connector startup time.
+Avigilon does not have a custom puller class. Video frames are pulled via the generic [[rtsp-deep-dive|RTSP]]/URL puller infrastructure, using stream URLs constructed from the ACC API endpoint and session credentials at connector startup time.

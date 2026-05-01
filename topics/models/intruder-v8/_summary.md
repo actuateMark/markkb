@@ -30,7 +30,7 @@ During evaluation, it ran in the `ds-model-dev` namespace for shadow testing alo
 
 ## Evaluation Results
 
-The model passed every level of the [[ai-models|evaluation framework]]:
+The model passed every level of the [[ai-models/_summary|AI Models & Evaluation]]:
 
 1. **Frame-level mAP** -- via `actuate-eval` on the 28,828+ image dataset, showing improvement over v5 baselines.
 2. **Shadow testing** -- McNemar's paired statistical test via `shadow-test-eval` and `shadow-testing-stats`.
@@ -49,7 +49,7 @@ Commit `788bed7` changed chip generation from processed-frame to original-frame 
 
 ## Pipeline and Products
 
-The v8 model will slot into the same [[data-science|detection pipeline]] position as the v5 model. All products that currently use the v5 model (Intruder, Intruder+, loitering, line crossing, crowd, blacklist) will use the v8 model after migration. The [[vms-connector]] product classification and [[actuate-libraries|actuate-connector-observers]] remain unchanged.
+The v8 model will slot into the same [[data-science/_summary|Data Science Methodology]] position as the v5 model. All products that currently use the v5 model (Intruder, Intruder+, loitering, line crossing, crowd, blacklist) will use the v8 model after migration. The [[vms-connector]] product classification and [[actuate-libraries|actuate-connector-observers]] remain unchanged.
 
 ## Related Jira
 
@@ -58,7 +58,7 @@ The v8 model will slot into the same [[data-science|detection pipeline]] positio
 
 ## Related Topics
 
-- [[ai-models]] -- model catalog and evaluation methodology
-- [[data-science]] -- detection pipeline and training infrastructure
+- [[ai-models/_summary|AI Models & Evaluation]] -- model catalog and evaluation methodology
+- [[data-science/_summary|Data Science Methodology]] -- detection pipeline and training infrastructure
 - [[models/intruder-v5]] -- the current production model being replaced
 - [[models/weapon-v8]] -- sibling v8 model for weapon detection

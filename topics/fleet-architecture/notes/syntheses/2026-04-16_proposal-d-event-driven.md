@@ -31,7 +31,7 @@ author: kb-bot
 ## Frame Transport (AWS/EKS Mechanics)
 
 - **Transport:** **NATS JetStream for envelopes + S3 for frame bytes (reference pattern)**
-- **NATS deployment:** in-cluster StatefulSet, 3-5 replicas across AZs, JetStream file storage on EBS gp3. NATS is not AWS-managed — we own the ops. See [[2026-04-16_frame-transport-comparison]].
+- **NATS deployment:** in-cluster StatefulSet, 3-5 replicas across AZs, JetStream file storage on EBS gp3. NATS is not AWS-managed — we own the ops. A [[pod-disruption-budgets|PDB]] with `maxUnavailable: 1` is mandatory for safe cluster upgrades — JetStream's RAFT quorum is N/2+1, so an uncoordinated node-drain could evict two replicas simultaneously and stall all writes until rebalance. See [[2026-04-16_frame-transport-comparison]].
 - **Frame store — S3 Express One Zone (per AZ):** single-AZ low-latency bucket (~10 ms PUT/GET, ~50% cost of S3 Standard). **One bucket per AZ.** Access via **VPC gateway endpoint** → zero cross-AZ transfer cost for PUT/GET.
   - Alternative: in-cluster MinIO (lower latency, heavy ops) — rejected in favor of S3 Express unless benchmarks force a change.
 - **Payload split:**
@@ -50,10 +50,12 @@ author: kb-bot
 | Fleet | Scales by | Signal |
 |-------|-----------|--------|
 | Puller+FDMD | camera count | CPU (motion detection) |
-| Detector | motion-filtered frame rate | GPU-proxy via inference queue |
-| Observer+stateful | detection event rate | memory (tracker state) |
+| Detector | motion-filtered frame rate | **NATS consumer-lag** (External metric) |
+| Observer+stateful | detection event rate | **NATS consumer-lag** or memory (tracker state) |
 | Alert dispatch | SQS depth | downstream |
 | MinIO | storage throughput | I/O |
+
+**HPA signal — NATS consumer-lag:** detector + observer fleets scale on JetStream consumer-lag (exported as a Prometheus External metric) rather than CPU. Durable queue-depth is a more accurate leading indicator than CPU for this topology — a detector blocked on a GPU-bound inference call is CPU-light but queue-building, and CPU-based HPA would under-provision the fleet. Same signal for observer when tracker writes back-pressure against Redis.
 
 ## State & failover
 
@@ -141,7 +143,7 @@ Cross-cutting considerations (shared notes):
 - [[inference-api-interaction]] — inference happens in detector fleet (similar to B); AIMD pool-per-detector-pod vs centralized is open.
 - [[library-decomposition-required]] — high churn: filter chain split (like B) + new `actuate-nats-jetstream`, `actuate-s3-frame-ref`, `actuate-fdmd-puller` libraries.
 - [[observability-and-tracing]] — **distributed tracing mandatory.** Traces must span NATS publish/subscribe AND S3 PUT/GET. New metric types for S3 cost visibility.
-- [[downstream-consumer-impact]] — **clip storage location change** may affect Watchman (frame-URL construction). Must audit downstream code that constructs S3 URLs.
+- [[downstream-consumer-impact]] — **clip storage location change** may affect [[watchman-repo|Watchman]] (frame-URL construction). Must audit downstream code that constructs S3 URLs.
 - [[config-and-schedule-propagation]] — same concerns as B; ENG-96 not fixed by default.
 - [[memory-and-fork-safety]] — fork safety eliminated; S3 reference pattern keeps in-cluster memory low but adds S3 GET cost to decode path.
 - [[customer-site-connectivity]] — puller fleet owns VMS connections; clean tunnel story.
@@ -152,11 +154,11 @@ Cross-cutting considerations (shared notes):
 - [[actuate-libraries/_summary]] — `actuate-daos` S3DAO extended for S3 Express One Zone; useful beyond this proposal
 - [[vms-connector/notes/syntheses/performance-optimization-landscape]] — FDMD-at-the-edge was listed as a proposed motion-detection optimization; this proposal moves it to production
 - [[camera-health-monitoring/_summary]] — CHM's scene-change could potentially reuse the extracted FDMD primitive
-- [[infrastructure/_summary]] — MinIO-or-S3-Express is net-new infra; affects Terraform/ArgoCD footprint
+- [[infrastructure/_summary]] — MinIO-or-S3-Express is net-new infra; affects Terraform/[[argocd|ArgoCD]] footprint
 
 ### Enhancement opportunities identified
 
-- **S3-Express-per-AZ pattern as a general recipe.** If D wins, this pattern could benefit Watchman and AutoPatrol too — they generate ephemeral frames as well.
+- **S3-Express-per-AZ pattern as a general recipe.** If D wins, this pattern could benefit [[watchman-repo|Watchman]] and AutoPatrol too — they generate ephemeral frames as well.
 - **Formalize `actuate-s3-frame-ref` as a reusable primitive.** Even non-D proposals could use it for clip-generation at lower cost.
 - **Clip-URL abstraction.** Build a `frame_ref` type that encodes `{bucket, key, region, az}` — decouples consumers from storage location. Useful regardless of D winning.
 - **Drive the `actuate-otel-instrumentation` library forward** — same dependency as B, pays for itself.

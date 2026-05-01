@@ -10,7 +10,7 @@ author: kb-bot
 
 # Shared Auth Pattern
 
-The [[external-api]] initiative is standardizing all public-facing Actuate services on a common authentication and routing architecture. This pattern ensures consistent security, key management, and infrastructure across every partner-facing endpoint.
+The [[external-api/_summary|External API Initiative]] initiative is standardizing all public-facing Actuate services on a common authentication and routing architecture. This pattern ensures consistent security, key management, and infrastructure across every partner-facing endpoint.
 
 ## The Pattern
 
@@ -28,23 +28,23 @@ The entry point for all external traffic. API Gateway handles TLS termination, r
 
 The [[rust-lambda-authorizer]] executes on every request before it reaches the backend. It extracts the API key from the request, looks it up in a DynamoDB table (`InferenceAPIAuth-{stage}`), and returns an IAM policy that either allows or denies the request based on the key's associated role.
 
-The authorizer was originally built for the [[inference-api]] but the [[external-api]] initiative aims to reuse this pattern across all partner-facing endpoints. Whether the schedule management, arm/disarm, and image ingestion endpoints share the exact same authorizer Lambda or deploy separate instances is still TBD as of April 2026.
+The authorizer was originally built for the [[inference-api/_summary|Actuate Inference API]] but the [[external-api/_summary|External API Initiative]] initiative aims to reuse this pattern across all partner-facing endpoints. Whether the schedule management, arm/disarm, and image ingestion endpoints share the exact same authorizer Lambda or deploy separate instances is still TBD as of April 2026.
 
 ### VPC Link + ALB
 
-The API Gateway connects to Kubernetes pods running inside a VPC via a VPC Link. Traffic flows through an Application Load Balancer (ALB) to reach the appropriate K8s service. This allows the backend to run as standard Kubernetes deployments while remaining accessible through the public API Gateway.
+The API Gateway connects to Kubernetes pods running inside a VPC via a VPC Link. Traffic flows through an Application Load Balancer (ALB) to reach the appropriate K8s service. This allows the backend to run as standard [[kubernetes-deployments|Kubernetes deployments]] while remaining accessible through the public API Gateway.
 
 ### K8s Pods (Backend)
 
 The actual application logic runs in Kubernetes. Different workstreams target different backends:
 
-- **Detection (v5):** [[inference-api]] FastAPI pods (after [[lambda-to-k8s-migration]])
-- **Schedule/Arm-Disarm:** [[admin-api]] Django pods
-- **Image Ingestion:** Likely [[admin-api]] pods (TBD)
+- **Detection (v5):** [[inference-api/_summary|Actuate Inference API]] FastAPI pods (after [[lambda-to-k8s-migration]])
+- **Schedule/Arm-Disarm:** [[admin-api/_summary|Actuate Admin API]] Django pods
+- **Image Ingestion:** Likely [[admin-api/_summary|Actuate Admin API]] pods (TBD)
 
 ## Key Management
 
-API keys are managed by the [[admin-api]] and stored in DynamoDB. The lifecycle is:
+API keys are managed by the [[admin-api/_summary|Actuate Admin API]] and stored in DynamoDB. The lifecycle is:
 
 1. Admin API creates/rotates an API key for a customer
 2. Key + role mapping is written to `InferenceAPIAuth-{stage}` DynamoDB table
@@ -55,7 +55,7 @@ Keys are issued **per-customer** (not per-integration-partner), so each customer
 
 ## Why Standardize
 
-Before this initiative, the [[inference-api]] was the only service using the Rust authorizer pattern. Other external-facing endpoints either did not exist or used ad-hoc authentication. Standardizing on a single pattern provides:
+Before this initiative, the [[inference-api/_summary|Actuate Inference API]] was the only service using the Rust authorizer pattern. Other external-facing endpoints either did not exist or used ad-hoc authentication. Standardizing on a single pattern provides:
 
 - **Consistent security posture** across all partner-facing APIs
 - **Single key management interface** in the Admin API

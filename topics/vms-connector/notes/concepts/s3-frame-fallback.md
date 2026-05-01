@@ -49,7 +49,7 @@ The [[generic-patrol-mode]] alert path follows the same `BaseStreamCamera` code 
 
 ## Observability
 
-Check these log patterns in New Relic to verify the fallback is working correctly:
+Check these log patterns in [[new-relic|New Relic]] to verify the fallback is working correctly:
 
 - `S3 frame fallback: retrieved frame for window` — fallback fired and succeeded
 - `S3 frame fallback: failed to fetch frame for window` — fallback attempted but S3/DDB lookup failed (frame still dropped, but now visible)

@@ -2,7 +2,7 @@
 title: "Salient Integration"
 type: summary
 topic: integrations/salient
-tags: [integration, vms, salient]
+tags: [integration, vms, salient, rtsp]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
@@ -10,7 +10,7 @@ author: kb-bot
 
 # Salient Integration
 
-Salient (formerly Salient Systems) is an on-premise video management system. The Actuate integration connects to Salient's CompleteView VMS via RTSP streams, using the standard URL-based pullers for frame ingestion with Salient-specific configuration for server connectivity and camera discovery.
+Salient (formerly Salient Systems) is an on-premise video management system. The Actuate integration connects to Salient's CompleteView VMS via [[rtsp-deep-dive|RTSP]] streams, using the standard URL-based pullers for frame ingestion with Salient-specific configuration for server connectivity and camera discovery.
 
 ## Components
 
@@ -28,12 +28,12 @@ Defined in [[actuate-config]] at `connector/salient/salient_config.py`. The conf
 
 ### Puller
 
-Salient uses the standard RTSP URL-based pullers from [[actuate-pullers]] (`UrlFramePuller`, `AvUrlFramePuller`, or `GstUrlFramePuller`). No Salient-specific puller exists -- RTSP stream URLs are constructed by the [[vms-connector]] using the camera's `server_address`, `camera_id`, and customer credentials.
+Salient uses the standard [[rtsp-deep-dive|RTSP]] URL-based pullers from [[actuate-pullers]] (`UrlFramePuller`, `AvUrlFramePuller`, or `GstUrlFramePuller`). No Salient-specific puller exists -- RTSP stream URLs are constructed by the [[vms-connector]] using the camera's `server_address`, `camera_id`, and customer credentials.
 
 ## Auth Method
 
-**Username/password** for the Salient CompleteView server, stored in the customer config. These credentials are used to construct authenticated RTSP stream URLs. There is no API token or OAuth flow.
+**Username/password** for the Salient CompleteView server, stored in the customer config. These credentials are used to construct authenticated [[rtsp-deep-dive|RTSP]] stream URLs. There is no API token or OAuth flow.
 
 ## Architecture
 
-The [[vms-connector]] reads the `SalientConnectorConfig` at startup, constructs RTSP URLs per camera using the server address and camera ID, and passes them to standard URL pullers in [[actuate-pullers]]. There are no Salient-specific entries in [[actuate-alarm-senders]] or [[actuate-integration-calls]] -- alert delivery goes through whichever monitoring sender is configured, and camera discovery is handled through the config JSON rather than API calls. The multi-server config structure is the distinguishing feature compared to simpler RTSP-based integrations.
+The [[vms-connector]] reads the `SalientConnectorConfig` at startup, constructs [[rtsp-deep-dive|RTSP]] URLs per camera using the server address and camera ID, and passes them to standard URL pullers in [[actuate-pullers]]. There are no Salient-specific entries in [[actuate-alarm-senders]] or [[actuate-integration-calls]] -- alert delivery goes through whichever monitoring sender is configured, and camera discovery is handled through the config JSON rather than API calls. The multi-server config structure is the distinguishing feature compared to simpler RTSP-based integrations.

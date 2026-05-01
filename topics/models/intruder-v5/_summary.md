@@ -34,7 +34,7 @@ Per-label confidence thresholds are configured in `raw_metrics` within each came
 
 ## Pipeline Position
 
-Frames flow through the [[data-science|detection pipeline]]: camera ingestion, FDMD motion detection, YOLO inference on this model, then post-processing filters (stationary, confidence, ignore zones, IOU, blacklist). Filtered detections reach product-specific observers. The model feeds into the IntruderObserver sliding window, PersonLoitererObserver, VehicleLoitererObserver, LineCrossingObserver, CrowdViolationPresentStep, and BlacklistObserver depending on which products are configured.
+Frames flow through the [[data-science/_summary|Data Science Methodology]]: camera ingestion, FDMD motion detection, YOLO inference on this model, then post-processing filters (stationary, confidence, ignore zones, IOU, blacklist). Filtered detections reach product-specific observers. The model feeds into the IntruderObserver sliding window, PersonLoitererObserver, VehicleLoitererObserver, LineCrossingObserver, CrowdViolationPresentStep, and BlacklistObserver depending on which products are configured.
 
 ## Products Using This Model
 
@@ -51,6 +51,6 @@ The v5 model is **active in production** but scheduled for replacement by the [[
 
 ## Related Topics
 
-- [[ai-models]] -- broader model catalog and evaluation methodology
-- [[data-science]] -- detection pipeline and training infrastructure
+- [[ai-models/_summary|AI Models & Evaluation]] -- broader model catalog and evaluation methodology
+- [[data-science/_summary|Data Science Methodology]] -- detection pipeline and training infrastructure
 - [[models/intruder-v8]] -- the approved successor model

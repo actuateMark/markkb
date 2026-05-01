@@ -68,7 +68,7 @@ Line crossing is **active in production** and showing strong results in reducing
 
 ## Related Topics
 
-- [[ai-models]] -- model catalog
-- [[data-science]] -- trajectory-based detection and pipeline architecture
+- [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
+- [[data-science/_summary|Data Science Methodology]] -- trajectory-based detection and pipeline architecture
 - [[models/loitering]] -- alternative tracking-based product using BoTSORT
 - [[models/intruder-v5]] -- the underlying detection model

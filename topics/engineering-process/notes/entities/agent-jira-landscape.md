@@ -38,7 +38,7 @@ Answers "who's working on what" and "what's the state of initiative X" from Jira
 
 ## KB Grounding
 
-Reads relevant `_summary.md` first ([[external-api/_summary|external-api]], [[alerts-improvements/_summary|alerts-improvements]], [[autopatrol/_summary|autopatrol]], [[jira-organization/_summary|jira-organization]], [[team-structure/_summary|team-structure]]) before hitting Jira directly. Skips re-derivation when KB is fresh (< 14 days).
+Reads relevant `_summary.md` first ([[external-api/_summary|external-api]], [[alerts-improvements/_summary|alerts-improvements]], [[knowledgebase/topics/autopatrol/_summary|autopatrol]], [[jira-organization/_summary|jira-organization]], [[team-structure/_summary|team-structure]]) before hitting Jira directly. Skips re-derivation when KB is fresh (< 14 days).
 
 ## JQL Hygiene
 

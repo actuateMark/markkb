@@ -8,14 +8,14 @@ tags: [person, engineering, autopatrol, ebus, chm]
 
 # Mark Barbera
 
-Mark Barbera is a software engineer at Actuate who works across multiple product initiatives, making him one of the most cross-functional engineers on the team. His current work spans [[autopatrol]], [[camera-health-monitoring]], and the [[external-api]] initiative.
+Mark Barbera is a software engineer at Actuate who works across multiple product initiatives, making him one of the most cross-functional engineers on the team. His current work spans [[autopatrol/_summary|AutoPatrol (H1.2)]], [[camera-health-monitoring/_summary|Camera Health Monitoring (H1.1)]], and the [[external-api/_summary|External API Initiative]] initiative.
 
 ## Current Work (April 2026)
 
 Mark's active tickets reflect three distinct workstreams:
 
 - **ENG-106, ENG-107 -- AutoPatrol prototype and bug fixes (In Review).** AutoPatrol is Actuate's automated patrol product (H1.2 initiative, project key AUTO), currently the most active initiative with 50+ open issues. Mark's prototype work is in the review stage, with [[victoria-peccia]] handling QA on the flex ignore-zone features.
-- **ENG-126 -- EBUS v5 API (Upcoming).** EBUS is a European integration partner. The v5 API update is still in "To Do" status, blocked behind Mark's current review queue. This is flagged as a key risk in the [[product-roadmap]] because delays here affect European partner onboarding timelines.
+- **ENG-126 -- EBUS v5 API (Upcoming).** EBUS is a European integration partner. The v5 API update is still in "To Do" status, blocked behind Mark's current review queue. This is flagged as a key risk in the [[product-roadmap/_summary|Product Roadmap & Initiatives]] because delays here affect European partner onboarding timelines.
 - **ED-32 -- EU Deployment work.** Mark contributes to the EU Deployment project (ED), which covers European-specific integrations and compliance requirements including work with Monitex and action log enhancements.
 
 ## Cross-Initiative Spread
@@ -24,16 +24,16 @@ Mark is explicitly called out in the team structure as one of several engineers 
 
 ## Camera Health Monitoring (CHM)
 
-CHM (H1.1, project key CS3) is now in maintenance mode -- it has launched and is considered a differentiator (scene change detection via SIFT). Mark's ongoing CHM involvement is primarily maintenance and bug-fix work rather than new feature development. [[victoria-peccia]] also handles QA for CHM, specifically around schedule disabling functionality.
+CHM (H1.1, project key CS3) is now in maintenance mode -- it has launched and is considered a differentiator ([[scene-change-detection|scene change detection]] via SIFT). Mark's ongoing CHM involvement is primarily maintenance and bug-fix work rather than new feature development. [[victoria-peccia]] also handles QA for CHM, specifically around schedule disabling functionality.
 
 ## Key Relationships
 
 - Works with [[tatiana-hanazaki]] on AutoPatrol backend (she handles the Admin API side via PROD-116, BACK-638, AUTO-500).
 - Works with [[brad-murphy]] on AutoPatrol frontend features (flex IZ, bulk updates, AP schedules).
-- EBUS v5 API work connects to the broader [[external-api]] initiative that [[vinicius-flores]] also contributes to.
+- EBUS v5 API work connects to the broader [[external-api/_summary|External API Initiative]] initiative that [[vinicius-flores]] also contributes to.
 
 ## See Also
 
-- [[autopatrol]] -- the H1.2 initiative
-- [[camera-health-monitoring]] -- the H1.1 initiative
+- [[autopatrol/_summary|AutoPatrol (H1.2)]] -- the H1.2 initiative
+- [[camera-health-monitoring/_summary|Camera Health Monitoring (H1.1)]] -- the H1.1 initiative
 - [[active-risks]] -- EBUS delay risk

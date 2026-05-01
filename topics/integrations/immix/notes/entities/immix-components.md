@@ -10,7 +10,7 @@ author: kb-bot
 
 # Immix Integration Components
 
-Immix is Actuate's primary monitoring-station partner. The `ImmixAlertSender` class in [[actuate-alarm-senders]] delivers detection alerts to Immix CS/AI monitoring stations. Immix is the most feature-complete sender and was the first integration built, so several other senders (Sureview, Sentinel) borrow its patterns.
+Immix is Actuate's primary monitoring-station partner. The `ImmixAlertSender` class in [[actuate-alarm-senders]] delivers detection alerts to Immix CS/AI monitoring stations. Immix is the most feature-complete sender and was the first integration built, so several other senders (Sureview, [[sentinel-components|Sentinel]]) borrow its patterns.
 
 ## Class Hierarchy
 

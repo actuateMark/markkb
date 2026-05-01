@@ -11,7 +11,7 @@ author: kb-bot
 
 # VMS Connector
 
-The **core edge component** of the Actuate platform. A multi-threaded Python CLI application that connects to 19+ VMS integrations, pulls video frames, runs YOLO inference, applies detection filters, and generates alerts. Runs as Kubernetes Deployments/CronJobs in the `rearchitecture` namespace.
+The **core edge component** of the Actuate platform. A multi-threaded Python CLI application that connects to 19+ VMS integrations, pulls video frames, runs YOLO inference, applies detection filters, and generates alerts. Runs as [[kubernetes-deployments|Kubernetes Deployments]]/CronJobs in the `rearchitecture` namespace.
 
 ## Processing Pipeline
 
@@ -31,7 +31,7 @@ Post-processors: Stationary Filter -> IOU -> Ignore Zones -> Sliding Window -> C
 
 ## Supported Integrations (19+)
 
-RTSP, Milestone, Avigilon, Exacq, Eagle Eye, Digital Watchdog, HikCentral, Genetec, Luxriot, OpenEye, Orchid, Star4Live, Salient, Video Insight, KVS, SQS Video, AutoPatrol, VCH, Patrol
+[[rtsp-deep-dive|RTSP]], Milestone, Avigilon, Exacq, Eagle Eye, Digital Watchdog, [[hikcentral-components|HikCentral]], Genetec, Luxriot, OpenEye, Orchid, Star4Live, Salient, [[video-insight-components|Video Insight]], [[kvs-components|KVS]], SQS Video, AutoPatrol, VCH, Patrol
 
 Auth methods vary: Basic Auth, API Token, DB Credentials, HTTP API, AWS IAM, Backend API
 
@@ -56,7 +56,7 @@ Auth methods vary: Basic Auth, API Token, DB Credentials, HTTP API, AWS IAM, Bac
 | Product | Observer | Tracking | Key Filter |
 |---------|----------|----------|------------|
 | Intruder | IntruderObserver | None (frame_thresh consecutive) | Stationary filter |
-| Loitering | PersonLoitererObserver / VehicleLoitererObserver | BoTSORT (actuate-botsort) | Dwell time threshold |
+| Loitering | PersonLoitererObserver / VehicleLoitererObserver | BoTSORT ([[actuate-botsort]]) | Dwell time threshold |
 | Line Crossing | LineCrossingObserver | TrajectoryManager | Sign-change crossing |
 | Weapon | IntruderObserver variant | None | Sliding window |
 | Fire/Smoke | IntruderObserver variant | None | Bypasses stationary filter |
@@ -67,7 +67,7 @@ Auth methods vary: Basic Auth, API Token, DB Credentials, HTTP API, AWS IAM, Bac
 `actuate-alarm-senders` library provides 25+ sender implementations:
 - BaseAlertSender -> AttachmentAlertSender -> EventListenerAlertSender
 - MultiAlertSender orchestrator for per-camera multi-destination delivery
-- Targets: Immix (SMTP), Milestone, Sentinel, Bold, Patriot, Evalink, webhooks, etc.
+- Targets: Immix (SMTP), Milestone, [[sentinel-components|Sentinel]], [[bold-components|Bold]], Patriot, [[evalink-components|Evalink]], webhooks, etc.
 
 ## Cross-Platform Data Flow
 
@@ -106,6 +106,7 @@ Feature development follows the [[connector-library-deployment-lifecycle]]:
 - **ENG-78 (Highest):** VPA over-provisioning -- requests 3-5x CPU / 2x memory vs actual
 - **ENG-66 (Highest):** Event-listener thundering herd -- silent event drops during traffic spikes
 - **ENG-79 (Highest):** EKS upgrade needed (1.32 -> 1.35 for in-place pod resize)
+- **AP/VCH streamId-null:** Immix patrol API rejects connectivity-failure alerts when stream initialization has not yet succeeded. See [[2026-04-20_streamid-null-patrol-alert-bug]]. Workaround: cache last known streamId per device; longer term requires Immix backend support for optional streamId on failure codes.
 
 ## Fleet Architecture Redesign (planning 2026-04-16)
 

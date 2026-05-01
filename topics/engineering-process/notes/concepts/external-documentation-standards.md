@@ -20,7 +20,7 @@ External docs answer: **what to call, what to send, what comes back, what can go
 
 | Leak Type | Example | Risk |
 |-----------|---------|------|
-| Role names | Internal role identifiers | Reveals RBAC model; aids privilege escalation probing |
+| Role names | Internal role identifiers | Reveals [[rbac-model|RBAC model]]; aids privilege escalation probing |
 | Infrastructure | Lambda, API Gateway, DynamoDB | Reveals attack surface |
 | Libraries | Pydantic, PIL, SAHI | Reveals dependency versions for CVE targeting |
 | File paths | Internal source file paths | Reveals project structure |

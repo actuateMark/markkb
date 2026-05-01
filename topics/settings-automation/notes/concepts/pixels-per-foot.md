@@ -8,7 +8,7 @@ tags: [settings-automation, ppf, pixels-per-foot, camera-settings, datasets, otz
 
 # Pixels Per Foot
 
-Pixels Per Foot (PPF) is a metric used within [[settings-automation]] to quantify how much visual detail a camera captures at a given distance. It directly informs which detection models and sensitivity settings should be applied to each camera. The PPF workstream is led by **Otzar Jaffe** (SA-177), with active development since March 2026 focused on improving code quality and reducing output file size.
+Pixels Per Foot (PPF) is a metric used within [[settings-automation/_summary|Settings Automation (H1.4)]] to quantify how much visual detail a camera captures at a given distance. It directly informs which detection models and sensitivity settings should be applied to each camera. The PPF workstream is led by **[[otzar-jaffe|Otzar Jaffe]]** (SA-177), with active development since March 2026 focused on improving code quality and reducing output file size.
 
 ## What PPF Measures
 
@@ -23,7 +23,7 @@ Higher PPF means more detail is available for detection:
 
 Different detection models have different minimum PPF requirements. A firearm detection model needs enough pixels on target to distinguish a weapon from a phone or tool -- it requires high PPF. A perimeter intrusion model only needs to detect a person-shaped blob crossing a line -- it can work at lower PPF.
 
-By calculating PPF for each camera, the [[settings-automation]] system can:
+By calculating PPF for each camera, the [[settings-automation/_summary|Settings Automation (H1.4)]] system can:
 
 1. **Recommend appropriate models** -- Only enable detection types that the camera's resolution and placement can support
 2. **Set sensitivity thresholds** -- Lower-PPF cameras need different confidence thresholds than high-PPF cameras
@@ -42,14 +42,14 @@ The calculation produces a PPF map across the camera's field of view, not a sing
 
 ## Dataset Building
 
-Otzar Jaffe's work includes building datasets to train and validate PPF estimation models. This involves:
+[[otzar-jaffe|Otzar Jaffe]]'s work includes building datasets to train and validate PPF estimation models. This involves:
 
 - Collecting frames from diverse camera installations with known physical dimensions
 - Annotating reference objects and their real-world sizes
 - Training models to estimate PPF from camera frames without manual measurement
 - Validating estimates against ground truth
 
-The goal is automated PPF calculation: given a camera feed, the system should estimate PPF across the field of view without requiring an operator to measure anything. This is essential for [[watchman]]'s [[onboarding-wizard|self-service onboarding]] -- a small business owner cannot be expected to measure distances and calculate pixels.
+The goal is automated PPF calculation: given a camera feed, the system should estimate PPF across the field of view without requiring an operator to measure anything. This is essential for [[watchman/_summary|Actuate Watchman]]'s [[onboarding-wizard|self-service onboarding]] -- a small business owner cannot be expected to measure distances and calculate pixels.
 
 ## Code Quality and Output Size
 

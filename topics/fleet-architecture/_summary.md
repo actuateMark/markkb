@@ -4,13 +4,13 @@ type: summary
 topic: fleet-architecture
 tags: [architecture, fleet, kubernetes, redesign, microservices, connector, scaling]
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-04-23
 author: kb-bot
 ---
 
 # Fleet Architecture Redesign
 
-Planning, evaluation, and prototyping work for moving the VMS Connector off its current **site-per-pod monolith** toward a **fleet-based multi-deployment architecture**. Each fleet (puller, inference, observer, alert, etc.) scales independently on Kubernetes and isolates failures.
+Planning, evaluation, and prototyping work for moving the [[vms-connector|VMS Connector]] off its current **site-per-pod monolith** toward a **fleet-based multi-deployment architecture**. Each fleet (puller, inference, observer, alert, etc.) scales independently on Kubernetes and isolates failures.
 
 This topic is the workspace for the redesign effort — candidate architectures, cross-cutting design docs, PoC results, and the eventual selection.
 
@@ -43,6 +43,11 @@ See [[vms-connector/notes/syntheses/performance-optimization-landscape]] for the
 | [[2026-04-16_graceful-failover-design]] | Tracker + window checkpointing for graceful worker failover |
 | [[2026-04-16_frame-transport-comparison]] | Redis Streams vs NATS vs SNS/SQS vs S3-refs |
 | [[2026-04-16_evaluation-rubric]] | Scoring criteria and weights for the PoC competition |
+| [[k8s-controller-selection-guide]] | Deployment vs StatefulSet vs DaemonSet per fleet workload |
+| [[k8s-placement-primitives]] | TSC + pod-affinity + PDB co-design (and deadlock-avoidance rules) |
+| [[pod-termination-sequence]] | preStop / SIGTERM / SIGKILL handshake; enables tracker-snapshot handoff |
+| [[scaling-layer-taxonomy]] | HPA + VPA + Karpenter layer interaction per fleet |
+| [[vpa-bimodal-workload-limitation]] | ENG-78 root cause — why the monolith pipeline pod over-provisions |
 
 ## Cross-Plan Considerations (apply to multiple proposals)
 
@@ -53,7 +58,8 @@ See [[vms-connector/notes/syntheses/performance-optimization-landscape]] for the
 | [[inference-api-interaction]] | Placement of `AsyncInferencePool` and AIMD per proposal |
 | [[library-decomposition-required]] | What changes in the 41-package `actuate-libraries` monorepo per proposal |
 | [[observability-and-tracing]] | NR / OTel requirements; when distributed tracing becomes mandatory |
-| [[downstream-consumer-impact]] | How Watchman, AutoPatrol, CHM, and alert integrations are affected |
+| *Design-for-monitoring (added 2026-04-23)* | Every proposal (A–E) must include a **"Monitoring & Alarms" subsection** answering: what behavioral signals prove this proposal is working in prod, what goes on the cross-repo dashboard, what are the acceptance criteria for a rollout. Add as a scoring dimension in [[2026-04-16_evaluation-rubric]]. Triggered by the 2026-04-23 onboarder silent-failure post-mortem; tracked cross-repo as [[mark-todos]] §9. |
+| [[downstream-consumer-impact]] | How [[watchman-repo|Watchman]], AutoPatrol, CHM, and alert integrations are affected |
 | [[config-and-schedule-propagation]] | admin-api config flow + ENG-96 schedule-race fix per proposal |
 | [[memory-and-fork-safety]] | jemalloc, PooledTTLImageCache, fork-safety per proposal |
 | [[customer-site-connectivity]] | NAT/VPN/public/WireGuard topology — **incomplete**, blocks puller fleet design for C in particular |
@@ -87,6 +93,10 @@ See [[vms-connector/notes/syntheses/performance-optimization-landscape]] for the
 - 2026-04-16 — PoCs not yet built (targeted PoC specs live in each proposal note)
 - Next — build targeted PoCs, score via [[2026-04-16_evaluation-rubric]], write selection synthesis
 
+## Alternative approaches (reference)
+
+- [[2026-04-17_preliminary-pilot-option]] — optional preliminary-pilot phase that stubs all 5 proposals in a shared harness before committing to targeted PoCs. Forward-looking reference; not currently committed to but available if targeted-PoC sequencing needs revisiting.
+
 ## Pre-PoC score estimates
 
 Rubric applied before any PoC runs. PoCs may move these numbers materially (cost and failover scores in particular are speculative until benchmarked).
@@ -103,6 +113,7 @@ Rubric applied before any PoC runs. PoCs may move these numbers materially (cost
 ## Related Topics
 
 - [[vms-connector/_summary]] — current architecture being redesigned
-- [[software-architecture/_summary]] — governance and enforcement (post-selection scope)
+- [[knowledgebase/topics/software-architecture/_summary]] — governance and enforcement (post-selection scope)
 - [[infrastructure/_summary]] — K8s, VPA, deployment pipelines
 - [[actuate-libraries/_summary]] — pipeline libraries that may need decoupling
+- [[aws-cost/_summary]] — cost as a scoring axis on the proposals; S3 Intelligent-Tiering + Glacier Deep Archive source notes moved there 2026-04-27

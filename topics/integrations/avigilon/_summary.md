@@ -40,7 +40,7 @@ Defined in [[actuate-integration-calls]] at `avigilon/avigilon_utils.py`. Contai
 
 ## Architecture
 
-The [[vms-connector]] uses the Avigilon integration calls to verify camera existence during initialization. Streams from Avigilon cameras are consumed via standard RTSP URL-based pullers in [[actuate-pullers]] (no Avigilon-specific puller). When detections occur, the `AvigilonAlertSender` triggers alarms directly against the ACC Web API. The integration is relatively lightweight compared to [[integration-milestone|Milestone]] or [[integration-digital-watchdog|Digital Watchdog]] -- no complex auth flows, no cloud proxy support.
+The [[vms-connector]] uses the Avigilon integration calls to verify camera existence during initialization. Streams from Avigilon cameras are consumed via standard [[rtsp-deep-dive|RTSP]] URL-based pullers in [[actuate-pullers]] (no Avigilon-specific puller). When detections occur, the `AvigilonAlertSender` triggers alarms directly against the ACC Web API. The integration is relatively lightweight compared to [[integration-milestone|Milestone]] or [[integration-digital-watchdog|Digital Watchdog]] -- no complex auth flows, no cloud proxy support.
 
 ## Relationship to Other Components
 

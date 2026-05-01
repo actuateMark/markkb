@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: video-processing
+    filters:
+      and:
+        - file.folder.contains("topics/video-processing")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

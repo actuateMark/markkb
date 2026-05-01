@@ -10,13 +10,13 @@ author: kb-bot
 
 # project-auto-ignore-zones
 
-LangGraph-based agent that automatically generates and refines ignore zone suggestions for security cameras. Ignore zones are polygon regions that suppress irrelevant alerts in areas like sky, roads, and neighbouring properties.
+LangGraph-based agent that automatically generates and refines ignore zone suggestions for security cameras. [[ignore-zones|Ignore zones]] are polygon regions that suppress irrelevant alerts in areas like sky, roads, and neighbouring properties.
 
 **Repo:** `aegissystems/project_auto_ignore_zones` (private, updated 2026-03-31)
 
 ## Purpose
 
-Configuring ignore zones for each camera is a slow, error-prone manual task during site onboarding. This agent transforms the process into a fast, explainable workflow: auto-suggest polygons, accept/reject with one click, refine with a slider or brush tool, and request alternatives with a re-click.
+Configuring [[ignore-zones|ignore zones]] for each camera is a slow, error-prone manual task during site onboarding. This agent transforms the process into a fast, explainable workflow: auto-suggest polygons, accept/reject with one click, refine with a slider or brush tool, and request alternatives with a re-click.
 
 ## Architecture
 
@@ -38,7 +38,7 @@ The agent first classifies how the camera relates to its site:
 
 ### Candidate Generation and Scoring
 
-Multiple candidate ignore zones are generated (sky-based, boundary-aligned, layout-based, or explicit "no-ignore") and scored through hard checks (area bounds, fragmentation, valid geometry) and weighted soft scores (boundary alignment, shape simplicity, scene prior match, coverage appropriateness).
+Multiple candidate [[ignore-zones|ignore zones]] are generated (sky-based, boundary-aligned, layout-based, or explicit "no-ignore") and scored through hard checks (area bounds, fragmentation, valid geometry) and weighted soft scores (boundary alignment, shape simplicity, scene prior match, coverage appropriateness).
 
 ## Operator Interactions
 

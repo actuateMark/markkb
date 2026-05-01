@@ -18,7 +18,7 @@ author: kb-bot
 
 ## Purpose
 
-WebSocket server that receives video frames from VMS (Video Management System) integrations, runs AI inference on them, and generates alert clips. Originally built for the AILink integration, it now supports multiple VMS connectors including **Sentinel**, **Frontel**, and **Yousix** (Umbo). Each connected camera sends frames over a persistent WebSocket connection; the server processes them through YOLO-based object detection, applies postprocessing rules (noise reduction, movement tracking, line crossing), and dispatches alerts via the [[actuate-libraries|actuate-alarm-senders]] library.
+WebSocket server that receives video frames from VMS (Video Management System) integrations, runs AI inference on them, and generates alert clips. Originally built for the AILink integration, it now supports multiple VMS connectors including **[[sentinel-components|Sentinel]]**, **Frontel**, and **Yousix** (Umbo). Each connected camera sends frames over a persistent WebSocket connection; the server processes them through YOLO-based object detection, applies postprocessing rules (noise reduction, movement tracking, line crossing), and dispatches alerts via the [[actuate-libraries|actuate-alarm-senders]] library.
 
 The server also includes a FastAPI-based **AI Sync API** (`server.py`) for synchronous inference requests.
 
@@ -28,8 +28,8 @@ The server also includes a FastAPI-based **AI Sync API** (`server.py`) for synch
 - **Sync API:** FastAPI + Uvicorn (port 8765)
 - **Language:** Python 3.12
 - **Package manager:** `uv` (with `Makefile` task runner)
-- **AI/CV:** OpenCV (headless), NumPy, scikit-image, PyTurboJPEG, Shapely (geometry)
-- **Monitoring:** New Relic telemetry SDK, Prometheus client
+- **AI/CV:** [[opencv-entity|OpenCV]] (headless), NumPy, scikit-image, PyTurboJPEG, Shapely (geometry)
+- **Monitoring:** [[new-relic|New Relic]] telemetry SDK, Prometheus client
 - **Caching:** Redis
 - **Storage:** AWS S3 (boto3) for clip storage
 - **Testing:** Pytest + pytest-xdist (parallel), Watchdog for dev auto-reload
@@ -83,7 +83,7 @@ Heavy reliance on [[actuate-libraries]] from CodeArtifact:
 
 ## Relationship to Other Services
 
-- **VMS connectors:** Receives frames from AILink, Sentinel, Frontel, and Yousix integrations (closely related to the [[vms-connector]] project)
+- **VMS connectors:** Receives frames from AILink, [[sentinel-components|Sentinel]], Frontel, and Yousix integrations (closely related to the [[vms-connector]] project)
 - **Admin API:** Authenticates users and queries camera config via `actuate-admin-api`
 - **[[actuate-monitoring-api|Monitoring API]]:** Generated alerts and clips are displayed through the monitoring dashboard
 - **[[alert-ui|Alert UI]]:** End-user interface for viewing alerts/clips this service produces

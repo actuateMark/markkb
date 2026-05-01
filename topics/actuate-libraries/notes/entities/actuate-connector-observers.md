@@ -74,7 +74,7 @@ The primary public API is the observer instantiation and the `ObservableManager`
 
 ## Notable Patterns
 
-- **Observer pattern** with pre-captured frame sharing: frames are captured once on the caller thread and shared read-only across all observers to prevent cache expiration races.
+- **[[observer-pattern|Observer pattern]]** with pre-captured frame sharing: frames are captured once on the caller thread and shared read-only across all observers to prevent cache expiration races.
 - **Thread-pool dispatch**: `ObservableManager` uses a 1-worker executor, optionally with a camera lock for full serialization.
 - **Abstract/concrete split**: `LoitererObserver` and `LineCrossingObserver` are abstract bases; person and vehicle variants are separate concrete classes that configure class-specific tracking parameters.
 - **Shapely geometry** used for ignore zone intersection calculations and line-crossing direction detection.

@@ -4,15 +4,17 @@ type: synthesis
 topic: engineering-process
 tags: [process, lifecycle, development, planning, review, deployment]
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-04-23
 author: kb-bot
 ---
 
 # Feature Development Lifecycle
 
-A complete, repeatable process for building a new feature — from initial planning through production deployment. Derived from the v5 inference API project (ED-32, April 2026) and codified for reuse.
+A complete, repeatable process for building a new feature — from initial planning through production deployment. Derived from the v5 inference API project (ED-32, April 2026), the 2026-04-23 onboarder post-mortem, and codified for reuse.
 
 This lifecycle assumes Claude Code as the development environment with access to the Obsidian KB, Jira/Confluence via MCP, and GitHub via `gh` CLI.
+
+> **Overarching rule (April 2026 revision):** the lifecycle serves the #1 operational principle — *regression prevention + fastest-possible detection on every launch*. Every phase has a monitoring/verification hook. A release is not "done" until the dashboard ([[2026-04-23_dashboard-sketch]]) is GREEN against the deployed component. See [[engineering-process/_summary]] and [[2026-04-23_postmortem-onboarder-healthcheck]] for the source.
 
 ---
 
@@ -48,7 +50,7 @@ This lifecycle assumes Claude Code as the development environment with access to
 
 1. **Identify open questions** — What decisions need to be made? What constraints exist? What's the migration/deprecation path?
 
-2. **Document as ADRs** — Write Architecture Decision Records for non-obvious choices. Include:
+2. **Document as ADRs** — Write [[architecture-decision-records|Architecture Decision Records]] for non-obvious choices. Include:
    - Context (what prompted the decision)
    - Options considered (with pros/cons)
    - Decision and rationale
@@ -97,9 +99,11 @@ This lifecycle assumes Claude Code as the development environment with access to
 ### Rules
 - *Match the scope to what was requested* — don't add features, abstractions, or "improvements" beyond the plan
 - *Identify what can run in parallel* — independent workstreams (e.g., library consolidation and endpoint development) can run concurrently
+- *Monitoring hooks are part of the plan, not an afterthought* — before sign-off, the plan must answer "how will we know this works in prod?" with a concrete signal (log pattern, metric, downstream side effect). If adding/modifying a production-critical flow, the signal goes in the dashboard catalog (`~/Documents/worklog/dashboard/config/signals.json`). See [[2026-04-23_release-acceptance-criteria]].
+- *HTTP error-handling policy is a design decision, not an implementation detail* — for any new upstream call, explicitly decide whether non-200 responses (a) log-and-continue, (b) abort, or (c) retry-with-backoff-then-abort. Default is (a). Abort requires explicit user sign-off during planning — never added silently during implementation. See [[feedback_fail_fast_guards]].
 
 ### Outputs
-- Plan file ready for approval
+- Plan file ready for approval (includes monitoring signal + error-handling policy per call)
 - KB synthesis note capturing the plan (for future reference)
 
 ---
@@ -222,7 +226,7 @@ This lifecycle assumes Claude Code as the development environment with access to
 
 2. **Fix event loop blockers** — Any synchronous CPU work in an async handler should use `asyncio.to_thread()`:
    - PIL image validation → thread pool
-   - OpenCV frame difference computation → thread pool
+   - [[opencv-entity|OpenCV]] frame difference computation → thread pool
 
 3. **Parallelize where possible** — Use `asyncio.gather()` for:
    - Multiple frame validations
@@ -361,6 +365,49 @@ For [[vms-connector]] features that involve [[actuate-libraries]] changes, the d
 - Pre-merge checklist complete
 - Deployment plan documented
 - Manual steps identified
+- **Pre-deploy dashboard snapshot** — run `/dashboard-check` to capture the current baseline BEFORE merge. This is the comparison point for post-deploy verification in Phase 10.
+
+---
+
+## Phase 10: Post-Deploy Verification (MANDATORY)
+
+**Goal:** Prove the deployed change actually works in prod/stage. Not "CI passed." Not "deploy workflow succeeded." Observable signals that the core flow runs.
+
+Added after 2026-04-23 onboarder post-mortem ([[2026-04-23_postmortem-onboarder-healthcheck]]) where 47h of silent failure went undetected because no one ran a behavioral check.
+
+### Steps
+
+1. **Wait one real-traffic / cron window.** Cron Lambdas need at least one full cron cycle (e.g., 5 min for the onboarder). Scheduled jobs need at least one execution. Request-driven services need real traffic.
+
+2. **Run repo-level check skill.** Every production-critical repo should have a `/some-check-skill` that encodes the acceptance criteria. If one doesn't exist yet, that's a prerequisite — write the skill before declaring the release verified.
+
+3. **Run `/dashboard-check`.** The cross-repo dashboard snapshots every signal and flags red/yellow. Verify:
+   - All components touched by this release are GREEN
+   - No regressions vs the pre-deploy snapshot from Phase 9
+   - No regressions vs the 7-day trailing baseline
+
+4. **Grep for activity-marker log lines.** `Errors=0` is NOT a health signal if the service is silently returning early. Grep for the thing that proves the work happened:
+   - Lambda: "Fetched N contracts", "processing schedule_id=", "activating X"
+   - API: 2xx on key endpoints with non-empty response bodies
+   - Connector: frames processed, alerts fired, inference calls made
+
+5. **Confirm no new ERROR patterns.** Diff against pre-deploy baseline. Any new error pattern must be explained or investigated.
+
+6. **Document the verification.** Post in the PR: "Verified at [timestamp]: [signal A observed] / [signal B in range] / [dashboard GREEN]." This is the closure step — no release is complete without it.
+
+### Rules
+
+- *A release is not verified until the dashboard is GREEN against the deployed component.* Every launch, every time. No exceptions.
+- *If verification fails, roll back immediately.* Don't debug forward on live customer flows. Restore the known-good state, then investigate.
+- *`Errors=0` is not sufficient.* Silent early returns have 0 errors. Require activity-marker signals.
+- *Every launch includes a post-deploy `/dashboard-check` run.* Every morning too (daily-scope ritual). The dashboard is the shared truth.
+
+### Outputs
+
+- Dashboard GREEN on affected component for at least one cycle
+- Activity-marker log lines grep'd and confirmed > 0
+- No new error patterns vs pre-deploy baseline
+- Verification comment posted to the PR
 
 ---
 
@@ -385,14 +432,22 @@ Context Gathering ──→ Architecture Review ──→ Implementation Plannin
                                              Code Review
                                                    ↓
                                           Deployment Planning
+                                             (+ pre-deploy dashboard snapshot)
                                                    ↓
                                             Merge → CI → Dev
                                                    ↓
                                            Verify → Promote → Prod
+                                                   ↓
+                                    Post-Deploy Verification (Phase 10)
+                                     • one real cycle
+                                     • repo-level check skill
+                                     • /dashboard-check GREEN
+                                     • activity-marker greps
+                                     • document in PR
 ```
 
 ---
 
 ## Reference Implementation
 
-This lifecycle was first executed on the [[inference-api]] v5 project (ED-32, April 2026). For the concrete timeline, file paths, and project-specific details, see [[v5-implementation-patterns]] in the inference-api topic.
+This lifecycle was first executed on the [[inference-api/_summary|Actuate Inference API]] v5 project (ED-32, April 2026). For the concrete timeline, file paths, and project-specific details, see [[v5-implementation-patterns]] in the inference-api topic.

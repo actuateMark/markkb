@@ -14,7 +14,7 @@ Client library for submitting Vision-Language Model (VLM) inference requests via
 
 ## Purpose
 
-VLM inference is too slow and resource-intensive for synchronous HTTP within the video processing pipeline. This library decouples the request from the response: the client sends a message to an SQS FIFO queue, a GPU worker picks it up, runs inference against a vLLM server, and writes the result to DynamoDB. The client polls DynamoDB until the result appears.
+[[vlm-inference|VLM inference]] is too slow and resource-intensive for synchronous HTTP within the video processing pipeline. This library decouples the request from the response: the client sends a message to an SQS FIFO queue, a GPU worker picks it up, runs inference against a vLLM server, and writes the result to DynamoDB. The client polls DynamoDB until the result appears.
 
 ## Key Classes and Functions
 

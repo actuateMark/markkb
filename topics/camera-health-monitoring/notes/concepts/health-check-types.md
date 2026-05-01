@@ -8,7 +8,7 @@ tags: [chm, health-checks, connectivity, scene-change, stream-quality, recording
 
 # Health Check Types
 
-[[camera-health-monitoring]] (CHM) performs five categories of health checks to ensure cameras are functioning correctly and their feeds are usable for detection. Health data is stored in DynamoDB across Healthcheck and SceneChange tables. When issues are detected, CHM generates email alerts and surfaces data in monitoring dashboards.
+[[camera-health-monitoring/_summary|Camera Health Monitoring (H1.1)]] (CHM) performs five categories of health checks to ensure cameras are functioning correctly and their feeds are usable for detection. Health data is stored in DynamoDB across Healthcheck and SceneChange tables. When issues are detected, CHM generates email alerts and surfaces data in monitoring dashboards.
 
 ## 1. Connectivity Checks
 
@@ -18,9 +18,9 @@ Connectivity checks run continuously and are the first thing operators see when 
 
 ## 2. Scene Change Detection (SIFT-based)
 
-Scene change detection identifies when a camera's view has been physically altered -- the camera has been bumped, rotated, covered, or deliberately tampered with. CHM uses the [[scene-change-detection|actuate-suddenscenechange]] library, which implements SIFT (Scale-Invariant Feature Transform) keypoint matching to compare the current frame against a stored reference image.
+[[scene-change-detection|Scene change detection]] identifies when a camera's view has been physically altered -- the camera has been bumped, rotated, covered, or deliberately tampered with. CHM uses the [[scene-change-detection|actuate-suddenscenechange]] library, which implements SIFT (Scale-Invariant Feature Transform) keypoint matching to compare the current frame against a stored reference image.
 
-This is distinct from motion detection. Scene change detection looks for permanent structural changes to the field of view, not transient movement within it. A person walking through the scene is motion; someone pushing the camera to face a wall is a scene change.
+This is distinct from motion detection. [[scene-change-detection|Scene change detection]] looks for permanent structural changes to the field of view, not transient movement within it. A person walking through the scene is motion; someone pushing the camera to face a wall is a scene change.
 
 Related backlog item: CS3-31 (Highest priority, Ready to Deploy) would auto-update reference images, reducing false scene change alerts caused by gradual legitimate changes like seasonal foliage shifts.
 
@@ -43,7 +43,7 @@ Verifies that the camera's feeds are being recorded as expected. This check ensu
 
 Baseline motion monitoring tracks whether a camera is seeing expected levels of activity. A camera pointed at a busy entrance that suddenly reports zero motion for an extended period may indicate a problem -- the feed could be frozen, the camera could be covered, or the stream could be delivering stale frames.
 
-Motion checks work in conjunction with scene change detection. Together they cover both sudden view alterations (scene change) and subtle feed failures (motion anomaly).
+Motion checks work in conjunction with [[scene-change-detection|scene change detection]]. Together they cover both sudden view alterations (scene change) and subtle feed failures (motion anomaly).
 
 ## Storage and Alerting
 

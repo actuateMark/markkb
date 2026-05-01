@@ -50,7 +50,7 @@ Phase 1 ships with the `intruder` model only. The `motion-plus` model is planned
 
 ## Confidence Threshold
 
-The VCA filter threshold in EBUS maps to `confidence_threshold`, which is set at the API key level in DynamoDB. This means the threshold is a per-customer configuration managed by Actuate (via the [[admin-api]]), not something the EBUS operator changes per-request. This design prevents partners from accidentally setting thresholds too low and generating excessive false positives.
+The VCA filter threshold in EBUS maps to `confidence_threshold`, which is set at the API key level in DynamoDB. This means the threshold is a per-customer configuration managed by Actuate (via the [[admin-api/_summary|Actuate Admin API]]), not something the EBUS operator changes per-request. This design prevents partners from accidentally setting thresholds too low and generating excessive false positives.
 
 ## Reference
 

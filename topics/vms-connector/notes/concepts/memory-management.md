@@ -21,7 +21,7 @@ A single camera at 720p resolution (1280x720x3 channels) produces numpy frames o
 
 ## PooledTTLImageCache and FrameBufferPool
 
-The dominant memory management innovation is `PooledTTLImageCache` in [[actuate-image-cache]], which replaced the plain `TTLImageCache` as the production default. The problem it solves: glibc's memory allocator (`ptmalloc2`) handles small allocations well but fragments badly when the application repeatedly allocates and frees large blocks (2-4 MB numpy arrays). Over hours of operation, glibc hoards freed memory in per-thread arenas rather than returning it to the OS, causing RSS to grow monotonically -- a pattern visible in New Relic as a slow upward memory trend that never stabilises.
+The dominant memory management innovation is `PooledTTLImageCache` in [[actuate-image-cache]], which replaced the plain `TTLImageCache` as the production default. The problem it solves: glibc's memory allocator (`ptmalloc2`) handles small allocations well but fragments badly when the application repeatedly allocates and frees large blocks (2-4 MB numpy arrays). Over hours of operation, glibc hoards freed memory in per-thread arenas rather than returning it to the OS, causing RSS to grow monotonically -- a pattern visible in [[new-relic|New Relic]] as a slow upward memory trend that never stabilises.
 
 `FrameBufferPool` addresses this by recycling numpy arrays. When a frame is evicted from the cache (TTL expiry, LRU eviction, or explicit delete), its backing numpy array is returned to a per-shape pool (`defaultdict(deque)`) rather than freed. The next `set_frame()` call acquires a buffer from the pool and copies into it via `np.copyto()`, reusing the same virtual memory mapping. This eliminates the malloc/free churn that causes fragmentation.
 
@@ -41,9 +41,9 @@ Critical fork-safety detail: jemalloc kills its background thread after `fork()`
 
 ## TurboJPEG GIL Release
 
-JPEG encoding is the most frequent CPU-intensive operation in the pipeline -- every frame must be encoded before inference submission. The `TurboJpegEncodeStep` in [[actuate-pipeline]] uses libturbojpeg (via PyTurboJPEG) instead of OpenCV's `cv2.imencode()`. The performance advantage is 2-3x faster encoding, but the more important benefit is GIL behaviour: TurboJPEG's C library releases the GIL during the encoding operation, allowing other camera threads in the same shard to run concurrently. `cv2.imencode()` holds the GIL for most of its execution, creating a serialisation point for all threads in the process.
+JPEG encoding is the most frequent CPU-intensive operation in the pipeline -- every frame must be encoded before inference submission. The `TurboJpegEncodeStep` in [[actuate-pipeline]] uses libturbojpeg (via PyTurboJPEG) instead of [[opencv-entity|OpenCV]]'s `cv2.imencode()`. The performance advantage is 2-3x faster encoding, but the more important benefit is GIL behaviour: TurboJPEG's C library releases the GIL during the encoding operation, allowing other camera threads in the same shard to run concurrently. `cv2.imencode()` holds the GIL for most of its execution, creating a serialisation point for all threads in the process.
 
-The `PipelineFactory._get_encode_step()` method selects TurboJPEG by default (`use_turbojpeg = True`) with a graceful fallback to cv2 if the library is not installed. The import is deferred (lazy) because `turbojpegencode_step.py` has an unconditional top-level `from turbojpeg import TurboJPEG` that would fail at module load time on systems without the native library.
+The `PipelineFactory._get_encode_step()` method selects TurboJPEG by default (`use_turbojpeg = True`) with a graceful fallback to [[opencv-entity|cv2]] if the library is not installed. The import is deferred (lazy) because `turbojpegencode_step.py` has an unconditional top-level `from turbojpeg import TurboJPEG` that would fail at module load time on systems without the native library.
 
 ## Frame Lifecycle and Explicit Deletion
 
@@ -65,5 +65,5 @@ Frames follow a deterministic lifecycle managed by the [[pipeline-architecture]]
 Memory health is observable through several channels:
 
 - **`FrameBufferPool.get_stats()`:** Returns hit rate, miss count, and per-shape pool sizes. A hit rate below 80% suggests resolution instability or cache sizing issues.
-- **New Relic RSS tracking:** Steady-state RSS should plateau after the first few minutes of operation. Monotonic growth indicates a leak or jemalloc misconfiguration.
+- **[[new-relic|New Relic]] RSS tracking:** Steady-state RSS should plateau after the first few minutes of operation. Monotonic growth indicates a leak or jemalloc misconfiguration.
 - **`MemoryError` in `get_frame()`:** The `PooledTTLImageCache` catches `MemoryError` on the `frame.copy()` call and returns `None` rather than crashing, logging a warning. Repeated occurrences indicate the pod is at its memory limit.

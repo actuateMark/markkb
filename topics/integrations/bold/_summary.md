@@ -10,13 +10,13 @@ author: kb-bot
 
 # Bold Integration
 
-Bold (Manitou) is a professional alarm monitoring platform. Actuate integrates with Bold as an alert destination, sending AI-generated detection events over a **raw TCP socket** using the SIA protocol with XML-formatted packets.
+[[bold-components|Bold]] (Manitou) is a professional alarm monitoring platform. Actuate integrates with Bold as an alert destination, sending AI-generated detection events over a **raw TCP socket** using the SIA protocol with XML-formatted packets.
 
 ## Components
 
 ### BoldAlertSender
 
-Defined in [[actuate-alarm-senders]] at `bold/bold_alert_sender.py`. Extends `AttachmentAlertSender` (not EventListenerAlertSender -- Bold alerts are sent **synchronously** rather than via SQS). The sender iterates over configured recipients and creates a `BoldSocket` instance for each, then calls `sendBoldAlert()`.
+Defined in [[actuate-alarm-senders]] at `bold/bold_alert_sender.py`. Extends `AttachmentAlertSender` (not EventListenerAlertSender -- [[bold-components|Bold]] alerts are sent **synchronously** rather than via SQS). The sender iterates over configured recipients and creates a `BoldSocket` instance for each, then calls `sendBoldAlert()`.
 
 ### BoldSocket
 
@@ -32,15 +32,15 @@ Config fields: `recipients[].server` (IP), `recipients[].port`, `recipients[].id
 
 ## Auth Method
 
-No API authentication. Bold uses the `ID` field in the XML packet to identify the monitored account/site. Network-level access to the Bold receiver's TCP port is the only requirement.
+No API authentication. [[bold-components|Bold]] uses the `ID` field in the XML packet to identify the monitored account/site. Network-level access to the Bold receiver's TCP port is the only requirement.
 
 ## Alert Delivery
 
-Unlike most monitoring integrations that use the SQS event-listener pattern, Bold alerts go **directly over TCP** from the [[vms-connector]] process. The `BoldSocket` opens a connection, sends the XML packet, receives the response, and closes. This means alert delivery is synchronous within the `MultiAlertSender` thread pool -- if the Bold server is slow or unreachable, it blocks the sender thread for that camera.
+Unlike most monitoring integrations that use the SQS event-listener pattern, [[bold-components|Bold]] alerts go **directly over TCP** from the [[vms-connector]] process. The `BoldSocket` opens a connection, sends the XML packet, receives the response, and closes. This means alert delivery is synchronous within the `MultiAlertSender` thread pool -- if the Bold server is slow or unreachable, it blocks the sender thread for that camera.
 
 ## Architecture
 
-The alarm sender factory in [[actuate-alarm-senders]] instantiates `BoldAlertSender` when a Bold alert config is present. The sender receives `ses_client`, `s3_dao`, and `enriched_frames_dao` dependencies (inherited from `AttachmentAlertSender`), though frame attachment is not currently active. There are no integration calls or puller components -- Bold is a send-only monitoring integration.
+The alarm sender factory in [[actuate-alarm-senders]] instantiates `BoldAlertSender` when a [[bold-components|Bold]] alert config is present. The sender receives `ses_client`, `s3_dao`, and `enriched_frames_dao` dependencies (inherited from `AttachmentAlertSender`), though frame attachment is not currently active. There are no integration calls or puller components -- Bold is a send-only monitoring integration.
 
 ## Relationship to Other Components
 

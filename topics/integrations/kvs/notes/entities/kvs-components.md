@@ -10,7 +10,7 @@ author: kb-bot
 
 # KVS Integration Components
 
-KVS (Amazon Kinesis Video Streams) is an AWS-native integration where video is ingested from a KVS stream rather than directly from camera RTSP URLs. Cameras push video to KVS, and the Actuate connector pulls from the cloud-side KVS endpoint. This is used when direct network access to cameras is unavailable or when the customer's architecture already uses KVS as a video aggregation layer.
+KVS (Amazon [[aws-kvs-entity|Kinesis Video Streams]]) is an AWS-native integration where video is ingested from a KVS stream rather than directly from camera [[rtsp-deep-dive|RTSP]] URLs. Cameras push video to KVS, and the Actuate connector pulls from the cloud-side KVS endpoint. This is used when direct network access to cameras is unavailable or when the customer's architecture already uses KVS as a video aggregation layer.
 
 ## Puller -- KVSFramePuller
 
@@ -18,7 +18,7 @@ Defined in [[actuate-pullers]] at `actuate_pullers/kvs/kvs_puller.py`. The pulle
 
 ### KVSGstreamerPipeline
 
-The heavy lifting lives in `kvs_ingestor.py`. This class builds a GStreamer pipeline:
+The heavy lifting lives in `kvs_ingestor.py`. This class builds a [[gstreamer-entity|GStreamer]] pipeline:
 
 ```
 appsrc -> matroskademux -> decodebin -> videoconvert -> jpegenc -> queue -> appsink
@@ -26,7 +26,7 @@ appsrc -> matroskademux -> decodebin -> videoconvert -> jpegenc -> queue -> apps
 
 **AWS connection flow**: Uses `boto3` to call `kinesisvideo.get_data_endpoint` for the `GET_MEDIA` API, then creates a `kinesis-video-media` client pointed at that endpoint. Calls `get_media` with `StartSelector: NOW` to get a streaming payload of MKV-wrapped video data.
 
-**Data feed**: A background thread (`feed_kvs_data`) reads the KVS payload in 64KB chunks (`CHUNK_SIZE`) and pushes each chunk into the GStreamer `appsrc` as `Gst.Buffer` objects. The pipeline demuxes the MKV container, decodes the video, encodes frames as JPEG, and emits them through the `appsink`.
+**Data feed**: A background thread (`feed_kvs_data`) reads the KVS payload in 64KB chunks (`CHUNK_SIZE`) and pushes each chunk into the [[gstreamer-entity|GStreamer]] `appsrc` as `Gst.Buffer` objects. The pipeline demuxes the MKV container, decodes the video, encodes frames as JPEG, and emits them through the `appsink`.
 
 **Auto-reconnection**: If the stream ends or a socket error occurs, the pipeline resets to NULL state, recreates itself, and retries the KVS connection. A 5-second `WAIT_TIME` backoff is used between retries. If the media client itself fails, a fresh client is obtained before retrying.
 
@@ -45,7 +45,7 @@ In [[vms-connector]] `factory.py`, `integration_type == "kvs"` routes to `KvsCon
 
 ## Key Differences from RTSP
 
-- No URL construction -- the stream is identified by name, not by an RTSP URL with credentials.
+- No URL construction -- the stream is identified by name, not by an [[rtsp-deep-dive|RTSP]] URL with credentials.
 - AWS authentication via IAM/boto3 rather than per-camera username/password.
-- GStreamer pipeline uses `appsrc` (byte-fed from HTTP) rather than `rtspsrc` (network protocol).
+- [[gstreamer-entity|GStreamer]] pipeline uses `appsrc` (byte-fed from HTTP) rather than `rtspsrc` (network protocol).
 - No motion-based variants -- KVS streams are always continuous.

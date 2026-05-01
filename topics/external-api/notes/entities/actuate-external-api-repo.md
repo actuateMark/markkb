@@ -17,7 +17,7 @@ author: kb-bot
 
 ## Purpose
 
-FastAPI service that exposes partner-facing HTTP endpoints and forwards calls to the **Actuate Admin API** using the caller's `X-API-Key` as the outbound token. This is the public-facing API layer that partners and external integrations use to interact with the Actuate platform, abstracting the internal Admin API behind a controlled, rate-limited surface.
+FastAPI service that exposes partner-facing HTTP endpoints and forwards calls to the **[[actuate-admin-api|Actuate Admin API]]** using the caller's `X-API-Key` as the outbound token. This is the public-facing API layer that partners and external integrations use to interact with the Actuate platform, abstracting the internal Admin API behind a controlled, rate-limited surface.
 
 ## Tech Stack
 

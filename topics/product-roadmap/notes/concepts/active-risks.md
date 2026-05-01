@@ -31,13 +31,13 @@ This is a particularly insidious risk because Aurora CPU spikes may be intermitt
 
 The Alerts Improvements initiative (H1.3, project AIM) has **25 out of 29 issues unassigned**. This initiative was intended to improve the alerts pipeline -- the core mechanism by which Actuate delivers value to customers. A stalled alerts initiative means known issues in alert delivery, formatting, deduplication, or routing are not being addressed.
 
-The root cause appears to be staffing: with AutoPatrol (H1.2), Watchman, and External API all competing for engineering time, AIM has been deprioritized by omission rather than by decision.
+The root cause appears to be staffing: with AutoPatrol (H1.2), [[watchman-repo|Watchman]], and External API all competing for engineering time, AIM has been deprioritized by omission rather than by decision.
 
 ## 4. Integration Failures in Support Queue
 
 Multiple active support tickets report integration failures with key partners:
 
-- **Evalink** -- trial integration issues ([[integrations/evalink/_summary|Evalink]], Adam Kawczynski on BT-902)
+- **[[evalink-components|Evalink]]** -- trial integration issues ([[integrations/evalink/_summary|Evalink]], Adam Kawczynski on BT-902)
 - **Patriot** -- alarm delivery failures
 - **DW (Digital Watchdog)** -- connectivity or format issues
 - **Immix** -- the primary revenue channel (~$800K/12mo, see [[revenue-drivers]])

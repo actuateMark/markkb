@@ -10,6 +10,16 @@ author: kb-bot
 
 # Proposal B — Stage Fleets
 
+> ## 📝 Status note (2026-04-22)
+>
+> **B's 2026-04-16 score of 7.25/10 stands as originally documented. B remains a viable-but-operationally-complex proposal, not closed.**
+>
+> Context: an earlier 2026-04-22 design-delta synthesis (`topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md`) claimed B's score was "invalidated" under a converging frame-storage design (in-cluster blob + conditional S3 promotion). That invalidation claim was itself invalidated later the same day by a corrected NR query (see the design-delta synthesis's AMENDMENT banner for details) — the true non-eventful-window ratio is ~31% rather than the >99% first reported, which reduces the conditional-promotion cost lever from >50× to ~1.45×.
+>
+> **Net effect:** B's original score analysis stands. B-prime (a 2026-04-22 variant explored in response to the flawed invalidation claim) was formally closed at 6.25/10 — see `topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md`.
+>
+> The **fleet-coordinator unification question** (see `topics/fleet-architecture/notes/concepts/fleet-coordinator-unification-question.md`) that surfaced during B-prime's synthesis DOES apply to B structurally if it were to grow a coordinator-adjacent service — but B as originally scoped doesn't have one, so the question is non-binding for B's current form.
+
 **Core idea:** Every stage is its own fleet. Pullers, motion workers, inference coordinators, observer workers, alert workers. Redis Streams between every stage. Maximum independent scalability per-stage.
 
 ## Architecture sketch
@@ -38,7 +48,7 @@ author: kb-bot
   - `inference` — JPEG bytes + detection boxes (Protobuf)
   - `observed` — detection events (no frame bytes)
 - **Consumer groups:** `motion`, `inference`, `observer` — each stage has a consumer group across its fleet
-- **Cross-AZ cost — CRITICAL:** 4 hops multiplies cross-AZ risk 4×. **Zone-aware routing mandatory.** Pod placement: use `topology.kubernetes.io/zone` affinity to keep a camera's 4-pod chain colocated in one AZ. Uncontrolled, projected cost at current scale: **~$400k/mo** (see [[2026-04-16_frame-transport-comparison]]).
+- **Cross-AZ cost — CRITICAL:** 4 hops multiplies cross-AZ risk 4×. **Zone-aware routing mandatory.** Pod placement: [[pod-topology-spread-constraints|topology-spread]] with `topologyKey: topology.kubernetes.io/zone` + `whenUnsatisfiable: ScheduleAnyway` keeps a camera's 4-pod chain colocated in one AZ — the right tool here, NOT O(n²) pairwise [[pod-affinity-anti-affinity]] across stages (that path wedges the scheduler). Uncontrolled, projected cost at current scale: **~$400k/mo** (see [[2026-04-16_frame-transport-comparison]]).
 - **Site connectivity:** puller fleet exclusively owns VMS connections — downstream fleets never touch the customer network. This is the cleanest of the proposals wrt the [[customer-site-connectivity|connectivity topology]] concern. **Still unresolved** — pending `kubernetes-deployments` deep dive to confirm tunnel termination patterns.
 - **Tracing:** every stream entry includes an OTel span ID; required for 4-hop debuggability
 
@@ -53,6 +63,8 @@ author: kb-bot
 | Alert Dispatch | SQS depth | downstream throughput |
 
 Every stage scales to its own bottleneck. Maximum elasticity.
+
+**HPA tuning pitfalls in a 4-hop chain:** each stage's scale-down pulse can trigger a cascade through the pipeline. Per-fleet HPA `behavior.scaleDown.selectPolicy: Min` with `stabilizationWindowSeconds: 300` dampens chain-reaction thrash — the window's long enough to ride out transient queue spikes but short enough to still yield elasticity. **Spot viability:** Motion + InferenceCoord are stateless and Spot-eligible; **Observer is not** — tracker snapshot cadence (1 Hz) plus preStop drain must complete within `terminationGracePeriodSeconds`, and Spot's 2-minute warning is cutting it close under load. Use On-Demand-only NodePool for Observer; Spot + `karpenter.sh/do-not-disrupt` annotation on mid-window pods for the rest.
 
 ## State & failover
 
@@ -79,7 +91,7 @@ Every stage scales to its own bottleneck. Maximum elasticity.
 
 - **Change from today:** +15-25% at current scale; **break-even at 3-5× fleet** due to stage-right-sizing.
 - **Added cost:** 5 service types instead of 1; Redis cluster (~180 GB RAM at 10× scale); distributed tracing infra (OTel collectors).
-- **Savings at 10×:** substantial — each stage right-sized for its bottleneck; no sharding overhead.
+- **Savings at 10×:** substantial — each stage right-sized for its bottleneck; no [[sharding]] overhead.
 
 ## Reused primitives
 
@@ -134,7 +146,7 @@ Cross-cutting considerations (shared notes):
 - [[inference-api-interaction]] — open question: dedicated inference-coord fleet or per-observer-pod `AsyncInferencePool`? AIMD convergence is the deciding factor.
 - [[library-decomposition-required]] — **highest churn of any proposal.** Filter chain split, pipeline runtime extraction, new OTel library. Touches `actuate-pipeline`, `actuate-filters`, `actuate-connector-observers` — the most-depended-on packages.
 - [[observability-and-tracing]] — **distributed tracing mandatory** (4-hop pipeline is undebuggable without it). Major cookbook rewrite in [[new-relic/notes/concepts/nr-connector-query-cookbook]].
-- [[downstream-consumer-impact]] — CHM healthcheck pipeline mapping to stages is non-obvious — needs design work. Watchman and alert integration contracts preserved.
+- [[downstream-consumer-impact]] — CHM healthcheck pipeline mapping to stages is non-obvious — needs design work. [[watchman-repo|Watchman]] and alert integration contracts preserved.
 - [[config-and-schedule-propagation]] — config pulls spread across 5 fleets; staleness widens. ENG-96 not fixed by default — needs explicit design (add a config/schedule service).
 - [[memory-and-fork-safety]] — fork safety eliminated; observer fleet is memory-bound (per-camera tracker). Per-hop memcpy cost measurable.
 - [[customer-site-connectivity]] — tunnels localized in puller fleet (clean).
@@ -152,7 +164,7 @@ Cross-cutting considerations (shared notes):
 
 - **Add an `is_stateless` class-attribute to every filter** + a fitness function to enforce placement. This is a pre-cursor to B/D but is valuable even if neither ships — self-documenting code.
 - **Extract `actuate-otel-instrumentation` as a reusable library.** Span IDs in log lines helps every service regardless of which proposal wins. Worth building now.
-- **Build a "fleet-health" NR dashboard** ([[software-architecture/notes/syntheses/2026-04-16_code-health-dashboard]] style) — per-fleet panels, stream-lag panels, per-hop latency heatmaps. Essential for B; useful for all.
+- **Build a "fleet-health" NR dashboard** ([[2026-04-16_code-health-dashboard]] style) — per-fleet panels, stream-lag panels, per-hop latency heatmaps. Essential for B; useful for all.
 - **Tooling for cross-service schema evolution.** When `WindowDataPacket` or similar fields change, we can't tolerate lockstep deploys of 5 services. Adopt envelope-versioning + backwards-compat rules.
 
 ## Score estimate (pre-PoC)

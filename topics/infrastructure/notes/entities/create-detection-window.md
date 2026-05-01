@@ -13,7 +13,7 @@ author: kb-bot
 AWS Lambda that generates MP4 video clips from detection frame sequences. It is the write-path companion to [[frame-fetcher-v3]], which invokes it asynchronously when a window exists but has no `mp4_path`.
 
 **Repository:** `aegissystems/create_detection_window`
-**Runtime:** Python 3.9+ with OpenCV, FFmpeg, and Slugify Lambda layers
+**Runtime:** Python 3.9+ with [[opencv-entity|OpenCV]], [[ffmpeg-entity|FFmpeg]], and Slugify Lambda layers
 **IaC:** AWS SAM (`template.yaml` + `samconfig.toml`)
 
 ## Processing Pipeline
@@ -21,8 +21,8 @@ AWS Lambda that generates MP4 video clips from detection frame sequences. It is 
 1. Receives a `window_id` as input.
 2. Queries DynamoDB (`DetectedFrameV2`, `EnrichedFrameV2`, `WindowIdsV2`) for frame metadata.
 3. Downloads frame images from S3.
-4. Draws bounding boxes on frames using OpenCV.
-5. Encodes the annotated frame sequence into an MP4 using FFmpeg.
+4. Draws bounding boxes on frames using [[opencv-entity|OpenCV]].
+5. Encodes the annotated frame sequence into an MP4 using [[ffmpeg-entity|FFmpeg]].
 6. Uploads the MP4 and a representative first frame to S3.
 7. Updates DynamoDB with the resulting `mp4_path` and storage metadata.
 

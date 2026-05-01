@@ -45,7 +45,7 @@ Genetec alerts are fully **synchronous** within the [[actuate-alarm-senders]] `M
 
 ## Architecture
 
-The [[vms-connector]] builds the `GenetecAlertSender` via the alarm sender factory when a Genetec config is present. Streams from Genetec cameras are consumed via standard RTSP URL-based pullers in [[actuate-pullers]] (no Genetec-specific puller). There are no Genetec-specific integration calls in [[actuate-integration-calls]] -- the sender handles all Genetec API communication internally.
+The [[vms-connector]] builds the `GenetecAlertSender` via the alarm sender factory when a Genetec config is present. Streams from Genetec cameras are consumed via standard [[rtsp-deep-dive|RTSP]] URL-based pullers in [[actuate-pullers]] (no Genetec-specific puller). There are no Genetec-specific integration calls in [[actuate-integration-calls]] -- the sender handles all Genetec API communication internally.
 
 ## Relationship to Other Components
 

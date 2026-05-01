@@ -12,7 +12,7 @@ author: kb-bot
 
 ## The Problem
 
-The [[admin-api]] experienced severe Aurora PostgreSQL CPU spikes reaching 98.7%, traced to the `get_descendants()` function. This is tracked as **BT-926** (support/ops ticket) and **BACK-623** (engineering ticket).
+The [[admin-api/_summary|Actuate Admin API]] experienced severe Aurora PostgreSQL CPU spikes reaching 98.7%, traced to the `get_descendants()` function. This is tracked as **BT-926** (support/ops ticket) and **BACK-623** (engineering ticket).
 
 ## Root Cause: get_descendants()
 
@@ -38,7 +38,7 @@ At 98.7% CPU utilization, the Aurora cluster is effectively saturated. This mani
 
 - Slow API responses across all Admin API endpoints
 - Timeouts on endpoints that trigger group hierarchy lookups
-- Cascading effects on downstream services that depend on the [[admin-api]] for metadata (camera configs, customer data, schedule lookups)
+- Cascading effects on downstream services that depend on the [[admin-api/_summary|Actuate Admin API]] for metadata (camera configs, customer data, schedule lookups)
 
 ## Remediation Plan
 
@@ -60,7 +60,7 @@ The issue is identified and the remediation is planned but not yet deployed. It 
 
 - **Engine:** PostgreSQL on Amazon Aurora
 - **Cluster:** `actuateadminprodcluster`
-- **Connected service:** [[admin-api]] (Django 6.0, Gunicorn, ECS)
+- **Connected service:** [[admin-api/_summary|Actuate Admin API]] (Django 6.0, Gunicorn, ECS)
 
 ## Related Tickets
 

@@ -2,7 +2,7 @@
 title: "How a Frame Becomes an Alert"
 type: synthesis
 topic: actuate-platform
-tags: [synthesis, cross-topic, pipeline, detection, alert, end-to-end, frame-processing]
+tags: [synthesis, cross-topic, pipeline, detection, alert, end-to-end, frame-processing, vms-connector]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
@@ -10,13 +10,13 @@ author: kb-bot
 
 # How a Frame Becomes an Alert
 
-An end-to-end trace of a single camera frame from RTSP ingestion through AI inference, filtering, observer logic, and alert delivery to a customer's monitoring console. Every hop involves a distinct library or service from the [[actuate-libraries]] monorepo, orchestrated by the [[vms-connector]].
+An end-to-end trace of a single camera frame from [[rtsp-deep-dive|RTSP]] ingestion through AI inference, filtering, observer logic, and alert delivery to a customer's monitoring console. Every hop involves a distinct library or service from the [[actuate-libraries]] monorepo, orchestrated by the [[vms-connector]].
 
 ## 1. Frame Acquisition (actuate-pullers)
 
-The journey begins at the camera. The [[connector-deployer]] has provisioned a Kubernetes Deployment in the `rearchitecture` namespace for this site. Inside the pod, the [[connector-factory]] reads the site's `settings.json` (fetched from S3 via [[actuate-config]]) and dispatches to the correct factory class based on `integration_type` -- RTSP, Milestone, Avigilon, Eagle Eye, or any of the 19+ supported VMS types.
+The journey begins at the camera. The [[connector-deployer]] has provisioned a Kubernetes Deployment in the `rearchitecture` namespace for this site. Inside the pod, the [[connector-factory]] reads the site's `settings.json` (fetched from S3 via [[actuate-config]]) and dispatches to the correct factory class based on `integration_type` -- [[rtsp-deep-dive|RTSP]], Milestone, Avigilon, Eagle Eye, or any of the 19+ supported VMS types.
 
-The factory instantiates an [[actuate-pullers]] subclass -- typically `UrlFramePuller` for RTSP streams, or a VMS-specific puller like `MilestoneJpgFramePuller`. The puller runs in its own thread, decoding the inbound stream at 15-30 FPS via OpenCV `VideoCapture`. Each decoded frame is stamped with `approx_capture_timestamp` and stored in the [[actuate-image-cache]] (thread-safe LRU/TTL cache). The frame is wrapped in an `ImageDataPacket` from [[actuate-pipeline-objects]] and pushed onto the camera's frame queue.
+The factory instantiates an [[actuate-pullers]] subclass -- typically `UrlFramePuller` for [[rtsp-deep-dive|RTSP]] streams, or a VMS-specific puller like `MilestoneJpgFramePuller`. The puller runs in its own thread, decoding the inbound stream at 15-30 FPS via [[opencv-entity|OpenCV]] `VideoCapture`. Each decoded frame is stamped with `approx_capture_timestamp` and stored in the [[actuate-image-cache]] (thread-safe LRU/TTL cache). The frame is wrapped in an `ImageDataPacket` from [[actuate-pipeline-objects]] and pushed onto the camera's frame queue.
 
 ## 2. Motion Detection Gate (actuate-movement)
 
@@ -36,7 +36,7 @@ The raw detections now pass through the [[filter-architecture]] -- a sequence of
 
 1. **LabelFilter** -- keeps only classes enabled for this camera's product (e.g., person-only for basic Intruder)
 2. **ConfidenceFilter** / **LabelwiseConfidenceFilter** -- discards detections below the per-class sensitivity threshold (HIGH/MED/LOW maps to specific confidence values)
-3. **PolyZoneFilter** -- removes detections inside polygonal ignore zones defined in [[actuate-config]]'s `CameraConfig`, computed via Shapely geometry
+3. **PolyZoneFilter** -- removes detections inside polygonal [[ignore-zones|ignore zones]] defined in [[actuate-config]]'s `CameraConfig`, computed via Shapely geometry
 4. **IoUFilter** -- deduplicates overlapping boxes using IoU from [[actuate-math]], a second NMS pass complementing the server-side one
 5. **StationaryFilter** -- compares current detections against a history of prior positions; objects that have not moved are tagged `STATIONARY_VEHICLE` via [[actuate-inference-objects]]'s `DetectionTag` system
 6. **BlacklistFilter** -- checks detections against license plate/face blacklists from [[actuate-daos]]'s `BlacklistDAO`
@@ -61,12 +61,12 @@ Senders that need frame images extend `AttachmentAlertSender`, which retrieves a
 
 ## 8. SQS Delivery to Customer Systems (queue_consumer)
 
-The [[queue-consumer]] service -- deployed as per-integration Docker containers on the `prod-queue-consumers-sqs` ECS cluster -- long-polls its dedicated SQS FIFO queue. The `ImmixConsumer` reads from `event_queue_immix_alarm.fifo`, formats an XML alarm payload with JPEG/video attachments, and sends it via SMTP to the customer's Immix monitoring station. The `EvalinkConsumer` posts JSON to the Evalink REST API. The `WebhookConsumer` fires an HTTP POST to a configured URL. Each of the 16 consumer types handles protocol-specific formatting and retry logic.
+The [[queue-consumer]] service -- deployed as per-integration Docker containers on the `prod-queue-consumers-sqs` ECS cluster -- long-polls its dedicated SQS FIFO queue. The `ImmixConsumer` reads from `event_queue_immix_alarm.fifo`, formats an XML alarm payload with JPEG/video attachments, and sends it via SMTP to the customer's Immix monitoring station. The `EvalinkConsumer` posts JSON to the [[evalink-components|Evalink]] REST API. The `WebhookConsumer` fires an HTTP POST to a configured URL. Each of the 16 consumer types handles protocol-specific formatting and retry logic.
 
 ## 9. Customer Monitoring Console
 
-The alert arrives at the monitoring center's platform -- Immix, Sentinel, Patriot, SureView, or another of the 27 supported destinations. The operator sees an alarm with annotated frame images (bounding boxes rendered by [[actuate-viz]]), detection metadata, and a link back to the [[alert-ui]] web dashboard. The detection that started as a single RTSP frame has traversed roughly a dozen libraries, two Kubernetes namespaces, three AWS storage services, and an SQS FIFO queue -- in under 10 seconds (p95 target).
+The alert arrives at the monitoring center's platform -- Immix, [[sentinel-components|Sentinel]], Patriot, SureView, or another of the 27 supported destinations. The operator sees an alarm with annotated frame images (bounding boxes rendered by [[actuate-viz]]), detection metadata, and a link back to the [[alert-ui]] web dashboard. The detection that started as a single [[rtsp-deep-dive|RTSP]] frame has traversed roughly a dozen libraries, two Kubernetes namespaces, three AWS storage services, and an SQS FIFO queue -- in under 10 seconds (p95 target).
 
 ## Cross-Topic Dependencies
 
-This flow touches every major topic in the KB: [[vms-connector]] (orchestration), [[actuate-libraries]] (41 packages), [[ai-models]] (YOLO inference), [[data-science]] (model training and evaluation that produced the model), [[infrastructure]] (EKS, DynamoDB, S3, SQS), and every [[integration-immix|integration topic]] (alert delivery). A failure at any stage -- puller timeout, inference server overload, filter misconfiguration, SQS throttling -- can break the chain.
+This flow touches every major topic in the KB: [[vms-connector]] (orchestration), [[actuate-libraries]] (41 packages), [[ai-models/_summary|AI Models & Evaluation]] (YOLO inference), [[data-science/_summary|Data Science Methodology]] (model training and evaluation that produced the model), [[infrastructure/_summary|Infrastructure & Security]] (EKS, DynamoDB, S3, SQS), and every [[integration-immix|integration topic]] (alert delivery). A failure at any stage -- puller timeout, inference server overload, filter misconfiguration, SQS throttling -- can break the chain.

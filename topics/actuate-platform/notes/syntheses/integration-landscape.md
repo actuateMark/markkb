@@ -2,7 +2,7 @@
 title: "Integration Landscape"
 type: synthesis
 topic: actuate-platform
-tags: [synthesis, cross-topic, integrations, vms, alarm-senders, api, inbound, outbound]
+tags: [synthesis, cross-topic, integrations, vms, alarm-senders, api, inbound, outbound, vms-connector, autopatrol]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
@@ -16,7 +16,7 @@ Actuate connects to the security ecosystem through 30+ integrations spanning vid
 
 Integrations fall into four architectural categories:
 
-1. **VMS Pullers (Inbound)** -- frame sources that feed the detection pipeline
+1. **VMS Pullers (Inbound)** -- frame sources that feed the [[detection-pipeline|detection pipeline]]
 2. **Alarm Senders (Outbound)** -- alert delivery to monitoring centers and end customers
 3. **API Integrations (Inbound/Bidirectional)** -- partner-facing detection and management APIs
 4. **Cloud-to-Cloud (Bidirectional)** -- platform-level integrations with other SaaS products
@@ -27,31 +27,31 @@ These integrations are implemented in [[actuate-pullers]] and instantiated by th
 
 | Integration | Puller Type | Auth Method | Topic |
 |---|---|---|---|
-| [[integration-rtsp]] | `UrlFramePuller` | Basic Auth / None | Generic RTSP |
+| [[integration-rtsp]] | `UrlFramePuller` | Basic Auth / None | Generic [[rtsp-deep-dive|RTSP]] |
 | [[integration-milestone]] | `MilestoneJpgFramePuller` | HTTP API | Milestone XProtect |
 | [[integration-avigilon]] | VMS-specific | API Token | Avigilon ACC |
 | [[integration-exacq]] | VMS-specific | DB Credentials | Exacq exacqVision |
 | [[integration-eagle-eye]] | VMS-specific | OAuth2 | Eagle Eye Networks |
 | [[integration-digital-watchdog]] | VMS-specific | HTTP API | Digital Watchdog |
-| [[integration-hikcentral]] | VMS-specific | API Token | HikCentral Professional |
+| [[integration-hikcentral]] | VMS-specific | API Token | [[hikcentral-components|HikCentral]] Professional |
 | [[integration-genetec]] | VMS-specific | HTTP API | Genetec Security Center |
 | [[integration-luxriot]] | VMS-specific | HTTP API | Luxriot EVO |
 | [[integration-openeye]] | VMS-specific | HTTP API | OpenEye OWS |
 | [[integration-orchid]] | `OrchidJpgFrameQueuePuller` | HTTP API | IPConfigure Orchid |
 | [[integration-salient]] | VMS-specific | HTTP API | Salient CompleteView |
-| [[integration-video-insight]] | VMS-specific | HTTP API | Video Insight |
-| [[integration-kvs]] | `KVSFramePuller` | AWS IAM | Amazon Kinesis Video Streams |
+| [[integration-video-insight]] | VMS-specific | HTTP API | [[video-insight-components|Video Insight]] |
+| [[integration-kvs]] | `KVSFramePuller` | AWS IAM | Amazon [[aws-kvs-entity|Kinesis Video Streams]] |
 | [[integration-autopatrol-integration]] | AutoPatrol-specific | Backend API | AutoPatrol scheduling |
 | [[integration-vch]] | VCH-specific | Backend API | VCH (Video Camera Hub) |
-| [[integration-adpro]] | `UrlFramePuller` (RTSP variant) | Basic Auth | ADPRO / Xtralis |
-| [[integration-ajax]] | VMS-specific | API Token | Ajax Systems |
+| [[integration-adpro]] | `UrlFramePuller` ([[rtsp-deep-dive|RTSP]] variant) | Basic Auth | ADPRO / Xtralis |
+| [[integration-ajax]] | VMS-specific | API Token | [[ajax-components|Ajax Systems]] |
 | [[integration-lisa]] | VMS-specific | API Token | LISA alarm receiver |
 
-The [[actuate-integration-calls]] library provides VMS API client wrappers for Ajax, AutoPatrol, Avigilon, Digital Watchdog, Eagle Eye, Exacq, HikCentral, LISA, and Milestone.
+The [[actuate-integration-calls]] library provides VMS API client wrappers for [[ajax-components|Ajax]], AutoPatrol, Avigilon, Digital Watchdog, Eagle Eye, Exacq, [[hikcentral-components|HikCentral]], LISA, and Milestone.
 
 ## Category 2: Alarm Senders (Outbound Alert Delivery)
 
-These are implemented in [[actuate-alarm-senders]] (27 sender classes) and consumed by [[actuate-connector-observers]] at the end of the detection pipeline. Some senders dispatch directly (HTTP, SMTP, TCP); others write to SQS FIFO queues consumed by [[queue-consumer]] containers on ECS.
+These are implemented in [[actuate-alarm-senders]] (27 sender classes) and consumed by [[actuate-connector-observers]] at the end of the [[detection-pipeline|detection pipeline]]. Some senders dispatch directly (HTTP, SMTP, TCP); others write to SQS FIFO queues consumed by [[queue-consumer]] containers on ECS.
 
 | Sender | Target | Protocol | Delivery Path | Topic |
 |---|---|---|---|---|
@@ -85,7 +85,7 @@ These are implemented in [[actuate-alarm-senders]] (27 sender classes) and consu
 
 ## Category 3: API Integrations (Partner-Facing)
 
-The [[external-api]] initiative exposes APIs for partners who want to consume Actuate's AI capabilities programmatically rather than through the VMS puller model.
+The [[external-api/_summary|External API Initiative]] initiative exposes APIs for partners who want to consume Actuate's AI capabilities programmatically rather than through the VMS puller model.
 
 | API | Consumer | Direction | Status |
 |---|---|---|---|
@@ -94,13 +94,13 @@ The [[external-api]] initiative exposes APIs for partners who want to consume Ac
 | Image Ingestion (SMTP alt) | [[alarmquip-customer]] (AU) | Inbound frames | To Do |
 | Arm/Disarm Per Site | [[alarmwatch-customer]] | Inbound control | To Do |
 
-These share a common auth pattern: AWS API Gateway -> [[rust-lambda-authorizer]] -> K8s pods (via VPC Link + ALB). The [[inference-api]] (FastAPI on Lambda) serves the v5 detection endpoints.
+These share a common auth pattern: AWS API Gateway -> [[rust-lambda-authorizer]] -> K8s pods (via VPC Link + ALB). The [[inference-api/_summary|Actuate Inference API]] (FastAPI on Lambda) serves the v5 detection endpoints.
 
 ## Category 4: Cloud-to-Cloud Integrations
 
 | Integration | Partner | Direction | Status | Topic |
 |---|---|---|---|---|
-| [[integrations/morphean/_summary|Morphean]] Track A | Morphean/VIDEOR | Bidirectional (RTSP in, alerts out) | Draft | 30 countries, 170+ resellers |
+| [[integrations/morphean/_summary|Morphean]] Track A | Morphean/VIDEOR | Bidirectional ([[rtsp-deep-dive|RTSP]] in, alerts out) | Draft | 30 countries, 170+ resellers |
 | [[integrations/morphean/_summary|Morphean]] Track B | VIDEOR edge hardware | Inbound (edge deployment) | Investigation | Toradex/DeepX |
 | [[integrations/ebus/_summary|EBUS]] Phase 2 | Accellence EBUS | Bidirectional (clips in, alerts back) | Future | German market |
 
@@ -108,9 +108,9 @@ These share a common auth pattern: AWS API Gateway -> [[rust-lambda-authorizer]]
 
 Several integrations serve as both frame sources and alert destinations:
 
-- **Milestone** -- puller pulls RTSP/JPEG frames; alarm sender pushes events back to XProtect
+- **Milestone** -- puller pulls [[rtsp-deep-dive|RTSP]]/JPEG frames; alarm sender pushes events back to XProtect
 - **Eagle Eye** -- puller ingests cloud streams; alarm sender pushes alerts to EEN cloud
-- **HikCentral** -- puller ingests VMS streams; alarm sender pushes events
+- **[[hikcentral-components|HikCentral]]** -- puller ingests VMS streams; alarm sender pushes events
 - **Avigilon** -- puller pulls from ACC NVR; alarm sender pushes analytics events
 - **Genetec** -- puller connects to Security Center; alarm sender pushes back
 - **Digital Watchdog** -- puller ingests DW Spectrum; alarm sender pushes events

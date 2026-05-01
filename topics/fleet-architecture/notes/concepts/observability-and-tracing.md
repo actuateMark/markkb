@@ -10,7 +10,7 @@ author: kb-bot
 
 # Observability & Tracing Requirements
 
-Today's monolith is relatively easy to observe: one pod per site, one log stream per site, `container_name` scopes everything. Fleet architectures fragment that — logs and metrics now scatter across service types. This note catalogs what each proposal demands of our New Relic setup ([[new-relic/_summary]]).
+Today's monolith is relatively easy to observe: one pod per site, one log stream per site, `container_name` scopes everything. Fleet architectures fragment that — logs and metrics now scatter across service types. This note catalogs what each proposal demands of our [[new-relic|New Relic]] setup ([[new-relic/_summary]]).
 
 ## Today's observability baseline
 
@@ -94,8 +94,8 @@ Similar to B. Additional: S3 and NATS operation logs flow through their own even
 
 - **Write service-agnostic NR queries now.** Instead of hardcoding `container_name = 'vms-connector'`, use a `service_category = 'connector'` tag. Multi-fleet future-proofing on today's setup.
 - **Adopt OTel auto-instrumentation library for Python.** Zero-effort tracing for urllib3, httpx, redis clients. Would benefit today's monolith too.
-- **Formalize log-line schema.** Every log must have `trace_id`, `span_id`, `camera_id`, `frame_id`, `site_id`. Enforcement via fitness function ([[software-architecture/notes/syntheses/2026-04-16_architecture-enforcement]]).
-- **Build a fleet-health dashboard** in NR — [[software-architecture/notes/syntheses/2026-04-16_code-health-dashboard]] is the template. One page, per-fleet panels.
+- **Formalize log-line schema.** Every log must have `trace_id`, `span_id`, `camera_id`, `frame_id`, `site_id`. Enforcement via fitness function ([[2026-04-16_architecture-enforcement]]).
+- **Build a fleet-health dashboard** in NR — [[2026-04-16_code-health-dashboard]] is the template. One page, per-fleet panels.
 
 ## References
 
@@ -104,4 +104,4 @@ Similar to B. Additional: S3 and NATS operation logs flow through their own even
 - [[new-relic/notes/concepts/nr-log-level-strategy]]
 - [[new-relic/notes/concepts/nr-connector-query-cookbook]]
 - [[new-relic/notes/concepts/nr-programmatic-deep-links]]
-- [[software-architecture/notes/syntheses/2026-04-16_code-health-dashboard]]
+- [[2026-04-16_code-health-dashboard]]

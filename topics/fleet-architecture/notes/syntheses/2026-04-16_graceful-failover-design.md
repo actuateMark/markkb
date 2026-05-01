@@ -2,7 +2,7 @@
 title: "Graceful Failover Design — Tracker and Window Checkpointing"
 type: synthesis
 topic: fleet-architecture
-tags: [failover, checkpointing, state, botsort, windows, resume, high-availability]
+tags: [failover, checkpointing, state, botsort, windows, resume, high-availability, dynamodb]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
@@ -95,6 +95,28 @@ Total time: dominated by pod-boot — the actual read+rehydrate is <50 ms per ca
 - **Symptom:** last write wins.
 - **Behavior:** old worker's final write may be newer than new worker's first read. Acceptable — the new worker's resume will be at most 1 s stale.
 - **Mitigation:** assignment controller (proposals C/E) ensures at most one worker owns a camera at a time. For B/D, use conditional writes (compare-and-set on `owner_id`) if needed.
+
+## K8s Mechanics
+
+The snapshot cadence only works if the K8s-level shutdown sequence cooperates with it. See [[graceful-pod-termination-zero-downtime]] + [[pod-termination-sequence]] for the full flow: PreStop hook → SIGTERM → grace period → SIGKILL.
+
+**Concrete cadence bound:** `terminationGracePeriodSeconds` must be ≥ (preStop drain + snapshot write latency + buffer). SIGKILL is the hard bound on the 1-second snapshot cadence — any snapshot in flight when SIGKILL fires is lost, silently. Rough sizing:
+
+- preStop drain (stop claiming new frames, flush in-flight): ~1-2 s
+- Snapshot write latency: p99 ~10-50 ms × cameras-in-pod; under load outliers can reach 100-200 ms
+- Buffer for slow Redis under load: ~1-2 s
+- **Typical value: 10-30 s per pod**
+
+If pods routinely cold-start on upgrade, the first suspect is a grace period too short to complete the final snapshot cycle — not the snapshot logic itself.
+
+## K8s Availability Primitives
+
+Pod-level availability during voluntary disruptions (node upgrades, autoscaler scale-down, manual drains) depends on:
+
+- [[pod-disruption-budgets]] — `minAvailable` or `maxUnavailable` policy keeps a quorum up during evictions. `unhealthyPodEvictionPolicy: AlwaysAllow` (K8s 1.27+) prevents an unready pod from blocking the Eviction API indefinitely, which is the usual cause of "stuck node drain" outages.
+- [[k8s-placement-primitives]] — topology-spread with `whenUnsatisfiable: ScheduleAnyway` + AZ anti-affinity so a single-AZ failure doesn't take all replicas and so capacity pressure doesn't wedge the scheduler.
+
+Together these keep RTO ≤5 s during voluntary disruptions — most pods never actually die; replacements come up in-zone with low-latency snapshot access.
 
 ## What this doesn't solve
 

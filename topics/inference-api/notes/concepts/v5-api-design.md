@@ -10,7 +10,7 @@ author: kb-bot
 
 # v5 Unified Detection API Design
 
-The v5 API is a unified detection endpoint for the [[inference-api]], designed to serve all models through a single interface. It replaces v4's per-model endpoint pattern with a single `POST /v5/detect` that accepts a `model_id` and a validated `data` JSON object.
+The v5 API is a unified detection endpoint for the [[inference-api/_summary|Actuate Inference API]], designed to serve all models through a single interface. It replaces v4's per-model endpoint pattern with a single `POST /v5/detect` that accepts a `model_id` and a validated `data` JSON object.
 
 ## Endpoints
 
@@ -64,7 +64,7 @@ Each API call is a singleton. No camera/site lookups, no caching, no actuate-adm
 
 ### Ignore Zones — Future Extension via `data`
 
-Not needed now, but because `data` is a freeform JSON object validated per-model, ignore zones can be added later as a field in the model's `data` schema without changing the endpoint contract.
+Not needed now, but because `data` is a freeform JSON object validated per-model, [[ignore-zones|ignore zones]] can be added later as a field in the model's `data` schema without changing the endpoint contract.
 
 ## Relationship to v4
 

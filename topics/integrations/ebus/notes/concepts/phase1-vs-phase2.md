@@ -15,7 +15,7 @@ The [[integrations/ebus/_summary|EBUS]] with Accellence Technologies is structur
 ## Phase 1: API-Only Integration (Current)
 
 **Status:** In progress (ED-32, ENG-126)
-**Assignee:** Mark Barbera
+**Assignee:** [[mark-barbera|Mark Barbera]]
 
 Phase 1 is a **unidirectional, single-frame** integration. EBUS sends images to Actuate and receives detection results back. There is no persistent connection, no video streaming, and no alarm state management.
 
@@ -56,7 +56,7 @@ Phase 2 introduces **video clips** and **bidirectional communication**. EBUS sen
 
 ### Impact
 
-Phase 2 makes EBUS a fully integrated alarm sender in the Actuate ecosystem, similar to how existing integrations (Immix, Patriot, etc.) operate through the [[admin-api]]'s [[integration-architecture]].
+Phase 2 makes EBUS a fully integrated alarm sender in the Actuate ecosystem, similar to how existing integrations (Immix, Patriot, etc.) operate through the [[admin-api/_summary|Actuate Admin API]]'s [[integration-architecture]].
 
 ## Phase 2b: Direct Integration Investigation (ED-33)
 
@@ -66,7 +66,7 @@ Phase 2 makes EBUS a fully integrated alarm sender in the Actuate ecosystem, sim
 Phase 2b is an investigation into alternative connectivity paths that bypass the current "EBUS sends to Actuate" model:
 
 1. **EBUS -> Actuate -> EBUS (SMTP/FTP):** EBUS pushes images/clips via SMTP or FTP, Actuate processes them, results returned to EBUS
-2. **Camera -> Actuate -> EBUS (SMTP/RTSP):** Cameras send directly to Actuate (via SMTP or RTSP), Actuate processes and pushes results to EBUS
+2. **Camera -> Actuate -> EBUS (SMTP/[[rtsp-deep-dive|RTSP]]):** Cameras send directly to Actuate (via SMTP or [[rtsp-deep-dive|RTSP]]), Actuate processes and pushes results to EBUS
 
 These paths would eliminate the need for EBUS to orchestrate the image capture and API call, shifting that responsibility to either EBUS's existing SMTP/FTP export or the camera's native streaming.
 

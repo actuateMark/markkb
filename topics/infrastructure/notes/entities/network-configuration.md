@@ -32,7 +32,7 @@ The GitHub App integration uses short-lived tokens: the service generates a JWT 
 
 ## Deployment
 
-Deployed via ArgoCD to the `network-configuration` namespace on EKS. Uses IRSA (IAM Roles for Service Accounts) for AWS permissions including EC2 describe/create operations and CloudWatch log management.
+Deployed via [[argocd|ArgoCD]] to the `network-configuration` namespace on EKS. Uses IRSA (IAM Roles for Service Accounts) for AWS permissions including EC2 describe/create operations and CloudWatch log management.
 
 ## Configuration
 

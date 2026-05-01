@@ -10,20 +10,20 @@ author: kb-bot
 
 # AlarmWatch / Crosbies (NZ)
 
-AlarmWatch (also referred to as Crosbies) is an Actuate customer based in New Zealand. They are the primary driver behind two [[external-api]] workstreams: **schedule management** and **arm/disarm per site**.
+AlarmWatch (also referred to as Crosbies) is an Actuate customer based in New Zealand. They are the primary driver behind two [[external-api/_summary|External API Initiative]] workstreams: **schedule management** and **arm/disarm per site**.
 
 ## Schedule Management (ENG-123)
 
-AlarmWatch needs to programmatically manage detection schedules through an API rather than through the Actuate UI. This workstream is the most progressed of the [[external-api]] initiative.
+AlarmWatch needs to programmatically manage detection schedules through an API rather than through the Actuate UI. This workstream is the most progressed of the [[external-api/_summary|External API Initiative]] initiative.
 
 **Key milestones:**
 - **PR #4 merged** (April 10, 2026) -- DynamoDB mapping layer for schedule data
 - **Kubernetes deployment merged** (k8s #328)
 - Currently in test phase
 
-**Assignee:** Vinicius Flores
+**Assignee:** [[vinicius-flores|Vinicius Flores]]
 
-The implementation provides endpoints for managing schedules and flex-schedules, backed by the [[admin-api]]'s existing scheduling models (`schedule`, `schedule_location`, `calendar`, `calendar_event`, `flex_schedule`).
+The implementation provides endpoints for managing schedules and flex-schedules, backed by the [[admin-api/_summary|Actuate Admin API]]'s existing scheduling models (`schedule`, `schedule_location`, `calendar`, `calendar_event`, `flex_schedule`).
 
 **Open question:** Should the `/schedule` and `/flex-schedule` endpoints be restricted to AlarmWatch only, or made available to all external API consumers? This decision affects whether the endpoints are generic (reusable by future partners) or customer-specific.
 
@@ -31,7 +31,7 @@ The implementation provides endpoints for managing schedules and flex-schedules,
 
 AlarmWatch also needs the ability to arm and disarm detection on a per-site basis via API. This allows their monitoring operators to enable or disable Actuate AI detection for specific locations without logging into the Actuate platform.
 
-**Assignee:** Vinicius Flores (working in parallel with schedule management)
+**Assignee:** [[vinicius-flores|Vinicius Flores]] (working in parallel with schedule management)
 **Status:** To Do
 
 ## Architecture
@@ -42,7 +42,7 @@ Both AlarmWatch workstreams follow the standardized [[shared-auth-pattern]]:
 AlarmWatch -> AWS API Gateway -> Rust Lambda Authorizer -> K8s pods (Admin API endpoints)
 ```
 
-The endpoints are built on top of the [[admin-api]] (Django/DRF) but exposed externally through API Gateway with authentication handled by the [[rust-lambda-authorizer]] and DynamoDB key lookup.
+The endpoints are built on top of the [[admin-api/_summary|Actuate Admin API]] (Django/DRF) but exposed externally through API Gateway with authentication handled by the [[rust-lambda-authorizer]] and DynamoDB key lookup.
 
 ## Context
 

@@ -20,12 +20,12 @@ The **Autopatrol Server** is the core analysis backend for the Actuate AutoPatro
 - **Web Framework:** Flask (HTTP API) alongside a long-running SQS consumer
 - **Analysis Libraries:** scikit-learn, scikit-image, scipy, numpy, pandas, filterpy (Kalman filtering for SORT tracker), shapely (geometry/tag-zone overlaps), imageio-ffmpeg (video decoding)
 - **Graph Database:** Amazon Neptune via `gremlinpython` -- used for storing per-clip analysis results and querying historical camera data for forensic analysis
-- **AWS Services:** SQS (FIFO queue consumer), S3 (clip storage, result persistence), DynamoDB (timestamp/window-ID lookups), Secrets Manager
-- **Actuate Libraries:** `actuate-admin-api`, `actuate-daos`, `actuate-queue-consumer`, `actuate-integration-calls` (all from CodeArtifact, some pinned with `+autopatrol` dev tags)
+- **AWS Services:** SQS (FIFO [[queue-consumer|queue consumer]]), S3 (clip storage, result persistence), DynamoDB (timestamp/window-ID lookups), Secrets Manager
+- **[[actuate-libraries|Actuate Libraries]]:** `actuate-admin-api`, `actuate-daos`, `actuate-queue-consumer`, `actuate-integration-calls` (all from CodeArtifact, some pinned with `+autopatrol` dev tags)
 
 ## Deployment Model
 
-The service is containerized via Docker (Python 3.12-slim base, built with uv, ARM64 target). CI/CD is a GitHub Actions workflow on push to `main` that builds and pushes to ECR repository `autopatrol_service`, tagged with the pyproject version. The container runs `python3 -m server.app` as its entrypoint, which starts the SQS queue consumer (not the Flask dev server).
+The service is containerized via Docker (Python 3.12-slim base, built with uv, ARM64 target). CI/CD is a GitHub Actions workflow on push to `main` that builds and pushes to ECR repository `autopatrol_service`, tagged with the pyproject version. The container runs `python3 -m server.app` as its entrypoint, which starts the SQS [[queue-consumer|queue consumer]] (not the Flask dev server).
 
 The Docker image is deployed to ECS or EKS (ARM64 nodes). It pulls private packages from AWS CodeArtifact at build time via a `UV_INDEX` build arg.
 

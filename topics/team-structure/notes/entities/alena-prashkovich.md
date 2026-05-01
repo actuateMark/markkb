@@ -12,7 +12,7 @@ Alena Prashkovich is a data scientist at Actuate focused on VLM prompt engineeri
 
 ## VLM Prompt Engineering Phase III (AUTO-474)
 
-Alena leads Phase III of VLM (Vision-Language Model) prompt engineering under ticket AUTO-474, part of the [[autopatrol]] initiative. VLM prompt engineering is the process of crafting and refining the natural-language prompts sent to vision-language models (currently [[qwen3vl-aws]]) to classify alert frames. Effective prompts determine whether the model correctly identifies true threats versus false positives like animals, shadows, or moving vegetation.
+Alena leads Phase III of VLM (Vision-Language Model) prompt engineering under ticket AUTO-474, part of the [[autopatrol/_summary|AutoPatrol (H1.2)]] initiative. VLM prompt engineering is the process of crafting and refining the natural-language prompts sent to vision-language models (currently [[qwen3vl-aws]]) to classify alert frames. Effective prompts determine whether the model correctly identifies true threats versus false positives like animals, shadows, or moving vegetation.
 
 Phase III represents the maturation of this capability -- earlier phases established baseline prompts and evaluation methodology, while Phase III focuses on site-specific prompt tuning and edge-case handling. The prompts Alena develops feed into the [[vlm-fp-reduction]] pipeline, where VLM acts as a secondary filter after the primary object detection model. See [[vlm-integration]] for how VLM fits into the AutoPatrol architecture.
 
@@ -27,4 +27,4 @@ This work connects to the broader EU deployment effort and the [[shadow-test-pip
 - [[vlm-integration]] -- VLM's role in AutoPatrol
 - [[vlm-fp-reduction]] -- the false-positive reduction pipeline
 - [[shadow-test-pipeline]] -- evaluation framework used for UK screening
-- [[autopatrol]] -- parent initiative for Phase III work
+- [[autopatrol/_summary|AutoPatrol (H1.2)]] -- parent initiative for Phase III work

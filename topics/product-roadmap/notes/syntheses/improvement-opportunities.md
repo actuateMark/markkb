@@ -10,7 +10,7 @@ author: kb-bot
 
 # Improvement Opportunities
 
-30 actionable ideas sorted by impact/effort ratio, derived from KB synthesis notes, active risks, worklog sources, and cross-topic analysis.
+30 actionable ideas sorted by impact/effort ratio, derived from KB synthesis notes, [[active-risks|active risks]], worklog sources, and cross-topic analysis.
 
 ## Tier 1: Quick Wins (Days, High Impact)
 
@@ -93,7 +93,7 @@ Three independent auth systems with no unified access view. Document current sta
 ## Tier 4: Product & Process Improvements
 
 ### 16. Watchman Cost Model for Small Sites
-Model per-site economics for 4-30 camera sites. Validate/invalidate the Watchman market thesis.
+Model per-site economics for 4-30 camera sites. Validate/invalidate the [[watchman-repo|Watchman]] market thesis.
 - **Impact:** High (product) | **Effort:** Medium
 - **KB:** [[cost-architecture]], [[revenue-drivers]]
 
@@ -124,7 +124,7 @@ Run intruder + weapon + fire in single forward pass. Multiplicative cost savings
 - **Impact:** High (cost) | **Effort:** Large | **Jira:** AI-204
 
 ### 22. Classic-to-Modern Inference Client Migration
-Deprecate actuate-classic-inference-client. Audit 30+ consumers, prove equivalence, phased migration.
+Deprecate [[actuate-classic-inference-client]]. Audit 30+ consumers, prove equivalence, phased migration.
 - **Impact:** Medium (DX) | **Effort:** Medium
 - **KB:** [[inference-client-evolution]]
 
@@ -134,7 +134,7 @@ Semi-automated rollout with NR regression detection and one-command rollback.
 - **KB:** [[rollout-process]]
 
 ### 24. K8s Deployments Repo Split
-Separate Helm charts from ArgoCD manifests. Reduce blast radius, improve reusability.
+Separate Helm charts from [[argocd|ArgoCD]] manifests. Reduce blast radius, improve reusability.
 - **Impact:** Medium (DX) | **Effort:** Medium
 - **KB:** [[argocd-gitops-workflow]]
 
@@ -154,7 +154,7 @@ Centralize 30+ scattered admin jobs with Django-Q based executor. Creation endpo
 - **KB:** [[jira-reorg-proposal]]
 
 ### 28. GStreamer/FFmpeg Puller Variants
-Isolate suspected OpenCV memory leak. Potential decode speedup.
+Isolate suspected [[opencv-entity|OpenCV]] memory leak. Potential decode speedup.
 - **Impact:** Medium (reliability) | **Effort:** Medium
 - **KB:** [[memory-management]]
 
@@ -164,5 +164,5 @@ Lightweight tool for browsing/editing SES templates. Quick win for ops.
 - **KB:** [[ses-email-tooling-pitch]]
 
 ### 30. Watchman Self-Service WireGuard Provisioning
-Self-service tunnel setup for <10 min onboarding. Hard prerequisite for Watchman beta.
+Self-service tunnel setup for <10 min onboarding. Hard prerequisite for [[watchman-repo|Watchman]] beta.
 - **Impact:** Medium (product) | **Effort:** Medium | **Jira:** ENG-117, PROD-265/266

@@ -2,7 +2,7 @@
 title: "OpenEye Integration"
 type: summary
 topic: integrations/openeye
-tags: [integration, vms, openeye]
+tags: [integration, vms, openeye, vms-connector]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
@@ -27,12 +27,12 @@ Defined in [[actuate-config]] at `connector/openeye/openeye_config.py`. Extends 
 ### Puller
 
 No dedicated OpenEye puller class. Depending on the connectivity mode:
-- **Direct mode**: The [[vms-connector]] constructs an RTSP or HTTP URL from the customer config and uses the standard puller from [[actuate-pullers]].
+- **Direct mode**: The [[vms-connector]] constructs an [[rtsp-deep-dive|RTSP]] or HTTP URL from the customer config and uses the standard puller from [[actuate-pullers]].
 - **OWS mode**: The connector uses the OWS cloud API to obtain a streaming URL, which is then consumed by the standard URL/RTSP puller.
 
 ### Integration Calls
 
-There is no `actuate-integration-calls` module for OpenEye. Cloud API interactions for OWS mode are handled within the connector factory logic in [[vms-connector]].
+There is no `actuate-integration-calls` module for OpenEye. Cloud API interactions for OWS mode are handled within the [[connector-factory|connector factory]] logic in [[vms-connector]].
 
 ### Alarm Sender
 
@@ -42,7 +42,7 @@ No OpenEye-specific alarm sender. Alert delivery uses whichever monitoring sende
 
 Two authentication paths depending on connectivity mode:
 
-- **Direct mode**: HTTP basic auth or RTSP credentials using `username`/`password` against the on-premise NVR.
+- **Direct mode**: HTTP basic auth or [[rtsp-deep-dive|RTSP]] credentials using `username`/`password` against the on-premise NVR.
 - **OWS mode**: Cloud authentication using `ows_username`/`ows_password` against the OpenEye cloud API (`actuate.api.gp4f.com`). The `nvr_id` identifies which NVR/device to stream from.
 
 ## Key Config Fields
@@ -56,6 +56,6 @@ OpenEye is a video-source-only integration. There is no alert delivery back to t
 ## Relationship to Other Components
 
 - [[actuate-config]] -- OpeneyeConnectorConfig with dual-mode customer config
-- [[actuate-pullers]] -- standard RTSP or URL puller consumes the stream
-- [[vms-connector]] -- connector factory handles mode selection and URL construction
+- [[actuate-pullers]] -- standard [[rtsp-deep-dive|RTSP]] or URL puller consumes the stream
+- [[vms-connector]] -- [[connector-factory|connector factory]] handles mode selection and URL construction
 - No corresponding module in [[actuate-integration-calls]] or [[actuate-alarm-senders]]

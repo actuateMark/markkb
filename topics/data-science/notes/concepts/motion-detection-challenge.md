@@ -11,7 +11,7 @@ tags: [fdmd, motion-detection, clip-based, rtsp, stationary-filter]
 
 ## Overview
 
-The Frame Difference Motion Detector (FDMD) is a core component of the [[detection-pipeline]], responsible for identifying motion regions before frames are sent to YOLO inference. However, FDMD was architected for **continuous RTSP streams** where frames arrive at a steady cadence (e.g., 15-30 fps). A large portion of the camera fleet -- approximately **32,000 cameras** -- operates on clip-based connections (SMTP, AILink, Sentinel) where frames arrive in sporadic bursts separated by minutes or even hours. This mismatch is a significant source of missed detections and degraded alert quality.
+The Frame Difference Motion Detector (FDMD) is a core component of the [[detection-pipeline]], responsible for identifying motion regions before frames are sent to YOLO inference. However, FDMD was architected for **continuous [[rtsp-deep-dive|RTSP]] streams** where frames arrive at a steady cadence (e.g., 15-30 fps). A large portion of the camera fleet -- approximately **32,000 cameras** -- operates on clip-based connections (SMTP, AILink, [[sentinel-components|Sentinel]]) where frames arrive in sporadic bursts separated by minutes or even hours. This mismatch is a significant source of missed detections and degraded alert quality.
 
 ## How FDMD Works
 
@@ -20,7 +20,7 @@ FDMD computes pixel-level differences between consecutive frames to detect regio
 1. **Gating inference** -- only regions with detected motion are forwarded to YOLO, reducing GPU cost
 2. **Stationary filter input** -- the stationary filter in the post-processing stage uses motion polygons to suppress detections on static objects (parked cars, permanent fixtures)
 
-For RTSP streams, this works well: consecutive frames are temporally close, so genuine motion (a person walking) produces clear pixel differences while static backgrounds remain stable.
+For [[rtsp-deep-dive|RTSP]] streams, this works well: consecutive frames are temporally close, so genuine motion (a person walking) produces clear pixel differences while static backgrounds remain stable.
 
 ## The Clip-Based Problem
 
@@ -44,7 +44,7 @@ For clips containing only a single frame, there is no previous frame to diff aga
 
 ### Parameter Research
 
-Additional work is needed to tune FDMD thresholds and parameters specifically for clip-based scenarios. The current parameters were optimised for RTSP streams, and different decay rates, sensitivity thresholds, and blob merging strategies may be needed for the clip-based fleet.
+Additional work is needed to tune FDMD thresholds and parameters specifically for clip-based scenarios. The current parameters were optimised for [[rtsp-deep-dive|RTSP]] streams, and different decay rates, sensitivity thresholds, and blob merging strategies may be needed for the clip-based fleet.
 
 ## Impact
 

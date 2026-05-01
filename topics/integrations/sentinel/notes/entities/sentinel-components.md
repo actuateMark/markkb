@@ -22,7 +22,7 @@ The alert payload is a pipe-delimited string: `EventType=Actuate|Event={mapped_e
 
 ## Delivery Mechanism
 
-Alerts go to SQS FIFO queue `event_queue_sentinel_alarm.fifo`. The queue message includes the serialized recipient list, `custcam_id`, `s3_folder` (set to `window_id`), `start_time`, `attachment_frames` count, polygonal ignore zones (both label and motion), and the formatted `alert` string. A downstream consumer reads the queue and posts to the Sentinel server.
+Alerts go to SQS FIFO queue `event_queue_sentinel_alarm.fifo`. The queue message includes the serialized recipient list, `custcam_id`, `s3_folder` (set to `window_id`), `start_time`, `attachment_frames` count, polygonal [[ignore-zones|ignore zones]] (both label and motion), and the formatted `alert` string. A downstream consumer reads the queue and posts to the Sentinel server.
 
 ## Key Config Fields
 

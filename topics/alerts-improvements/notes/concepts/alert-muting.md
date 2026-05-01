@@ -8,7 +8,7 @@ tags: [alerts, muting, scheduling, permissions, stalled]
 
 # Alert Muting
 
-Alert muting is a planned feature within [[alerts-improvements]] that would allow operators to suppress alerts from specific cameras, zones, or alert types for defined time periods. Despite being a fundamental operational need, the feature is currently stalled with most implementation work unassigned.
+Alert muting is a planned feature within [[alerts-improvements/_summary|Alerts Improvements (H1.3)]] that would allow operators to suppress alerts from specific cameras, zones, or alert types for defined time periods. Despite being a fundamental operational need, the feature is currently stalled with most implementation work unassigned.
 
 ## Why Muting Matters
 
@@ -17,7 +17,7 @@ Without muting, operators face an all-or-nothing choice: receive every alert or 
 - **Scheduled maintenance** -- technicians working on or near cameras generate expected activity
 - **Known events** -- a delivery window, construction work, or a planned gathering
 - **Testing** -- deploying new cameras or adjusting detection settings produces expected false positives
-- **Nuisance suppression** -- a camera with a known false positive source that has not yet been fixed with ignore zones
+- **Nuisance suppression** -- a camera with a known false positive source that has not yet been fixed with [[ignore-zones|ignore zones]]
 
 Without structured muting, operators resort to workarounds: ignoring alerts (which trains them to ignore real ones), disabling cameras (which creates coverage gaps), or flooding support with complaints.
 
@@ -36,7 +36,7 @@ Enhanced user permissions to control who can mute alerts. This is critical in mu
 - Which alert severity levels can be muted (perhaps CRITICAL alerts cannot be muted without supervisor approval)
 
 ### Immix Integration (AIM-91)
-Receiving alarm schedule signals from Immix (assigned to Jessica Bae). This would allow muting to be synchronised with the monitoring center's schedule -- if Immix knows a site is in a maintenance window, that signal could automatically suppress alerts in Actuate's system.
+Receiving alarm schedule signals from Immix (assigned to [[jessica-bae|Jessica Bae]]). This would allow muting to be synchronised with the monitoring center's schedule -- if Immix knows a site is in a maintenance window, that signal could automatically suppress alerts in Actuate's system.
 
 ## Current Status: Stalled
 
@@ -47,11 +47,11 @@ The Alerts Improvements project has 29 open issues with 25 unassigned. Alert mut
 - AIM-6 (Mute Alerts configuration) -- To Do, unassigned
 
 **ED project:**
-- ED-12 (Alert Muting parent) -- In Progress, assigned to Jessica Bae
+- ED-12 (Alert Muting parent) -- In Progress, assigned to [[jessica-bae|Jessica Bae]]
 - ED-27, ED-28, ED-30, ED-31 (implementation subtasks) -- all unassigned
 
 The split tracking across AIM and ED projects, combined with the lack of assignees on implementation tickets, suggests this feature has been planned but not prioritised for active development. It is the least actively staffed H1.x initiative.
 
 ## Relationship to Watchman
 
-Alert muting becomes even more important in [[watchman]]'s context, where the [[multi-agent-architecture|Escalation Agent]] can trigger phone calls and SMS. A false-positive-driven phone call at 3 AM would be significantly more disruptive than a false positive email. Watchman's escalation tiers (CRITICAL with phone call, HIGH with SMS) make robust muting capabilities a prerequisite for production deployment.
+Alert muting becomes even more important in [[watchman/_summary|Actuate Watchman]]'s context, where the [[multi-agent-architecture|Escalation Agent]] can trigger phone calls and SMS. A false-positive-driven phone call at 3 AM would be significantly more disruptive than a false positive email. [[watchman-repo|Watchman]]'s escalation tiers (CRITICAL with phone call, HIGH with SMS) make robust muting capabilities a prerequisite for production deployment.

@@ -10,7 +10,7 @@ author: kb-bot
 
 # Alarmquip (AU)
 
-Alarmquip is an Actuate customer based in Australia. They are the driver behind the **image ingestion** workstream (ENG-124) within the [[external-api]] initiative.
+Alarmquip is an Actuate customer based in Australia. They are the driver behind the **image ingestion** workstream (ENG-124) within the [[external-api/_summary|External API Initiative]] initiative.
 
 ## Image Ingestion -- SMTP Alternative (ENG-124)
 
@@ -33,13 +33,13 @@ This is conceptually similar to the [[v5-api-design]] detection endpoint used by
 
 ## Architecture
 
-Like the other [[external-api]] workstreams, the image ingestion endpoint is expected to follow the [[shared-auth-pattern]]:
+Like the other [[external-api/_summary|External API Initiative]] workstreams, the image ingestion endpoint is expected to follow the [[shared-auth-pattern]]:
 
 ```
 Alarmquip -> AWS API Gateway -> Rust Lambda Authorizer -> K8s pods (endpoint)
 ```
 
-The endpoint would be built on the [[admin-api]] infrastructure since it involves customer and camera metadata resolution, not just raw inference.
+The endpoint would be built on the [[admin-api/_summary|Actuate Admin API]] infrastructure since it involves customer and camera metadata resolution, not just raw inference.
 
 ## Relationship to Other Workstreams
 
@@ -52,4 +52,4 @@ The endpoint would be built on the [[admin-api]] infrastructure since it involve
 
 ## Context
 
-Alarmquip is based in Australia, which means latency to US-based infrastructure and timezone differences are relevant considerations for the endpoint design. The [[inference-api]] has production deployments in both us-west-2 and eu-west-1, but an Asia-Pacific region is not currently listed.
+Alarmquip is based in Australia, which means latency to US-based infrastructure and timezone differences are relevant considerations for the endpoint design. The [[inference-api/_summary|Actuate Inference API]] has production deployments in both us-west-2 and eu-west-1, but an Asia-Pacific region is not currently listed.

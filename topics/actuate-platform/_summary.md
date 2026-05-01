@@ -46,8 +46,8 @@ User Interfaces
 | Service | Tech | Deployment | Purpose |
 |---------|------|------------|---------|
 | [[vms-connector]] | Python CLI | K8s Deployment/CronJob | Frame processing pipeline |
-| [[admin-api]] | Django 6.0 + DRF | ECS | Configuration, CRUD, integrations |
-| [[inference-api]] | FastAPI + Mangum | Lambda (container) | External partner detection API |
+| [[admin-api/_summary|Actuate Admin API]] | Django 6.0 + DRF | ECS | Configuration, CRUD, integrations |
+| [[inference-api/_summary|Actuate Inference API]] | FastAPI + Mangum | Lambda (container) | External partner detection API |
 | Model servers | Rust (YOLO) | K8s (ds-model-prod) | ML inference |
 | queue_consumer | Python | K8s | SQS alert delivery |
 | connector_deployer | Python | K8s | Connector lifecycle management |
@@ -85,5 +85,11 @@ User Interfaces
 ## Strategic Direction
 
 - **Current:** B2B2B via monitoring center partners (Immix, EMCS, Sentinel, etc.)
-- **Next:** [[watchman]] -- B2B direct to commercial businesses (AI-powered virtual security operator)
-- **Near-term:** [[external-api]] initiative exposing partner-facing APIs (EBUS, AlarmWatch, Alarmquip)
+- **Next:** [[watchman/_summary|Actuate Watchman]] -- B2B direct to commercial businesses (AI-powered virtual security operator)
+- **Near-term:** [[external-api/_summary|External API Initiative]] initiative exposing partner-facing APIs (EBUS, AlarmWatch, Alarmquip)
+
+## Related Topics
+
+- [[aws-cost/_summary]] — cost research and right-sizing work spun off 2026-04-27. The `cost-architecture` cross-topic synthesis moved there. [[sales-dashboard]] is cross-linked from there as the operational per-site cost-visibility surface.
+- [[infrastructure/_summary]] — EKS, K8s, VPA, deployment pipelines
+- [[fleet-architecture/_summary]] — A-E proposals for the next-gen connector

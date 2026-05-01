@@ -51,10 +51,10 @@ The 86-98% range reflects variation across different camera placements and line 
 
 ## Position in the Pipeline
 
-Within the [[detection-pipeline]], the LineCrossingObserver receives filtered YOLO detections (after stationary filter, confidence filter, ignore zones, IOU filter, and blacklist filter). It feeds these detections to the TrajectoryManager, evaluates trajectories against configured lines, and generates alerts when valid crossings are detected. Alerts follow the standard path: frames to S3, alert messages to SQS.
+Within the [[detection-pipeline]], the LineCrossingObserver receives filtered YOLO detections (after stationary filter, confidence filter, [[ignore-zones|ignore zones]], IOU filter, and blacklist filter). It feeds these detections to the TrajectoryManager, evaluates trajectories against configured lines, and generates alerts when valid crossings are detected. Alerts follow the standard path: frames to S3, alert messages to SQS.
 
 ## Related Notes
 
-- [[detection-pipeline]] -- the full pipeline architecture
+- [[detection-pipeline]] -- the full [[pipeline-architecture|pipeline architecture]]
 - [[botsort-tracking]] -- the alternative tracking approach used for loitering
 - [[motion-detection-challenge]] -- FDMD issues that can affect detection input quality

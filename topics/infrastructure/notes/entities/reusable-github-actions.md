@@ -22,7 +22,7 @@ Located in `.github/workflows/`:
 | Workflow | Purpose |
 |----------|---------|
 | `python-test.yml` | Standard Python test pipeline |
-| `k8s-deploy.yml` | Kubernetes deployment via ArgoCD |
+| `k8s-deploy.yml` | Kubernetes deployment via [[argocd|ArgoCD]] |
 | `build-lambda.yml` | Lambda function build and deploy |
 | `sonar.yml` | SonarQube code analysis |
 | `sonar-auto-remediation.yml` | Automated Sonar issue remediation |
@@ -42,8 +42,8 @@ Custom Kubernetes-based GitHub Actions runner images:
 A layered hierarchy of pre-built images that downstream services extend:
 
 - **`:latest`** -- Python 3.12 slim-bookworm + UV + AWS CLI v2 + common system deps. Used by connector-tools, terminator, robomladen.
-- **`:ffmpeg`** -- extends `:latest` with FFmpeg (static, multi-arch) and media libraries. Used by queue_consumer, frame_receiver_smtp.
-- **`:nginx`** -- extends `:ffmpeg` with Nginx, python3-opencv, nmap, libgeos. Used by actuate_admin, actuate_ailink, actuate_monitoring_api.
+- **`:ffmpeg`** -- extends `:latest` with [[ffmpeg-entity|FFmpeg]] (static, multi-arch) and media libraries. Used by queue_consumer, frame_receiver_smtp.
+- **`:nginx`** -- extends `:ffmpeg` with Nginx, python3-opencv, nmap, libgeos. Used by [[actuate_admin]], [[actuate-ailink|actuate_ailink]], [[actuate-monitoring-api|actuate_monitoring_api]].
 
 All images are pushed to ECR at `388576304176.dkr.ecr.us-west-2.amazonaws.com`.
 

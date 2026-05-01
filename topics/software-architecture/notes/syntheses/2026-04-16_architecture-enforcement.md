@@ -12,6 +12,8 @@ author: kb-bot
 
 How to encode architectural intent as executable tests so violations fail the build, not the review. Based on the "fitness function" concept from *Building Evolutionary Architectures* (Ford, Parsons, Kua) — adapted for Python/FastAPI/UV monorepo stacks.
 
+> **Sketch status (2026-04-22):** Scaffolded as the `software_arch_sketches.enforcement` module in `/home/mork/work/software-arch-sketches/`. Emits `data/violations.json` envelope. Real fitness-function logic (AST-based layer-import checks — e.g. `camera/` must not import from `sender/` in vms-connector) is the next step. Target input repo: `vms-connector` — has clear camera/pipeline/observer/sender layering with obvious violation targets. See [[2026-04-17_local-sketches-plan]].
+
 ---
 
 ## The Problem
@@ -266,5 +268,5 @@ When an architect test fails, the developer should:
 - [[2026-04-16_metrics-to-track]] — metrics these gates enforce
 - [[2026-04-16_tooling-landscape]] — tools referenced here
 - [[2026-04-16_code-health-dashboard]] — where gate results are visualized
-- [[engineering-process]] — development lifecycle where these gates fit
+- [[engineering-process/_summary|Engineering Process]] — development lifecycle where these gates fit
 - [[code-review-checklist]] — human review complements automated checks

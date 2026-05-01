@@ -10,7 +10,7 @@ author: kb-bot
 
 # Adpro Puller
 
-Rust workspace that pulls video streams from Adpro XO video transmitters and re-serves them as RTSP. The Adpro XO SDK is a proprietary C/C++ library; this project wraps it via Rust FFI bindings so the puller application itself is written in safe, idiomatic Rust.
+Rust workspace that pulls video streams from Adpro XO video transmitters and re-serves them as [[rtsp-deep-dive|RTSP]]. The Adpro XO SDK is a proprietary C/C++ library; this project wraps it via Rust FFI bindings so the puller application itself is written in safe, idiomatic Rust.
 
 Repository: `adpro_puller`
 
@@ -22,7 +22,7 @@ Repository: `adpro_puller`
 | `adpro_api` | binary | HTTP API for interacting with the Adpro SDK at runtime (handlers in `src/handler/`). |
 | `adpro_lib` | library | Streaming and control logic -- callbacks, camera management, connection lifecycle, and state tracking. |
 | `adpro_sdk` | library | Low-level FFI bindings to the C/C++ Adpro XO SDK, plus safe Rust wrappers and error types. Modules: `bindings`, `callbacks`, `cameras`, `errors`, `instances`, `sdk`, `types`. |
-| `actuate_rtsp_server` | library | GStreamer-based RTSP server that re-publishes the pulled streams. |
+| `actuate_rtsp_server` | library | GStreamer-based [[rtsp-deep-dive|RTSP]] server that re-publishes the pulled streams. |
 
 ## FFI Design
 
@@ -43,11 +43,11 @@ Release builds enable LTO and single codegen unit (`Cargo.toml` profile).
 - `ecr-push-puller` / `ecr-push-api` -- push release images to ECR.
 - `run-puller <deployment_id>` -- local Docker run with AWS credentials.
 
-Deployment is managed via ArgoCD (`argocd/application.yaml` and `argocd/deployments/`). Images are pushed to the `us-west-2` ECR registry.
+Deployment is managed via [[argocd|ArgoCD]] (`argocd/application.yaml` and `argocd/deployments/`). Images are pushed to the `us-west-2` ECR registry.
 
 ## Configuration
 
-`settings.json` specifies the Adpro server connection (IP, port, credentials) and per-camera channel mappings with RTSP base URLs. The puller reads a `DEPLOYMENT_ID` environment variable at runtime.
+`settings.json` specifies the Adpro server connection (IP, port, credentials) and per-camera channel mappings with [[rtsp-deep-dive|RTSP]] base URLs. The puller reads a `DEPLOYMENT_ID` environment variable at runtime.
 
 ## Development
 

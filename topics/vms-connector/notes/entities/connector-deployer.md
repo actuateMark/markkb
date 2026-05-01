@@ -10,7 +10,7 @@ author: kb-bot
 
 ## Overview
 
-The **Connector Deployer** is an internal platform service that manages the lifecycle of VMS connector deployments on Kubernetes (EKS). It exposes a FastAPI HTTP API that the Admin backend calls to start, stop, reboot, and delete connector pods, create Camera Health Monitoring (CHM) cronjobs, run one-off tasks, and launch connector-tools jobs. It is the control plane that translates Admin API deployment requests into Kubernetes resources.
+The **Connector Deployer** is an internal platform service that manages the lifecycle of [[vms-connector|VMS connector]] deployments on Kubernetes (EKS). It exposes a FastAPI HTTP API that the Admin backend calls to start, stop, reboot, and delete connector pods, create Camera Health Monitoring (CHM) cronjobs, run one-off tasks, and launch connector-tools jobs. It is the control plane that translates Admin API deployment requests into Kubernetes resources.
 
 **Repository:** `aegissystems/connector_deployer`
 

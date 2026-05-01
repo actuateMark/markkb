@@ -16,13 +16,13 @@ author: kb-bot
 - **Account:** 388576304176
 - **Primary:** us-west-2
 - **EU:** eu-west-1 (GDPR)
-- **Orchestration:** EKS clusters (managed via ArgoCD GitOps from aegissystems)
+- **Orchestration:** EKS clusters (managed via [[argocd|ArgoCD]] GitOps from aegissystems)
 
 ## Key Services
 
 | Service | AWS Resource | Purpose |
 |---------|-------------|---------|
-| VMS Connector | EKS (rearchitecture namespace) | Frame processing pipeline |
+| [[vms-connector|VMS Connector]] | EKS (rearchitecture namespace) | Frame processing pipeline |
 | Model Servers | EKS (ds-model-prod/dev) | YOLO inference |
 | Admin API | ECS (Docker + Nginx + Gunicorn) | Config & management |
 | Inference API | Lambda (container image) | External detection API |
@@ -33,7 +33,7 @@ author: kb-bot
 | DNS | Route 53 | Domain management |
 | Certs | ACM + cert-manager | TLS |
 | VPN | WireGuard | Customer camera connectivity |
-| Monitoring | New Relic, CloudWatch, Datadog | Observability |
+| Monitoring | [[new-relic|New Relic]], CloudWatch, Datadog | Observability |
 
 ## Security
 
@@ -91,5 +91,11 @@ See [[connector-library-deployment-lifecycle]] for the full deployment process a
 ## IaC Repos
 
 - `ds-terraform-eks-v2` -- EKS cluster, API Gateway, Terraform modules
-- `kubernetes-deployments` -- Helm charts, ArgoCD configs
+- `kubernetes-deployments` -- Helm charts, [[argocd|ArgoCD]] configs
 - `actuate-inference-api/terraform/` -- Lambda, API Gateway, DynamoDB, multi-region
+
+## Related Topics
+
+- [[aws-cost/_summary]] — cost research, investigations, and right-sizing work spun off 2026-04-27. The S3 Tier3 cost investigation, S3 storage-class breakdown, and `actuate-cost-analysis` entity moved there. Cost work attaches to infrastructure primitives but no longer lives here.
+- [[fleet-architecture/_summary]] — proposals informing future infrastructure direction
+- [[actuate-platform/_summary]] — overall platform architecture

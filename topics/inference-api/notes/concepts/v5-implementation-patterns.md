@@ -10,7 +10,7 @@ author: kb-bot
 
 # v5 Implementation Patterns Reference
 
-Concrete examples from the v5 project that illustrate general patterns documented in the [[engineering-process]] topic. Use this as a reference implementation when applying those patterns to other projects.
+Concrete examples from the v5 project that illustrate general patterns documented in the [[engineering-process/_summary|Engineering Process]] topic. Use this as a reference implementation when applying those patterns to other projects.
 
 ## File Paths
 

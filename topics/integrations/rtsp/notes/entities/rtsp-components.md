@@ -10,7 +10,7 @@ author: kb-bot
 
 # RTSP Integration Components
 
-The RTSP integration is the default and most common integration type in the Actuate platform. It serves as the fallback path for any VMS that exposes video over RTSP or HTTP streams. The `integration_type` value `rtsp` (and the alias `milestone_rtsp`) routes through this path. Adpro also uses this path since its Rust puller re-serves streams as local RTSP.
+The [[rtsp-deep-dive|RTSP]] integration is the default and most common integration type in the Actuate platform. It serves as the fallback path for any VMS that exposes video over [[rtsp-deep-dive|RTSP]] or HTTP streams. The `integration_type` value `rtsp` (and the alias `milestone_rtsp`) routes through this path. Adpro also uses this path since its Rust puller re-serves streams as local [[rtsp-deep-dive|RTSP]].
 
 ## Puller Variants
 
@@ -18,15 +18,15 @@ All URL-based pullers live in [[actuate-pullers]] under `actuate_pullers/url/`. 
 
 ### UrlFramePuller (OpenCV/cv2)
 
-The original puller (`url_puller.py`). Uses `cv2.VideoCapture` to connect and `cap.read()` to decode frames. Handles FPS measurement by grabbing initial frames and calculating native FPS. Contains retry logic with 60-second sleep on connection failure and URL fallback for H.264 codec parameters. Supports a `_submit_frame` batching mode when `highest_fps == 3` that collects frames within a second, then sub-samples them at the configured gap.
+The original puller (`url_puller.py`). Uses `cv2.VideoCapture` to connect and `cap.read()` to decode frames. Handles FPS measurement by grabbing initial frames and calculating native FPS. Contains retry logic with 60-second sleep on connection failure and URL fallback for [[h264-deep-dive|H.264]] codec parameters. Supports a `_submit_frame` batching mode when `highest_fps == 3` that collects frames within a second, then sub-samples them at the configured gap.
 
 ### AvUrlFramePuller (PyAV/FFmpeg)
 
-The modern replacement (`av_url_puller.py`). Uses PyAV (`av.open`) for stream decoding, giving direct access to PTS timestamps, codec metadata, and hardware acceleration. Supports GPU decoding via CUDA (NVDEC), VAAPI (Intel), VideoToolbox (macOS), and AMF (AMD) through configurable `hw_accel` settings. Contains `TimestampTracker` for robust PTS-to-UNIX conversion with discontinuity detection and buffer-burst drift correction. Includes a `connect_stream` method with `quick_probe` for fast failover detection after 3+ consecutive failures. Per-camera `BandwidthTracker` reports inbound bandwidth. Supports custom headers and connection options.
+The modern replacement (`av_url_puller.py`). Uses [[pyav-entity|PyAV]] (`av.open`) for stream decoding, giving direct access to PTS timestamps, codec metadata, and hardware acceleration. Supports GPU decoding via CUDA ([[hardware-accelerated-codecs|NVDEC]]), [[hardware-accelerated-codecs|VAAPI]] (Intel), [[hardware-accelerated-codecs|VideoToolbox]] (macOS), and AMF (AMD) through configurable `hw_accel` settings. Contains `TimestampTracker` for robust PTS-to-UNIX conversion with discontinuity detection and buffer-burst drift correction. Includes a `connect_stream` method with `quick_probe` for fast failover detection after 3+ consecutive failures. Per-camera `BandwidthTracker` reports inbound bandwidth. Supports custom headers and connection options.
 
 ### GstUrlFramePuller (GStreamer)
 
-A GStreamer-native puller (`gst_url_puller.py`) that delegates to `GStreamerInputPipeline`. Builds a GStreamer pipeline string: `rtspsrc ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! jpegenc ! appsink` for RTSP, or `souphttpsrc ! decodebin` for HTTP. Supports `videorate` element insertion for FPS downsampling via `camera.downsample`. Frames arrive through an `appsink` new-sample callback. This variant is used when GStreamer is preferred over PyAV for pipeline stability.
+A GStreamer-native puller (`gst_url_puller.py`) that delegates to `GStreamerInputPipeline`. Builds a [[gstreamer-entity|GStreamer]] pipeline string: `rtspsrc ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! jpegenc ! appsink` for [[rtsp-deep-dive|RTSP]], or `souphttpsrc ! decodebin` for HTTP. Supports `videorate` element insertion for FPS downsampling via `camera.downsample`. Frames arrive through an `appsink` new-sample callback. This variant is used when [[gstreamer-entity|GStreamer]] is preferred over [[pyav-entity|PyAV]] for pipeline stability.
 
 ### MotionBasedUrlFramePuller
 
@@ -34,7 +34,7 @@ Extends `UrlFramePuller` to support motion-gated capture (`url_puller_motion.py`
 
 ### MotionBasedAvUrlFramePuller
 
-The PyAV equivalent of the motion-based puller (`av_url_puller_motion.py`). Same queue-blocking pattern but uses `av.open` and PyAV frame decoding with PTS timestamp extraction.
+The [[pyav-entity|PyAV]] equivalent of the motion-based puller (`av_url_puller_motion.py`). Same queue-blocking pattern but uses `av.open` and [[pyav-entity|PyAV]] frame decoding with PTS timestamp extraction.
 
 ### OnOffMotionBasedUrlFramePuller
 

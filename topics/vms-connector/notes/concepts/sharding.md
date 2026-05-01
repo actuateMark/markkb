@@ -51,7 +51,7 @@ The fork model imposes strict rules documented in CLAUDE.md under "Fork-safety (
 
 When `ChunkedSiteManager.endrun()` receives SIGTERM:
 
-1. **Signal children first**: Sends SIGTERM to all child processes so they start their own `camera.endrun()` (closing detection windows, observer cleanup, inference pool shutdown) in parallel.
+1. **Signal children first**: Sends SIGTERM to all child processes so they start their own `camera.endrun()` (closing detection windows, observer cleanup, [[inference-pool|inference pool]] shutdown) in parallel.
 2. **Parent cleanup**: Concurrently sends `site_product_ended` events for all cameras via the event library.
 3. **Join with deadline**: Waits up to 30 seconds for children to complete. K8s `terminationGracePeriodSeconds` is 90s, so parent events (~5-10s) plus child cleanup (~5s per camera with parallel threads) fits within budget.
 4. **Logout**: Calls `logout()` on the first shard for any integration-specific session cleanup (e.g., Avigilon API logout).

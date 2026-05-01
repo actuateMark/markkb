@@ -20,7 +20,7 @@ Defined in [[actuate-alarm-senders]] at `immix/autopatrol_sender.py`. Extends `E
 
 ### AutopatrolWebSocketStreamPuller
 
-Defined in [[actuate-pullers]] at `socket/autopatrol_websocket_stream_puller.py`. Extends `AvUrlFramePuller`. Requests a WebSocket stream URL from the AutoPatrol API (`get_patrol_stream`), then connects over WebSocket to consume an fMP4 stream. The puller parses `ftyp`/`moov` init segments and `moof`/`mdat` fragments using PyAV, decodes frames, applies downsampling based on highest configured FPS, and submits them to the pipeline. Supports automatic reconnection with configurable retry count and sleep intervals.
+Defined in [[actuate-pullers]] at `socket/autopatrol_websocket_stream_puller.py`. Extends `AvUrlFramePuller`. Requests a WebSocket stream URL from the AutoPatrol API (`get_patrol_stream`), then connects over WebSocket to consume an fMP4 stream. The puller parses `ftyp`/`moov` init segments and `moof`/`mdat` fragments using [[pyav-entity|PyAV]], decodes frames, applies downsampling based on highest configured FPS, and submits them to the pipeline. Supports automatic reconnection with configurable retry count and sleep intervals.
 
 ### AutoPatrolAPI -- Integration Calls Module
 

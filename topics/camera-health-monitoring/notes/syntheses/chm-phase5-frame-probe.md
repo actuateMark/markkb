@@ -188,10 +188,10 @@ FrameProbe operations are lightweight relative to the existing blur/entropy calc
 
 ## Dependencies
 
-- **cv2 (OpenCV)** -- Already a dependency of [[actuate-blur]] and [[actuate-movement]].
+- **[[opencv-entity|cv2]] ([[opencv-entity|OpenCV]])** -- Already a dependency of [[actuate-blur]] and [[actuate-movement]].
 - **numpy** -- Already a core dependency.
-- **actuate-blur** -- `BlurHandler.detect_blur_fft_image()` for temporal consistency analysis.
-- **actuate-movement** -- `get_delta_noise()` for frozen frame secondary confirmation.
+- **[[actuate-blur]]** -- `BlurHandler.detect_blur_fft_image()` for temporal consistency analysis.
+- **[[actuate-movement]]** -- `get_delta_noise()` for frozen frame secondary confirmation.
 - **No new external dependencies required.**
 
 ## Effort Estimate

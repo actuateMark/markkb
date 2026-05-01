@@ -20,7 +20,7 @@ Vinicius is the primary developer on schedule-related external API endpoints, wi
 
 ## Technical Context
 
-The External API is built on [[inference-api]] (FastAPI + Mangum, deployed as Lambda containers). Vinicius's schedule endpoints interact with the [[admin-api]] (Django 6.0 + DRF on ECS) where schedule data is persisted, likely via internal service calls or shared database access.
+The External API is built on [[inference-api/_summary|Actuate Inference API]] (FastAPI + Mangum, deployed as Lambda containers). Vinicius's schedule endpoints interact with the [[admin-api/_summary|Actuate Admin API]] (Django 6.0 + DRF on ECS) where schedule data is persisted, likely via internal service calls or shared database access.
 
 The six workstreams of the External API initiative are: detection, scheduling, image ingestion, arm/disarm, camera management, and site management. Vinicius owns the scheduling and arm/disarm workstreams.
 
@@ -30,6 +30,6 @@ The External API initiative is critical to Actuate's partner integration strateg
 
 ## See Also
 
-- [[external-api]] -- the parent initiative
+- [[external-api/_summary|External API Initiative]] -- the parent initiative
 - [[data-flow-architecture]] -- where the external API fits in the overall system
 - [[mark-barbera]] -- EBUS v5 API work, a related external API effort

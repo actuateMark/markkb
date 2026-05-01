@@ -89,7 +89,7 @@ Blacklist locality is [[blacklist-filter-locality|already verified]] — camera-
 
 ## Enhancement opportunities
 
-- **Formalize filter state-dependency in metadata.** Each filter class could declare `is_stateless: bool` — a fitness function ([[software-architecture/notes/syntheses/2026-04-16_architecture-enforcement|Architecture Enforcement]]) could enforce it. Would make the B/D split mechanical.
+- **Formalize filter state-dependency in metadata.** Each filter class could declare `is_stateless: bool` — a fitness function ([[2026-04-16_architecture-enforcement|Architecture Enforcement]]) could enforce it. Would make the B/D split mechanical.
 - **Extract connector-factories into a runtime registry.** [[vms-connector/notes/concepts/connector-factory]] — today's `generate_site()` pattern bundles integration dispatch with deployment wiring. For C's universal image and E's smart puller, we want dispatch-only. Factor out.
 - **Inventory and deprecate dead libraries.** 41 packages includes some leaves with few callers. Pre-migration cleanup reduces churn surface.
 

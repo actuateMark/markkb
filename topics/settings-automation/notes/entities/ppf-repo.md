@@ -10,11 +10,11 @@ author: kb-bot
 
 # ppf (Pixels Per Foot)
 
-Experimental repository for determining **pixels per foot** throughout an image using depth estimation. The project name internally is `actuate-depth`. It explores multiple approaches to depth-aware spatial calibration -- mapping pixel distances in camera frames to real-world measurements.
+Experimental repository for determining **[[pixels-per-foot|pixels per foot]]** throughout an image using depth estimation. The project name internally is `actuate-depth`. It explores multiple approaches to depth-aware spatial calibration -- mapping pixel distances in camera frames to real-world measurements.
 
 ## Purpose
 
-Pixels-per-foot (PPF) is a critical parameter for Actuate's detection pipeline. Knowing the physical scale at different points in an image allows the system to filter detections by real-world size, set appropriate sensitivity thresholds, and reduce false positives. Currently PPF values are configured manually per camera; this repo explores automated approaches using monocular depth estimation.
+Pixels-per-foot (PPF) is a critical parameter for Actuate's [[detection-pipeline|detection pipeline]]. Knowing the physical scale at different points in an image allows the system to filter detections by real-world size, set appropriate sensitivity thresholds, and reduce false positives. Currently PPF values are configured manually per camera; this repo explores automated approaches using monocular depth estimation.
 
 ## Repository Contents
 

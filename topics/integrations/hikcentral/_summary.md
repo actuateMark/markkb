@@ -10,13 +10,13 @@ author: kb-bot
 
 # HikCentral Integration
 
-HikCentral is Hikvision's centralized video management platform for managing IP cameras, NVRs, and security events at scale. Actuate integrates with HikCentral both as a video source (via its RTSP streams) and as an alert destination, pushing AI-generated events back into HikCentral's event system through the Artemis OpenAPI.
+[[hikcentral-components|HikCentral]] is Hikvision's centralized video management platform for managing IP cameras, NVRs, and security events at scale. Actuate integrates with HikCentral both as a video source (via its [[rtsp-deep-dive|RTSP]] streams) and as an alert destination, pushing AI-generated events back into HikCentral's event system through the Artemis OpenAPI.
 
 ## Components
 
 ### HikcentralAlertSender
 
-Defined in [[actuate-alarm-senders]] at `hikcentral/hikcentral_alert_sender.py`. Extends `EventListenerAlertSender`. On initialization it calls `configure_triggers()` to ensure generic event rules exist in HikCentral. When `send()` fires, it maps Actuate detection labels to HikCentral event names (e.g., "intruder" becomes "Intruder", "fire"/"smoke" becomes "Fire", "gun"/"pistol" becomes "Gun") and sends the alert to the `event_queue_hikcentral_alarm.fifo` SQS FIFO queue with the recipient's server IP, port, secret, app key, and alert port.
+Defined in [[actuate-alarm-senders]] at `hikcentral/hikcentral_alert_sender.py`. Extends `EventListenerAlertSender`. On initialization it calls `configure_triggers()` to ensure generic event rules exist in [[hikcentral-components|HikCentral]]. When `send()` fires, it maps Actuate detection labels to HikCentral event names (e.g., "intruder" becomes "Intruder", "fire"/"smoke" becomes "Fire", "gun"/"pistol" becomes "Gun") and sends the alert to the `event_queue_hikcentral_alarm.fifo` SQS FIFO queue with the recipient's server IP, port, secret, app key, and alert port.
 
 ### Integration Calls -- hikcentral_calls
 
@@ -36,7 +36,7 @@ Defined in [[actuate-config]] at `connector/hikcentral/hikcentral_config.py`. Ex
 
 ### Puller
 
-No dedicated HikCentral puller. HikCentral exposes RTSP streams, which are consumed by the standard RTSP puller in [[actuate-pullers]].
+No dedicated HikCentral puller. HikCentral exposes [[rtsp-deep-dive|RTSP]] streams, which are consumed by the standard RTSP puller in [[actuate-pullers]].
 
 ## Auth Method
 
@@ -44,7 +44,7 @@ No dedicated HikCentral puller. HikCentral exposes RTSP streams, which are consu
 
 ## Alert Delivery
 
-Alerts go through the **SQS FIFO queue** pattern (`event_queue_hikcentral_alarm.fifo`). The sender writes alert metadata to the queue; a downstream consumer reads messages and posts the events to HikCentral via the signed Artemis API.
+Alerts go through the **SQS FIFO queue** pattern (`event_queue_hikcentral_alarm.fifo`). The sender writes alert metadata to the queue; a downstream consumer reads messages and posts the events to [[hikcentral-components|HikCentral]] via the signed Artemis API.
 
 ## Key Config Fields
 
@@ -55,5 +55,5 @@ Alerts go through the **SQS FIFO queue** pattern (`event_queue_hikcentral_alarm.
 - [[actuate-alarm-senders]] -- HikcentralAlertSender
 - [[actuate-integration-calls]] -- hikcentral_calls (HMAC signing, motion subscription, trigger configuration)
 - [[actuate-config]] -- HikcentralConnectorConfig with customer/camera/deployment config
-- [[actuate-pullers]] -- standard RTSP puller for video ingestion
+- [[actuate-pullers]] -- standard [[rtsp-deep-dive|RTSP]] puller for video ingestion
 - [[vms-connector]] -- initializes the sender and configures triggers on startup

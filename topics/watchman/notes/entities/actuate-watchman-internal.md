@@ -10,7 +10,7 @@ author: kb-bot
 
 # actuate-watchman-internal
 
-The internal-only variant of the Watchman line crossing detection pipeline, restricted to Actuate employees. It shares the same core architecture as [[actuate-watchman-repo|actuate-watchman]] but serves as the working development repository where internal features, experiments, and tooling live before they are promoted to the customer-facing distribution.
+The internal-only variant of the [[watchman-repo|Watchman]] [[line-crossing-detection|line crossing detection]] pipeline, restricted to Actuate employees. It shares the same core architecture as [[actuate-watchman-repo|actuate-watchman]] but serves as the working development repository where internal features, experiments, and tooling live before they are promoted to the customer-facing distribution.
 
 **Repo:** `aegissystems/actuate-watchman-internal` (GitHub, private)
 **Description:** Internal Actuate version of watchman (employees only)
@@ -23,7 +23,7 @@ Identical three-stage architecture to the public repo:
 
 1. **Motion Detection (FDMD)** -- frame differencing to identify active frames; additional detectors (Simple, Motion Filter, SOF) available.
 2. **Object Detection (YOLO/OpenVINO)** -- person detection with PyTorch and OpenVINO backends, INT8 quantization for edge deployments.
-3. **Line Crossing Detection** -- object tracking with crossing-line counting against user-defined boundaries.
+3. **[[line-crossing-detection|Line Crossing Detection]]** -- object tracking with crossing-line counting against user-defined boundaries.
 
 ## Feature Set
 
@@ -36,4 +36,4 @@ Installed via `pip install -e .` (with optional `[openvino]` extra). The entry p
 ## Relationship to Other Repos
 
 - **[[actuate-watchman-repo|actuate-watchman]]** -- the customer-distributable counterpart. Changes validated internally here are expected to flow outward to the public repo.
-- **[[kubernetes-deployments]]** -- Watchman is an on-premise deployment, so it is not managed through the standard ArgoCD GitOps pipeline. Distribution is handled separately for edge hardware.
+- **[[kubernetes-deployments]]** -- [[watchman-repo|Watchman]] is an on-premise deployment, so it is not managed through the standard [[argocd|ArgoCD]] GitOps pipeline. Distribution is handled separately for edge hardware.

@@ -10,7 +10,7 @@ author: kb-bot
 
 # architecture-decision-records
 
-A centralized repository for Architecture Decision Records (ADRs) that captures cross-cutting technical and architectural decisions affecting multiple Actuate repos or workstreams. Designed to be referenced by both human engineers and AI agents during development.
+A centralized repository for [[adr-writing-guide|Architecture Decision Records (ADRs)]] that captures cross-cutting technical and architectural decisions affecting multiple Actuate repos or workstreams. Designed to be referenced by both human engineers and AI agents during development.
 
 **Repo:** `aegissystems/architecture-decision-records` (GitHub, private)
 **Description:** Centralized ADR repo for AI agents and developers

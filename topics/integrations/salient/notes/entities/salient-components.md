@@ -2,7 +2,7 @@
 title: "Salient Integration Components"
 type: entity
 topic: integrations/salient
-tags: [integration, salient, components]
+tags: [integration, salient, components, vms-connector]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
@@ -47,7 +47,7 @@ Extends `CameraConfig` with:
 - `camera_id` -- the Salient camera identifier.
 - Optional `width`, `height`, and `quality` fields.
 
-The `server_address` attribute on each camera is what enables multi-server support. When constructing RTSP URLs at runtime, each camera uses its own server address rather than a single global server IP.
+The `server_address` attribute on each camera is what enables multi-server support. When constructing [[rtsp-deep-dive|RTSP]] URLs at runtime, each camera uses its own server address rather than a single global server IP.
 
 ### SalientCameraStream, SalientModel, SalientFeatureDeployment
 
@@ -55,11 +55,11 @@ Standard pass-through subclasses with no additional fields.
 
 ## Puller
 
-Salient does not have a dedicated puller in [[actuate-pullers]]. Camera streams are consumed via the standard URL-based pullers (`AvUrlFramePuller` or `UrlFramePuller`), with RTSP URLs constructed from the per-camera `server_address` and `camera_id`.
+Salient does not have a dedicated puller in [[actuate-pullers]]. Camera streams are consumed via the standard URL-based pullers (`AvUrlFramePuller` or `UrlFramePuller`), with [[rtsp-deep-dive|RTSP]] URLs constructed from the per-camera `server_address` and `camera_id`.
 
 ## Integration Calls
 
-There is **no** dedicated `actuate-integration-calls` module for Salient. The VMS interaction (RTSP URL construction from server address + camera ID) is straightforward enough to be handled in the connector factory.
+There is **no** dedicated `actuate-integration-calls` module for Salient. The VMS interaction ([[rtsp-deep-dive|RTSP]] URL construction from server address + camera ID) is straightforward enough to be handled in the [[connector-factory|connector factory]].
 
 ## Factory Routing
 
@@ -70,4 +70,4 @@ In [[vms-connector]] `factory.py`, `integration_type == "salient"` routes to `Sa
 - **Multi-server structure** -- the settings JSON uses a `servers[]` array instead of a flat `cameras[]` array. This is unique among connector configs.
 - **Server-per-camera association** -- each `SalientCamera` carries its own `server_address`, allowing a single site deployment to span multiple physical Salient servers.
 - **No motion support** -- `use_motion` is always `False`, so Salient always uses continuous-pull mode.
-- **Customer-level credentials** -- unlike RTSP (per-camera auth) the username/password are on the customer config, shared across all servers. Each server is accessed with the same credentials.
+- **Customer-level credentials** -- unlike [[rtsp-deep-dive|RTSP]] (per-camera auth) the username/password are on the customer config, shared across all servers. Each server is accessed with the same credentials.

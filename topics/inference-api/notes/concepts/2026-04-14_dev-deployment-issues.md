@@ -14,7 +14,7 @@ Two issues prevented the v5 dev deployment from working after merge.
 
 ## Issue 1: DynamoDB `roles` Field Type
 
-**Symptom:** Rust Lambda authorizer returns `{"errorType":"Unauthorized"}` with `FunctionError: "Unhandled"`. API Gateway returns 500 to client.
+**Symptom:** [[rust-lambda-authorizer|Rust Lambda authorizer]] returns `{"errorType":"Unauthorized"}` with `FunctionError: "Unhandled"`. API Gateway returns 500 to client.
 
 **Root cause:** The Rust authorizer's `DynamoDBItem` struct expects `roles: HashSet<String>` which maps to DynamoDB's `SS` (String Set) type. The API key record had `roles` stored as `S` (plain String) — `"full_access"` instead of `["full_access"]`.
 

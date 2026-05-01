@@ -45,8 +45,8 @@ These integrations rely on the generic [[camera-health-monitoring/_summary|CHM]]
 | [[luxriot-components\|Luxriot]] | Embedded-credential HTTP URLs. No integration-calls module. |
 | [[video-insight-components\|Video Insight]] | Token-based REST API exists (`/api/v1/`) but no integration-calls module built. Custom site manager suggests health data could be extracted. |
 | [[openeye-components\|OpenEye]] | OWS cloud API exists (`actuate.api.gp4f.com`) but no integration-calls module built. |
-| [[kvs-components\|KVS]] | AWS-native; KVS API provides stream health metrics (via CloudWatch) but no CHM integration. |
-| [[adpro-components\|Adpro]] | Rust binary re-serves as RTSP. No Python-side API access to Adpro hardware. |
+| [[kvs-components\|KVS]] | AWS-native; [[kvs-components|KVS]] API provides stream health metrics (via CloudWatch) but no CHM integration. |
+| [[adpro-components\|Adpro]] | Rust binary re-serves as [[rtsp-deep-dive|RTSP]]. No Python-side API access to Adpro hardware. |
 
 ### Tier 4: Alarm-Sender-Only Integrations (Not Applicable)
 
@@ -68,7 +68,7 @@ These integrations are outbound alert senders, not video sources. CHM diagnostic
 ## Priority Recommendations
 
 1. **Avigilon** -- Highest ROI: stubs already exist, ACC REST API is accessible, just needs implementation.
-2. **HikCentral** -- Auth pattern established, API is rich, growing customer base.
+2. **[[hikcentral-components|HikCentral]]** -- Auth pattern established, API is rich, growing customer base.
 3. **Eagle Eye** -- Cloud API makes diagnostics reliable (no VPN/firewall issues), v3 API is comprehensive.
 4. **Milestone** -- Recording status and camera health queries would complement existing server checks.
-5. **Video Insight / OpenEye** -- Both have REST APIs that could be wrapped in integration-calls modules.
+5. **[[video-insight-components|Video Insight]] / OpenEye** -- Both have REST APIs that could be wrapped in integration-calls modules.

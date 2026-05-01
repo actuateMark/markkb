@@ -18,7 +18,7 @@ The `PatriotAlertSender` class in [[actuate-alarm-senders]] delivers detection a
 
 ## Alert Format
 
-The alert payload for each recipient includes a Patriot-specific `alert` dict with fields: `media` (a `url:` prefixed link to the Actuate alert viewer), `clientNo` (Patriot client number), `rawData` (human-readable text: "ACTUATE ALERT: {camera} at {site} possible {labels} at {time}"), `typeNo` (Patriot type number, defaults to 100), and `zoneUser` (Patriot zone number). The `label_to_event()` method exists with the same label mapping as Sentinel (postal vehicles, fire, gun, intruder, loitering, etc.) but the event name is not included in the queue payload -- Patriot uses `typeNo` and `zoneUser` instead.
+The alert payload for each recipient includes a Patriot-specific `alert` dict with fields: `media` (a `url:` prefixed link to the Actuate alert viewer), `clientNo` (Patriot client number), `rawData` (human-readable text: "ACTUATE ALERT: {camera} at {site} possible {labels} at {time}"), `typeNo` (Patriot type number, defaults to 100), and `zoneUser` (Patriot zone number). The `label_to_event()` method exists with the same label mapping as [[sentinel-components|Sentinel]] (postal vehicles, fire, gun, intruder, loitering, etc.) but the event name is not included in the queue payload -- Patriot uses `typeNo` and `zoneUser` instead.
 
 ## Delivery Mechanism
 

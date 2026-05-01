@@ -87,7 +87,7 @@ STALE_KUBEFWD=$(pgrep -f "kubefwd svc -n $NAMESPACE" || true)
 [ -n "$STALE_KUBEFWD" ] && sudo kill $STALE_KUBEFWD 2>/dev/null
 ```
 
-This prevents "address already in use" errors that block the dev environment from starting.
+This prevents "address already in use" errors that block the [[dev-environment|dev environment]] from starting.
 
 ## Reference Implementation
 

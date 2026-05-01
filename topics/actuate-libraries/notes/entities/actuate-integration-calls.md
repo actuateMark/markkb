@@ -20,13 +20,13 @@ This library provides the low-level HTTP/SOAP/socket integration layer that Actu
 
 | Module | External System | Auth Method | Key Class/Functions |
 |---|---|---|---|
-| `ajax/` | Ajax security systems | API key + session token (username/password hash login) | `AjaxCalls` |
+| `ajax/` | [[ajax-components|Ajax]] security systems | API key + session token (username/password hash login) | `AjaxCalls` |
 | `autopatrol/` | AutoPatrol (Immix Connect) virtual patrol API | Subscription key (`Ocp-Apim-Subscription-Key`) | `AutoPatrolAPI` |
 | `avigilon/` | Avigilon NVR | Pre-existing session key | `camera_exists_avigilon()` |
 | `digital_watchdog/` | Digital Watchdog / Nx Witness NVR | Digest/Basic/OAuth2 cascade | `login()`, `get_url()`, `camera_exists_dw()`, `increase_connection_count()` |
 | `eagle_eye/` | Eagle Eye Networks cloud VMS | OAuth2 (v3), API key (v2), Camera Manager OAuth2 | `get_token()`, `get_camera_list()`, `get_url_v3()`, `camera_exists_v3()` |
 | `exacq/` | Exacq (Illustra) NVR | Session ID via GET/POST login | `get_session_id()`, `get_stream_url()` |
-| `hikcentral/` | HikCentral VMS | HMAC-SHA256 signature | `subscribe_to_motion()`, `send_request()` |
+| `hikcentral/` | [[hikcentral-components|HikCentral]] VMS | HMAC-SHA256 signature | `subscribe_to_motion()`, `send_request()` |
 | `lisa/` | LISA alarm receiver (Leitstellensoftware) | Optional bearer token | `LisaClient` |
 | `milestone/` | Milestone XProtect VMS | SOAP Basic Auth with token refresh | `MilestoneService` |
 
@@ -40,7 +40,7 @@ This library provides the low-level HTTP/SOAP/socket integration layer that Actu
 
 **Camera existence checks** (`camera_exists_avigilon`, `camera_exists_dw`, `camera_exists_v3`) -- False-negative-safe verification functions that return `True` on any error to avoid accidentally disabling cameras.
 
-**Stream URL construction** -- Multiple modules build RTSP or HTTP stream URLs: Digital Watchdog (direct or proxied via Nx Cloud relay), Eagle Eye (feeds API v3, media streams v2), Exacq (HTTP MJPEG or RTSP depending on format type).
+**Stream URL construction** -- Multiple modules build [[rtsp-deep-dive|RTSP]] or HTTP stream URLs: Digital Watchdog (direct or proxied via Nx Cloud relay), Eagle Eye (feeds API v3, media streams v2), Exacq (HTTP [[mjpeg-and-still-image-formats|MJPEG]] or [[rtsp-deep-dive|RTSP]] depending on format type).
 
 ## Public API
 
@@ -50,7 +50,7 @@ Most modules expose module-level functions rather than classes. Notable exceptio
 
 - `requests` -- HTTP client for all REST API calls
 - `lxml` -- XML parsing (Milestone configuration)
-- `actuate-admin-api` -- `AdminApi` for named configuration retrieval (Ajax)
+- `actuate-admin-api` -- `AdminApi` for named configuration retrieval ([[ajax-components|Ajax]])
 - Runtime dependencies on `actuate-config`, `actuate-daos`, `actuate-secrets`, `actuate-healthmonitoring`, `actuate-threadpool` (Milestone)
 
 ## Consumers

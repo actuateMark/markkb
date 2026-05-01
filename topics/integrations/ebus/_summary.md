@@ -14,7 +14,7 @@ author: kb-bot
 
 **EBUS** is a video management system (VMS) platform built by **Accellence Technologies** (Germany). Used by security monitoring centers to manage camera feeds, display alarms, and review video evidence. EBUS has an **AlarmReceiverVCA** component for displaying VCA results.
 
-EBUS is the **first consumer** of the [[external-api]] v5 detection API.
+EBUS is the **first consumer** of the [[external-api/_summary|External API Initiative]] v5 detection API.
 
 ## Phase 1: API Integration (Current)
 

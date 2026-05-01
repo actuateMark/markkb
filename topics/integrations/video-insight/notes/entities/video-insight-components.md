@@ -2,7 +2,7 @@
 title: "Video Insight Integration Components"
 type: entity
 topic: integrations/video-insight
-tags: [integration, video-insight, components]
+tags: [integration, video-insight, components, vms-connector]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
@@ -10,7 +10,7 @@ author: kb-bot
 
 # Video Insight Integration Components
 
-Video Insight (now part of Panasonic i-PRO) is a VMS platform. The Actuate integration connects to Video Insight servers via a REST API for camera discovery and token management, then pulls video streams over RTSP/HTTP. Video Insight has its own site manager subclass for analytics, distinguishing it from generic RTSP integrations.
+Video Insight (now part of Panasonic i-PRO) is a VMS platform. The Actuate integration connects to Video Insight servers via a REST API for camera discovery and token management, then pulls video streams over [[rtsp-deep-dive|RTSP]]/HTTP. Video Insight has its own site manager subclass for analytics, distinguishing it from generic [[rtsp-deep-dive|RTSP]] integrations.
 
 ## Config Classes
 
@@ -52,7 +52,7 @@ Video Insight does not have a dedicated puller in [[actuate-pullers]]. Once stre
 
 ## Integration Calls
 
-There is **no** dedicated `actuate-integration-calls` module for Video Insight. API interaction for camera discovery and token management is handled in the connector factory.
+There is **no** dedicated `actuate-integration-calls` module for Video Insight. API interaction for camera discovery and token management is handled in the [[connector-factory|connector factory]].
 
 ## Site Manager
 
@@ -64,6 +64,6 @@ In [[vms-connector]] `factory.py`, `integration_type == "video_insight"` routes 
 
 ## Key Architectural Notes
 
-- **Token-based auth** -- unlike Luxriot (embedded credentials) or RTSP (per-camera credentials), Video Insight authenticates via a runtime token obtained from the API.
+- **Token-based auth** -- unlike Luxriot (embedded credentials) or [[rtsp-deep-dive|RTSP]] (per-camera credentials), Video Insight authenticates via a runtime token obtained from the API.
 - **Per-camera FPS** -- the explicit `fps` field per camera is unique among connector configs and allows overriding the native stream rate.
-- **Custom site manager** -- one of the few integrations with its own `AnalyticsSiteManager` subclass, alongside Milestone, Exacq, Eagle Eye, Avigilon, and HikCentral.
+- **Custom site manager** -- one of the few integrations with its own `AnalyticsSiteManager` subclass, alongside Milestone, Exacq, Eagle Eye, Avigilon, and [[hikcentral-components|HikCentral]].

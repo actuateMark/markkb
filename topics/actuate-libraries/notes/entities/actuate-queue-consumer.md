@@ -10,7 +10,7 @@ author: kb-bot
 
 ## Purpose
 
-actuate-queue-consumer (v1.0.0) provides a base class for SQS queue consumer workers. It handles the polling loop, message processing, graceful shutdown, and error recovery so that concrete consumers only need to implement the `action(message)` method.
+actuate-queue-consumer (v1.0.0) provides a base class for SQS [[queue-consumer|queue consumer]] workers. It handles the polling loop, message processing, graceful shutdown, and error recovery so that concrete consumers only need to implement the `action(message)` method.
 
 ## Key Class: Consumer
 

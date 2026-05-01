@@ -10,7 +10,7 @@ author: kb-bot
 
 # connector-pipeline-expert
 
-Read-only domain expert for the VMS connector and the 41-package actuate-libraries monorepo. Answers "where does X happen" without pulling a large codebase into the parent context.
+Read-only domain expert for the [[vms-connector|VMS connector]] and the 41-package actuate-libraries monorepo. Answers "where does X happen" without pulling a large codebase into the parent context.
 
 **File:** `/home/mork/.claude/agents/connector-pipeline-expert.md`
 **Model:** opus (deep reasoning over a large codebase)
@@ -43,10 +43,10 @@ Anything outside → agent declines.
 
 - Chain-of-responsibility pipeline (default / gauntlet / local / healthcheck)
 - Pre → Inference (AsyncInferencePool, AIMD) → Post → Observers
-- Post-processors: Stationary, IOU, Ignore Zones, Confidence, Blacklist, Sliding Window, Confirmation, Alerting
+- Post-processors: Stationary, IOU, [[ignore-zones|Ignore Zones]], Confidence, Blacklist, Sliding Window, Confirmation, Alerting
 - Observers: Intruder, Loiterer (BoTSORT), Line Crossing, Blacklist
 - Library clusters: core processing, camera/stream, alert delivery, persistence
-- Deployment: `rearchitecture` namespace, ArgoCD from `aegissystems`
+- Deployment: `rearchitecture` namespace, [[argocd|ArgoCD]] from `aegissystems`
 
 ## Reporting Format
 

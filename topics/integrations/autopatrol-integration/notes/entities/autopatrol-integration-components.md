@@ -2,7 +2,7 @@
 title: "AutoPatrol Integration Components"
 type: entity
 topic: integrations/autopatrol-integration
-tags: [integration, autopatrol-integration, alarm-sender, components]
+tags: [integration, autopatrol-integration, alarm-sender, components, autopatrol]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
@@ -30,7 +30,7 @@ A full REST client for the AutoPatrol platform with methods for contracts, sched
 
 ## AutopatrolWebSocketStreamPuller (actuate-pullers)
 
-Extends `AvUrlFramePuller` to consume video via WebSocket. Calls `autopatrol_api.get_patrol_stream()` to obtain a `deviceStreamUrl`, then connects via `websockets.connect()`. Parses fMP4 (fragmented MP4) by extracting `[ftyp][moov]` init segments and `[moof][mdat]` fragments, decodes frames with PyAV, applies downsampling based on the highest configured FPS, and pushes frames into the processing pipeline. Supports retry logic (3 attempts with configurable sleep), healthcheck mode (single frame), and connection duration control.
+Extends `AvUrlFramePuller` to consume video via WebSocket. Calls `autopatrol_api.get_patrol_stream()` to obtain a `deviceStreamUrl`, then connects via `websockets.connect()`. Parses fMP4 (fragmented MP4) by extracting `[ftyp][moov]` init segments and `[moof][mdat]` fragments, decodes frames with [[pyav-entity|PyAV]], applies downsampling based on the highest configured FPS, and pushes frames into the processing pipeline. Supports retry logic (3 attempts with configurable sleep), healthcheck mode (single frame), and connection duration control.
 
 ## Key Config Fields
 

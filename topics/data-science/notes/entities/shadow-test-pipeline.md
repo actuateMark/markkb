@@ -23,7 +23,7 @@ Modular shadow-testing infrastructure for comparing production vs development ob
 
 ## Project Structure
 
-The main orchestrator is `src/pipeline_runner.py`, with core logic in `src/core.py` (Athena fetch, camera processing, matching dispatch). Key submodules: `config/` (schema validation, camera blocklist), `classification/` (site type classification), `data/` (loader, frame fetcher, preprocessor, validator), `analysis/` (matching, timing, labeling, New Relic log analysis), and `visualization/` (plots).
+The main orchestrator is `src/pipeline_runner.py`, with core logic in `src/core.py` (Athena fetch, camera processing, matching dispatch). Key submodules: `config/` (schema validation, camera blocklist), `classification/` (site type classification), `data/` (loader, frame fetcher, preprocessor, validator), `analysis/` (matching, timing, labeling, [[new-relic|New Relic]] log analysis), and `visualization/` (plots).
 
 A separate `uk_eu_pipeline/` directory contains a numbered script pipeline (scripts `00` through `12`) for UK/EU camera evaluation, including its own labeling tools.
 
@@ -33,8 +33,8 @@ Controlled via `.env` file with required variables for date range, camera CSV, A
 
 ## Security
 
-Implements SQL injection prevention (strict regex validation), secrets management via environment variables, and no hardcoded credentials.
+Implements SQL injection prevention (strict regex validation), [[secrets-management|secrets management]] via environment variables, and no hardcoded credentials.
 
 ## Relationship to Other Repos
 
-Works closely with [[actuate-inference]] (runs inference on downloaded frames) and [[actuate-eval]] (evaluates detection quality). The shadow-label tools in this repo produce `labels.csv` files consumed by `shadow-eval` in the actuate-inference repo.
+Works closely with [[actuate-inference]] (runs inference on downloaded frames) and [[actuate-eval]] (evaluates detection quality). The shadow-label tools in this repo produce `labels.csv` files consumed by `shadow-eval` in the [[actuate-inference]] repo.

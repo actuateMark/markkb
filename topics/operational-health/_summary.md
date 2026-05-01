@@ -4,7 +4,7 @@ type: summary
 topic: operational-health
 tags: [operational-health, monitoring, automation, reports]
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-04-17
 author: kb-bot
 ---
 
@@ -15,7 +15,7 @@ Snapshots, reports, and running observations about the **current operational sta
 Distinct from sibling topics:
 - [[new-relic/_summary|New Relic]] — telemetry platform itself (accounts, query patterns, deep links)
 - [[fleet-architecture/_summary|Fleet Architecture]] — the architectural redesign effort
-- [[autopatrol/_summary|AutoPatrol]] — product workstreams + people
+- [[knowledgebase/topics/autopatrol/_summary|AutoPatrol]] — product workstreams + people
 - [[infrastructure/_summary|Infrastructure]] — AWS resources, IaC
 
 Operational-health is "how is it running right now / last night / last week" — the *running-state* view.
@@ -31,6 +31,10 @@ Automated reports currently landing here:
 | Job | Cadence | Produced by |
 |-----|---------|-------------|
 | `overnight-check` | Daily 08:03 `America/New_York` | [[automation-overnight-check]] |
+| `overnight-check-followup` | Ad-hoc (same day, ~11:00 EDT) | Manual KB update after verification |
+
+Recent incidents with follow-ups:
+- [[2026-04-17_overnight-check-followup|2026-04-17 Follow-Up]] — Evalink deviceId validation, EKS CPU pressure, VMS relay recovery
 
 ### `notes/concepts/`
 
@@ -51,4 +55,4 @@ Named operational artifacts (a specific dashboard, a standing incident, an ongoi
 - [[automation-overnight-check]] — the primary automated producer
 - [[agents-catalog]] — agents used by the automation
 - [[nr-connector-query-cookbook]] — NRQL templates the automation builds on
-- [[actuate-platform]] — overall architecture context
+- [[actuate-platform/_summary|Actuate Platform Overview]] — overall architecture context

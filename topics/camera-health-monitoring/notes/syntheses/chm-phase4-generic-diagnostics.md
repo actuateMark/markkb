@@ -12,7 +12,7 @@ author: kb-bot
 
 ## Problem Statement
 
-The `DiagnosticRunner.get_runner()` dispatch in `diagnostic_runner.py` maps only five integration types to concrete diagnostics classes: `rtsp` to [[rtsp-components|RTSPDiagnostics]], `digital_watchdog` to [[digital-watchdog-components|DWDiagnostics]], `avigilon` to [[avigilon-components|AvigilonDiagnostics]], `exacq` to [[exacq-components|ExacqDiagnostics]], and `milestone` to [[milestone-components|MilestoneDiagnostics]]. Every other integration type -- SMTP, AILink, Sentinel, Frontel, Yousix, Ajax, KVS, Luxriot, Salient, OpenEye, Video Insight, Orchid, HikCentral, Eagle Eye, Genetec, Adpro, and approximately 12 more -- falls through to `DummyDiagnostics`.
+The `DiagnosticRunner.get_runner()` dispatch in `diagnostic_runner.py` maps only five integration types to concrete diagnostics classes: `rtsp` to [[rtsp-components|RTSPDiagnostics]], `digital_watchdog` to [[digital-watchdog-components|DWDiagnostics]], `avigilon` to [[avigilon-components|AvigilonDiagnostics]], `exacq` to [[exacq-components|ExacqDiagnostics]], and `milestone` to [[milestone-components|MilestoneDiagnostics]]. Every other integration type -- SMTP, AILink, [[sentinel-components|Sentinel]], Frontel, Yousix, [[ajax-components|Ajax]], [[kvs-components|KVS]], Luxriot, Salient, OpenEye, [[video-insight-components|Video Insight]], Orchid, [[hikcentral-components|HikCentral]], Eagle Eye, Genetec, Adpro, and approximately 12 more -- falls through to `DummyDiagnostics`.
 
 `DummyDiagnostics` is a complete no-op. Every method (`connectivity_diagnostics`, `recording_diagnostics`, `stream_quality_diagnostics`, `motion_status_diagnostics`, `server_diagnostics`) returns `healthcheck_data` unmodified. This means 24 integration types receive zero diagnostic enrichment beyond the generic base-camera checks (blur, scene change, resolution validation). When a camera on one of these integrations goes offline, the system knows THAT it failed but provides no root-cause information in the incident data or alert email.
 
@@ -55,11 +55,11 @@ INTEGRATION_CAPABILITIES = {
 }
 ```
 
-SMTP cameras deliver frames via SQS, not RTSP, so TCP probes to the camera are meaningless. AILink cameras connect via WebSocket from the camera side, so network probes from the server are similarly inapplicable. The `default` entry applies to all unmapped types and enables all checks.
+SMTP cameras deliver frames via SQS, not [[rtsp-deep-dive|RTSP]], so TCP probes to the camera are meaningless. AILink cameras connect via WebSocket from the camera side, so network probes from the server are similarly inapplicable. The `default` entry applies to all unmapped types and enables all checks.
 
 ### Data Model
 
-Generic diagnostics write to the same `healthcheck_data.diagnostics` dict structure defined in the [[chm-enhanced-diagnostics-proposal|tooling architecture proposal]]. Results are logged to New Relic as custom attributes for queryability and used by alert generators to enrich email subjects.
+Generic diagnostics write to the same `healthcheck_data.diagnostics` dict structure defined in the [[chm-enhanced-diagnostics-proposal|tooling architecture proposal]]. Results are logged to [[new-relic|New Relic]] as custom attributes for queryability and used by alert generators to enrich email subjects.
 
 ## Dependencies
 

@@ -22,7 +22,7 @@ These libraries depend only on external PyPI packages and can be changed with mi
 - [[actuate-secrets]] -- AWS Secrets Manager wrapper (boto3 only)
 - [[actuate-network]] -- subnet validation (boto3 only)
 - [[actuate-notification]] -- Slack/email notifications (boto3 only)
-- [[actuate-imutils]] -- OpenCV image utilities
+- [[actuate-imutils]] -- [[opencv-entity|OpenCV]] image utilities
 - [[actuate-math]] -- bounding box math, NMS, IoU
 - [[actuate-instrumentation]] -- data capture for debugging
 

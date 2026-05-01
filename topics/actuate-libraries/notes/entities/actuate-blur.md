@@ -2,7 +2,7 @@
 title: "actuate-blur"
 type: entity
 topic: actuate-libraries
-tags: [library, camera-stream, image-quality, blur-detection, fft]
+tags: [library, camera-stream, image-quality, blur-detection, fft, dynamodb]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
@@ -46,12 +46,12 @@ End-to-end workflow: calculates both blur metric and entropy, updates DynamoDB, 
 
 ## Consumers
 
-- **actuate-pullers / BasePuller** -- `StreamQualityPacket` uses blur and entropy metrics for health check reporting. When `customer.healthcheck.image_quality_check` is enabled, the puller evaluates frame quality.
+- **[[actuate-pullers]] / BasePuller** -- `StreamQualityPacket` uses blur and entropy metrics for health check reporting. When `customer.healthcheck.image_quality_check` is enabled, the puller evaluates frame quality.
 - **Health monitoring dashboards** -- Blur metrics in the `CameraStatus` DynamoDB table are surfaced to operational dashboards.
 
 ## Notable Patterns
 
 - The FFT approach is lightweight and does not require a trained model. It works by measuring the energy in high-frequency components: blurry images have attenuated high frequencies, resulting in a lower mean magnitude after zeroing the low-frequency center.
-- Sentinel value of -9999 written on DynamoDB update errors ensures downstream consumers can distinguish "error" from "sharp" or "blurry."
+- [[sentinel-components|Sentinel]] value of -9999 written on DynamoDB update errors ensures downstream consumers can distinguish "error" from "sharp" or "blurry."
 - The library directly instantiates a `boto3.resource("dynamodb")` in the constructor, coupling it to AWS at import time. This means test consumers typically need mocked boto3 or localstack.
 - Exception handling is broad (`except Exception`) throughout, with logging but no re-raising, so blur failures never crash the pipeline.

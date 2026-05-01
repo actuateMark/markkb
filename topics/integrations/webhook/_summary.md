@@ -10,7 +10,7 @@ author: kb-bot
 
 # Webhook Integration
 
-The webhook integration is a **generic, customer-configurable alert delivery mechanism** in Actuate. Unlike purpose-built monitoring integrations (Immix, Sentinel, SureView) that target specific platforms, the webhook sender delivers structured JSON alert payloads to any customer-specified HTTP endpoint, making it the most flexible outbound alert option.
+The webhook integration is a **generic, customer-configurable alert delivery mechanism** in Actuate. Unlike purpose-built monitoring integrations (Immix, [[sentinel-components|Sentinel]], SureView) that target specific platforms, the webhook sender delivers structured JSON alert payloads to any customer-specified HTTP endpoint, making it the most flexible outbound alert option.
 
 ## Components
 
@@ -44,7 +44,7 @@ No authentication is configured on the sender side. The event-listener worker de
 
 ## Alert Delivery
 
-Webhooks follow the standard SQS event-listener pattern: the sender enqueues to `event_queue_webhook.fifo` with `message_group_id` for per-customer FIFO ordering. The event-listener worker dequeues and delivers the HTTP POST. This decoupled architecture means slow or failing customer endpoints do not block the detection pipeline.
+Webhooks follow the standard SQS event-listener pattern: the sender enqueues to `event_queue_webhook.fifo` with `message_group_id` for per-customer FIFO ordering. The event-listener worker dequeues and delivers the HTTP POST. This decoupled architecture means slow or failing customer endpoints do not block the [[detection-pipeline|detection pipeline]].
 
 ## Architecture
 

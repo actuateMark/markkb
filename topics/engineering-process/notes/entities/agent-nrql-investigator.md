@@ -10,7 +10,7 @@ author: kb-bot
 
 # nrql-investigator
 
-Context-protected New Relic investigation agent. Holds the NR MCP toolset and the team's NRQL conventions so the parent context doesn't fill with raw log rows.
+Context-protected [[new-relic|New Relic]] investigation agent. Holds the NR MCP toolset and the team's NRQL conventions so the parent context doesn't fill with raw log rows.
 
 **File:** `/home/mork/.claude/agents/nrql-investigator.md`
 **Model:** sonnet

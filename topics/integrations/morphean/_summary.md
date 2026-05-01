@@ -24,11 +24,11 @@ author: kb-bot
 **Phase 1 Scope:**
 1. Authentication & tenancy mapping (customer-site level)
 2. White-label partner isolation (VIDEOR and others under Morphean VSP)
-3. RTSP stream ingestion from Morphean cloud (480p-720p @ 1 FPS)
+3. [[rtsp-deep-dive|RTSP]] stream ingestion from Morphean cloud (480p-720p @ 1 FPS)
 4. Camera discovery via Morphean API (`CameraAdminWS`)
 5. Per-camera analytics enable/disable within Morphean partner UI
 6. Tier-1 analytics on Morphean camera frames
-7. Ignore zones & sensitivity (Actuate-side, no dedicated ROI API in Morphean)
+7. [[ignore-zones|Ignore zones]] & sensitivity (Actuate-side, no dedicated ROI API in Morphean)
 8. Event return path (alerts to Actuate live alerts + back to Morphean via Event + Scenario system)
 9. Usage data reporting for billing
 

@@ -2,7 +2,7 @@
 title: "Actuate Claude Agents"
 type: entity
 topic: actuate-platform
-tags: [claude-code, agents, ai-tooling, devops, slash-commands, skills]
+tags: [claude-code, agents, ai-tooling, devops, slash-commands, skills, new-relic]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
@@ -37,20 +37,20 @@ Seven autonomous agents that Claude matches to tasks by description:
 | Agent | Purpose | Dependencies |
 |-------|---------|-------------|
 | `library-bump` | Bump actuate-* library versions in `pyproject.toml` + `uv.lock` | -- |
-| `overnight-check` | Morning health report across test sites | New Relic MCP |
-| `incident-triage` | Investigate crashes, OOMKills, missing videos for a site | New Relic MCP, kubectl |
-| `stage-deploy-check` | Verify a deploy landed (image tag, pod health, errors) | New Relic MCP, kubectl |
+| `overnight-check` | Morning [[health-report|health report]] across test sites | [[new-relic|New Relic]] MCP |
+| `incident-triage` | Investigate crashes, OOMKills, missing videos for a site | [[new-relic|New Relic]] MCP, kubectl |
+| `stage-deploy-check` | Verify a deploy landed (image tag, pod health, errors) | [[new-relic|New Relic]] MCP, kubectl |
 | `pr-prep` | Prepare stage-to-rearchitecture PRs | -- |
-| `metric-compare` | Compare NR metrics between sites or time windows | New Relic MCP |
+| `metric-compare` | Compare NR metrics between sites or time windows | [[new-relic|New Relic]] MCP |
 | `fork-safety-check` | Scan for thread creation in `__init__` (fork-unsafe patterns) | -- |
 
-Several agents require MCP servers (New Relic) and/or kubectl access.
+Several agents require MCP servers ([[new-relic|New Relic]]) and/or kubectl access.
 
 ## Skills
 
 Two domain-knowledge skills:
 
-- **`nr-connector-metrics`** -- New Relic metric names, query patterns, account ID, test site mappings.
+- **`nr-connector-metrics`** -- [[new-relic|New Relic]] metric names, query patterns, account ID, test site mappings.
 - **`connector-log-review`** -- Error patterns, startup/runtime/shutdown health checks for VMS connectors.
 
 ## Installation
@@ -59,7 +59,7 @@ Global install (all projects): clone the repo, run `./scripts/install.sh`. This 
 
 ## Guardrails
 
-`CLAUDE.md` enforces: research-first investigation, minimal diffs, conventional commits, verification with evidence, and per-stack policies (Rust, Python/uv, Shell, Docker, Kubernetes, Terraform, YAML, JSON, Markdown, New Relic/NRQL).
+`CLAUDE.md` enforces: research-first investigation, minimal diffs, conventional commits, verification with evidence, and per-stack policies (Rust, Python/uv, Shell, Docker, Kubernetes, Terraform, YAML, JSON, Markdown, [[new-relic|New Relic]]/NRQL).
 
 ## Connector-Specific Tooling (vms-connector repo)
 
@@ -70,7 +70,7 @@ The `vms-connector` repo maintains its own skill library at `.claude/skills/` th
 | `/pre-merge-workflow` | Mandatory ordering before merging a connector feature branch: merge library PRs to main → wait for stable CodeArtifact publish → bump stable pins → run local tests → merge. Non-negotiable sequence. |
 | `/stage-release` | End-to-end release: merge PR to stage, monitor ECR build (ARM64 + x86), verify deployment rollout, post-merge cleanup. |
 
-The connector repo also carries 16+ other skills covering log review, New Relic queries, operational triage, rolling restarts, and changelog generation. See `CLAUDE.md` in `vms-connector` for the full table.
+The connector repo also carries 16+ other skills covering log review, [[new-relic|New Relic]] queries, operational triage, rolling restarts, and changelog generation. See `CLAUDE.md` in `vms-connector` for the full table.
 
 ## Relationship to actuate-cursor-rules
 

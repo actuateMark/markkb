@@ -11,11 +11,11 @@ author: kb-bot
 
 # Evalink Integration
 
-**Evalink** is a cloud-based alarm management platform used by monitoring centers (ARCs). Initial customer: **Protectas** (Swiss security company).
+**[[evalink-components|Evalink]]** is a cloud-based alarm management platform used by monitoring centers (ARCs). Initial customer: **Protectas** (Swiss security company).
 
 ## What It Does
 
-Outbound alert push: when Actuate detects a threat, the alert is forwarded to the customer's Evalink alarm management console via REST API.
+Outbound alert push: when Actuate detects a threat, the alert is forwarded to the customer's [[evalink-components|Evalink]] alarm management console via REST API.
 
 ## Configuration
 

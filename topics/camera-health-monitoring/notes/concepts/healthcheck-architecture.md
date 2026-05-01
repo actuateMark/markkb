@@ -8,7 +8,7 @@ tags: [chm, architecture, flask, dynamodb, healthcheck-runners, dependency-tree]
 
 # Healthcheck Architecture
 
-The Camera Health Monitoring (CHM) system is a standalone health assessment service for customer cameras. It runs independently of the detection pipeline -- a site can be "healthcheck only" with no VMS connector workload.
+The Camera Health Monitoring (CHM) system is a standalone health assessment service for customer cameras. It runs independently of the [[detection-pipeline|detection pipeline]] -- a site can be "healthcheck only" with no [[vms-connector|VMS connector]] workload.
 
 ## Component Stack
 
@@ -18,7 +18,7 @@ Runners are initialized at program start, each configured for a specific integra
 
 ## Camera Model
 
-A healthcheck camera is a distinct camera type from the standard VMS connector camera. It has a puller (even if limited) and implements the `basecamera.py` interface. This deliberate alignment with the standard camera model means smart cameras can be augmented with healthcheck functionality later without architectural changes. The puller in HC mode is not real-time -- it listens to motion events and connects to the camera API on demand.
+A healthcheck camera is a distinct camera type from the standard [[vms-connector|VMS connector]] camera. It has a puller (even if limited) and implements the `basecamera.py` interface. This deliberate alignment with the standard camera model means smart cameras can be augmented with healthcheck functionality later without architectural changes. The puller in HC mode is not real-time -- it listens to motion events and connects to the camera API on demand.
 
 A standardized puller base class (abstract or interface) defines the functions needed for healthcheck execution. Each integration subclass implements only the diagnostics it can perform; the rest are graceful no-ops.
 

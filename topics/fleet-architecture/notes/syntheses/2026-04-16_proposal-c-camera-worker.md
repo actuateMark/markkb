@@ -2,7 +2,7 @@
 title: "Proposal C — Camera-Worker Fleet"
 type: synthesis
 topic: fleet-architecture
-tags: [proposal, fleet, camera-worker, bin-packing, assignment-controller]
+tags: [proposal, fleet, camera-worker, bin-packing, assignment-controller, autopatrol]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
@@ -57,6 +57,8 @@ This was the proposal whose viability hinged on whether `BlacklistFilter` is per
 
 Scaling lever: **camera count per pod**. Tune once, adjust via ConfigMap. Elasticity goal is met — same architecture from 100 cameras to 100,000.
 
+**Spot viability:** worker pods snapshot tracker state to Redis at 1 Hz and can cold-resume on a new pod within RTO. Spot's ~2-minute interruption warning costs at most 1–2 tracker frames per camera (worst case a single snapshot cycle). `karpenter.sh/do-not-disrupt` annotation on pods mid-heavy-processing handles the edge cases; default pool can be Spot-eligible. This is where C's cost advantage compounds — Spot + bin-packing + no frame transport all stack.
+
 ## State & failover
 
 - **Tracker state:** per-camera, lives in the worker pod. Uses [[2026-04-16_graceful-failover-design|failover design]] with Redis snapshots every 1 s.
@@ -82,9 +84,9 @@ Alternative if image size becomes problematic: **worker classes by VMS family** 
 
 - **Change from today:** **-15% to -30%.**
 - **Why savings:**
-  1. No sharding overhead — cameras bin-packed into workers efficiently rather than site-shaped pods
+  1. No [[sharding]] overhead — cameras bin-packed into workers efficiently rather than site-shaped pods
   2. No per-site VPA over-provisioning — a generic worker pool has smoother load
-  3. No duplicated inference pool per shard (one pool per worker instead of one per shard within a site-pod)
+  3. No duplicated [[inference-pool|inference pool]] per shard (one pool per worker instead of one per shard within a site-pod)
 - **Added cost:** assignment controller (small) + Redis cluster for leases+snapshots.
 
 ## Reused primitives
@@ -99,7 +101,7 @@ Alternative if image size becomes problematic: **worker classes by VMS family** 
 - **Camera lease protocol** — workers hold a TTL-based lease on each camera; lease renewal is the liveness signal
 - **Redis client wrapper** (for leases + tracker snapshots)
 - **Worker assignment SDK** — worker lib that subscribes to assignment updates and spins up/down per-camera pipelines
-- **Rolling-update drain logic** — controller handles pod termination gracefully
+- **Rolling-update drain logic** — controller handles pod termination gracefully; standard K8s pattern is [[pod-disruption-budgets|PDB]] + Eviction API (assignment controller drains cameras off a pod *before* the eviction API fires SIGTERM, using PDB to keep the fleet-wide quorum safe)
 - **Tracker snapshot serializer** (see [[tracker-snapshot-schema]])
 
 ## Targeted PoC spec
@@ -143,7 +145,7 @@ Cross-cutting considerations (shared notes):
 - [[observability-and-tracing]] — logs re-key from `site_id` to `worker_id` + `camera_id`. Cookbook rewrite needed in [[new-relic/notes/concepts/nr-connector-query-cookbook]].
 - [[downstream-consumer-impact]] — **AutoPatrol session state** is the biggest risk — session assumptions may break on camera reassignment. Needs audit before PoC.
 - [[config-and-schedule-propagation]] — **fixes ENG-96 by design** — assignment controller naturally owns schedule context; camera assignment includes armed-state snapshot.
-- [[memory-and-fork-safety]] — **fork safety eliminated.** Today's multiprocessing sharding complexity becomes dead code. Worth celebrating.
+- [[memory-and-fork-safety]] — **fork safety eliminated.** Today's multiprocessing [[sharding]] complexity becomes dead code. Worth celebrating.
 - [[customer-site-connectivity]] — **the biggest open risk for this proposal.** If sites use per-site WireGuard tunnels, universal worker routing breaks. Blocked on deploy-repo deep dive.
 
 ### Related KB topics touched
@@ -151,14 +153,14 @@ Cross-cutting considerations (shared notes):
 - [[vms-connector/notes/concepts/memory-management]] — post-fork jemalloc re-enablement dance becomes obsolete; simplification win
 - [[vms-connector/notes/concepts/connector-factory]] — factories load lazily on assignment instead of eagerly on site launch
 - [[infrastructure/notes/concepts/vpa-behavior]] — VPA continues to apply but smoother load (no burst/steady mixing) → fixes ENG-78 partially
-- [[autopatrol/_summary]] — AutoPatrol is the tricky consumer; session migration must be designed
+- [[knowledgebase/topics/autopatrol/_summary]] — AutoPatrol is the tricky consumer; session migration must be designed
 - [[camera-health-monitoring/_summary]] — per-camera scene-change state is safe with reassignment (already camera-scoped)
 - [[actuate-libraries/notes/entities/actuate-alarm-senders]] — alerts emit from worker pods; contract unchanged
 
 ### Enhancement opportunities identified
 
 - **Make the assignment controller a general platform primitive.** AutoPatrol (patrol scheduling) and CHM (health-probe scheduling) have similar "assign work to pods" problems — a shared primitive would consolidate three controllers into one.
-- **Delete the multiprocessing sharding code after C stabilizes.** `ChunkedSiteManager`, post-fork dance, and the sharding PR history are all mechanisms for a problem C removes. Pre-migration KB note: [[vms-connector/notes/concepts/memory-management]] gets an update.
+- **Delete the multiprocessing [[sharding]] code after C stabilizes.** `ChunkedSiteManager`, post-fork dance, and the [[sharding]] PR history are all mechanisms for a problem C removes. Pre-migration KB note: [[vms-connector/notes/concepts/memory-management]] gets an update.
 - **Formalize a "lazy adapter loader" pattern** — universal image loads VMS adapters on first assignment. Pattern reusable elsewhere.
 - **Universal image size optimization.** 1.5+ GB image is slow to pull; investigate multi-stage builds and layer sharing across integration families.
 - **Schedule service spins off from the assignment controller.** Fixing ENG-96 structurally in this proposal — do it deliberately, document in [[config-and-schedule-propagation]].

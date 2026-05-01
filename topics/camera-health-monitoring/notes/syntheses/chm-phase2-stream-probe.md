@@ -12,19 +12,19 @@ author: kb-bot
 
 ## Problem
 
-The [[actuate-pullers|AvUrlFramePuller]] already collects rich stream metadata -- codec, frame rate, resolution, bandwidth, keyframe intervals, PTS discontinuities, decode errors, reconnection frequency -- but the diagnostic layer never sees any of it. The data exists in the puller's internal state and is logged or sent to New Relic as isolated metrics, but it is never aggregated into a structured object available to `BaseDiagnostics` subclasses or healthcheck runners.
+The [[actuate-pullers|AvUrlFramePuller]] already collects rich stream metadata -- codec, frame rate, resolution, bandwidth, keyframe intervals, PTS discontinuities, decode errors, reconnection frequency -- but the diagnostic layer never sees any of it. The data exists in the puller's internal state and is logged or sent to [[new-relic|New Relic]] as isolated metrics, but it is never aggregated into a structured object available to `BaseDiagnostics` subclasses or healthcheck runners.
 
 Today, the `StreamQualityHealthcheckRunner` evaluates stream quality using only blur score (FFT-based via [[actuate-blur]]) and entropy. It has no access to codec type, actual vs. expected FPS, bitrate, keyframe structure, or any transport-layer health signals. This means CHM cannot detect:
 
-- A camera silently switching from H.264 to MJPEG (massively increasing bandwidth)
+- A camera silently switching from [[h264-deep-dive|H.264]] to [[mjpeg-and-still-image-formats|MJPEG]] (massively increasing bandwidth)
 - FPS dropping from 15 to 3 due to NVR load or bandwidth saturation
-- Keyframe interval degradation causing decode artifacts
+- [[gop-keyframe-fundamentals|Keyframe interval]] degradation causing decode artifacts
 - Bandwidth spikes indicating stream misconfiguration
 - Repeated reconnections indicating an unstable transport path
 
 ## Proposed Solution
 
-Introduce a `StreamProbe` class that reads metadata from an `AvUrlFramePuller` instance (without modifying the puller code) and produces structured `StreamMetadata` and `StreamHealth` dataclass objects. These are stored in `healthcheck_data.diagnostics["stream"]` for use by alert generators and New Relic logging.
+Introduce a `StreamProbe` class that reads metadata from an `AvUrlFramePuller` instance (without modifying the puller code) and produces structured `StreamMetadata` and `StreamHealth` dataclass objects. These are stored in `healthcheck_data.diagnostics["stream"]` for use by alert generators and [[new-relic|New Relic]] logging.
 
 ## Detailed Design
 
@@ -34,11 +34,11 @@ From source code analysis of `actuate_pullers.url.av_url_puller.AvUrlFramePuller
 
 | Field / Method | Source | Type | Notes |
 |---|---|---|---|
-| `video_stream.codec_context.codec.name` | PyAV stream after `connect_stream()` | `str` | `"h264"`, `"hevc"`, `"mjpeg"` |
-| `video_stream.codec_context.width` | PyAV codec context | `int` | Pixel width |
-| `video_stream.codec_context.height` | PyAV codec context | `int` | Pixel height |
-| `video_stream.codec_context.pix_fmt` | PyAV codec context | `str` | `"yuv420p"`, `"yuvj420p"` |
-| `video_stream.codec_context.profile` | PyAV codec context | `str` | `"High"`, `"Main"`, `"Baseline"` |
+| `video_stream.codec_context.codec.name` | [[pyav-entity|PyAV]] stream after `connect_stream()` | `str` | `"h264"`, `"hevc"`, `"mjpeg"` |
+| `video_stream.codec_context.width` | [[pyav-entity|PyAV]] codec context | `int` | Pixel width |
+| `video_stream.codec_context.height` | [[pyav-entity|PyAV]] codec context | `int` | Pixel height |
+| `video_stream.codec_context.pix_fmt` | [[pyav-entity|PyAV]] codec context | `str` | `"yuv420p"`, `"yuvj420p"` |
+| `video_stream.codec_context.profile` | [[pyav-entity|PyAV]] codec context | `str` | `"High"`, `"Main"`, `"Baseline"` |
 | `video_stream.average_rate` | PyAV stream | `Fraction` | Declared FPS from stream header |
 | `video_stream.time_base` | PyAV stream | `Fraction` | Timestamp resolution |
 | `bandwidth_tracker.get_bandwidth_kbps()` | `BandwidthTracker` | `float` | Current window bandwidth in kbps |
@@ -184,9 +184,9 @@ The existing `streamquality_healthcheck_runner.py` gains access to `StreamMetada
 | Condition | Detection Logic | Alert Message |
 |---|---|---|
 | FPS drop | `fps_measured < fps_declared * 0.5` | "Camera FPS dropped from 15 to 3 (expected: 15)" |
-| Codec change | `codec != expected_codec` (stored from previous healthy run) | "Codec changed from H.264 to MJPEG" |
+| Codec change | `codec != expected_codec` (stored from previous healthy run) | "Codec changed from [[h264-deep-dive|H.264]] to [[mjpeg-and-still-image-formats|MJPEG]]" |
 | Bandwidth spike | `bitrate_kbps > threshold_kbps` (configurable per site) | "Camera bandwidth 8500 kbps exceeds threshold (2000 kbps)" |
-| Keyframe degradation | `keyframe_interval_s > 10.0` | "Keyframe interval 15.2s (expected <4s) -- decode quality degraded" |
+| Keyframe degradation | `keyframe_interval_s > 10.0` | "[[gop-keyframe-fundamentals|Keyframe interval]] 15.2s (expected <4s) -- decode quality degraded" |
 | Unstable connection | `reconnection_count >= 3` | "Camera reconnected 5 times during healthcheck -- unstable transport" |
 
 ## Data Model
@@ -218,7 +218,7 @@ healthcheck_data.diagnostics["stream"] = {
 2-3 days, broken down as:
 - Day 1: `StreamMetadata` and `StreamHealth` dataclasses, `StreamProbe.extract_metadata()` and `extract_health()`, unit tests with mock pullers
 - Day 2: Wire into `StreamQualityHealthcheckRunner`, populate `diagnostics["stream"]`, add new alert conditions
-- Day 3: Integration test, New Relic logging, alert template updates for new stream-quality alert types
+- Day 3: Integration test, [[new-relic|New Relic]] logging, alert template updates for new stream-quality alert types
 
 ## Files to Create/Modify
 

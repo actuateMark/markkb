@@ -34,7 +34,7 @@ Client (EBUS, partners) -> API Gateway -> Rust Lambda Authorizer (DynamoDB looku
 
 ## v5 API (In Development)
 
-Unified generic detection endpoint for [[external-api]] partners such as [[integrations/ebus/_summary|EBUS]]. Key design:
+Unified generic detection endpoint for [[external-api/_summary|External API Initiative]] partners such as [[integrations/ebus/_summary|EBUS]]. Key design:
 - **Single POST endpoint** (`/v5/detect`) services all models
 - Request body: `model_id`, `frame`, `data` (JSON object validated against model schema)
 - `GET /v5/models` returns available models with their expected `data` schemas

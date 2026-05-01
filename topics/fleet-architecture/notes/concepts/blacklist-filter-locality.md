@@ -10,7 +10,7 @@ author: kb-bot
 
 # BlacklistFilter Locality — Verification Finding
 
-**Claim verified: cross-camera state in the VMS Connector is per-camera, not per-site.** Splitting cameras from the same site across different worker pods does not break filter correctness.
+**Claim verified: cross-camera state in the [[vms-connector|VMS Connector]] is per-camera, not per-site.** Splitting cameras from the same site across different worker pods does not break filter correctness.
 
 This was the open question blocking [[2026-04-16_proposal-c-camera-worker|proposal C (Camera-Worker)]] and simplifies state-locality assumptions for all other proposals.
 

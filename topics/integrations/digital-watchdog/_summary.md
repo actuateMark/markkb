@@ -47,7 +47,7 @@ Defined in [[actuate-integration-calls]] at `digital_watchdog/dw_utils.py`. Prov
 
 ## Architecture
 
-The [[vms-connector]] uses DW integration calls to authenticate, discover cameras, and build RTSP stream URLs. Streams are consumed by standard URL-based pullers in [[actuate-pullers]]. When detections occur, the `DWAlertSender` sends events directly to the DW NVR REST API. Cloud-connected sites use the Nx relay proxy (`relay.vmsproxy.com`) as an intermediary for all communication.
+The [[vms-connector]] uses DW integration calls to authenticate, discover cameras, and build [[rtsp-deep-dive|RTSP]] stream URLs. Streams are consumed by standard URL-based pullers in [[actuate-pullers]]. When detections occur, the `DWAlertSender` sends events directly to the DW NVR REST API. Cloud-connected sites use the Nx relay proxy (`relay.vmsproxy.com`) as an intermediary for all communication.
 
 ## Relationship to Other Components
 

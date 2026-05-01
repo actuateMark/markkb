@@ -2,7 +2,7 @@
 title: "AutoPatrol Alert Lifecycle"
 type: concept
 topic: autopatrol
-tags: [autopatrol, alert-lifecycle, immix, vms-connector, alarm-senders, deferred-alerts]
+tags: [autopatrol, alert-lifecycle, immix, vms-connector, alarm-senders, deferred-alerts, dynamodb]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
@@ -79,7 +79,7 @@ When a product has tag zones configured, the alert is deferred:
 - `threshhold_reached()` sets `alert_pending = True` instead of `send_alert = True`
 - The alert waits for the window to close (accumulate tag zone hits)
 - At patrol end, `flush_deferred_alerts()` fires any still-pending alerts
-- Frame data may have expired from the LRU cache → S3 frame fallback activates (see [[s3-frame-fallback]])
+- Frame data may have expired from the LRU cache → [[s3-frame-fallback|S3 frame fallback]] activates (see [[s3-frame-fallback]])
 
 **Known issue:** `flush_deferred_alerts()` submits to the executor but does not wait for completion. The patrol CronJob can exit before the executor threads finish the Immix API call and DynamoDB save. See [[2026-04-16_deferred-alert-race-condition]].
 

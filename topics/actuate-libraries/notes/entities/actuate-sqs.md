@@ -10,7 +10,7 @@ author: kb-bot
 
 ## Purpose
 
-actuate-sqs (v1.1.1) provides a standalone SQS message-sending library, separate from the `SQSDAO` in actuate-daos. It contains `QueueSender` (a general-purpose queue sender) and `MotionQueue` (a specialised sender for short-lived motion event queues).
+actuate-sqs (v1.1.1) provides a standalone SQS message-sending library, separate from the `SQSDAO` in [[actuate-daos]]. It contains `QueueSender` (a general-purpose queue sender) and `MotionQueue` (a specialised sender for short-lived motion event queues).
 
 ## Key Classes
 
@@ -38,4 +38,4 @@ Used by connector services that need to send motion events or arbitrary messages
 
 - **Auto-create on send**: If a queue does not exist when `send_to_queue` is called, it is created automatically and the send is retried, making the sender resilient to queue lifecycle issues.
 - **Hardcoded AWS account**: The base queue URL embeds the AWS account ID (388576304176) and region (us-west-2).
-- **Distinct from SQSDAO**: actuate-daos has its own `SQSDAO` for queue operations within the DAO layer; actuate-sqs is the standalone alternative used outside the DaoManager context.
+- **Distinct from SQSDAO**: [[actuate-daos]] has its own `SQSDAO` for queue operations within the DAO layer; actuate-sqs is the standalone alternative used outside the DaoManager context.

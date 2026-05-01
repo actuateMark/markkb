@@ -50,7 +50,7 @@ The methodology enforces several practices to avoid false conclusions:
 
 - **Paired design** eliminates scene-level confounders (both models see identical inputs)
 - **Sufficient sample size** -- tests run on enough cameras and time windows to achieve statistical power
-- **Multiple evaluation tiers** -- shadow testing is one layer; it complements frame-level mAP, FP stress testing (Genesis sets), confidence sweeps, and the cumulative misses validation set
+- **Multiple [[evaluation-tiers|evaluation tiers]]** -- shadow testing is one layer; it complements frame-level mAP, FP stress testing (Genesis sets), confidence sweeps, and the cumulative misses validation set
 
 **Uladzimir Sapeshka (Vlad)** is the primary owner of shadow testing execution and analysis.
 

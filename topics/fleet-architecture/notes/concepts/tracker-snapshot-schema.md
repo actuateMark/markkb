@@ -73,6 +73,8 @@ Options, in increasing RPO-safety order:
 
 **Recommendation: fixed 1-second interval, coalesced to single write per camera.** Combined with window-level snapshots via the existing `WindowIdsDAO`.
 
+**K8s cadence bound:** `terminationGracePeriodSeconds` is the hard bound on the 1-second cadence — SIGKILL cuts off any snapshot already in flight. Size the grace period as (preStop drain + snapshot write latency + buffer). See [[pod-termination-sequence]] for the full shutdown flow, and the K8s Mechanics section of [[2026-04-16_graceful-failover-design]] for the typical 10-30 s sizing.
+
 ## Storage target
 
 Three candidates — see [[2026-04-16_graceful-failover-design]] for the full comparison. In brief:

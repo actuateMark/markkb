@@ -53,7 +53,7 @@ Blacklist Re-ID is enabled per feature deployment with `use_blacklist: true` in 
 
 ## Pipeline Position
 
-The `BlacklistStep` in the [[data-science|detection pipeline]] runs after IOU filtering and before the stationary filter in the post-processing chain. The `BlacklistObserver` also receives unfiltered model responses directly, operating in parallel with the main pipeline. Blacklist results are reported via callback to the alert system.
+The `BlacklistStep` in the [[data-science/_summary|Data Science Methodology]] runs after IOU filtering and before the stationary filter in the post-processing chain. The `BlacklistObserver` also receives unfiltered model responses directly, operating in parallel with the main pipeline. Blacklist results are reported via callback to the alert system.
 
 ## Current Status
 
@@ -61,7 +61,7 @@ Blacklist Re-ID is **active in production** for cameras with `use_blacklist: tru
 
 ## Related Topics
 
-- [[ai-models]] -- model catalog
-- [[data-science]] -- detection pipeline
+- [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
+- [[data-science/_summary|Data Science Methodology]] -- detection pipeline
 - [[models/intruder-v5]] -- the underlying person detection model
 - [[models/loitering]] -- another observer-based product

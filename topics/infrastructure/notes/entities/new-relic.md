@@ -3,7 +3,7 @@ type: entity
 author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
-tags: [observability, monitoring, nrql, nerdgraph, alerting, apm]
+tags: [observability, monitoring, nrql, nerdgraph, alerting, apm, new-relic]
 ---
 
 # New Relic
@@ -28,7 +28,7 @@ NerdGraph is New Relic's GraphQL API, used programmatically for dashboard manage
 
 ## Integration Points
 
-New Relic is deployed as a cluster service via the [[kubernetes-deployments]] infrastructure (managed by ArgoCD). The New Relic Kubernetes integration provides container-level metrics, pod health, and node resource utilization alongside application-level APM data. Alerts from New Relic feed into [[sns-to-slack]] for team notification.
+New Relic is deployed as a cluster service via the [[kubernetes-deployments]] infrastructure (managed by [[argocd|ArgoCD]]). The New Relic Kubernetes integration provides container-level metrics, pod health, and node resource utilization alongside application-level APM data. Alerts from New Relic feed into [[sns-to-slack]] for team notification.
 
 ## See Also
 

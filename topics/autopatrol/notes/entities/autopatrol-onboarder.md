@@ -10,7 +10,7 @@ author: kb-bot
 
 ## Overview
 
-The **Autopatrol Onboarder** is an AWS Lambda function that synchronizes contracts, sites, schedules, and devices from the AutoPatrol third-party platform (immix Connect) into the Actuate Admin API. It runs on a cron schedule via EventBridge and serves as the bridge that keeps Actuate's internal representation of AutoPatrol customers in sync with the external immix system.
+The **Autopatrol Onboarder** is an AWS Lambda function that synchronizes contracts, sites, schedules, and devices from the AutoPatrol third-party platform (immix Connect) into the [[actuate-admin-api|Actuate Admin API]]. It runs on a cron schedule via EventBridge and serves as the bridge that keeps Actuate's internal representation of AutoPatrol customers in sync with the external immix system.
 
 **Repository:** `aegissystems/autopatrol_onboarder`
 
@@ -18,7 +18,7 @@ The **Autopatrol Onboarder** is an AWS Lambda function that synchronizes contrac
 
 - **Language:** Python 3.12+ (managed with `uv`)
 - **Runtime:** AWS Lambda (triggered by EventBridge cron)
-- **Actuate Libraries:** `actuate-admin-api` (Admin API client, `AdminApi` base class) and `actuate-integration-calls` (immix/AutoPatrol API client, `AutoPatrolAPI`), both pinned with `+autopatrol` local version tags and sourced from CodeArtifact
+- **[[actuate-libraries|Actuate Libraries]]:** `actuate-admin-api` (Admin API client, `AdminApi` base class) and `actuate-integration-calls` (immix/AutoPatrol API client, `AutoPatrolAPI`), both pinned with `+autopatrol` local version tags and sourced from CodeArtifact
 - **AWS Services:** Lambda, EventBridge (scheduler), Secrets Manager (API keys), S3 (deployment artifact)
 
 ## Deployment Model

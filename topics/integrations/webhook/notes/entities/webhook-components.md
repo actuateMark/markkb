@@ -18,7 +18,7 @@ The `WebhookAlertSender` class in [[actuate-alarm-senders]] is the generic outbo
 
 ## Alert Format
 
-The sender classifies alerts into three event types: `"no_motion"` (if the text contains "motion"), `"unable_to_connect"` (if "Unable to connect" is in the text), or `"detection"` (all other alerts). For detection events, the message body is a multi-line text block with detection labels, camera name, site name, local time, and the alert viewer URL. The payload includes rich metadata: `stream_id`, `label`, `site_name`, `display_name`, `camera_name`, `confidence`, `alert_url`, `time` (string-formatted local time), `event_type`, `message`, `camera_id` (admin camera ID), `camera_guid`, and camera `username`/`password` (for RTSP access if needed).
+The sender classifies alerts into three event types: `"no_motion"` (if the text contains "motion"), `"unable_to_connect"` (if "Unable to connect" is in the text), or `"detection"` (all other alerts). For detection events, the message body is a multi-line text block with detection labels, camera name, site name, local time, and the alert viewer URL. The payload includes rich metadata: `stream_id`, `label`, `site_name`, `display_name`, `camera_name`, `confidence`, `alert_url`, `time` (string-formatted local time), `event_type`, `message`, `camera_id` (admin camera ID), `camera_guid`, and camera `username`/`password` (for [[rtsp-deep-dive|RTSP]] access if needed).
 
 ## Delivery Mechanism
 

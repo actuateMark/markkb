@@ -8,11 +8,11 @@ tags: [watchman, onboarding, byod, wireguard, ux, f-001]
 
 # Onboarding Wizard
 
-[[watchman]]'s onboarding wizard (feature F-001) is a 9-step self-service flow that takes a customer from unboxing hardware to live monitoring in under 10 minutes. This BYOD (Bring Your Own Device) approach is central to Watchman's go-to-market strategy -- targeting small businesses with 4-30 existing cameras that can be connected without professional installation.
+[[watchman/_summary|Actuate Watchman]]'s onboarding wizard (feature F-001) is a 9-step self-service flow that takes a customer from unboxing hardware to live monitoring in under 10 minutes. This BYOD (Bring Your Own Device) approach is central to [[watchman-repo|Watchman]]'s go-to-market strategy -- targeting small businesses with 4-30 existing cameras that can be connected without professional installation.
 
 ## The 10-Minute Target
 
-Onboarding time < 10 minutes is one of Watchman's three headline KPIs. The wizard is designed to eliminate the need for a technician visit, which is a major cost and friction point in traditional surveillance deployments. Every step is guided and sequential, reducing cognitive load for non-technical operators.
+Onboarding time < 10 minutes is one of [[watchman-repo|Watchman]]'s three headline KPIs. The wizard is designed to eliminate the need for a technician visit, which is a major cost and friction point in traditional surveillance deployments. Every step is guided and sequential, reducing cognitive load for non-technical operators.
 
 ## The 9 Steps
 
@@ -26,7 +26,7 @@ Establishes the encrypted VPN tunnel between the customer's network and Actuate'
 Configures the router or app's network connection to the customer's local network. This step ensures the device can reach both the cameras (on the local network) and Actuate's cloud (via the internet).
 
 ### Step 4: Camera Discovery
-Automatic discovery of cameras on the local network using ONVIF and RTSP protocols. The system scans for compatible devices and presents them to the operator. This is where BYOD becomes concrete -- the customer's existing cameras are detected without manual IP configuration.
+Automatic discovery of cameras on the local network using ONVIF and [[rtsp-deep-dive|RTSP]] protocols. The system scans for compatible devices and presents them to the operator. This is where BYOD becomes concrete -- the customer's existing cameras are detected without manual IP configuration.
 
 ### Step 5: Site Type Classification
 The operator classifies their site (retail store, warehouse, office, parking lot, etc.). This feeds into the [[multi-agent-architecture|Site Context Agent]], which uses the classification to initialise its baseline activity model and set appropriate default thresholds.

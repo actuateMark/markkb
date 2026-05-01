@@ -12,7 +12,7 @@ author: kb-bot
 
 ## Problem Statement
 
-SMTP cameras deliver frames via email to an SQS-backed ingestion pipeline, not via RTSP. AILink cameras deliver via a proprietary WebSocket protocol. Neither integration type has any diagnostics implementation -- both fall through to `DummyDiagnostics` in the `DiagnosticRunner.get_runner()` dispatch, which is a complete no-op across all five diagnostic methods.
+SMTP cameras deliver frames via email to an SQS-backed ingestion pipeline, not via [[rtsp-deep-dive|RTSP]]. AILink cameras deliver via a proprietary WebSocket protocol. Neither integration type has any diagnostics implementation -- both fall through to `DummyDiagnostics` in the `DiagnosticRunner.get_runner()` dispatch, which is a complete no-op across all five diagnostic methods.
 
 These two integration types represent approximately 32,000 cameras -- the majority of the monitored fleet. When an SMTP camera stops delivering frames, the system eventually flags a connectivity failure (no frames received), but provides zero diagnostic context: Is the camera offline? Is the SMTP relay misconfigured? Is SQS backed up? Is the JPEG corrupt? Similarly, when an AILink camera drops its WebSocket connection, the failure surfaces only as a generic connectivity loss with no insight into whether the issue is protocol-level, network-level, or encoder-level.
 
@@ -38,7 +38,7 @@ elif config.customer.integration_type == "ailink":
 
 ## SMTP Diagnostics Design
 
-SMTP cameras are fundamentally different from RTSP cameras: there is no persistent stream connection. Frames arrive as JPEG email attachments, processed by an SQS consumer and stored in S3. The diagnostic strategy centers on analyzing delivery patterns and frame integrity rather than stream metadata.
+SMTP cameras are fundamentally different from [[rtsp-deep-dive|RTSP]] cameras: there is no persistent stream connection. Frames arrive as JPEG email attachments, processed by an SQS consumer and stored in S3. The diagnostic strategy centers on analyzing delivery patterns and frame integrity rather than stream metadata.
 
 **`connectivity_diagnostics(puller, healthcheck_data)`** -- Frame recency analysis. Computes `time.time() - last_frame_timestamp` using the most recent frame timestamp available from the puller's frame cache or DynamoDB healthcheck record. Thresholds: no frames for 30 minutes = warning, no frames for 1 hour = alert. Additionally, queries SQS queue depth for the camera's ingestion queue (via `actuate_daos` SQS client) to distinguish between camera-not-sending (empty queue) and consumer-backlog (deep queue). An empty queue with no recent frames means the camera or SMTP relay is down. A deep queue with no recent frames means the consumer is stalled. Populates `healthcheck_data.diagnostics["network"]` with `frame_age_seconds`, `sqs_queue_depth`, and `delivery_state` (one of: `"delivering"`, `"camera_silent"`, `"consumer_backlog"`).
 
@@ -66,7 +66,7 @@ AILink cameras connect to the Actuate platform via a persistent WebSocket mainta
 
 ## Data Model
 
-Both classes write to the standard `healthcheck_data.diagnostics` dict, using the same key structure (`"network"`, `"stream"`, `"recording"`) as other diagnostic classes. This ensures consistent New Relic logging and alert generator compatibility.
+Both classes write to the standard `healthcheck_data.diagnostics` dict, using the same key structure (`"network"`, `"stream"`, `"recording"`) as other diagnostic classes. This ensures consistent [[new-relic|New Relic]] logging and alert generator compatibility.
 
 ## Effort Estimate
 

@@ -2,7 +2,7 @@
 title: "Agents Catalog"
 type: entity
 topic: engineering-process
-tags: [agents, subagents, claude-code, workflow, routing]
+tags: [agents, subagents, claude-code, workflow, routing, new-relic]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
@@ -19,9 +19,17 @@ Custom Claude Code subagents installed at `/home/mork/.claude/agents/`. Invoke v
 | [[agent-nrql-investigator]] | sonnet | Any NR investigation — connector log triage, deploy verification, error patterns, metric trends | NR MCP only; read KB query cookbook |
 | [[agent-actuate-pr-reviewer]] | opus | Reviewing a PR in any Actuate repo under `/home/mork/work/` | gh + Read/Grep; applies KB security & code-review checklists |
 | [[agent-kb-scribe]] | haiku | Writing or updating a KB note with proper frontmatter + routing | Write/Edit on `/knowledgebase/` only |
-| [[agent-connector-pipeline-expert]] | opus | Architecture/implementation questions about the VMS connector pipeline | Read-only on `vms-connector` + `actuate-libraries` |
-| [[agent-release-chain-watcher]] | sonnet | Monitoring a release from PR → merge → ArgoCD → post-deploy NR health | gh + NR MCP; ideal for background runs |
+| [[agent-connector-pipeline-expert]] | opus | Architecture/implementation questions about the [[vms-connector|VMS connector]] pipeline | Read-only on `vms-connector` + `actuate-libraries` |
+| [[agent-release-chain-watcher]] | sonnet | Monitoring a release from PR → merge → [[argocd|ArgoCD]] → post-deploy NR health | gh + NR MCP; ideal for background runs |
 | [[agent-jira-landscape]] | haiku | Mapping Jira initiatives, workstreams, assignees, blockers | Atlassian MCP (read-only) |
+
+## Proposed / Not Yet Built
+
+Agents designed but not implemented. Build decisions tracked in [[mark-todos]].
+
+| Agent | When it would be built | Scope |
+|-------|----------------------|-------|
+| [[agent-issue-auditor]] | After 1-2 manual issue-hygiene sweeps stabilize the standard (see [[2026-04-17_issue-hygiene-plan]]) | Audit GitHub issues against the issue-creation standard; propose normalization edits; read-only default |
 
 ## Routing Rules
 

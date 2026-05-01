@@ -3,15 +3,16 @@ type: concept
 author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
+tags: [dynamodb]
 ---
 
 # API Key Lifecycle
 
-API keys are the authentication mechanism for the [[inference-api]] and the broader [[external-api]] initiative. Their lifecycle spans three systems: the [[admin-api]] (provisioning), DynamoDB (storage), and the [[rust-lambda-authorizer]] (validation).
+API keys are the authentication mechanism for the [[inference-api/_summary|Actuate Inference API]] and the broader [[external-api/_summary|External API Initiative]] initiative. Their lifecycle spans three systems: the [[admin-api/_summary|Actuate Admin API]] (provisioning), DynamoDB (storage), and the [[rust-lambda-authorizer]] (validation).
 
 ## Key Creation
 
-API keys are created through the [[admin-api]]. When an administrator provisions a key for a customer or partner, the Admin API writes a record to the `InferenceAPIAuth-{stage}` DynamoDB table (where `{stage}` is `prod`, `dev`, etc.). Each record contains:
+API keys are created through the [[admin-api/_summary|Actuate Admin API]]. When an administrator provisions a key for a customer or partner, the Admin API writes a record to the `InferenceAPIAuth-{stage}` DynamoDB table (where `{stage}` is `prod`, `dev`, etc.). Each record contains:
 
 - **`api_key`** -- the key value itself, sent by clients in the `X-API-Key` header.
 - **`name`** -- a human-readable identifier for the key holder.
@@ -51,3 +52,5 @@ For **v1-v4 endpoints**, each path has a fixed role check. For **v5**, the unifi
 ## Swagger UI Access
 
 A separate Rust authorizer (`InferenceAPIBasicAuthRS`) protects the Swagger docs at `/docs` and `/openapi.json` using HTTP Basic Auth. The username is the `name` field from the DynamoDB record; the password is the `api_key` value. This uses the same DynamoDB table, providing docs access without a separate credential system.
+
+For the operational runbook on issuing keys to partners and customers, see [[partner-api-credential-runbook]].

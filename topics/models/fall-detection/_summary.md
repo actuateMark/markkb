@@ -42,7 +42,7 @@ The specific model name is configured per feature deployment in settings.json vi
 
 ## Pipeline Position
 
-Fall detection flows through the [[data-science|detection pipeline]]: frame ingestion, FDMD motion detection, YOLO inference (detecting `fall_person`), then post-processing filters. The `ConfirmFallStep` runs after the standard filters (confidence, ignore zones, IOU, stationary) and before the label remapping step. Confirmed `fall` labels then enter the sliding window for alert generation.
+Fall detection flows through the [[data-science/_summary|Data Science Methodology]]: frame ingestion, FDMD motion detection, YOLO inference (detecting `fall_person`), then post-processing filters. The `ConfirmFallStep` runs after the standard filters (confidence, ignore zones, IOU, stationary) and before the label remapping step. Confirmed `fall` labels then enter the sliding window for alert generation.
 
 ## Products and Observers
 
@@ -54,7 +54,7 @@ Fall detection is **active in production** as one of the specialised detection p
 
 ## Related Topics
 
-- [[ai-models]] -- model catalog
-- [[data-science]] -- detection pipeline
+- [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
+- [[data-science/_summary|Data Science Methodology]] -- detection pipeline
 - [[models/crowd-detection]] -- another derived product using intruder model detections
 - [[models/intruder-v5]] -- related person detection model

@@ -23,7 +23,7 @@ These are framework-agnostic DTOs shared between Django and non-Django consumers
 
 ### WireGuardDAO (`db.py`)
 
-Full CRUD data access object using psycopg2 `ThreadedConnectionPool` (same pattern as actuate-daos `AdminDAO`). Credentials come from `actuate-secrets.SecretManager`.
+Full CRUD data access object using psycopg2 `ThreadedConnectionPool` (same pattern as [[actuate-daos]] `AdminDAO`). Credentials come from `actuate-secrets.SecretManager`.
 
 **Read operations**: `get_all_tunnels`, `get_tunnel_by_id`, `get_server_mappings`, `get_server_by_id`, `get_all_existing_subnets`, `get_existing_client_tunnel_ips`, `get_existing_client_public_keys`.
 
@@ -37,9 +37,9 @@ Full CRUD data access object using psycopg2 `ThreadedConnectionPool` (same patte
 
 ### Validation (`validation.py`)
 
-Extends actuate-network's validation with WireGuard-specific checks:
+Extends [[actuate-network]]'s validation with WireGuard-specific checks:
 - **`validate_ip_with_cidr`** -- Validates that a tunnel IP is a valid /32 CIDR.
-- Re-exports all actuate-network validation functions.
+- Re-exports all [[actuate-network]] validation functions.
 
 ### Teltonika RMS Integration
 
@@ -58,8 +58,8 @@ Extends actuate-network's validation with WireGuard-specific checks:
 
 - **boto3** >=1.35.20 -- AWS SDK.
 - **psycopg2-binary** ~=2.9.10 -- PostgreSQL driver.
-- **actuate-secrets** ~=1.0.1 -- DB credential retrieval.
-- **actuate-network** ~=1.0 -- subnet validation and VPN overlap checks.
+- **[[actuate-secrets]]** ~=1.0.1 -- DB credential retrieval.
+- **[[actuate-network]]** ~=1.0 -- subnet validation and VPN overlap checks.
 
 ## Consumers
 

@@ -8,7 +8,7 @@ tags: [chm, sift, scene-change, actuate-suddenscenechange, computer-vision]
 
 # Scene Change Detection
 
-Scene change detection in [[camera-health-monitoring]] (CHM) uses the `actuate-suddenscenechange` library to identify when a camera's field of view has been physically altered. This is a critical security capability -- camera tampering (covering, rotating, or repositioning a camera) is a common precursor to criminal activity.
+Scene change detection in [[camera-health-monitoring/_summary|Camera Health Monitoring (H1.1)]] (CHM) uses the `actuate-suddenscenechange` library to identify when a camera's field of view has been physically altered. This is a critical security capability -- camera tampering (covering, rotating, or repositioning a camera) is a common precursor to criminal activity.
 
 ## The actuate-suddenscenechange Library
 
@@ -48,4 +48,4 @@ Scene change results are stored in a dedicated SceneChange table in DynamoDB, se
 
 ## Relationship to Watchman
 
-CHM's scene change detection patterns are listed as reused technology in [[watchman]]. The Connectivity Agent or a health monitoring subsystem will likely incorporate `actuate-suddenscenechange` to detect tampering as part of Watchman's camera health layer.
+CHM's scene change detection patterns are listed as reused technology in [[watchman/_summary|Actuate Watchman]]. The Connectivity Agent or a health monitoring subsystem will likely incorporate `actuate-suddenscenechange` to detect tampering as part of [[watchman-repo|Watchman]]'s camera health layer.

@@ -19,12 +19,12 @@ actuate-movement implements motion detection for camera streams in the Actuate p
 ## Key Classes and Functions
 
 ### `core` module
-- **`MotionDetector`** -- The main orchestrator class used by pullers. Wraps a `FrameDiffMotionDetector`, manages polygonal ignore zones, motion sensitivity thresholds, metrics upload, and timestamp-zone masking via an internal thread pool. Exposes `detect_motion(frame, timestamp)` which returns a motion boolean and a list of motion regions.
+- **`MotionDetector`** -- The main orchestrator class used by pullers. Wraps a `FrameDiffMotionDetector`, manages polygonal [[ignore-zones|ignore zones]], motion sensitivity thresholds, metrics upload, and timestamp-zone masking via an internal thread pool. Exposes `detect_motion(frame, timestamp)` which returns a motion boolean and a list of motion regions.
 - **`MotionDetector.initialize_motion()`** -- First-frame bootstrap: processes the initial frame, seeds the background model, submits async timestamp-zone masking, then swaps itself out for `check_motion` on subsequent calls.
 - Adaptive sensitivity: when feature deployments include slicing (non-gun), fire, smoke, or loiterer metrics, sensitivity is raised (`min_pct_area=0.0001`, `min_pixel_sensitivity=7`). An infrequent-frame mode bumps pixel sensitivity to 50 when frames arrive more than 20 seconds apart.
 
 ### `fdmd` module (Frame-Diff Motion Detector)
-- **`FrameDiffMotionDetector`** -- CPU-based background-subtraction detector using OpenCV. Computes contours from frame deltas, converts them to Shapely polygons (with robust handling of self-intersecting and edge-touching contours via `make_valid` and frame-boundary clipping), applies NMS, and returns motion polygons.
+- **`FrameDiffMotionDetector`** -- CPU-based background-subtraction detector using [[opencv-entity|OpenCV]]. Computes contours from frame deltas, converts them to Shapely polygons (with robust handling of self-intersecting and edge-touching contours via `make_valid` and frame-boundary clipping), applies NMS, and returns motion polygons.
 - **`GPUFrameDiffMotionDetector`** -- CUDA-accelerated variant; selected automatically when `is_cuda_available()` returns `True`.
 - Histogram equalization support for low-contrast or IR streams.
 
@@ -41,7 +41,7 @@ Primary entry point: instantiate `MotionDetector` with a `CameraStreamConfig`, `
 
 ## Consumers
 
-- **actuate-pullers** -- `BasePuller` creates a `MotionDetector` per camera stream and uses it to gate frame submission to the inference queue.
+- **[[actuate-pullers]]** -- `BasePuller` creates a `MotionDetector` per camera stream and uses it to gate frame submission to the inference queue.
 - **vms-connector** -- Indirectly through pullers.
 
 ## Notable Patterns

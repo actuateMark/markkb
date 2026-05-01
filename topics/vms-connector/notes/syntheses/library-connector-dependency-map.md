@@ -2,7 +2,7 @@
 title: "Library-Connector Dependency Map"
 type: synthesis
 topic: vms-connector
-tags: [synthesis, cross-topic, dependencies, actuate-libraries, pipeline, critical-path]
+tags: [synthesis, cross-topic, dependencies, actuate-libraries, pipeline, critical-path, vms-connector]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
@@ -21,7 +21,7 @@ Before any frame is processed, the [[connector-factory]] assembles the entire ru
 - [[actuate-config]] -- Parses `settings.json` into typed config objects (`ConnectorConfig`, `CameraStreamConfig`, 20+ VMS-specific configs, 25+ alert sender configs). This is the single most depended-upon library in the connector.
 - [[actuate-admin-api]] -- Fetches camera, customer, and model metadata from the Admin API during startup. Also used for runtime config refresh.
 - [[actuate-secrets]] -- Retrieves credentials from AWS Secrets Manager with caching. Feeds into [[actuate-admin-api]] and VMS auth.
-- [[actuate-daos]] -- Initializes 17 DAOs (DynamoDB, S3, SQS, SNS, PostgreSQL, CloudWatch, New Relic, Datadog). The `DaoManager` is passed to virtually every subsystem.
+- [[actuate-daos]] -- Initializes 17 DAOs (DynamoDB, S3, SQS, SNS, PostgreSQL, CloudWatch, [[new-relic|New Relic]], Datadog). The `DaoManager` is passed to virtually every subsystem.
 - [[actuate-log]] -- Configures structured logging via `ActuateLogAdapter`. Loaded first; used everywhere.
 - [[actuate-network]] -- VPC subnet overlap checks and VPN route integration for WireGuard sites.
 - [[actuate-wireguard]] -- Manages WireGuard tunnel setup for sites connecting through Teltonika RMS.
@@ -30,12 +30,12 @@ Before any frame is processed, the [[connector-factory]] assembles the entire ru
 
 Each camera thread runs a puller from [[actuate-pullers]], which is itself the most dependency-heavy acquisition library:
 
-- [[actuate-pullers]] -- 15+ puller subclasses for RTSP, S3, SQS, KVS, Milestone, Orchid, and more. Depends on:
+- [[actuate-pullers]] -- 15+ puller subclasses for [[rtsp-deep-dive|RTSP]], S3, SQS, [[kvs-components|KVS]], Milestone, Orchid, and more. Depends on:
   - [[actuate-image-cache]] -- Thread-safe LRU/TTL cache storing decoded frames. Shared between puller and observers.
   - [[actuate-movement]] -- `MotionDetector` (FDMD) gates frame submission. Depends on [[actuate-math]] for NMS on motion contours.
   - [[actuate-pipeline-objects]] -- `ImageDataPacket` wraps every frame entering the pipeline.
   - [[actuate-healthmonitoring]] -- SES/SNS alerts for puller connectivity failures.
-  - [[actuate-imutils]] -- OpenCV image processing utilities for frame manipulation.
+  - [[actuate-imutils]] -- [[opencv-entity|OpenCV]] image processing utilities for frame manipulation.
   - [[actuate-image-manipulation]] -- Fisheye dewarping via native C library (for specialized cameras).
   - [[actuate-blur]] -- FFT-based blur detection to skip unusable frames.
 
@@ -44,10 +44,10 @@ Each camera thread runs a puller from [[actuate-pullers]], which is itself the m
 The processing phase of the [[pipeline-architecture]]:
 
 - [[actuate-inference-client]] -- Modern HTTP client (httpx, sync+async) for the Rust [[ds-server-container]] model servers. Used by the `AsyncInferencePool`.
-- [[actuate-classic-inference-client]] -- Legacy inference client wrapping `requests.post()`. Still in use for most production sites; the `YoloClient` class routes through the inference pool when available.
+- [[actuate-classic-inference-client]] -- Legacy inference client wrapping `requests.post()`. Still in use for most production sites; the `YoloClient` class routes through the [[inference-pool|inference pool]] when available.
 - [[actuate-inference-objects]] -- Canonical `Detection`, `BoundingBox`, `DetectionTag` types. Every downstream library that touches detections depends on this.
 - [[actuate-inference-slicing]] -- SAHI-style sliced inference for high-resolution streams. Splits images, dispatches tiles, merges results.
-- [[actuate-threadpool]] -- `ActuateThreadPoolExecutor` wraps the standard ThreadPoolExecutor with error handling. Used by the inference pool's slot mechanism and by observer dispatch.
+- [[actuate-threadpool]] -- `ActuateThreadPoolExecutor` wraps the standard ThreadPoolExecutor with error handling. Used by the [[inference-pool|inference pool]]'s slot mechanism and by observer dispatch.
 
 ### Stage 4: Post-Processing Filters
 
@@ -75,16 +75,16 @@ The [[observer-pattern]] layer that decides whether to fire alerts:
 
 Running throughout the pipeline lifecycle:
 
-- [[actuate-monitoring]] -- Deployment health reporting to New Relic, CloudWatch, and Datadog.
+- [[actuate-monitoring]] -- Deployment health reporting to [[new-relic|New Relic]], CloudWatch, and Datadog.
 - [[actuate-healthcheck-objects]] -- Health data objects for the CHM (Camera Health Monitoring) product.
 - [[actuate-healthmonitoring]] -- SES/SNS job queue alert mechanisms for operational alerts.
-- [[actuate-suddenscenechange]] -- SIFT-based scene change detection for camera tampering.
+- [[actuate-suddenscenechange]] -- SIFT-based [[scene-change-detection|scene change detection]] for camera tampering.
 - [[actuate-notification]] -- Slack (SNS) and email (SES) for internal notifications.
 - [[actuate-instrumentation]] -- Data capture for debugging and diagnostics.
 
 ### VLM Layer (Emerging)
 
-- [[actuate-vlm]] -- Vision Language Model client (SQS + DynamoDB polling) for the VLM FP reduction filter (Qwen3-VL-8B). Used in [[autopatrol]] and planned for broader deployment.
+- [[actuate-vlm]] -- Vision Language Model client (SQS + DynamoDB polling) for the [[vlm-fp-reduction|VLM FP reduction]] filter (Qwen3-VL-8B). Used in [[autopatrol/_summary|AutoPatrol (H1.2)]] and planned for broader deployment.
 
 ## The Critical Path
 
@@ -115,4 +115,4 @@ From the [[dependency-graph]] concept note:
 
 ## Practical Implications for Development
 
-When working on the [[vms-connector]], understanding this map helps predict the impact of library upgrades. A patch to [[actuate-math]] (leaf library, only affects [[actuate-filters]] and [[actuate-movement]]) is low-risk. A change to [[actuate-pipeline-objects]] (used by pullers, pipeline, observers, senders) requires testing the entire detection-to-alert flow. The [[dev-workflow]] -- feature branch with dev versions, pin in consumer, test, merge to main, pin stable -- exists precisely because this dependency graph is deep and wide.
+When working on the [[vms-connector]], understanding this map helps predict the impact of library upgrades. A patch to [[actuate-math]] (leaf library, only affects [[actuate-filters]] and [[actuate-movement]]) is low-risk. A change to [[actuate-pipeline-objects]] (used by pullers, pipeline, observers, senders) requires testing the entire detection-to-alert flow. The [[dev-workflow]] -- feature branch with dev versions, pin in consumer, test, merge to main, pin stable -- exists precisely because this [[dependency-graph|dependency graph]] is deep and wide.

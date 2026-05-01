@@ -22,10 +22,10 @@ Created on April 9, 2026, this space is populated automatically from GitHub repo
 Covers ML model documentation, evaluation methodology, training procedures, and model performance benchmarks. Relevant for understanding the YAM initiative, v5-to-v8 model migration, weapon model development, and VLM (Vision Language Model) work by [[alena-prashkovich]], [[carlos-torres]], and [[clarissa-herman]].
 
 ### PM -- Product Management (20 pages)
-Product-level documentation including the [[watchman]] PRD (authored by Brian Leary), infrastructure planning, and product strategy. Smaller than expected for a product team, suggesting some product docs live in other spaces (e.g., PR for roadmap).
+Product-level documentation including the [[watchman/_summary|Actuate Watchman]] PRD (authored by [[brian-leary|Brian Leary]]), infrastructure planning, and product strategy. Smaller than expected for a product team, suggesting some product docs live in other spaces (e.g., PR for roadmap).
 
 ### Integratio -- Integration Partner Docs (11 pages)
-Documentation for partner integrations: [[integrations/morphean/_summary|Morphean]] (EBUS), Evalink, and others. Despite having only 11 pages, this space is strategically important -- it contains the requirements docs and QA checklists that govern how Actuate connects to external platforms.
+Documentation for partner integrations: [[integrations/morphean/_summary|Morphean]] (EBUS), [[evalink-components|Evalink]], and others. Despite having only 11 pages, this space is strategically important -- it contains the requirements docs and QA checklists that govern how Actuate connects to external platforms.
 
 ### CAJP -- Jira/Confluence Process (10 pages)
 Meta-documentation about how the team uses Jira and Confluence. Home of the [[jira-reorg-proposal]] by [[jacob-weiss]].
@@ -56,4 +56,4 @@ These secondary spaces likely contain historical documentation from earlier prod
 ## See Also
 
 - [[jira-reorg-proposal]] -- the Jira side of tooling organization
-- [[actuate-platform]] -- the system these docs describe
+- [[actuate-platform/_summary|Actuate Platform Overview]] -- the system these docs describe

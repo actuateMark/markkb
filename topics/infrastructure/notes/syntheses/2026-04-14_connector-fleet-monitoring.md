@@ -2,7 +2,7 @@
 title: "Connector Fleet Monitoring via New Relic"
 type: synthesis
 topic: infrastructure
-tags: [monitoring, new-relic, nrql, connector, deployment, observability]
+tags: [monitoring, new-relic, nrql, connector, deployment, observability, autopatrol]
 created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot

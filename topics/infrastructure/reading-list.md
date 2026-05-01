@@ -1,5 +1,10 @@
 # Reading List: Infrastructure
 
+## AWS 
+- [ ] [https://docs.aws.amazon.com/eks/latest/best-practices/cost-opt-storage.html](https://docs.aws.amazon.com/eks/latest/best-practices/cost-opt-storage.html) 
+- [ ] look for more opportunities for cost optimization. Maybe an AWS cost optimization topic with dives into our infra is necessary.
+
+
 ## Confluence Pages
 
 ### PM Space

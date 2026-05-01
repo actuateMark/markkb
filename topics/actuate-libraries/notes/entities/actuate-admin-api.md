@@ -10,7 +10,7 @@ author: kb-bot
 
 ## Purpose
 
-actuate-admin-api (v1.2.2) is a Python HTTP client for the Actuate Camera Admin REST API. It wraps all API endpoints into a single `AdminApi` class so that other libraries (actuate-daos, actuate-config, actuate-monitoring) can interact with Camera Admin without crafting raw HTTP requests.
+actuate-admin-api (v1.2.2) is a Python HTTP client for the Actuate Camera Admin REST API. It wraps all API endpoints into a single `AdminApi` class so that other libraries ([[actuate-daos]], [[actuate-config]], [[actuate-monitoring]]) can interact with Camera Admin without crafting raw HTTP requests.
 
 ## Key Class: AdminApi
 
@@ -43,11 +43,11 @@ All endpoint methods delegate to `api_call(path, params, data, method, return_re
 
 ## Dependencies
 
-- **actuate-secrets** >=1.0.0 -- retrieves API token and Postgres secrets from AWS Secrets Manager.
+- **[[actuate-secrets]]** >=1.0.0 -- retrieves API token and Postgres secrets from AWS Secrets Manager.
 
 ## Consumers
 
-actuate-daos (`AdminDAO` wraps most calls), actuate-config (`CustomerConfig` fetches AI models), actuate-monitoring (`NewRelicMonitor` for mute rule management). Any service that needs Camera Admin data uses this through AdminDAO.
+[[actuate-daos]] (`AdminDAO` wraps most calls), [[actuate-config]] (`CustomerConfig` fetches AI models), [[actuate-monitoring]] (`NewRelicMonitor` for mute rule management). Any service that needs Camera Admin data uses this through AdminDAO.
 
 ## Notable Patterns
 

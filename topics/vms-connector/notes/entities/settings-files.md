@@ -10,7 +10,7 @@ author: kb-bot
 
 # settings-files
 
-A working directory (not a formal package) containing JSON configuration files used to configure individual **VMS connector** instances. Each file represents the full settings payload for a specific connector deployment at a customer site. The repo contains 150+ `connector-{id}_preview_settings.json` files, along with older-format VCH JSON files and miscellaneous debugging artifacts.
+A working directory (not a formal package) containing JSON configuration files used to configure individual **[[vms-connector|VMS connector]]** instances. Each file represents the full settings payload for a specific connector deployment at a customer site. The repo contains 150+ `connector-{id}_preview_settings.json` files, along with older-format VCH JSON files and miscellaneous debugging artifacts.
 
 ## File Naming Convention
 

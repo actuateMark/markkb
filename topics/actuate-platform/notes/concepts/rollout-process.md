@@ -27,7 +27,7 @@ The rollback script is structurally symmetrical to the rollout but differs in tw
 
 ## Monitoring
 
-A dedicated New Relic dashboard is created for each rollout with queries and graphs tracking site health metrics. This dashboard is the primary tool for validating the rollout in real time.
+A dedicated [[new-relic|New Relic]] dashboard is created for each rollout with queries and graphs tracking site health metrics. This dashboard is the primary tool for validating the rollout in real time.
 
 ## Human Process
 

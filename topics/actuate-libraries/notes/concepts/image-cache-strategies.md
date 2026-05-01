@@ -44,7 +44,7 @@ Built on `cachetools.TLRUCache` (Time-aware LRU). The TTL per entry is dynamical
 
 Built on a custom `PoolAwareTTLCache` (extending `cachetools.TTLCache`) paired with a `FrameBufferPool`. This is the production cache for all standard deployments. It solves the **numpy buffer fragmentation problem** that causes RSS growth in long-running connector processes.
 
-**When used:** All production RTSP/stream-based integrations. Selected by default in the [[connector-factory]] camera construction path.
+**When used:** All production [[rtsp-deep-dive|RTSP]]/stream-based integrations. Selected by default in the [[connector-factory]] camera construction path.
 
 **The fragmentation problem:** Each 720p frame is a ~2.7 MB numpy array. The pipeline creates and discards these arrays at 1-3 FPS per camera. glibc's `ptmalloc2` allocator handles this poorly: freed large allocations are retained in per-thread arenas rather than returned to the OS, causing monotonic RSS growth over hours. See [[memory-management]] for the full analysis.
 
@@ -56,7 +56,7 @@ Built on a custom `PoolAwareTTLCache` (extending `cachetools.TTLCache`) paired w
 
 ## Lazy JPEG Decode
 
-All four implementations share a common optimisation for integrations that receive JPEG snapshots rather than decoded video frames (JPG pullers, SQS pullers). `set_frame_from_jpeg()` stores only JPEG bytes with `[None, jpg_bytes]`, skipping the numpy allocation entirely. When `get_frame()` is called and the numpy slot is `None`, it lazily decodes via `decode_jpeg_bytes()` (TurboJPEG or cv2 fallback). The decode happens outside the lock to avoid blocking other cache operations. The decoded array is transient -- not cached back -- so it is allocated and freed in the caller's scope.
+All four implementations share a common optimisation for integrations that receive JPEG snapshots rather than decoded video frames (JPG pullers, SQS pullers). `set_frame_from_jpeg()` stores only JPEG bytes with `[None, jpg_bytes]`, skipping the numpy allocation entirely. When `get_frame()` is called and the numpy slot is `None`, it lazily decodes via `decode_jpeg_bytes()` (TurboJPEG or [[opencv-entity|cv2]] fallback). The decode happens outside the lock to avoid blocking other cache operations. The decoded array is transient -- not cached back -- so it is allocated and freed in the caller's scope.
 
 ## Selection Guide
 
@@ -65,6 +65,6 @@ All four implementations share a common optimisation for integrations that recei
 | `LRUImageCache` | No | No | Dev, healthcheck, batch |
 | `TTLImageCache` | Fixed | No | Low-camera-count, legacy |
 | `TLRUImageCache` | Adaptive | No | Experimental, variable-throughput |
-| `PooledTTLImageCache` | Fixed | Yes | Production (all RTSP/stream) |
+| `PooledTTLImageCache` | Fixed | Yes | Production (all [[rtsp-deep-dive|RTSP]]/stream) |
 
 The migration path for new integrations is straightforward: start with `LRUImageCache` for local testing, switch to `PooledTTLImageCache` for production deployment. `TLRUImageCache` remains available as a research option for integrations with extreme throughput variability.

@@ -40,7 +40,7 @@ The current diagnostic types (connectivity, recording, motion, stream quality, s
 
 ## 3. VLM-Based Visual Quality Assessment
 
-The current image quality pipeline uses FFT-based blur detection (`actuate-blur`) and SIFT-based scene change detection (`actuate-suddenscenechange`). These are effective for binary classification (blurred vs. sharp, scene changed vs. stable) but miss nuanced quality issues.
+The current image quality pipeline uses FFT-based blur detection (`actuate-blur`) and SIFT-based [[scene-change-detection|scene change detection]] (`actuate-suddenscenechange`). These are effective for binary classification (blurred vs. sharp, scene changed vs. stable) but miss nuanced quality issues.
 
 A VLM could assess quality holistically: partial obstructions (spider webs, condensation, sun glare), exposure issues, IR mode stuck-on during daytime, de-focused-but-not-blurred images, and LED color cast. One inference per camera per run produces a rich quality description at minimal cost. For scene change, a VLM could explain _what_ changed (construction, vegetation, camera shift) to reduce false-positive alerts.
 
@@ -65,7 +65,7 @@ The DynamoDB Healthcheck table already stores per-camera state; extending with t
 
 ## 6. Integration with Site Context Agent
 
-The [[autopatrol-integration-components|AutoPatrol]] ecosystem includes the Watchman Site Context Agent, which maintains real-time understanding of site layout, camera roles, and operational context. Integrating CHM with this agent would enable:
+The [[autopatrol-integration-components|AutoPatrol]] ecosystem includes the [[watchman-repo|Watchman]] Site Context Agent, which maintains real-time understanding of site layout, camera roles, and operational context. Integrating CHM with this agent would enable:
 
 - **Priority-based alerting** -- Failed perimeter cameras at high-value sites escalate faster than interior cameras at low-risk sites.
 - **Operational awareness** -- Suppress false scene-change alerts during known construction or reconfiguration.

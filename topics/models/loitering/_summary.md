@@ -43,7 +43,7 @@ Loitering is configured in settings.json with `loiterer` or `vehicle_loiterer` i
 
 ## Pipeline Position
 
-Within the [[data-science|detection pipeline]], loitering observers sit at the observer layer. Filtered YOLO detections (after stationary, confidence, ignore zones, IOU, blacklist filters) are fed to the BoTSORT tracker. When the observer triggers, it injects a `loiterer` or `vehicle_loiterer` label into the pipeline results, which then passes through the sliding window and alert generation.
+Within the [[data-science/_summary|Data Science Methodology]], loitering observers sit at the observer layer. Filtered YOLO detections (after stationary, confidence, ignore zones, IOU, blacklist filters) are fed to the BoTSORT tracker. When the observer triggers, it injects a `loiterer` or `vehicle_loiterer` label into the pipeline results, which then passes through the sliding window and alert generation.
 
 ## Current Status
 
@@ -51,7 +51,7 @@ Loitering detection is **active in production**. The observers are automatically
 
 ## Related Topics
 
-- [[ai-models]] -- model catalog
-- [[data-science]] -- BoTSORT tracking and detection pipeline
+- [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
+- [[data-science/_summary|Data Science Methodology]] -- BoTSORT tracking and detection pipeline
 - [[models/intruder-v5]] -- the underlying detection model
 - [[models/line-crossing]] -- alternative tracking-based product

@@ -27,7 +27,7 @@ actuate-suddenscenechange (commonly referred to as SAC -- Scene and Camera) dete
 - **`IntegratedSACDetectorBank`** -- Manages multiple `IntegratedSACDetector` instances for a camera, supporting on-demand detector creation and hour-based scheduling for different detection parameters.
 
 ### Utility Classes
-- **`SimpleSceneChangePacket`** -- Data packet for scene change detection results.
+- **`SimpleSceneChangePacket`** -- Data packet for [[scene-change-detection|scene change detection]] results.
 - **`SimpleHistogramEqualizer`** -- Image preprocessing for improved detection accuracy.
 - **`SimpleSubtractor`** -- Background subtraction component.
 - **`SimpleSceneEventDetector`** -- Temporal analysis of detection event patterns.

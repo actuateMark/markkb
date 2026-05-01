@@ -2,7 +2,7 @@
 title: "Luxriot Integration Components"
 type: entity
 topic: integrations/luxriot
-tags: [integration, luxriot, components]
+tags: [integration, luxriot, components, vms-connector]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
@@ -10,7 +10,7 @@ author: kb-bot
 
 # Luxriot Integration Components
 
-Luxriot (now Luxriot Evo) is a VMS platform. The Actuate integration connects to Luxriot servers via HTTP with embedded credentials to retrieve camera streams. Luxriot sites use the standard RTSP puller path after constructing URLs from the server configuration.
+Luxriot (now Luxriot Evo) is a VMS platform. The Actuate integration connects to Luxriot servers via HTTP with embedded credentials to retrieve camera streams. Luxriot sites use the standard [[rtsp-deep-dive|RTSP]] puller path after constructing URLs from the server configuration.
 
 ## Config Classes
 
@@ -30,7 +30,7 @@ Extends `CustomerConfig` with server connection details:
 - `api_endpoint` -- auto-constructed as `http://{username}:{password}@{server_ip}:{server_port}/`. This embeds HTTP Basic Auth credentials directly in the URL, which is used for both API access and video stream retrieval.
 - Optional `use_motion` and `motion_interval` fields for motion-gated operation.
 
-The embedded-credential URL pattern is the defining characteristic of the Luxriot integration. Unlike RTSP integrations where credentials are per-camera, Luxriot uses a single server-level credential pair embedded in the base HTTP URL.
+The embedded-credential URL pattern is the defining characteristic of the Luxriot integration. Unlike [[rtsp-deep-dive|RTSP]] integrations where credentials are per-camera, Luxriot uses a single server-level credential pair embedded in the base HTTP URL.
 
 ### LuxriotCamera
 
@@ -46,7 +46,7 @@ Luxriot does not have a dedicated puller in [[actuate-pullers]]. The video strea
 
 ## Integration Calls
 
-There is **no** dedicated `actuate-integration-calls` module for Luxriot. API interaction (camera discovery, stream URL retrieval) is handled at setup time in the connector factory rather than through a reusable calls library.
+There is **no** dedicated `actuate-integration-calls` module for Luxriot. API interaction (camera discovery, stream URL retrieval) is handled at setup time in the [[connector-factory|connector factory]] rather than through a reusable calls library.
 
 ## Factory Routing
 
@@ -55,5 +55,5 @@ In [[vms-connector]] `factory.py`, `integration_type == "luxriot"` routes to `Lu
 ## Key Architectural Notes
 
 - **HTTP embedded credentials** -- the `api_endpoint` format `http://user:pass@host:port/` means credentials are visible in the URL string. The `_redact_url_credentials` utility in [[actuate-pullers]] ensures these are masked in log output.
-- **Server-level auth** -- unlike RTSP (per-camera credentials) or Salient (per-server credentials), Luxriot uses a single credential pair for the entire customer.
+- **Server-level auth** -- unlike [[rtsp-deep-dive|RTSP]] (per-camera credentials) or Salient (per-server credentials), Luxriot uses a single credential pair for the entire customer.
 - **Optional motion support** -- when `use_motion` is True, the puller connects only during motion windows (saving bandwidth and CPU on low-activity sites).

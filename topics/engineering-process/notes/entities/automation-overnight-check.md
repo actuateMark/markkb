@@ -43,7 +43,7 @@ On failure, the wrapper still writes a note — with `title: FAILED: …`, `stat
 ## Dependencies
 
 - `claude` CLI at `/home/mork/.local/bin/claude` (v2.1.112+ supports `-p` headless mode)
-- New Relic MCP authenticated (token at whatever path `~/.claude` uses)
+- [[new-relic|New Relic]] MCP authenticated (token at whatever path `~/.claude` uses)
 - `kubectl` with valid context for the `rearchitecture` namespace
 - Skill: `/autopatrol-overnight-check`
 - Agents: [[agent-nrql-investigator]], [[agent-kb-scribe]]

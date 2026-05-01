@@ -12,6 +12,8 @@ author: kb-bot
 
 A single-pane-of-glass for code health across all Actuate repositories. Consolidates static analysis, test coverage, architecture conformance, dependency health, and tech debt trends into one extensible view.
 
+> **Sketch status (2026-04-22):** Scaffolded as the `software_arch_sketches.dashboard` module in `/home/mork/work/software-arch-sketches/` (repo root). Flask app with Chart.js-from-CDN shell; reads `/api/data` JSON aggregated from the other 4 sketches. `make serve` on `localhost:8000`. **Stub only** — no real data wired yet. See [[2026-04-17_local-sketches-plan]] "Shared substrate decisions (RESOLVED 2026-04-22)" for the substrate choices.
+
 ---
 
 ## Design Goals
@@ -311,7 +313,7 @@ Create entity notes per repo that get updated by the [[2026-04-16_tech-debt-agen
 - Add the metrics export workflow to all repos
 - Write `compute_health_score.py` 
 - Store results as CI artifacts
-- Create a simple Markdown health report generated per merge
+- Create a simple Markdown [[health-report|health report]] generated per merge
 
 ### Phase 3: Unified Dashboard (Month 2)
 - Choose visualization layer (Grafana vs GitHub Pages vs Obsidian)

@@ -42,6 +42,10 @@ Django 6.0 + Django REST Framework application serving as the **operational back
 - **Staging:** `staging.actuateui.net`
 - **Dev:** `dev.actuateui.net`
 
+## Release flow
+
+Release-train, **stage-first**: feature → `staging` → `main`. CI workflow `Protect Main Branch` rejects PRs to `main` from non-staging heads. **Always use `gh pr create --base staging`** for feature work — never `--base main`. See [[release-flow-stage-first]] for the full rules + gotchas.
+
 ## Docs
 
 - Swagger UI: `/swagger/`
@@ -65,7 +69,7 @@ Django 6.0 + Django REST Framework application serving as the **operational back
 
 ## Relationship to Other Services
 
-- **Creates API keys** -> stored in DynamoDB -> validated by [[inference-api]] Rust authorizer
+- **Creates API keys** -> stored in DynamoDB -> validated by [[inference-api/_summary|Actuate Inference API]] Rust authorizer
 - **Provides camera/customer/site metadata** -> consumed by [[vms-connector]] via config files and API calls
 - **Manages integration configurations** -> alarm senders in vms-connector read these
 - **Phase 4 of inference-api:** will call Admin API for camera_id -> site_id resolution

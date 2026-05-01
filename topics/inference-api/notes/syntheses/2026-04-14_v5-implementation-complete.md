@@ -13,7 +13,7 @@ author: kb-bot
 
 ## What Was Built
 
-Two new endpoints added to the [[inference-api]] on the existing Lambda + API Gateway stack:
+Two new endpoints added to the [[inference-api/_summary|Actuate Inference API]] on the existing Lambda + API Gateway stack:
 
 | Endpoint | Purpose |
 |----------|---------|
@@ -83,7 +83,7 @@ POST /v5/detect { model_id, frames[], data }
 
 ## Security Integration
 
-- **API Gateway**: Existing `{proxy+}` routes all `/v5/*` through the Rust Lambda authorizer. No terraform changes needed.
+- **API Gateway**: Existing `{proxy+}` routes all `/v5/*` through the [[rust-lambda-authorizer|Rust Lambda authorizer]]. No terraform changes needed.
 - **Per-model RBAC on POST /v5/detect**: `CheckRoles(entry.accepted_roles)` checks the model-specific role (same roles as v4). A `weapon` key gets 403 on `model_id: "intruder"`.
 - **Role-filtered GET /v5/models**: Only returns models the caller's API key grants access to. `full_access` sees all 7; `intruder` sees only intruder. Local dev (no auth context) shows all.
 - **Role-filtered 404 hints**: When `model_id` is not found, the error message only lists models the caller can access — prevents leaking model names to unauthorized users.
@@ -108,6 +108,6 @@ Live regression suite (`/v5/test/regression`) confirmed all v1-v4 endpoints stil
 - Lambda-to-K8s migration (ADR-001 denied)
 - Dynamic K8s model discovery (static registry instead)
 - Per-customer response format (everyone gets same format)
-- Ignore zones (extensible later via data JSON)
+- [[ignore-zones|Ignore zones]] (extensible later via data JSON)
 - API key subkey generation endpoints
 - actuate-libraries filter consolidation (can proceed independently)

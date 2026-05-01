@@ -10,7 +10,7 @@ author: kb-bot
 
 ## Purpose
 
-actuate-daos (v3.2.13) is the data access layer for the Actuate platform. It provides DAO classes for DynamoDB, S3, SQS, PostgreSQL (via Camera Admin API), and metrics backends (CloudWatch, New Relic). Nearly every service that reads or writes persistent data goes through this library.
+actuate-daos (v3.2.13) is the data access layer for the Actuate platform. It provides DAO classes for DynamoDB, S3, SQS, PostgreSQL (via Camera Admin API), and metrics backends (CloudWatch, [[new-relic|New Relic]]). Nearly every service that reads or writes persistent data goes through this library.
 
 ## Architecture
 
@@ -27,7 +27,7 @@ The managed DAOs are: `AdminDAO`, `ImageDataDAO`, `WindowIdsDAO`, `CameraStatusD
 - **Generic query helpers**: `query_dict_array`, `query_one`, `execute`, `bulk_execute`, `query_from_file` -- all handle connection pooling and retries.
 - **Camera Admin API wrappers**: `get_frame_queue_info_by_camera_id`, `get_motion_queue_info_by_camera_id`, `get_cameras`, `get_site_details`, `list_sites`, `list_webhooks`, `get_ai_model`, `get_configuration` -- these delegate to `AdminApi` for REST calls.
 - **Credential/token access**: `get_api_token` (direct DB query for auth tokens), `check_immix_credential`.
-- **New Relic integration**: `get_new_relic_mute_rule_id`, `reset_new_relic_mute_rule_id`.
+- **[[new-relic|New Relic]] integration**: `get_new_relic_mute_rule_id`, `reset_new_relic_mute_rule_id`.
 - **Command history**: `save_command_history`, `update_task_id`.
 
 ### BaseDynamoDAO -- DynamoDB Base Class
@@ -45,7 +45,7 @@ The managed DAOs are: `AdminDAO`, `ImageDataDAO`, `WindowIdsDAO`, `CameraStatusD
 ### Metrics DAOs
 
 - **`CloudwatchMetricsDAO`** -- publishes custom metrics (FPS, motion percentage, alerts, processing speed) to CloudWatch.
-- **`NewRelicMetricsDAO`** -- publishes the same metrics to New Relic via the telemetry SDK.
+- **`NewRelicMetricsDAO`** -- publishes the same metrics to [[new-relic|New Relic]] via the telemetry SDK.
 - **`ActuateMetricsDAO`** -- abstract base for metrics backends.
 
 ### Other DAOs
@@ -55,7 +55,7 @@ The managed DAOs are: `AdminDAO`, `ImageDataDAO`, `WindowIdsDAO`, `CameraStatusD
 - `ErrorAlarmDAO` -- error alarm state.
 - `BlacklistDAO` -- detection blacklist management.
 - `PeopleFlowDAO` -- people counting/flow data.
-- `SceneChangeDAO` -- scene change detection records.
+- `SceneChangeDAO` -- [[scene-change-detection|scene change detection]] records.
 - `MotionDAO` -- motion event records.
 - `ClipsMetadataDAO` -- video clip metadata.
 - `HeartbeatDAO` -- site heartbeat updates.
@@ -71,17 +71,17 @@ Every DAO has a corresponding mock in `mocks/` (e.g. `AdminDAOMock`, `S3DAOMock`
 ## Dependencies
 
 - **actuate-threadpool** >=1.0.0 -- thread pool for async S3 uploads.
-- **actuate-healthcheck-objects** ~=1.1 -- healthcheck packet types.
-- **actuate-config** >=1.3.5 -- BaseConnectorConfig for DynamoDB DAO construction.
-- **actuate-admin-api** >=0.1.12 -- REST calls to Camera Admin.
-- **newrelic-telemetry-sdk** >=0.5.1 -- New Relic metrics publishing.
+- **[[actuate-healthcheck-objects]]** ~=1.1 -- healthcheck packet types.
+- **[[actuate-config]]** >=1.3.5 -- BaseConnectorConfig for DynamoDB DAO construction.
+- **[[actuate-admin-api]]** >=0.1.12 -- REST calls to Camera Admin.
+- **newrelic-telemetry-sdk** >=0.5.1 -- [[new-relic|New Relic]] metrics publishing.
 - **psycopg2-binary** ~=2.9.10 -- PostgreSQL driver.
 - **moto[dynamodb]** >=5.0.21 -- DynamoDB mocking for tests.
 - **requests**, **boto3** -- AWS SDK and HTTP.
 
 ## Consumers
 
-vms-connector (primary), actuate-monitoring (NewRelicMonitor uses AdminDAO), actuate-healthmonitoring, actuate-alarm-senders, actuate-queue-consumer -- essentially any service that persists data or reads from Camera Admin.
+vms-connector (primary), [[actuate-monitoring]] (NewRelicMonitor uses AdminDAO), [[actuate-healthmonitoring]], [[actuate-alarm-senders]], [[actuate-queue-consumer]] -- essentially any service that persists data or reads from Camera Admin.
 
 ## Notable Patterns
 

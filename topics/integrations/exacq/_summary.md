@@ -2,7 +2,7 @@
 title: "Exacq Integration"
 type: summary
 topic: integrations/exacq
-tags: [integration, vms, exacq]
+tags: [integration, vms, exacq, rtsp]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
@@ -20,7 +20,7 @@ Defined in [[actuate-integration-calls]] at `exacq/exacq_utils.py`. Provides two
 
 - **`get_session_id(config)`** -- authenticates with the exacqVision server to obtain a session ID. Tries two login methods in sequence: (1) a legacy GET-based login with `responseVersion=2` that returns JSON, and (2) a newer POST-based login that parses the session ID from the HTML response via regex. Falls back to the second method if the first raises an exception.
 - **`get_stream_url(config, camera_config, session_id)`** -- constructs the video stream URL for a camera. Supports three formats based on the camera's `format` field:
-  - **Format 5** -- direct RTSP streaming: `rtsp://[user]:[pass]@[ip]:[stream_port]/[camera_id]`
+  - **Format 5** -- direct [[rtsp-deep-dive|RTSP]] streaming: `rtsp://[user]:[pass]@[ip]:[stream_port]/[camera_id]`
   - **Format 7** -- HTTP live video: `http://[ip]:[port]/video.web?s=[session]&camera=[id]&format=7`
   - **Other formats** -- HTTP JPEG pull with optional width/height/quality parameters
 
@@ -47,11 +47,11 @@ No Exacq-specific alarm sender. Alert delivery uses whichever monitoring sender 
 
 ## Key Config Fields
 
-`server_ip`, `server_port`, `server` (server name), `username`, `password`, `stream_port` (for RTSP format 5). Per-camera: `camera_id`, `format` (5=RTSP, 7=HTTP stream, others=JPEG), `width`, `height`, `quality`.
+`server_ip`, `server_port`, `server` (server name), `username`, `password`, `stream_port` (for [[rtsp-deep-dive|RTSP]] format 5). Per-camera: `camera_id`, `format` (5=RTSP, 7=HTTP stream, others=JPEG), `width`, `height`, `quality`.
 
 ## Relationship to Other Components
 
 - [[actuate-integration-calls]] -- exacq_utils provides session auth and URL construction
 - [[actuate-config]] -- ExacqConnectorConfig with customer and camera-level typed config
-- [[actuate-pullers]] -- standard RTSP or URL puller consumes the constructed stream URL
+- [[actuate-pullers]] -- standard [[rtsp-deep-dive|RTSP]] or URL puller consumes the constructed stream URL
 - [[vms-connector]] -- orchestrates session login, URL construction, and puller startup

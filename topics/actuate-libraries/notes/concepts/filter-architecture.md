@@ -40,11 +40,11 @@ Identifies objects that have not moved between frames by comparing current detec
 
 ### BlacklistFilter
 
-Compares detections against known blacklists (license plates, faces) loaded from [[actuate-daos]]'s `BlacklistDAO`. Matching detections are flagged for the `BlacklistObserver` in [[actuate-connector-observers]]. This filter bridges the detection pipeline with the access-control use case.
+Compares detections against known blacklists (license plates, faces) loaded from [[actuate-daos]]'s `BlacklistDAO`. Matching detections are flagged for the `BlacklistObserver` in [[actuate-connector-observers]]. This filter bridges the [[detection-pipeline|detection pipeline]] with the access-control use case.
 
 ### PolyZoneFilter (ignore_polygonal_zones)
 
-Removes detections whose bounding boxes fall within configured polygonal ignore zones. Uses Shapely geometry to compute intersection between detection bounding boxes and zone polygons. Zones are defined per-camera in [[actuate-config]]'s `CameraConfig` and typically mask areas like roads, trees, or sky that produce irrelevant detections. The [[actuate-viz]] library can render these zones as semi-transparent overlays for debugging.
+Removes detections whose bounding boxes fall within configured polygonal [[ignore-zones|ignore zones]]. Uses Shapely geometry to compute intersection between detection bounding boxes and zone polygons. Zones are defined per-camera in [[actuate-config]]'s `CameraConfig` and typically mask areas like roads, trees, or sky that produce irrelevant detections. The [[actuate-viz]] library can render these zones as semi-transparent overlays for debugging.
 
 ## Pipeline Integration
 
@@ -52,7 +52,7 @@ Within the pipeline (see [[actuate-pipeline-objects]]), filters are applied in a
 
 1. **LabelFilter** -- restrict to configured object classes
 2. **ConfidenceFilter** or **LabelwiseConfidenceFilter** -- remove low-confidence detections
-3. **PolyZoneFilter** -- mask ignore zones
+3. **PolyZoneFilter** -- mask [[ignore-zones|ignore zones]]
 4. **IoUFilter** -- deduplicate overlapping boxes
 5. **StationaryFilter** -- tag stationary objects
 6. **BlacklistFilter** -- flag blacklist matches

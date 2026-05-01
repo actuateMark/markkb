@@ -43,7 +43,7 @@ Every frame passes through three phases, all implemented as stateless steps that
 
 2. **Processing** -- The YOLO inference call itself. The `YoloProcessingStep` submits the frame to the inference server (via `actuate_classic_inference_client.YoloClient`). In production, the YoloClient delegates HTTP calls to the shard's shared `AsyncInferencePool`, which consolidates all inference requests onto a single asyncio event loop to avoid GIL convoy effects.
 
-3. **Post-processing** -- Detection filtering (ignore zones, stationary object suppression, IOU deduplication, confidence thresholding), label remapping, sliding window logic (threshold counting over time), observer notification (loitering, line crossing, blacklist), and frame cleanup scheduling.
+3. **Post-processing** -- Detection filtering ([[ignore-zones|ignore zones]], stationary object suppression, IOU deduplication, confidence thresholding), label remapping, sliding window logic (threshold counting over time), observer notification (loitering, line crossing, blacklist), and frame cleanup scheduling.
 
 ## Frame Flow Through the Camera
 
@@ -52,7 +52,7 @@ The camera's `pull()` method (`camera/shared/base_stream_camera.py`) runs a tigh
 - **`get_frame()`** pulls the next decoded frame from the puller's frame buffer queue, stamps it with `approx_capture_timestamp`, stores it in the `TTLImageCache`, wraps it in an `ImageDataPacket`, and submits it to the pipeline's `first_step`.
 - **`get_result()`** reads from the result buffer queue (populated by the pipeline's final step calling back into the camera). It calls `finish_pipeline(result)` to merge product state from the previous frame, then `send_alerts(result)` to dispatch any triggered alarms, and finally `notify(result)` to update observers.
 
-The puller runs in its own thread (`_pl` suffix), decoding the RTSP/HTTP stream at the inbound FPS (often 15-30 FPS). Motion detection runs at full inbound rate. Downsampling to the configured analytics FPS (typically 1-3 FPS) happens in a pre-processing step before inference.
+The puller runs in its own thread (`_pl` suffix), decoding the [[rtsp-deep-dive|RTSP]]/HTTP stream at the inbound FPS (often 15-30 FPS). Motion detection runs at full inbound rate. Downsampling to the configured analytics FPS (typically 1-3 FPS) happens in a pre-processing step before inference.
 
 ## Stateless Design
 
@@ -90,9 +90,9 @@ The connector supports 9+ puller types, each tailored to a different camera conn
 
 | Puller | Mechanism | Use Case |
 |--------|-----------|----------|
-| URL Puller | RTSP/HTTP stream via OpenCV | Standard continuous video |
+| URL Puller | [[rtsp-deep-dive|RTSP]]/HTTP stream via [[opencv-entity|OpenCV]] | Standard continuous video |
 | URL Puller Motion | SQS motion pings / socket pings | Motion-triggered frame pull |
-| Milestone Puller | Proprietary socket protocol (no OpenCV) | Milestone VMS |
+| Milestone Puller | Proprietary socket protocol (no [[opencv-entity|OpenCV]]) | Milestone VMS |
 | Socket Puller | Generic socket-based | Integration-specific |
 | JPG Puller | JPEG snapshot polling | Snapshot cameras |
 | S3 Puller | S3 bucket reads | Batch/gauntlet processing |

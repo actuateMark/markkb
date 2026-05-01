@@ -36,7 +36,7 @@ Model naming uses two identifiers: the HF model ID (e.g., `Qwen/Qwen3-VL-8B-Inst
 
 ## Build and Deploy
 
-A single build script (`scripts/build-and-push.sh`) handles everything: ensures SQS queues and DLQs exist, sets S3 lifecycle policies, fetches the HF token from Secrets Manager (passed as a BuildKit secret), auto-detects the base image, builds the Docker image, and optionally pushes to ECR. Deployment goes through ArgoCD via the [[kubernetes-deployments]] repo -- manifests are never applied directly.
+A single build script (`scripts/build-and-push.sh`) handles everything: ensures SQS queues and DLQs exist, sets S3 lifecycle policies, fetches the HF token from Secrets Manager (passed as a BuildKit secret), auto-detects the base image, builds the Docker image, and optionally pushes to ECR. Deployment goes through [[argocd|ArgoCD]] via the [[kubernetes-deployments]] repo -- manifests are never applied directly.
 
 Dev and prod are separate deployments controlled by `cluster-values.yaml` in `kubernetes-deployments`. Promoting to prod means setting `enabled: true` on the prod instance block and merging the PR.
 

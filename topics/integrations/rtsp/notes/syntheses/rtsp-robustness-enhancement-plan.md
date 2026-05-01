@@ -10,21 +10,21 @@ author: kb-bot
 
 # RTSP Robustness Enhancement Plan
 
-Comprehensive analysis of the RTSP integration (the default/foundational integration type) with specific enhancement proposals ranked by impact/effort.
+Comprehensive analysis of the [[rtsp-deep-dive|RTSP]] integration (the default/foundational integration type) with specific enhancement proposals ranked by impact/effort.
 
 ## Quick Reference: Top 3 Wins
 
 1. **Exponential backoff with jitter** on reconnect -- 1-2 hours, prevents thundering herd
-2. **Replace RTSPDiagnostics HTTP GET with TCP+RTSP DESCRIBE** -- 4-6 hours, answers "why is it down?"
-3. **RTSP error code classification** (401/403/453/461) -- 4-6 hours, stops futile retries
+2. **Replace RTSPDiagnostics HTTP GET with TCP+[[rtsp-deep-dive|RTSP]] DESCRIBE** -- 4-6 hours, answers "why is it down?"
+3. **[[rtsp-deep-dive|RTSP]] error code classification** (401/403/453/461) -- 4-6 hours, stops futile retries
 
 ## Current Capabilities Inventory
 
 See full report for details. Key facts:
-- **7 puller variants** (AvUrl, GstUrl, MotionBased x3, OnOffMotion, legacy OpenCV)
+- **7 puller variants** (AvUrl, GstUrl, MotionBased x3, OnOffMotion, legacy [[opencv-entity|OpenCV]])
 - **Transport**: Hardcoded TCP, no UDP fallback
 - **Retry**: Fixed 60s on initial failure, 5s on stream loss. No backoff, no jitter.
-- **HW acceleration**: CUDA/NVDEC, VideoToolbox, VAAPI, AMF (auto-detected)
+- **HW acceleration**: CUDA/[[hardware-accelerated-codecs|NVDEC]], [[hardware-accelerated-codecs|VideoToolbox]], [[hardware-accelerated-codecs|VAAPI]], AMF (auto-detected)
 - **AVDiscard optimization**: Keyframe-only mode when native FPS > 1.5x target
 - **BandwidthTracker**: Active but only reported every 5 min to NR + DynamoDB
 - **Metadata extracted but not surfaced**: codec, FPS, keyframe intervals, connection duration, consecutive failures, PTS discontinuities, decode errors
@@ -38,8 +38,8 @@ See full report for details. Key facts:
 
 ### Missing Error Classification
 - All stream errors treated identically (ConnectionRefused, Timeout, InvalidData, PermissionError)
-- No RTSP error code handling (401, 403, 453, 454, 461 all land in generic handler)
-- RTSPDiagnostics does HTTP GET instead of RTSP probe
+- No [[rtsp-deep-dive|RTSP]] error code handling (401, 403, 453, 454, 461 all land in generic handler)
+- RTSPDiagnostics does HTTP GET instead of [[rtsp-deep-dive|RTSP]] probe
 
 ### Reconnection Issues
 - Fixed retry interval causes thundering herd on NVR restart (100 cameras × 60s = synchronized storm)
@@ -53,9 +53,9 @@ See full report for details. Key facts:
 | Enhancement | Effort | Impact |
 |-------------|--------|--------|
 | Exponential backoff with jitter | 1-2 hrs | Prevents thundering herd |
-| Expose keyframe interval to NR | 1-2 hrs | Detects misconfigured cameras |
+| Expose [[gop-keyframe-fundamentals|keyframe interval]] to NR | 1-2 hrs | Detects misconfigured cameras |
 | Expose connection metrics to NR (duration, failures, reconnections) | 2-3 hrs | Fleet-wide health dashboards |
-| Codec/profile/level extraction | 2-3 hrs | H.265 performance diagnosis |
+| Codec/profile/level extraction | 2-3 hrs | [[h265-hevc-deep-dive|H.265]] performance diagnosis |
 | Fix bare except: blocks | 30 min | Stop swallowing errors |
 | Add `get_stream_diagnostics()` to AvUrlFramePuller | 2-3 hrs | Enables all Phase 2 CHM work |
 
@@ -63,9 +63,9 @@ See full report for details. Key facts:
 
 | Enhancement | Effort | Impact |
 |-------------|--------|--------|
-| RTSP error code classification (401/403/453/461) | 4-6 hrs | Stop futile retries |
+| [[rtsp-deep-dive|RTSP]] error code classification (401/403/453/461) | 4-6 hrs | Stop futile retries |
 | Network error classification (DNS/refused/timeout) | 3-4 hrs | Actionable diagnostics |
-| Replace RTSPDiagnostics with TCP+RTSP DESCRIBE | 4-6 hrs | Real connectivity testing |
+| Replace RTSPDiagnostics with TCP+[[rtsp-deep-dive|RTSP]] DESCRIBE | 4-6 hrs | Real connectivity testing |
 | Transport fallback (TCP→UDP→interleaved) | 4-6 hrs | Fix ~5% connection failures |
 | Connection health scoring (0-100) | 1-2 days | Proactive degradation detection |
 | Black/frozen frame detection at puller level | 4-6 hrs | Catch visual failures early |
@@ -77,7 +77,7 @@ See full report for details. Key facts:
 | Graceful degradation ladder (reduce FPS before disconnect) | 2-3 days | Maintain partial service |
 | Dead camera classification (rebooting vs removed vs misconfigured) | 1-2 days | Reduce false alerts |
 | Adaptive FPS based on stream conditions | 2-3 days | Resource optimization |
-| Pre-flight RTSP DESCRIBE validation | 4-6 hrs | Faster failure detection |
+| Pre-flight [[rtsp-deep-dive|RTSP]] DESCRIBE validation | 4-6 hrs | Faster failure detection |
 | Cross-camera NVR correlation | 2-3 days | 60-80% alert noise reduction |
 
 ### Tier 4: Research (weeks, medium impact)
@@ -86,7 +86,7 @@ See full report for details. Key facts:
 |-------------|--------|--------|
 | Keepalive for motion-gated cameras | 3-5 days | Eliminate 2-3s connection latency |
 | Connection pooling for multi-stream NVRs | 1-2 weeks | Reduce TCP connections 60-80% |
-| Shared NVDEC pool per shard | 1 week | GPU resource efficiency |
+| Shared [[hardware-accelerated-codecs|NVDEC]] pool per shard | 1 week | GPU resource efficiency |
 
 ## RTSP Error Code Recovery Strategy
 
@@ -112,7 +112,7 @@ See full report for details. Key facts:
 | Metric | Code Location | Why It Matters |
 |--------|--------------|----------------|
 | Codec profile/level | `video_stream.codec_context.profile` | Optimization recommendations |
-| Keyframe interval | `_avdiscard_keyframe_intervals` | Detect misconfigured GOP |
+| [[gop-keyframe-fundamentals|Keyframe interval]] | `_avdiscard_keyframe_intervals` | Detect misconfigured [[gop-keyframe-fundamentals|GOP]] |
 | Consecutive failures | `_consecutive_failures` | Chronic camera/network issues |
 | Connection duration | `_last_connection_duration` | Network/DNS quality |
 | PTS discontinuities | `TimestampTracker.discontinuity_count` | Stream stability |
@@ -122,10 +122,10 @@ See full report for details. Key facts:
 
 ## Related KB Notes
 
-- [[chm-phase1-network-probe]] -- NetworkProbe directly enhances RTSP diagnostics
+- [[chm-phase1-network-probe]] -- NetworkProbe directly enhances [[rtsp-deep-dive|RTSP]] diagnostics
 - [[chm-phase2-stream-probe]] -- StreamProbe surfaces all unsurfaced metadata above
 - [[chm-phase5-frame-probe]] -- FrameProbe adds visual quality analysis
 - [[performance-optimization-landscape]] -- Pipeline-wide optimization context
 - [[adaptive-temperature]] -- Proposed context-aware FPS (complements adaptive FPS)
 - [[memory-management]] -- Memory constraints affecting puller design
-- [[rtsp-components]] -- Current RTSP component inventory
+- [[rtsp-components]] -- Current [[rtsp-deep-dive|RTSP]] component inventory

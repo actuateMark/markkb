@@ -8,7 +8,7 @@ tags: [person, data-science, yam, model-evaluation, shadow-testing]
 
 # Vlad Sapeshka
 
-Vlad Sapeshka is a data scientist at Actuate who leads the **YAM (Yet Another Model) re-evaluation** effort, currently the highest-priority data science initiative. His work centers on rigorous model comparison and shadow testing methodology.
+Vlad Sapeshka is a data scientist at Actuate who leads the **YAM (Yet Another Model) re-evaluation** effort, currently the highest-priority data science initiative. His work centers on rigorous model comparison and [[shadow-testing-methodology|shadow testing methodology]].
 
 ## YAM Re-Evaluation (AI-211, Highest Priority)
 

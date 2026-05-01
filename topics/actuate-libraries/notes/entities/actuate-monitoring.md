@@ -2,7 +2,7 @@
 title: "actuate-monitoring"
 type: entity
 topic: actuate-libraries
-tags: [library, health-monitoring, cloudwatch, newrelic, heartbeat, alarms, metrics]
+tags: [library, health-monitoring, cloudwatch, newrelic, heartbeat, alarms, metrics, new-relic, dynamodb]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
@@ -10,7 +10,7 @@ author: kb-bot
 
 ## Purpose
 
-actuate-monitoring (v1.1.4) provides process-level monitoring for connector deployments. It creates CloudWatch/New Relic alarms, publishes heartbeat data to DynamoDB, and tracks bandwidth, motion percentage, and alert activity. The library supports multiple monitoring backends through an abstract base class.
+actuate-monitoring (v1.1.4) provides process-level monitoring for connector deployments. It creates CloudWatch/[[new-relic|New Relic]] alarms, publishes heartbeat data to DynamoDB, and tracks bandwidth, motion percentage, and alert activity. The library supports multiple monitoring backends through an abstract base class.
 
 ## Key Classes
 
@@ -37,7 +37,7 @@ The primary active monitor. On startup:
 
 ### `NewRelicMonitor`
 
-Alternative monitor using New Relic NRQL queries for metrics. On startup, removes any existing mute rules (downtime) from New Relic via GraphQL mutation, then enters a heartbeat loop writing to the DynamoDB `Heartbeat` table. Queries New Relic for `stream_alert_total`, `motion_percentage`, `NetworkRxBytes` (ECS), and `net.rxBytesPerSecond` (EKS).
+Alternative monitor using [[new-relic|New Relic]] NRQL queries for metrics. On startup, removes any existing mute rules (downtime) from [[new-relic|New Relic]] via GraphQL mutation, then enters a heartbeat loop writing to the DynamoDB `Heartbeat` table. Queries [[new-relic|New Relic]] for `stream_alert_total`, `motion_percentage`, `NetworkRxBytes` (ECS), and `net.rxBytesPerSecond` (EKS).
 
 ### `DummyMonitor`
 
@@ -49,7 +49,7 @@ Utility module providing `init_logger(filename, remove_previous_log, output_to_c
 
 ## Dependencies
 
-No Python package dependencies declared. At runtime uses: boto3, requests, actuate-config (BaseConnectorConfig), actuate-secrets, actuate-daos (AdminDAO), actuate-admin-api (AdminApi).
+No Python package dependencies declared. At runtime uses: boto3, requests, [[actuate-config]] (BaseConnectorConfig), [[actuate-secrets]], [[actuate-daos]] (AdminDAO), [[actuate-admin-api]] (AdminApi).
 
 ## Consumers
 
@@ -57,7 +57,7 @@ vms-connector's monitoring thread. Each connector deployment runs one monitor in
 
 ## Notable Patterns
 
-- **Multi-backend**: The abstract base allows swapping CloudWatch for New Relic without changing the connector code.
+- **Multi-backend**: The abstract base allows swapping CloudWatch for [[new-relic|New Relic]] without changing the connector code.
 - **DynamoDB heartbeat table**: All monitors write to the same `Heartbeat` DynamoDB table, which the admin dashboard reads to show site health.
 - **Alarm auto-provisioning**: Alarms are created dynamically based on the site's settings.json monitoring config, not pre-provisioned in infrastructure-as-code.
 - **5-minute startup delay**: CloudwatchMonitor sleeps 300s on start to let metric data accumulate before creating threshold-based alarms.

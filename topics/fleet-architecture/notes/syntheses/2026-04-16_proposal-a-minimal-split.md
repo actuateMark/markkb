@@ -10,6 +10,12 @@ author: kb-bot
 
 # Proposal A — Minimal Split
 
+> ## 📝 Status note (2026-04-22)
+>
+> A's 2026-04-16 weighted score of **4.25/10** sits well below the contender pack (C/D/E in the 6.85–8.05 range; B at 7.25). Today's corrections (NR reversal on non-eventful ratio, real CE data showing S3 is 14.9% of $2.67M/year total cloud spend, EC2 compute at 55.4%) don't change A's score on any axis — the "no structural savings" (Cost 3/10) and "same pipeline bottleneck" (Scalability 3/10) profile is unaffected.
+>
+> A remains open as a fallback option — cheap to keep alive on paper, non-zero PoC-fail-back value if C/D/E hit invalidation in PoC. No park clock. Revisit only when PoC outcomes are in.
+
 **Core idea:** Extract **puller** and **alert sender** as separate fleets. Pipeline workers remain 1-per-site, but read frames from Redis Streams and publish alerts to the sender fleet. The battle-tested pipeline code is untouched.
 
 ## Architecture sketch
@@ -34,7 +40,7 @@ author: kb-bot
 - **Stream key:** `frame:cam:{camera_id}` — one stream per camera, MAXLEN ~100
 - **Payload:** raw JPEG bytes in `frame_bytes` field; metadata (`timestamp`, `frame_id`, `camera_id`) in adjacent fields
 - **Consumer group:** `pipeline-{site_id}` — preserves per-site FIFO because one pipeline worker reads the group
-- **Cross-AZ cost:** puller and pipeline-worker **must** share AZ with the ElastiCache primary for the camera's shard. Use topology-aware hints + pod topology spread constraints. Uncontrolled, cross-AZ transfer at current scale is ~$100k/mo (see [[2026-04-16_frame-transport-comparison]]).
+- **Cross-AZ cost:** puller and pipeline-worker **must** share AZ with the ElastiCache primary for the camera's shard. Use topology-aware hints + [[pod-topology-spread-constraints|pod topology spread constraints]] (`topologyKey: topology.kubernetes.io/zone`, `whenUnsatisfiable: ScheduleAnyway` to avoid wedging on capacity). Uncontrolled, cross-AZ transfer at current scale is ~$100k/mo (see [[2026-04-16_frame-transport-comparison]]).
 - **Site connectivity:** puller fleet owns VMS connections. Per-site auth/tunnel state lives in puller pods. If sites use WireGuard, see [[customer-site-connectivity]] — puller pods may need tunnel termination locally OR a centralized tunnel fleet. **Unresolved** — pending `kubernetes-deployments` deep dive.
 - **Failure:** AOF persistence with `appendfsync everysec` → ~1 s loss window on Redis failover. Acceptable for ephemeral frames; tracker state in pipeline worker is unaffected.
 
@@ -46,7 +52,7 @@ author: kb-bot
 | Pipeline | **Still 1-per-site** — no change | GIL, inference latency, same as today |
 | Alert dispatch | HPA on SQS depth | Downstream monitoring center throughput |
 
-**Weakness:** Pipeline worker remains the scaling unit for detection. Sharding inside pipeline workers persists. Partial fix only.
+**Weakness:** Pipeline worker remains the scaling unit for detection. [[sharding|Sharding]] inside pipeline workers persists. Partial fix only.
 
 ## State & failover
 
@@ -56,7 +62,7 @@ author: kb-bot
 
 ## Puller pool strategy
 
-**Family-specialized pools.** One deployment per VMS family (Milestone, Genetec, ONVIF, ExacqVision, etc.). Smaller images, family-specific tuning (e.g., Milestone's SDK threading model differs from ONVIF's RTSP). Pool count: ~6-8 families across 19+ VMS types.
+**Family-specialized pools.** One deployment per VMS family (Milestone, Genetec, ONVIF, ExacqVision, etc.). Smaller images, family-specific tuning (e.g., Milestone's SDK threading model differs from ONVIF's [[rtsp-deep-dive|RTSP]]). Pool count: ~6-8 families across 19+ VMS types.
 
 Rationale: incremental — we can extract one puller family at a time, leaving others on the monolith path during migration.
 
@@ -96,7 +102,7 @@ Rationale: incremental — we can extract one puller family at a time, leaving o
 **PoC path:** `/home/mork/work/fleet-poc-a/`
 
 **What to build:**
-- Puller that pulls from one real camera (RTSP is easiest), encodes JPEG, XADDs to a stream
+- Puller that pulls from one real camera ([[rtsp-deep-dive|RTSP]] is easiest), encodes JPEG, XADDs to a stream
 - Pipeline-worker shim that reads with XREADGROUP and injects frames into an otherwise-normal pipeline
 - Redis: single-node, AOF on, MAXLEN ~100
 
@@ -123,7 +129,7 @@ Cross-cutting considerations that apply to this proposal (see shared notes for d
 - [[inference-api-interaction]] — pipeline worker keeps its per-pod `AsyncInferencePool`; no change to AIMD.
 - [[library-decomposition-required]] — only leaf-library touches; smallest blast radius of any proposal.
 - [[observability-and-tracing]] — 2 new service types; optional distributed tracing (single hop).
-- [[downstream-consumer-impact]] — zero customer-visible change if executed cleanly; Watchman/AutoPatrol contracts unchanged.
+- [[downstream-consumer-impact]] — zero customer-visible change if executed cleanly; [[watchman-repo|Watchman]]/AutoPatrol contracts unchanged.
 - [[config-and-schedule-propagation]] — **ENG-96 not fixed** — schedule eval stays per-pipeline-worker.
 - [[memory-and-fork-safety]] — fork safety story unchanged (pipeline worker still shards internally).
 - [[customer-site-connectivity]] — puller fleet owns VMS connections + tunnels; pipeline workers untouched by site network.

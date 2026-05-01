@@ -36,7 +36,7 @@ http://intruder-384h-512w-svc.ds-model-prod.svc.cluster.local:8080/infer
 
 ## Pipeline Position
 
-Frames enter through clip-based connectors (SMTP, AILink, Sentinel) in the [[vms-connector]]. The [[data-science|detection pipeline]] processes them with modified behavior: FDMD may be skipped or use cumulative mode, YOLO inference runs normally, but the stationary filter and IOU filter are bypassed. The sliding window, ignore zones, and confidence filters still apply. Alerts follow the standard path to S3 and SQS.
+Frames enter through clip-based connectors (SMTP, AILink, Sentinel) in the [[vms-connector]]. The [[data-science/_summary|Data Science Methodology]] processes them with modified behavior: FDMD may be skipped or use cumulative mode, YOLO inference runs normally, but the stationary filter and IOU filter are bypassed. The sliding window, ignore zones, and confidence filters still apply. Alerts follow the standard path to S3 and SQS.
 
 ## Observers and Products
 
@@ -44,7 +44,7 @@ Motion+ cameras can have the same observers as standard Intruder cameras: Person
 
 ## Current Status
 
-Motion+ is **active in production** serving the clip-based camera fleet. Ongoing improvements under MISS-652 (cumulative motion blob) and MISS-630 (skip FDMD for single-frame clips) aim to improve detection quality. The [[data-science|motion detection challenge]] remains a significant area of research, with parameter tuning needed for clip-based scenarios.
+Motion+ is **active in production** serving the clip-based camera fleet. Ongoing improvements under MISS-652 (cumulative motion blob) and MISS-630 (skip FDMD for single-frame clips) aim to improve detection quality. The [[data-science/_summary|Data Science Methodology]] remains a significant area of research, with parameter tuning needed for clip-based scenarios.
 
 ## Related Jira
 
@@ -53,6 +53,6 @@ Motion+ is **active in production** serving the clip-based camera fleet. Ongoing
 
 ## Related Topics
 
-- [[ai-models]] -- model catalog
-- [[data-science]] -- motion detection challenge and pipeline architecture
+- [[ai-models/_summary|AI Models & Evaluation]] -- model catalog
+- [[data-science/_summary|Data Science Methodology]] -- motion detection challenge and pipeline architecture
 - [[models/intruder-v5]] -- the underlying intruder model

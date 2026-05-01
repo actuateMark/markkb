@@ -34,7 +34,7 @@ ArgoCD polls the [[kubernetes-deployments]] repository on a default 3-minute int
 
 ## Deployment Workflow
 
-Engineers deploy by merging changes to the kubernetes-deployments repo. ArgoCD detects the change and reconciles automatically. See [[rollout-process]] for the full release validation workflow that wraps around ArgoCD syncs.
+Engineers deploy by merging changes to the [[kubernetes-deployments]] repo. ArgoCD detects the change and reconciles automatically. See [[rollout-process]] for the full release validation workflow that wraps around ArgoCD syncs.
 
 ## See Also
 

@@ -70,7 +70,7 @@ This synthesis maps the vms-connector's known performance bottlenecks to the sol
 
 - **Per-site shard sizing (proposed):** Short-term strategy from [[worklog-sharding-strategy]]: determine the comfortable maximum cameras-per-process for a given resolution/FPS combination and configure different shard sizes per site.
 
-- **Dynamic sharding (proposed):** Long-term strategy: log per-site performance data to DynamoDB, analyse whether each site is lagging or over-provisioned, and set shard sizes automatically.
+- **Dynamic [[sharding]] (proposed):** Long-term strategy: log per-site performance data to DynamoDB, analyse whether each site is lagging or over-provisioned, and set shard sizes automatically.
 
 ### 5. Motion Detection Cost
 
@@ -78,7 +78,7 @@ This synthesis maps the vms-connector's known performance bottlenecks to the sol
 
 **Solutions implemented:**
 
-- **GPU CUDA variant:** `GPUFrameDiffMotionDetector` offloads grayscale conversion, Gaussian blur, frame differencing, thresholding, and morphology to the GPU via OpenCV CUDA. See [[motion-detection-internals]]. Falls back to CPU transparently on failure.
+- **GPU CUDA variant:** `GPUFrameDiffMotionDetector` offloads grayscale conversion, Gaussian blur, frame differencing, thresholding, and morphology to the GPU via [[opencv-entity|OpenCV]] CUDA. See [[motion-detection-internals]]. Falls back to CPU transparently on failure.
 
 - **Cached structuring elements:** Morphological kernels are pre-allocated and reused across frames, avoiding per-frame `getStructuringElement()` calls.
 
@@ -119,27 +119,27 @@ This synthesis maps the vms-connector's known performance bottlenecks to the sol
 | GIL (inference) | AsyncInferencePool AIMD | Shipped | High -- eliminates GIL convoy on inference |
 | GIL (encoding) | TurboJPEG | Shipped | Medium -- 2-3x encoding speedup + GIL release |
 | GIL (filters) | Numpy bbox mode | Shipped | Low-Medium -- vectorised overlap |
-| GIL (overall) | Sharding | Shipped | High -- but 50-80% CPU overhead |
+| GIL (overall) | [[sharding|Sharding]] | Shipped | High -- but 50-80% CPU overhead |
 | Memory fragmentation | PooledTTLImageCache | Shipped | High -- eliminates RSS growth |
 | Memory fragmentation | jemalloc | Shipped | High -- essential companion to pooling |
 | Inference latency | AIMD congestion control | Shipped | High -- adaptive backpressure |
 | Inference latency | HTTP/2 (httpx) | Shipped | Medium -- multiplexed connections |
 | Motion detection | GPU CUDA variant | Shipped | Medium -- GPU-accelerated FDMD |
 | Frame processing | Motion gating | Shipped | High -- skips inference on static scenes |
-| Frame processing | Adaptive temperature | Proposed | Medium -- context-aware FPS |
+| Frame processing | [[adaptive-temperature|Adaptive temperature]] | Proposed | Medium -- context-aware FPS |
 | Filter cost | Cost-ordered chain | Shipped | Medium -- 3x stationary reduction |
 | Filter cost | Server-side filters | Planned | Medium -- reduce network transfer |
 | Multiprocessing | Dynamic shard sizing | Proposed | High -- eliminate unnecessary shards |
 | Profiling | pyspy / memray sidecar | Adopted | Diagnostic -- enables future optimisation |
-| Decoder | GStreamer/FFmpeg pullers | Research | Unknown -- alternative to OpenCV decode |
+| Decoder | [[gstreamer-entity|GStreamer]]/[[ffmpeg-entity|FFmpeg]] pullers | Research | Unknown -- alternative to [[opencv-entity|OpenCV]] decode |
 | Hot path | Rust acceleration | Research | Unknown -- rewrite numpy-adjacent ops |
 
 ## Cross-Cutting Themes
 
 Three themes recur across the optimisation landscape:
 
-1. **GIL awareness drives architecture.** The AsyncInferencePool, TurboJPEG selection, numpy vectorisation, and sharding strategy are all fundamentally about managing Python's single-threaded execution model. Every decision about where to place computation (C extension, async event loop, separate process) is a GIL trade-off.
+1. **GIL awareness drives architecture.** The AsyncInferencePool, TurboJPEG selection, numpy vectorisation, and [[sharding]] strategy are all fundamentally about managing Python's single-threaded execution model. Every decision about where to place computation (C extension, async event loop, separate process) is a GIL trade-off.
 
-2. **Memory management is a systems problem.** The PooledTTLImageCache, jemalloc, explicit frame deletion, and post-fork re-initialisation form an interlocking system. Removing any one piece degrades the others -- jemalloc without pooling still fragments on large arrays; pooling without jemalloc fragments on copy-on-get transients; both without explicit deletion exhaust the cache before TTL expires.
+2. **[[memory-management|Memory management]] is a systems problem.** The PooledTTLImageCache, jemalloc, explicit frame deletion, and post-fork re-initialisation form an interlocking system. Removing any one piece degrades the others -- jemalloc without pooling still fragments on large arrays; pooling without jemalloc fragments on copy-on-get transients; both without explicit deletion exhaust the cache before TTL expires.
 
 3. **Cost-awareness scales linearly.** Ordering filters by cost, gating inference behind motion detection, and right-sizing shards are all instances of the same principle: do less work per frame, and the savings multiply across 32K cameras. The [[adaptive-temperature]] proposal extends this to the temporal dimension -- do less work per second when nothing is happening, more when something is.

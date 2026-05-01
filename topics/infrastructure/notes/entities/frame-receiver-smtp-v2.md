@@ -29,7 +29,7 @@ The server supports encoded SMTP usernames for camera-to-server authentication. 
 
 ## Deployment
 
-Deployed to EKS via ArgoCD. The production manifest lives at `deployment/manifest.yaml` and the ArgoCD application at `argocd/application.yaml`. To release a new version, update the image tag in the manifest and commit -- ArgoCD handles the rollout. A separate dev manifest exists for pre-release container testing but is not tracked by ArgoCD and is not NLB-reachable.
+Deployed to EKS via [[argocd|ArgoCD]]. The production manifest lives at `deployment/manifest.yaml` and the [[argocd|ArgoCD]] application at `argocd/application.yaml`. To release a new version, update the image tag in the manifest and commit -- [[argocd|ArgoCD]] handles the rollout. A separate dev manifest exists for pre-release container testing but is not tracked by [[argocd|ArgoCD]] and is not NLB-reachable.
 
 ## CI/CD
 

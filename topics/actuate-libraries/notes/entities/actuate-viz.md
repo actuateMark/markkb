@@ -10,7 +10,7 @@ author: kb-bot
 
 ## Purpose
 
-actuate-viz (v1.1.5) is the visualization library for drawing detection results, ignore zones, trajectory arrows, and line crossings on video frames. It uses OpenCV and numpy to render bounding boxes with configurable styles, labels, and colors onto images for alert frames, debugging, and analytics dashboards.
+actuate-viz (v1.1.5) is the visualization library for drawing detection results, [[ignore-zones|ignore zones]], trajectory arrows, and line crossings on video frames. It uses [[opencv-entity|OpenCV]] and numpy to render bounding boxes with configurable styles, labels, and colors onto images for alert frames, debugging, and analytics dashboards.
 
 ## Public API
 
@@ -34,7 +34,7 @@ actuate-viz (v1.1.5) is the visualization library for drawing detection results,
 
 - **`get_class_color(class_name)`** -- Maps detection class names to consistent colours.
 
-- **`overlay_ignore_zones(image, zones)`** -- Draws polygonal ignore zones as semi-transparent overlays on frames.
+- **`overlay_ignore_zones(image, zones)`** -- Draws polygonal [[ignore-zones|ignore zones]] as semi-transparent overlays on frames.
 
 - **`add_label(image, label)`** -- Adds a text label to an image.
 
@@ -42,7 +42,7 @@ actuate-viz (v1.1.5) is the visualization library for drawing detection results,
 
 - **opencv-python-headless** >=4.8.0,<5.0 -- image drawing operations.
 - **numpy** >=1.20.0 -- array operations.
-- **actuate-inference-objects** >=1.0.6 -- `Detection` and `BoundingBox` types.
+- **[[actuate-inference-objects]]** >=1.0.6 -- `Detection` and `BoundingBox` types.
 - **actuate-filters** ~=2.0 -- filtering utilities.
 
 ## Consumers
@@ -53,4 +53,4 @@ vms-connector alert pipeline (draws detection boxes on alert frames before S3 up
 
 - **Dimension-adaptive line thickness**: Corner thickness, inner line weight, and font scale all scale with image dimensions, ensuring readable annotations across resolutions from 480p to 4K.
 - **Gap vs simple mode**: Small detections (below 5% of image dimensions) automatically switch to simple rectangles to avoid visual clutter.
-- **BGR colour convention**: All colours follow OpenCV's BGR ordering, with the `Color` class providing named constants to avoid tuple mistakes.
+- **BGR colour convention**: All colours follow [[opencv-entity|OpenCV]]'s BGR ordering, with the `Color` class providing named constants to avoid tuple mistakes.

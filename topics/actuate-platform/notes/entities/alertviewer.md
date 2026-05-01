@@ -10,7 +10,7 @@ author: kb-bot
 
 # Alert Viewer
 
-Alert Viewer (`alertviewer`) is a lightweight standalone React application for viewing random alert video clips from the Actuate monitoring system. Unlike the full [[camera-ui]], it is a single-purpose tool designed for quickly browsing and reviewing alert footage without the overhead of the complete camera management interface.
+Alert Viewer (`alertviewer`) is a lightweight standalone React application for viewing random alert video clips from the [[actuate-monitoring|Actuate monitoring]] system. Unlike the full [[camera-ui]], it is a single-purpose tool designed for quickly browsing and reviewing alert footage without the overhead of the complete camera management interface.
 
 ## Purpose
 

@@ -19,9 +19,9 @@ The **Queue Consumer** is a multi-purpose alert dispatching service that reads m
 - **Language:** Python 3.12 (managed with `uv`)
 - **Queue:** AWS SQS FIFO queues (one per integration type)
 - **AWS Services:** SQS, S3 (enriched frames/video), DynamoDB (`EnrichedFrameV2`), SES (email), Secrets Manager
-- **Media Processing:** OpenCV (`opencv-python-headless`), ffmpeg (static binary installed at build time)
-- **Actuate Libraries:** `actuate-daos` (S3DAO, EnrichedFrameDAO), `actuate-viz` (visualization), `actuate-admin-api`, `actuate-secrets`, `actuate-integration-calls` (all from CodeArtifact)
-- **Integration Protocols:** SMTP (Immix, Softguard), HTTP/REST (SureView, Milestone, Sentinel, Patriot, LISA, US Monitoring, SysAid, Evalink, Eagle Eye, Webhook), TCP sockets (TCP sender), SQS-to-SQS (Echo, Analytics)
+- **Media Processing:** [[opencv-entity|OpenCV]] (`opencv-python-headless`), [[ffmpeg-entity|ffmpeg]] (static binary installed at build time)
+- **[[actuate-libraries|Actuate Libraries]]:** `actuate-daos` (S3DAO, EnrichedFrameDAO), `actuate-viz` (visualization), `actuate-admin-api`, `actuate-secrets`, `actuate-integration-calls` (all from CodeArtifact)
+- **Integration Protocols:** SMTP (Immix, [[softguard-components|Softguard]]), HTTP/REST (SureView, Milestone, [[sentinel-components|Sentinel]], Patriot, LISA, US Monitoring, SysAid, [[evalink-components|Evalink]], Eagle Eye, Webhook), TCP sockets (TCP sender), SQS-to-SQS (Echo, Analytics)
 
 ## Deployment Model
 
@@ -29,7 +29,7 @@ The service uses a single Dockerfile but is built into **per-consumer Docker ima
 
 CI/CD uses **per-consumer GitHub Actions workflows** (e.g., `main-immix.yml`, `main-echo.yml`, `main-health.yml`). Each workflow triggers only when files under its consumer subdirectory change on the `main` branch (`paths: - 'consumers/immix/**'`). This ensures that changing one consumer only redeploys that specific consumer.
 
-The Docker image is based on `python:3.12-slim`, installs ffmpeg, and runs `python3 -u app.py` as its entrypoint.
+The Docker image is based on `python:3.12-slim`, installs [[ffmpeg-entity|ffmpeg]], and runs `python3 -u app.py` as its entrypoint.
 
 There is also a Kubernetes config (`kubernetes/config.yaml`) defining a `queue-consumer` namespace with a service account linked to the `ecs-task-admin` IAM role, suggesting some consumers may also run on EKS.
 
@@ -53,14 +53,14 @@ There is also a Kubernetes config (`kubernetes/config.yaml`) defining a `queue-c
 | health | -- | Internal | Camera/system health checking |
 | tcp | -- | TCP socket | Raw TCP alert delivery |
 | sureview | -- | HTTP | SureView Immix integration |
-| softguard | -- | SMTP | Softguard alarm delivery |
+| softguard | -- | SMTP | [[softguard-components|Softguard]] alarm delivery |
 | milestone | -- | HTTP | Milestone XProtect integration |
-| sentinel | -- | HTTP | Sentinel integration |
+| sentinel | -- | HTTP | [[sentinel-components|Sentinel]] integration |
 | patriot | -- | HTTP | Patriot PSIM integration |
 | lisa | -- | HTTP | LISA integration |
 | us_monitoring | -- | HTTP | US Monitoring integration |
 | sysaid | -- | HTTP | SysAid ticketing integration |
-| evalink | -- | HTTP | Evalink integration |
+| evalink | -- | HTTP | [[evalink-components|Evalink]] integration |
 | eagle_eye | -- | HTTP | Eagle Eye Networks integration |
 | analytics | -- | Internal | Analytics data processing |
 

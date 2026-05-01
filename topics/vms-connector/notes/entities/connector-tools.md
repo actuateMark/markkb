@@ -10,7 +10,7 @@ author: kb-bot
 
 # Connector Tools
 
-A collection of command-line utilities that support the VMS connector ecosystem. These tools are invoked as Kubernetes jobs by [[connector-deployer]] (which is itself triggered by actuate_admin), providing camera management, diagnostics, and configuration capabilities.
+A collection of command-line utilities that support the [[vms-connector|VMS connector]] ecosystem. These tools are invoked as Kubernetes jobs by [[connector-deployer]] (which is itself triggered by [[actuate_admin]]), providing camera management, diagnostics, and configuration capabilities.
 
 **Repository:** `aegissystems/connector-tools`
 **Runtime:** Python 3.12
@@ -27,7 +27,7 @@ Admin calls connector_deployer, which creates Kubernetes jobs in EKS that run co
 
 - **upload_camera_samples.py** -- Refreshes camera preview images used by Admin.
 - **update_camera_list.py** -- Refreshes the auto-add camera list for a site.
-- **check_streams.py** -- Pulls one frame from each configured RTSP stream to detect connectivity or credential issues.
+- **check_streams.py** -- Pulls one frame from each configured [[rtsp-deep-dive|RTSP]] stream to detect connectivity or credential issues.
 - **check_configuration.py** -- Verifies TCP motion configuration on cameras.
 - **configure_cameras.py** -- Writes motion-over-TCP settings to cameras (Axis only for settings-based config). Supports forced motion pings with `-m` flag.
 - **update_camera_names.py** -- Updates motion signal camera names after renaming.

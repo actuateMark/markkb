@@ -73,7 +73,7 @@ After the factory produces cameras, `generate_site()` selects the appropriate si
 - **Healthcheck mode** (`-hc`): Uses `ChmSiteManager` (or `VCHSiteManager` for VCH).
 - **Patrol mode** (`-p`): Uses `PatrolSiteManager`. This flag is set when `integration_type` is `patrol`; `PatrolSiteManager` receives `camera_runners` (plural) from `factory.patrol()` rather than a flat cameras list.
 - **Standard mode**: Uses `get_site_type()` to pick an integration-specific `AnalyticsSiteManager` subclass (e.g., `MilestoneAnalyticsSiteManager`, `ExacqAnalyticsSiteManager`), or the base `AnalyticsSiteManager` for generic integrations.
-- **Sharding**: If `camera_count > shard_size`, wraps everything in `ChunkedSiteManager` which spawns child processes. See [[sharding]].
+- **[[sharding|Sharding]]**: If `camera_count > shard_size`, wraps everything in `ChunkedSiteManager` which spawns child processes. See [[sharding]].
 
 ## `patrol` vs `autopatrol` in the Factory
 
@@ -87,9 +87,9 @@ Both modes run patrol workflows, but they differ in how they obtain a patrol ID 
 | Immix dependency | Yes (calls Immix to register the patrol run) | None |
 | Module path | `connector_factories/autopatrol/` | `connector_factories/patrol/` |
 
-`PatrolConnectorFactory.default()` writes the generated UUID directly onto `config.patrol.patrol_id` before constructing `PatrolCamera` instances. Because there is no Immix call, `patrol` can run against any VMS integration as a generic patrol mode — the inner integration type is controlled by `settings["patrol"]["inner_integration_type"]` (defaulting to `rtsp`).
+`PatrolConnectorFactory.default()` writes the generated UUID directly onto `config.patrol.patrol_id` before constructing `PatrolCamera` instances. Because there is no Immix call, `patrol` can run against any VMS integration as a [[generic-patrol-mode|generic patrol mode]] — the inner integration type is controlled by `settings["patrol"]["inner_integration_type"]` (defaulting to `rtsp`).
 
-Both integration types bypass sharding: `get_sharding_strategy()` returns a shard size of 2000 for `autopatrol`, `vch`, and `patrol`.
+Both integration types bypass [[sharding]]: `get_sharding_strategy()` returns a shard size of 2000 for `autopatrol`, `vch`, and `patrol`.
 
 ## SIGTERM Handling
 

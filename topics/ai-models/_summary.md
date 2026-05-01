@@ -42,7 +42,7 @@ After 2 labeling/training cycles, bespoke model didn't outperform generalist. De
 
 ## VLM Models in Evaluation
 
-For AutoPatrol FP reduction and [[settings-automation]]:
+For AutoPatrol FP reduction and [[settings-automation/_summary|Settings Automation (H1.4)]]:
 - Qwen3-VL-8B-Instruct (primary)
 - Qwen2.5-VL-32B-Instruct-AWQ
 - Gemma-3-12B-IT-FP8

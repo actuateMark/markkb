@@ -12,7 +12,7 @@ author: kb-bot
 
 **ADR-001 Status: Denied (2026-04-13)**
 
-The originally planned migration of the [[inference-api]] from AWS Lambda to Kubernetes has been cancelled. The inference API will remain on Lambda permanently.
+The originally planned migration of the [[inference-api/_summary|Actuate Inference API]] from AWS Lambda to Kubernetes has been cancelled. The inference API will remain on Lambda permanently.
 
 ## Decision
 
@@ -31,7 +31,7 @@ The team determined that:
 - No changes to deployment infrastructure (Lambda + API Gateway stays)
 - No Helm charts for the inference API
 - No VPC Link terraform
-- Feature branches `feature/ed-32-inference-api-helm` (kubernetes-deployments) and `feature/ed-32-apigw-vpc-link` (ds-terraform-eks-v2) are no longer needed for this project
+- Feature branches `feature/ed-32-inference-api-helm` ([[kubernetes-deployments]]) and `feature/ed-32-apigw-vpc-link` ([[ds-terraform-eks-v2]]) are no longer needed for this project
 - The `actuate-libraries` branch `feature/ed-32-filter-annotations` is still relevant for filter consolidation
 
 ## Current Architecture (Permanent)

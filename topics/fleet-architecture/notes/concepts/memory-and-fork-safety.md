@@ -10,7 +10,7 @@ author: kb-bot
 
 # Memory & Fork-Safety Topology
 
-Today's connector has a finely tuned memory story — `PooledTTLImageCache` + `FrameBufferPool` eliminate malloc/free churn, jemalloc with post-fork re-enablement handles fragmentation, and sharding isolates GIL contention at the cost of memory multiplication. See [[vms-connector/notes/concepts/memory-management]] and [[vms-connector/notes/syntheses/performance-optimization-landscape]] for the full landscape.
+Today's connector has a finely tuned memory story — `PooledTTLImageCache` + `FrameBufferPool` eliminate malloc/free churn, jemalloc with post-fork re-enablement handles fragmentation, and [[sharding]] isolates GIL contention at the cost of memory multiplication. See [[vms-connector/notes/concepts/memory-management]] and [[vms-connector/notes/syntheses/performance-optimization-landscape]] for the full landscape.
 
 Every fleet proposal changes this story — sometimes for the better (no more forking), sometimes for the worse (frames serialize across network boundaries). This note catalogs the deltas.
 
@@ -19,13 +19,13 @@ Every fleet proposal changes this story — sometimes for the better (no more fo
 - **Per-camera budget:** 32 MB/camera + 500 MB base
 - **Frame cache:** `PooledTTLImageCache` recycles numpy arrays by shape; `FrameBufferPool` backing
 - **Allocator:** jemalloc via `LD_PRELOAD`; background_thread re-enabled after `fork()` via `mallctl`
-- **GIL contention:** `AsyncInferencePool` + TurboJPEG + numpy release GIL; sharding via `ChunkedSiteManager` when 24+ cameras cause saturation
-- **Sharding cost:** 50-80% CPU overhead per shard boundary; memory multiplies per shard (pre-fork state copied)
+- **GIL contention:** `AsyncInferencePool` + TurboJPEG + numpy release GIL; [[sharding]] via `ChunkedSiteManager` when 24+ cameras cause saturation
+- **[[sharding|Sharding]] cost:** 50-80% CPU overhead per shard boundary; memory multiplies per shard (pre-fork state copied)
 
 ## Per-proposal memory deltas
 
 ### A — Minimal Split
-- **Puller fleet:** small per-pod — just frame pulls + Redis XADD serialization. No frame cache needed if we stream immediately. Jemalloc optional (no sharding, no fragmentation dominance).
+- **Puller fleet:** small per-pod — just frame pulls + Redis XADD serialization. No frame cache needed if we stream immediately. Jemalloc optional (no [[sharding]], no fragmentation dominance).
 - **Pipeline worker:** unchanged from today.
 - **Alert sender fleet:** trivial memory footprint.
 - **Serialization cost:** JPEG already a byte blob — zero marshal overhead for Redis transport.
@@ -37,7 +37,7 @@ Every fleet proposal changes this story — sometimes for the better (no more fo
 - **Inference-coord fleet:** buffers frames awaiting inference. **Biggest memory footprint of B.** Depends on AIMD window size and inflight count.
 - **Observer+filter fleet:** per-camera tracker state (~200 KB × cameras). Memory-bound.
 - **Each fleet benefits from jemalloc if it allocates numpy** — motion, inference-coord, observer.
-- **Fork safety: **eliminated** — no in-process sharding; each stage pod is single-purpose, HPA-scaled.
+- **Fork safety: **eliminated** — no in-process [[sharding]]; each stage pod is single-purpose, HPA-scaled.
 - **Per-hop serialization:** JPEG bytes pass through streams 4 times — no re-encode, but each hop triggers a memcpy into the Redis client buffer. Measurable CPU cost per hop.
 
 ### C — Camera-Worker
@@ -76,8 +76,9 @@ Every fleet proposal changes this story — sometimes for the better (no more fo
 ## Shared risks if we get this wrong
 
 - **Memory fragmentation return:** if any new fleet allocates/frees large numpy buffers without jemalloc, we're back to the ptmalloc2 fragmentation problem. All Python fleets need jemalloc (or equivalent) via `LD_PRELOAD`.
-- **Per-fleet image loading cost:** libraries like torch, opencv, TurboJPEG add ~1.5 GB to pod image. Universal-image fleets (C) cold-start slower; specialized-image fleets (B, D pullers) start faster but more deploys to manage.
+- **Per-fleet image loading cost:** libraries like torch, [[opencv-entity|opencv]], TurboJPEG add ~1.5 GB to pod image. Universal-image fleets (C) cold-start slower; specialized-image fleets (B, D pullers) start faster but more deploys to manage.
 - **OOMKills on reassignment:** for C/E, a pod receiving a camera assignment must have headroom for that camera's memory. If autoscaler lags the assignment controller, reassignment can OOM the target pod.
+- **VPA recreation-on-update churns the pipeline unnecessarily:** VPA's default `updateMode: Recreate` evicts pods when resource recommendations change materially — each eviction is a full graceful-shutdown + cold-resume cycle. If snapshot cadence + preStop drain aren't sized for VPA's recommendation cadence, cameras churn without any real cause. See [[vertical-pod-autoscaler-deep-dive]] + [[vpa-bimodal-workload-limitation]] (ENG-78 root cause). Mitigation: `updateMode: InPlaceOrRecreate` (VPA v1.6+ / K8s 1.33+) for workloads that can tolerate in-place resize, or coarser VPA bounds to reduce recommendation churn.
 
 ## Enhancement opportunities
 

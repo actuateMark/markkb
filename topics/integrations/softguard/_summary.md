@@ -10,13 +10,13 @@ author: kb-bot
 
 # Softguard Integration
 
-Softguard is a professional alarm monitoring and security management platform used by monitoring centers (ARCs), primarily in Latin America. Actuate integrates with Softguard as an alert destination, delivering AI detection events into the Softguard alarm processing workflow via an SQS-based event queue.
+[[softguard-components|Softguard]] is a professional alarm monitoring and security management platform used by monitoring centers (ARCs), primarily in Latin America. Actuate integrates with Softguard as an alert destination, delivering AI detection events into the Softguard alarm processing workflow via an SQS-based event queue.
 
 ## Components
 
 ### SoftguardAlertSender (alarm sender)
 
-Defined in [[actuate-alarm-senders]] at `softguard/softguard_alert_sender.py`. Extends `EventListenerAlertSender` (which provides SQS event queue dispatch). Alerts are delivered **asynchronously via SQS** -- the sender formats a payload and pushes it to the `event_queue_softguard_alarm.fifo` queue, where a downstream event-listener worker delivers the alert to the Softguard receiver.
+Defined in [[actuate-alarm-senders]] at `softguard/softguard_alert_sender.py`. Extends `EventListenerAlertSender` (which provides SQS event queue dispatch). Alerts are delivered **asynchronously via SQS** -- the sender formats a payload and pushes it to the `event_queue_softguard_alarm.fifo` queue, where a downstream event-listener worker delivers the alert to the [[softguard-components|Softguard]] receiver.
 
 The alert payload includes:
 - `zone` -- Softguard zone identifier
@@ -34,12 +34,12 @@ Defined in [[actuate-config]] at `alerts/softguard/softguard_alert_config.py`. E
 
 ## Auth Method
 
-No explicit API authentication. The Softguard receiver is identified by `server` IP and `port`, and the `account`, `zone`, and `user` fields serve as the site/device identifier within the Softguard system. Access relies on network-level connectivity to the Softguard receiver.
+No explicit API authentication. The [[softguard-components|Softguard]] receiver is identified by `server` IP and `port`, and the `account`, `zone`, and `user` fields serve as the site/device identifier within the Softguard system. Access relies on network-level connectivity to the Softguard receiver.
 
 ## Alert Delivery
 
-Softguard follows the standard SQS event-listener pattern: the sender enqueues to `event_queue_softguard_alarm.fifo` with `message_group_id` set to the customer ID (ensuring FIFO ordering per customer). The event-listener worker dequeues, retrieves frames from S3, and delivers the formatted alert to the Softguard monitoring platform.
+[[softguard-components|Softguard]] follows the standard SQS event-listener pattern: the sender enqueues to `event_queue_softguard_alarm.fifo` with `message_group_id` set to the customer ID (ensuring FIFO ordering per customer). The event-listener worker dequeues, retrieves frames from S3, and delivers the formatted alert to the Softguard monitoring platform.
 
 ## Architecture
 
-The alarm sender factory in [[actuate-alarm-senders]] instantiates `SoftguardAlertSender` when a Softguard alert config is present. There are no Softguard-specific puller or integration calls components -- video ingestion uses whatever VMS integration (RTSP, Milestone, etc.) is configured, and Softguard is purely a send-only monitoring integration. The [[vms-connector]] builds the sender via the factory during camera initialization.
+The alarm sender factory in [[actuate-alarm-senders]] instantiates `SoftguardAlertSender` when a [[softguard-components|Softguard]] alert config is present. There are no Softguard-specific puller or integration calls components -- video ingestion uses whatever VMS integration ([[rtsp-deep-dive|RTSP]], Milestone, etc.) is configured, and Softguard is purely a send-only monitoring integration. The [[vms-connector]] builds the sender via the factory during camera initialization.

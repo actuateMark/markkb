@@ -10,7 +10,7 @@ author: kb-bot
 
 # release-chain-watcher
 
-Tracks a change through the Actuate deployment chain — PR CI → merge → publish/build → ArgoCD/ECS/Lambda → post-deploy NR health. Ideal for background execution during long deploys.
+Tracks a change through the Actuate deployment chain — PR CI → merge → publish/build → [[argocd|ArgoCD]]/ECS/Lambda → post-deploy NR health. Ideal for background execution during long deploys.
 
 **File:** `/home/mork/.claude/agents/release-chain-watcher.md`
 **Model:** sonnet
@@ -45,7 +45,7 @@ Tracks a change through the Actuate deployment chain — PR CI → merge → pub
 1. PR CI checks green
 2. Merge commit landed
 3. Publish / build (ECR matrix for connector: ARM64 + x86; Publish Stable workflow for libraries)
-4. Deploy (ArgoCD sync / ECS rollout / Lambda version bump)
+4. Deploy ([[argocd|ArgoCD]] sync / ECS rollout / Lambda version bump)
 5. Post-deploy NR health (15 min window, error delta vs baseline)
 
 ## NRQL Hygiene

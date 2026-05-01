@@ -42,7 +42,7 @@ Separate `steps_*` directories contain tailored restore pipelines:
 | Directory | Environment | Extra Steps |
 |-----------|-------------|-------------|
 | `steps_prod` | Production RDS | Download, restore, switch (no field patching). |
-| `steps_dev` | Dev environment | Restore, update fields, switch, run migrations, notify Slack. |
+| `steps_dev` | [[dev-environment|Dev environment]] | Restore, update fields, switch, run migrations, notify Slack. |
 | `steps_staging` | Staging environment | Same as dev -- restore, update, switch, migrate, Slack notify. |
 | `steps_snapshot` | Snapshot-based | Disconnect sessions, dump snapshot, restore snapshot. |
 

@@ -10,7 +10,7 @@ author: kb-bot
 
 # Admin API: New Relic Integration
 
-The [[admin-api]] already has NR integration code for generating log links and chart images.
+The [[admin-api/_summary|Actuate Admin API]] already has NR integration code for generating log links and chart images.
 
 ## Files
 

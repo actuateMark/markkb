@@ -39,8 +39,8 @@ kubefwd port-forwards to a single pod and cannot load balance. Heavy batch infer
 
 ## Relationship to Other Repos
 
-This is a **client** tool, not the production inference server. Production serving is handled by [[ds-server-container]] (Rust, Inferentia2). This repo's outputs feed into [[actuate-eval]] for mAP evaluation and [[shadow-test-pipeline]] for shadow testing workflows. The labeling tools in shadow-test-pipeline produce `labels.csv` files consumed by `shadow-eval` here.
+This is a **client** tool, not the production inference server. Production serving is handled by [[ds-server-container]] (Rust, Inferentia2). This repo's outputs feed into [[actuate-eval]] for mAP evaluation and [[shadow-test-pipeline]] for shadow testing workflows. The labeling tools in [[shadow-test-pipeline]] produce `labels.csv` files consumed by `shadow-eval` here.
 
 ## Installation
 
-Uses `uv` or pip. Optional extras: `analytics` (pyarrow, duckdb), `gui` (opencv), `dev` (pytest, ruff, mypy).
+Uses `uv` or pip. Optional extras: `analytics` (pyarrow, duckdb), `gui` ([[opencv-entity|opencv]]), `dev` (pytest, ruff, mypy).

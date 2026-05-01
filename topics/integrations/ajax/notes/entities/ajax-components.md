@@ -2,7 +2,7 @@
 title: "Ajax Integration Components"
 type: entity
 topic: integrations/ajax
-tags: [integration, ajax, components]
+tags: [integration, ajax, components, rtsp]
 created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
@@ -10,7 +10,7 @@ author: kb-bot
 
 # Ajax Integration Components
 
-Ajax Systems is a security hardware vendor whose "video edge" NVR devices support ONVIF and RTSP. The Actuate integration uses the Ajax cloud API to discover cameras, create ONVIF users, and construct RTSP URLs for video pulling. At runtime, frames are pulled via the standard SMTP/RTSP path since Ajax camera events arrive via SMTP.
+Ajax Systems is a security hardware vendor whose "video edge" NVR devices support ONVIF and [[rtsp-deep-dive|RTSP]]. The Actuate integration uses the Ajax cloud API to discover cameras, create ONVIF users, and construct [[rtsp-deep-dive|RTSP]] URLs for video pulling. At runtime, frames are pulled via the standard SMTP/[[rtsp-deep-dive|RTSP]] path since Ajax camera events arrive via SMTP.
 
 ## Integration Calls -- AjaxCalls
 
@@ -18,7 +18,7 @@ Defined in [[actuate-pullers]]'s sibling library `actuate-integration-calls` at 
 
 ### Authentication
 
-- **Credentials**: Retrieved from the Actuate admin API (`AdminApi.get_named_configuration`): `ajax_company_id`, `ajax_x_company_token`, `ajax_api_key`, `ajax_api_base_url`, `ajax_username`, `ajax_password_hash`, `ajax_user_id`.
+- **Credentials**: Retrieved from the [[actuate-admin-api|Actuate admin API]] (`AdminApi.get_named_configuration`): `ajax_company_id`, `ajax_x_company_token`, `ajax_api_key`, `ajax_api_base_url`, `ajax_username`, `ajax_password_hash`, `ajax_user_id`.
 - **Login** (`__login`): Posts username + password hash to `/login` endpoint with `X-API-Key` header. Returns a `sessionToken`.
 - **Dual auth modes**: Methods support either company-level auth (`X-Company-Token` header) or user-level auth (`X-Session-Token` header).
 
@@ -34,8 +34,8 @@ Defined in [[actuate-pullers]]'s sibling library `actuate-integration-calls` at 
 
 ### RTSP URL Construction
 
-- **`__get_rtsp_settings`**: Fetches RTSP port (`httpPort`) from `/company/{company_id}/spaces/{space_id}/devices/video-edges/{video_edge_id}/rtsp`.
-- **`__build_rtsp_url`**: Constructs an RTSP URL in the format `rtsp://[User]:[Password]@[Address]:[RTSP port]/[channelId]_[m|s]` where `m` = mainstream and `s` = substream. Extracts the IP address from the video edge's ethernet or wifi network interface. Can optionally create an ONVIF user as part of URL construction.
+- **`__get_rtsp_settings`**: Fetches [[rtsp-deep-dive|RTSP]] port (`httpPort`) from `/company/{company_id}/spaces/{space_id}/devices/video-edges/{video_edge_id}/rtsp`.
+- **`__build_rtsp_url`**: Constructs an [[rtsp-deep-dive|RTSP]] URL in the format `rtsp://[User]:[Password]@[Address]:[RTSP port]/[channelId]_[m|s]` where `m` = mainstream and `s` = substream. Extracts the IP address from the video edge's ethernet or wifi network interface. Can optionally create an ONVIF user as part of URL construction.
 
 ## Config Classes
 
@@ -51,10 +51,10 @@ if integration_type == "SMTP_per_camera" or integration_type == "ajax":
 
 ## Video Pulling
 
-At runtime, Ajax cameras push motion event images via SMTP. The SMTP receiver in [[vms-connector]] accepts these and feeds them into the pipeline. For sites that also need continuous RTSP streaming, the RTSP URL constructed by `AjaxCalls` is used with the standard `AvUrlFramePuller` or `UrlFramePuller`.
+At runtime, Ajax cameras push motion event images via SMTP. The SMTP receiver in [[vms-connector]] accepts these and feeds them into the pipeline. For sites that also need continuous [[rtsp-deep-dive|RTSP]] streaming, the [[rtsp-deep-dive|RTSP]] URL constructed by `AjaxCalls` is used with the standard `AvUrlFramePuller` or `UrlFramePuller`.
 
 ## Key Architectural Notes
 
 - Ajax API credentials are global (per-company), not per-site. They are stored centrally in the admin configuration.
-- The integration bridges two protocols: Ajax cloud API for device discovery/management, and ONVIF/RTSP for actual video access.
-- ONVIF user creation is a one-time setup step; the resulting credentials are then used in RTSP URLs for ongoing streaming.
+- The integration bridges two protocols: Ajax cloud API for device discovery/management, and ONVIF/[[rtsp-deep-dive|RTSP]] for actual video access.
+- ONVIF user creation is a one-time setup step; the resulting credentials are then used in [[rtsp-deep-dive|RTSP]] URLs for ongoing streaming.
