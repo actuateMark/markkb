@@ -120,15 +120,33 @@ Sample calculation for E: `(8×0.30)+(9×0.175)+(8×0.125)+(6×0.15)+(7×0.10)+(
 
 ## Headline ranking
 
-| Rank | Proposal | 2026-04-22 addendum | **2026-05-11 (8 dims)** | Δ | Status |
-|-----:|----------|--------------------:|------------------------:|--:|--------|
-| 1 | **E — Hybrid Sidecar** | 7.85 | **7.775** | −0.075 | **Top contender, lead narrows further** |
-| 2 | **C — Camera-Worker Fleet** | 7.40 | **7.40** | 0 | **Runner-up, position unchanged** |
-| 3 | B — Stage Fleets | 7.25 | **6.875** | **−0.375** | Contender, biggest drop on rescore |
-| 4 | D — Event-Driven | 6.85 | **6.40** | −0.45 | Contender, ops-burden compounds |
-| 5 | A — Minimal Split | 4.45 | **4.90** | **+0.45** | Fallback, but biggest gainer |
+| Rank | Proposal | 2026-04-22 addendum | **2026-05-11 (8 dims)** | **+ collector MR** (handoff #7) | Status |
+|-----:|----------|--------------------:|------------------------:|---:|--------|
+| 1 | **E — Hybrid Sidecar** | 7.85 | 7.775 | **7.875** | **Top contender; lead WIDENS to 0.675 with collector MR** |
+| 2 | **C — Camera-Worker Fleet** | 7.40 | 7.40 | **7.20** | Runner-up; drops on collector MR (controller-extraction harder than human estimated) |
+| 3 | B — Stage Fleets | 7.25 | 6.875 | **6.975** | Contender (ops-complex) |
+| 4 | D — Event-Driven | 6.85 | 6.40 | **6.60** | Contender (ops-complex); MR slightly easier than addendum thought |
+| 5 | A — Minimal Split | 4.45 | 4.90 | **4.80** | Fallback |
 | — | B-prime | 6.25 | — | — | CLOSED, not rescored |
-| — | Today's baseline | 3.20 | (recompute below) | — | Floor |
+| — | Today's baseline | 3.20 | 3.60 | 3.60 | Floor |
+
+**Addendum (2026-05-11 evening) — collector-derived MR scores** (per handoff #7, [[2026-05-11_sketch-findings-enforcement]]):
+
+The enforcement sketch's collector ([[2026-05-11_enforcement-as-proposal-scorer]] §"Score mapping" brackets) ran against vms-connector and produced edge-count violations per proposal:
+
+| Proposal | Violations | Addendum MR (human) | **Collector MR** | Δ |
+|---|---:|---:|---:|---:|
+| A | 30 | 9 | **8** | −1 |
+| B | 203 | 3 | **4** | +1 |
+| C | 169 | 6 | **4** | **−2** |
+| D | 202 | 2 | **4** | **+2** |
+| E | 30 | 7 | **8** | +1 |
+
+The biggest moves: **C drops 2pts on MR** (the controller-extraction work in `connector_factories` + `site_manager` hub-packages is harder than human gut-check), and **D rises 2pts on MR** (D's import-graph distance is less than human thought — its complexity lives in infrastructure, not imports). E and A both improve modestly because they're better-aligned with current code shape.
+
+Composite-level effect: E's lead over C **widens from 0.375 → 0.675**. The PoC-1=E / PoC-2=C recommendation is reinforced.
+
+**Note on what the collector doesn't see:** import-linter measures the in-repo import graph; it doesn't see implementation work in actuate-libraries, Redis Streams plumbing, JetStream operator overhead, MinIO ops, etc. Use the collector MR alongside human judgment for items it can't measure. See findings note §"Calibration caveats."
 
 **Recomputed baseline** (today's site-pod monolith, scored against the 8 dimensions):
 - IS 0, Cost 4, FI 0, OS 8, MR 10, FQ 4, M&A 4, B&R 6

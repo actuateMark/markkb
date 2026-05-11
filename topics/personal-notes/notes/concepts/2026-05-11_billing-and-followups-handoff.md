@@ -67,7 +67,7 @@ The carry-over from session 2026-05-11, reordered for the post-mortem-shifted pi
 | 4 | **(b) Fleet rubric: add Monitoring & Alarms + Billing & Reconciliation dimensions** | Promised in 2026-04-23 `_summary` update; never landed. Both dimensions now relevant | [[2026-04-16_evaluation-rubric]] | ✅ **DONE** — [[2026-05-11_rubric-monitoring-billing-dimensions]] (weights rebalanced, 5 proposals rescored, ranking preserved with narrower lead) |
 | 5 | **(a) Reading-list additions to fleet + software-arch** | 10-13 items I listed in session 2026-05-11. Several are billing-adjacent (event-sourcing, idempotency, reconciliation) — coordinate with [[billing/reading-list]] | [[fleet-architecture/reading-list]], [[software-architecture/reading-list]] | ✅ **DONE** — 10 fleet items added (3 new sections created), 4 software-arch items added (2 new sections), Connascence moved fleet → software-arch |
 | 6 | **(c) Enforcement-sketch-as-proposal-scorer spec** | Quantitative Migration Risk axis for fleet rubric. Also gets billing-emit-site fitness functions per [[billing/_todos]] C1 | [[2026-04-16_architecture-enforcement]] | ✅ **DONE** — [[2026-05-11_enforcement-as-proposal-scorer]] (per-proposal target topologies, violation-bracket mapping, dual-use angle, billing fitness functions) |
-| 7 | **Sketch extension** — Enforcement collector beyond stub | Operationalizes #6 against vms-connector | `/home/mork/work/software-arch-sketches/src/software_arch_sketches/enforcement/` | ⏳ Pending — only remaining handoff item; code work (next session per §"Net outcome" below) |
+| 7 | **Sketch extension** — Enforcement collector beyond stub | Operationalizes #6 against vms-connector | `/home/mork/work/software-arch-sketches/src/software_arch_sketches/enforcement/` | ✅ **DONE** — collector ships, real run produced A=30 / B=203 / C=169 / D=202 / E=30 violations; rubric MR scores updated; [[2026-05-11_sketch-findings-enforcement]] |
 | 8 | **C6 — Locate sales-dashboard deployment repo** | Enables eventual R1 integration. LOW priority but small effort | [[billing/_todos]] C6 | ✅ **DONE** — by side-effect of #2 closure ([[sales-dashboard-repo]] entity note) |
 
 ## Net outcome of 2026-05-11 session
@@ -78,8 +78,9 @@ The carry-over from session 2026-05-11, reordered for the post-mortem-shifted pi
 - ENG-242 filed and closed same-day (data-team off the hook).
 - Three new KB entities: [[snowflake-billing-tables]], [[sales-dashboard-repo]], [[actuate-bi-repo]].
 
-**Still owed (handoff item #7 only):**
-- Item 7 (enforcement collector code in `/home/mork/work/software-arch-sketches/`) is the only remaining handoff item. Spec for it lives at [[2026-05-11_enforcement-as-proposal-scorer]]; implementation is mechanical from there. Recommended for fresh session — code work benefits from a clean window.
+**All 8 handoff items closed.** This handoff is retired.
+
+**Status: COMPLETE** — see closure status column above. Net outcome captures the bigger-than-handoff emergent work (NF1-NF10 plus the rubric extension + collector).
 
 ## Per-item context
 
