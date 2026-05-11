@@ -2,14 +2,16 @@
 title: "Stale AutoPatrol schedule & zombie-task investigation"
 type: concept
 topic: autopatrol
-tags: [autopatrol, cleanup-lambda, investigation, stale-schedules, zombie-tasks, fleet-health, immix]
+tags: [autopatrol, cleanup-lambda, investigation, stale-schedules, zombie-tasks, fleet-health, immix, immix, immix, immix, immix]
 created: 2026-04-24
 updated: 2026-04-24
 author: kb-bot
-- Error: File "2026-04-24_stale-schedule-cleanup-investigation" not found.
 incoming:
-  - Error: File "2026-04-24_stale-schedule-cleanup-investigation" not found.
-incoming_updated: 2026-05-01
+  - topics/actuate-platform/notes/entities/actuate-admin-api.md
+  - topics/autopatrol/notes/syntheses/2026-04-24_stale-schedule-cleanup-aar.md
+  - topics/autopatrol/notes/syntheses/2026-04-24_stale-schedule-disable-roster.md
+  - topics/personal-notes/notes/daily/2026-04-24.md
+incoming_updated: 2026-05-08
 ---
 
 # Stale AutoPatrol schedule & zombie-task investigation
@@ -75,7 +77,7 @@ Step F (fleet-wide emit-flag rollout) is the end-state but takes infrastructure 
 3. **Per container**, via admin API:
    - `GET /api/auto_patrol_schedule/{admin_pk}/` — pull scheduleId, scheduleStatus, disabledBy, updatedDate
    - If admin returns 404 → **zombie task** (no admin record at all) — different handling, tracked under connector_deployer#160
-4. **Per schedule**, via Immix API (through Lambda's synthetic-invoke path or direct curl):
+4. **Per schedule**, via [[immix-vendor-api|Immix API]] (through Lambda's synthetic-invoke path or direct curl):
    - If Immix returns 400 or 404 → **cleanup candidate**, PATCH `{scheduleStatus: "Deleted", disabledBy: "cleanup_lambda:manual-sweep", disabledAt: …}`
    - If Immix returns 200 with active scheduleStatus → **state mismatch**, leave for anomaly-reset monitoring (Task #25)
 5. **Record results in this note** — per-schedule verdict table, ratios, next steps.
@@ -163,7 +165,7 @@ Applied `{"scheduleStatus": "Deleted", "disabledBy": "cleanup_lambda", "disabled
 ## Remaining work
 
 - **17 `paused_manual_review`** (337 cameras) — Immix reports Paused/Suspended. Per-schedule judgment call; not auto-disabled.
-- **100 `auth_fail`** (1,344 cameras) — S3 has authoritative tenants but our Immix API key returns 401 for those 6 tenants (`ac399cd6`, `0ee7cb3f`, `e386800a`, `b594cbbe`, `cc24a89f`, `b9953026`). Needs Immix subscription expansion — outside autopatrol_onboarder scope. Worth filing as a separate follow-up ticket to whoever provisions the `Ocp-Apim-Subscription-Key` at Actuate.
+- **100 `auth_fail`** (1,344 cameras) — S3 has authoritative tenants but our [[immix-vendor-api|Immix API]] key returns 401 for those 6 tenants (`ac399cd6`, `0ee7cb3f`, `e386800a`, `b594cbbe`, `cc24a89f`, `b9953026`). Needs Immix subscription expansion — outside autopatrol_onboarder scope. Worth filing as a separate follow-up ticket to whoever provisions the `Ocp-Apim-Subscription-Key` at Actuate.
 - **15 `other`** — network exceptions during the Immix probe. Retry next scan cycle.
 
 ## Post-mortem: what the incident taught us
@@ -238,7 +240,7 @@ GET /api/auto_patrol_schedule/?disabled_by=cleanup_lambda
 
 - [[autopatrol-cleanup-lambda]] — Lambda design + current rollout state
 - [[2026-04-23_cleanup-rollout-day]] — rollout-day timeline
-- [[2026-04-23_immix-api-error-patterns]] — Immix API quirks catalog
+- [[2026-04-23_immix-api-error-patterns]] — [[immix-vendor-api|Immix API]] quirks catalog
 - [connector_deployer#160](https://github.com/aegissystems/connector_deployer/issues/160) — orphan container cleanup
 - mark-todos §3 — workstream state
 
@@ -253,7 +255,7 @@ GET /api/auto_patrol_schedule/?disabled_by=cleanup_lambda
 
 - [[autopatrol-cleanup-lambda]] — Lambda design + current rollout state
 - [[2026-04-23_cleanup-rollout-day]] — the rollout-day timeline (including the first disable at 23:03Z)
-- [[2026-04-23_immix-api-error-patterns]] — Immix API quirks catalog (relevant for the 400-as-gone classifier)
+- [[2026-04-23_immix-api-error-patterns]] — [[immix-vendor-api|Immix API]] quirks catalog (relevant for the 400-as-gone classifier)
 - [[2026-04-17_stale-schedule-cleanup-design]] — original design synthesis
 - [connector_deployer#160](https://github.com/aegissystems/connector_deployer/issues/160) — orphan container cleanup follow-up
 - mark-todos §3 — workstream state + Tasks #22 (Step F), #25 (anomaly-reset rate), #27 (Immix error observability), #28 (orphan cleanup)

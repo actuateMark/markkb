@@ -6,7 +6,7 @@ author: kb-bot
 created: 2026-04-16
 updated: 2026-04-16
 tags: [nrql, connector, cookbook, queries, new-relic, monitoring, autopatrol]
-incoming:
+outgoing:
   - _index.md
   - topics/engineering-process/notes/concepts/2026-04-27_headless-mcp-bypass.md
   - topics/engineering-process/notes/entities/agent-nrql-investigator.md
@@ -17,7 +17,18 @@ incoming:
   - topics/new-relic/_summary.md
   - topics/new-relic/notes/concepts/actuate-nr-data-model.md
   - topics/new-relic/notes/concepts/nr-log-level-strategy.md
-incoming_updated: 2026-05-01
+incoming:
+  - _index.md
+  - topics/autopatrol/notes/syntheses/2026-04-28_failed-patrol-investigation-handoff.md
+  - topics/engineering-process/notes/concepts/2026-04-27_headless-mcp-bypass.md
+  - topics/engineering-process/notes/entities/agent-nrql-investigator.md
+  - topics/engineering-process/notes/entities/agents-catalog.md
+  - topics/fleet-architecture/notes/concepts/observability-and-tracing.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
+  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
+  - topics/new-relic/_summary.md
+  - topics/new-relic/notes/concepts/actuate-nr-data-model.md
+incoming_updated: 2026-05-08
 ---
 
 # New Relic Connector Query Cookbook
@@ -273,7 +284,7 @@ FACET namespace LIMIT 30
 | Container | 24h log volume | What it is | When to query |
 |---|---|---|---|
 | `djangoq` | ~210k | Django Q background workers (production). Runs scheduled jobs like `schedules_redeploy`, batch operations. | Scheduled / cron-driven admin work. Does NOT include the `_delayed_deploy_settings` thread (raw `Thread`, not django-q task) |
-| `autopatrol-server` | ~9.5k | SQS consumer that processes patrol task results, writes patrol summaries to S3, calls Immix `update_patrol`. | Patrol completion lifecycle, Immix API responses (incl. `update patrol response: ...`) |
+| `autopatrol-server` | ~9.5k | SQS consumer that processes patrol task results, writes patrol summaries to S3, calls Immix `update_patrol`. | Patrol completion lifecycle, [[immix-vendor-api|Immix API]] responses (incl. `update patrol response: ...`) |
 | `camera-admin-staging` | ~4.7k | Stage admin web pod. Mirrors prod admin code paths but only for stage traffic. | Verifying admin-side fixes on stage before prod |
 | `admin-auto-onboarding-schools` | ~8.6k | Onboarding cronjob for schools integration | Schools-specific onboarding issues |
 | `admin-auto-onboarding-federated` | ~5.4k | Federated onboarding cronjob | Federated auth / multi-tenant issues |

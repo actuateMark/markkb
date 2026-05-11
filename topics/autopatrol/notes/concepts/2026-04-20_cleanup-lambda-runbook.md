@@ -2,11 +2,11 @@
 title: "AutoPatrol Stale-Schedule Cleanup Lambda — Operations Runbook"
 type: concept
 topic: autopatrol
-tags: [runbook, ops, lambda, sqs, dynamodb, autopatrol, cleanup, immix]
+tags: [runbook, ops, lambda, sqs, dynamodb, autopatrol, cleanup, immix, immix, immix, immix, immix]
 created: 2026-04-20
 updated: 2026-04-20
 author: kb-bot
-incoming:
+outgoing:
   - topics/autopatrol/notes/concepts/2026-04-21_cleanup-lambda-stage-verify.md
   - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
   - topics/autopatrol/notes/syntheses/2026-04-23_alarm-dashboard-sketch.md
@@ -17,7 +17,18 @@ incoming:
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/runbooks/_backlog.md
   - topics/runbooks/_summary.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-21_cleanup-lambda-stage-verify.md
+  - topics/autopatrol/notes/concepts/2026-04-28_tenant-status-sync-gap.md
+  - topics/autopatrol/notes/concepts/2026-05-07_handoff-cleanup-lambda-interpretive-checks.md
+  - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
+  - topics/autopatrol/notes/syntheses/2026-04-23_alarm-dashboard-sketch.md
+  - topics/engineering-process/notes/concepts/2026-04-20_overnight-check-skill-pattern.md
+  - topics/personal-laptop/notes/concepts/2026-04-30_morning-prep-scripts-runbook.md
+  - topics/personal-notes/notes/concepts/2026-04-29_cleanup-handoff.md
+  - topics/personal-notes/notes/daily/2026-04-23.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+incoming_updated: 2026-05-08
 ---
 
 # AutoPatrol Stale-Schedule Cleanup Lambda — Operations Runbook

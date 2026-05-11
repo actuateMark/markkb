@@ -7,12 +7,18 @@ created: 2026-04-28
 updated: 2026-04-28
 author: kb-bot
 status: complete
-incoming:
+outgoing:
   - topics/personal-laptop/notes/concepts/2026-04-29_minipc-api-surface.md
   - topics/personal-laptop/notes/concepts/2026-04-29_repos-dashboard-followups.md
   - topics/personal-notes/notes/daily/2026-04-28.md
   - topics/personal-notes/notes/daily/2026-04-29.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/personal-laptop/notes/concepts/2026-04-29_minipc-api-surface.md
+  - topics/personal-laptop/notes/concepts/2026-04-29_repos-dashboard-followups.md
+  - topics/personal-laptop/notes/concepts/2026-05-07_handoff-dashboard-threshold-calibration.md
+  - topics/personal-notes/notes/daily/2026-04-28.md
+  - topics/personal-notes/notes/daily/2026-04-29.md
+incoming_updated: 2026-05-08
 ---
 
 # Handoff — /app/repos Phase 2 (code-health signals)

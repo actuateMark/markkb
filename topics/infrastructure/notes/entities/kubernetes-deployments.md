@@ -6,7 +6,7 @@ tags: [argocd, gitops, kubernetes, helm, app-of-apps]
 created: 2026-04-13
 updated: 2026-04-14
 author: kb-bot
-incoming:
+outgoing:
   - topics/actuate-platform/notes/entities/core-repo-suite.md
   - topics/admin-api/notes/entities/admin-auto-onboarding.md
   - topics/ai-models/notes/entities/vlm-inference.md
@@ -17,7 +17,18 @@ incoming:
   - topics/inference-api/notes/concepts/lambda-to-k8s-migration.md
   - topics/infrastructure/notes/concepts/argocd-gitops-workflow.md
   - topics/infrastructure/notes/concepts/secrets-management.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/admin-api/notes/entities/admin-auto-onboarding.md
+  - topics/ai-models/notes/entities/vlm-inference.md
+  - topics/autopatrol/notes/concepts/2026-05-04_autopatrol-server-release-process.md
+  - topics/aws-cost/_summary.md
+  - topics/aws-cost/notes/entities/actuate-cost-analysis.md
+  - topics/data-science/notes/entities/ds-analysis-microservice.md
+  - topics/external-api/notes/concepts/shared-auth-pattern.md
+  - topics/inference-api/notes/concepts/lambda-to-k8s-migration.md
+  - topics/infrastructure/notes/concepts/argocd-gitops-workflow.md
+incoming_updated: 2026-05-08
 ---
 
 # kubernetes-deployments

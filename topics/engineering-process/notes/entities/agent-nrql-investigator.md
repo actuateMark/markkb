@@ -2,17 +2,25 @@
 title: "Agent: nrql-investigator"
 type: entity
 topic: engineering-process
-tags: [agent, new-relic, nrql, observability, context-protection]
+tags: [agent, new-relic, nrql, observability, context-protection, new-relic, new-relic, new-relic, new-relic, new-relic, new-relic, new-relic, new-relic]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
+outgoing:
+  - topics/autopatrol/notes/concepts/2026-04-17_onboarder-nr-instrumentation-gap.md
+  - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
+  - topics/engineering-process/notes/entities/agent-release-chain-watcher.md
+  - topics/engineering-process/notes/entities/agents-catalog.md
+  - topics/engineering-process/notes/entities/automation-overnight-check.md
+  - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
   - topics/autopatrol/notes/concepts/2026-04-17_onboarder-nr-instrumentation-gap.md
   - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
   - topics/engineering-process/notes/entities/agent-release-chain-watcher.md
   - topics/engineering-process/notes/entities/agents-catalog.md
   - topics/engineering-process/notes/entities/automation-overnight-check.md
-incoming_updated: 2026-05-01
+  - topics/personal-notes/notes/daily/2026-05-04.md
+incoming_updated: 2026-05-08
 ---
 
 # nrql-investigator

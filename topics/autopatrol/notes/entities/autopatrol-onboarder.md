@@ -2,11 +2,11 @@
 title: "Autopatrol Onboarder"
 type: entity
 topic: autopatrol
-tags: [autopatrol, lambda, onboarding, sync, immix, admin-api]
+tags: [autopatrol, lambda, onboarding, sync, immix, admin-api, autopatrol, autopatrol, autopatrol, autopatrol]
 created: 2026-04-13
 updated: 2026-04-17
 author: kb-bot
-incoming:
+outgoing:
   - topics/autopatrol/notes/concepts/2026-04-17_autopatrol-sync-endpoint-behavior.md
   - topics/autopatrol/notes/concepts/2026-04-17_onboarder-nr-instrumentation-gap.md
   - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
@@ -17,7 +17,18 @@ incoming:
   - topics/autopatrol/notes/syntheses/2026-04-23_postmortem-onboarder-healthcheck.md
   - topics/engineering-process/notes/concepts/2026-04-17_local-testing-strategies-per-repo.md
   - topics/engineering-process/notes/syntheses/2026-04-20_lambda-creation-and-tuning-playbook.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-17_autopatrol-sync-endpoint-behavior.md
+  - topics/autopatrol/notes/concepts/2026-04-17_onboarder-nr-instrumentation-gap.md
+  - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
+  - topics/autopatrol/notes/concepts/2026-04-28_tenant-status-sync-gap.md
+  - topics/autopatrol/notes/concepts/2026-04-29_immix-zombie-tenants.md
+  - topics/autopatrol/notes/concepts/2026-05-04_autopatrol-server-release-process.md
+  - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
+  - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
+  - topics/autopatrol/notes/entities/todo-list.md
+  - topics/autopatrol/notes/syntheses/2026-04-17_stale-schedule-cleanup-design.md
+incoming_updated: 2026-05-08
 ---
 
 ## Overview

@@ -6,13 +6,22 @@ tags: [obsidian, cli, knowledge-base, tooling]
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
-incoming:
+outgoing:
   - _index.md
   - topics/obsidian/_summary.md
   - topics/obsidian/notes/syntheses/2026-04-30_kb-skill-cli-retrofit.md
   - topics/obsidian/notes/syntheses/2026-05-01_context-efficient-kb-retrieval.md
+  - topics/personal-notes/notes/daily/2026-05-01.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+incoming:
+  - _index.md
+  - topics/engineering-process/notes/concepts/2026-05-05_open-questions-inbox-idea.md
+  - topics/llm-shop/notes/concepts/2026-05-05_first-real-tasks-experiments.md
+  - topics/obsidian/_summary.md
+  - topics/obsidian/notes/syntheses/2026-04-30_kb-skill-cli-retrofit.md
+  - topics/obsidian/notes/syntheses/2026-05-01_context-efficient-kb-retrieval.md
+  - topics/personal-notes/notes/daily/2026-05-01.md
+incoming_updated: 2026-05-08
 ---
 
 Stripped ELF binary that talks to a running Obsidian instance over a unix socket and exposes the vault's data model (files, tags, links, search) as a structured CLI. Shipped with recent Obsidian builds when the user enables CLI access in Settings → Tools. Once enabled, Obsidian writes the binary to `~/.local/bin/obsidian` and the socket to `~/.obsidian-cli.sock`.

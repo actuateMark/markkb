@@ -4,7 +4,10 @@ author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
 tags: [person, engineering, frontend, autopatrol, camera-health, watchman]
-incoming:
+outgoing:
+  - topics/autopatrol/_summary.md
+  - topics/autopatrol/notes/concepts/flex-ignore-zones.md
+  - topics/autopatrol/notes/entities/todo-list.md
   - topics/camera-health-monitoring/_summary.md
   - topics/product-roadmap/notes/concepts/revenue-drivers.md
   - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
@@ -12,7 +15,18 @@ incoming:
   - topics/team-structure/notes/entities/mark-barbera.md
   - topics/team-structure/notes/entities/tatiana-hanazaki.md
   - topics/watchman/_summary.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/autopatrol/_summary.md
+  - topics/autopatrol/notes/concepts/flex-ignore-zones.md
+  - topics/autopatrol/notes/entities/todo-list.md
+  - topics/autopatrol/notes/syntheses/2026-04-28_failed-patrol-investigation-handoff.md
+  - topics/camera-health-monitoring/_summary.md
+  - topics/product-roadmap/notes/concepts/revenue-drivers.md
+  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
+  - topics/team-structure/_summary.md
+  - topics/team-structure/notes/entities/mark-barbera.md
+  - topics/team-structure/notes/entities/tatiana-hanazaki.md
+incoming_updated: 2026-05-08
 ---
 
 # Brad Murphy

@@ -4,14 +4,23 @@ type: concept
 topic: engineering-process
 tags: [code-review, checklist, quality]
 created: 2026-04-14
-updated: 2026-04-23
+updated: 2026-05-03
 author: kb-bot
+outgoing:
+  - topics/engineering-process/_summary.md
+  - topics/engineering-process/notes/entities/agent-actuate-pr-reviewer.md
+  - topics/engineering-process/notes/entities/agents-catalog.md
+  - topics/personal-notes/notes/daily/2026-05-03.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/software-architecture/notes/syntheses/2026-04-16_architecture-enforcement.md
 incoming:
   - topics/engineering-process/_summary.md
   - topics/engineering-process/notes/entities/agent-actuate-pr-reviewer.md
   - topics/engineering-process/notes/entities/agents-catalog.md
+  - topics/personal-notes/notes/daily/2026-05-03.md
+  - topics/personal-notes/notes/daily/2026-05-04.md
   - topics/software-architecture/notes/syntheses/2026-04-16_architecture-enforcement.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-08
 ---
 
 # Code Review Checklist
@@ -80,3 +89,20 @@ Checklist for reviewing code before merge. Derived from issues found in the v5 i
 - [ ] No temporary or debug workflow files committed — `.github/workflows/` files added for debugging (e.g., one-off auth tests) must be removed before merge. The `Deploy to ECR Rearchitecture Custom` workflow fires on every non-protected branch push and will build real ECR images from anything in `.github/workflows/`.
 - [ ] Test [[settings-files|settings files]] reviewed for credentials — files in `test_settings/` may contain VMS credentials (`password`, `server_ip`, API tokens). Before merging: confirm it's not a production export, confirm credentials are shared test infra (already in repo) or redact them.
 - [ ] No debug breakpoints or verbose logging left in production paths — `pdb.set_trace()`, `logging.setLevel(DEBUG)` in non-test code, temporary `print()` in camera/pipeline code.
+
+## Billing & Lifecycle Invariants (vms-connector-specific)
+
+Every patrol or healthcheck **run** must emit `site_product_ended` **exactly once per camera per run** for billing reconciliation. This is a hard invariant — losing events shows up as silent revenue loss, and double-firing shows up as double billing. Both have happened in production:
+
+- PR #1663 (2026-05-01) — `AutoPatrolSiteManager` and `PatrolSiteManager` had `run()` paths that called `exit(0)` without ever invoking `endrun()`, so the entire patrol family of pods was emitting zero events for ~6 months
+- PR #1667 (2026-05-02) — `VCHCamera`'s SIGTERM handler set a flag but never fired `endrun()`, so any cronjob that got interrupted mid-run (eviction, manual delete, node disruption) silently dropped its billing events. Fixed by having the handler call `endrun()` directly with per-stream + per-effect idempotency guards.
+
+**Checklist for any new runtype, integration, or change to a run/exit lifecycle:**
+
+- [ ] **`site_product_ended` fires on the success path.** Trace `run()` → `endrun()` (or equivalent) → `send_chm_product_event(is_start=False, ...)` for every stream. Any run that exits without going through this is broken.
+- [ ] **`site_product_ended` fires on every interrupt path.** SIGTERM, SIGINT, exception mid-run, empty-queue early-exit. The signal handler (or the cleanup `finally:`) must invoke the emit code, not just set a "shutting down" flag and trust the loop to drain.
+- [ ] **Emit is idempotent.** Both the success path and the interrupt path may execute on the same run (handler fires early, then loop happens to drain). Per-stream tracking (set keyed on `admin_camera_id`) is the canonical pattern — see `VCHCamera._send_product_ended_events_once`. Set-before-fire avoids double billing on transient SQS failures; per-stream granularity allows partial retry without re-firing the streams that already succeeded.
+- [ ] **Other lifecycle side-effects (e.g. `end_patrol`, audit-log writes) are tracked independently** of billing. A failure on one must not block the other.
+- [ ] **Unit test covers double-call.** The PR includes a test that calls `endrun()` twice and asserts `send_chm_product_event` fires exactly N times (N = camera count), not 2N.
+- [ ] **Unit test covers interrupt path.** Test the SIGTERM (or equivalent) handler directly and assert the events fire — see `test_vms/test_healthcheck.py::TestVCHGracefulShutdown` for the pattern.
+- [ ] **PR description specifies the post-deploy NRQL query** that proves emission still works in prod. The `vms-connector` dashboard signal `vch_billing_emit_24h` is the recurring fleet-wide check — confirm new runtypes feed into it (or add a sibling signal).

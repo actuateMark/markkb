@@ -2,14 +2,18 @@
 title: "AutoPatrol Team Todo List"
 type: entity
 topic: autopatrol
-tags: [autopatrol, todos, tracker, team]
+tags: [autopatrol, todos, tracker, team, autopatrol, autopatrol, autopatrol, autopatrol]
 created: 2026-04-13
 updated: 2026-04-17
 author: kb-bot
-incoming:
+outgoing:
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-08
 ---
 
 # AutoPatrol Team Todo List
@@ -44,7 +48,7 @@ Multiple IZ presets per camera, selectable per schedule, with full API + fronten
 - [[clarissa-herman|Clarissa Herman]] — AP Server/MS integration (AUTO-449)
 
 ### Alert lifecycle race (identified 2026-04-16)
-Deferred alerts via `flush_deferred_alerts()` can be lost at patrol exit — executor tasks killed by process exit before Immix API call completes. See [[2026-04-16_deferred-alert-race-condition]] and [[autopatrol-alert-lifecycle]]. Fix in progress: drain executor after flush before allowing process exit.
+Deferred alerts via `flush_deferred_alerts()` can be lost at patrol exit — executor tasks killed by process exit before [[immix-vendor-api|Immix API]] call completes. See [[2026-04-16_deferred-alert-race-condition]] and [[autopatrol-alert-lifecycle]]. Fix in progress: drain executor after flush before allowing process exit.
 
 ## Recently shipped
 

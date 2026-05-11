@@ -6,7 +6,7 @@ tags: [library, camera-stream, video-ingestion, frame-pulling, gstreamer]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
-incoming:
+outgoing:
   - topics/actuate-libraries/_summary.md
   - topics/actuate-libraries/notes/concepts/dependency-graph.md
   - topics/actuate-libraries/notes/concepts/dev-workflow.md
@@ -17,7 +17,18 @@ incoming:
   - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase2-stream-probe.md
   - topics/integrations/adpro/_summary.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/actuate-libraries/_summary.md
+  - topics/actuate-libraries/notes/concepts/dependency-graph.md
+  - topics/actuate-libraries/notes/concepts/dev-workflow.md
+  - topics/actuate-libraries/notes/entities/actuate-blur.md
+  - topics/actuate-libraries/notes/entities/actuate-movement.md
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/actuate-platform/notes/syntheses/integration-landscape.md
+  - topics/autopatrol/notes/syntheses/2026-05-01_pre-endrun-crashes-resolution.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase2-stream-probe.md
+incoming_updated: 2026-05-09
 ---
 
 # actuate-pullers

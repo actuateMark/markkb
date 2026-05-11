@@ -2,16 +2,25 @@
 title: "Autopatrol Server"
 type: entity
 topic: autopatrol
-tags: [autopatrol, server, analysis, flask, sqs, neptune, computer-vision]
+tags: [autopatrol, server, analysis, flask, sqs, neptune, computer-vision, autopatrol, autopatrol, autopatrol, autopatrol]
 created: 2026-04-13
-updated: 2026-04-14
+updated: 2026-05-04
 author: kb-bot
-incoming:
+outgoing:
   - topics/autopatrol/notes/concepts/autopatrol-alert-lifecycle.md
   - topics/autopatrol/notes/entities/todo-list.md
   - topics/autopatrol/notes/syntheses/2026-04-16_deferred-alert-race-condition.md
   - topics/team-structure/notes/entities/clarissa-herman.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/autopatrol/notes/concepts/2026-05-04_autopatrol-server-release-process.md
+  - topics/autopatrol/notes/concepts/autopatrol-alert-lifecycle.md
+  - topics/autopatrol/notes/entities/immix-vendor-api.md
+  - topics/autopatrol/notes/entities/todo-list.md
+  - topics/autopatrol/notes/syntheses/2026-04-16_deferred-alert-race-condition.md
+  - topics/autopatrol/notes/syntheses/2026-05-04_autopatrol-server-nr-upgrade-plan.md
+  - topics/autopatrol/notes/syntheses/2026-05-07_consumer-side-websocket-close-feasibility.md
+  - topics/team-structure/notes/entities/clarissa-herman.md
+incoming_updated: 2026-05-08
 ---
 
 ## Overview
@@ -34,6 +43,8 @@ The **Autopatrol Server** is the core analysis backend for the Actuate AutoPatro
 The service is containerized via Docker (Python 3.12-slim base, built with uv, ARM64 target). CI/CD is a GitHub Actions workflow on push to `main` that builds and pushes to ECR repository `autopatrol_service`, tagged with the pyproject version. The container runs `python3 -m server.app` as its entrypoint, which starts the SQS [[queue-consumer|queue consumer]] (not the Flask dev server).
 
 The Docker image is deployed to ECS or EKS (ARM64 nodes). It pulls private packages from AWS CodeArtifact at build time via a `UV_INDEX` build arg.
+
+For the full release chain (autopatrol-server → ECR → kubernetes-deployments → [[argocd|ArgoCD]]), see [[2026-05-04_autopatrol-server-release-process]]. **Do not skip the build-wait step** — bumping the k8s manifest before ECR has the tag causes ImagePullBackOff.
 
 ## Key Files and Entry Points
 

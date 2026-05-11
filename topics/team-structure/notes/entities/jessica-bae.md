@@ -4,14 +4,28 @@ author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
 tags: [person, engineering, alerts, vlm, data-science, product]
+outgoing:
+  - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+  - topics/alerts-improvements/_summary.md
+  - topics/alerts-improvements/notes/concepts/alert-muting.md
+  - topics/alerts-improvements/notes/concepts/immix-dispatch.md
+  - topics/autopatrol/_summary.md
+  - topics/autopatrol/notes/concepts/vlm-integration.md
+  - topics/autopatrol/notes/entities/todo-list.md
+  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
+  - topics/team-structure/notes/entities/laura-reno.md
 incoming:
   - topics/actuate-platform/notes/concepts/multi-region-deployment.md
   - topics/alerts-improvements/_summary.md
   - topics/alerts-improvements/notes/concepts/alert-muting.md
   - topics/alerts-improvements/notes/concepts/immix-dispatch.md
+  - topics/autopatrol/_summary.md
+  - topics/autopatrol/notes/concepts/vlm-integration.md
+  - topics/autopatrol/notes/entities/todo-list.md
+  - topics/autopatrol/notes/syntheses/2026-04-28_failed-patrol-investigation-handoff.md
   - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
   - topics/team-structure/notes/entities/laura-reno.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-08
 ---
 
 # Jessica Bae

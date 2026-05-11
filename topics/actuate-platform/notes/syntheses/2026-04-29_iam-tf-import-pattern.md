@@ -6,11 +6,15 @@ tags: [terraform, terragrunt, iam, iac, pattern, ds-terraform-eks-v2, eks-irsa, 
 created: 2026-04-29
 updated: 2026-04-29
 author: kb-bot
-incoming:
+outgoing:
   - topics/personal-notes/notes/daily/2026-04-29.md
   - topics/personal-notes/notes/entities/mark-todos.md
   - topics/runbooks/notes/concepts/2026-04-29_iac-live-drift-discovery.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
+  - topics/personal-notes/notes/daily/2026-04-29.md
+  - topics/runbooks/notes/concepts/2026-04-29_iac-live-drift-discovery.md
+incoming_updated: 2026-05-08
 ---
 
 ## When This Applies

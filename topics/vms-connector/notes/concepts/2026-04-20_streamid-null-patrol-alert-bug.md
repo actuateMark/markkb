@@ -2,7 +2,7 @@
 title: "streamId-null rejection in Immix patrol alert dispatch"
 type: concept
 topic: vms-connector
-tags: [bug, autopatrol, vch, immix, alert-dispatch, streamid, patrol-api]
+tags: [bug, autopatrol, vch, immix, alert-dispatch, streamid, patrol-api, immix, immix, immix, immix]
 jira: ""
 status: open
 severity: medium
@@ -10,7 +10,7 @@ discovered: 2026-04-20
 created: 2026-04-20
 updated: 2026-04-20
 author: kb-bot
-incoming:
+outgoing:
   - topics/autopatrol/notes/concepts/2026-04-21_cleanup-lambda-stage-verify.md
   - topics/autopatrol/notes/syntheses/2026-04-17_stale-schedule-cleanup-design.md
   - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
@@ -21,7 +21,18 @@ incoming:
   - topics/releases/notes/entities/2026-04-20_vms-connector-pr-1654.md
   - topics/vms-connector/_summary.md
   - topics/vms-connector/notes/concepts/2026-04-20_dev-powerplus-ssl-cert-verify-failure.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-21_cleanup-lambda-stage-verify.md
+  - topics/autopatrol/notes/entities/immix-vendor-api.md
+  - topics/autopatrol/notes/syntheses/2026-04-17_stale-schedule-cleanup-design.md
+  - topics/autopatrol/notes/syntheses/2026-05-07_consumer-side-websocket-close-feasibility.md
+  - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
+  - topics/engineering-process/notes/syntheses/2026-04-20_lambda-creation-and-tuning-playbook.md
+  - topics/personal-notes/notes/daily/2026-04-20.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/releases/notes/entities/2026-04-20_vms-connector-pr-1654.md
+  - topics/vms-connector/_summary.md
+incoming_updated: 2026-05-08
 ---
 
 # streamId-null rejection in Immix patrol alert dispatch
@@ -149,7 +160,7 @@ The `SiteDisabledOrDisarmed` failure class covers **5 of 10 recent samples** in 
 The existing Lambda:
 - Listens on SQS, fed by the connector on terminal "no patrols" exits
 - Counts occurrences per `schedule_id` in DynamoDB
-- At threshold (`max(3, 48h / cadence_hours)`), confirms with Immix API (404 / DEACTIVATED) and soft-deletes the schedule in admin
+- At threshold (`max(3, 48h / cadence_hours)`), confirms with [[immix-vendor-api|Immix API]] (404 / DEACTIVATED) and soft-deletes the schedule in admin
 
 **Proposed extension (mark-todos §10):** add `SiteDisabledOrDisarmed` as a second signal into the same pipeline. Connector emits a distinct SQS event type on this failure. Cleanup Lambda tracks it separately from "no patrols" on a **longer window (e.g. 30 days)** because `SiteDisabledOrDisarmed` can be legitimately transient (sites armed only during business hours). Soft-disable only if continuously in that state for the whole window.
 

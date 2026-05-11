@@ -2,12 +2,12 @@
 title: "AutoPatrol Cleanup Lambda"
 type: entity
 topic: autopatrol
-tags: [autopatrol, lambda, cleanup, sqs, dynamodb, immix, admin-api, rollout]
+tags: [autopatrol, lambda, cleanup, sqs, dynamodb, immix, admin-api, rollout, billing]
 status: live-stage-enabled
 created: 2026-04-17
 updated: 2026-04-23
 author: kb-bot
-incoming:
+outgoing:
   - topics/actuate-platform/notes/entities/actuate-admin-api.md
   - topics/actuate-platform/notes/entities/core-repo-suite.md
   - topics/autopatrol/notes/concepts/2026-04-17_no-patrols-emit-points.md
@@ -18,7 +18,18 @@ incoming:
   - topics/autopatrol/notes/concepts/2026-04-23_cleanup-rollout-day.md
   - topics/autopatrol/notes/concepts/2026-04-24_morning-watch-list.md
   - topics/autopatrol/notes/entities/autopatrol-onboarder.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/actuate-platform/notes/entities/actuate-admin-api.md
+  - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/autopatrol/notes/concepts/2026-04-17_no-patrols-emit-points.md
+  - topics/autopatrol/notes/concepts/2026-04-17_onboarder-nr-instrumentation-gap.md
+  - topics/autopatrol/notes/concepts/2026-04-20_cleanup-lambda-runbook.md
+  - topics/autopatrol/notes/concepts/2026-04-21_cleanup-lambda-stage-verify.md
+  - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
+  - topics/autopatrol/notes/concepts/2026-04-23_cleanup-rollout-day.md
+  - topics/autopatrol/notes/concepts/2026-04-23_immix-api-error-patterns.md
+  - topics/autopatrol/notes/concepts/2026-04-24_morning-watch-list.md
+incoming_updated: 2026-05-08
 ---
 
 # AutoPatrol Cleanup Lambda
@@ -100,7 +111,7 @@ Mirrors onboarder naming:
 | `CLEANUP_SITE_DISABLED_TARGET_HOURS` | `336` | Unchanged (14d window for SiteDisabledOrDisarmed signal). |
 | `DRY_RUN` | unset | Admin PATCH fires on disable decisions. |
 | `DDB_COUNTERS_TABLE` | `autopatrol_cleanup_counters-dev` | Stage DDB table (prod uses same Lambda, same table — "stage vs prod" is only about which connector pods emit). |
-| `AUTOPATROL_STAGE` / `AUTOPATROL_REGION` | `prod` / `US` | Routes admin + Immix API calls to prod endpoints. |
+| `AUTOPATROL_STAGE` / `AUTOPATROL_REGION` | `prod` / `US` | Routes admin + [[immix-vendor-api|Immix API]] calls to prod endpoints. |
 
 **Rollback:** flip `CLEANUP_ENABLED=false` via `aws lambda update-function-configuration`. Instant effect, counters keep accumulating for resumption.
 

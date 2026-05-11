@@ -2,15 +2,25 @@
 title: "AutoPatrol state-mismatch audit — manage.py audit_autopatrol_state"
 type: synthesis
 topic: admin-api
-tags: [autopatrol, audit, db, customer, schedule, propagation, planning, mgmt-command, immix]
+tags: [autopatrol, audit, db, customer, schedule, propagation, planning, mgmt-command, immix, immix, immix, immix, immix, immix, immix, immix, immix, immix]
 created: 2026-04-30
 updated: 2026-05-01
 author: kb-bot
-incoming:
+outgoing:
   - topics/admin-api/notes/concepts/release-flow-stage-first.md
   - topics/personal-notes/notes/concepts/2026-04-30_admin-propagation-handoff.md
+  - topics/personal-notes/notes/concepts/2026-05-01_pre-endrun-crashes-handoff.md
+  - topics/personal-notes/notes/daily/2026-05-01.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/admin-api/notes/concepts/release-flow-stage-first.md
+  - topics/autopatrol/notes/concepts/2026-05-05_cohort-b-backfill-runbook.md
+  - topics/autopatrol/notes/syntheses/2026-05-01_silent-cameras-diagnosis.md
+  - topics/personal-notes/notes/concepts/2026-04-30_admin-propagation-handoff.md
+  - topics/personal-notes/notes/concepts/2026-05-01_pre-endrun-crashes-handoff.md
+  - topics/personal-notes/notes/daily/2026-05-01.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-08
 ---
 
 # AutoPatrol state-mismatch audit — `manage.py audit_autopatrol_state`
@@ -245,7 +255,7 @@ for t in tenants[:20]:
 
 ## Prod run results — 2026-05-01
 
-> Reached prod after v2.7.3 release-train (PR #2395) merged to main 2026-05-01T15:27Z. The actuate_admin US deployment is on ECS Fargate with `enableExecuteCommand: false`, so the audit was run via `aws ecs run-task --overrides` invoking the audit command in a one-off task. Output captured via firelens → New Relic. EU run was via `kubectl exec` on the EU `camera-admin` namespace (`inference-eks-Xp5O`).
+> Reached prod after v2.7.3 release-train (PR #2395) merged to main 2026-05-01T15:27Z. The [[actuate_admin]] US deployment is on ECS Fargate with `enableExecuteCommand: false`, so the audit was run via `aws ecs run-task --overrides` invoking the audit command in a one-off task. Output captured via firelens → [[new-relic|New Relic]]. EU run was via `kubectl exec` on the EU `camera-admin` namespace (`inference-eks-Xp5O`).
 
 ### EU prod (kubectl exec)
 
@@ -289,6 +299,71 @@ The first US pre-flight (which printed all 445 schedules due to a related-manage
 
 The propagation-hook ADR + reconcile-patch design remain **blocked** until the orphan filter is corrected and re-run.
 
+## Prod run results — 2026-05-11
+
+> Re-run via `kubectl exec` on `djangoq/djangoq-67f6d7c866-2vjnl` (us-west-2 admin codebase, image `actuate_admin:v2.7.6` — `v2.7.6` includes PR #2389 per `git tag --contains 2dc1fdca75`). Command: `cd /app/actuate_admin && uv run --frozen --no-sync python manage.py audit_autopatrol_state`. Ran 2026-05-11T20:00:25Z.
+
+```
+Cohort A (active=False, is_deleted=False, autopatrol): count=15
+  - pk=40792 'ABC Liquor Store 18' cams_active=19
+  - pk=40794 'ABC Liquor Store 19' cams_active=8
+  - pk=40793 'ABC Liquor Store 20' cams_active=27
+  - pk=40803 'ABC Liquor Store 23' cams_active=16
+  - pk=40799 'ABC Liquor Store 27' cams_active=42
+  - pk=40798 'ABC Liquor Store 28' cams_active=25
+  - pk=39417 'axis site - subsite' cams_active=0
+  - pk=42918 'Centro Del Pueblo' cams_active=0
+  - pk=39415 'Eagle Eye' cams_active=0
+  - pk=41158 'Live Site 2' cams_active=9
+  - pk=37990 'Rick Test Site 2' cams_active=0
+  - pk=43080 'SSG Security' cams_active=0
+  - pk=41070 'Stored Video' cams_active=12
+  - pk=39419 'Testing site' cams_active=0
+  - pk=42600 'user test site' cams_active=0
+
+Cohort B (orphan schedules, schedule_id empty or null): count=0
+Cohort C (customers with ONLY orphan schedules): count=0
+Cohort D (active autopatrol customers with zero schedules): count=4
+  - pk=39416 'StoredVideo'
+  - pk=41798 'CC260'
+  - pk=35923 'Alibi Vigilant - TEST - TO BE DISABLED'
+  - pk=39845 'TRAVIS TEST'
+
+Cohort E (tenant-root groups, parent_account=True): count=3164
+  top tenants by active autopatrol customer count:
+  - tenant_pk=39326 'Auto Patrol': active=53 inactive=5
+  - tenant_pk=1 'Eyeforce': active=33 inactive=7
+  - tenant_pk=44306 'Eyeforce - Patrol' (tenant_id=7b533b5a...): active=33 inactive=7
+  - tenant_pk=39355 'Immix.Hedrick - Patrol' (tenant_id=dfda7621...): active=21 inactive=0
+  - tenant_pk=641 'Actuate': active=10 inactive=3
+  - tenant_pk=39327 'Vendor.Actuate.Prod - Patrol' (tenant_id=47dc2c1f-...): active=10 inactive=3   ← Alibi tenant
+  - tenant_pk=40896 'Immix.immixcs.net - Patrol': active=8 inactive=1
+  - tenant_pk=234 'Live Patrol': active=8 inactive=0
+  - tenant_pk=42947 'Live Patrol - Patrol' (tenant_id=74cf336c...): active=8 inactive=0
+  - tenant_pk=43536 '247 Alert - Patrol' (tenant_id=be2da6ac...): active=4 inactive=0
+  ... 10 more tenant rows truncated, all single-digit active counts
+```
+
+### Sizing interpretation (US prod)
+
+| Cohort | Count | Interpretation |
+|---|---|---|
+| A — inactive-not-deleted autopatrol | 15 | Larger than EU's 2; **6 of 15 are "ABC Liquor Store" suite** with cams_active 8-42 (cohort cluster, single retailer/franchise — one batch decision can handle them all). 9 of 15 are clearly test/internal (`*test*`, `*Eagle Eye*`, `axis site - subsite`, `SSG Security` with zero active cams). Net: 6 real-customer-cluster + 9 test-cleanup-candidates. |
+| B/C | 0 | Confirms 2026-05-01 finding — the `schedule_id IS NULL` filter still catches nothing on prod. Real orphan signal is `schedule_status='Deleted' AND is_deleted=False` per the resolution above; that filter remains unimplemented in the audit command. |
+| D — active customers with zero schedules | 4 | Same 4 as 2026-05-01 — `CC260`, `Alibi Vigilant TEST`, `TRAVIS TEST`, `StoredVideo`. 3 test/internal, 1 (CC260) potentially worth investigating. |
+| E — tenant-root groups | 3164 | Universe size. The top-tenant breakdown shows the `inactive_present` column is informative — e.g., `Auto Patrol` tenant has 5 customers in Cohort-A-state, `Eyeforce` has 7. Cohort A's 15 maps roughly to these inactive_present rows. |
+
+### Cross-link to morning AP-routing finding
+
+The Alibi tenant (`tenant_id=47dc2c1f...`, tenant_pk=39327, 'Vendor.Actuate.Prod - Patrol') with `active=10 inactive=3` is exactly the tenant that this morning's AP queue-routing investigation identified as the only AP-running customer on prod. The `lead_implies_dev` heuristic in `actuate-config/patrol_config.py:31-34` routes all 10 active customers' patrols to the dev queue — confirming the dashboard-signal misfire was correct in scope (Alibi-only, prod queue legitimately empty). See [[2026-04-30_autopatrol-state-audit]] cross-ref to morning investigation, and the new task §29 [[mark-todos#29-internal-test-deploy-lane--custom-branch-wiring-via-admin-api]] which generalizes this routing pattern.
+
+### Next actions (post-2026-05-11 run)
+
+1. Cohort A cleanup — separate the ABC Liquor Store franchise cluster (6 customers, decide as a batch) from the 9 test-customer cleanup candidates. Likely a separate Jira ticket, not part of this audit's scope.
+2. Cohort D — investigate CC260 specifically; the other 3 are clearly test.
+3. **PR #2396 follow-up still pending** (real orphan signal redefinition). Until that lands, the audit command can't detect the `schedule_status='Deleted'` case which is the actual orphan pattern.
+4. Propagation-hook ADR design — now sized (Cohort A=15 + D=4 = 19 customers in scope for cascade-down propagation). Small enough that a one-time DB patch + go-forward propagation hook is feasible without staged rollout.
+
 ## Cross-references
 
 - [[2026-04-30_admin-propagation-handoff]] — the handoff this audit is the pre-step for
@@ -297,4 +372,4 @@ The propagation-hook ADR + reconcile-patch design remain **blocked** until the o
 
 ## Status
 
-Queries drafted 2026-04-30. **Numbers not yet collected** — user to run on prod admin shell at next opportunity. Update this note with results once collected; that becomes the sizing input for the propagation-hook ADR + DB-patch spec.
+Queries drafted 2026-04-30. **2026-05-11 US prod run complete** — Cohort A=15, B=0, C=0, D=4, E=3164. Propagation-hook ADR design unblocked on sizing (Cohort A+D = 19 customers). PR #2396 follow-up (real orphan filter via `schedule_status`) still pending and remains the gating prerequisite for designing the cascade-down propagation hook around the *actual* orphan signal.

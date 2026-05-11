@@ -2,16 +2,24 @@
 title: "Immix API zombie tenants — tenant_ids referenced in connector flow that return no data"
 type: concept
 topic: autopatrol
-tags: [immix, autopatrol-onboarder, api-contract-violation, tenant-cascade, eu, zombie-tenants]
+tags: [immix, autopatrol-onboarder, api-contract-violation, tenant-cascade, eu, zombie-tenants, immix, immix, immix, immix]
 jira: ""
 confluence: ""
 created: 2026-04-29
 updated: 2026-04-29
 author: kb-bot
-- Error: File "2026-04-29_immix-zombie-tenants" not found.
 incoming:
-  - Error: File "2026-04-29_immix-zombie-tenants" not found.
-incoming_updated: 2026-05-01
+  - topics/admin-api/notes/concepts/2026-04-30_data-model-cascade-semantics.md
+  - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
+  - topics/autopatrol/notes/concepts/2026-04-23_immix-api-error-patterns.md
+  - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
+  - topics/autopatrol/notes/entities/immix-vendor-api.md
+  - topics/autopatrol/notes/syntheses/2026-05-07_consumer-side-websocket-close-feasibility.md
+  - topics/personal-notes/notes/concepts/2026-04-29_cleanup-handoff.md
+  - topics/personal-notes/notes/concepts/2026-04-30_admin-propagation-handoff.md
+  - topics/personal-notes/notes/daily/2026-04-29.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-08
 ---
 
 # Immix API contract violation — connector-flow tenant_ids return no data
@@ -180,7 +188,7 @@ The same key + the same call sites return 200 with valid bodies for the 18 other
 ## Cross-references
 
 - [[2026-04-28_tenant-status-sync-gap]] — original tenant-status sync investigation; this note extends it with the "zombie tenant" pattern (gone-from-Immix-entirely vs Suspended)
-- [[2026-04-23_immix-api-error-patterns]] — catalog of Immix API non-RESTful behaviors (this is another entry in that catalog)
+- [[2026-04-23_immix-api-error-patterns]] — catalog of [[immix-vendor-api|Immix API]] non-RESTful behaviors (this is another entry in that catalog)
 - [vms-connector#1656](https://github.com/aegissystems/vms-connector/issues/1656) — similar contract violation: /Patrols/{id}/raise requires GUID streamId from the very call that's failing
 - [autopatrol_onboarder PR #7](https://github.com/aegissystems/autopatrol_onboarder/pull/7) — workaround for similar issue: Immix returned 400 + "system is unavailable" for schedules that were actually gone
 - [[autopatrol-onboarder]] — entity note for the EU Lambda that surfaces these

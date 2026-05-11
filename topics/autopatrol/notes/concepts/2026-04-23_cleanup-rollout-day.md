@@ -2,15 +2,25 @@
 title: "Cleanup Lambda Rollout Day — 2026-04-23"
 type: concept
 topic: autopatrol
-tags: [autopatrol, cleanup-lambda, rollout, hotfix, threshold-tuning, incident-day, immix]
+tags: [autopatrol, cleanup-lambda, rollout, hotfix, threshold-tuning, incident-day, immix, immix, immix, immix, immix]
 created: 2026-04-23
 updated: 2026-04-23
 author: kb-bot
-incoming:
+outgoing:
   - topics/actuate-platform/notes/entities/actuate-admin-api.md
   - topics/personal-notes/notes/daily/2026-04-23.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/actuate-platform/notes/entities/actuate-admin-api.md
+  - topics/autopatrol/notes/concepts/2026-04-23_immix-api-error-patterns.md
+  - topics/autopatrol/notes/concepts/2026-04-24_stale-schedule-cleanup-investigation.md
+  - topics/autopatrol/notes/concepts/2026-04-28_chronic-flapper-investigation.md
+  - topics/autopatrol/notes/concepts/2026-04-28_tenant-status-sync-gap.md
+  - topics/autopatrol/notes/concepts/2026-05-07_handoff-cleanup-lambda-interpretive-checks.md
+  - topics/autopatrol/notes/syntheses/2026-04-24_stale-schedule-cleanup-aar.md
+  - topics/personal-notes/notes/daily/2026-04-23.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+incoming_updated: 2026-05-08
 ---
 
 # Cleanup Lambda Rollout Day — 2026-04-23
@@ -47,7 +57,7 @@ Day-in-the-life reference for the cleanup Lambda's rollout from "dark-mode baked
 
 ### 1. Stage → "stage-that's-really-prod" reframing
 
-Realized mid-day that the "stage queue" (`autopatrol_stale_schedule_cleanup_dev.fifo`) has been carrying real Immix customer tenant traffic the entire bake period. The Lambda's `AUTOPATROL_STAGE=prod` env var routes all admin + Immix API calls to prod endpoints. Every PATCH would hit the real admin DB against real customer schedules.
+Realized mid-day that the "stage queue" (`autopatrol_stale_schedule_cleanup_dev.fifo`) has been carrying real Immix customer tenant traffic the entire bake period. The Lambda's `AUTOPATROL_STAGE=prod` env var routes all admin + [[immix-vendor-api|Immix API]] calls to prod endpoints. Every PATCH would hit the real admin DB against real customer schedules.
 
 **Consequence:** the originally-planned "1 week stage bake before prod rollout" gate was excessive. The risk per message has been prod-risk the whole time. Shortened to 24-48h of monitoring, not a week.
 

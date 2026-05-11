@@ -2,14 +2,22 @@
 title: "Immix API — error patterns for missing schedules"
 type: concept
 topic: autopatrol
-tags: [immix, integration, api-quirks, cleanup-lambda, error-handling]
+tags: [immix, integration, api-quirks, cleanup-lambda, error-handling, immix, immix, immix, immix]
 created: 2026-04-23
 updated: 2026-04-29
 author: kb-bot
-- Error: File "2026-04-23_immix-api-error-patterns" not found.
 incoming:
-  - Error: File "2026-04-23_immix-api-error-patterns" not found.
-incoming_updated: 2026-05-01
+  - topics/autopatrol/notes/concepts/2026-04-24_stale-schedule-cleanup-investigation.md
+  - topics/autopatrol/notes/concepts/2026-04-29_immix-zombie-tenants.md
+  - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
+  - topics/autopatrol/notes/entities/immix-vendor-api.md
+  - topics/autopatrol/notes/syntheses/2026-04-24_stale-schedule-cleanup-aar.md
+  - topics/autopatrol/notes/syntheses/2026-04-24_stale-schedule-disable-roster.md
+  - topics/autopatrol/notes/syntheses/2026-05-07_consumer-side-websocket-close-feasibility.md
+  - topics/personal-notes/notes/daily/2026-04-23.md
+  - topics/personal-notes/notes/daily/2026-04-24.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+incoming_updated: 2026-05-08
 ---
 
 # Immix API — error patterns for missing schedules

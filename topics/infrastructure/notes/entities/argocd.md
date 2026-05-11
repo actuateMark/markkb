@@ -4,7 +4,8 @@ author: kb-bot
 created: 2026-04-15
 updated: 2026-04-15
 tags: [gitops, deployment, kubernetes, helm, continuous-delivery]
-incoming:
+outgoing:
+  - topics/actuate-platform/_summary.md
   - topics/actuate-platform/notes/concepts/multi-region-deployment.md
   - topics/ai-models/notes/concepts/vlm-pipeline-architecture.md
   - topics/ai-models/notes/entities/vlm-inference.md
@@ -14,8 +15,18 @@ incoming:
   - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
   - topics/data-science/notes/syntheses/model-lifecycle.md
   - topics/engineering-process/notes/entities/agent-connector-pipeline-expert.md
-  - topics/engineering-process/notes/entities/agent-release-chain-watcher.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/actuate-platform/_summary.md
+  - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+  - topics/ai-models/notes/concepts/vlm-pipeline-architecture.md
+  - topics/ai-models/notes/entities/vlm-inference.md
+  - topics/autopatrol/notes/concepts/2026-05-04_autopatrol-server-release-process.md
+  - topics/autopatrol/notes/entities/autopatrol-server.md
+  - topics/autopatrol/notes/syntheses/2026-05-04_autopatrol-server-nr-upgrade-plan.md
+  - topics/aws-cost/notes/entities/actuate-cost-analysis.md
+  - topics/data-science/notes/concepts/training-pipeline-architecture.md
+  - topics/data-science/notes/entities/ds-analysis-microservice.md
+incoming_updated: 2026-05-09
 ---
 
 # ArgoCD

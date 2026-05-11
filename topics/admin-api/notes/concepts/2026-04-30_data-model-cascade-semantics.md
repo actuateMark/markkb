@@ -2,16 +2,27 @@
 title: "Admin data model — cascade and soft-delete semantics (seed)"
 type: concept
 topic: admin-api
-tags: [data-model, cascade, soft-delete, autopatrol, customer, schedule, camera, group, propagation, sticky-state, immix]
+tags: [data-model, cascade, soft-delete, autopatrol, customer, schedule, camera, group, propagation, sticky-state, immix, billing]
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
-incoming:
+outgoing:
   - topics/admin-api/notes/concepts/release-flow-stage-first.md
   - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
   - topics/personal-notes/notes/concepts/2026-04-30_admin-propagation-handoff.md
+  - topics/personal-notes/notes/concepts/2026-05-01_pre-endrun-crashes-handoff.md
+  - topics/personal-notes/notes/daily/2026-05-01.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/admin-api/notes/concepts/release-flow-stage-first.md
+  - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
+  - topics/autopatrol/notes/syntheses/2026-05-01_pre-endrun-crashes-resolution.md
+  - topics/autopatrol/notes/syntheses/2026-05-01_silent-cameras-diagnosis.md
+  - topics/personal-notes/notes/concepts/2026-04-30_admin-propagation-handoff.md
+  - topics/personal-notes/notes/concepts/2026-05-01_pre-endrun-crashes-handoff.md
+  - topics/personal-notes/notes/daily/2026-05-01.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-08
 ---
 
 # Admin data model — cascade and soft-delete semantics (seed)
@@ -280,7 +291,7 @@ All three hooks should be feature-flagged (default off) for safe rollout, with t
 ## Cross-references
 
 - [[2026-04-28_tenant-status-sync-gap]] — original §16 design (cascade-disable)
-- [[2026-04-29_immix-zombie-tenants]] — Immix API contract violations causing some of the orphan-row class
+- [[2026-04-29_immix-zombie-tenants]] — [[immix-vendor-api|Immix API]] contract violations causing some of the orphan-row class
 - `actuate_admin/api/serializers/integrations/autopatrol/autopatrol_view.py` — `disable_tenant` and `reenable_tenant` action methods (the cascade endpoints)
 - `actuate_admin/inframap/sites/customer/customer_model.py:875` — `Customer.restore()` partial-cascade logic
 - `actuate_admin/inframap/sites/autopatrol/autopatrol_schedule_model.py:391-394` — schedule.delete() → undeploy()

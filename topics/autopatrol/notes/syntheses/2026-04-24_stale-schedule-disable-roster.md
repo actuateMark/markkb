@@ -2,14 +2,13 @@
 title: "Stale schedule cleanup — what we disabled (2026-04-24 sweep)"
 type: synthesis
 topic: autopatrol
-tags: [autopatrol, vch, cleanup-lambda, sweep, audit, report, immix]
+tags: [autopatrol, vch, cleanup-lambda, sweep, audit, report, immix, autopatrol, immix, autopatrol, immix, autopatrol, immix, autopatrol, immix]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
-- Error: File "2026-04-24_stale-schedule-disable-roster" not found.
 incoming:
-  - Error: File "2026-04-24_stale-schedule-disable-roster" not found.
-incoming_updated: 2026-05-01
+  - topics/personal-notes/notes/daily/2026-04-27.md
+incoming_updated: 2026-05-08
 ---
 
 # Stale AutoPatrol/VCH schedule cleanup — sweep results

@@ -2,15 +2,14 @@
 title: "AutoPatrol Failed-Patrol Investigation — Handoff (2026-04-28)"
 type: synthesis
 topic: autopatrol
-tags: [investigation, handoff, AUTO-566, AUTO-567, customer-incident, product-sync, settings-deploy, immix]
+tags: [investigation, handoff, AUTO-566, AUTO-567, customer-incident, product-sync, settings-deploy, immix, immix, immix, immix, immix]
 jira: ["AUTO-566", "AUTO-567", "AUTO-553", "AUTO-525"]
 created: 2026-04-28
 updated: 2026-04-29
 author: kb-bot
-- Error: File "2026-04-28_failed-patrol-investigation-handoff" not found.
 incoming:
-  - Error: File "2026-04-28_failed-patrol-investigation-handoff" not found.
-incoming_updated: 2026-05-01
+  - topics/personal-notes/notes/daily/2026-04-29.md
+incoming_updated: 2026-05-08
 ---
 
 # AutoPatrol Failed-Patrol Investigation — Handoff

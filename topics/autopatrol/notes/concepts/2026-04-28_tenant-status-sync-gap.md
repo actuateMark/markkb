@@ -2,14 +2,21 @@
 title: "Tenant-Status Sync Gap — Suspended Tenants Stay Active in Admin"
 type: concept
 topic: autopatrol
-tags: [tenant, sync, suspended, onboarder, cleanup-lambda, admin, gap, finding, immix]
+tags: [tenant, sync, suspended, onboarder, cleanup-lambda, admin, gap, finding, immix, immix, immix, immix, immix]
 created: 2026-04-28
 updated: 2026-04-28
 author: kb-bot
-- Error: File "2026-04-28_tenant-status-sync-gap" not found.
 incoming:
-  - Error: File "2026-04-28_tenant-status-sync-gap" not found.
-incoming_updated: 2026-05-01
+  - topics/admin-api/notes/concepts/2026-04-30_data-model-cascade-semantics.md
+  - topics/autopatrol/notes/concepts/2026-04-28_chronic-flapper-investigation.md
+  - topics/autopatrol/notes/concepts/2026-04-29_immix-zombie-tenants.md
+  - topics/autopatrol/notes/syntheses/2026-05-04_admin-schedule-cascade-design.md
+  - topics/personal-notes/notes/concepts/2026-04-29_cleanup-handoff.md
+  - topics/personal-notes/notes/concepts/2026-04-30_admin-propagation-handoff.md
+  - topics/personal-notes/notes/daily/2026-04-28.md
+  - topics/personal-notes/notes/daily/2026-05-04.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-08
 ---
 
 # Tenant-Status Sync Gap

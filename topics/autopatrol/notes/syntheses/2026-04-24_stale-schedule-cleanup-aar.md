@@ -2,14 +2,15 @@
 title: "AAR — stale AutoPatrol/VCH schedule cleanup sweep"
 type: synthesis
 topic: autopatrol
-tags: [autopatrol, vch, cleanup-lambda, sweep, aar, post-mortem, stale-schedules, immix]
+tags: [autopatrol, vch, cleanup-lambda, sweep, aar, post-mortem, stale-schedules, immix, immix, immix, immix, immix]
 created: 2026-04-24
 updated: 2026-04-27
 author: kb-bot
-- Error: File "2026-04-24_stale-schedule-cleanup-aar" not found.
 incoming:
-  - Error: File "2026-04-24_stale-schedule-cleanup-aar" not found.
-incoming_updated: 2026-05-01
+  - topics/autopatrol/notes/syntheses/2026-04-24_stale-schedule-disable-roster.md
+  - topics/autopatrol/notes/syntheses/2026-05-07_cleanup-lambda-state-matrix-verify.md
+  - topics/personal-notes/notes/daily/2026-04-27.md
+incoming_updated: 2026-05-08
 ---
 
 # AAR — stale AutoPatrol/VCH schedule cleanup sweep (2026-04-24)
@@ -164,7 +165,7 @@ Filed as external-coordination follow-up: figure out who owns the Immix `Ocp-Api
 
 The S3 settings also revealed **6 Immix tenants that our API key can't query** (`ac399cd6`, `0ee7cb3f`, `e386800a`, `b594cbbe`, `cc24a89f`, `b9953026`). 100 schedules on 1,344 cameras are under those tenants. Our `Ocp-Apim-Subscription-Key` returns 401 for them. We can't auto-classify these without expanding the key's scope.
 
-**This is likely where most of the "1k failing cameras" the team described are hiding.** Getting visibility into them needs coordination with whoever provisions the Immix API subscription (it wasn't obvious from the code who owns that).
+**This is likely where most of the "1k failing cameras" the team described are hiding.** Getting visibility into them needs coordination with whoever provisions the [[immix-vendor-api|Immix API]] subscription (it wasn't obvious from the code who owns that).
 
 Follow-up on this tomorrow.
 

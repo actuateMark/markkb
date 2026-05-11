@@ -6,7 +6,7 @@ tags: [gstreamer, ffmpeg, libav, pyav, decision-matrix, video, architecture]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
-incoming:
+outgoing:
   - _index.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
@@ -17,7 +17,18 @@ incoming:
   - topics/video-processing/notes/concepts/gstreamer-pipeline-model.md
   - topics/video-processing/notes/concepts/nvidia-deepstream.md
   - topics/video-processing/notes/concepts/rtsp-deep-dive.md
-incoming_updated: 2026-05-01
+incoming:
+  - _index.md
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/ffmpeg-filtergraphs.md
+  - topics/video-processing/notes/concepts/ffmpeg-hardware-acceleration.md
+  - topics/video-processing/notes/concepts/ffmpeg-libav-libraries.md
+  - topics/video-processing/notes/concepts/gstreamer-pipeline-model.md
+  - topics/video-processing/notes/concepts/nvidia-deepstream.md
+  - topics/video-processing/notes/concepts/rtsp-deep-dive.md
+  - topics/video-processing/notes/entities/ffmpeg-entity.md
+incoming_updated: 2026-05-08
 ---
 
 # [[gstreamer-entity|GStreamer]] vs [[ffmpeg-entity|FFmpeg]]

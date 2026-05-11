@@ -6,11 +6,14 @@ tags: [eks, karpenter, gpu, nvidia, node-pool, infrastructure, follow-up, snapsh
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
-incoming:
+outgoing:
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
   - topics/video-processing/_summary.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
+  - topics/video-processing/_summary.md
+incoming_updated: 2026-05-08
 ---
 
 # EKS Prod Node-Pool GPU Availability (Connector cluster snapshot)

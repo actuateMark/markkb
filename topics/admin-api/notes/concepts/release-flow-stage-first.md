@@ -6,10 +6,16 @@ tags: [release, branching, ci, pr-flow, staging, main, gotcha]
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
-incoming:
+outgoing:
   - topics/admin-api/_summary.md
   - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
-incoming_updated: 2026-05-01
+  - topics/personal-notes/notes/daily/2026-05-01.md
+incoming:
+  - topics/actuate-libraries/_summary.md
+  - topics/admin-api/_summary.md
+  - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
+  - topics/personal-notes/notes/daily/2026-05-01.md
+incoming_updated: 2026-05-08
 ---
 
 # actuate_admin release flow — feature → staging → main

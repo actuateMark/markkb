@@ -2,13 +2,13 @@
 title: "Post-Mortem: AutoPatrol Onboarder Silent Failure (2026-04-21 → 2026-04-23)"
 type: synthesis
 topic: autopatrol
-tags: [postmortem, incident, onboarder, lambda, deploy, process, kb-bot, autopatrol]
+tags: [postmortem, incident, onboarder, lambda, deploy, process, kb-bot, autopatrol, autopatrol, autopatrol, autopatrol, autopatrol]
 created: 2026-04-23
 updated: 2026-04-23
 author: kb-bot
 severity: medium
 duration_hours: ~47
-incoming:
+outgoing:
   - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
   - topics/autopatrol/notes/concepts/2026-04-23_cleanup-rollout-day.md
   - topics/autopatrol/notes/concepts/2026-04-24_morning-watch-list.md
@@ -19,7 +19,18 @@ incoming:
   - topics/operational-health/notes/concepts/2026-04-23_dashboard-phase-1b-pickup.md
   - topics/operational-health/notes/concepts/2026-04-24_dashboard-1b-continuation.md
   - topics/operational-health/notes/concepts/2026-04-27_dashboard-signal-cookbook.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
+  - topics/autopatrol/notes/concepts/2026-04-23_cleanup-rollout-day.md
+  - topics/autopatrol/notes/concepts/2026-04-24_morning-watch-list.md
+  - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
+  - topics/autopatrol/notes/entities/autopatrol-onboarder.md
+  - topics/autopatrol/notes/syntheses/2026-05-05_admin-deploy-customer-name-incident.md
+  - topics/engineering-process/_summary.md
+  - topics/engineering-process/notes/syntheses/2026-04-14_feature-development-lifecycle.md
+  - topics/operational-health/notes/concepts/2026-04-23_dashboard-phase-1b-pickup.md
+  - topics/operational-health/notes/concepts/2026-04-24_dashboard-1b-continuation.md
+incoming_updated: 2026-05-08
 ---
 
 # Post-Mortem — AutoPatrol Onboarder Silent Failure

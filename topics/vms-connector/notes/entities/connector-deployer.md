@@ -6,7 +6,7 @@ tags: [connector, deployer, kubernetes, fastapi, eks, infrastructure]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
-incoming:
+outgoing:
   - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
   - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
   - topics/actuate-platform/notes/syntheses/integration-landscape.md
@@ -17,7 +17,18 @@ incoming:
   - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
   - topics/video-processing/notes/concepts/eks-prod-node-pool-gpu-availability.md
   - topics/vms-connector/notes/entities/connector-tools.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/actuate-platform/notes/syntheses/integration-landscape.md
+  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
+  - topics/autopatrol/notes/concepts/2026-04-28_tenant-status-sync-gap.md
+  - topics/aws-cost/notes/syntheses/cost-architecture.md
+  - topics/data-science/notes/syntheses/model-lifecycle.md
+  - topics/personal-notes/notes/concepts/2026-04-29_cleanup-handoff.md
+  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
+  - topics/video-processing/notes/concepts/eks-prod-node-pool-gpu-availability.md
+incoming_updated: 2026-05-08
 ---
 
 ## Overview

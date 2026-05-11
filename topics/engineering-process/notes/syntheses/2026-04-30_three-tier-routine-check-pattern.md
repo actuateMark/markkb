@@ -6,12 +6,23 @@ tags: [scheduled-tasks, scripts, llm-fallback, firebat, dashboard, conversion-pa
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
+outgoing:
+  - topics/engineering-process/notes/entities/automation-jira-sync.md
+  - topics/personal-laptop/notes/concepts/2026-04-30_morning-prep-scripts-runbook.md
+  - topics/personal-laptop/notes/syntheses/2026-04-30_firebat-script-conversion-candidates.md
+  - topics/personal-notes/notes/daily/2026-05-01.md
+  - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
   - topics/engineering-process/notes/entities/automation-jira-sync.md
   - topics/personal-laptop/notes/concepts/2026-04-30_morning-prep-scripts-runbook.md
   - topics/personal-laptop/notes/syntheses/2026-04-30_firebat-script-conversion-candidates.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+  - topics/personal-laptop/notes/syntheses/2026-05-05_claude-context-optimization.md
+  - topics/personal-laptop/notes/syntheses/2026-05-05_firebat-minipc-followups-context.md
+  - topics/personal-laptop/notes/syntheses/2026-05-07_firebat-enhancements-batch.md
+  - topics/personal-notes/notes/daily/2026-05-01.md
+  - topics/personal-notes/notes/daily/2026-05-04.md
+  - topics/personal-notes/notes/daily/2026-05-06.md
+incoming_updated: 2026-05-08
 ---
 
 # Three-tier routine check pattern: script first, LLM as fallback

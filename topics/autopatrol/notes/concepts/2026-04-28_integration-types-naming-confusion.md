@@ -2,15 +2,16 @@
 title: "Operational Pitfall: Three Patrol-Style Integration Types, Misleading Container Names"
 type: concept
 topic: autopatrol
-tags: [integration-types, naming-conventions, dashboard-signals, operational-debugging, vms-connector, nrql-filters, autopatrol]
+tags: [integration-types, naming-conventions, dashboard-signals, operational-debugging, vms-connector, nrql-filters, autopatrol, autopatrol, autopatrol, autopatrol, autopatrol]
 jira: "AUTO-566, AUTO-567"
 created: 2026-04-28
 updated: 2026-04-28
 author: kb-bot
-- Error: File "2026-04-28_integration-types-naming-confusion" not found.
 incoming:
-  - Error: File "2026-04-28_integration-types-naming-confusion" not found.
-incoming_updated: 2026-05-01
+  - topics/autopatrol/notes/syntheses/2026-04-28_failed-patrol-investigation-handoff.md
+  - topics/camera-health-monitoring/notes/concepts/2026-04-28_vch-chm-vs-autopatrol-naming.md
+  - topics/personal-notes/notes/daily/2026-04-28.md
+incoming_updated: 2026-05-08
 ---
 
 # Three Patrol-Style Integration Types, One K8s Naming Convention

@@ -6,8 +6,9 @@ tags: [library, config-data, rest-api, camera-admin, http-client]
 created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
-incoming:
+outgoing:
   - topics/actuate-libraries/notes/concepts/dependency-graph.md
+  - topics/autopatrol/notes/entities/autopatrol-onboarder.md
   - topics/camera-health-monitoring/notes/entities/health-report.md
   - topics/external-api/notes/entities/actuate-external-api-repo.md
   - topics/integrations/ajax/_summary.md
@@ -16,8 +17,18 @@ incoming:
   - topics/personal-notes/notes/daily/2026-04-24.md
   - topics/team-structure/notes/entities/clarissa-herman.md
   - topics/team-structure/notes/entities/paolo-zilioti.md
-  - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
-incoming_updated: 2026-05-01
+incoming:
+  - topics/actuate-libraries/notes/concepts/dependency-graph.md
+  - topics/autopatrol/notes/entities/autopatrol-onboarder.md
+  - topics/autopatrol/notes/syntheses/2026-04-24_stale-schedule-cleanup-aar.md
+  - topics/camera-health-monitoring/notes/entities/health-report.md
+  - topics/external-api/notes/entities/actuate-external-api-repo.md
+  - topics/integrations/ajax/_summary.md
+  - topics/integrations/ajax/notes/entities/ajax-components.md
+  - topics/integrations/evalink/evalink-integration/notes/concepts/alarm-push-pattern.md
+  - topics/personal-notes/notes/daily/2026-04-24.md
+  - topics/team-structure/notes/entities/clarissa-herman.md
+incoming_updated: 2026-05-08
 ---
 
 ## Purpose

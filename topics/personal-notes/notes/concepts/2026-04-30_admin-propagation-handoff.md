@@ -2,14 +2,20 @@
 title: "Handoff — Admin-side state propagation + DB patch + data model deep dive"
 type: concept
 topic: personal-notes
-tags: [handoff, admin-api, autopatrol, cascade, data-model, propagation, planning, multi-pr, immix]
+tags: [handoff, admin-api, autopatrol, cascade, data-model, propagation, planning, multi-pr, immix, immix, immix, immix, immix, immix, immix, immix, immix, immix]
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
+outgoing:
+  - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
+  - topics/personal-notes/notes/daily/2026-05-01.md
+  - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
   - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
+  - topics/autopatrol/notes/syntheses/2026-05-01_silent-cameras-diagnosis.md
+  - topics/personal-notes/notes/daily/2026-05-01.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-08
 ---
 
 # Handoff — Admin-side state propagation + DB patch + data model deep dive
@@ -155,7 +161,7 @@ User flagged 3 prod customers in inconsistent states that today's cascade infras
 - [[2026-04-30_data-model-cascade-semantics]] — **READ FIRST** — the seed of the deep-dive (expanded 2026-04-30 with verified findings + signal-wiring inventory)
 - [[2026-04-30_autopatrol-state-audit]] — Django shell snippets to size cohorts A/B/C/D/E (run before designing hooks/patch)
 - [[2026-04-28_tenant-status-sync-gap]] — original §16 design (cascade-disable)
-- [[2026-04-29_immix-zombie-tenants]] — Immix API contract violations (some of the orphan-row class)
+- [[2026-04-29_immix-zombie-tenants]] — [[immix-vendor-api|Immix API]] contract violations (some of the orphan-row class)
 - [[2026-04-29_cleanup-handoff]] — yesterday's handoff doc (origin of today's work)
 - `actuate_admin/api/serializers/integrations/autopatrol/autopatrol_view.py` — `disable_tenant` + `reenable_tenant` action methods (the cascade endpoints)
 - `actuate_admin/inframap/sites/customer/customer_model.py:875` — `Customer.restore()` partial-cascade
