@@ -13,6 +13,8 @@ Convention: `- [ ] [Title](url) -- short description`. Items marked `*(seed)*` n
 - [ ] [Archunit (Java) — arc unit tests](https://www.archunit.org/) -- Reference-only (not Python) but the best-documented architecture-as-tests library; patterns translate. Useful framing for what we want import-linter + our own fitness functions to eventually cover.
 - [ ] *(seed)* "Evolutionary Architecture with Fitness Functions" -- ThoughtWorks tech-radar entries + conference talks; pragmatic case studies
 - [ ] *(seed)* Pattern: CI gate for cyclic-dependency detection -- look for write-ups on integrating with pydeps / tach / import-linter in a real monorepo
+- [ ] *(seed)* **Architecture-conformance benchmark — tach vs import-linter** *(handoff #5 item 11)* — head-to-head on the same vms-connector codebase. Compare config DSL ergonomics, ability to express A-E proposal target topologies, runtime cost, CI integration friction. Direct input to handoff #6 enforcement-as-proposal-scorer spec.
+- [ ] *(seed)* **Connascence framework** *(handoff #5 item 9 — moved from fleet)* — Meilir Page-Jones's coupling taxonomy (Name, Type, Meaning, Position, Algorithm, Execution, Timing, Value, Identity). Useful vocabulary for what import-linter rules can/can't catch — import boundaries detect connascence of Name + Type; runtime invariants like "all calls happen in this order" need different fitness functions. Cross-ref [[2026-04-16_architecture-enforcement]].
 
 ## Code Health Metrics
 
@@ -56,6 +58,21 @@ Pick **2-3** to actually wire up. Keep the rest as seed entries for later.
 - [ ] *(seed)* Bazel / Nx / Pants -- how large monorepos enforce module boundaries mechanically. Reference only; we're not adopting any of these, but their boundary-enforcement patterns inform our fitness-function design.
 - [ ] [Google's monorepo engineering practices (Potvin & Levenberg 2016)](https://cacm.acm.org/research/why-google-stores-billions-of-lines-of-code-in-a-single-repository/) -- High-level but cited constantly; worth the 20 minutes. `actuate-libraries` is a 41-package UV monorepo and some of this applies.
 - [ ] *(seed)* "Living with monorepos" -- find a recent blog series or conference talk on medium-scale Python monorepo experience; Actuate is closer to Instagram/Dropbox scale than Google
+
+## Operational Readiness & Observability-Driven Development *(handoff #5 item 12)*
+
+- [ ] *(seed)* **Observability-Driven Development** — Charity Majors / Honeycomb's framing on writing code with telemetry first. Mental model for what handoff #4's new **Monitoring & Alarms** rubric dimension is actually asking for.
+- [ ] *(seed)* **Production Readiness Reviews (PRR)** — Google SRE Book Ch. 27 / Airbnb engineering blog. Concrete checklist patterns for "is this service ready to take production traffic." Inputs to any fleet-redesign rollout gate.
+- [ ] *(seed)* "Pre-production runbook templates" — what every new service should ship with before its first prod alert. Cross-ref [[2026-04-30_three-tier-routine-check-pattern]].
+- [ ] *(seed)* "Service-Level Objectives (SLOs) for internal platforms" — Honeycomb / DataDog writeups on multi-window SLO burn-rate alerting; relevant for fleet-redesign rollout SLOs.
+
+## Migration-Safety Patterns *(handoff #5 item 13)*
+
+- [ ] *(seed)* **Strangler Fig pattern** — Martin Fowler's incremental-replacement canonical reference. Applies to every fleet proposal that has to coexist with site-pod monolith during rollout. Direct input to handoff #4's **Migration Risk** dimension scoring.
+- [ ] *(seed)* **Database / state migration patterns at scale** — Stripe's "Online Migrations at Instagram Scale" and similar engineering blogs. Relevant if any fleet redesign moves state surfaces (assignment tables, lease records, etc.).
+- [ ] *(seed)* **Feature-flag-driven migrations** — LaunchDarkly / Unleash engineering blogs on shadow-traffic + dual-write + flag-flip patterns. Already partially implemented in our cascade-rollout pattern ([[2026-04-30_data-model-cascade-semantics]] §"feature flags").
+- [ ] *(seed)* "Migrations that take longer than the team's attention span" — there's a class of writeups on multi-quarter migrations and how to keep them on track without rot. Relevant for fleet redesigns measured in 14-32 weeks.
+- [ ] *(seed)* **`/create-video` retirement path** — internal: all delta-adopting proposals retire this Lambda. Open question how to coordinate with Alert-UI / Immix / Watchman owners. Captured here so the migration-pattern reading informs the eventual coordination doc.
 
 ## Industry Reports & Benchmarks
 

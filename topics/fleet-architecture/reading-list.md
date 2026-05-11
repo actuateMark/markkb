@@ -39,6 +39,8 @@ Convention: `- [ ] [Title](url) -- short description`. Check off as you read + e
 - [x] [Graceful Shutdown and Zero-Downtime Deployments](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination) -- Ingested 2026-04-21 → [[graceful-pod-termination-zero-downtime]]. URL updated from the tutorial page (404'd) to the canonical pod-lifecycle anchor. Spawned concept [[pod-termination-sequence]].
 - [ ] *(seed)* Google Cloud article on "stateful workloads on Kubernetes" -- find recent GKE post on stateful session handling
 - [ ] *(seed)* CNCF whitepapers on "Kubernetes at scale" — production war stories from Spotify, Shopify, etc.
+- [ ] [Kubernetes Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/job/) -- *(handoff #5 item 1)* `activeDeadlineSeconds`, `backoffLimit`, **Indexed** completion mode, pod-failure policy. Load-bearing for Run-Service ephemeral mode + the 2026-05-01 ephemeral-run-pilot syntheses. Read alongside [[k8s-controller-selection-guide]].
+- [ ] *(seed)* "Indexed Jobs at scale" — Kubernetes 1.27+ writeup on parallel-job patterns; relevant to PoC selection if the fleet redesign lands on Job-per-camera-group.
 
 ## Autoscaling — HPA / VPA / Karpenter
 
@@ -55,6 +57,7 @@ Convention: `- [ ] [Title](url) -- short description`. Check off as you read + e
 - [ ] [NATS JetStream docs](https://docs.nats.io/nats-concepts/jetstream) -- Primary bet for Proposal D; study retention, ack-wait, consumer groups
 - [ ] [JetStream Consumer types — pull vs push vs queue groups](https://docs.nats.io/using-nats/developer/develop_jetstream/consumers) -- Per-stage fleet subscription patterns
 - [ ] [JetStream message ordering and exactly-once semantics](https://docs.nats.io/nats-concepts/jetstream/streams) -- Ordering is critical for our frame pipeline
+- [ ] *(handoff #5 item 8)* **NATS JetStream as ephemeral blob store** — promote from Chunk 9 (in-cluster blob storage candidates). Specifically: JetStream Object Store + Key/Value stores for frame-cache use case; benchmarks on tail latency vs Redis + MinIO. Cross-ref [[frame-storage-current-state]] §12.
 
 ### Alternatives to NATS
 - [ ] [Redpanda](https://redpanda.com/) -- Kafka-compatible, lower-ops; consider if NATS ops cost is a blocker
@@ -69,6 +72,27 @@ Convention: `- [ ] [Title](url) -- short description`. Check off as you read + e
 
 - [ ] [Temporal — durable execution](https://docs.temporal.io/) -- Heavier than we likely need; relevant if cleanup-Lambda pipeline grows into multi-step workflows
 - [ ] [AWS Step Functions — Standard vs Express](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-standard-vs-express.html) -- Already an option in our infra; useful pattern reference
+
+## API Gateway → Lambda → K8s Orchestration *(handoff #5 item 2 — Run-Service control-plane shape)*
+
+- [ ] *(seed)* AWS — "Step Functions vs API Gateway → Lambda for long-running workflows" — pattern guidance for the Run-Service preliminary-pilot envelope (API GW receives external run request, Lambda fans out to K8s Jobs / EKS workloads). Cross-ref [[2026-05-01_ephemeral-run-pilot]].
+- [ ] *(seed)* "Synchronous vs async over API Gateway" — relevant if Run-Service v1 has both modes per [[mark-todos]] §5.
+- [ ] *(seed)* Lambda → EKS-API patterns — direct calls vs queue-mediated; authentication models (IRSA, Cognito, both).
+
+## Contract & Schema Governance *(handoff #5 items 3 + 4 — translator ↔ connector validate chain)*
+
+- [ ] *(seed)* **Pydantic v2 — contract evolution patterns.** Discriminated unions, `model_validate`, `RootModel`; how to evolve a versioned API contract without break-fix churn. Direct input to [[mark-todos]] §5 Run-Service translator (resolve `customer.server_ip`/`username` vestigial fields).
+- [ ] *(seed)* **Pydantic v2 → OpenAPI generation** — how does the FastAPI auto-spec stay current with model edits? Reference for §5 "OpenAPI spec authoring — generate from Pydantic (recommended)."
+- [ ] *(seed)* **Schema canary / contract testing** — Pact, schemathesis, hypothesis-jsonschema. How to validate that the connector's `validate` subcommand consumes the translator's output without breaking. Direct input to §5 "Build the canary (Tier 1 firebat systemd) with the 11-fixture corpus."
+- [ ] *(seed)* "Consumer-driven contract tests at scale" — Spotify / Atlassian engineering blogs on Pact in CI.
+
+## Coordinator / Lease Mechanisms *(handoff #5 items 5 + 10 — Raft/etcd leader election + lease-churn)*
+
+- [ ] *(seed)* **gRPC service design in Python** — `grpcio` + `grpcio-tools`, async server patterns. Relevant if C's Assignment Controller or E's Site Context Service is exposed as a gRPC service rather than REST.
+- [ ] *(seed)* **Raft consensus in Python** — `python-etcd3` or `aiomonitor`-style Raft implementations. Leader election primitives for fleet-coordinator high-availability. Cross-ref [[fleet-coordinator-unification-question]].
+- [ ] *(seed)* **etcd lease semantics + Kubernetes coordination.k8s.io/Lease objects** — how K8s itself manages leader election. Direct prior-art for any fleet-coordinator pattern.
+- [ ] *(seed)* **Lease-churn benchmarking for multi-tenant coordinators** — what's the maximum lease-churn rate a Raft cluster can sustain before consensus degrades? Relevant for C (workers acquire/release camera-bin leases) and E (sidecars acquire camera-stream leases). Empirical not theoretical.
+- [ ] *(seed)* "Lease vs ownership transfer" — short post on the difference between "I hold this for 10s" and "this is mine until I say otherwise"; affects failover RTO.
 
 ## Video / Streaming Fleet Architectures
 
@@ -96,6 +120,7 @@ Convention: `- [ ] [Title](url) -- short description`. Check off as you read + e
 - [ ] [Ray — distributed Python](https://docs.ray.io/en/latest/ray-overview/index.html) -- Alternative to shard-via-multiprocessing; higher ops overhead but cross-host scaling for free
 - [ ] [Dask distributed](https://docs.dask.org/en/stable/) -- Data-parallel focus; less relevant for our stream-processing shape
 - [ ] *(seed)* Python GIL / free-threaded (PEP 703) updates -- Relevant to Proposal A/E if we bet on Python 3.13 free-threaded mode to delay the split
+- [ ] *(seed)* **PyAV / encoder GIL budget benchmarks** — *(handoff #5 item 7)* what's the GIL-time-share of `av.open(...).encode(...)` at typical frame rates (3–10 FPS)? Load-bearing for whether the in-process conditional-promotion encode in §"Frame Storage Chunk 5" is feasible without offloading to a subprocess. PoC-flippable for D and the delta-adoption story.
 
 ## Frame Transport / Zero-Copy IPC
 
@@ -109,6 +134,8 @@ Convention: `- [ ] [Title](url) -- short description`. Check off as you read + e
 - [ ] [AWS Compute Optimizer](https://aws.amazon.com/compute-optimizer/) -- Sizing recommendation engine; calibrate our rubric cost-delta estimates
 - [ ] [Kubecost](https://www.kubecost.com/) -- Per-workload cost allocation; verify fleet-level cost claims post-PoC
 - [ ] *(seed)* Spotify engineering blog — "Cost allocation for platform teams" -- Mental model for cost-to-value across fleets
+- [ ] *(seed)* **Spot instances + ephemeral worker economics** — *(handoff #5 item 6)* AWS Spot best practices for stateless workers (Proposal E pullers + Proposal C workers). Specifically: interruption-rate by instance family, capacity-blocks, Spot vs On-Demand price gradient at 10× fleet. Cross-ref [[aws-cost/_summary]] for current Spot-share baseline.
+- [ ] *(seed)* "Spot economics for stateless services" — engineering blogs (Netflix, Pinterest) on Spot ratios + savings-vs-availability tradeoff.
 
 ## Research Papers (worth seeding; find exact URLs)
 

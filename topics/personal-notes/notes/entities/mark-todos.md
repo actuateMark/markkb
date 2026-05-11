@@ -4,8 +4,10 @@ type: entity
 topic: personal-notes
 tags: [todos, mark, work-plan, priorities, personal]
 created: 2026-04-16
-updated: 2026-05-01
+updated: 2026-05-11
 author: kb-bot
+last_wrap: 2026-05-08
+backlog: topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
 ---
 
 # Mark's High-Level TODOs
@@ -33,37 +35,20 @@ Use `/claim <label> <scope>` at the start of any non-trivial session working on 
 
 ---
 
-## 2. AutoPatrol — finish outstanding tasks
+## 2. AutoPatrol — outstanding alert-flow follow-ups
 
-### 2a. Test the release
+### 2c. AUTO-351 BB push to prod (Brad-assigned)
 
-- [ ] Verify current stage deploy is healthy
-- [ ] Check prod for regressions
-- Related agent: [[agent-release-chain-watcher]]
+- [ ] Brad's track — Mark monitors only. Ready-to-Deploy per Jira queue.
 
-### 2c. Push stage → prod with Brad Murphy's BB (bounding box) changes
+### 2d. AP/VCH alert-flow diagnostic gaps (waiting on Immix)
 
-**Ticket:** AUTO-351 — "Bounding boxes on AP clips to Immix" (marked ready to deploy in [[knowledgebase/topics/autopatrol/_summary|autopatrol summary]])
+- [ ] **vms-connector#1658** dev.powerplus.com SSL cert chain — waiting on Immix/PowerPlus engagement; option-3 mitigation (pin Sectigo intermediate) is the time-bound fallback. Detail in [[2026-04-20_dev-powerplus-ssl-cert-verify-failure]].
+- [ ] **vms-connector#1656** `streamId: null` on `raise_patrol_alert` — waiting on Immix preferred remediation; cross-links to [[autopatrol-deferred-backlog]] § "§3 follow-ups: SiteDisabledOrDisarmed routing".
+- **Context:** both surface as "cameras offline" in customer healthcheck UI; per-failure-mode status code differentiation is a future workstream.
 
-- [ ] Final verify on stage
-- [ ] Push to prod
-- [ ] Monitor Immix timeline for correct BB rendering
-
-### 2d. AP/VCH alert-flow diagnostic enhancements
-
-Two fleet-wide failure modes on AP/VCH alert flow surfaced during PR #1654 post-deploy investigation. Both present as "cameras offline" or "alerts not flowing" to customers but have distinct root causes and remediation paths. Grouped together because they're related investigations and need coordinated communication with the Immix team.
-
-- [ ] **[vms-connector#1658](https://github.com/aegissystems/vms-connector/issues/1658) — `dev.powerplus.com` SSL cert-verify failure (fleet-wide)** — root-caused via `openssl s_client` probe: server serves leaf cert only, missing Sectigo DV R36 intermediate. 3,870 WebSocket attempts in 7d, 100% failing; blast radius +1 container on 2026-04-17. Cameras appear "broken" in healthcheck but are actually unreachable at TLS. Writeup: [[2026-04-20_dev-powerplus-ssl-cert-verify-failure]]. Open actions:
-  - [ ] Raise chain-completion fix with PowerPlus (via Immix)
-  - [ ] Raise URL routing with Immix — why `dev.powerplus.com` for prod customers
-  - [ ] Identify `connector-23202-chm-cronjob` customer + what changed 2026-04-17 *(2026-04-27 update: customer 23202 cluster has `(copy)` template-clone suffix; human-name TBD)*
-  - [ ] Consider option-3 mitigation (pin Sectigo intermediate into custom SSL context) if external timelines slip
-- [ ] **[vms-connector#1656](https://github.com/aegissystems/vms-connector/issues/1656) — `streamId: null` rejection on `raise_patrol_alert` (architectural)** — Immix's `/Patrols/{id}/raise` requires GUID streamId, but streamId is only delivered from `get_patrol_stream` which is the very call that's failing when we need to CNCTNFAIL. Writeup: [[2026-04-20_streamid-null-patrol-alert-bug]]. Open actions:
-  - [ ] Await Immix response on preferred remediation (optional streamId for connectivity codes, or deviceId-keyed lookup endpoint)
-  - [ ] §10 cross-link: route `SiteDisabledOrDisarmed` subset through the cleanup Lambda pipeline
-- **Context:** Both issues show up as "cameras offline" in customer-facing healthcheck UI — a diagnostic visibility gap. Today we can't distinguish "camera actually down" from "our TLS fails" from "Immix state hasn't propagated" from the customer's vantage point. Worth considering (future workstream): per-failure-mode healthcheck status codes that differentiate connector-side vs customer-side root causes.
-
-> **§2b** AutoPatrol deferred-alert race condition — CLOSED 2026-04-20 → archived to [[2026-04-20]]
+> **§2a "test the release"** retired 2026-05-07 — that's just routine ops; covered by `/dashboard-check` + post-deploy soak monitors.
+> **§2b** deferred-alert race CLOSED 2026-04-20 → [[2026-04-20]].
 
 ---
 
@@ -82,11 +67,8 @@ Immix-side schedule deletions never flow back to our admin DB — stale cronjobs
 
 ### Open work
 
-- [ ] **Step E.3** — monitor 24-48h post-flip for the 7 known schedules emitting. Gate to Step F on: 0 DLQ growth, 0 wrong-disable events, anomaly-reset continues working as expected. *(2026-04-27 verify: GREEN at 4-day window — 102 invocations, 0 errors, 0 throttles, queues + DLQs all 0/0. Ready to advance.)*
-- [ ] **Step F:** Prod US scale-up — flip `AUTOPATROL_EMIT_CLEANUP_SIGNALS=true` on prod connector pods. Lambda already consumes from prod queue. This is a volume event, not a criticality event. **PR is in `kubernetes-deployments`** (the env var lives in the connector helm chart, not on the Lambda).
-- [ ] **Step G:** Prod EU — needs net-new infra (SQS + DDB + Lambda mirrors in eu-west-1). Separate track. IAM policy v2 already has EU ARNs pre-granted for when infra lands.
-- [ ] **§10 follow-up:** Extend cleanup signal: route `SiteDisabledOrDisarmed` Immix responses to the same pipeline — surfaced 2026-04-20 from [[2026-04-20_streamid-null-patrol-alert-bug]] investigation (5/10 of recent CNCTNFAIL failures in [GH#1656](https://github.com/aegissystems/vms-connector/issues/1656) were `SiteDisabledOrDisarmed`). Requires care: `SiteDisabledOrDisarmed` can be legitimately transient (site armed only during business hours), unlike "no patrols" which is deterministic-deletion. Proposed: connector emits separate SQS event (distinct event_type), cleanup Lambda tracks over LONGER window than "no patrols" (e.g. 30 days vs 48h), only soft-disables if continuously in that state. Design decision needed: threshold window + share DDB table or use separate one. Not blocking current §9 rollout — layer on after stage bake.
-- [ ] **§3 follow-up: Immix error-pattern observability** (surfaced 2026-04-23). Immix returns 400 + "system is unavailable" body for schedules that are actually gone — we just fixed that one case (PR #7) but Immix is known to deviate from REST conventions, so other status codes / body shapes may also mean "gone." Instrument `_check_immix` with structured log fields (`immix_status_code`, `immix_body_first_100_chars`, `verdict`) and/or an `AutoPatrolImmixResponse` NR custom event so new patterns surface in aggregation queries rather than silent multi-day retry loops. Full catalog + recommendations: [[2026-04-23_immix-api-error-patterns]].
+- [ ] **Verify pipeline correctness for disabled / paused / not-working sites** (active, 2026-05-07) — confirm the cleanup-Lambda behaves as designed across the full state matrix: Immix-Deleted (should disable), Immix-Suspended (should NOT disable; anomaly-reset), Paused (should NOT disable), genuine offline/connectivity-broken (should NOT disable). Use stage logs + DDB inspection + the per-state assertions in the cleanup-lambda playbook. Spot-check the recent disable trail (`disabled_by=cleanup_lambda`) for any case that shouldn't have fired.
+- [ ] **Step F + Step G + follow-up follow-ups** moved to [[autopatrol-deferred-backlog]] (2026-05-07). Active path is verify-only this week.
 
 ### Monitoring / hand-off pointers (for another agent picking up)
 
@@ -119,83 +101,70 @@ Immix-side schedule deletions never flow back to our admin DB — stale cronjobs
 
 ---
 
-## 4. API keys per customer within a group (v5 follow-up)
+## 4. API keys per customer within a group (v5 follow-up) — DEFERRED 2026-05-07
 
-**Status:** design phase — **interview + plan required before any implementation**
-**Context:** follow-up to §1 (v5 API / EBUS); expands partner-facing API access from one-key-per-partner to one-key-per-customer-within-a-group
-**Priority:** after §1 ships
-
-### Desired behavior
-
-1. **Group admin UX** — a new permission in group settings unlocks a page that lets a group admin generate an API key for any individual customer under their group.
-2. **Customer self-serve UX** — a separate page on the config site where the customer (or the main customer contact) can generate their own key.
-3. **Per-key permissions are independent** — keys track their own permission set; a customer's key can only hit the models that customer is allowed to access, regardless of what the group-level key can reach.
-
-### Design surface (open questions — resolve in interview/plan phase)
-
-- Where does the keygen UI actually live — admin site (`actuate_admin`), config site (camera-ui / alert-ui?), or both with slightly different affordances?
-- How is "customer within a group" modeled in `actuate_admin` today? Is it a `User`, a `Customer` record, a sub-group? The data model answer drives everything else.
-- Who is allowed to generate: group admins only, customer self-serve only, or both with a setting to disable self-serve per group?
-- Per-key scoping granularity (MVP vs. later) — models only? endpoints (e.g. v5 detect vs. submit)? sites? detection-count limits?
-- Key lifecycle — expiration default, rotation cadence, revocation UI, audit log, "who generated this" provenance.
-- Authorizer impact — does the existing Rust Lambda authorizer's DynamoDB lookup support a richer permission payload, or does it need a schema change? Versioned key format to stay backward-compatible?
-- Billing / usage metering — per-key, per-customer, or per-group? Needed from day one or later?
-- Rate limits — per-key?
-
-### Pre-implementation plan
-
-- [ ] Interview: meet with the EBUS / v5 stakeholder(s) to validate the UX and nail down the "customer vs. group" data model
-- [ ] ADR covering data model, auth flow, UI placement — use [[adr-writing-guide]]
-- [ ] Decide MVP scope for per-key permission granularity
-- [ ] Spec against existing `actuate_admin` RBAC so we don't duplicate primitives
-- [ ] Authorizer impact assessment — breaking change? versioned key format? migration path for existing keys?
-- [ ] Security review before building — apply [[security-hardening-checklist]] to the design (RBAC-first, bounded inputs, audit trail, revocation story)
-
-### Related
-
-- §1 — v5 API work this follows from (archived [[2026-04-23]])
-- [[inference-api/_summary|inference-api topic]] — authorizer + endpoint surface
-- [[admin-api/_summary|admin-api topic]] — user/group/customer/RBAC primitives
-- [[external-api/_summary|external-api topic]] — partner-API initiative context
-- [[security-hardening-checklist]] — design-review gate
+> **Deferred 2026-05-07.** Design-only workstream that follows from §1 (archived); never picked up. Re-open trigger: EBUS / v5 stakeholder asks for per-customer keys, OR v5 partner workload exposes a need for per-key permission separation. Full design surface preserved in [[external-api/_summary|external-api topic]] for when revived.
 
 ---
 
 ## 5. Fleet Architecture — review and consolidate 2026-04-16 proposals
 
-**Priority:** this-week
 **Tickets:** *(pre-ticket — captured in [[fleet-architecture/_summary|fleet-architecture]] topic syntheses)*
-**Status:** review phase — formal A-E re-score landed 2026-04-22; PoC selection next
+**Status:** review phase — formal A-E re-score landed 2026-04-22; PoC selection next. Run Service sub-project drafted (dual-mode permanent control plane).
+**Priority:** this-week
 
-### What's left
+Active checkboxes only — proposal rescores, Run Service framing, Tier3 replication detail, KB cross-refs all factored to [[2026-05-05_fleet-architecture-workstream-context]].
 
+### Review + PoC selection
+
+- [x] **Handoff #4** ✅ Done 2026-05-11 — Added M&A + B&R dimensions; reallocated weights (IS 35→30, Cost 20→17.5, FI 15→12.5; both new dims 5% each). Rescored A-E with new dimensions: E 7.775 (lead narrowed to 0.375), C 7.40 (unchanged — most rubric-robust), B 6.875 (−0.375), D 6.40 (−0.45), A 4.90 (+0.45). PoC-1=E PoC-2=C recommendation preserved. Synthesis: [[2026-05-11_rubric-monitoring-billing-dimensions]].
+- [x] **Handoff #5a** ✅ Done 2026-05-11 — Added 10 fleet reading-list items across K8s Multi-Deployment (Jobs/Indexed), Workflow Orchestration (new "API Gateway → Lambda → K8s" section), Contract & Schema Governance (new section for Pydantic v2 + schema canary), Coordinator / Lease Mechanisms (new section for gRPC + Raft + lease-churn), NATS JetStream-as-blob annotation, PyAV GIL, Spot economics. Item 9 (Connascence) moved to software-arch reading-list. See [[fleet-architecture/reading-list]].
 - [ ] Review each proposal and annotate with questions / concerns / deal-breakers
 - [ ] Apply [[2026-04-16_evaluation-rubric|evaluation rubric]] consistently across all 5
 - [ ] Pick top 2 for team deep-dive *(rescore says E first, C runner-up)*
 - [ ] Decide whether [[2026-04-16_graceful-failover-design|graceful failover]] and [[2026-04-16_frame-transport-comparison|frame transport]] should become ADRs
 - [ ] **Pre-PoC open question — Tier3 replication driver investigation** ($44k/year, 11.1% of S3 spend, 72.9M requests). Investigation steps: (a) S3 Storage Lens or bucket-lifecycle policy audit; (b) per-bucket Tier3 breakdown via CUR + Athena if it's worth the setup; (c) CloudTrail dive for `PutBucketLifecycleConfiguration` + `PutBucketReplication` recent events.
 
-### Proposals
+### Run Service — paradigm scoring + PoCs
 
-- [[2026-04-16_proposal-a-minimal-split|A — Minimal split]] (rescore: 4.45)
-- [[2026-04-16_proposal-b-stage-fleets|B — Stage fleets]] (rescore: 7.25)
-- [[2026-04-16_proposal-c-camera-worker|C — Camera worker]] (rescore: 7.55, PoC-2)
-- [[2026-04-16_proposal-d-event-driven|D — Event-driven]] (rescore: 6.85)
-- [[2026-04-16_proposal-e-hybrid-sidecar|E — Hybrid sidecar]] (rescore: 8.00, PoC-1)
-- [[2026-04-22_proposal-b-prime-stateless-with-coordinator|B-prime — CLOSED 2026-04-22]] (6.25; archived [[2026-04-22]])
+- [ ] Score the 3 paradigms against the **persistent-mode rubric** ([[2026-04-16_evaluation-rubric]]) — paradigm notes only carry ephemeral-lens scores today
+- [ ] PoC-1 (E or C, whichever lands first) — Lambda + translator + init container + minimal K8s manifest. Stress-test with **mixed persistent + ephemeral load** on the same primitives, not single-mode.
+- [ ] Decide whether the chosen paradigm must serve both modes with the same primitives (no parallel implementations) or whether bimodal config is acceptable
+- [ ] Write `comparison-matrix.md` after PoCs run head-to-head — combine both rubrics
 
-### Relevant KB
+### Run Service — translator + spec
 
-- [[fleet-architecture/_summary|fleet-architecture topic]]
-- [[2026-04-16_evaluation-rubric|evaluation rubric]]
-- [[2026-04-22_fleet-proposal-rescore-with-delta|formal rescore + addendum]]
-- [[2026-04-22_fleet-coordinator-api-sketch|coordinator unification API sketch]]
-- [[2026-04-16_graceful-failover-design]]
-- [[2026-04-16_frame-transport-comparison]]
+- [ ] Resolve top-level `customer.server_ip`/`username` vestigial fields under multi-camera RTSP — highest-priority translator blocker
+- [ ] Confirm whether connector image has a `validate` subcommand or whether it's a new ENG ticket
+- [ ] Sensitivity preset numeric calibration — needs inference-team sign-off on `low/medium/high` per product (intruder, weapon, loitering, line-crossing, etc.)
+- [ ] Sensitivity preset versioning policy — pin existing runs vs migrate live? Default pin
+- [ ] Per-product sensitivity scales — universal `low/medium/high`, or per-product variants (loitering's dwell-time, line-crossing's directionality)?
+- [ ] Products registry — formalize the list of supported product types (intruder / weapon / loitering / line-crossing / ...) and their schemas
+- [ ] Model registry hot-reload — config map / DynamoDB-backed, or in-code redeploy?
 
-### Related
+### Run Service — API contract
 
-- [[adr-writing-guide]] — if any proposal graduates to an ADR
+- [ ] Decide between Cognito, API key + tenant, or both for v1 auth (default: both)
+- [ ] Webhook secrets — inline + `POST /v1/secrets` (default both supported)
+- [ ] Cost-per-camera-hour coefficient for cost-ceiling refusal — needs benchmark
+- [ ] Frame URL TTL default + per-tenant max — tentatively 1h default / 24h max
+- [ ] Event replay retention window — default 90d (matches run record retention)
+- [ ] OpenAPI spec authoring — generate from Pydantic (recommended) or hand-author
+- [ ] SDK languages for v1 — Python first; Go and TypeScript secondary
+- [ ] Webhook batching threshold for events — fixed batch size or rate-aware
+- [ ] Persistent-mode webhook fanout cost — pull-by-default (SSE/GET) with webhook opt-in?
+- [ ] Events store at scale — DynamoDB acceptable for v1, when to migrate to S3-Parquet/Athena
+- [ ] Per-product alert filters inside a config — defer unless requested
+- [ ] Multi-region — single us-east-1 for v1; revisit when required
+
+### Run Service — operational + infrastructure
+
+- [ ] Final project name (lock `run-service` or pick something else) → triggers folder/file rename pass
+- [ ] Build the canary (Tier 1 firebat systemd) with the 11-fixture corpus
+- [ ] Operational ownership — on-call rotation, SLA targets, dashboards
+- [ ] Migration of admin-api-side concepts (alert configs, model registry sharing) — separate design doc
+
+**Full context + proposals review:** [[2026-05-05_fleet-architecture-workstream-context]]
 
 ---
 
@@ -210,6 +179,9 @@ Goal: stand up **minimal local sketches** of each of the 5 projects/designs draf
 
 ### Open work
 
+- [x] **Handoff #6** ✅ Done 2026-05-11 — Spec landed at [[2026-05-11_enforcement-as-proposal-scorer]]. Per-proposal target import-linter contracts (A: low ~10-50 violations, B: high ~200-500+, C: moderate ~50-150, D: highest ~400-1000+, E: moderate ~50-150). Violation-count → Migration-Risk bracket mapping (0-25→10, 26-75→8, 76-150→6, 151-300→4, 301-600→2, 600+→0). Billing-emit-site fitness functions defined (centralization + idempotency-reach checks; will need pytest sibling for AST checks import-linter can't express). Dual-use angle: pre-PoC scorer + post-PoC enforcer.
+- [ ] **Handoff #7** — Enforcement collector **code** in `/home/mork/work/software-arch-sketches/src/software_arch_sketches/enforcement/`. Turn the stub into a working import-walker that runs against vms-connector and produces `data/violations.json` with per-proposal counts. Wire to spec in handoff #6 above. *(carries over from [[2026-05-11_billing-and-followups-handoff]])*
+- [x] **Handoff #5b** ✅ Done 2026-05-11 — Added 3 software-arch items + connascence (moved from fleet): tach-vs-import-linter benchmark goes under Fitness Functions; ODD/PRR new section "Operational Readiness & Observability-Driven Development"; migration-safety new section "Migration-Safety Patterns" (strangler fig, feature-flag-driven migrations, multi-quarter migration discipline). See [[software-architecture/reading-list]].
 - [ ] [[2026-04-16_code-health-dashboard|Code health dashboard]] — extensible dashboard consolidating code health metrics
 - [ ] [[2026-04-16_tooling-landscape|Tooling landscape]] — pick 2-3 tools from the catalog to actually try locally
 - [ ] [[2026-04-16_architecture-enforcement|Architecture enforcement]] — prototype one fitness function / import-rule check
@@ -276,38 +248,13 @@ Goal: establish issue-creation standards across major Actuate repos and normaliz
 
 ## 9. Operational Dashboard — cross-repo shorthand metrics + per-project signal coverage
 
-**Priority:** current
 **Tickets:** pre-ticket (cross-repo R&D / process)
 **Status:** Phase 1a complete; Phase 1b in progress (15/19 signals enabled)
-**Post-mortem:** [[2026-04-23_postmortem-onboarder-healthcheck]]
-**Full cross-repo design sketch:** [[2026-04-23_dashboard-sketch]] — load-bearing
-**Surface (locked 2026-04-23):** local static HTML under `/home/mork/Documents/worklog/dashboard/`, generated by `/dashboard-check` skill, view via `file://` (or via Caddy at `http://mork-firebat/dashboard/`).
-**Closed sub-items archive:** [[2026-04-23]] (Phase 1a complete), [[2026-04-24]] (Phase 1b 15-signal expansion + daily-scope integration)
+**Priority:** current
 
-### Scope (cross-repo, not just AutoPatrol)
+Cross-repo silent-regression dashboard generated by `/dashboard-check`, surfaced as static HTML under `/home/mork/Documents/worklog/dashboard/` (also via Caddy at `http://mork-firebat/dashboard/`). Scope, design principles, signal-coverage matrix, and phasing live in the synthesis note linked below. Continuation pickup doc: [[2026-04-24_dashboard-1b-continuation]]. Post-mortem trigger: [[2026-04-23_postmortem-onboarder-healthcheck]]. Closed sub-items archived in [[2026-04-23]] (Phase 1a) + [[2026-04-24]] (Phase 1b 15-signal expansion).
 
-In-scope components:
-
-| Component | Silent-regression risk | Candidate signal(s) |
-|---|---|---|
-| `vms-connector` (fleet) | high | `patrol-exit emits/day`, OOMKills (new per-container chronic pattern), `streamId Guid` rejection count, CNCTNFAIL rate per site |
-| `actuate-libraries` (pullers / pipeline / daos / etc.) | medium | version drift alerts; consumer-side import check |
-| `actuate-inference-api` | high | per-model detection throughput, 4xx/5xx rates, per-partner-API-key activity |
-| `actuate_admin` (Django + RBAC) | medium | schedule-activation rate, tenant-create success, RBAC denial patterns |
-| `autopatrol_onboarder` (3 Lambdas) | HIGH | per the [[2026-04-23_alarm-dashboard-sketch]] (onboarder liveness + cleanup + reenable) |
-| `autopatrol-server` | medium | patrol-completion rate, CNCTNFAIL per site |
-| `camera-ui` + `alert-ui` | low-medium | error rate from browser telemetry |
-| Alert-delivery pipeline (`queue-*`, `smtp-frame-receiver`, `clips-smtp-worker`) | HIGH | queue depth, per-integration delivery rate |
-
-### Principles (design-for-monitoring — echoed in fleet-arch + software-arch + engineering-process)
-
-1. **Behavioral signals, not surface metrics.** `Errors=0`, `Invocations>0`, `200 OK` are not health signals. Activity-marker log lines + downstream side effects are.
-2. **1–2 signals per component, reviewable in <60 seconds total.** Dashboard is for quick scan; drill-down is on-demand.
-3. **Monitoring-friendliness is a first-class design dimension.** Every fleet-architecture proposal and every software-architecture sketch must answer "how do I know this is working?" before it's signed off.
-4. **Every repo owns its signals.** Per-repo `CLAUDE.md` carries the acceptance-criteria + signal-set definition. When a new feature ships, its signals must be added before merge.
-5. **Cross-repo aggregator is the daily-check surface.** `/dashboard-check` queries each per-repo signal set and renders one consolidated view.
-
-### Phase 1b — open deliverables (continuation note: [[2026-04-24_dashboard-1b-continuation]])
+### Phase 1b — open deliverables
 
 - [ ] **Replay tests for 7 historical incidents** — highest-value; locks in the "would have caught" promises
 - [ ] **Regression rules 3 + 4** (baseline_drift 2σ, chronic_offender_promotion) — unlocks "signal is drifting" detection vs. just static thresholds
@@ -333,77 +280,13 @@ In-scope components:
 - [ ] **NR instrumentation of AutoPatrol Lambdas** — unblocks APM golden metrics for autopatrol specifically
 - [ ] **Prior-art follow-ups** — DDB counter retry-idempotency bug (from post-mortem); audit other Actuate Lambdas for silent-early-return patterns
 
-### Cross-topic integration
-
-- **`engineering-process`** — release-acceptance-criteria rule ([[2026-04-23_release-acceptance-criteria]]) filed here. Release-related notes treat "post-deploy verification against acceptance criteria" as mandatory.
-- **`fleet-architecture`** — every proposal (A, B, C, D, E) must include a "monitoring & alarms" subsection.
-- **`software-architecture`** — sketches must demonstrate monitoring hooks from the start. Code-health vs operational-health dashboards are kept distinct with cross-link.
-
-### Phasing (proposed)
-
-- ~~**Phase 0:** signal inventory~~ — complete
-- ~~**Phase 1a:** build `/dashboard-check` skill, end-to-end smoke~~ — shipped 2026-04-23
-- **Phase 1b (in progress):** signal-set expansion + replay tests + advanced regression rules — 15/19 signals enabled
-- **Phase 2:** extend CLAUDE.md rules to every in-scope repo; add acceptance-criteria enforcement to `/stage-release` + `/post-deploy-monitor`.
-- **Phase 3:** build the dashboard UI (CW or NR) for non-skill-based review; instrument missing NR wiring.
-- **Phase 4 (ongoing):** negative feedback loop — any incident that surfaces a missing signal triggers a signal-set update.
-
-### Related
-
-- [[2026-04-23_postmortem-onboarder-healthcheck]] — the trigger
-- [[2026-04-23_alarm-dashboard-sketch]] — AutoPatrol-scoped precursor (generalized here; old §9 archived [[2026-04-23]])
-- [[2026-04-23_release-acceptance-criteria]] — the global rule this workstream operationalizes
-- [[2026-04-24_dashboard-1b-continuation]] — pickup doc
-- [[feedback_fail_fast_guards]] — hard rule surfaced by the incident
-- [[feedback_acceptance_criteria_every_merge]] — hard rule surfaced by the incident
-- [[skill-autopatrol-cleanup-lambda-check]] / [[skill-autopatrol-overnight-check]] — per-repo check-skill pattern
-- [[2026-04-14_connector-fleet-monitoring]] — existing fleet-monitoring synthesis (partial overlap)
-- [[2026-04-16_code-health-dashboard]] — adjacent dashboard concept (code-health, not ops-health)
-- Skill chain (target): `/daily-scope` → `/dashboard-check`; `/stage-release` → `/post-deploy-monitor` → `/dashboard-check`
+**Full context + signal coverage matrix:** [[2026-05-05_operational-dashboard-context]]
 
 ---
 
-## 8. Multi-agent / multi-model setup for KB source research
+## 8. Multi-agent / multi-model setup for KB source research — ARCHIVED 2026-05-08
 
-**Priority:** backlog (earmark time this week)
-**Tickets:** *(pre-ticket — R&D)*
-**Status:** scoping
-**Trigger:** 2026-04-20 session — desire to defer KB source research (ingest, synthesis, repo scans) to cheaper / higher-quota models (Gemini, Codex, self-hosted) to preserve Opus/Sonnet token budget for code work.
-
-### Goal
-
-Offload high-token, low-judgment work (raw source digestion, first-pass summarisation, repo enumeration) from Claude Opus/Sonnet to secondary models, so the main Claude Code session budget is spent on orchestration, synthesis quality, and coding.
-
-### Reference
-
-- [openclaw-claude-code](https://github.com/Enderfga/openclaw-claude-code) — programmable bridge turning coding CLIs into headless agentic engines.
-
-### Design surface (open questions)
-
-- [ ] **Which KB tasks are offload candidates?** — inventory current KB skills (`/kb-ingest`, `/kb-synthesise`, `/kb-auto`, `/repo-scan`, `/kb-sync`) and classify by Claude-dependency
-- [ ] **Which models to route to?** — Gemini 3.x Pro (long context, cheap), Codex (code-context), self-hosted (privacy)
-- [ ] **Integration surface** — new subagent type that routes to non-Claude model? Or a `kb-delegate` skill that spawns an external process? Or adopt openclaw wholesale?
-- [ ] **Prompt caching strategy** — Anthropic prompt cache has 5-min TTL; trade-offs for offload
-- [ ] **Output contract** — offloaded agents must return KB-shaped notes (frontmatter, wikilinks)
-- [ ] **Observability** — if Gemini hallucinates a summary, how do we catch it?
-- [ ] **Cost model** — map current KB ops to token cost baseline, then project savings at N% offload
-
-### Pre-plan subtasks
-
-- [ ] ADR on routing policy once options are clear
-- [ ] Pilot: offload one `/kb-ingest` run to Gemini end-to-end; compare output quality against a Claude-ingested baseline
-- [ ] Decision point: adopt openclaw, build custom, or hybrid
-
-### Relevant KB
-
-- [[2026-04-20_multi-agent-model-routing]] — seed synthesis (closed [[2026-04-20]])
-- [[agents-catalog]] — current subagent surface (all Claude-backed)
-- [[engineering-process/_summary|engineering-process topic]] — likely home for the synthesis note
-- Session budget guardrails in global CLAUDE.md (KB / R&D soft-cap at ~80%)
-
-### Related
-
-- §7 issue hygiene — similar "delegate the grunt work" motivation; findings here may inform [[agent-issue-auditor]]
+> **Archived 2026-05-08** → see [[2026-05-08]] § Closed Workstreams. Fully subsumed by [[#24-internal-llm-shop-on-npu-server-shared-multi-purpose|§24 LLM shop]] — every design-surface question (KB tasks to offload, model routing, integration surface, output contract, cost model, observability) has been answered and shipped under §24's `llm-shop-delegate` subagent + `kb-intake`/`kb-deep-intake`/`kb-todo`/`code-delegate` harnesses on `npu-server`. Re-open conditions: prompt-cache economics shift, or §24 infra retirement. Capping syntheses: [[2026-05-07_kb-deep-intake-architecture]], [[2026-05-07_long-running-multi-agent-pattern]], [[2026-05-07_overnight-batch-pattern]]. Original seed: [[2026-04-20_multi-agent-model-routing]].
 
 ---
 
@@ -412,52 +295,8 @@ Offload high-token, low-judgment work (raw source digestion, first-pass summaris
 **Priority:** high (laptop-loss / reboot risk is always non-zero)
 **Tickets:** *(pre-ticket — personal infra)*
 **Status:** scoping
-**Trigger:** 2026-04-23 user directive: *"I do not want to lose this monitoring setup, the rules, skills, and other configurations for all of this if I need to do a reboot or get a new computer."*
 
-### Goal
-
-A one-command bootstrap that reconstitutes this laptop's Actuate-related configuration on a fresh machine (or after a wipe). Covers: Claude Code skills + agents + hooks + global rules + per-project memories, systemd user services, the KB itself, the dashboard output layout, secrets-refresh runbook for things that can't be stored.
-
-### Inventory — what needs to survive
-
-**Claude Code config** (`~/.claude/`):
-- `CLAUDE.md` — global rules
-- `skills/<name>/` — all custom skills
-- `agents/<name>.md` — custom subagents
-- `hooks/` — session-start + stop hooks
-- `lib/` — shared libraries (`nr_query.py`, `atlassian_query.py`)
-- `plans/<slug>.md` — approved plan files
-- `projects/<project>/memory/` — per-project memory
-
-**systemd --user services** (`~/.config/systemd/user/`):
-- `dashboard-server.service`
-- `jira-sync.service` + `.timer`
-- `overnight-check.service` + `.timer`
-
-**Knowledge base** (`~/Documents/worklog/knowledgebase/`):
-- The Obsidian vault, version-controlled separately
-
-**Dashboard data** (`~/Documents/worklog/dashboard/`):
-- `sink/observations.jsonl` — operational-event sink
-- Per-day snapshot dirs
-
-**Cloned repos** (`/home/mork/work/`):
-- `vms-connector`, `actuate-libraries`, `actuate-inference-api`, `actuate_admin`, `autopatrol_onboarder`, `autopatrol-server`, `camera-ui`, `software-arch-sketches`, `ds-terraform-eks-v2`, `local_network_scripts`
-
-**System deps** (package-managed):
-- `python3.12-venv`, `uv`, `gh`, `aws-cli`, `jq`, `curl`, `git`, `nodejs`
-
-**Secrets / tokens (CANNOT store; runbook-only):**
-- AWS SSO, CodeArtifact, GitHub, Anthropic API key, NR API key, Atlassian API token, Slack webhooks
-
-### Approach options
-
-1. **Dotfiles repo with `chezmoi`** — purpose-built (handles templates, secret-exclude, post-apply hooks)
-2. **Dotfiles repo with GNU `stow`** — simpler, symlink-based
-3. **Plain git repo + bootstrap script** — one repo at `~/.dotfiles/` + `bootstrap.sh`. Cheapest to build.
-4. **Nix home-manager** — gold-standard reproducibility but huge learning curve
-
-Likely: **option 3** for v1, upgrade to chezmoi only if v1 friction shows up.
+One-command bootstrap to reconstitute this laptop's Actuate config (Claude Code skills/agents/hooks/rules, systemd user services, KB, dashboard layout, secrets-refresh runbook) on a fresh machine. Likely v1 approach: plain git dotfiles repo + `bootstrap.sh`; upgrade to `chezmoi` if v1 friction shows up.
 
 ### What's left
 
@@ -471,86 +310,20 @@ Likely: **option 3** for v1, upgrade to chezmoi only if v1 friction shows up.
 - [ ] **Disaster-recovery test** — on a throwaway VM
 - [ ] **Ongoing discipline:** every new skill/agent/hook/service is verified tracked; fold into post-push audit
 
-### Relevant KB
-
-- [[engineering-process/_summary|engineering-process]] — likely home for the secrets-refresh runbook
-- [[core-repo-suite]] — repo clone list partially maintained there
-- [[agents-catalog]] — subagent inventory
-
 ### Related
 
 - §9 Operational Dashboard — the initiative that surfaced "I shouldn't lose this"
-- §13 (archived [[2026-04-27]]) — secrets-refresh runbook example via NR/Atlassian REST wrappers
 - [[skill-daily-scope]] — morning routine depends on the whole config being intact
+
+**Full context + DR plan:** [[2026-05-05_laptop-config-portability-context]]
 
 ---
 
-## 11. Firebat minipc — follow-ups from "always-on Claude dev box" setup (2026-04-23)
+## 11. Firebat minipc follow-ups — COLLAPSED 2026-05-07
 
-**Priority:** medium (core setup complete and verified; these are enhancements, not blockers)
-**Tickets:** *(personal infra — no ticket)*
-**Status:** scoping
-**Scripts:** `/home/mork/work/local_network_scripts/` (12-phase toolkit, reusable for future boxes via `TARGET=user@host` env var)
-**Context:** [[2026-04-23_firebat-minipc-as-claude-dev-box]] · [[2026-04-23_firebat-minipc-network-setup]]
-**Access:** `ssh mork@mork-firebat` (Tailscale) or `ssh mork@fe80::8647:9ff:fe34:b4f2%enp0s31f6` (direct cable fallback)
-
-### 11a. Wire a specific scheduled Claude job
-
-The `~/bin/claude-run-skill.sh` wrapper on the minipc is the scaffold. Smoke-test on 2026-04-23 proved end-to-end. Next:
-
-- [ ] Decide which skill(s) get a cron slot. Candidates: `/overnight-check`, `/kb-auto`, `/dashboard-check`.
-- [ ] Build systemd user `.service` + `.timer` pair at `~/.config/systemd/user/<name>.{service,timer}` on the minipc.
-- [ ] `systemctl --user enable --now <name>.timer` — linger is already on (phase-02), so timers run without a login session.
-- [ ] Verify first firing.
-- [ ] Add to KB so we don't forget what's scheduled where: extend [[automation-overnight-check]] or new entity note `automation-minipc-timers`.
-
-### 11b. Laptop-side dashboard sync → minipc (or run /dashboard-check on minipc)
-
-> **Status (2026-04-24):** §12e shipped a minipc-side daily `/dashboard-check` cron. Most of this § subsumed; revisit only for the laptop-asleep continuous-poll case.
-
-### 11c. Auto-start Claude Code inside the persistent tmux session
-
-Goal: on attach, land directly in a ready `claude` session (or at least verify one is running). Two implementation options:
-
-- **A. Modify the systemd ExecStart** — `tmux new-session -d -s main -c %h "claude"`. Pro: one-line change, auto-starts at boot. Con: if `claude` exits, the tmux window closes.
-- **B. A watchdog timer** that checks for a claude process in the `main` session and spawns one if missing. Pro: self-heals on claude exit. Con: more moving parts.
-
-- [ ] Pick A or B (or a variant). B is more resilient; A is pragmatic for MVP.
-- [ ] Implement as a patch to `files/claude-session.service` and/or a new `files/claude-watchdog.{service,timer}` in `~/work/local_network_scripts/`.
-- [ ] Update `phase-10-sessions.sh` to push whichever variant is picked.
-- [ ] Verify: reboot minipc, wait 90s, `ssh -t mork@mork-firebat tmux attach -t main` lands in a live claude prompt.
-
-**Seeded 2026-04-23.** *(2026-04-27: still down per morning probe.)*
-
-### 11d. Push-based dashboard ingest on minipc (seeded 2026-04-24)
-
-> **Status (2026-04-24):** re-scope needed. §12e shipped minipc-side daily `/dashboard-check`; minipc is already the primary host. Open question: does laptop need to push ALSO, or is minipc's own daily run sufficient? Revisit once §12i closes.
-
-- [ ] **API design on minipc** — extend the minipc dashboard app (§12) with `POST /api/dashboard/snapshot`, `POST /api/dashboard/sink`, `GET /api/dashboard/latest`. Auth: Tailscale-mesh only.
-- [ ] **Laptop-side push hook** — after each `/dashboard-check` run, POST to minipc.
-- [ ] **Store-and-forward on push failure** — outbox queue at `~/Documents/worklog/dashboard/.outbox/` with retry.
-- [ ] **Caddy routing** — `http://actuate-dev.local/dashboard/` serves latest snapshot regardless of source host.
-- [ ] **KB writeup** — synthesis note `topics/operational-health/notes/syntheses/<date>_dashboard-push-arch.md`.
-
-### 11e. Cronify-friendly refactor of `/dashboard-check` (seeded 2026-04-24)
-
-> **Status (2026-04-24):** partially overtaken by §12e + §12i. Most of this § is subsumed — keep as design sketch; delete or collapse once §12i closes.
-
-- [ ] **Factor out collector logic** — `~/.claude/skills/dashboard-check/collect.sh` per source type
-- [ ] **NR REST wrapper** — *(2026-04-27 update: shipped as `~/.claude/lib/nr_query.py` via §13. Reuse from there.)*
-- [ ] **`run-headless.sh`** wrapper — `collect.sh → render.py → push.sh`
-- [ ] **systemd timer** — every 15–30 min on the minipc (and laptop as belt-and-braces)
-- [ ] **Claude invocation path still works** — interactive `/dashboard-check` stays as-is
-- [ ] **Verification** — after a week of cron running, sink gains ~100+ rows/day organically
-
-### Related
-
-- §9 Operational Dashboard — source of the dashboard artifact
-- §10 Laptop-config portability — sibling workstream on the laptop side
-- §12 Minipc dashboard app — the target for §11d's push API
-- §13 (archived [[2026-04-27]]) — REST wrappers reusable here
-- Scripts + README: `/home/mork/work/local_network_scripts/README.md`
-- Memory pointer: `~/.claude/projects/-home-mork-work-local-network-scripts/memory/firebat-minipc-access.md` (creds + URLs)
+> **§11a/c/d** are largely subsumed by §12 (minipc dashboard app) and the firebat tier-1 systemd timer pattern that's now live (`~/bin/morning-prep.sh`, `~/bin/run-dashboard-check.sh`, autopatrol cleanup-check, repo-scan). §11b subsumed by §12e. §11e closed 2026-05-06. Setup history preserved at [[2026-05-05_firebat-minipc-followups-context]].
+>
+> Re-open trigger: a new firebat tier-1 capability needed (e.g., dashboard-push API) that doesn't fit naturally into §12.
 
 ---
 
@@ -573,9 +346,13 @@ Goal: on attach, land directly in a ready `claude` session (or at least verify o
 
 ### Open phases (12c–12j)
 
-- [ ] **§12i — Strip LLM narrative pass from minipc `/dashboard-check` cron** — run `dashboard-check.py` modules directly instead of via `claude -p`. NR-REST wrapper already exists (§13's `~/.claude/lib/nr_query.py`). Goal: $0/run, no Claude budget, predictable runtime. Deliverables: `collect-headless.sh` invoking each signal's NRQL via the wrapper, `render.py` reading those JSON outputs, replace `run-dashboard-check.service`'s `claude -p` invocation with the headless path. Closes (subsumes) §11e.
-- [ ] **§12i.b — Port `/kb-recap` to script** — already drafted as `local_network_scripts/files/kb-recap.sh`. Deploy to minipc, wire into `prebuild.js`, cron the rebuild, delete superseded `run-kb-recap.{service,timer}`.
-- [ ] **§12j follow-ups (queued for ~2026-05-06+)** — see [[2026-04-29_repos-dashboard-followups]]. Highest-leverage items: per-repo deltas vs prior week (needs 7d sink history), drilldown detail pages, FACET-classify behavior in render.py, vms-connector's 229 stale branches and actuate-inference-api's 724-day-old open PR (real-world findings surfaced by the new signals).
+- ~~§12i — Strip LLM narrative pass from minipc `/dashboard-check` cron~~ → CLOSED 2026-05-06, moved to [[2026-05-06]] § Closed Sub-items. Subsumes §11e.
+- ~~§12i.b — Port `/kb-recap` to script~~ → CLOSED 2026-05-07 (verification only — already deployed). See [[2026-05-07]] § Closed Sub-items + [[2026-05-07_firebat-enhancements-batch]].
+- ~~§12j core dashboard follow-ups (per-repo 7d deltas, FACET-classify in render.py, sparklines per metric, drilldown detail pages)~~ → CLOSED 2026-05-07. See [[2026-05-07_firebat-enhancements-batch]]. **§12j tail still open:**
+  - [x] **Threshold recalibration against 7d distribution** — DONE 2026-05-07. Reframed handoff's red/yellow split into regression-vs-debt taxonomy: 3 regression signals (ci_failure 15/30, mtm 1/3, open_prs_age 15/60) keep red as alarm; 5 debt signals (todo, radon, ruff, stale_branches, vulture) drop red entirely — yellow only as leaderboard. 21% flip rate, 3 legit reds today (ailink CI 35%, inference-api 714d PR, watchman 3.17d MTM).
+  - [ ] **Cleanup-lambda interpretive checks (Step 8b/8d remaining)** — Step 8c DONE 2026-05-07: new `onboarder_healthcheck_hotfix_in_effect` git_local signal (boolean, red_below=1) catches revert of 2026-04-23 healthcheck-warning hotfix. 8b (DDB drift, 4-6h, needs new `cw_dynamodb` source) and 8d (gh-log scan, "last or never") still optional. Handoff: [[2026-05-07_handoff-cleanup-lambda-interpretive-checks]].
+  - [ ] **vms-connector stale-branch review** — dedicated session: walk all 229 stale branches (>60d), classify each (merged-elsewhere / abandoned / WIP-someone-still-cares), produce a report with per-branch recommendation + author callout, post to team for approval, then execute the cleanup. Output is a *reviewable artifact*, not a unilateral delete. Single-session scope, ~2-3h. Surfaced by 2026-05-07 dashboard signals.
+  - [ ] **actuate-inference-api 724d-old open PR** — single-PR review: re-baseline against current main, decide rebase / close / hand-off. Single-session, ~30min.
 
 ### Related
 
@@ -630,185 +407,37 @@ Three-part race in `actuate_admin`:
 
 ---
 
-## 15. Video-processing topic — promotable findings (2026-04-27)
+## 15. Video-processing topic — quick fixes only (refactors deferred)
 
-**Priority:** mixed (some quick fixes, some larger refactors)
-**Status:** findings surfaced during the [[video-processing/_summary|video-processing topic seed]] (2026-04-27); promoted from KB to actionable workstreams to avoid drowning in research context
-**Source:** topic-creation pass + 4 follow-up audits + 4 fleet-architecture bridge syntheses; details in [[video-processing/_summary]]
+**Status:** quick fixes kept inline; bigger refactors moved to [[video-processing/_summary|video-processing topic]] backlog 2026-05-07.
 
-### 15a. Quick fixes (small PRs)
+### 15a. Quick fixes (small PRs — keep inline)
 
-- [ ] **GPU FFmpeg `--enable-gnutls` build flag** — both `x86_dockerfile.gpu` and `arm_dockerfile.gpu` build FFmpeg from source but **omit `--enable-gnutls`**, while CPU ARM (`build_ffmpeg.sh:54`) includes it. Result: any `https://` snapshot URL or `rtsps://` camera silently fails to open via PyAV on GPU nodes ("Protocol not supported"). `libgnutls28-dev` is already in `apt_requirements.txt`, so this is a one-line configure-flag fix per Dockerfile. Details: [[connector-docker-system-deps]].
-- [ ] **`make_video_ffmpeg` subprocess timeout** — `queue_consumer/consumers/shared/utils.py:174-204` shells out to `ffmpeg` with no timeout. Hang risk under abnormal conditions. Add a bounded timeout matching the longest acceptable clip-mux duration. Details: [[immix-mp4-mux-downstream]].
-- [ ] **`fish2pano` subprocess timeout** — `actuate-libraries/actuate-pullers/src/actuate_pullers/shared/base_puller.py:333-339` invokes the bundled `fish2pano` binary with `subprocess.run(...)` but no timeout. Same family as the make_video_ffmpeg risk. Low-volume path (panorama cameras only) but a clean fix.
-- [ ] **Delete `GstUrlFramePuller` + `GStreamerInputPipeline`** — zero production callers (verified in [[gst-rtsp-h264-only-audit]] + [[connector-decoder-routing-map]]). The pipeline is hardcoded H.264-only (`rtph264depay`) — a latent trap for any future PR that wires it to a modern HEVC-defaulting VMS. Removing it eliminates the trap and reduces maintenance surface in `actuate-libraries/actuate-pullers/`. Touch `__init__.py` to drop the conditional import.
+- [ ] **GPU FFmpeg `--enable-gnutls` build flag** — `x86_dockerfile.gpu` and `arm_dockerfile.gpu` both omit it; CPU ARM has it. One-line per Dockerfile. Result: `https://` snapshots and `rtsps://` cameras silently fail to open via PyAV on GPU nodes. Details: [[connector-docker-system-deps]].
+- [ ] **`make_video_ffmpeg` + `fish2pano` subprocess timeouts** — both shell out without bounded timeouts (`queue_consumer/consumers/shared/utils.py:174-204` and `actuate-libraries/actuate-pullers/.../base_puller.py:333-339`). Add timeouts matching the longest acceptable runtime per call. Details: [[immix-mp4-mux-downstream]].
+- [ ] **Delete `GstUrlFramePuller` + `GStreamerInputPipeline`** — zero production callers per [[gst-rtsp-h264-only-audit]] + [[connector-decoder-routing-map]]. Hardcoded H.264-only — a latent trap for any future HEVC wiring. Touch `__init__.py` to drop the conditional import.
 
-### 15b. Bug-shaped questions (need investigation before action)
+### 15b/c/d (refactors + investigations) — DEFERRED 2026-05-07
 
-- [ ] **AVI/Xvid masquerading as `.mp4`** — `queue_consumer/consumers/shared/utils.py:186-187` swaps `.mp4`→`.avi` before invoking `ffmpeg ... -vcodec libxvid`, so the bytes wrapped in MIME as `application/mp4`-named-attachment are actually AVI/Xvid. Either Immix has been silently accepting this for years, or the codec is wrong and we just haven't caught it. Action: confirm with Immix what's actually expected, then either rename the attachment or fix the codec/container. Details: [[immix-mp4-mux-downstream]].
-- [ ] **EU prod missing `prod-queue-immix-consumer` ECS autoscaling** — SQS queue `event_queue_immix_alarm.fifo` is provisioned in eu-west-1 but **no matching ECS autoscaling block** found in `ds-terraform-eks-v2/stages/prod/eu-west-1/`. Either EU Immix MP4 mode isn't actually consumed, or the consumer runs from the US region's ECS service against the EU queue, or it's deployed via a different mechanism. Action: verify whether EU FIFO has an active consumer.
-
-### 15c. Migration / refactor workstreams
-
-- [ ] **Hikcentral split-brain decode migration** — `connector_factories/hikcentral/factory.py` routes the **non-motion path to PyAV `AvUrlFramePuller`** but the **motion-gated path to legacy OpenCV `OnOffMotionBasedUrlFramePuller`**. Real-traffic VMS, complicates hwaccel rollout, breaks PTS semantics consistency. Migrate the motion-gated branch to a PyAV-based motion variant. Details: [[connector-decoder-routing-map]].
-- [ ] **PyAV migration completion (general)** — most production integrations are now on `AvUrlFramePuller`, but the legacy `UrlFramePuller` (OpenCV) class still parents motion-gated variants and a handful of integration paths. This is a pre-req for [[2026-04-16_proposal-c-camera-worker|fleet-architecture proposal C]]. Scope and sequence the remaining moves; remove the legacy class once empty.
-- [ ] **KVS pipeline JPEG round-trip elimination** — `actuate-libraries/actuate-pullers/src/actuate_pullers/kvs/kvs_ingestor.py:148-156, 104-128` decodes MKV → JPEG-encodes via `jpegenc` inside GStreamer → JPEG-decodes via `cv2.imdecode` in Python. Two unnecessary codec ops per frame. Options: (a) move to PyAV-on-MKV like the RTSP path; (b) drop `jpegenc` and use `appsink` with raw frames + GstSample → numpy. Details: [[gstreamer-vs-ffmpeg]] + [[aws-kvs-entity]].
-
-### 15d. Discovery / verification (small data-gathering tasks)
-
-- [ ] **EKS prod node-pool GPU verification** — confirm whether prod connector cluster has any G-class node groups today, or if we're CPU-only. Karpenter NodePool config + connector pod placement constraints. Details: [[eks-prod-node-pool-gpu-availability]].
-- [ ] **Connector Dockerfile coverage spot-check on prod** — `gnutls` audit landed [[connector-docker-system-deps]]; one more pass after the `--enable-gnutls` fix to confirm no other surprise omissions in the GPU images.
+> Moved to [[video-processing/_summary|video-processing topic]] for tracking. Includes: AVI/Xvid masquerading as `.mp4`, EU `prod-queue-immix-consumer` ECS autoscaling check, Hikcentral split-brain decode migration, PyAV migration completion (pre-req for fleet-arch proposal C), KVS pipeline JPEG round-trip elimination, EKS prod GPU node verification, Dockerfile coverage spot-check.
 
 ### Related
 
-- Topic landing: [[video-processing/_summary]]
-- Cross-cuts to §5 fleet-architecture (decode-locality, GPU substrate, KVS WebRTC, frame-transport payload formats)
+- Topic: [[video-processing/_summary]]
 - Bridge syntheses: [[decode-locality-per-proposal]], [[gpu-substrate-and-fleet-placement]], [[kvs-webrtc-as-fleet-frame-plane]], [[frame-transport-payload-formats]]
-- Investigation notes: [[gst-rtsp-h264-only-audit]], [[immix-mp4-mux-downstream]], [[connector-decoder-routing-map]], [[connector-docker-system-deps]], [[eks-prod-node-pool-gpu-availability]]
 
 ---
 
-## 16. Tenant-status sync gap — cascade-disable suspended tenants from cleanup Lambda
+## 17. VCH connector emits `no_patrols` for genuinely-Active schedules — ARCHIVED 2026-05-07
 
-**Priority:** medium-high (real customer-affecting gap; 2 tenants currently suspended in prod with their sites still active in our admin DB)
-**Status:** investigated 2026-04-28 (probe + decision); awaiting implementation
-**Source:** customer/Immix-side report → live probe against Immix prod → architectural decision to piggyback on cleanup Lambda
-**KB writeup:** [[2026-04-28_tenant-status-sync-gap]]
-
-### Background
-
-Sites under tenants that go SUSPENDED on the Immix side stay marked active in our admin DB. The onboarder's `auto_patrol/sync/` POST never carries tenant-status, and there's no reconciliation pass anywhere in the stack. The probe confirmed:
-
-- No `/Tenants/{id}` or `/Tenants` endpoint exists on Immix (404)
-- BUT `tenantStatus` is already in every `get_contracts()` response (alongside `contractStatus`)
-- 18 prod contracts as of 2026-04-28 — **2 tenants Suspended/Suspended**: `Remote Security Solutions` and `Legacy`. Server-side filter `?contractStatus=Suspended` works.
-- Sites carry no per-site status field
-
-### Decision: piggyback on the cleanup Lambda
-
-Mark's call 2026-04-28 — add tenant check as the first step in cleanup-Lambda processing. Lazy / event-driven (only fires on `no_patrols` signals), reuses existing infrastructure, no new component. Does NOT need to live in the onboarder. Rationale + tradeoffs: [[2026-04-28_tenant-status-sync-gap]] § "Architectural answer".
-
-### Subtasks
-
-> Steps 1-3 (admin can support cascade-disable / build admin endpoint / cleanup Lambda code change) — closed 2026-04-28; full closure detail in [[2026-04-28]] § "§16 — Tenant-status sync gap".
-
-- [ ] **Step 4 — Stage rollout + canary verification**. Use `Remote Security Solutions` and `Legacy` (both currently `Suspended/Suspended` in Immix prod, `tenantId` known) as canaries.
-
-  **Sub-step 4a — admin staging verify (gated on actuate_admin PR #2376 merging to staging branch + staging.yml deploying to staging.actuateui.net):**
-  ```bash
-  # Get an admin staging token first:
-  cd /home/mork/work/autopatrol_onboarder
-  ./scripts/fetch_admin_token.sh staging  # or whatever stage-specific variant exists
-
-  export ADMIN_API_TOKEN="<paste from script>"
-  STAGING_URL="https://staging.actuateui.net"
-
-  for entry in \
-      "0ee7cb3f-4a3a-49b0-bcb5-73fce964b427:Remote Security Solutions" \
-      "ac399cd6-2fdf-4659-b8e5-baea54075017:Legacy"; do
-    tenant_id="${entry%%:*}"
-    name="${entry#*:}"
-    echo "=== ${name} (${tenant_id}) — DRY RUN ==="
-    curl -sS -X PATCH \
-      -H "Authorization: Bearer ${ADMIN_API_TOKEN}" \
-      -H "Content-Type: application/json" \
-      --data "{\"tenant_id\":\"${tenant_id}\",\"dry_run\":true,\"reason\":\"stage_verify\"}" \
-      "${STAGING_URL}/api/auto_patrol/disable_tenant/" | python3 -m json.tool
-  done
-  ```
-  Expected output: `schedules_affected` and `customers_affected` > 0 (the cascade scope), plus full lists of `schedule_ids`, `customer_ids`. **DB unchanged after dry-run** — verify by re-running the same probe after a few seconds; counts should be identical.
-
-  **Sub-step 4b — stage → prod admin promotion** (PR from `staging` → `main` once 4a is clean): handled by actuate_admin's standard flow (`protect-main.yml` enforces source=staging).
-
-  **Sub-step 4c — autopatrol_onboarder PR #10 un-DRAFT + merge** (gated on 4b — admin endpoint must be in prod). Merging auto-deploys cleanup Lambda to US + EU prod with `TENANT_CASCADE_ENABLED=false`.
-
-  **Sub-step 4d — DRY_RUN canary on prod cleanup Lambda** (~1h post-deploy with flag still `false`):
-  ```bash
-  # Watch for "would PATCH auto_patrol/disable_tenant/" log lines on the 2 known tenants
-  AWS_PROFILE=prod aws logs tail /aws/lambda/immix-autopatrol-schedule-cleanup \
-    --region us-west-2 --since 1h --format short \
-    | grep -E 'would PATCH auto_patrol/disable_tenant'
-  ```
-  Expected: log lines containing `tenant_id=0ee7cb3f-...` (Remote Security Solutions) and/or `tenant_id=ac399cd6-...` (Legacy), with `TENANT_CASCADE_ENABLED=False`. Confirms the suspended-tenants fetch + matching is correct without firing any real cascades.
-
-  **Sub-step 4e — flip the flag**:
-  ```bash
-  AWS_PROFILE=prod aws lambda update-function-configuration \
-    --function-name immix-autopatrol-schedule-cleanup --region us-west-2 \
-    --environment "Variables={TENANT_CASCADE_ENABLED=true,...keep all others...}"
-  ```
-  (full env-var block from §5 of `/autopatrol-cleanup-lambda-check`). Watch the next 24h for `AutoPatrolTenantCascadeDisabled` NR events firing only on the 2 known tenants. After verify-clean: §16 closes.
-
-- [ ] **Step 5 — Re-enable path**. When a tenant is unsuspended, mirror the existing schedule-side re-enable Function URL — needs a sibling tenant-cascade-reenable code path. Probably a small extension of the existing re-enable Lambda. Defer if rare in practice; track separately if needed.
-
-- [ ] **Step 6 — Harden `disable_tenant` permission_classes** (post-#2377 follow-up). `api/serializers/integrations/autopatrol/autopatrol_view.py:86` currently inherits `CustomGenericViewSet`'s default auth (Social/Session/TokenStrict) but has **no explicit `permission_classes`** — unlike sibling `AutoPatrolContractView` / `AutoPatrolScheduleView` which set `[CheckModelPermission]`. Net effect: any authenticated user (incl. session-auth dashboard logins) can hit the PATCH and cascade-soft-delete a tenant. Intent is "admin-only via internal Lambda token", but that is **not what's enforced**. Same posture as already-merged `sync_site` on the same viewset, so no regression introduced — but worth tightening before more callers depend on it. Options: (a) explicit `permission_classes = [CheckModelPermission]` matching siblings; (b) dedicated `IsLambdaServiceAccount` permission class keyed on the cleanup Lambda's IAM-signed token; (c) IAM-signed Function URL pattern (mirrors the existing reenable Lambda). Surfaced 2026-04-29 in PR #2377 review (see [[2026-04-29_cleanup-handoff]] §"Disable-by-tenant rollout"). Also tighten the `request.data` echo in the validation-error log path (`autopatrol_view.py:108-112`) per security-hardening-checklist §Error Response Standards. Add `ENDPOINT_ROLE_MAPPING` entry for discoverability.
-
-### Verification artifacts
-
-- Probe script: `autopatrol_onboarder/scripts/probe/tenant_status_probe.py` — re-runnable to monitor suspended-tenant population over time
-- 7-day monitoring: count of `TenantCascadeDisabled` NR events; expect a small startup spike (the 2 currently-suspended tenants) then near-zero
-- Alarm: cascade rate > 5/h sustained = something's wrong (mass suspension event OR false-positive bug)
-
-### Related
-
-- §3 — cleanup Lambda workstream (parent — this is a cleanup-Lambda enhancement)
-- [[2026-04-28_tenant-status-sync-gap]] — full investigation writeup
-- [[2026-04-17_stale-schedule-cleanup-design]] — original cleanup Lambda design
-- [[autopatrol-cleanup-lambda]] — entity
-- [[autopatrol-onboarder]] — entity (NOT being modified — explanation of why in the KB note)
-
----
-
-## 17. VCH connector emits `no_patrols` for genuinely-Active schedules
-
-**Priority:** low (cleanup Lambda anomaly-reset correctly refuses to disable; cost is just wasted invocations)
-**Status:** identified 2026-04-28 via flapper investigation during §16 work
-**Source:** [[2026-04-28_tenant-status-sync-gap]] flapper probe → `autopatrol_onboarder/scripts/probe/flapper_schedule_probe.py`
-
-### Finding
-
-3 of 4 chronic anomaly-reset flappers (per the cleanup Lambda's 7-day repeat-offender map) are VCH-integration schedules in genuinely Active state on Immix:
-
-| schedule_id | title | integration | tenant_id |
-|---|---|---|---|
-| `c3808175-85e0-...` | VCH 11-4 | vch | 47dc2c1f (Vendor.Actuate.Prod, Active/Active) |
-| `fbdfdba6-f62c-...` | VCH 9-17 | vch | 47dc2c1f (same) |
-| `ee1822f1-67c8-...` | VCH Test 2 | vch | 47dc2c1f (same) |
-
-All 3 return `scheduleStatus=Active` from Immix's `/Schedules/{id}`. Their tenant + contract are both Active. Yet the connector emits `no_patrols` for them on every cadence. Cleanup Lambda's anomaly-reset correctly refuses to disable (Immix says Active → not a cleanup candidate). Each contributes ~9 anomaly resets/week.
-
-### Why this matters
-
-- Wasted cleanup Lambda invocations and DDB writes
-- Noise in the anomaly-reset 7-day map → harder to spot real anomalies
-- Potential signal that VCH integration has a different patrol-detection model than AutoPatrol and the connector's `emit_no_patrols_signal` heuristic doesn't account for it
-
-### Hypotheses to investigate
-
-1. **VCH schedules don't use `/Patrols/` the same way AutoPatrol does.** VCH may have its own polling endpoint; connector's "no patrols → emit cleanup signal" check may be evaluating against the wrong endpoint or returning empty for VCH by design.
-2. **Vendor.Actuate.Prod is a test/vendor tenant.** Maybe these VCH schedules are intentionally in a "configured but never run" state for test purposes — in which case they shouldn't be emitting cleanup signals at all.
-3. **The connector's VCH integration code path may need a separate `emit_no_patrols_signal` decision (or an explicit skip).**
-
-### Subtasks
-
-> Code-locate / scope-confirm / fix-landed — closed 2026-04-28; full closure detail in [[2026-04-28]] § "§17 — VCH connector emits no_patrols". Net impact ~92% reduction in cleanup-pipeline traffic with zero loss of real-disable signal. Open items below are post-merge soak.
-
-- [ ] **Post-merge stage verify**: after `#1662` merges to `stage`, watch staging connector logs for any new VCH error patterns; cleanup-Lambda's stage-side `integration=vch reason=no_patrols` event count should drop to zero within 24h.
-- [ ] **7-day stage soak**: confirm the 3 chronic flapper schedule_ids (`c3808175`, `fbdfdba6`, `ee1822f1`) age out of the DDB and don't reappear.
-- [ ] **stage → rearchitecture promotion**: cherry-pick or PR-merge to prod once stage soak is clean.
-
-### Related
-
-- §3 — cleanup Lambda workstream (parent observability surface for this pattern)
-- §16 — tenant-status sync gap (where this was incidentally surfaced; tenant cascade does NOT fix this)
-- [[2026-04-28_tenant-status-sync-gap]] — investigation note that surfaced the flapper class breakdown
+> **Archived 2026-05-07** → see [[2026-05-07]] § Closed Workstreams. PR #1660 stage→rearch (bundling #1662 VCH `no_patrols` emit drop) merged 2026-05-01. Recalibration of `connector_no_patrols_to_run_24h` thresholds tracked in [[autopatrol-deferred-backlog]] (gated on PR #1662 reaching prod). Investigation history: [[2026-04-28_tenant-status-sync-gap]].
 
 ---
 
 ## 18. Memory-limit drift — restore VPA floor + audit CRITICAL cohort
 
-**Priority:** Medium-High (sustained-RED OOMKill on 2 consecutive days, customer-visible via dropped frames / restart loops)
-**Status:** identified 2026-04-23 ([[2026-04-23_oom-surge-connector-limit-drift]]); promoted to its own workstream 2026-04-29 after connector-45999 sustained 96/24h two days running and connector-14170 returned to top of OOM list (13/24h today)
+**Priority:** Medium-High (sustained-RED OOMKill on 4+ consecutive days, customer-visible via dropped frames / restart loops)
+**Status:** identified 2026-04-23 ([[2026-04-23_oom-surge-connector-limit-drift]]); promoted to its own workstream 2026-04-29; **tickets filed 2026-05-05 → handed off to Paolo / Mike** ([ENG-214](https://actuate-team.atlassian.net/browse/ENG-214) + [connector_deployer#165](https://github.com/aegissystems/connector_deployer/issues/165))
 **Root cause:** Feb-9 commit `a5de5db` "remove vpa patch" removed the min-memory floor on VPA at pod creation. Subsequent commits (`9736971`, `4367a39`) restored a floor only for `Securitas Australia - Trial`. ~73 days of VPA learning-loop drift left **1,956 pods in the CRITICAL 384-426 MB tier** (~42% of the fleet under 1 GB).
 
 ### Today's evidence
@@ -823,6 +452,7 @@ All 3 return `scheduleStatus=Active` from Immix's `/Schedules/{id}`. Their tenan
 - [ ] **Audit the 1,956-pod CRITICAL 384-426 MB tier.** Cross-reference with last-7d working-set peaks; bump every pod whose peak is within 70% of its limit to a safer ceiling (1.6 GB seems to be the validated number for connector pods).
 - [ ] **Pickup connector-45999 specifically** as the immediate offender — bump its limit by hand if needed before the broader fix lands.
 - [ ] **Verify the regression-prevention signal.** [[2026-04-23_release-acceptance-criteria]] §5 was supposed to catch config-surface drift; check whether there's a deploy-time guard that would have flagged the original Feb-9 commit.
+- [ ] **Lower log level on VPA "already exists, patching" path in `connector_deployer`** *(surfaced 2026-05-04 fleet_error_top15 triage)*. `connector-deploy` container logs ~14,800 ERROR events / 24h, and the dominant pattern is `VPA connector-<id>-vpa already exists, patching` across 12,169+ unique VPA object names — the patch then succeeds. This is the **#1 ERROR-volume source in the fleet right now**, drowning real signal in `fleet_error_top15`. The `already exists, patch instead of create` path is a successful happy path, not a failure mode — log level should be WARNING or INFO, not ERROR. ~1-line fix in the deployer, but huge dashboard-noise reduction.
 
 ### Acceptance criteria
 
@@ -836,6 +466,145 @@ All 3 return `scheduleStatus=Active` from Immix's `/Schedules/{id}`. Their tenan
 - [[2026-04-23_release-acceptance-criteria]] — §5 config-drift class is what this regression illustrates
 - Dashboard signals: `fleet_new_oom_offender`, `fleet_oomkills_24h` (already in `~/.claude/skills/dashboard-check/config/signals.json`)
 - Repos: `connector_deployer` (VPA patch lives here per yesterday's KB note)
+
+---
+
+## 19. vms-connector `s3alerts` branch — DEFERRED 2026-05-07
+
+> **Deferred 2026-05-07.** Housekeeping. Branch still serves a small set of internal/Actuate-led sites pinned via `ConnectorVersion`. Disposition (retire vs. realign with rearch) tracked in [[autopatrol-deferred-backlog|connector-deferred backlog]] (will create dedicated `vms-connector` backlog if/when needed). Today's stop-gap (cherry-picked fix commit `41a88fe2` 2026-05-01) keeps it functional.
+
+---
+
+## 20. `dw_url_up` empty-body errors — fleet-wide DW auth endpoint flake
+
+**Priority:** This week (high noise floor on `fleet_error_top15`, not customer-facing outage)
+**Status:** **PR #1671 merged to stage 2026-05-05T19:59:57Z (commit `7cf8bc4c`).** 24h soak window opens — verify `dw_url_up` ERROR volume drops vs prior baseline + new WARNING lines surface. Promotion stage→rearchitecture follows after stage clean.
+**Tickets:** [vms-connector#1670](https://github.com/aegissystems/vms-connector/issues/1670) (tracking issue)
+**PRs:** [vms-connector#1671](https://github.com/aegissystems/vms-connector/pull/1671) (`fix/dw-url-up-empty-body-guard` → stage, **merged 2026-05-05**)
+
+### Finding
+
+- New top-1 (`connector-10160`: 6535 errors) and top-3 (`connector-29016`: 3060 errors) entrants in today's ERROR top-15. Yesterday: zero errors at these containers.
+- Step-function onset at **04:00-05:00 UTC 2026-05-01**, ~10h *before* today's rearchitecture deploy (PR #1660 merged 14:28 UTC). **Not deploy-caused** — site-side or partner-side trigger.
+- Identical error at both sites:
+
+  ```
+  ERROR(dw_url_up): Exception when retrieving authorization string for camera <CamN>:
+    Expecting value: line 1 column 1 (char 0)
+  ```
+
+  `json.loads()` failing on an empty / non-JSON body from the Digital Watchdog camera-auth endpoint. Code path does not guard for it.
+- Per-camera-per-day rate is ~400-550 errors → consistent with an unbounded retry loop running full-speed against a transient site-side fault. Connector is contributing to the volume, not just observing it.
+
+### Investigation outcome (2026-05-04)
+
+`dw_url_up` is the daemon thread name (`dw_camera.py:196`); actual crash site is `r.json()["token"]` / `response.json()` at lines 327, 345, 392 of `camera/digital_watchdog/dw_camera.py`. DW NVR auth endpoints (`login/tickets`, `getNonce`) intermittently return empty or non-JSON bodies; bare subscripts raise `JSONDecodeError` into a broad `except Exception` logged at ERROR.
+
+**Fleet-wide, not isolated.** Original sites (10160, 29016) self-quieted ~16h ago (likely camera-side TTL correction), but issue rotates daily. 2026-05-04 last-1h: connector-44342 (75 errors), 34968 (54), 41021 (17), 35118 (14), 4 others — same exact JSON-parse signature.
+
+**Site-side cred rotation will NOT fix this.** Fix tier is library hardening.
+
+### Open work
+
+- [ ] **Promote stage → rearchitecture** via standard release-train PR after stage soak clean. **Pulled into 2026-05-07 Today's Scope** — bundle naturally with PR #1679 territory or open a discrete fix-only PR. [Closed sub-items: PR #1671 opened + merged to stage 2026-05-05 — see [[2026-05-05]] § Closed Sub-items.]
+- [ ] **Site-side investigation (post-merge)** — once noise is bounded, look at WARNING-level body previews. If a specific HTTP status / body shape recurs (503, rate-limit, relay-resetting empty), file a separate issue with upstream-firmware vs network-LB classification.
+
+### Acceptance criteria
+
+- Empty-body / non-JSON responses log as WARNING (not ERROR), don't surface in `fleet_error_top15`.
+- `dw_url_up` ERROR volume drops ≥10x for currently-affected sites (assuming upstream firmware unchanged).
+- Diagnostic body previews appear in NR so future fleet-wide patterns are visible.
+
+### Related
+
+- Investigation today (this session's NR correlation pass — no KB note yet; write one if/when this gets a real diagnosis)
+- Dashboard signal: `fleet_error_top15` (new-entrant rule fired)
+- §18 — Memory-limit drift (today's other dashboard-RED, independent issue)
+- Repos: `vms-connector` (`dw_url_up` code path), `actuate_admin` (lead/integration lookup)
+
+---
+
+## 28. Customer Billing Pipeline — tighten + self-right
+
+**Priority:** This-week (post-mortem-driven; topic just scaffolded 2026-05-11)
+**Status:** Topic [[billing/_summary|billing]] just created. Founding post-mortem, events catalog, and categorized todo list seeded. No items promoted as discrete §N work yet — this section is the loose-link header.
+**Tickets:** ENG-242 (Snowflake DDL request, filed + **closed Done same day 2026-05-11** — [[sales-dashboard-repo]] + [[actuate-bi-repo]] together fully answered the ask, no data-team action needed)
+**Topic todos:** [[billing/_todos|billing/_todos.md]] — categorized list (Tightening / Self-Righting / Reconciliation / Observability / Codification / Risk-Investigation)
+**Post-mortem:** [[2026-05-11_billing-pain-post-mortem]] — narrative arc from cohort F discovery through the PR-#1675 → PR-#1685 → PR-#1688 chain; structural lessons distilled
+**Next-session handoff:** [[2026-05-11_billing-and-followups-handoff]] — covers billing + carried-over fleet/software-arch follow-ups (rubric monitoring+billing dimensions, reading-list additions, enforcement sketch spec, reeval scan)
+
+### Why this exists as a workstream
+
+Weeks of incremental connector PRs (#1675, #1680, #1682, #1683, #1684, #1685, plus the #1681/#1686/#1687/#1688 promotion chain) closed five distinct customer-billing-emit gap classes but surfaced two more: (a) crash-path emit gap (79% AP / 67% VCH cronjobs silent in the 2026-05-07 scan), (b) Snowflake-side ingestion gap (Cohort F6/F5 — 392 cams emitted-not-ingested). The structural lesson is that we lack continuous reconciliation across admin ↔ emit ↔ Snowflake — drift was invisible until a manual cohort audit surfaced it, and the duration of the drift is unknown. This §N is the parent workstream to make that pipeline **tight** (no leaks) and **self-righting** (drift auto-detected, auto-corrected where safe).
+
+### Highest-priority next moves (sourced from [[billing/_todos]])
+
+- [ ] **T1 — Close the crash-path emit gap.** Spot-check 5-10 silent containers in NR; design crash-emit mechanism; aim for fleet silent-cronjob rate <5% over 24h sustained 7d. Blocked-by: PR #1688 baseline established. *(billing/_todos T1)*
+  - [ ] **T1 pre-impl — Spot-check 5-10 silent containers in NR** (~4h). Classify each into {completed-no-emit, signal-killed, crashed, stuck-in-healthcheck} per last-log-line + duration signature. Pre-impl research for the crash-emit design. Top-2 per [[2026-05-11_pre-impl-research-priority-reorder]]. *(billing/_todos T1 step 1)*
+- [ ] **R1 — Admin↔emit dashboard signal (continuous reconciliation).** Design landed 2026-05-11: [[2026-05-11_billing-reconciliation-dashboard-design]] (query shape, NRQL+admin-DB data source, separate billing dashboard local-first, 5% → 1% threshold ramp, 5 open impl questions pinned). Implementation PR is the next loop. This is the post-mortem's headline action item — closes the "unknown drift window" risk. *(billing/_todos R1)*
+  - [x] **NF2 — Promote `reconcile_cameras.py` to a Tier-1 dashboard signal** ✅ DEPLOYED 2026-05-11. Tier-1 on Firebat (daily 04:00 PT timer), 3 signals enabled in signals.json. First real run: `production_missing_subscription.cameras=2024` → RED (value-add demo working). Deploy codified at `local_network_scripts/phase-16-billing-reconcile.sh` (re-runnable, idempotent). *(billing/_todos NF2)*
+  - [ ] **NF1 — Clone + inventory `actuate_bi` repo** (~2h). Find DDL files in `sql/snowflake/`, mirror in [[snowflake-billing-tables]] §"Table inventory" replacing inferred column lists, document the swap-task schedule mechanism. Closes ENG-242 remainder. *(billing/_todos NF1)*
+  - [ ] **NF3 — Production unbilled-camera ops follow-up** (sales coordination). **2,024 cameras** (May 2026 actual via NF2's first real run — up from 803 in Feb 2026, +150%). 4M compute-hours/month. Re-frame: not engineering scope, but a demo that the reconciliation signal NF2 just shipped is surfacing real growing revenue gaps. Filing target TBD — likely Slack to sales-ops/Tatiana with the trend. *(billing/_todos NF3)*
+- [ ] **R2 — Emit↔Snowflake reconciliation.** Data-team-owned. Engage on the Cohort F6/F5 ingestion gap; produce a daily SQS-sent vs Snowflake-landed delta query. *(billing/_todos R2)*
+- [ ] **S1 — AutoPatrolSchedule post-delete propagation hook.** Last-active-schedule deletion cascades to customer disable. Blocked-by: admin-team cascade-semantics ADR. *(billing/_todos S1)*
+- [ ] **C1 — Keep [[billing-events-catalog]] current.** PR template entry: "If this PR adds/removes a billing emit site or consumer, update [[billing-events-catalog]] in the same PR." Reviewer checklist enforcement. *(billing/_todos C1)*
+
+The full categorized list (24 items across 6 categories) lives in [[billing/_todos]]. Promote items here as §N sub-items only when they become active this-week scope; otherwise the topic todos is the source-of-truth.
+
+### Adjacent / cross-cutting
+
+- §3 (cleanup-Lambda) — the existing self-righting prototype for one drift class (Immix-deleted-but-admin-active). Pattern to replicate up the stack.
+- §9 (Operational Dashboard) — billing-drift signal (R1 above) is a first-class candidate panel.
+- §5 (Fleet Architecture) — whichever fleet paradigm wins must preserve and ideally tighten billing emission. Add "Billing & Reconciliation" alongside the to-be-added "Monitoring & Alarms" rubric dimension.
+- §6 (Software Architecture sketches) — enforcement sketch could include a billing-emit-site fitness function (no emit site outside `billing_emit.py`; idempotency guard always reached).
+- §25 (archived Cohort B cascade) — pattern source; revival trigger is the same self-righting design space.
+- §26 (deferred Cohort F + §16 tail) — directly billing-adjacent; cohort F connector-side fixes shipped in PR #1688.
+
+### Related
+
+- [[billing/_summary]] — topic overview
+- [[billing/_todos]] — categorized todo list (source-of-truth; this §N references loosely)
+- [[2026-05-11_billing-pain-post-mortem]] — post-mortem
+- [[billing-events-catalog]] — single source of truth for billing events
+- [[2026-05-07_handoff-pr-1681-promotion]] — promotion chain that closed the recent emit gaps
+- [[autopatrol-deferred-backlog]] — sibling backlog with overlapping items (esp. "Billing emit on crash / early-endrun paths")
+- [[2026-05-06_cohort-f-investigation]] — the audit that drove this whole arc
+
+---
+
+## 29. Internal-test deploy lane — custom-branch wiring via admin API
+
+**Priority:** This-week-or-next (planning) — not active today.
+**Status:** Idea captured 2026-05-11 during the AutoPatrol queue-routing drill. Needs design before any code.
+
+### The problem
+
+Today, untested dev branches must be promoted to `stage` to be exercised against any real workload, which pollutes stage with churn and means every stage→rearch promotion drags along revertible-but-noisy iterations (see the #1681 → #1686 → #1687 → #1688 chain). We need an internal-test lane that lets us point selected sites (Alibi, Securitas trial, internal eval) at a custom branch image *without* touching stage.
+
+### Design surface
+
+- **Admin-side wiring:** how to configure a custom branch (image tag) at the site / customer level. Likely via a new field on the connector deploy config, exposed through an admin API endpoint.
+- **API automation:** so we can flip a cohort of sites onto a branch and back without manual DB edits. Idempotent endpoint + audit log.
+- **Cohort definition:** what's the "internal-test cohort" canonically? Lead-implied (today's `lead_implies_dev` heuristic), explicit opt-in flag, or both?
+- **Deploy interaction:** ArgoCD / connector_deployer needs to honor the per-site image-tag override. Today the deploy chain is per-cluster, not per-site — this is the heaviest lift.
+- **Cleanup discipline:** stale custom-branch assignments must auto-expire (e.g., 7d TTL) or the cohort drifts off latest-known-good.
+
+### Why now
+
+Surfaced by the 2026-05-11 AP signal investigation — the `lead_implies_dev` queue heuristic is *already* doing 80% of this routing for the SQS layer (Alibi's patrols land on dev queue, dev pod processes them on dev image tag `1.0.1-dev`). A formal internal-test lane would generalize that into a first-class lever for the connector image itself, with safety rails.
+
+### Open work
+
+- [ ] **Design synthesis** — write the ADR-style note covering admin model, API surface, deploy-chain integration, cohort semantics, TTL/cleanup. Lives in `topics/actuate-platform/notes/syntheses/{date}_internal-test-deploy-lane.md` once drafted.
+- [ ] **Stakeholder ping** — connector_deployer owner + admin-side owner for buy-in on the deploy-chain change before scoping further.
+- [ ] **Prototype scope** — proposed phasing (admin schema first, then API, then deploy override, then cohort opt-in).
+
+### Related
+
+- §3 / §27 (AutoPatrol routing) — the SQS-side precedent for cohort-based dev routing
+- §5 (Fleet Architecture) — any fleet redesign must accommodate per-site image-tag overrides
+- §28 (Billing Pipeline) — internal-test traffic must NOT pollute billing-emit counts; cohort opt-in needs a billing-suppression switch
+- Existing `lead_implies_dev` heuristic at `actuate-libraries/actuate-config/.../patrol_config.py:31-34` — first place a generalized opt-in flag would replace
 
 ---
 
@@ -894,7 +663,7 @@ Items surfaced during the 2026-04-22 morning fan-out that don't map to an active
 - [ ] **§3 §2b-style closeout for fan-out discoveries** — two one-liner KB edits worth batching: (a) clarify that emit comes from `connector-{site_id}-vch-{n}-chm-cronjob` containers, NOT the main vms-connector pod; (b) cross-link `2026-04-20_lambda-creation-and-tuning-playbook.md` into §3's Related block.
 - [ ] **Fan-out findings → auto-KB-update automation** — when a morning fan-out surfaces an architectural fact that clarifies an existing synthesis, the update should happen automatically. Design direction: post-fan-out step in `/daily-scope` that diffs against referenced KB notes, offers to append a clarification line. Can piggyback on `kb-scribe` agent.
 - [ ] **OOMKill fleet sizing audit** — fan-out revealed chronic fleet-wide OOMKills. Lead offenders: `connector-14170` (32/day, chronic), `connector-23730` (18), `connector-40693` (17). Verdict (nrql-investigator, 2026-04-22): chronic-camera-count-driven. Recommended: **memory limit +25-30% on the site(s) missing a memory-tier assignment**. Broader: audit fleet for sites whose camera count exceeds the threshold for the default memory tier.
-- [ ] **`NoneType unpack` error 3x-up drill** — 5,174 events in last 12h vs 1,699 prior 12h (`cannot unpack non-iterable NoneType object`). One-shot investigation; schedule into a morning-followup.
+- [ ] **`NoneType unpack` error 3x-up drill** — 5,174 events in last 12h vs 1,699 prior 12h (`cannot unpack non-iterable NoneType object`). One-shot investigation; schedule into a morning-followup. **2026-05-04 update:** still active — `create-detection-window` is the top container today at ~3,200-5,800 errors / 24h (per fleet_error_top15 triage). Possibly a new high-water mark vs the 2026-04-22 baseline. Priority bump: this is the #4 source of fleet ERROR volume today, behind connector-deploy VPA noise + 2 dw_url_up sites (one fix in flight via PR #1671).
 - [ ] **Orphan-branch triage (3 lanes)** — `actuate-libraries@feature/autopatrol-puller-error-classification`, `autopatrol-server@fix/sqs-stuck-window-id-lookup`, `camera-ui @ main` with dirty `Login.tsx`.
 - [ ] **§2d option-3 mitigation time-bound fallback** — Mark posted the nginx/apache fix recipe on [GH#1658](https://github.com/aegissystems/vms-connector/issues/1658) Sunday 21:50Z; Immix silent since. If no Immix engagement by **2026-04-28**, elevate option-3 from "backup" to "active scope."
 
@@ -925,6 +694,13 @@ Items surfaced during the 2026-04-22 morning fan-out that don't map to an active
 
 - [ ] **Onboarder lifecycle pass log silence — debug** *(2026-04-30 17:00Z)*. Flipped `ONBOARDER_TENANT_LIFECYCLE_ENABLED=true` on US + EU at 16:02:30Z. Both Lambdas redeployed (correct CodeSha256, ~5 min cadence). BUT the expected `tenant lifecycle pass: tenants checked=...` INFO log line is NOT appearing — and even the pre-existing `Totals: N contracts, M sites` line that's BEFORE my edit is missing. Lambda completes normally (`END RequestId`, no error visible). Hypothesis: contract loop consumes the entire 4:45 wall-clock (Lambda timeout=600s) and exits silently before reaching either log line. With 30+ failing tenants × 3 retries × 2s delay it could exhaust the budget. Needs: (a) verify deployed CodeSha matches commit `8ac055f`; (b) check if contract-loop's `for contract in contracts_list:` ever completes; (c) wrap `_run_tenant_lifecycle()` call in try/except to log if it crashed; (d) add structured "phase" log lines so we can tell where the Lambda dies.
 
+### From §21 — post-archive (2026-05-04)
+
+§21 archived 2026-05-04 ([[2026-05-04]] § "Closed Workstreams"). Two forward-looking items remain to track:
+
+- [ ] **`silent_drop_inverse` calibration on billing signals** — once 7d of history accumulates (~2026-05-10), confirm the rule on `vch/chm/autopatrol/analytics/fleet_billing_emit_6h` doesn't false-positive on weekend traffic dips. Tune `yellow_below` if needed. Signals at `~/.claude/skills/dashboard-check/config/signals.json`.
+- [ ] **Optional sibling signal `vch_runs_6h`** — count of distinct VCH cronjob pods that ran. Pairs with `vch_billing_emit_6h` to show events-per-run alongside the absolute. Useful if the per-camera multiplier ever drifts (e.g., a new emit gap drops events-per-run from 10 → 6 without changing run count). Defer until a real symptom shows up.
+
 ### From NR reversal + CE validation (2026-04-22 afternoon)
 
 - [ ] **Fleet-coordinator unification question — scoping** — `topics/fleet-architecture/notes/concepts/fleet-coordinator-unification-question.md` tracks the structural observation. RESOLVED viable via API sketch 2026-04-22; next steps in concept note's §"Track / next steps" — sketch minimum-viable gRPC API, benchmark lease-churn, prior-art scan. **Feeds the formal A-E re-score when it runs.**
@@ -937,10 +713,100 @@ Items surfaced during the 2026-04-22 morning fan-out that don't map to an active
 - [ ] **Final composite ranking after both refinements** (recorded for reference): E 8.00 (PoC-1), C 7.55 (PoC-2), B 7.25, D 6.85, A 4.45, B-prime CLOSED 6.25.
 - [ ] **PoC-1 (E) invalidation criterion tightened** — if E's measured FDMD drop is <40%, C overtakes on composite. Flip primary to C unconditionally in that case.
 
+---
+
+## 23. Obsidian Web Clipper viability evaluation (follow-up)
+
+**Status:** queued — not blocking
+**Priority:** P3
+**Surfaced:** 2026-05-03 during `/dev-kit` lift-and-shift session
+**Spec:** [[obsidian-clipper-evaluation]] (`topics/obsidian/notes/entities/obsidian-clipper-evaluation.md` — written into the dev-kit's KB scaffold; mirror it into the live KB when this picks up)
+**Upstream:** https://github.com/obsidianmd/obsidian-clipper
+
+### The question
+
+Can the kit's source-ingestion pipeline (`/kb-ingest`, `/kb-queue`, `/kb-auto`) use [Obsidian Web Clipper](https://github.com/obsidianmd/obsidian-clipper) — directly OR by drawing inspiration from its architecture — instead of the current HTTP-fetch + retry loops? Web Clipper handles the parts the current loops handle poorly: JS-rendered pages, paywalls (logged-in user), iframe-loaded content, lazy images, boilerplate-stripping.
+
+### Open work
+
+- [ ] **Failure-mode distribution audit** — what's the actual breakdown of fetch failures in `reading-list.md`s today? Need data, not intuition. Probably one Sunday afternoon's worth.
+- [ ] **kb-starter Rule 23 fit** — does kb-starter's existing Clippings-folder convention give us most of "Path A — direct integration" for free?
+- [ ] **`/kb-auto` headless-vs-Web-Clipper-interactive trade-off** — Web Clipper requires a click. Does losing headless overnight ingestion matter for actual usage patterns?
+- [ ] **Decide: A (direct integration), B (inspired-by, build server-side w/ Playwright), or C (hybrid — Web Clipper for problematic domains, HTTP-fetch for the rest).** Likely answer: C.
+- [ ] **If picking A or C** — wire `/kb-queue` to scan the `clippings/` folder and process new items.
+- [ ] **Mirror [[obsidian-clipper-evaluation]] from dev-kit/kb-scaffold into live KB at `topics/obsidian/notes/entities/`** — currently it only exists in the dev-kit staging.
+
+### Context
+
+Surfaced while building out the `dev-kit` lift-and-shift package. The dev-kit's `obsidian-cli/` retrieval ladder is the read-side context-efficiency play; this is the corresponding write-side / ingestion play. Per user direction (2026-05-03): **devbox kit work takes priority; this is a follow-up only.**
+
+---
+
+## 24. Internal LLM shop on `npu-server` (shared, multi-purpose)
+
+**Topic:** [[llm-shop/_summary]] · **Host:** [[host-npu-server]] · **Architecture:** [[2026-05-04_llm-shop-initial-architecture]] · **Phase 1 record:** [[2026-05-04_phase-1-installed]] · **Phase 2 design:** [[2026-05-04_phase-2-day-to-day-usage]] · **Next-steps menu:** [[2026-05-05_phase-2-next-steps]] · **Pi integration:** [[pi-dev-integration]] · **Model-routed proxy + sync:** [[2026-05-06_model-routed-proxy]]
+
+Status (2026-05-11): Phase 2A/2A.2/2B/2C/2D.1/2D.2/2F/2G/2H + kb-deep-intake shipped. Status + Playground + Catalog + Peers at `http://npu-server.tail9b2a4e.ts.net:8080/`. OpenAI-compat at `:11434/v1` (CPU Ollama) and `:8200/v1` (iGPU SYCL 14B). `/api/proxy/chat` routes by model name. `~/llm-shop/` mirror source-controlled (commits `0eec65c` + `e62252f`).
+
+| Phase | State |
+|---|---|
+| 1 — Foothold | ✅ status page, Ollama (6 models pulled, hot-swap proven), NPU (TinyLlama) |
+| 2A — Multi-page dashboard | ✅ Status / Playground / Catalog / Peers w/ shared nav, `/api/proxy/chat` streaming |
+| 2A.2 — Model-routed proxy + source-control sync | ✅ 2026-05-06 — see [[2026-05-06_model-routed-proxy]]. Drops `backend` field; SYCL→playground works; SSE→NDJSON adapter for llama.cpp. |
+| 2B — IDE/Pi exposure | ✅ Ollama on `0.0.0.0:11434` + SYCL on `:8200/v1`; configs on `/catalog` |
+| 2C — `llm-shop-delegate` subagent | ✅ at `~/.claude/agents/` |
+| 2D.1 — `code-delegate` harness | ✅ `:8100`, task_type-aware system prompts |
+| 2D.2 — `kb-intake` harness + `~/bin/kb-intake` CLI | ✅ shipped 2026-05-05 (URL → readability → llama3.1:8b → draft to `_research-inbox/`). Closes [[obsidian-clipper-evaluation\|§23]]. |
+| 2E — Status page UX polish | ⏳ backlog (warm-up button, model live state, NDJSON log, iGPU/NPU util, runtime banner) |
+| 2F — kb-todo agent | ✅ `~/bin/kb-todo-{scan,research}`, both source-controlled in `local_network_scripts/files/`. Polish backlog in [[2026-05-05_first-real-tasks-experiments]]. |
+| 2G — SYCL 14B service | ✅ live on `:8200`, qwen2.5-coder:14b-instruct-sycl, ~3.4 tok/s output / 5.4 tok/s prompt on iGPU |
+| kb-deep-intake module | ✅ shipped 2026-05-07; e2e validated. See [[2026-05-07_kb-deep-intake-architecture]]. |
+| 2H — Overnight batch plumbing | ✅ shipped 2026-05-11. `kb-batch-{submit,pull,status}` (laptop) + `kb-batch-runner.py` + `llm-shop-kb-batch@.service` (box). Smoke: 2-URL ollama-backend run merged cleanly to `_research-inbox/`. Design: [[2026-05-07_overnight-batch-pattern]] §"Build log". |
+| 3 — Federation | ⏳ deferred until ACL tags + multiple shops |
+
+**Open work for next session:**
+
+- [ ] **`llm-shop-sycl-7b.service`** on `:8201` (qwen2.5-coder:7b-instruct gguf). Proxy port already reserved in `SYCL_PORTS`. Need `Conflicts=llm-shop-sycl-14b.service llm-shop-sycl-8b.service` so only one runs at a time (single iGPU). Mirror the 14b unit template.
+- [ ] **`llm-shop-sycl-8b.service`** on `:8202` (llama3.1:8b gguf). Same pattern as 7b. Prereq: pull/convert llama3.1:8b gguf (currently only Ollama-format on disk).
+- [ ] **Phase 2E status page polish** — warm-up button, model live state, NDJSON log viewer, iGPU/NPU util banner.
+- [ ] **IPEX-LLM evaluation** as faster alternative to llama.cpp+SYCL on Intel iGPU (heavier setup; should beat current ~3.4 tok/s on 14B).
+- [ ] **`eval_count` cosmetic fix** in `_stream_sycl` — null on `done` events because llama.cpp's stats chunk shape doesn't always carry `usage.completion_tokens` where the adapter looks. `predicted_per_second` works.
+- [⏳] **First real SYCL batch in flight** — run-id `2026-05-11T1506Z-video-processing-001`, 10 URLs (moviepy, aiortc, Av1an, mediamtx, janus, pion/webrtc, livekit, restreamer, live555, go2rtc). SYCL healthy at 3.32 tok/s post-restart (root cause of prior degradation: stuck May-7 curl client wedging the queue). ETA ~5.8 hr wallclock. Pull when DONE, review drafts.
+- [ ] **Composer prompt tuning** — planner side landed 2026-05-11 (commit `7b05908`); composer-side observations (key claims sometimes echo source verbatim, occasional flat sections) carry forward to a tuning pass post-overnight.
+- [ ] **SYCL queue-health pre-flight** — add a `kb-batch-doctor` or pre-submit check that detects stale clients holding the SYCL request slot (today's 4-day-old curl wedged the queue invisibly). Either kill-stale-or-warn at submit time, OR a periodic Tier-1 systemd timer.
+
+**Open questions inbox** (different idea — sketched 2026-05-05): [[2026-05-05_open-questions-inbox-idea]]. Schedule alongside Phase 2E.
+
+**Deferred — needs admin help (tracked on [[host-npu-server]]):** SSH password rotation; tailnet ACL tags `tag:llm-shop`/`devbox`/`office`; tailnet HTTPS Certificates enable; push firebat pubkey to npu-server.
+
+**Hard constraints** (don't relitigate; full detail in architecture ADR): all work in `~/llm-shop/`; tailnet-only; cgroup-RAM-capped; never starves Watchman.
+
+---
+
+## 25. actuate_admin schedule -> customer -> cameras cascade hook (Cohort B fix) — ARCHIVED 2026-05-07
+
+> **Decision (2026-05-07):** no backfill, cascade hook stays flag-disabled. `actuate_admin#2406` shipped behind `AUTOPATROL_SCHEDULE_CASCADE_ENABLED=False`; standalone PR `#2405` redundant; mgmt command `#2408` paused open.
+>
+> Full ADR: [[2026-05-07_cohort-b-no-backfill-decision]]. Workstream archived to [[2026-05-07]] § Closed Workstreams. Re-open conditions tracked in [[autopatrol-deferred-backlog]] §"§25 Cohort B no-backfill decision".
+
+---
+
+## 26. Cohort F subgroup investigation + §16 hardening tail — DEFERRED 2026-05-07
+
+> **Deferred 2026-05-07.** PR [autopatrol_onboarder#14](https://github.com/aegissystems/autopatrol_onboarder/pull/14) (Cohort F deep classifier) drafted; not blocking customer-facing work after the 2026-05-06 reframe in [[2026-05-06_cohort-f-investigation]]. All sub-items (classifier run, Snowflake export script, lifecycle/cohort dashboard signals, §16 Steps 5+6, Jira closeout) moved to [[autopatrol-deferred-backlog]] § "§26 Cohort F + §16 hardening tail". Re-open trigger: real customer-side complaint or merge of PR #14.
+
+---
+
+## 27. AutoPatrol — demote autopatrol-created groups to sub-groups (2026-05-05 incident) — DEFERRED 2026-05-07
+
+> **Deferred 2026-05-07** (twice-deferred prior). The 2026-05-05 incident root cause (contract POST 100% failing for 7+d) was resolved by the same-day admin deploy that fixed the `customer_name` unique-constraint collision. The demotion is preventative for the next round. Sub-tasks moved to [[autopatrol-deferred-backlog]] § "§27 Group demotion PR 1". Re-open trigger: ops reports manual-promotion volume becoming painful, OR new contract-POST collision pattern emerges.
+
+---
+
 <!-- BEGIN-AUTOSYNC-JIRA -->
 ## Current Jira Queue (auto-synced)
 
-**Last synced:** 2026-05-01
+**Last synced:** 2026-05-11
 **Source:** `assignee = currentUser() AND statusCategory != Done ORDER BY updated DESC`
 
 This section is **fully replaced** on every sync by the `jira-sync` automation (see [[automation-jira-sync]]). Manual edits in this section will be lost — add notes against tickets in the workstream sections above instead.
@@ -954,20 +820,21 @@ This section is **fully replaced** on every sync by the `jira-sync` automation (
 | CS3-58 | Lowest | Task | Configuration per camera |
 | CS3-323 | High | Bug | Discrepancy in cam count btwn dashboard and report |
 
-### In Progress / In Review (2)
+### In Progress / In Review (3)
 
 | Ticket | Status | Priority | Type | Summary |
 |--------|--------|----------|------|---------|
 | ENG-198 | In Progress | Medium | Bug | AutoPatrol modelless patrol: signal-flow fixes + investigation |
-| ENG-166 | In Progress | Medium | Task | AutoPatrol auto-delete lambda — design + implementation |
+| ENG-219 | In Progress | Medium | Task | Local GPU agent / GPU server R&amp;D box setup |
+| ENG-217 | In Progress | Medium | Task | AutoPatrol "no-schedule" cascade cleanup (~350 cams) + Cohort F deep classifier |
 
 ### To Do (4)
 
 | Ticket | Priority | Type | Summary |
 |--------|----------|------|---------|
+| ENG-136 | High | Task | PyAV upgrade 13.1 → 17.0 (nogil pixel conversion) |
 | ENG-183 | Medium | Task | S3 Cost Reduction — Ranked Action Plan |
 | CS3-505 | Medium | Sub-task | add outcome to the API for CHM alerts |
-| ENG-136 | Medium | Task | PyAV upgrade 13.1 → 17.0 (nogil pixel conversion) |
 | ENG-94 | Medium | Task | Deferred alerts: send without frame as fallback when cache expires |
 
 ### Open (1)
@@ -981,32 +848,32 @@ This section is **fully replaced** on every sync by the `jira-sync` automation (
 ---
 
 <!-- BEGIN-TODAY-SCOPE -->
-## Today's Scope (2026-04-30)
+## Today's Scope (2026-05-11)
 
-*Wrap closed 2026-04-30 — all 5 picks closed (4 runbooks + cost-signal expansion); morning-prep allowlist landed via sibling session. Plus §16 24h cascade soak verdict came in clean (1 cascade fired against RSS canary, DLQ stayed 0). Archive: [[2026-04-30]]. Next morning's scope picks via `/daily-scope`.*
+Picked via [[skill-daily-scope|/daily-scope]]. Line items close via [[skill-daily-wrap|/daily-wrap]] at end-of-day — closed items get a summary in the daily note, not deleted here.
 
-### Tracked as relevant (carry-forward to next session)
+**Morning context:** Friday's deferred PR [#1688](https://github.com/aegissystems/vms-connector/pull/1688) (stage→rearch, bundles #1684 line-crossing libs + 10 other PRs) is **cleared for merge**: zero weekend stage drift (tip `6d95785d`), targeted re-soak via `nrql-investigator` confirmed line-crossing bundle GREEN on stage — ERROR rate down 50-58%, per-pod alarm rate down ~46% (expected parked-vehicle suppression), zero pod restarts/OOMKills, no new error classes. CI 4 SUCCESS. Mechanical blocker: `REVIEW_REQUIRED`. Morning fan-out also surfaced a **prod-side AutoPatrol RED**: `autopatrol-server` prod is starved (0 SQS msg/24h+) while `autopatrol-server-dev` is consuming the prod queue (2.5k log lines / 6h: SQS receives, S3 uploads, Immix 200s). Queue-routing config drift — not stage-correlated, but blast radius unknown (dev pod may be writing to dev-tier infra for prod patrols). Picked into today.
 
-Forward context — open elsewhere, not yet picked.
+**Active picks:**
 
-- **§16 effective-close-out** — 24h soak clean: 1 expected cascade (RSS canary `0ee7cb3f`, reason=`immix_tenant_suspended`, admin OK), DLQ depth 0/24h. Tomorrow morning's `/daily-scope` should consider full §16 archival to `## Archive`. Step 5 (re-enable path) and Step 6 (`disable_tenant` permission_classes hardening) remain open per §16's subtasks.
-- **§17 stage→rearchitecture promotion** — soak clean (DDB flapper counts stable {c3808175:2, fbdfdba6:1, ee1822f1:2} <3 threshold; `connector_no_patrols_to_run_24h` 34→32 trending). Cherry-pick or PR-merge PR #1662 to rearchitecture. Gate clear, not picked today.
-- **§18 fleet memory-limit drift** — RED on `fleet_new_oom_offender` 2 days running (connector-14170 top, 10-14/24h). VPA floor restoration in `connector_deployer` is the fleet-wide fix; not picked today.
-- **Immix zombie-tenants Jira ticket** — exec deferred from fan-out; needs Atlassian writes. Draft at [[2026-04-29_immix-zombie-tenants]]. Design-blocking for §16 EU rollout (Step G).
-- **PR #77 post-merge import dance** ([ds-terraform-eks-v2#77](https://github.com/aegissystems/ds-terraform-eks-v2/pull/77)) — once CI green and merged: terragrunt import + apply per [[2026-04-29_iam-tf-import-pattern]]. Still open, awaiting review.
-- **AUTO-351 BB push to prod** — §2c. Ready-to-Deploy. Brad-assigned, not Mark.
-- **vms-connector#1656 streamId-null patrol-alert** — §2d.2. Unassigned.
-- **ENG-94 deferred-alert frame fallback** — Jira To Do, Medium, Mark-assigned.
-- **§3 Step F prod US scale-up** — gate clear (E.3 closed); one-flag flip away.
-- **§3 Step G prod EU** — separate track, needs net-new infra.
-- **§3 follow-ups: Immix error-pattern observability + SiteDisabledOrDisarmed routing** — design-pending.
-- **HIGH overnight (carrying):** connector-deploy 11.6k err (retry storm against site 14170); connector-32460 5.5k (VMS empty/non-JSON); queue-evalink-consumer 318 (deviceId-32 data-quality); 5/5 checked AP sites running 0 patrols.
-- **Sibling-session work landed today (FYI, not Mark's track):** morning-prep allowlist closed via [[2026-04-30_morning-prep-scripts-runbook]] + [[2026-04-30_morning-prep-audit]] + [[2026-04-30_three-tier-routine-check-pattern]]; §16 admin-side propagation + cascade-semantics via [[2026-04-30_admin-propagation-handoff]] + [[2026-04-30_data-model-cascade-semantics]] + [[2026-04-30_autopatrol-state-audit]]; obsidian-CLI retrofit via [[2026-04-30_kb-skill-cli-retrofit]] + [[obsidian-cli]]; NR cookbook + log-level strategy via [[nr-connector-query-cookbook]] + [[nr-log-level-strategy]].
+- [ ] **Ship PR #1688** — APPROVED by Zack 2026-05-11T13:51Z, CLEAN, all checks SUCCESS/SKIPPED. PR title + body edited to embed `[patch:vms-connector]` and a "Squash body — paste into merge dialog" block. **User merging from GitHub UI** — Claude stands up Tier-1 systemd soak on Firebat post-merge (T+6/8/18/24h verdicts auto-append to daily notes). Closes [§20](#20-dw_url_up-empty-body-errors--fleet-wide-dw-auth-endpoint-flake) fully on clean rearch soak. Handoff: [[2026-05-07_handoff-pr-1681-promotion]].
+- [x] **AutoPatrol queue-routing investigation** — RESOLVED, no outage. Root cause: legacy `lead_implies_dev` fallback in [actuate-config/patrol_config.py:31-34](https://github.com/aegissystems/actuate-libraries/blob/main/actuate-config/src/actuate_config/connector/patrol/patrol_config.py#L31) routes any customer with "actuate" in `lead` to the dev queue. Only AP-running tenant right now is Alibi (`47dc2c1f-...`, sites 35830/35832) → all 52 patrols/6h route to dev → autopatrol-server-dev (imageTag `1.0.1-dev`, DEV=true) consumes them correctly. autopatrol-server prod (`0.1.25`) is idle because no GA-tier customer is on AP yet. Dashboard `autopatrol_sqs_messages` polls only prod queue → false-RED. Real fix is signal redesign — moved to **AutoPatrol signal redesign** below.
+- [ ] **AutoPatrol signal redesign** *(post-#1688)* — Split into two signals: `autopatrol_sqs_messages_dev` (polls dev container) + `autopatrol_sqs_messages_prod` (polls prod container, threshold normalized against expected-prod-routed-patrol count — when expected=0, suppress RED). Updates: `~/.claude/skills/dashboard-check/config/signals.json` + `~/bin/autopatrol-overnight-check.sh` (source at `/home/mork/work/local_network_scripts/files/`).
+- [ ] **Review/merge PR #2389** — actuate_admin draft (`audit_autopatrol_state` mgmt command). Read diff, push from draft, merge to `staging`, wait for Staging CI, eventually flow through release-train to `main` then prod. Then `kubectl exec` on prod admin → run command → paste cohort sizes back into [[2026-04-30_autopatrol-state-audit]]. Carry-forward from 2026-05-01 follow-up.
+- [ ] **IAM access-denied triage** — Dashboard RED: `iam_access_denied_cluster_wide` shows `camera-admin-staging=12, microservice=9`. Pull last 24h denials via NRQL or CloudWatch, identify role/policy gap, file ticket or fix in `kubernetes-deployments`. Single-pass triage, not a full project.
 
-**Surface (camera-ui audit-flag):** Login.tsx — runbook landed today; decision tree in [[2026-04-30_camera-ui-login-tsx-audit-flag]] should retire this.
-**Surface (jira-sync audit-flag):** check tomorrow whether [[automation-jira-sync]] cron fired today; runbook [[2026-04-30_detecting-jira-sync-staleness]] is the recovery path.
-**Surface (orphan branches):** `vms-connector@fix/vch-drop-no-patrols-emit`, `autopatrol-server@fix/ci-surface-push-failures` — investigate before any push.
-**Surface (AWS dev-eu profile not configured):** non-blocking but worth a follow-up before any EU work.
+**Tracked as relevant (carry-forward):**
+
+- **§5 Run Service sub-project** — 6 docs drafted; top blockers: vestigial customer-fields, image `validate` subcommand status, sensitivity preset numeric calibration. Forward context.
+- **§18 fleet memory-limit drift** — handed off to infra team; follow up later in week to confirm VPA floor restoration landed. **Not our task today.**
+- **§24 LLM shop** — Phase 2A.2 shipped 2026-05-06; forward context.
+- **AUTO-351 BB push to prod** (§2c) — Ready-to-Deploy, Brad-assigned.
+- **§16 lifecycle log silence debug** + **Immix zombie-tenants Jira draft** — in [[autopatrol-deferred-backlog]].
+- **vms-connector#1656 streamId-null patrol-alert** (§2d.2) — Unassigned.
+
+**Surface (camera-ui audit-flag):** Login.tsx — runbook landed via [[2026-04-30_camera-ui-login-tsx-audit-flag]] should retire; carrying.
+**Surface (jira-sync):** stale (`Last synced: 2026-05-07`); refresh after the AP drill.
+**Surface (orphan branches):** `vms-connector@stage-to-rearch-2026-05-08-billing` (current — keep till #1688 merges), other orphans unchanged.
 
 <!-- END-TODAY-SCOPE -->
 
@@ -1050,7 +917,7 @@ Consumed items get `[x]` and **immediately move to that day's daily note's `## C
 
 ### Seeded for 2026-05-02
 
-- [ ] **verify**: vms-connector PR [#1660](https://github.com/aegissystems/vms-connector/pull/1660) post-merge soak (merged 2026-05-01T14:28:26Z, commit `73fd3bf` to `rearchitecture`). Bundled 6 commits: AP cleanup connector emit (#1657), stream_id null guard (#1659), VCH `no_patrols` drop (#1662), YAM polygon hints (#1655), pullers stable bump (#1661), BT-949 pano-split IZ fix. Verification fan-out:
+- [ ] **verify**: vms-connector PR [#1660](https://github.com/aegissystems/vms-connector/pull/1660) post-merge soak (merged 2026-05-01T14:28:26Z, commit `73fd3bf` to `rearchitecture`). **Autonomous Tier-1 monitoring in place:** `~/bin/pr-1660-soak-check` on Firebat with 4 systemd one-shots (T+6h 20:30Z today, T+8h 22:30Z today, T+18h 12:00Z 2026-05-02, T+24h 14:30Z 2026-05-02). Verdicts auto-append to daily notes under `## PR #1660 Post-Merge Monitoring`. RED runs surface via `systemctl --user --failed`. Source-controlled at `local_network_scripts/files/pr-1660-soak-*`. **Manual fan-out below is now redundant** unless an autonomous run goes RED. Bundled 6 commits: AP cleanup connector emit (#1657), stream_id null guard (#1659), VCH `no_patrols` drop (#1662), YAM polygon hints (#1655), pullers stable bump (#1661), BT-949 pano-split IZ fix. Verification fan-out:
   1. **YAM emit (1h post-deploy first, 24h confirm):** any YAM-eligible site emits `motion_polygons` WKT to slicing server, no `motion_mask`-related `AttributeError` in connector logs. NRQL: `SELECT count(*) FROM Log WHERE container_name LIKE '%connector%' AND message LIKE '%motion_mask%' AND level = 'ERROR' SINCE 24 hours ago` — expect 0.
   2. **VCH `no_patrols` traffic drop (24h):** cleanup-Lambda `integration=vch reason=no_patrols` event count drops to near-zero for Vendor.Actuate.Prod. Unblocks `decide: Recalibrate connector_no_patrols_to_run_24h thresholds` once landed in prod (not just rearchitecture).
   3. **stream_id null guard (24h):** no `raise_patrol_alert` handler errors with null `stream_id`. Spot-check: `SELECT count(*) FROM Log WHERE message LIKE '%raise_patrol_alert%' AND message LIKE '%null%' SINCE 24 hours ago`.
@@ -1060,6 +927,31 @@ Consumed items get `[x]` and **immediately move to that day's daily note's `## C
 - [ ] **exec**: File follow-up issue in vms-connector for direct unit tests on `connector_factories/shared/cleanup_emitter.py` (167 LOC, broad `except Exception`, zero direct tests). Tests should assert: emit fires under terminal exits, suppressed for pending/transient, no-op when env flag off, no-op when `schedule_id` empty. Surfaced in PR [#1660](https://github.com/aegissystems/vms-connector/pull/1660) review 2026-05-01. *(seeded 2026-05-01 for 2026-05-02)*
 - [ ] **exec**: File follow-up issue (or one-line PR) for explicit `boto3.client("sqs", region_name=...)` in `cleanup_emitter.py:87` so a region-mismatched stage pod surfaces a distinguishable warning instead of opaque `NonExistentQueue`. Surfaced in PR [#1660](https://github.com/aegissystems/vms-connector/pull/1660) review 2026-05-01. *(seeded 2026-05-01 for 2026-05-02)*
 - [ ] **exec**: KB synthesis closing the loop on YAM motion-bridge removal landing in connector — one-line update under `topics/vms-connector` YAM polygon-hint workstream noting PR #1660 closes the connector-side loop. Per global CLAUDE.md "After Work: Log to KB." *(seeded 2026-05-01 for 2026-05-02)*
+
+### Seeded for 2026-05-03
+
+- [ ] **verify**: §21 — VCH SIGTERM billing-event fix (PR [#1667](https://github.com/aegissystems/vms-connector/pull/1667), merged 2026-05-02 to stage). 36h soak window: by Sunday afternoon there should be multiple SIGTERM'd VCH cronjob pods in the 24h window — confirm each emitted `site_product_ended` events (pre-fix: zero). Run the four NRQL queries in §21 via `nrql-investigator`. If green: comment on PR, close issue [#1666](https://github.com/aegissystems/vms-connector/issues/1666), promote to rearch (separate stage→rearch PR opened from this same session). If red: pull pre/post comparison, figure out what the fix missed. *(seeded 2026-05-02 for 2026-05-03)*
+
+### Seeded for 2026-05-04
+
+- [x] **investigate**: §22 — staging VCH `KeyError: 'monitoring'` startup crash → **picked into 2026-05-04 Today's Scope**. *(seeded 2026-05-03 for 2026-05-04; ran 2026-05-04 — promoted)*
+- [x] **harden**: rotate the Firebat box's user account / SSH password → **picked into 2026-05-04 Today's Scope**. *(seeded 2026-05-03 for 2026-05-04; ran 2026-05-04 — promoted)*
+
+### Seeded for 2026-05-07
+
+- [ ] **verify**: vms-connector PR [#1679](https://github.com/aegissystems/vms-connector/pull/1679) post-merge soak — gated on user merge. Watch `succeeded on stream_id candidate #N` (iteration safety net firing) and `raise_patrol_alert ... failed` (regression) on `:rearchitecture` images for 24h post-merge. Stage validation already proved `stream_ids=[...]` history accumulation is firing (9 events in 30 min) and 0 raise failures; rearch should mirror. **PULLED INTO TODAY'S SCOPE 2026-05-07.** *(seeded 2026-05-06 for 2026-05-07)*
+- [x] **decide**: Send the Immix `StreamFinished` inquiry — **DONE 2026-05-06 evening (sent).** Standing follow-up watch for Immix response per the inquiry's post-response branching plan in [[2026-05-06_immix-streamfinished-inquiry]]. *(seeded 2026-05-06 for 2026-05-07; done 2026-05-06)*
+- [ ] **verify**: Confirm patrol-A188AC1E-style runs on `:rearchitecture` are succeeding without the silent-400 failure mode. Spot-check via `SELECT count(*) FROM Log WHERE cluster_name='Connector-EKS' AND container_image LIKE '%:rearchitecture%' AND message LIKE '%raise_patrol_alert%' AND message LIKE '%failed%' SINCE 24 hours ago` — expect 0. **Folded into PR #1679 soak** above. *(seeded 2026-05-06 for 2026-05-07)*
+- [ ] **exec**: §3 cleanup-Lambda correctness verify pass across Immix-state matrix — see Today's Scope. *(seeded 2026-05-07 for 2026-05-07)*
+- [ ] **exec**: fleet_error_top15 triage — see Today's Scope. *(seeded 2026-05-07 for 2026-05-07)*
+
+### Seeded for 2026-05-06 (or later evening when #2406 lands)
+
+- [x] **DECIDED 2026-05-07 — NO BACKFILL.** §25 Cohort B one-time backfill is no longer REQUIRED. Decision documented in [[2026-05-07_cohort-b-no-backfill-decision]]; cascade hook stays flag-disabled. Re-open conditions tracked in [[autopatrol-deferred-backlog]]. *(seeded 2026-05-05; decided 2026-05-07)*
+
+### Seeded for 2026-05-11
+
+- [x] **verify**: vms-connector PR [#1688](https://github.com/aegissystems/vms-connector/pull/1688) stage tip + re-soak before merge — **GREEN.** Zero weekend drift on stage (tip `6d95785d` matches Friday capture). Targeted re-soak of the #1684/#345 line-crossing bundle via `nrql-investigator`: ERROR rate down 50-58% post-merge (1744 → ~770/24h), per-pod alarm rate down ~46% (expected parked-vehicle suppression, not over-suppressed — volume non-zero), zero pod restarts/OOMKills, no new error classes referencing `actuate_filters`/`actuate_connector_observers`/`line_crossing`. PR status: OPEN, MERGEABLE/BLOCKED, `REVIEW_REQUIRED`, 4 CI checks SUCCESS. Mechanical blocker only: reviewer approval. *(seeded 2026-05-08; ran 2026-05-11)*
 
 <!-- END-MORNING-FOLLOWUPS -->
 
@@ -1089,6 +981,11 @@ Pointer table for fully-completed workstreams. Full content lives in the daily n
 | 2026-04-23 | §1 Inference API v5 — finish for testing | [[2026-04-23]] |
 | 2026-04-23 | §9-old AutoPatrol Alarm & Dashboard System (superseded by cross-repo §9) | [[2026-04-23]] |
 | 2026-04-27 | §13 Subagent + cron MCP-bypass auth flow | [[2026-04-27]] |
+| 2026-05-04 | §21 VCH SIGTERM billing-event fix (#1667/#1668) — verify + harden post-deploy | [[2026-05-04]] |
+| 2026-05-04 | §16 Tenant-status sync gap — cascade-disable suspended tenants from cleanup Lambda | [[2026-05-04]] |
+| 2026-05-04 | §22 Staging VCH startup crash (`KeyError: 'monitoring'`) | [[2026-05-04]] |
+| 2026-05-07 | §25 actuate_admin schedule→customer cascade (Cohort B) — decided no backfill | [[2026-05-07]] |
+| 2026-05-08 | §8 Multi-agent / multi-model setup for KB source research — subsumed by §24 LLM shop | [[2026-05-08]] |
 
 ## Related
 
