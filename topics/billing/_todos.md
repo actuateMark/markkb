@@ -522,20 +522,25 @@ Adjacent: investigate whether wrapping the four DDLs in `BEGIN TRANSACTION; ... 
 
 ---
 
-### NF9. Historical-month replay against pre-fix data (LOW — validation of "would have caught Cohort F" claim)
+### NF10. Wrapper sink filename keyed by analyzed month ✅ DONE 2026-05-11
 
-**Why:** The `billing_production_unbilled_cams` dashboard signal's `would_have_caught` field claims "Cohort F missing-subscription class (~400 of the 642 cams)." That's an unsubstantiated claim until we run [[sales-dashboard-repo]] `reconcile_cameras.py` (via the [[2026-05-11_nf2-deployment-state|NF2 wrapper]]) against a pre-Cohort-F-discovery month (e.g. 2026-04 or 2026-03) and observe the actual number. Current-month run (2026-05) already includes post-fix state; a historical replay shows the signal would have fired on the **drift**, not just the steady-state.
+**Status:** **DONE.** Wrapper now writes `reconciliation-YYYY-MM.json` (analyzed month) instead of `reconciliation-YYYY-MM-DD.json` (today's date). Signals.json commands on Firebat updated from `$(date +%F)` → `$(date +%Y-%m)`. Stale `reconciliation-2026-05-11.json` removed. Re-verified signals: production_unbilled=2024 (RED), residual=0 (GREEN), freshness=1 (GREEN).
 
-**Acceptance:**
-- Run on Firebat: `~/bin/billing-reconcile-check --month 2026-04 --print` (and same for 2026-03 if Snowflake retention covers it — likely does, SPRD keeps a year).
-- Capture the `production_missing_subscription.cameras` value for each historical month.
-- Plot the trajectory: Feb (803 cams) → Mar → Apr → May (2024). If monotone increasing, the slow-drift class is exactly what the signal catches.
-- If a sudden jump aligns with a known incident (PR / config change / customer onboarding wave), document it — that's the canonical example.
-- Update [[2026-05-11_nf2-deployment-state]] §"First real run" with the trend table.
+**Side benefit:** historical replays via `--month 2026-04` now land cleanly at `reconciliation-2026-04.json` without clobbering the current-month sink the daily timer maintains.
 
-**Blocked by:** nothing. Each replay is ~30s of compute; trivial against Snowflake history.
+**Wrapper change:** committed at `local_network_scripts/files/billing-reconcile-check.py` (single 3-line diff to `_emit()`). Re-deploy via phase-16 picks up the change automatically.
 
-**Promote to mark-todos:** when there's a 30-min window. Low priority but high-value-once-done — turns the signal from "claimed to catch" into "demonstrably caught."
+---
+
+### NF9. Historical-month replay against pre-fix data ✅ DONE 2026-05-11 — validated "would have caught Cohort F" claim
+
+**Status (2026-05-11):** **DONE.** Ran on Firebat against `--month 2026-04` (3,152 prod-unbilled / 13.5M hrs / 93.9% connector-billed) and `--month 2026-03` (2,353 / 15.9M / 89.7%). Combined with current-month (2,024 / 4.0M / 95.9%) and Feb baseline (803 / ~88%), the trend confirms:
+
+1. **Production-unbilled-camera class has ~4×'d since Feb 2026** (peaking at 3,152 in April).
+2. **Connector-side emit reliability monotonically improved** (88% → 95.9%) — PR-#1675→#1688 fixes landed.
+3. **Signal would have fired RED on March data** (2,353 > red_above=1500), ~2 months before Cohort F's manual discovery 2026-05-04. **`would_have_caught` claim demonstrably validated.**
+
+Full trend table + analysis in [[2026-05-11_nf2-deployment-state]] §"Historical replay (NF9)." Surfaced one wrapper-design follow-up (NF10 above) — sink filename collides on historical replays.
 
 ---
 

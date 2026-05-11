@@ -12,6 +12,25 @@ author: kb-bot
 
 Snapshot of where NF2 stands as of 2026-05-11. **Wrapper + systemd units shipped; FIRST REAL END-TO-END RUN SUCCEEDED** at 13:20 ET; signals.json wiring drafted but not yet committed.
 
+## Historical replay (NF9) — Feb → May 2026 trend
+
+Run 2026-05-11 against `--month 2026-04` and `--month 2026-03` on Firebat (Snowflake `site_product_run_day_last_year` retains 1 year, so all months reachable). **Validates the "would have caught Cohort F" claim** ([[_todos]] NF9): Cohort F was discovered 2026-05-04 via manual audit; a live signal would have fired RED 2 months earlier on the Feb→Mar transition.
+
+| Month | Production missing subscription | Hours | Connector billed % | Signal at red≥1500 |
+|---|---:|---:|---:|---|
+| Feb 2026 (CLAUDE.md baseline) | 803 | (n/a) | ~88% | 🟡 YELLOW |
+| Mar 2026 (live replay) | **2,353** | 15.9M | 89.7% | 🔴 **RED** |
+| Apr 2026 (live replay) | **3,152** | 13.5M | 93.9% | 🔴 RED |
+| May 2026 (current, partial 11d) | 2,024 | 4.0M | 95.9% | 🔴 RED |
+
+**Findings:**
+
+1. **The unbilled-camera class has roughly 4×'d since Feb 2026** (peaking at 3,152 in April). May's lower number reflects the partial month — usage_monthly's 3-hour threshold under-counts cameras until late month.
+2. **Connector-side emit reliability improved monotonically** (88% → 89.7% → 93.9% → 95.9%) — confirms the PR-#1675→#1688 connector-side fixes landed and held. The remaining production-unbilled class is **NOT a connector emit gap** anymore; it's **purely a Snowflake-side missing-Ordway-subscription class** (the silent `INNER JOIN raw.ordway.subscription` drop documented in [[snowflake-billing-tables]]).
+3. **The signal would have fired RED on March's data**, roughly 2 months before Cohort F's manual discovery on 2026-05-04. Replay confirms the `would_have_caught` claim in `billing_production_unbilled_cams`'s signal definition.
+
+**Wrapper-design follow-up surfaced by replay:** `--month X` runs all clobber `reconciliation-$(date +%F).json` (the sink filename is keyed by *today's* date, not by the month being analyzed). Historical replays should write to `reconciliation-YYYY-MM_replay-on-$(date +%F).json` or similar to avoid overwriting the current-month sink that `/dashboard-check` reads. Tracked in [[_todos]] as a follow-up.
+
 ## First real run — May 2026 snapshot (2026-05-11 13:20 ET)
 
 | Metric | Value | Note |
