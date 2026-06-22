@@ -56,14 +56,22 @@ Finish the cheap MERGEABLE work so nothing is left half-merged, then freeze.
 
 ## Workstream A — Re-home firebat's 4 identities  *(Mon–Wed, HIGHEST RISK)*
 
-This is what makes "company-owned hardware" actually persist. Each timer on firebat authenticates as Mark today. Re-home, then **verify every timer runs green under the new identity.**
+This is what makes "company-owned hardware" actually persist. Each timer on firebat authenticates as Mark today. Re-home, then **verify every timer runs green under the new identity.** **Self-serve audit done 2026-06-22 — most of this we can do ourselves:**
 
-- [ ] **Tailscale node ownership.** Tailnet `aegissystems.ai` is company ✓, but `mork-firebat` (100.124.172.121) + npu-server are registered under `mark@aegissystems.ai`. Have a Tailscale admin transfer device ownership, or re-auth the nodes under a team/service identity. *Without this the box is unreachable Friday.*
-- [ ] **GitHub identity.** firebat `gh` authenticates as personal **`actuateMark`**. Replace with an org machine account or fine-grained org PAT. Affects: `repo-scan`, `git-fetch-major-repos`, `pr-review-digest`, KB bare-repo push.
-- [ ] **AWS.** firebat has only a `dashboard-check` profile (no default creds). Identify what it authenticates as; re-home to a team IAM user/role. Affects: `billing-reconcile-check`, `ecr-lifecycle-audit`, `run-dashboard-check`, `morning-prep`.
-- [ ] **Atlassian + New Relic tokens.** Locate where `jira-sync` + `dashboard-check` read them (script env / config, not dotfiles). Re-issue under a team/service account.
-- [ ] **Verify pass.** Manually trigger each `--user` service (`systemctl --user start <svc>`), confirm exit 0 + expected output. The full timer set: `morning-prep`, `jira-sync`, `run-dashboard-check`, `billing-reconcile-check`, `ecr-lifecycle-audit`, `pr-review-digest`, `git-fetch-major-repos`, `kb-lint`, `kb-relink`, `kb-incoming-refresh`, `kb-jobs-reap`, `rebuild-blog`, `rebuild-quartz`, `morning-prep-self-audit`.
+- ✅ **AWS — ALREADY TEAM-OWNED, no action beyond documenting.** The `dashboard-check` profile uses **IAM Roles Anywhere**: host-bound X.509 cert (`~/.config/aws-rolesanywhere/mork-firebat.crt/.key`) → role `dashboard-check-rolesanywhere`, trust-anchor `328fdc80-…`, account `388576304176`. Machine identity, NOT Mark's SSO — survives departure. Affects `billing-reconcile-check`, `ecr-lifecycle-audit`, `run-dashboard-check`, `morning-prep`. Action: confirm cert/role won't be revoked (named mork-firebat but is a host identity); document in runbook.
+- 🔧 **Tailscale — self-serve path identified.** Probe 2026-06-22: firebat node is **user-owned by `mark@`, no tags** (key expiry 2026-10-20). Fix = re-auth firebat + npu-server with a **tagged auth key** (`tag:server`) → makes them *tailnet-owned*, survive Mark's deactivation. Self-serve IF Mark can mint a tagged auth key (admin console) + `tag:server` exists in ACL. Then per box: `sudo tailscale up --authkey=tskey-… --advertise-tags=tag:server`. **Confirm Mark's Tailscale admin/owner rights + ACL tag.**
+- 🔧 **GitHub — needs a non-Mark credential (partial self-serve).** firebat `gh` authenticates as personal **`actuateMark`**. Affects `repo-scan`, `git-fetch-major-repos`, `pr-review-digest`, KB bare-repo push. Self-serve only if an org bot/service account or org-PAT source exists (probe inconclusive). Prior art: [[2026-04-28_minting-github-pats-for-automation]]. **Check for an existing org machine account; else mint a fine-grained org PAT from a team-owned account.**
+- ⏳ **New Relic + Atlassian tokens.** `jira-sync` → `~/.config/atlassian/api-token` (`mark@actuate.ai`); NR → `~/.config/nr/api-key`. **INCIDENT 2026-06-22: the NR Personal API Key was found leaked in KB git history** (purged — see § below). Rotation deferred per decision, but the leaked key must be rotated in this WS regardless: revoke + mint replacement (ideally team/service) in NR UI, update `~/.config/nr/api-key` on laptop + firebat. Atlassian token still needs re-issuing under a team/service account.
+- [ ] **Verify pass.** Manually trigger each `--user` service (`systemctl --user start <svc>`), confirm exit 0 + expected output. Full timer set: `morning-prep`, `jira-sync`, `run-dashboard-check`, `billing-reconcile-check`, `ecr-lifecycle-audit`, `pr-review-digest`, `git-fetch-major-repos`, `kb-lint`, `kb-relink`, `kb-incoming-refresh`, `kb-jobs-reap`, `rebuild-blog`, `rebuild-quartz`, `morning-prep-self-audit`.
 - [ ] Write the **credential map** (timer → identity → where the secret lives → how to rotate) into the firebat runbook (Workstream D).
+
+### Secret-leak incident + WS-B push (2026-06-22)
+
+During the WS-B markkb push, GitHub push-protection caught a **live NR Personal API Key** in `topics/operational-health/notes/syntheses/2026-05-01_overnight-check.md` (two pre-existing commits). The KB also had **237 modified + 284 untracked files** — a month of uncommitted drift. Actions taken:
+- Committed all drift (junk excluded via new `.gitignore` rules: `*.bak-*`, `.~lock.*#`) + offboarding artifacts.
+- Purged the key from **all** history with `git-filter-repo`; verified 0 real-key occurrences across all blobs locally + in the firebat bare repo (gc'd to expunge orphans).
+- Force-pushed clean history to **github (`actuateMark/markkb`)** + **firebat**. GitHub never received the secret (protection blocked the first attempt).
+- **Follow-up (WS-D):** add a `gitleaks` pre-commit hook to KB + `claude-config` — already a documented open follow-up in [[2026-04-28_long-lived-credentials-on-headless-boxes]]. Rotate the leaked NR key in WS-A.
 
 ## Workstream B — Liberate personal-account artifacts  *(Mon first thing, then Wed)*
 
