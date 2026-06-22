@@ -92,7 +92,7 @@ During the WS-B markkb push, GitHub push-protection caught a **live NR Personal 
 ## Workstream D — Operating runbooks (make the automation maintainable)  *(Wed–Fri)*
 
 - [x] **Firebat operations runbook** — DRAFTED 2026-06-22 → [[2026-06-22_firebat-operations-runbook]] (196 lines, facts verified against the live box: 14-timer inventory + creds + logs + dashboard + KB bare repo + add/remove/three-tier + the verify harness). *Still to do: also land a copy in `actuate-dev-toolkit` + Confluence (WS-C1).*
-- [ ] **npu-server / LLM-shop runbook** (§24): how local models are served, how `llm-shop-delegate` routes, the kb-intake / code-delegate harnesses. *(still open)*
+- [x] **npu-server / LLM-shop runbook** — DRAFTED 2026-06-22 → [[2026-06-22_npu-server-llm-shop-runbook]] (211 lines: 3 backends [SYCL llama.cpp :8200, Ollama :11434, OpenVINO TinyLlama NPU :8090], harness ports, `llm-shop-delegate` routing, kb-deep-intake pipeline). ⚠ Built from the git deploy tree + §24 syntheses — **NOT verified against the live box** (SSH unavailable). **In-office to-do:** verify live units + accept npu-server host key + push a non-Mark SSH key. Also flagged a doc drift: `llm-shop-delegate.md` says `:8100` is Ollama-backed but the systemd unit defaults it to SYCL `:8200` (reconcile during WS-B claude-config mirror).
 - [x] **Dashboard signals catalog** — DRAFTED 2026-06-22 → [[2026-06-22_dashboard-signals-catalog]] (369 lines, ~89 signal defs across 15 components, sink schema, how-to-add, regression-rule reality check). Built from real `signals.json`.
 - [ ] **"Keep the morning automation alive"** — the cron cache that `/daily-scope` + `/dashboard-check` read (`morning-prep.sh`), and what degrades if it stalls.
 
