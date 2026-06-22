@@ -46,13 +46,13 @@ Workstream **A** depends on *other people*: a Tailscale admin to reassign device
 
 ## Workstream 0 — Land & freeze in-flight code  *(Mon, ~½ day)*
 
-Finish the cheap MERGEABLE work so nothing is left half-merged, then freeze.
+**✅ COMPLETE 2026-06-22 — everything was already landed; nothing was left half-merged.**
 
-- [ ] Merge **onboarder #14 / #15 / #16** (ENG-289) — ops tooling + post-deploy verification + cohort-F classifier. Clean quick win.
-- [ ] Merge **admin #2506** — vestigial `AutoPatrolSchedule.tier` removal. ⚠️ admin `main` = **prod**, deploys live; re-run `makemigrations --check` at merge (0556 must be tip).
-- [ ] Commit the uncommitted **squash-body CI-skip skill fix** (`vms-connector/.claude/agents/pr-prep.md` + `.claude/skills/pre-merge-workflow.md`).
-- [ ] Triage **actuate-libraries `main` orphan tests** (line-crossing, adaptive_threshold, manual fixtures) — commit or discard; don't leave untracked.
-- [ ] **FREEZE.** Do not start the Envera cutover or new code. Everything else → reassign (Workstream C).
+- [x] **onboarder #14/#15/#16** (ENG-289) — already merged (no open PRs).
+- [x] **admin #2506** — already merged to `staging` (checks green: `makemigrations --check` + security). Did not touch prod `main`.
+- [x] **squash-body CI-skip skill fix** — already merged as **vms-connector #1755** (`fix(skill): guard squash body against build-suppression directives`); added `pr-body-skip-token-guard.yml` workflow too.
+- [x] **actuate-libraries "orphan tests"** — NOT orphans: the 5 untracked test artifacts on the laptop are **stale local copies of tests already committed to `origin/main`** (laptop `main` is 92 commits behind). They pair with shipped features (adaptive motion floor #365/#369, dual-format line-crossing #1726). No PR needed — already preserved upstream.
+- [x] **FREEZE in effect** — no new code; Envera cutover not started. In-flight threads → reassign via WS-C.
 
 ## Workstream A — Re-home firebat's 4 identities  *(Mon–Wed, HIGHEST RISK)*
 
@@ -91,9 +91,9 @@ During the WS-B markkb push, GitHub push-protection caught a **live NR Personal 
 
 ## Workstream D — Operating runbooks (make the automation maintainable)  *(Wed–Fri)*
 
-- [ ] **Firebat operations runbook** (in `actuate-dev-toolkit` + Confluence): every timer, what it does, creds it needs, how to rotate, how to add/remove, where logs land (`~/.local/state/claude-jobs/`), the dashboard at `http://mork-firebat/app/*` (11ty + Quartz + FastAPI + Caddy), the three-tier routine-check pattern.
-- [ ] **npu-server / LLM-shop runbook** (§24): how local models are served, how `llm-shop-delegate` routes, the kb-intake / code-delegate harnesses.
-- [ ] **Dashboard signals catalog** + how to add a signal (`~/.claude/skills/dashboard-check/config/signals.json`) and the sink schema.
+- [x] **Firebat operations runbook** — DRAFTED 2026-06-22 → [[2026-06-22_firebat-operations-runbook]] (196 lines, facts verified against the live box: 14-timer inventory + creds + logs + dashboard + KB bare repo + add/remove/three-tier + the verify harness). *Still to do: also land a copy in `actuate-dev-toolkit` + Confluence (WS-C1).*
+- [ ] **npu-server / LLM-shop runbook** (§24): how local models are served, how `llm-shop-delegate` routes, the kb-intake / code-delegate harnesses. *(still open)*
+- [x] **Dashboard signals catalog** — DRAFTED 2026-06-22 → [[2026-06-22_dashboard-signals-catalog]] (369 lines, ~89 signal defs across 15 components, sink schema, how-to-add, regression-rule reality check). Built from real `signals.json`.
 - [ ] **"Keep the morning automation alive"** — the cron cache that `/daily-scope` + `/dashboard-check` read (`morning-prep.sh`), and what degrades if it stalls.
 
 ## Workstream E — Decommission what can't transfer  *(Fri)*
