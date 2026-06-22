@@ -105,6 +105,19 @@ During the WS-B markkb push, GitHub push-protection caught a **live NR Personal 
 
 ---
 
+## WS-A in-office execution checklist (Wed/Thu) — do in this order
+
+**Prereqs:** be at firebat (or have console access — step 4 can drop SSH); have the org GitHub identity decided, NR + Atlassian service-account access, and Tailscale admin rights.
+
+0. **Baseline:** `~/bin/firebat-identity-verify.py` → expect 0 FAIL / 3 WARN (github, tailscale, atlassian) + NR "still Mark".
+1. **GitHub (safest first, no connectivity impact):** on firebat — `gh auth logout`; then `gh auth login` as the org machine account, or `gh auth login --with-token < <org-pat-file>`. Verify: `gh api repos/aegissystems/vms-connector --jq .full_name`. Re-run harness → `github.identity` flips ✅.
+2. **New Relic + Atlassian:** mint a service-account NR key → `printf '%s' '<NRAK-new>' > ~/.config/newrelic/key`. Mint a service Atlassian token → edit `~/.config/atlassian/api-token` (JSON: email+token+site). Re-run harness → NR shows the service identity, `atlassian.token` flips ✅. *(This also retires the leaked-then-purged NR key.)*
+3. **Tailscale (LAST — riskiest, do at the console):** mint a tagged auth key (`tag:server`) in the admin console; on firebat: `sudo tailscale up --authkey=tskey-… --advertise-tags=tag:server`. Repeat on npu-server. Re-run harness → `tailscale.identity` flips ✅ (tagged, tailnet-owned).
+4. **Full active verify:** `~/bin/firebat-identity-verify.py --run-timers` → all identities ✅, all credential-dependent timers exit 0 under the new identities.
+5. **WS-B org mirror (now unblocked by step 1):** create `aegissystems/markkb` + `aegissystems/claude-config`; `git remote add org …` + push (both are gitleaks-clean); set the org repo as canonical.
+6. **npu-server SSH:** accept its host key + push a non-Mark SSH key; confirm `llm-shop-*` units are up (HTTP path already survives via the Tailscale re-tag).
+7. **WS-E teammate-vantage check (Fri):** a colleague confirms from their machine — reach firebat, timers green, org repos + Confluence readable.
+
 ## Day-by-day sequencing
 
 | Day | Focus |
