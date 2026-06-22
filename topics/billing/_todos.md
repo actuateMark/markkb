@@ -2,7 +2,7 @@
 title: "Billing — Topic Todo List"
 type: workstream
 topic: billing
-tags: [billing, todos, workstream, tightening, self-righting, reconciliation, observability]
+tags: [billing, todos, workstream, tightening, self-righting, reconciliation, observability, immix]
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
@@ -164,7 +164,7 @@ Goal: continuous, automated comparison across the four layers. The fact that Coh
 
 **Why:** Today, the only check that "every active admin camera × product is producing `_ended` events at the expected rate" is a manual cohort audit. Cohort F surfaced 250 connector-side gaps; the next class will surface the same way unless we automate.
 
-**Status (2026-05-11):** **Design spec landed** — see [[2026-05-11_billing-reconciliation-dashboard-design]]. Query shape, data-source choice (NRQL + admin DB; Snowflake deferred to R2), surface phasing (local → standalone billing dashboard → sales-dashboard), threshold ramp (5% → 1%), and 5 open implementation questions are all pinned. Implementation PR is the next loop.
+**Status (2026-05-11):** **Design spec landed** — see [[2026-05-11_billing-reconciliation-dashboard-design]]. Query shape, data-source choice (NRQL + admin DB; Snowflake deferred to R2), surface phasing (local → standalone billing dashboard → [[sales-dashboard]]), threshold ramp (5% → 1%), and 5 open implementation questions are all pinned. Implementation PR is the next loop.
 
 **Acceptance:**
 - A daily-running query that computes: `count(admin: Camera.active=True && Customer.active=True) × products` vs `count(distinct (camera, product) emitting `_ended` in trailing 24h)`.
@@ -173,7 +173,7 @@ Goal: continuous, automated comparison across the four layers. The fact that Coh
 - Records-per-gap-class: when the alert fires, the query payload should include a tractable list (or sample) of the gap rows so an operator can investigate.
 - Replay against 2026-05-04 cohort-F window fires red — locks in the "would have caught" promise.
 
-**Surface decision (2026-05-11):** sits on a **separate billing-dashboard**, not the operational-health dashboard. Built locally first (laptop/Firebat sketch), with future integration to the existing internal sales dashboard at `https://sales-dashboard.internal.actuateui.net/`. Deployment-repo location for sales-dashboard is unknown — see C6 below.
+**Surface decision (2026-05-11):** sits on a **separate billing-dashboard**, not the operational-health dashboard. Built locally first (laptop/Firebat sketch), with future integration to the existing internal [[sales-dashboard|sales dashboard]] at `https://sales-dashboard.internal.actuateui.net/`. Deployment-repo location for [[sales-dashboard]] is unknown — see C6 below.
 
 **Open implementation questions** (per [[2026-05-11_billing-reconciliation-dashboard-design]] §"Open questions"):
 1. Product resolution chain (camera-level → site → customer → fallback?) — pin against `connector_factories/shared/billing_emit.py`.
@@ -330,7 +330,7 @@ Goal: the system's billing contract is explicit. New emit sites, new consumers, 
 - Repo identified. Owner identified. Deploy mechanism documented in a short concept note (`notes/concepts/sales-dashboard-deployment.md` or similar).
 - Cross-link to R1's local sketch so the integration path is visible.
 
-**Status (2026-05-11):** **DONE** — see [[sales-dashboard-repo]]. Repo is `aegissystems/sales-dashboard`, cloned at `/home/mork/work/sales-dashboard`. Deploy via `kubernetes-deployments` repo at `argocd/env/388576304176/us-west-2/inference-eks-Ny9n/cluster-values.yaml` → ArgoCD auto-sync. Cluster: `inference-eks-Ny9n`. Repo entity note covers architecture, existing pages, scripts, caching, deploy mechanism, and reusable Snowflake-client surface.
+**Status (2026-05-11):** **DONE** — see [[sales-dashboard-repo]]. Repo is `aegissystems/sales-dashboard`, cloned at `/home/mork/work/sales-dashboard`. Deploy via `kubernetes-deployments` repo at `argocd/env/388576304176/us-west-2/inference-eks-Ny9n/cluster-values.yaml` → [[argocd|ArgoCD]] auto-sync. Cluster: `inference-eks-Ny9n`. Repo entity note covers architecture, existing pages, scripts, caching, deploy mechanism, and reusable Snowflake-client surface.
 
 ---
 
@@ -437,9 +437,9 @@ ssh mork-firebat 'jq ".exit_status, .reconciliation.balanced, .unbilled.producti
 
 | Account | Unbilled (Feb 2026) | Hours | Note |
 |---|---:|---:|---|
-| Active Watch Security | 132 | 60,147 | Subscription doesn't cover all cameras |
+| Active [[watch-entity|Watch]] Security | 132 | 60,147 | Subscription doesn't cover all cameras |
 | Aggregate Industries | 102 | 52,773 | **No Ordway subscription at all** |
-| Alarm Watch | 46 | 4,836 | Large gap vs 89 billed |
+| Alarm [[watch-entity|Watch]] | 46 | 4,836 | Large gap vs 89 billed |
 | CAP Security | 39 | 10,266 | **No subscription** (17 healthcheck-only) |
 | Eagle Eye Networks | 26 | 22,772 | **No subscription at all** |
 | Bandit Systems | 15 | 8,087 | |

@@ -6,6 +6,9 @@ tags: [autopatrol, admin, reliability, design, scoping]
 created: 2026-05-22
 updated: 2026-05-22
 author: mark
+incoming:
+  - topics/personal-notes/notes/daily/2026-05-22.md
+incoming_updated: 2026-05-27
 ---
 
 # Guardrail B — admin reconciliation cron (scoping pass)
@@ -20,7 +23,7 @@ When the onboarder POSTs a new `AutoPatrolSchedule` to admin, admin's `AutoPatro
 
 - **Fire-and-forget** — exceptions inside it are caught and logged but never trigger a retry
 - **Untracked** — there is no DB record of "this schedule needs a deploy attempt" that survives a crashed thread
-- **Unobservable** — admin pod logs are absent from New Relic (separate gap; not AUTO-566, see below), so when the thread dies, no human knows
+- **Unobservable** — admin pod logs are absent from [[new-relic|New Relic]] (separate gap; not AUTO-566, see below), so when the thread dies, no human knows
 
 Result: a schedule lands in admin DB with no S3 settings and no K8s cronjob, indefinitely. The onboarder re-syncs every 5 min but `process_item` only re-fires the deploy thread if `created=True OR has_changes OR devices_updated OR products_added OR reactivated`. Steady-state, the thread is never re-fired.
 
@@ -175,7 +178,7 @@ Things explicitly out of scope:
 - Schema migration + state hook plumbing: 1 day
 - Reconciler command + tests: 1 day
 - Backfill script + rollout coordination: 0.5 day
-- Cronjob YAML + ArgoCD wiring: 0.5 day
+- Cronjob YAML + [[argocd|ArgoCD]] wiring: 0.5 day
 - Buffer (review, edge cases, migration verification on a clone): 1-2 days
 
 **Total: 3-5 day implementation.** Lighter if we skip the feature flag (riskier) or skip the backfill script and let the reconciler naturally pick up old rows over time (cheaper, lazier).

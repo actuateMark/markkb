@@ -9,10 +9,13 @@ incoming:
   - topics/ai-models/notes/entities/intruder-v8-model.md
   - topics/ai-models/notes/entities/weapon-v8-model.md
   - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+  - topics/engineering-process/notes/entities/actuate-validator.md
+  - topics/engineering-process/notes/syntheses/2026-05-27_zack-coordination-brain-in-jar.md
+  - topics/models/intruder-v8/_summary.md
+  - topics/models/intruder-v8/notes/syntheses/2026-05-13_v8-release-postgres-context.md
+  - topics/models/weapon-v8/_summary.md
   - topics/team-structure/notes/entities/carlos-torres.md
-  - topics/team-structure/notes/entities/michael-aleksa.md
-  - topics/team-structure/notes/entities/vlad-sapeshka.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-28
 ---
 
 # Zack Schmidt

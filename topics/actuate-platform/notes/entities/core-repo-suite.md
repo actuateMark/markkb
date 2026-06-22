@@ -7,14 +7,17 @@ created: 2026-04-15
 updated: 2026-04-22
 author: kb-bot
 incoming:
+  - topics/actuate-platform/notes/entities/branch-conventions.md
+  - topics/billing/notes/concepts/2026-05-11_eng-242-substantially-answered.md
+  - topics/billing/notes/entities/actuate-bi-repo.md
+  - topics/billing/notes/entities/sales-dashboard-repo.md
   - topics/infrastructure/notes/syntheses/2026-04-16_cronjob-image-rotation-lag.md
   - topics/personal-laptop/notes/concepts/2026-04-27_handoff-repos-architectural-dashboard.md
+  - topics/personal-laptop/notes/syntheses/2026-05-05_laptop-config-portability-context.md
   - topics/personal-notes/notes/daily/2026-04-22.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
-  - topics/personal-notes/notes/entities/mark-todos.md
   - topics/product-roadmap/notes/concepts/2026-04-23_feature-request-ad-hoc-connector-redeploy-api.md
-  - topics/runbooks/notes/concepts/2026-04-29_iac-live-drift-discovery.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Core Repository Suite

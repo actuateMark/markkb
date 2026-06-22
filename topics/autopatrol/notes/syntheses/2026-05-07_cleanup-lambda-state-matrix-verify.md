@@ -13,8 +13,9 @@ outgoing:
   - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
 incoming:
   - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
+  - topics/billing/_todos.md
   - topics/personal-notes/notes/daily/2026-05-07.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 # Cleanup-Lambda state-matrix verify — 2026-05-07

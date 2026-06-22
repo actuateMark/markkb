@@ -1,0 +1,54 @@
+{
+  "run_id": "2026-05-11T2111Z-video-processing-003",
+  "started_at": "2026-05-11T21:14:35Z",
+  "finished_at": "2026-05-11T21:22:02Z",
+  "exit": "success",
+  "context": {
+    "type": "reading-list",
+    "topic": "video-processing",
+    "list_path": "topics/video-processing/reading-list.md"
+  },
+  "items": [
+    {
+      "ref_id": "0025",
+      "url": "https://github.com/pion/webrtc",
+      "status": "ok",
+      "draft_path": "drafts/2026-05-11_pion-webrtc-pure-go-implementation-of-webrtc-api.md",
+      "topic_claimed": "webrtc-deep-dive",
+      "elapsed_ms": 447287,
+      "error": null,
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "3 section(s)",
+          "elapsed_ms": 846
+        },
+        {
+          "phase": "planner",
+          "status": "ok",
+          "detail": "topic=webrtc-deep-dive, 1 section(s)",
+          "elapsed_ms": 135219
+        },
+        {
+          "phase": "worker[0]",
+          "status": "ok",
+          "detail": "Overview",
+          "elapsed_ms": 132953
+        },
+        {
+          "phase": "composer",
+          "status": "ok",
+          "detail": "1864 chars",
+          "elapsed_ms": 178180
+        },
+        {
+          "phase": "linker",
+          "status": "ok",
+          "detail": "clean",
+          "elapsed_ms": 1
+        }
+      ]
+    }
+  ]
+}

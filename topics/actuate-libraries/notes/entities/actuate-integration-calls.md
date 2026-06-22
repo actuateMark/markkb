@@ -10,14 +10,14 @@ incoming:
   - topics/actuate-libraries/_summary.md
   - topics/actuate-libraries/notes/concepts/dependency-graph.md
   - topics/actuate-platform/notes/syntheses/integration-landscape.md
+  - topics/data-access-control/notes/syntheses/2026-05-11_admin-db-access-hardening.md
   - topics/integrations/ajax/_summary.md
   - topics/integrations/autopatrol-integration/_summary.md
   - topics/integrations/autopatrol-integration/notes/entities/autopatrol-integration-components.md
   - topics/integrations/avigilon/_summary.md
   - topics/integrations/bold/_summary.md
   - topics/integrations/digital-watchdog/_summary.md
-  - topics/integrations/eagle-eye/_summary.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # actuate-integration-calls

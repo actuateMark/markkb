@@ -14,9 +14,15 @@ outgoing:
 incoming:
   - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
   - topics/autopatrol/notes/syntheses/2026-05-07_cleanup-lambda-state-matrix-verify.md
+  - topics/billing/_todos.md
+  - topics/billing/notes/entities/billing-deferred-backlog.md
+  - topics/billing/notes/syntheses/2026-05-12_week-in-review-non-technical.md
+  - topics/billing/reading-list.md
+  - topics/engineering-process/notes/concepts/2026-05-12_stale-pr-triage-punchlist.md
+  - topics/personal-notes/notes/concepts/2026-05-11_pre-impl-research-priority-reorder.md
   - topics/personal-notes/notes/daily/2026-05-07.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-08
+  - topics/personal-notes/notes/daily/2026-05-19.md
+incoming_updated: 2026-05-27
 ---
 
 # ADR: Cohort B — no backfill, cascade hook stays disabled

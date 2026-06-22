@@ -14,7 +14,8 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-d-event-driven.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-e-hybrid-sidecar.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
-incoming_updated: 2026-05-01
+  - topics/fleet-architecture/notes/syntheses/2026-05-28_watchman-scheduling-brainstorm-correlation.md
+incoming_updated: 2026-05-29
 ---
 
 # Config & Schedule Propagation

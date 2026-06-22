@@ -67,7 +67,7 @@ Issues idle >180d are surfaced in a dedicated section of each per-repo catalog. 
 
 *(Auto-populated — most recent first.)*
 
-- [[2026-04-27_scan|2026-04-27]] — 5 high-impact, 5 LHF across 5 active repos (186 issues surveyed; same totals as 2026-04-24, no movement on watch list)
+- [[2026-04-27_scan|2026-04-27]] — 5 high-impact, 5 LHF across 5 active repos (186 issues surveyed; same totals as 2026-04-24, no movement on [[watch-entity|watch]] list)
 - [[2026-04-24_scan|2026-04-24]] — 5 high-impact, 5 LHF across 5 active repos (186 issues surveyed)
 - [[2026-04-23_scan|2026-04-23]] — 5 high-impact, 5 LHF across 5 active repos (186 issues surveyed, per-repo catalogs seeded with curated notes for vms-connector, [[actuate_admin]], actuate-libraries)
 - [[2026-04-17_scan|2026-04-17]] — 5 high-impact, 5 LHF across 7 repos (137 issues surveyed)

@@ -8,14 +8,14 @@ incoming:
   - topics/actuate-libraries/notes/entities/actuate-daos.md
   - topics/actuate-libraries/notes/entities/actuate-monitoring.md
   - topics/actuate-libraries/notes/entities/actuate-secrets.md
+  - topics/actuate-libraries/notes/syntheses/2026-05-12_adr-actuate-instrumentation-v1.md
+  - topics/actuate-platform/_summary.md
   - topics/actuate-platform/notes/concepts/multi-region-deployment.md
   - topics/actuate-platform/notes/concepts/rollout-process.md
   - topics/actuate-platform/notes/entities/actuate-claude-agents.md
+  - topics/admin-api/notes/concepts/2026-05-21_deploy-branch-e2e-cycle-verified.md
   - topics/admin-api/notes/entities/admin-nr-integration.md
-  - topics/camera-health-monitoring/notes/syntheses/chm-end-to-end-flow.md
-  - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
-  - topics/camera-health-monitoring/notes/syntheses/chm-phase1-network-probe.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # New Relic

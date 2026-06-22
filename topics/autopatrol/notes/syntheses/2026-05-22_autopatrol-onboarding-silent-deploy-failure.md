@@ -2,10 +2,16 @@
 title: "AutoPatrol onboarding — silent deploy-thread failure can strand a schedule"
 type: synthesis
 topic: autopatrol
-tags: [autopatrol, onboarder, admin, observability, deploy, reliability, incident]
+tags: [autopatrol, onboarder, admin, observability, deploy, reliability, incident, immix]
 created: 2026-05-22
 updated: 2026-05-22
 author: mark
+incoming:
+  - topics/autopatrol/notes/syntheses/2026-05-22_guardrail-B-admin-reconciliation-scoping.md
+  - topics/autopatrol/notes/syntheses/2026-05-22_immix-finished-without-raise-marked-failed.md
+  - topics/autopatrol/notes/syntheses/2026-06-03_ap-redeploy-flag-calendar-day-stranding.md
+  - topics/personal-notes/notes/daily/2026-05-22.md
+incoming_updated: 2026-06-03
 ---
 
 # AutoPatrol onboarding — silent deploy-thread failure can strand a schedule

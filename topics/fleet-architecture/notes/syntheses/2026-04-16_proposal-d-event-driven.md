@@ -27,8 +27,8 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-05-01_ephemeral-run-pilot/_overview.md
   - topics/fleet-architecture/notes/syntheses/2026-05-01_ephemeral-run-pilot/paradigm-d.md
   - topics/fleet-architecture/notes/syntheses/2026-05-05_fleet-architecture-workstream-context.md
-  - topics/fleet-architecture/reading-list.md
-incoming_updated: 2026-05-08
+  - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
+incoming_updated: 2026-05-27
 ---
 
 # Proposal D — Event-Driven Pipeline

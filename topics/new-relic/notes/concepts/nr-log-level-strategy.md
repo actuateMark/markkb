@@ -5,7 +5,7 @@ topic: new-relic
 author: kb-bot
 created: 2026-04-16
 updated: 2026-04-16
-tags: [nrql, logging, log-levels, triage, new-relic, connector, new-relic, new-relic, new-relic, new-relic]
+tags: [nrql, logging, log-levels, triage, new-relic, connector]
 outgoing:
   - topics/fleet-architecture/notes/concepts/observability-and-tracing.md
   - topics/new-relic/_summary.md

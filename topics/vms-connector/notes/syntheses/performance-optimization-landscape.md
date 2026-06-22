@@ -22,7 +22,8 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-e-hybrid-sidecar.md
   - topics/integrations/rtsp/notes/syntheses/rtsp-robustness-enhancement-plan.md
   - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
-incoming_updated: 2026-05-01
+  - topics/profiling-and-performance/_summary.md
+incoming_updated: 2026-05-27
 ---
 
 # Performance Optimization Landscape

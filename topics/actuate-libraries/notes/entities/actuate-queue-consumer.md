@@ -10,7 +10,10 @@ incoming:
   - topics/actuate-libraries/_summary.md
   - topics/actuate-libraries/notes/concepts/dependency-graph.md
   - topics/actuate-libraries/notes/entities/actuate-daos.md
-incoming_updated: 2026-05-01
+  - topics/billing/notes/entities/billing-events-catalog.md
+  - topics/billing/reading-list.md
+  - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
+incoming_updated: 2026-05-27
 ---
 
 ## Purpose

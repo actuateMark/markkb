@@ -6,6 +6,15 @@ tags: [evaluation, rubric, scoring, monitoring, billing, reconciliation, fleet, 
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/notes/syntheses/2026-05-28_fleet-rearch-briefing-overview.md
+  - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
+  - topics/personal-notes/notes/concepts/2026-05-11_next-session-handoff.md
+  - topics/personal-notes/notes/daily/2026-05-11.md
+  - topics/personal-notes/notes/daily/2026-05-12.md
+  - topics/software-architecture/notes/concepts/2026-05-11_enforcement-as-proposal-scorer.md
+  - topics/software-architecture/notes/concepts/2026-05-11_sketch-findings-enforcement.md
+incoming_updated: 2026-05-29
 ---
 
 # Rubric extension — Monitoring & Alarms + Billing & Reconciliation

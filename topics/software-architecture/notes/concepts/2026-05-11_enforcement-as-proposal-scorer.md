@@ -6,6 +6,13 @@ tags: [enforcement, fitness-functions, import-linter, fleet-architecture, migrat
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
+  - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
+  - topics/personal-notes/notes/daily/2026-05-11.md
+  - topics/personal-notes/notes/daily/2026-05-12.md
+  - topics/software-architecture/notes/concepts/2026-05-11_sketch-findings-enforcement.md
+incoming_updated: 2026-05-27
 ---
 
 # Enforcement-sketch-as-proposal-scorer

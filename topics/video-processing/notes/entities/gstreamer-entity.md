@@ -16,8 +16,8 @@ incoming:
   - topics/integrations/rtsp/_summary.md
   - topics/integrations/rtsp/notes/entities/rtsp-components.md
   - topics/personal-notes/notes/daily/2026-04-27.md
-  - topics/video-processing/_summary.md
-incoming_updated: 2026-05-01
+  - topics/profiling-and-performance/notes/syntheses/2026-05-12_profiling-toolkit-and-roadmap.md
+incoming_updated: 2026-05-27
 ---
 
 # GStreamer

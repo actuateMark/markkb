@@ -13,7 +13,8 @@ incoming:
   - topics/camera-health-monitoring/notes/syntheses/chm-phase1-network-probe.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase4-generic-diagnostics.md
   - topics/integrations/rtsp/notes/syntheses/rtsp-robustness-enhancement-plan.md
-incoming_updated: 2026-05-01
+  - topics/operational-health/notes/concepts/2026-05-24_genesis-no-alerts-milestone-token-rejection.md
+incoming_updated: 2026-05-27
 ---
 
 # RTSP Integration Components

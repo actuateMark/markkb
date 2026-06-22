@@ -2,7 +2,7 @@
 title: "streamId-null rejection in Immix patrol alert dispatch"
 type: concept
 topic: vms-connector
-tags: [bug, autopatrol, vch, immix, alert-dispatch, streamid, patrol-api, immix, immix, immix, immix]
+tags: [bug, autopatrol, vch, immix, alert-dispatch, streamid, patrol-api]
 jira: ""
 status: open
 severity: medium

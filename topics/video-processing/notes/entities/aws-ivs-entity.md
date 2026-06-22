@@ -71,7 +71,7 @@ Both are designed to be priced for "broadcast to many viewers cheaply". For very
 
 - ✅ **Customer-facing live preview at scale** — many concurrent viewers watching one feed (think live-event broadcast, public webcams).
 - ✅ **Interactive multi-participant** sub-second use cases (Real-Time) — virtual conferences, co-host shows, live auctions, video-call-style monitoring rooms.
-- ✅ Want to ship something live in days, not weeks — IVS is the fastest path from "we have an [[rtmp-and-srt|RTMP]] source" to "viewers can watch in browser".
+- ✅ Want to ship something live in days, not weeks — IVS is the fastest path from "we have an [[rtmp-and-srt|RTMP]] source" to "viewers can [[watch-entity|watch]] in browser".
 - ✅ Want recording-to-S3 baked in.
 
 ## When not to reach for it

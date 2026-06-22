@@ -9,15 +9,15 @@ author: kb-bot
 incoming:
   - topics/actuate-libraries/notes/entities/actuate-event-listener.md
   - topics/actuate-platform/notes/syntheses/integration-landscape.md
+  - topics/admin-api/notes/syntheses/2026-05-13_customer-model-dissection.md
+  - topics/camera-health-monitoring/notes/concepts/2026-05-14_chm-multi-frame-quality-sampling-followup.md
   - topics/camera-health-monitoring/notes/concepts/chm-diagnostics-architecture.md
   - topics/camera-health-monitoring/notes/concepts/chm-rd-opportunities.md
   - topics/camera-health-monitoring/notes/syntheses/chm-diagnostics-gap-analysis.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase1-network-probe.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase4-generic-diagnostics.md
-  - topics/integrations/hikcentral/_summary.md
-  - topics/integrations/video-insight/notes/entities/video-insight-components.md
-  - topics/video-processing/notes/concepts/connector-decoder-routing-map.md
-incoming_updated: 2026-05-01
+  - topics/engineering-process/notes/syntheses/2026-05-20_ait-phase-7-alert-capture-replay.md
+incoming_updated: 2026-05-27
 ---
 
 # Hikcentral Integration Components

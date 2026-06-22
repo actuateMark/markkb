@@ -22,7 +22,7 @@ incoming_updated: 2026-05-01
 
 Patrol `5c46ac66` on site 35832 detected both "person" and "bike" on IP Camera 02. The patrol summary and DynamoDB detection windows show both. Only the bike alert appeared in the Immix patrol timeline and internal patrol timeline data. The person alert was silently lost.
 
-**Root cause:** Both alerts were deferred (tag zones active) and fired via `flush_deferred_alerts()` at the very end of the patrol run. The alerts were submitted to nested thread pool executors, but the CronJob process exited ~278ms after the person alert's Immix API call was initiated. No executor drain (`shutdown(wait=True)`) exists in the exit path, so daemon threads were killed mid-flight.
+**Root cause:** Both alerts were deferred (tag zones active) and fired via `flush_deferred_alerts()` at the very end of the patrol run. The alerts were submitted to nested thread pool executors, but the CronJob process exited ~278ms after the person alert's [[immix-vendor-api|Immix API]] call was initiated. No executor drain (`shutdown(wait=True)`) exists in the exit path, so daemon threads were killed mid-flight.
 
 ## Evidence Trail
 
@@ -56,7 +56,7 @@ Patrol `5c46ac66` on site 35832 detected both "person" and "bike" on IP Camera 0
 | Process exit | 412585 | +278ms |
 | Person HTTP response (est.) | 412507+ | +200ms+ |
 
-The Immix API call for person was initiated at 412307. With typical network latency (200-300ms), the response would arrive at ~412507-412607. The process exits at 412585. If the HTTP call takes >278ms, it's interrupted. The DynamoDB save (`save_autopatrol_alert`) that follows the HTTP call would never execute.
+The [[immix-vendor-api|Immix API]] call for person was initiated at 412307. With typical network latency (200-300ms), the response would arrive at ~412507-412607. The process exits at 412585. If the HTTP call takes >278ms, it's interrupted. The DynamoDB save (`save_autopatrol_alert`) that follows the HTTP call would never execute.
 
 ### Why bike may have appeared despite missing logs
 
@@ -89,7 +89,7 @@ flush_deferred_alerts()
 
 ## Impact
 
-Any site with tag zones enabled will defer alerts to `flush_deferred_alerts`. On patrol-type integrations (AutoPatrol, GenericPatrol), the process exits immediately after flush. This means **every deferred alert on every patrol is at risk of being lost**, depending on the HTTP latency to the Immix API.
+Any site with tag zones enabled will defer alerts to `flush_deferred_alerts`. On patrol-type integrations (AutoPatrol, GenericPatrol), the process exits immediately after flush. This means **every deferred alert on every patrol is at risk of being lost**, depending on the HTTP latency to the [[immix-vendor-api|Immix API]].
 
 Continuous monitoring sites are less affected because the process runs indefinitely, giving executors ample time.
 
@@ -99,7 +99,7 @@ This investigation was harder to diagnose than it needed to be. The alert pipeli
 
 ### Gaps Found
 
-1. **HTTP response status buried at DEBUG** — `autopatrol_api.py` line 393 logs the Immix API response status at DEBUG level. A 400 or 500 from Immix would be completely invisible in normal (INFO-level) production logs.
+1. **HTTP response status buried at DEBUG** — `autopatrol_api.py` line 393 logs the [[immix-vendor-api|Immix API]] response status at DEBUG level. A 400 or 500 from Immix would be completely invisible in normal (INFO-level) production logs.
 
 2. **No success confirmation after `send_autopatrol_alert` completes** — only failures are logged. If the Immix HTTP call succeeds, there is no INFO-level log proving it happened.
 

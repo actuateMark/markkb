@@ -36,7 +36,7 @@ Defined in [[actuate-config]] at `connector/hikcentral/hikcentral_config.py`. Ex
 
 ### Puller
 
-No dedicated [[hikcentral-components|HikCentral]] puller. HikCentral exposes [[rtsp-deep-dive|RTSP]] streams, which are consumed by the standard [[rtsp-deep-dive|RTSP]] puller in [[actuate-pullers]].
+No dedicated [[hikcentral-components|HikCentral]] puller. [[hikcentral-components|HikCentral]] exposes [[rtsp-deep-dive|RTSP]] streams, which are consumed by the standard [[rtsp-deep-dive|RTSP]] puller in [[actuate-pullers]].
 
 ## Auth Method
 

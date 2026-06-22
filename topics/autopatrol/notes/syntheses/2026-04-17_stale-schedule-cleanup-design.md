@@ -2,7 +2,7 @@
 title: "AutoPatrol Stale-Schedule Cleanup — Event-Driven Design"
 type: synthesis
 topic: autopatrol
-tags: [plan, autopatrol, sqs, lambda, dynamodb, cleanup, immix, admin-api, immix, immix, immix, immix]
+tags: [plan, autopatrol, sqs, lambda, dynamodb, cleanup, immix, admin-api]
 jira: ""
 created: 2026-04-17
 updated: 2026-04-20

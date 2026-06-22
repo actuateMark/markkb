@@ -8,9 +8,9 @@ updated: 2026-04-14
 author: kb-bot
 incoming:
   - topics/operational-health/notes/syntheses/2026-04-23_dashboard-sketch.md
+  - topics/operational-health/notes/syntheses/2026-05-05_operational-dashboard-context.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Connector Fleet Monitoring via New Relic

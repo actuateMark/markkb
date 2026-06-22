@@ -18,17 +18,17 @@ outgoing:
   - topics/infrastructure/notes/concepts/argocd-gitops-workflow.md
   - topics/infrastructure/notes/concepts/secrets-management.md
 incoming:
+  - topics/actuate-platform/notes/entities/branch-conventions.md
   - topics/actuate-platform/notes/entities/core-repo-suite.md
   - topics/admin-api/notes/entities/admin-auto-onboarding.md
   - topics/ai-models/notes/entities/vlm-inference.md
   - topics/autopatrol/notes/concepts/2026-05-04_autopatrol-server-release-process.md
-  - topics/aws-cost/_summary.md
-  - topics/aws-cost/notes/entities/actuate-cost-analysis.md
-  - topics/data-science/notes/entities/ds-analysis-microservice.md
-  - topics/external-api/notes/concepts/shared-auth-pattern.md
-  - topics/inference-api/notes/concepts/lambda-to-k8s-migration.md
-  - topics/infrastructure/notes/concepts/argocd-gitops-workflow.md
-incoming_updated: 2026-05-08
+  - topics/autopatrol/notes/entities/autopatrol-server-deployment.md
+  - topics/autopatrol/notes/entities/autopatrol-server.md
+  - topics/autopatrol/notes/syntheses/2026-05-04_autopatrol-server-nr-upgrade-plan.md
+  - topics/autopatrol/notes/syntheses/2026-05-22_immix-finished-without-raise-marked-failed.md
+  - topics/autopatrol/notes/syntheses/2026-05-27_ap-summary-disable-handoff.md
+incoming_updated: 2026-05-28
 ---
 
 # kubernetes-deployments

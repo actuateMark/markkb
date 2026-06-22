@@ -7,9 +7,14 @@ created: 2026-04-22
 updated: 2026-04-22
 author: kb-bot
 incoming:
+  - topics/fleet-architecture/notes/syntheses/2026-05-05_fleet-architecture-workstream-context.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-28_fleet-rearch-briefing-overview.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-proposal-b-prime.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-proposal-b.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-service-design.md
   - topics/personal-notes/notes/daily/2026-04-22.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+  - topics/watchman/notes/syntheses/2026-05-28_watch-management-service-index.md
+incoming_updated: 2026-05-29
 ---
 
 # Fleet-Coordinator API Sketch — Unification Viability Review
@@ -28,14 +33,14 @@ Union of responsibilities across the three coordinators:
 - Assign camera → worker (bin-pack-driven; lease-based)
 - Renew lease (liveness heartbeat)
 - Release camera (drain-on-termination)
-- Watch assignment changes (workers subscribe to own-camera set)
+- [[watch-entity|Watch]] assignment changes (workers subscribe to own-camera set)
 - Split-brain resolution (lease TTL + fencing tokens)
 - Rolling-update drain (reassign cameras before pod terminates)
 
 **From E's Site Context Service** (`topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-e-hybrid-sidecar.md`):
 - Assign camera-group → core-pod (StatefulSet ordinal-aware)
 - Centralized schedule eval (fixes ENG-96: armed-state per schedule, time-windowed)
-- Watch schedule changes (alert-dispatchers subscribe)
+- [[watch-entity|Watch]] schedule changes (alert-dispatchers subscribe)
 - Config cache (hot-path admin-api reads consolidated; camera registry)
 
 **From B-prime's Blob Coordinator** (`topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md`, CLOSED but structurally informative):
@@ -46,7 +51,7 @@ Union of responsibilities across the three coordinators:
 **Organizing into four natural categories:**
 
 1. **Identifier-to-pod assignment** — camera / camera-group / window-blob → owner pod, TTL-leased (C, E, B-prime all need this; same shape, different resource types)
-2. **Schedule + armed-state** — schedule_id → armed windows (E only; hot-path read + change watch)
+2. **Schedule + armed-state** — schedule_id → armed windows (E only; hot-path read + change [[watch-entity|watch]])
 3. **Config cache** — entity_type + entity_id → snapshot (E primarily; C tangentially for worker-image version info)
 4. **Outcome-driven lifecycle events** — window-close outcome, camera-moved, schedule-changed (B-prime for blob; E for schedule push)
 
@@ -70,7 +75,7 @@ Five nouns; each with fields, lifecycle states, invariants:
 
 **`ConfigSnapshot`** — hot-path admin-api cache
 - Fields: `snapshot_id`, `entity_type` (SITE | CAMERA | SCHEDULE | USER), `entity_id`, `data` (bytes, JSON-encoded upstream payload), `fetched_at`, `ttl`
-- Invariant: snapshots may be stale but never malformed; Watch stream pushes invalidations on upstream change
+- Invariant: snapshots may be stale but never malformed; [[watch-entity|Watch]] stream pushes invalidations on upstream change
 
 **`WindowOutcome`** — conditional-promotion signal (unified service absorbs B-prime's role)
 - Fields: `window_id`, `outcome` (PROMOTE | DROP), `blob_location` (pod+path for PROMOTE), `reported_by_pod`, `reported_at`
@@ -182,7 +187,7 @@ Noun-verb consistency check: `Assign / Release / RenewLease / DrainOwner / Watch
 - **Network partition** → minority side refuses writes; majority continues. Clients in minority zone fail-open (use last-known assignments) or fail-closed (halt) — configurable per client.
 - **Lease expiry under load** → coordinator refuses renewals past grace period; assignment reverts to `RELEASED`; next `Assign` re-picks owner. Fencing token (`generation`) prevents zombie writes from old owner.
 - **Config cache staleness** → short TTL + Watch-driven invalidations. If admin-api writer crashes before sending invalidation, cache serves stale data for up to TTL. Acceptable for schedule/config updates at human cadence.
-- **Window-outcome lost before NotifyWindowOutcome** → at-least-once semantics on the Watch stream; motion pod treats outcome as idempotent (PROMOTE twice = same promoted clip; DROP twice = no-op).
+- **Window-outcome lost before NotifyWindowOutcome** → at-least-once semantics on the [[watch-entity|Watch]] stream; motion pod treats outcome as idempotent (PROMOTE twice = same promoted clip; DROP twice = no-op).
 
 ## Verdict: coherent, unification viable
 
@@ -190,7 +195,7 @@ Noun-verb consistency check: `Assign / Release / RenewLease / DrainOwner / Watch
 
 **Recommendation: apply +1 to C and E on operational-simplicity axis in the re-score** (already captured conditionally in `topics/fleet-architecture/notes/syntheses/2026-04-22_fleet-proposal-rescore-with-delta.md` Addendum → "Conditional scenario").
 
-**Not a distributed monolith.** The four categories share underlying primitives (lease-based assignment, version-driven watch) without cross-coupling; removing the outcome category (if B-prime stays closed) drops 2 RPCs to 13. Removing the config cache (if we decide admin-api direct reads are fine) drops another 3 to 10. The design is modular at the API level, not just at the implementation level.
+**Not a distributed monolith.** The four categories share underlying primitives (lease-based assignment, version-driven [[watch-entity|watch]]) without cross-coupling; removing the outcome category (if B-prime stays closed) drops 2 RPCs to 13. Removing the config cache (if we decide admin-api direct reads are fine) drops another 3 to 10. The design is modular at the API level, not just at the implementation level.
 
 **Caveats that could break unification:**
 - If multi-region / cross-cluster coordination becomes a requirement, the "single etcd-raft group" assumption falls apart; unification remains viable but deployment complexity goes up materially.
@@ -201,7 +206,7 @@ Noun-verb consistency check: `Assign / Release / RenewLease / DrainOwner / Watch
 
 Go + gRPC + `go.etcd.io/raft/v3`. Ballpark:
 - Coordinator service: ~2500 LoC (5 RPCs × ~200 LoC + raft glue + k8s leader-elect + Dockerfile + Helm chart)
-- Per-proposal client libraries: ~1500 LoC total (SDK wrapping Watch + reconnect + generation checking)
+- Per-proposal client libraries: ~1500 LoC total (SDK wrapping [[watch-entity|Watch]] + reconnect + generation checking)
 - Tests: ~3000 LoC (failure injection is the bulk)
 - **Est: 4–6 dev-weeks for v1.** Feasible before PoC kickoff if started now.
 

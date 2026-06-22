@@ -2,7 +2,7 @@
 title: "Immix API — error patterns for missing schedules"
 type: concept
 topic: autopatrol
-tags: [immix, integration, api-quirks, cleanup-lambda, error-handling, immix, immix, immix, immix]
+tags: [immix, integration, api-quirks, cleanup-lambda, error-handling]
 created: 2026-04-23
 updated: 2026-04-29
 author: kb-bot
@@ -22,7 +22,7 @@ incoming_updated: 2026-05-08
 
 # Immix API — error patterns for missing schedules
 
-Immix does not adhere reliably to REST conventions. Its response to `GET /api/.../schedule/{schedule_id}` for a schedule that no longer exists on their side is **not a consistent 404**. This note catalogs the patterns we've observed and serves as a watch list for ones we expect to discover.
+Immix does not adhere reliably to REST conventions. Its response to `GET /api/.../schedule/{schedule_id}` for a schedule that no longer exists on their side is **not a consistent 404**. This note catalogs the patterns we've observed and serves as a [[watch-entity|watch]] list for ones we expect to discover.
 
 ## The problem this matters for
 
@@ -60,7 +60,7 @@ Admin side has no visibility into these states, and the connector's cronjob keep
 ### ⚠️ Still handled as `transient` — may be misclassified
 
 #### HTTP 401 / 403
-Auth failure. Could be a genuine transient credential issue, OR Immix rejecting access to a schedule that's been moved to a tenant we no longer have access to. **We don't know which.** Current code assumes transient. Watch: if we see 401/403 persistently for the same schedule_id across multiple cadence periods, this should probably also become "gone."
+Auth failure. Could be a genuine transient credential issue, OR Immix rejecting access to a schedule that's been moved to a tenant we no longer have access to. **We don't know which.** Current code assumes transient. [[watch-entity|Watch]]: if we see 401/403 persistently for the same schedule_id across multiple cadence periods, this should probably also become "gone."
 
 #### HTTP 5xx
 Generic server error. Treated as transient. Generally a safe assumption but could mask specific per-schedule failures.

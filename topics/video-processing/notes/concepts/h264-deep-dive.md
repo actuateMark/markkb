@@ -7,17 +7,17 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
+  - topics/actuate-libraries/notes/concepts/2026-05-19_stream-publisher-design.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase2-stream-probe.md
   - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
   - topics/integrations/rtsp/notes/entities/rtsp-components.md
+  - topics/personal-notes/notes/concepts/2026-05-28_session-handoff.md
   - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/profiling-and-performance/notes/concepts/2026-05-19_handoff-cv2-dst-stage-deploy.md
+  - topics/profiling-and-performance/notes/syntheses/2026-05-14_first-hotspot-findings.md
   - topics/video-processing/_summary.md
-  - topics/video-processing/notes/concepts/av1-vp9-future.md
-  - topics/video-processing/notes/concepts/codecs-overview.md
-  - topics/video-processing/notes/concepts/connector-decoder-routing-map.md
-  - topics/video-processing/notes/concepts/containers-overview.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-06-01
 ---
 
 # H.264 / AVC Deep Dive

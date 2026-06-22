@@ -6,14 +6,16 @@ updated: 2026-04-13
 tags: [person, engineering, leadership, infrastructure, security]
 incoming:
   - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+  - topics/admin-api/_summary.md
   - topics/jira-organization/_summary.md
   - topics/jira-organization/notes/concepts/confluence-spaces-map.md
   - topics/jira-organization/notes/concepts/jira-reorg-proposal.md
+  - topics/operational-health/notes/concepts/2026-05-22_djangoq-cpu-spike-v8-rollback-verify-scan.md
+  - topics/personal-notes/notes/daily/2026-05-22.md
+  - topics/product-roadmap/_summary.md
   - topics/product-roadmap/notes/concepts/active-risks.md
   - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
-  - topics/team-structure/_summary.md
-  - topics/watchman/_summary.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Jacob Weiss

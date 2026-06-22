@@ -12,7 +12,8 @@ incoming:
   - topics/fleet-architecture/notes/concepts/library-decomposition-required.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-a-minimal-split.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
-incoming_updated: 2026-05-01
+  - topics/fleet-architecture/notes/syntheses/2026-05-01_ephemeral-run-pilot/paradigm-c.md
+incoming_updated: 2026-05-27
 ---
 
 # BlacklistFilter Locality — Verification Finding

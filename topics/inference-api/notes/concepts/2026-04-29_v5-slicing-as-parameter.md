@@ -9,8 +9,9 @@ updated: 2026-04-29
 author: kb-bot
 incoming:
   - topics/external-api/notes/concepts/2026-04-30_v5-detect-quick-reference.md
+  - topics/inference-api/notes/syntheses/2026-05-13_v5-prod-release.md
   - topics/personal-notes/notes/daily/2026-04-29.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # v5 Slicing as a Parameter

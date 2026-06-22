@@ -14,10 +14,10 @@ incoming:
   - topics/engineering-process/notes/entities/skill-todos-add.md
   - topics/engineering-process/notes/entities/skill-todos-audit.md
   - topics/engineering-process/notes/syntheses/2026-04-30_three-tier-routine-check-pattern.md
+  - topics/engineering-process/notes/syntheses/2026-05-12_verdict-as-exit-code-footgun.md
   - topics/personal-laptop/notes/concepts/2026-04-30_morning-prep-scripts-runbook.md
   - topics/personal-laptop/notes/syntheses/2026-04-30_firebat-script-conversion-candidates.md
-  - topics/personal-notes/_summary.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # /daily-scope

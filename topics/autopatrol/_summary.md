@@ -33,7 +33,7 @@ Multiple IZ presets per camera, selectable per schedule, with full API + fronten
 - **[[clarissa-herman|Clarissa Herman]]:** AP Server/MS integration (AUTO-449)
 
 ### 5. Alert Lifecycle Race Condition (Identified April 16, 2026)
-- **Deferred alerts fired via `flush_deferred_alerts()` can be lost at patrol exit** — executor tasks killed by process exit before Immix API call completes. See [[2026-04-16_deferred-alert-race-condition]] and [[autopatrol-alert-lifecycle]].
+- **Deferred alerts fired via `flush_deferred_alerts()` can be lost at patrol exit** — executor tasks killed by process exit before [[immix-vendor-api|Immix API]] call completes. See [[2026-04-16_deferred-alert-race-condition]] and [[autopatrol-alert-lifecycle]].
 - Fix in progress: drain executor after flush before allowing process exit.
 
 ### 6. Generic Patrol Mode (Shipped April 2026)

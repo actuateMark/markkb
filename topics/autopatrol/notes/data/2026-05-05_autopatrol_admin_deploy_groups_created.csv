@@ -1,0 +1,6 @@
+new_group_id,new_group_name,tenant_id,contact_email,existing_user_group_id,existing_user_group_name,notes
+56365,Rapid Response - Patrol,69e1fb38-3413-4023-b6f8-c3d687bd6f61,TMann@rrms.com,48330,Rapid Response - Patrol,User pre-existed in old group with same display name; needs re-association
+56366,Eyeforce - Patrol,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,jason.straka@eyeforce.com,1,Eyeforce,User pre-existed in [1] Eyeforce; needs re-association
+56367,TriCorps Security - Patrol,5dd01973-ba50-4c4e-8bc9-19e273e1056f,travispowell@tricorps.com,31034,TriCorps,Contract status was Cancelled in immix; group still created
+56368,Live Patrol - Patrol,74cf336c-f671-45ad-ba7b-193d4f2540f1,agribovsky@livepatrol.com,234,Live Patrol,User pre-existed in [234] Live Patrol; needs re-association
+56369,Vector Security - Patrol,f858b03b-2a85-4771-89d5-dbf62456ed7b,rfmay@vectorsecurity.com,47393,Vector Security - Trial,User pre-existed in Trial group; needs re-association to Patrol group

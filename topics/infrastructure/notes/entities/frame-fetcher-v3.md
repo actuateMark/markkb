@@ -8,7 +8,8 @@ updated: 2026-04-13
 author: kb-bot
 incoming:
   - topics/infrastructure/notes/entities/create-detection-window.md
-incoming_updated: 2026-05-01
+  - topics/operational-health/notes/syntheses/2026-05-16_overnight-check.md
+incoming_updated: 2026-05-27
 ---
 
 # Frame Fetcher V3

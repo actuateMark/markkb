@@ -7,6 +7,7 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
+  - topics/actuate-libraries/notes/concepts/2026-05-19_stream-publisher-design.md
   - topics/integrations/rtsp/notes/entities/rtsp-components.md
   - topics/integrations/rtsp/notes/syntheses/rtsp-robustness-enhancement-plan.md
   - topics/personal-notes/notes/daily/2026-04-27.md
@@ -16,8 +17,7 @@ incoming:
   - topics/video-processing/notes/concepts/connector-decoder-routing-map.md
   - topics/video-processing/notes/concepts/connector-docker-system-deps.md
   - topics/video-processing/notes/concepts/containers-overview.md
-  - topics/video-processing/notes/concepts/eks-prod-node-pool-gpu-availability.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Hardware-Accelerated [[codecs-overview|Codecs]]

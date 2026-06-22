@@ -85,7 +85,7 @@ When a product has tag zones configured, the alert is deferred:
 - At patrol end, `flush_deferred_alerts()` fires any still-pending alerts
 - Frame data may have expired from the LRU cache → [[s3-frame-fallback|S3 frame fallback]] activates (see [[s3-frame-fallback]])
 
-**Known issue:** `flush_deferred_alerts()` submits to the executor but does not wait for completion. The patrol CronJob can exit before the executor threads finish the Immix API call and DynamoDB save. See [[2026-04-16_deferred-alert-race-condition]].
+**Known issue:** `flush_deferred_alerts()` submits to the executor but does not wait for completion. The patrol CronJob can exit before the executor threads finish the [[immix-vendor-api|Immix API]] call and DynamoDB save. See [[2026-04-16_deferred-alert-race-condition]].
 
 ## Key Code Locations
 
@@ -162,12 +162,12 @@ A healthy patrol with deferred alerts should produce this sequence for EACH dete
 |-----------|---------|----------|
 | `flush_deferred_alerts: firing` without matching `AutoPatrol alert delivered` within 30s | Lost alert — fired but never confirmed delivered | Critical |
 | `drain_alert_executors: completed` timing approaching 30s | Executor is saturated, alerts at risk of timeout | Warning |
-| `raise_patrol_alert failed: status=` present | Immix API rejecting alerts | Critical |
+| `raise_patrol_alert failed: status=` present | [[immix-vendor-api|Immix API]] rejecting alerts | Critical |
 | `executor drain` warning present | Drain timed out, alerts likely lost | Critical |
 
 ### Operational Notes
 
-- The drain timeout is the hard boundary. If `drain_alert_executors: completed in Xs` shows X approaching the timeout (30s), the executor thread pool is saturated — likely too many concurrent alerts or slow Immix API responses.
+- The drain timeout is the hard boundary. If `drain_alert_executors: completed in Xs` shows X approaching the timeout (30s), the executor thread pool is saturated — likely too many concurrent alerts or slow [[immix-vendor-api|Immix API]] responses.
 - The `flush_deferred_alerts` summary counts (fired/skipped) provide a quick per-patrol health signal without needing to count individual log lines.
 
 ## Related Notes

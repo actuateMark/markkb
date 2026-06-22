@@ -29,6 +29,7 @@ These exist elsewhere in the KB; future work may move them here:
 - [[2026-04-30_connector-oomkill-oneoff-bump]] — Per-incident triage for a single connector pod OOMKilling (raise `limits.memory`); §18 is the fleet-wide fix
 - [[2026-04-30_detecting-jira-sync-staleness]] — Detecting + recovering when the daily jira-sync cron wedges and mark-todos's Jira queue silently drifts
 - [[2026-04-30_camera-ui-login-tsx-audit-flag]] — Decision tree for retiring the recurring `camera-ui main` dirty `Login.tsx` audit-flag
+- [[2026-06-02_rds-extended-support-upgrade-runbook]] — End-to-end upgrade of three PostgreSQL databases (12.22, 13.20) off AWS RDS Extended Support surcharges to PG16. Covers pre-flight, single-step major upgrade, post-upgrade validation, and rollback plan (~$613/mo savings total).
 
 ## Backlog
 

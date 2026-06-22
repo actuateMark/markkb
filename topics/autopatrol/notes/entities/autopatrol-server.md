@@ -2,7 +2,7 @@
 title: "Autopatrol Server"
 type: entity
 topic: autopatrol
-tags: [autopatrol, server, analysis, flask, sqs, neptune, computer-vision, autopatrol, autopatrol, autopatrol, autopatrol]
+tags: [autopatrol, server, analysis, flask, sqs, neptune, computer-vision]
 created: 2026-04-13
 updated: 2026-05-04
 author: kb-bot
@@ -14,13 +14,15 @@ outgoing:
 incoming:
   - topics/autopatrol/notes/concepts/2026-05-04_autopatrol-server-release-process.md
   - topics/autopatrol/notes/concepts/autopatrol-alert-lifecycle.md
+  - topics/autopatrol/notes/entities/autopatrol-aws-objects.md
+  - topics/autopatrol/notes/entities/autopatrol-server-deployment.md
   - topics/autopatrol/notes/entities/immix-vendor-api.md
   - topics/autopatrol/notes/entities/todo-list.md
   - topics/autopatrol/notes/syntheses/2026-04-16_deferred-alert-race-condition.md
   - topics/autopatrol/notes/syntheses/2026-05-04_autopatrol-server-nr-upgrade-plan.md
   - topics/autopatrol/notes/syntheses/2026-05-07_consumer-side-websocket-close-feasibility.md
-  - topics/team-structure/notes/entities/clarissa-herman.md
-incoming_updated: 2026-05-08
+  - topics/autopatrol/notes/syntheses/2026-05-20_ap-summary-disable-plan.md
+incoming_updated: 2026-05-27
 ---
 
 ## Overview
@@ -44,7 +46,7 @@ The service is containerized via Docker (Python 3.12-slim base, built with uv, A
 
 The Docker image is deployed to ECS or EKS (ARM64 nodes). It pulls private packages from AWS CodeArtifact at build time via a `UV_INDEX` build arg.
 
-For the full release chain (autopatrol-server → ECR → kubernetes-deployments → [[argocd|ArgoCD]]), see [[2026-05-04_autopatrol-server-release-process]]. **Do not skip the build-wait step** — bumping the k8s manifest before ECR has the tag causes ImagePullBackOff.
+For the full release chain (autopatrol-server → ECR → [[kubernetes-deployments]] → [[argocd|ArgoCD]]), see [[2026-05-04_autopatrol-server-release-process]]. **Do not skip the build-wait step** — bumping the k8s manifest before ECR has the tag causes ImagePullBackOff.
 
 ## Key Files and Entry Points
 

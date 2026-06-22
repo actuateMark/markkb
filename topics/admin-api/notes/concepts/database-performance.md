@@ -8,9 +8,14 @@ updated: 2026-04-13
 author: kb-bot
 incoming:
   - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+  - topics/admin-api/_summary.md
+  - topics/admin-api/notes/syntheses/2026-05-13_customer-model-dissection.md
+  - topics/data-access-control/notes/concepts/2026-05-11_admin-incident-catalog.md
+  - topics/data-access-control/notes/syntheses/2026-05-11_admin-reliability-fix-plan.md
+  - topics/product-roadmap/_summary.md
   - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
   - topics/team-structure/notes/entities/tatiana-hanazaki.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Database Performance -- Recursive CTE CPU Spike

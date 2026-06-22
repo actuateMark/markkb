@@ -19,6 +19,8 @@ outgoing:
   - topics/integrations/adpro/_summary.md
 incoming:
   - topics/actuate-libraries/_summary.md
+  - topics/actuate-libraries/notes/concepts/2026-05-19_pyav17-ffmpeg8-migration.md
+  - topics/actuate-libraries/notes/concepts/2026-05-19_stream-publisher-design.md
   - topics/actuate-libraries/notes/concepts/dependency-graph.md
   - topics/actuate-libraries/notes/concepts/dev-workflow.md
   - topics/actuate-libraries/notes/entities/actuate-blur.md
@@ -26,9 +28,7 @@ incoming:
   - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
   - topics/actuate-platform/notes/syntheses/integration-landscape.md
   - topics/autopatrol/notes/syntheses/2026-05-01_pre-endrun-crashes-resolution.md
-  - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
-  - topics/camera-health-monitoring/notes/syntheses/chm-phase2-stream-probe.md
-incoming_updated: 2026-05-09
+incoming_updated: 2026-05-27
 ---
 
 # actuate-pullers

@@ -12,10 +12,11 @@ incoming:
   - topics/actuate-libraries/notes/entities/actuate-imutils.md
   - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase5-frame-probe.md
+  - topics/inference-api/notes/syntheses/2026-05-14_v5-motion-history-single-frame-design.md
   - topics/vms-connector/notes/concepts/motion-detection-internals.md
   - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
   - topics/vms-connector/notes/syntheses/performance-optimization-landscape.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # actuate-movement

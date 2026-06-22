@@ -2,7 +2,7 @@
 title: "Immix API zombie tenants — tenant_ids referenced in connector flow that return no data"
 type: concept
 topic: autopatrol
-tags: [immix, autopatrol-onboarder, api-contract-violation, tenant-cascade, eu, zombie-tenants, immix, immix, immix, immix]
+tags: [immix, autopatrol-onboarder, api-contract-violation, tenant-cascade, eu, zombie-tenants]
 jira: ""
 confluence: ""
 created: 2026-04-29
@@ -15,11 +15,11 @@ incoming:
   - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
   - topics/autopatrol/notes/entities/immix-vendor-api.md
   - topics/autopatrol/notes/syntheses/2026-05-07_consumer-side-websocket-close-feasibility.md
+  - topics/billing/notes/syntheses/2026-05-12_week-in-review-non-technical.md
   - topics/personal-notes/notes/concepts/2026-04-29_cleanup-handoff.md
   - topics/personal-notes/notes/concepts/2026-04-30_admin-propagation-handoff.md
   - topics/personal-notes/notes/daily/2026-04-29.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 # Immix API contract violation — connector-flow tenant_ids return no data

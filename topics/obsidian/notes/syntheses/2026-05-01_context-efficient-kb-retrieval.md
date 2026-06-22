@@ -8,7 +8,9 @@ updated: 2026-05-01
 author: kb-bot
 incoming:
   - topics/obsidian/_summary.md
-incoming_updated: 2026-05-01
+  - topics/personal-notes/notes/daily/2026-05-01.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-27
 ---
 
 The KB is meant to be queried by LLMs without burning context. Every time a skill walks the vault recursively (`grep -r` over 1050 files, reading every frontmatter), the conversation pays in tokens. The [[obsidian-cli|Obsidian CLI]] plus a richer link/tag graph (post-2026-05-01 [[2026-04-30_kb-skill-cli-retrofit|retrofit]] + relink pass) lets us answer the same questions in 1-3 structured calls. This synthesis captures the canonical retrieval recipe and the design choices that support it.

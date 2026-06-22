@@ -18,11 +18,13 @@ incoming:
   - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
   - topics/autopatrol/notes/syntheses/2026-05-01_pre-endrun-crashes-resolution.md
   - topics/autopatrol/notes/syntheses/2026-05-01_silent-cameras-diagnosis.md
-  - topics/personal-notes/notes/concepts/2026-04-30_admin-propagation-handoff.md
-  - topics/personal-notes/notes/concepts/2026-05-01_pre-endrun-crashes-handoff.md
-  - topics/personal-notes/notes/daily/2026-05-01.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-08
+  - topics/billing/_summary.md
+  - topics/billing/_todos.md
+  - topics/billing/notes/concepts/2026-05-11_billing-reconciliation-dashboard-design.md
+  - topics/billing/notes/syntheses/2026-05-11_billing-pain-post-mortem.md
+  - topics/billing/notes/syntheses/2026-05-12_week-in-review-non-technical.md
+  - topics/billing/reading-list.md
+incoming_updated: 2026-05-27
 ---
 
 # Admin data model — cascade and soft-delete semantics (seed)

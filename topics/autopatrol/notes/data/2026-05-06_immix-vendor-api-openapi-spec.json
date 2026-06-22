@@ -1,0 +1,1984 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Vendor API for Immix AutoPatrol",
+        "description": "This is the API for AI vendor to access AutoPatrol services. (1.2511.3.1)",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://autopatrol.immixconnect.com/v"
+        }
+    ],
+    "paths": {
+        "/Contracts": {
+            "get": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "/Contracts - GET",
+                "operationId": "get-contracts",
+                "parameters": [
+                    {
+                        "name": "contractStatus",
+                        "in": "query",
+                        "schema": {
+                            "$ref": "#/components/schemas/ContractStatus"
+                        }
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 100
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContractsPagedModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContractsPagedModel"
+                                },
+                                "example": {
+                                    "pageNumber": 0,
+                                    "pageSize": 0,
+                                    "pageCount": 0,
+                                    "contracts": [
+                                        {
+                                            "contractId": "string",
+                                            "contractStatus": "Created",
+                                            "tenantName": "string",
+                                            "tenantId": "string",
+                                            "contactName": "string",
+                                            "contactEmail": "string",
+                                            "contactTelephone": "string",
+                                            "contactAddress": "string",
+                                            "tenantStatus": "Pending"
+                                        }
+                                    ]
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContractsPagedModel"
+                                },
+                                "example": {
+                                    "pageNumber": 0,
+                                    "pageSize": 0,
+                                    "pageCount": 0,
+                                    "contracts": [
+                                        {
+                                            "contractId": "string",
+                                            "contractStatus": "Created",
+                                            "tenantName": "string",
+                                            "tenantId": "string",
+                                            "contactName": "string",
+                                            "contactEmail": "string",
+                                            "contactTelephone": "string",
+                                            "contactAddress": "string",
+                                            "tenantStatus": "Pending"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Contracts/{contractId}": {
+            "get": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "/Contracts/{contractId} - GET",
+                "operationId": "get-contracts-contractid",
+                "parameters": [
+                    {
+                        "name": "contractId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContractDetailsModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContractDetailsModel"
+                                },
+                                "example": {
+                                    "contractId": "string",
+                                    "contractStatus": "Created",
+                                    "tenantName": "string",
+                                    "tenantId": "string",
+                                    "contactName": "string",
+                                    "contactEmail": "string",
+                                    "contactTelephone": "string",
+                                    "contactAddress": "string",
+                                    "tenantStatus": "Pending"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContractDetailsModel"
+                                },
+                                "example": {
+                                    "contractId": "string",
+                                    "contractStatus": "Created",
+                                    "tenantName": "string",
+                                    "tenantId": "string",
+                                    "contactName": "string",
+                                    "contactEmail": "string",
+                                    "contactTelephone": "string",
+                                    "contactAddress": "string",
+                                    "tenantStatus": "Pending"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "/Contracts/{contractId} - PUT",
+                "operationId": "put-contracts-contractid",
+                "parameters": [
+                    {
+                        "name": "contractId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ContractUpdateModel"
+                            },
+                            "example": {
+                                "contractStatus": "Created"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ContractUpdateModel"
+                            },
+                            "example": {
+                                "contractStatus": "Created"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ContractUpdateModel"
+                            },
+                            "example": {
+                                "contractStatus": "Created"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContractDetailsModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContractDetailsModel"
+                                },
+                                "example": {
+                                    "contractId": "string",
+                                    "contractStatus": "Created",
+                                    "tenantName": "string",
+                                    "tenantId": "string",
+                                    "contactName": "string",
+                                    "contactEmail": "string",
+                                    "contactTelephone": "string",
+                                    "contactAddress": "string",
+                                    "tenantStatus": "Pending"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ContractDetailsModel"
+                                },
+                                "example": {
+                                    "contractId": "string",
+                                    "contractStatus": "Created",
+                                    "tenantName": "string",
+                                    "tenantId": "string",
+                                    "contactName": "string",
+                                    "contactEmail": "string",
+                                    "contactTelephone": "string",
+                                    "contactAddress": "string",
+                                    "tenantStatus": "Pending"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/HeathCheck": {
+            "get": {
+                "tags": [
+                    "HeathCheck"
+                ],
+                "summary": "/HeathCheck - GET",
+                "operationId": "get-heathcheck",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/Patrols": {
+            "get": {
+                "tags": [
+                    "Patrols"
+                ],
+                "summary": "/Patrols - GET",
+                "operationId": "get-patrols",
+                "parameters": [
+                    {
+                        "name": "siteId",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "scheduleId",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 100
+                        }
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "header",
+                        "description": "Tenant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PatrolsPagedModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PatrolsPagedModel"
+                                },
+                                "example": {
+                                    "pageNumber": 0,
+                                    "pageSize": 0,
+                                    "pageCount": 0,
+                                    "patrols": [
+                                        {
+                                            "patrolId": "string",
+                                            "executionTimeUTC": "string",
+                                            "siteId": 0,
+                                            "scheduleId": "string",
+                                            "patrolStatus": "Pending",
+                                            "scheduleTitle": "string",
+                                            "patrolType": "AutoPatrol"
+                                        }
+                                    ]
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PatrolsPagedModel"
+                                },
+                                "example": {
+                                    "pageNumber": 0,
+                                    "pageSize": 0,
+                                    "pageCount": 0,
+                                    "patrols": [
+                                        {
+                                            "patrolId": "string",
+                                            "executionTimeUTC": "string",
+                                            "siteId": 0,
+                                            "scheduleId": "string",
+                                            "patrolStatus": "Pending",
+                                            "scheduleTitle": "string",
+                                            "patrolType": "AutoPatrol"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Patrols/{patrolId}": {
+            "get": {
+                "tags": [
+                    "Patrols"
+                ],
+                "summary": "/Patrols/{patrolId} - GET",
+                "operationId": "get-patrols-patrolid",
+                "parameters": [
+                    {
+                        "name": "patrolId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "header",
+                        "description": "Tenant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PatrolModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PatrolModel"
+                                },
+                                "example": {
+                                    "patrolId": "string",
+                                    "executionTimeUTC": "string",
+                                    "siteId": 0,
+                                    "scheduleId": "string",
+                                    "patrolStatus": "Pending",
+                                    "scheduleTitle": "string",
+                                    "patrolType": "AutoPatrol"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PatrolModel"
+                                },
+                                "example": {
+                                    "patrolId": "string",
+                                    "executionTimeUTC": "string",
+                                    "siteId": 0,
+                                    "scheduleId": "string",
+                                    "patrolStatus": "Pending",
+                                    "scheduleTitle": "string",
+                                    "patrolType": "AutoPatrol"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Patrols"
+                ],
+                "summary": "/Patrols/{patrolId} - PUT",
+                "operationId": "put-patrols-patrolid",
+                "parameters": [
+                    {
+                        "name": "patrolId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "header",
+                        "description": "Tenant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PatrolStatusUpdateModel"
+                            },
+                            "example": {
+                                "patrolStatus": "Pending"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PatrolStatusUpdateModel"
+                            },
+                            "example": {
+                                "patrolStatus": "Pending"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PatrolStatusUpdateModel"
+                            },
+                            "example": {
+                                "patrolStatus": "Pending"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PatrolModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PatrolModel"
+                                },
+                                "example": {
+                                    "patrolId": "string",
+                                    "executionTimeUTC": "string",
+                                    "siteId": 0,
+                                    "scheduleId": "string",
+                                    "patrolStatus": "Pending",
+                                    "scheduleTitle": "string",
+                                    "patrolType": "AutoPatrol"
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PatrolModel"
+                                },
+                                "example": {
+                                    "patrolId": "string",
+                                    "executionTimeUTC": "string",
+                                    "siteId": 0,
+                                    "scheduleId": "string",
+                                    "patrolStatus": "Pending",
+                                    "scheduleTitle": "string",
+                                    "patrolType": "AutoPatrol"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Patrols/{PatrolId}/Device/{DeviceId}/videostream": {
+            "get": {
+                "tags": [
+                    "Patrols"
+                ],
+                "summary": "/Patrols/{PatrolId}/Device/{DeviceId}/videostream - GET",
+                "operationId": "get-patrols-patrolid-device-deviceid-videostream",
+                "parameters": [
+                    {
+                        "name": "PatrolId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "DeviceId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "Duration",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "Tier",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "ShortCodes",
+                        "in": "query",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "header",
+                        "description": "Tenant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VideoStreamModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VideoStreamModel"
+                                },
+                                "example": {
+                                    "deviceStreamUrl": "string",
+                                    "deviceStreamId": "string",
+                                    "lifeSpan": "string",
+                                    "fileStoreId": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VideoStreamModel"
+                                },
+                                "example": {
+                                    "deviceStreamUrl": "string",
+                                    "deviceStreamId": "string",
+                                    "lifeSpan": "string",
+                                    "fileStoreId": 0
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Patrols/{patrolId}/raise": {
+            "put": {
+                "tags": [
+                    "Patrols"
+                ],
+                "summary": "/Patrols/{patrolId}/raise - PUT",
+                "operationId": "put-patrols-patrolid-raise",
+                "parameters": [
+                    {
+                        "name": "patrolId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RaisePatrolModel"
+                            },
+                            "example": {
+                                "deviceId": 0,
+                                "threatData": [
+                                    {
+                                        "description": "string",
+                                        "detectionCode": "string",
+                                        "tier": 0,
+                                        "media": [
+                                            {
+                                                "mimeType": "string",
+                                                "url": "string",
+                                                "imageType": "string"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "streamId": "string"
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RaisePatrolModel"
+                            },
+                            "example": {
+                                "deviceId": 0,
+                                "threatData": [
+                                    {
+                                        "description": "string",
+                                        "detectionCode": "string",
+                                        "tier": 0,
+                                        "media": [
+                                            {
+                                                "mimeType": "string",
+                                                "url": "string",
+                                                "imageType": "string"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "streamId": "string"
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RaisePatrolModel"
+                            },
+                            "example": {
+                                "deviceId": 0,
+                                "threatData": [
+                                    {
+                                        "description": "string",
+                                        "detectionCode": "string",
+                                        "tier": 0,
+                                        "media": [
+                                            {
+                                                "mimeType": "string",
+                                                "url": "string",
+                                                "imageType": "string"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "streamId": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/Schedules": {
+            "get": {
+                "tags": [
+                    "Schedules"
+                ],
+                "summary": "/Schedules - GET",
+                "operationId": "get-schedules",
+                "parameters": [
+                    {
+                        "name": "siteId",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "scheduleStatus",
+                        "in": "query",
+                        "schema": {
+                            "$ref": "#/components/schemas/AutoPatrolScheduleStatus"
+                        }
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 100
+                        }
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "header",
+                        "description": "Tenant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SchedulesPagedModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SchedulesPagedModel"
+                                },
+                                "example": {
+                                    "pageNumber": 0,
+                                    "pageSize": 0,
+                                    "pageCount": 0,
+                                    "schedules": [
+                                        {
+                                            "scheduleId": "string",
+                                            "tenantId": "string",
+                                            "cronExpression": "string",
+                                            "cronExpressionExtended": "string",
+                                            "scheduleStatus": "Awaiting",
+                                            "devices": [
+                                                {
+                                                    "deviceName": "string",
+                                                    "isPTZ": true,
+                                                    "deviceId": 0,
+                                                    "deviceType": "string"
+                                                }
+                                            ],
+                                            "siteId": 0,
+                                            "tier": 0,
+                                            "siteName": "string",
+                                            "title": "string",
+                                            "win32TimeZoneId": "string",
+                                            "olsonTimeZoneId": "string",
+                                            "patrolType": "AutoPatrol",
+                                            "checksPerDay": 0
+                                        }
+                                    ]
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SchedulesPagedModel"
+                                },
+                                "example": {
+                                    "pageNumber": 0,
+                                    "pageSize": 0,
+                                    "pageCount": 0,
+                                    "schedules": [
+                                        {
+                                            "scheduleId": "string",
+                                            "tenantId": "string",
+                                            "cronExpression": "string",
+                                            "cronExpressionExtended": "string",
+                                            "scheduleStatus": "Awaiting",
+                                            "devices": [
+                                                {
+                                                    "deviceName": "string",
+                                                    "isPTZ": true,
+                                                    "deviceId": 0,
+                                                    "deviceType": "string"
+                                                }
+                                            ],
+                                            "siteId": 0,
+                                            "tier": 0,
+                                            "siteName": "string",
+                                            "title": "string",
+                                            "win32TimeZoneId": "string",
+                                            "olsonTimeZoneId": "string",
+                                            "patrolType": "AutoPatrol",
+                                            "checksPerDay": 0
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Schedules/{scheduleId}": {
+            "get": {
+                "tags": [
+                    "Schedules"
+                ],
+                "summary": "/Schedules/{scheduleId} - GET",
+                "operationId": "get-schedules-scheduleid",
+                "parameters": [
+                    {
+                        "name": "scheduleId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "header",
+                        "description": "Tenant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ScheduleModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ScheduleModel"
+                                },
+                                "example": {
+                                    "scheduleId": "string",
+                                    "tenantId": "string",
+                                    "cronExpression": "string",
+                                    "cronExpressionExtended": "string",
+                                    "scheduleStatus": "Awaiting",
+                                    "devices": [
+                                        {
+                                            "deviceName": "string",
+                                            "isPTZ": true,
+                                            "deviceId": 0,
+                                            "deviceType": "string"
+                                        }
+                                    ],
+                                    "siteId": 0,
+                                    "tier": 0,
+                                    "siteName": "string",
+                                    "title": "string",
+                                    "win32TimeZoneId": "string",
+                                    "olsonTimeZoneId": "string",
+                                    "patrolType": "AutoPatrol",
+                                    "checksPerDay": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ScheduleModel"
+                                },
+                                "example": {
+                                    "scheduleId": "string",
+                                    "tenantId": "string",
+                                    "cronExpression": "string",
+                                    "cronExpressionExtended": "string",
+                                    "scheduleStatus": "Awaiting",
+                                    "devices": [
+                                        {
+                                            "deviceName": "string",
+                                            "isPTZ": true,
+                                            "deviceId": 0,
+                                            "deviceType": "string"
+                                        }
+                                    ],
+                                    "siteId": 0,
+                                    "tier": 0,
+                                    "siteName": "string",
+                                    "title": "string",
+                                    "win32TimeZoneId": "string",
+                                    "olsonTimeZoneId": "string",
+                                    "patrolType": "AutoPatrol",
+                                    "checksPerDay": 0
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Schedules"
+                ],
+                "summary": "/Schedules/{scheduleId} - PUT",
+                "operationId": "put-schedules-scheduleid",
+                "parameters": [
+                    {
+                        "name": "scheduleId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "header",
+                        "description": "Tenant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AutoPatrolScheduleStatus"
+                            },
+                            "example": "Awaiting"
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AutoPatrolScheduleStatus"
+                            },
+                            "example": "Awaiting"
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AutoPatrolScheduleStatus"
+                            },
+                            "example": "Awaiting"
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ScheduleModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ScheduleModel"
+                                },
+                                "example": {
+                                    "scheduleId": "string",
+                                    "tenantId": "string",
+                                    "cronExpression": "string",
+                                    "cronExpressionExtended": "string",
+                                    "scheduleStatus": "Awaiting",
+                                    "devices": [
+                                        {
+                                            "deviceName": "string",
+                                            "isPTZ": true,
+                                            "deviceId": 0,
+                                            "deviceType": "string"
+                                        }
+                                    ],
+                                    "siteId": 0,
+                                    "tier": 0,
+                                    "siteName": "string",
+                                    "title": "string",
+                                    "win32TimeZoneId": "string",
+                                    "olsonTimeZoneId": "string",
+                                    "patrolType": "AutoPatrol",
+                                    "checksPerDay": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ScheduleModel"
+                                },
+                                "example": {
+                                    "scheduleId": "string",
+                                    "tenantId": "string",
+                                    "cronExpression": "string",
+                                    "cronExpressionExtended": "string",
+                                    "scheduleStatus": "Awaiting",
+                                    "devices": [
+                                        {
+                                            "deviceName": "string",
+                                            "isPTZ": true,
+                                            "deviceId": 0,
+                                            "deviceType": "string"
+                                        }
+                                    ],
+                                    "siteId": 0,
+                                    "tier": 0,
+                                    "siteName": "string",
+                                    "title": "string",
+                                    "win32TimeZoneId": "string",
+                                    "olsonTimeZoneId": "string",
+                                    "patrolType": "AutoPatrol",
+                                    "checksPerDay": 0
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Sites": {
+            "get": {
+                "tags": [
+                    "Sites"
+                ],
+                "summary": "/Sites - GET",
+                "operationId": "get-sites",
+                "parameters": [
+                    {
+                        "name": "pageNumber",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 100
+                        }
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "header",
+                        "description": "Tenant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SitesPagedModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SitesPagedModel"
+                                },
+                                "example": {
+                                    "pageNumber": 0,
+                                    "pageSize": 0,
+                                    "pageCount": 0,
+                                    "sites": [
+                                        {
+                                            "siteId": 0,
+                                            "siteName": "string",
+                                            "devices": [
+                                                {
+                                                    "deviceName": "string",
+                                                    "isPTZ": true,
+                                                    "deviceId": 0,
+                                                    "deviceType": "string"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SitesPagedModel"
+                                },
+                                "example": {
+                                    "pageNumber": 0,
+                                    "pageSize": 0,
+                                    "pageCount": 0,
+                                    "sites": [
+                                        {
+                                            "siteId": 0,
+                                            "siteName": "string",
+                                            "devices": [
+                                                {
+                                                    "deviceName": "string",
+                                                    "isPTZ": true,
+                                                    "deviceId": 0,
+                                                    "deviceType": "string"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Sites/{siteId}": {
+            "get": {
+                "tags": [
+                    "Sites"
+                ],
+                "summary": "/Sites/{siteId} - GET",
+                "operationId": "get-sites-siteid",
+                "parameters": [
+                    {
+                        "name": "siteId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "header",
+                        "description": "Tenant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GroupModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GroupModel"
+                                },
+                                "example": {
+                                    "groupId": 0,
+                                    "groupName": "string",
+                                    "devices": [
+                                        {
+                                            "deviceName": "string",
+                                            "isPTZ": true,
+                                            "deviceId": 0,
+                                            "deviceType": "string"
+                                        }
+                                    ]
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GroupModel"
+                                },
+                                "example": {
+                                    "groupId": 0,
+                                    "groupName": "string",
+                                    "devices": [
+                                        {
+                                            "deviceName": "string",
+                                            "isPTZ": true,
+                                            "deviceId": 0,
+                                            "deviceType": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Sites/{siteId}/device/{deviceId}/RefShot": {
+            "get": {
+                "tags": [
+                    "Sites"
+                ],
+                "summary": "/Sites/{siteId}/device/{deviceId}/RefShot - GET",
+                "operationId": "get-sites-siteid-device-deviceid-refshot",
+                "parameters": [
+                    {
+                        "name": "siteId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "deviceId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "header",
+                        "description": "Tenant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RefShotModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RefShotModel"
+                                },
+                                "example": {
+                                    "content": "string",
+                                    "deviceId": 0,
+                                    "contentType": "string",
+                                    "placeholder": true
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RefShotModel"
+                                },
+                                "example": {
+                                    "content": "string",
+                                    "deviceId": 0,
+                                    "contentType": "string",
+                                    "placeholder": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/Sites/{siteId}/Device/{deviceId}/preview": {
+            "get": {
+                "tags": [
+                    "Sites"
+                ],
+                "summary": "/Sites/{siteId}/Device/{deviceId}/preview - GET",
+                "operationId": "get-sites-siteid-device-deviceid-preview",
+                "parameters": [
+                    {
+                        "name": "siteId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "deviceId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "duration",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "header",
+                        "description": "Tenant Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VideoStreamModel"
+                                },
+                                "examples": {
+                                    "default": {
+                                        "value": null
+                                    }
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VideoStreamModel"
+                                },
+                                "example": {
+                                    "deviceStreamUrl": "string",
+                                    "deviceStreamId": "string",
+                                    "lifeSpan": "string",
+                                    "fileStoreId": 0
+                                }
+                            },
+                            "text/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VideoStreamModel"
+                                },
+                                "example": {
+                                    "deviceStreamUrl": "string",
+                                    "deviceStreamId": "string",
+                                    "lifeSpan": "string",
+                                    "fileStoreId": 0
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AutoPatrolScheduleStatus": {
+                "enum": [
+                    "Awaiting",
+                    "Active",
+                    "Suspended",
+                    "Paused",
+                    "Removed",
+                    "Deleted"
+                ],
+                "type": "string"
+            },
+            "AutoPatrolTenantStatus": {
+                "enum": [
+                    "Pending",
+                    "Ready",
+                    "Active",
+                    "Suspended",
+                    "Removed"
+                ],
+                "type": "string"
+            },
+            "AutoPatrolType": {
+                "enum": [
+                    "AutoPatrol",
+                    "VisualCameraHealth"
+                ],
+                "type": "string"
+            },
+            "ContractDetailsModel": {
+                "type": "object",
+                "properties": {
+                    "contractId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "contractStatus": {
+                        "$ref": "#/components/schemas/ContractStatus"
+                    },
+                    "tenantName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "contactName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "contactEmail": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "contactTelephone": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "contactAddress": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "tenantStatus": {
+                        "$ref": "#/components/schemas/AutoPatrolTenantStatus"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContractStatus": {
+                "enum": [
+                    "Created",
+                    "UnderReview",
+                    "Rejected",
+                    "Cancelled",
+                    "Active",
+                    "Suspended",
+                    "Terminated"
+                ],
+                "type": "string"
+            },
+            "ContractUpdateModel": {
+                "type": "object",
+                "properties": {
+                    "contractStatus": {
+                        "$ref": "#/components/schemas/ContractStatus"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ContractsPagedModel": {
+                "type": "object",
+                "properties": {
+                    "pageNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "contracts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ContractDetailsModel"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "DeviceModel": {
+                "type": "object",
+                "properties": {
+                    "deviceName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "isPTZ": {
+                        "type": "boolean"
+                    },
+                    "deviceId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "deviceType": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "GroupModel": {
+                "type": "object",
+                "properties": {
+                    "groupId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "groupName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "devices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DeviceModel"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PatrolModel": {
+                "type": "object",
+                "properties": {
+                    "patrolId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "executionTimeUTC": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "siteId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "scheduleId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "patrolStatus": {
+                        "$ref": "#/components/schemas/PatrolStatus"
+                    },
+                    "scheduleTitle": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "patrolType": {
+                        "$ref": "#/components/schemas/AutoPatrolType"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PatrolStatus": {
+                "enum": [
+                    "Pending",
+                    "Started",
+                    "Finished"
+                ],
+                "type": "string"
+            },
+            "PatrolStatusUpdateModel": {
+                "type": "object",
+                "properties": {
+                    "patrolStatus": {
+                        "$ref": "#/components/schemas/PatrolStatus"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "PatrolsPagedModel": {
+                "type": "object",
+                "properties": {
+                    "pageNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "patrols": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PatrolModel"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "RaisePatrolModel": {
+                "required": [
+                    "deviceId",
+                    "streamId",
+                    "threatData"
+                ],
+                "type": "object",
+                "properties": {
+                    "deviceId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "threatData": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/RaiseThreatDataModel"
+                        }
+                    },
+                    "streamId": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "RaiseThreatDataMediaModel": {
+                "type": "object",
+                "properties": {
+                    "mimeType": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "url": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "imageType": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "RaiseThreatDataModel": {
+                "required": [
+                    "detectionCode",
+                    "tier"
+                ],
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "detectionCode": {
+                        "minLength": 1,
+                        "type": "string"
+                    },
+                    "tier": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "media": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/RaiseThreatDataMediaModel"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "RefShotModel": {
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "string",
+                        "format": "byte",
+                        "nullable": true
+                    },
+                    "deviceId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "contentType": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "placeholder": {
+                        "type": "boolean"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ScheduleModel": {
+                "type": "object",
+                "properties": {
+                    "scheduleId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "cronExpression": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cronExpressionExtended": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "scheduleStatus": {
+                        "$ref": "#/components/schemas/AutoPatrolScheduleStatus"
+                    },
+                    "devices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DeviceModel"
+                        },
+                        "nullable": true
+                    },
+                    "siteId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "tier": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "siteName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "title": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "win32TimeZoneId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "olsonTimeZoneId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "patrolType": {
+                        "$ref": "#/components/schemas/AutoPatrolType"
+                    },
+                    "checksPerDay": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SchedulesPagedModel": {
+                "type": "object",
+                "properties": {
+                    "pageNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "schedules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ScheduleModel"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SiteModel": {
+                "type": "object",
+                "properties": {
+                    "siteId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "siteName": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "devices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DeviceModel"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SitesPagedModel": {
+                "type": "object",
+                "properties": {
+                    "pageNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sites": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SiteModel"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "VideoStreamModel": {
+                "type": "object",
+                "properties": {
+                    "deviceStreamUrl": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "deviceStreamId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "lifeSpan": {
+                        "type": "string",
+                        "format": "date-span"
+                    },
+                    "fileStoreId": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "securitySchemes": {
+            "apiKeyHeader": {
+                "type": "apiKey",
+                "name": "Ocp-Apim-Subscription-Key",
+                "in": "header"
+            },
+            "apiKeyQuery": {
+                "type": "apiKey",
+                "name": "subscription-key",
+                "in": "query"
+            }
+        }
+    },
+    "security": [
+        {
+            "apiKeyHeader": []
+        },
+        {
+            "apiKeyQuery": []
+        }
+    ]
+}

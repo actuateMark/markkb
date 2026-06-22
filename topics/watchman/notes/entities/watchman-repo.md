@@ -13,11 +13,11 @@ incoming:
   - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
   - topics/alerts-improvements/notes/concepts/alert-muting.md
   - topics/alerts-improvements/notes/concepts/immix-dispatch.md
+  - topics/autopatrol/_summary.md
+  - topics/autopatrol/notes/concepts/flex-ignore-zones.md
   - topics/aws-cost/notes/syntheses/cost-architecture.md
   - topics/camera-health-monitoring/notes/concepts/chm-rd-opportunities.md
-  - topics/camera-health-monitoring/notes/entities/scene-change-detection.md
-  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Watchman

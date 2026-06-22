@@ -7,8 +7,11 @@ created: 2026-04-22
 updated: 2026-04-22
 author: kb-bot
 incoming:
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+  - topics/fleet-architecture/notes/syntheses/2026-05-05_fleet-architecture-workstream-context.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-proposal-b-prime.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-service-design.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-28_watchman-scheduling-brainstorm-correlation.md
+incoming_updated: 2026-05-29
 ---
 
 # Proposal B-prime — Stage Fleets with Blob Coordinator

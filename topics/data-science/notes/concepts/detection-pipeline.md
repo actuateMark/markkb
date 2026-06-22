@@ -15,8 +15,8 @@ incoming:
   - topics/ai-models/notes/entities/intruder-v5-model.md
   - topics/ai-models/notes/entities/weapon-v8-model.md
   - topics/alerts-improvements/notes/concepts/immix-dispatch.md
-  - topics/camera-health-monitoring/notes/concepts/healthcheck-architecture.md
-incoming_updated: 2026-05-01
+  - topics/autopatrol/notes/concepts/flex-ignore-zones.md
+incoming_updated: 2026-05-27
 ---
 
 # Detection Pipeline

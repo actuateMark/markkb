@@ -6,6 +6,11 @@ tags: [research-prioritization, fleet-architecture, billing, pre-implementation,
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
+  - topics/personal-notes/notes/daily/2026-05-11.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-27
 ---
 
 # Pre-implementation research priority reorder (2026-05-11)
@@ -21,7 +26,7 @@ Re-rank against four criteria:
 1. **Bleeding closure** — does this close an ongoing revenue/billing leak or operational risk? Always beats data-gathering for future decisions.
 2. **Decision-flipping value** — does the answer change *which* design we pick? Higher than answers that fill in detail on a decision already made.
 3. **Cost** — cheap items get a bump; trivial knock-offs slot above slow deep dives at the same value tier.
-4. **Availability** — is it actually doable now, or blocked on external response? Blocked items move off the active list to a "watch" bucket.
+4. **Availability** — is it actually doable now, or blocked on external response? Blocked items move off the active list to a "[[watch-entity|watch]]" bucket.
 
 ## Reordered list
 
@@ -32,7 +37,7 @@ Re-rank against four criteria:
 | 3 | **Confirm `connector validate` subcommand exists** (per §5 "Run Service — translator + spec") | 0.25 | this-week | Trivial knock-off. Either way the answer reshapes Run Service translator+spec sequencing. No good reason to leave this hanging. |
 | 4 | **NR query: actual FDMD drop rate fleet-wide** (was old #1 per session 2026-05-11 list) | 2 | this-week | Could flip the fleet E→C decision. Was the top fleet item before billing surfaced; still high-value but no longer #1 overall. |
 | 5 | **Tier3 replication investigation** (S3 Storage Lens / CUR+Athena / CloudTrail) — §5 pre-PoC open question | 1 | this-week | $44k/year cost lever; independent of billing. Cheap. |
-| 6 | **PyAV GIL budget measurement at frame rate** (was old #3) | 4 | next-week | Partially flips E→C. Same priority as before billing shift — fleet items just get a tier shift, not internal reorder. |
+| 6 | **[[pyav-entity|PyAV]] GIL budget measurement at frame rate** (was old #3) | 4 | next-week | Partially flips E→C. Same priority as before billing shift — fleet items just get a tier shift, not internal reorder. |
 | 7 | **WireGuard/tunnel inventory** (was old #2) | 8 | next-week | Flips C unviable if customers don't have tunnels. Larger lift; gather data later. |
 | 8 | **Lease-churn benchmark** (was old #5) | 4 | next-week | Does not flip a decision. |
 

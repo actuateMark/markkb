@@ -8,7 +8,8 @@ updated: 2026-04-13
 author: kb-bot
 incoming:
   - topics/actuate-platform/notes/entities/camera-ui.md
-incoming_updated: 2026-05-01
+  - topics/software-architecture/notes/syntheses/2026-04-16_code-health-dashboard.md
+incoming_updated: 2026-05-27
 ---
 
 # Health Report

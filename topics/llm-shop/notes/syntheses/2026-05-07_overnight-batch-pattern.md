@@ -16,8 +16,9 @@ incoming:
   - topics/llm-shop/notes/syntheses/2026-05-07_kb-deep-intake-architecture.md
   - topics/llm-shop/notes/syntheses/2026-05-07_long-running-multi-agent-pattern.md
   - topics/personal-notes/notes/daily/2026-05-08.md
+  - topics/personal-notes/notes/daily/2026-05-11.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-09
+incoming_updated: 2026-05-27
 ---
 
 # Overnight batch pattern for the LLM shop
@@ -28,7 +29,7 @@ incoming_updated: 2026-05-09
 
 A pattern for running long [[2026-05-05_phase-2-next-steps|kb-intake]]-style workloads (URL → drafted KB source note) on the [[host-npu-server|`npu-server`]] LLM shop that survives the laptop sleeping or shutting down. The laptop dispatches a batch, the box runs to completion, the laptop pulls and merges results in the morning.
 
-This is the third orchestration layer on top of the existing harness pattern:
+This is the third orchestration layer on top of the existing [[harness-pattern|harness pattern]]:
 
 | Layer | Surface | Lifetime | Use |
 |---|---|---|---|
@@ -194,13 +195,13 @@ Plumbing landed in two commits: `0eec65c` (batch pieces + linker fix) and `e6225
 
 Smoke test (`2026-05-11T1331Z-video-processing-001`, ollama backend via per-instance drop-in override): 2 URLs (decord + vidgear), ~23 min wallclock, both merged cleanly to `topics/video-processing/_research-inbox/`, reading-list lines flipped, manifest archived to `_pulls/`.
 
-**Bug fix bundled with the plumbing — linker substituted zero anchors before this:** the original linker matched anchor slugs literally (e.g. `ffmpeg-entity` looked for "ffmpeg entity" in body text — a phrase that never occurs in real prose). New behavior:
+**Bug fix bundled with the plumbing — linker substituted zero anchors before this:** the original linker matched anchor slugs literally (e.g. `ffmpeg-entity` looked for "[[ffmpeg-entity|ffmpeg]] entity" in body text — a phrase that never occurs in real prose). New behavior:
 
 1. Reads each anchor file's frontmatter `title:` field, falls back to slug-with-dashes-as-spaces.
 2. Splits the title at " — ", " - ", or trailing parenthetical so `FFmpeg Python bindings — decision matrix` matches as `FFmpeg Python bindings`.
 3. Hyphen-aware boundaries `(?<![A-Za-z0-9_\-])...(?![A-Za-z0-9_\-])` instead of `\b`, so `ffmpeg` inside `ffmpeg-python` is NOT broken.
 4. Splits the chunk on existing wikilinks, code spans, and fenced code blocks before substitution — prevents `[[ffmpeg-entity|...]]` getting re-wrapped, and stops `import ffmpeg` from getting linked.
-5. Tokens within a form accept `[\s\-]+` as the inter-token separator, so an anchor whose title is "FFmpeg Python bindings" still matches body text "ffmpeg-python bindings".
+5. Tokens within a form accept `[\s\-]+` as the inter-token separator, so an anchor whose title is "[[ffmpeg-python-bindings|FFmpeg Python bindings]]" still matches body text "ffmpeg-python bindings".
 
 **Architecture decision worth noting:** the linker runs *twice* — once on the box (kb_root="" → frontmatter-repair + sanity-caps only, no substitution since the box has no KB) and once on the laptop during pull (kb_root=KB_ROOT → full anchor substitution). It's idempotent thanks to the existing `if f"[[{anchor}" in chunk: continue` skip-if-linked check. This decouples the box from the KB filesystem and keeps the anchor walk local to where the truth lives.
 

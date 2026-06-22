@@ -7,8 +7,8 @@ created: 2026-04-22
 updated: 2026-04-22
 author: kb-bot
 incoming:
-  - No backlinks found.
-incoming_updated: 2026-05-01
+  - topics/fleet-architecture/reading-list.md
+incoming_updated: 2026-05-27
 ---
 
 # Fleet-Coordinator Unification Question

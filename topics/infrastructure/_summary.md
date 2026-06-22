@@ -5,7 +5,7 @@ topic: infrastructure
 tags: [aws, eks, terraform, wireguard, security, cognito, secrets]
 confluence: "https://actuate-team.atlassian.net/wiki/spaces/PM/pages/488079361"
 created: 2026-04-13
-updated: 2026-04-14
+updated: 2026-06-02
 author: kb-bot
 ---
 
@@ -93,6 +93,10 @@ See [[connector-library-deployment-lifecycle]] for the full deployment process a
 - `ds-terraform-eks-v2` -- EKS cluster, API Gateway, Terraform modules
 - `kubernetes-deployments` -- Helm charts, [[argocd|ArgoCD]] configs
 - `actuate-inference-api/terraform/` -- Lambda, API Gateway, DynamoDB, multi-region
+
+## DynamoDB Design Tooling
+
+[[dynamodb-mcp-tool|Amazon DynamoDB Data Modeling MCP Tool]] — AI-assisted schema design. Conversational requirements gathering → produces table schema, GSI layout, access-pattern mappings, and cost projections. No deployment; markdown output feeds Terraform. Most valuable for [[2026-05-22_actuate-testing-toolkit-overview#Phase 9/10|AIT Phase 10]] dump-catalog table design before S3 sink implementation. See [[2026-06-02_dynamodb-fit-assessment-ait-phase-10|fit assessment]] for integration scope.
 
 ## Related Topics
 

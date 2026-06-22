@@ -2,7 +2,7 @@
 title: "Handoff — Admin-side state propagation + DB patch + data model deep dive"
 type: concept
 topic: personal-notes
-tags: [handoff, admin-api, autopatrol, cascade, data-model, propagation, planning, multi-pr, immix, immix, immix, immix, immix, immix, immix, immix, immix, immix]
+tags: [handoff, admin-api, autopatrol, cascade, data-model, propagation, planning, multi-pr, immix]
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot
@@ -13,9 +13,8 @@ outgoing:
 incoming:
   - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
   - topics/autopatrol/notes/syntheses/2026-05-01_silent-cameras-diagnosis.md
-  - topics/personal-notes/notes/daily/2026-05-01.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 # Handoff — Admin-side state propagation + DB patch + data model deep dive

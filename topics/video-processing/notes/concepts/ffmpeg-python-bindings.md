@@ -7,6 +7,7 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
+  - topics/llm-shop/notes/syntheses/2026-05-07_overnight-batch-pattern.md
   - topics/video-processing/_summary.md
   - topics/video-processing/notes/concepts/ffmpeg-command-anatomy.md
   - topics/video-processing/notes/concepts/ffmpeg-filtergraphs.md
@@ -14,7 +15,7 @@ incoming:
   - topics/video-processing/notes/concepts/immix-mp4-mux-downstream.md
   - topics/video-processing/notes/entities/ffmpeg-entity.md
   - topics/video-processing/notes/entities/imageio-entity.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # [[ffmpeg-entity|FFmpeg]] Python bindings — decision matrix

@@ -15,9 +15,9 @@ incoming:
   - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase1-network-probe.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase3-cross-camera-correlation.md
-  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
-  - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
-incoming_updated: 2026-05-01
+  - topics/data-access-control/_summary.md
+  - topics/data-access-control/notes/syntheses/2026-05-11_admin-db-access-hardening.md
+incoming_updated: 2026-05-27
 ---
 
 ## Purpose

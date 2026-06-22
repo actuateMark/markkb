@@ -2,7 +2,7 @@
 title: "Stale AutoPatrol schedule & zombie-task investigation"
 type: concept
 topic: autopatrol
-tags: [autopatrol, cleanup-lambda, investigation, stale-schedules, zombie-tasks, fleet-health, immix, immix, immix, immix, immix]
+tags: [autopatrol, cleanup-lambda, investigation, stale-schedules, zombie-tasks, fleet-health, immix]
 created: 2026-04-24
 updated: 2026-04-24
 author: kb-bot

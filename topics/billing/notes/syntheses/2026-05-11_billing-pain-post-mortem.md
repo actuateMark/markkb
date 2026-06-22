@@ -6,7 +6,19 @@ tags: [billing, post-mortem, customer-events, site_product_ended, cohort-f, coho
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
-incoming: []
+[]
+incoming:
+  - topics/billing/_summary.md
+  - topics/billing/_todos.md
+  - topics/billing/notes/concepts/2026-05-11_billing-reconciliation-dashboard-design.md
+  - topics/billing/notes/concepts/2026-05-11_eng-242-substantially-answered.md
+  - topics/billing/notes/concepts/2026-05-14_inference-api-e2m-rules.md
+  - topics/billing/notes/entities/actuate-bi-repo.md
+  - topics/billing/notes/entities/billing-deferred-backlog.md
+  - topics/billing/notes/entities/billing-events-catalog.md
+  - topics/billing/notes/entities/snowflake-billing-tables.md
+  - topics/billing/notes/syntheses/2026-05-12_week-in-review-non-technical.md
+incoming_updated: 2026-05-27
 ---
 
 # Billing-pipeline pain — post-mortem on the April-May 2026 emit-gap firefight
@@ -64,7 +76,7 @@ Each individual layer was working as designed. The drift lived **between** layer
 
 Specifically, **five separate emission-gap classes** existed simultaneously in the connector code path:
 
-1. **Patrol-error path** (F4) — cronjob fired, Immix API errored, no `_ended` emit. Pre-PR-#1675.
+1. **Patrol-error path** (F4) — cronjob fired, [[immix-vendor-api|Immix API]] errored, no `_ended` emit. Pre-PR-#1675.
 2. **Empty-`products`-list path** (a subset of "ran clean but no products configured") — no `_ended` emit because the per-product loop had nothing to iterate. Pre-PR-#1682.
 3. **Empty-`camera_streams` site-level path** — same as above but at the site fallback level. Pre-PR-#1683.
 4. **Schedule-Deleted-or-Paused-in-Immix path** (F3a/b/c) — admin still says Active; cronjob fires; no patrols; old code path didn't emit on no-patrol returns. The cleanup-Lambda catches this *eventually* (Step F deferred at the moment) but billing leaked in the meantime.
@@ -143,7 +155,7 @@ Each of those rolls up into a concrete todo in [[_todos]] with acceptance criter
 | **vms-connector#1688** | **OPEN, BLOCKED on REVIEW_REQUIRED — Monday merge** | Full bundle: rule-compliant stage→rearchitecture promotion |
 | autopatrol_onboarder#14 | Drafted; **`cohort_f_tracker.json` handoff to data team complete on our side (2026-05-11)** | Cohort-F deep classifier + tracker. PR merge when team-reviewed. The tracker (45 cids, status=`fixed`/`diagnosed`) is the artifact data team needs for the Snowflake-side F6/F5 ingestion-gap root-cause. We have no further action here unless data team escalates back ([[_todos]] R2). |
 
-Post-merge monitor: Tier-1 systemd one-shots on Firebat mirroring PR #1660 pattern. Watch for zero `_started` events, steady `_ended` volume, no new error classes vs the 12h pre-merge baseline.
+Post-merge monitor: Tier-1 systemd one-shots on Firebat mirroring PR #1660 pattern. [[watch-entity|Watch]] for zero `_started` events, steady `_ended` volume, no new error classes vs the 12h pre-merge baseline.
 
 ## Cross-references
 

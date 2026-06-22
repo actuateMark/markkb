@@ -6,8 +6,9 @@ updated: 2026-04-15
 tags: [person, data-science, yam, model-evaluation, shadow-testing]
 incoming:
   - topics/data-science/notes/entities/spektar.md
+  - topics/models/intruder-v8/notes/syntheses/2026-05-13_v8-release-postgres-context.md
   - topics/team-structure/notes/entities/zack-schmidt.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Vlad Sapeshka

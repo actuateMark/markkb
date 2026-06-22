@@ -2,7 +2,7 @@
 title: "Host: npu-server"
 type: entity
 topic: compute-fleet
-tags: [compute-fleet, npu-server, intel-meteor-lake, npu, arc-xe-lpg, tailnet, llm-shop, watchman, watchman, watchman, watchman]
+tags: [compute-fleet, npu-server, intel-meteor-lake, npu, arc-xe-lpg, tailnet, llm-shop, watchman]
 created: 2026-05-04
 updated: 2026-05-04
 author: kb-bot
@@ -80,13 +80,13 @@ These directories and processes are active development for [[watchman-repo|Watch
 | `~/actuate-watchman-old-main/`, `~/nlss_branch/`, `~/nlss_branch_latest/` | [[watchman-repo|Watchman]] branches / versions for benchmarking |
 | `~/intel/` | Intel toolchain (likely OpenVINO, drivers) |
 | `~/venvs/` | Existing Python virtualenvs for [[watchman-repo|Watchman]] / OpenVINO work |
-| `~/model_cache/` | HuggingFace / ML model cache for Watchman |
+| `~/model_cache/` | HuggingFace / ML model cache for [[watchman-repo|Watchman]] |
 | `~/mediamtx*` | Media server for benchmarking video pipelines |
 | `~/ffmpeg_cam*.log`, `~/start_*streams.sh` | Stream test scaffolding |
 | `~/run_benchmark*.py`, `~/overflow_benchmark.py`, `~/i7_*.sh` | Benchmark scripts |
 | `~/npu.tar.gz`, `~/npu_test*` | NPU benchmarking artifacts |
 
-**Implication:** All LLM-shop work lives in `~/llm-shop/` ONLY. Never modify the directories above without explicit coordination with whoever owns Watchman dev.
+**Implication:** All LLM-shop work lives in `~/llm-shop/` ONLY. Never modify the directories above without explicit coordination with whoever owns [[watchman-repo|Watchman]] dev.
 
 ## Resource discipline (planned)
 

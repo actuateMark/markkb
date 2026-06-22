@@ -8,6 +8,7 @@ updated: 2026-04-27
 author: kb-bot
 incoming:
   - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/2026-05-18_mediamtx.md
   - topics/video-processing/notes/concepts/connector-decoder-routing-map.md
   - topics/video-processing/notes/concepts/containers-overview.md
   - topics/video-processing/notes/concepts/mpeg-ts-over-udp.md
@@ -16,8 +17,7 @@ incoming:
   - topics/video-processing/notes/concepts/webrtc-deep-dive.md
   - topics/video-processing/notes/entities/aws-ivs-entity.md
   - topics/video-processing/notes/entities/aws-kvs-entity.md
-  - topics/video-processing/notes/entities/aws-mediaconvert-entity.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # HLS and DASH

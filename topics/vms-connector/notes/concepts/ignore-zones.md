@@ -13,8 +13,8 @@ incoming:
   - topics/ai-models/notes/entities/intruder-v5-model.md
   - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
   - topics/alerts-improvements/notes/concepts/alert-muting.md
-  - topics/data-science/notes/concepts/botsort-tracking.md
-incoming_updated: 2026-05-01
+  - topics/autopatrol/notes/concepts/flex-ignore-zones.md
+incoming_updated: 2026-05-27
 ---
 
 # Ignore Zones

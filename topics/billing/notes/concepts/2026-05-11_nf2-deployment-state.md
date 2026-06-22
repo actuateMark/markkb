@@ -6,6 +6,12 @@ tags: [billing, nf2, deployment-state, dashboard-check, tier-1, postgres-whiteli
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
+incoming:
+  - topics/billing/_todos.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
+  - topics/personal-notes/notes/concepts/2026-05-11_next-session-handoff.md
+  - topics/personal-notes/notes/daily/2026-05-11.md
+incoming_updated: 2026-05-27
 ---
 
 # NF2 deployment state — billing-reconciliation Tier-1 wrapper
@@ -56,8 +62,8 @@ Run 2026-05-11 against `--month 2026-04` and `--month 2026-03` on Firebat (Snowf
 | Wrapper script | ✓ Shipped | `/home/mork/work/local_network_scripts/files/billing-reconcile-check.py` |
 | systemd service unit | ✓ Drafted | `/home/mork/work/local_network_scripts/files/billing-reconcile-check.service` |
 | systemd timer unit | ✓ Drafted | `/home/mork/work/local_network_scripts/files/billing-reconcile-check.timer` (daily 04:00 PT) |
-| Sales-dashboard venv | ✓ Synced | `~/work/sales-dashboard/.venv` (Python 3.13, uv-managed, pypi-only resolve to bypass CodeArtifact auth) |
-| Sales-dashboard `.env` | ✓ Bootstrapped | From AWS Secrets Manager `prod/actuate/sales-dashboard`; contains `SNOWFLAKE_PASSWORD` + ordway_* + anthropic_api_key |
+| [[sales-dashboard|Sales-dashboard]] venv | ✓ Synced | `~/work/sales-dashboard/.venv` (Python 3.13, uv-managed, pypi-only resolve to bypass CodeArtifact auth) |
+| [[sales-dashboard|Sales-dashboard]] `.env` | ✓ Bootstrapped | From AWS Secrets Manager `prod/actuate/sales-dashboard`; contains `SNOWFLAKE_PASSWORD` + ordway_* + anthropic_api_key |
 | Snowflake auth validated | ✓ Confirmed | First real reconcile run got past `connect_snowflake()` cleanly — proves `reports@actuate.ai` credentials work end-to-end. No lockout risk: only 1 attempt used. |
 | Parser self-test | ✓ 25/25 fields | Synthetic fixture mirroring `reconcile_cameras.py` SUMMARY + FULL RECONCILIATION blocks; tested both `Residual: 0 ✓` and `Residual: <negative>` cases |
 | JSON sink path | ✓ Working | `~/.local/state/minipc-tasks/billing/reconciliation-YYYY-MM-DD.json` |

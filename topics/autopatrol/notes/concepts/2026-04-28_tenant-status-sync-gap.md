@@ -2,7 +2,7 @@
 title: "Tenant-Status Sync Gap — Suspended Tenants Stay Active in Admin"
 type: concept
 topic: autopatrol
-tags: [tenant, sync, suspended, onboarder, cleanup-lambda, admin, gap, finding, immix, immix, immix, immix, immix]
+tags: [tenant, sync, suspended, onboarder, cleanup-lambda, admin, gap, finding, immix]
 created: 2026-04-28
 updated: 2026-04-28
 author: kb-bot

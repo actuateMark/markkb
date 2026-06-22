@@ -10,7 +10,9 @@ incoming:
   - topics/personal-notes/notes/daily/2026-04-23.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+  - topics/software-architecture/notes/concepts/2026-05-11_enforcement-as-proposal-scorer.md
+  - topics/software-architecture/notes/concepts/2026-05-11_sketch-findings-enforcement.md
+incoming_updated: 2026-05-27
 ---
 
 # Sketch findings: metrics collector

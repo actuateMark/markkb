@@ -11,9 +11,8 @@ outgoing:
   - topics/personal-notes/notes/daily/2026-05-04.md
 incoming:
   - topics/autopatrol/notes/syntheses/2026-05-01_pre-endrun-crashes-resolution.md
-  - topics/personal-notes/notes/daily/2026-05-01.md
   - topics/personal-notes/notes/daily/2026-05-04.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 # Handoff — Investigate pre-endrun crashes in autopatrol/VCH connector pods

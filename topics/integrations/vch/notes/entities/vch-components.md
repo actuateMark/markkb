@@ -7,10 +7,16 @@ created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
 incoming:
+  - topics/autopatrol/notes/concepts/2026-05-14_autopatrol-tier-api-cross-reference.md
+  - topics/autopatrol/notes/syntheses/2026-05-14_autopatrol-tier-model-and-detection-types.md
+  - topics/camera-health-monitoring/notes/concepts/2026-05-14_chm-multi-frame-quality-sampling-followup.md
   - topics/camera-health-monitoring/notes/concepts/chm-diagnostics-architecture.md
   - topics/camera-health-monitoring/notes/concepts/chm-rd-opportunities.md
   - topics/camera-health-monitoring/notes/syntheses/chm-end-to-end-flow.md
-incoming_updated: 2026-05-01
+  - topics/engineering-process/notes/entities/actuate-integration-tools.md
+  - topics/integrations/vch/notes/syntheses/2026-05-18_libav-decoder-warmup-frame-fix.md
+  - topics/personal-notes/notes/daily/2026-05-15.md
+incoming_updated: 2026-05-27
 ---
 
 # VCH Integration Components
@@ -44,7 +50,7 @@ Defined at `camera/autopatrol/vch_camera.py`. Extends `BaseHealthcheckCamera` (n
 - **Run timing budget**: `_compute_run_timings` calculates per-camera timeouts to ensure all cameras complete within a 25-minute target budget (`_VCH_TARGET_BUDGET_SECONDS`). It dynamically reduces `retry_sleep_time` (default 90s) when camera count is high. `healthcheck_duration` is capped at 360s for small sites.
 - **Puller**: Uses `AutopatrolWebSocketStreamPuller` (not the standard URL pullers) for each camera.
 - **Patrol lifecycle**: Calls `autopatrol_api.start_patrol` before running, `autopatrol_api.end_patrol` after.
-- **Graceful shutdown**: Registers SIGTERM/SIGINT handlers to stop accepting new cameras while letting in-flight healthchecks finish.
+- **Graceful shutdown**: Registers SIGTERM/SIGINT handlers to stop accepting new cameras while letting in-flight [[healthchecks]] finish.
 
 ## VCHAlertSender
 

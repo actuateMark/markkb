@@ -26,7 +26,7 @@ The alert payload includes:
 - `attachment_frames` -- number of frames to include with the alert
 - Standard fields: `event_type`, `customer_name`, `camera_name`, `alert_url`, `custcam_id`, `label`, `s3_folder`
 
-The sender maintains a `sequence_number` that increments with each successful send and wraps at 99999, providing a monotonic ordering reference for the Softguard receiver.
+The sender maintains a `sequence_number` that increments with each successful send and wraps at 99999, providing a monotonic ordering reference for the [[softguard-components|Softguard]] receiver.
 
 ### SoftguardAlertConfig (config)
 

@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: billing
+    filters:
+      and:
+        - file.folder.contains("topics/billing")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

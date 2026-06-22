@@ -1,0 +1,113 @@
+{
+  "run_id": "2026-05-11T1331Z-video-processing-001",
+  "started_at": "2026-05-11T13:31:49Z",
+  "finished_at": "2026-05-11T13:55:06Z",
+  "exit": "success",
+  "context": {
+    "type": "reading-list",
+    "topic": "video-processing",
+    "list_path": "topics/video-processing/reading-list.md"
+  },
+  "items": [
+    {
+      "ref_id": "0012",
+      "url": "https://github.com/dmlc/decord",
+      "status": "ok",
+      "draft_path": "drafts/2026-05-11_decord-video-loader-for-deep-learning.md",
+      "topic_claimed": "video-processing",
+      "elapsed_ms": 636290,
+      "error": null,
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "2 section(s)",
+          "elapsed_ms": 1516
+        },
+        {
+          "phase": "planner",
+          "status": "ok",
+          "detail": "topic=video-processing, 2 section(s)",
+          "elapsed_ms": 158858
+        },
+        {
+          "phase": "worker[0]",
+          "status": "ok",
+          "detail": "Overview of Decord",
+          "elapsed_ms": 203866
+        },
+        {
+          "phase": "worker[1]",
+          "status": "ok",
+          "detail": "Bridges to Deep Learning Frameworks",
+          "elapsed_ms": 91670
+        },
+        {
+          "phase": "composer",
+          "status": "ok",
+          "detail": "2516 chars",
+          "elapsed_ms": 180289
+        },
+        {
+          "phase": "linker",
+          "status": "ok",
+          "detail": "clean",
+          "elapsed_ms": 0
+        }
+      ]
+    },
+    {
+      "ref_id": "0013",
+      "url": "https://github.com/abhiTronix/vidgear",
+      "status": "ok",
+      "draft_path": "drafts/2026-05-11_vidgear-video-processing-framework.md",
+      "topic_claimed": "video-processing",
+      "elapsed_ms": 759927,
+      "error": null,
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "3 section(s)",
+          "elapsed_ms": 809
+        },
+        {
+          "phase": "planner",
+          "status": "ok",
+          "detail": "topic=video-processing, 3 section(s)",
+          "elapsed_ms": 177313
+        },
+        {
+          "phase": "worker[0]",
+          "status": "ok",
+          "detail": "Key Features and Functionality",
+          "elapsed_ms": 254608
+        },
+        {
+          "phase": "worker[1]",
+          "status": "ok",
+          "detail": "Contributor Information",
+          "elapsed_ms": 39006
+        },
+        {
+          "phase": "worker[2]",
+          "status": "ok",
+          "detail": "Donations and Sponsorships",
+          "elapsed_ms": 61660
+        },
+        {
+          "phase": "composer",
+          "status": "ok",
+          "detail": "3506 chars",
+          "elapsed_ms": 226531
+        },
+        {
+          "phase": "linker",
+          "status": "ok",
+          "detail": "clean",
+          "elapsed_ms": 0
+        }
+      ]
+    }
+  ]
+}

@@ -4,7 +4,7 @@ type: summary
 topic: fleet-architecture
 tags: [architecture, fleet, kubernetes, redesign, microservices, connector, scaling]
 created: 2026-04-16
-updated: 2026-04-23
+updated: 2026-06-01
 author: kb-bot
 ---
 
@@ -35,6 +35,41 @@ See [[vms-connector/notes/syntheses/performance-optimization-landscape]] for the
 | [[2026-04-16_proposal-c-camera-worker\|C — Camera-Worker Fleet]] | Generic workers, cameras bin-packed across sites | Camera | 13-20 wks | -15-30% |
 | [[2026-04-16_proposal-d-event-driven\|D — Event-Driven Pipeline]] | NATS JetStream + S3 frame refs | Per-stage | 20-29 wks | ~neutral |
 | [[2026-04-16_proposal-e-hybrid-sidecar\|E — Hybrid Sidecar]] | Smart pullers + stateful core + async alerts | Puller=cam, Core=cam-group | 14-20 wks | -20-40% |
+
+## Cloud Video Analytics v10 Platform Reference (2026-06-01)
+
+Received external architecture proposal: **Cloud Video Analytics Platform v10** — a fully designed, multi-tenant SaaS for ~100k cameras (us-west-2, cloud-only, no edge). **This is a forward-looking reference architecture, not a fleet proposal; see below for how it relates to A–E.**
+
+Key contributions to the fleet-arch design space:
+- **Validates Redis Streams** (frame-bus pattern) at scale; specifies JPEG settings + motion-polygon payload
+- **Introduces detector-router** (NEW component): routes per-(camera, product) state to decoder pools, realizes cost savings
+- **Two-stage scheduler-service** resolution (lifecycle → product activation) with sparse rule storage + 5-level precedence
+- **Site-state-service as v1 core** (not premium): real-time per-site rollups + LLM tools
+- **Observability split** (NR + ClickHouse): saves $50-100k/mo at scale
+- **2026 silicon roster:** Graviton4, Inf2, G6e, G7e Blackwell (new Feb 2026), Trn2
+
+Start here: [[2026-06-01_v10-cloud-platform-vs-fleet-proposals]] — situates v10 against proposals A–E. Then read:
+- [[2026-06-01_cloud-video-analytics-platform-v10|v10 source architecture note]]
+- [[2026-06-01_v10-scheduler-and-state-resolution|Deep dive: scheduler + per-camera-per-product state]]
+- **IMPORTANT:** [[2026-06-01_terminology-conflict-watchman-ambiguity|Watchman terminology conflict flag]] — v10 defines [[watchman-repo|Watchman]] as on-prem product, KB defines as cloud. Requires clarification.
+
+## Watch Management Service & Watchman MVP Slim Connector (2026-05-28 / 2026-06-01 — Watchman integration)
+
+The fleet-arch redesign is now part of the **[[watchman-repo|Watchman]]** umbrella. New cross-cutting design: every proposal needs a **[[watch-entity|Watch]] Management Service** that owns [[watch-entity|Watch]] lifecycle (setup/teardown, [[healthchecks]], arm/disarm). Also: new **[[watchman-repo|Watchman]] MVP Slim Connector** — a minimal [[rtsp-deep-dive|RTSP]]→inference→Watchman-services path built to feed the cloud platform as an alternative to the full monolith. Start here:
+
+- **[[2026-06-01_adr-watchman-mvp-slim-connector|Watchman MVP Slim Connector Design]]** (2026-06-01) — **fresh entrypoint for cloud [[watchman-repo|Watchman]] platform:** [[rtsp-deep-dive|RTSP]]→inference→sink with motion toggle and confidence+zone filtering. No window/billing/blacklist overhead. Architecture enables growth into Proposals A & E via pluggable `WatchmanSink` interface. **Confirmed:** modern `actuate-inference-client`, HTTP POST default, per-camera motion OFF by default. **Open:** event schema, inference API surface, repo location, config delivery model.
+- [[2026-05-28_fleet-rearch-briefing-overview]] — **5-minute briefing.** TL;DR + proposal one-paragraphs + decisions needed.
+- [[2026-05-28_watch-management-service-design]] — master design: constellation baseline, 10 cross-cutting constraints, 18-touchpoint catalog, three cardinality options.
+- Per-proposal addenda: `2026-05-28_watch-management-proposal-{a,b,c,d,e,b-prime}.md`
+- [[2026-05-29_watchman-prds-summary]] — PRD v2 + Agent Specs digest (Operating Modes orthogonal to [[watch-entity|Watch]]; Site Supervisor / Patrol / Connectivity agents; Kafka bus; direct-to-operator escalation).
+- [[2026-05-29_site-supervisor-vs-watch-manager]] — first-order decision: how Site Supervisor Agent and the manager relate.
+- [[2026-05-29_watch-manager-observability]] — metrics, traces, audit log, SLOs.
+- [[2026-05-29_watch-manager-migration-plan]] — 5-phase cutover from Django-Q.
+- [[2026-05-29_watch-manager-failure-modes]] — partition behavior + invariants.
+- [[2026-05-29_ait-watch-manager-integration]] — AIT/brain-in-jar testing + instrumentation hooks.
+- [[2026-05-29_watchman-judge-backend-io-contract]] — alert ingest + disposition wire-protocol analysis.
+- [[2026-05-29_watchman-judge-immix-integration]] — Immix integration factored separately.
+- Concept anchors: [[manager-touchpoint-catalog]], [[cardinality-decision]], [[watch-entity]], [[calendar-set]].
 
 ## Cross-Cutting Designs
 
@@ -91,7 +126,17 @@ See [[vms-connector/notes/syntheses/performance-optimization-landscape]] for the
 
 - 2026-04-16 — interview complete, all 5 proposal syntheses + cross-cutting docs drafted
 - 2026-04-16 — PoCs not yet built (targeted PoC specs live in each proposal note)
-- Next — build targeted PoCs, score via [[2026-04-16_evaluation-rubric]], write selection synthesis
+- 2026-06-01 — v10 cloud platform reference received; incorporates and validates several proposal patterns
+- Next — (short term) update proposals B–E with v10 insights (detector-router, two-stage resolution, sparse rules); (medium term) build targeted PoCs, score via [[2026-04-16_evaluation-rubric]], write selection synthesis
+
+## v10-Informed Updates to Proposals (Short Term)
+
+Before PoC selection, proposals B–E should incorporate v10 insights. See [[2026-06-01_v10-cloud-platform-vs-fleet-proposals#Recommendations for Proposal Updates]]:
+
+1. **Add detector-router** as a cost-control component (routes per-product frames to detector pools)
+2. **Adopt two-stage resolution** (lifecycle + product) in all scheduler-service designs
+3. **Standardize precedence stack** (override > panel > camera > site > tenant) across all proposals
+4. **Document sparse rule storage** with concrete v10 config examples
 
 ## Alternative approaches (reference)
 

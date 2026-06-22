@@ -5,9 +5,11 @@ created: 2026-04-15
 updated: 2026-04-15
 tags: [person, engineering, autopatrol, infrastructure, vlm, inference]
 incoming:
+  - topics/autopatrol/_summary.md
+  - topics/autopatrol/notes/entities/todo-list.md
   - topics/jira-organization/notes/concepts/confluence-spaces-map.md
   - topics/settings-automation/_summary.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Clarissa Herman

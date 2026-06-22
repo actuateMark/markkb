@@ -7,17 +7,17 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
+  - topics/actuate-libraries/notes/concepts/2026-05-19_pyav17-ffmpeg8-migration.md
+  - topics/actuate-libraries/notes/concepts/2026-05-19_stream-publisher-design.md
   - topics/engineering-process/notes/syntheses/2026-04-21_rd-agent-pilot-learnings.md
   - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
+  - topics/personal-notes/notes/concepts/2026-05-28_session-handoff.md
   - topics/personal-notes/notes/daily/2026-04-27.md
   - topics/video-processing/_summary.md
   - topics/video-processing/notes/concepts/av1-vp9-future.md
   - topics/video-processing/notes/concepts/codecs-overview.md
   - topics/video-processing/notes/concepts/containers-overview.md
-  - topics/video-processing/notes/concepts/eks-prod-node-pool-gpu-availability.md
-  - topics/video-processing/notes/concepts/ffmpeg-command-anatomy.md
-  - topics/video-processing/notes/concepts/ffmpeg-hardware-acceleration.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-29
 ---
 
 # H.265 / HEVC Deep Dive
@@ -91,7 +91,7 @@ EC2-side, our G5/G6/L4 substrate has full [[hardware-accelerated-codecs|NVDEC]] 
 1. **Profile mismatch on hardware decode** — Main10 (10-bit) vs Main (8-bit) is a frequent mismatch source. Surveillance is overwhelmingly 8-bit; if a camera offers Main10 it's worth verifying we're getting Main.
 2. **[[gop-keyframe-fundamentals|Keyframe interval]] too long** — some H.265 cameras default to GOPs of 60 (2s @ 30fps) or worse. Combined with the keyframe-wait guard, that's 2s of "no frames" on every reconnect. See [[gop-keyframe-fundamentals]].
 3. **Parameter set fragility** — VPS/SPS/PPS is a longer chain than [[h264-deep-dive|H.264]]'s two; if any are missing/stale, decode is dead until the next refresh.
-4. **Software decode CPU spikes** — when hwaccel falls through, H.265 software decode at 1080p30 can saturate a core. Watch for this pattern in logs around the H.265-warning line.
+4. **Software decode CPU spikes** — when hwaccel falls through, H.265 software decode at 1080p30 can saturate a core. [[watch-entity|Watch]] for this pattern in logs around the H.265-warning line.
 
 ## Actuate touchpoints
 

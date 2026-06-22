@@ -17,8 +17,7 @@ incoming:
   - topics/operational-health/notes/syntheses/2026-04-24_overnight-check.md
   - topics/personal-notes/notes/daily/2026-04-23.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Operational Dashboard — Local Static HTML Sketch
@@ -278,7 +277,7 @@ Every release-path skill runs `/dashboard-check --gate <commit>` as the final st
 | Skill | When | Gate behavior |
 |---|---|---|
 | `/stage-release` | After dev deploy verified | Run dashboard scoped to the deployed component; wait at least one cron cycle / one real-traffic window. Block declaring success until GREEN. |
-| `/post-deploy-monitor` | Post-merge-to-prod watch | Continuous polling every 5min for first 30min, then every 15min for 2h. Any RED triggers rollback dialogue. |
+| `/post-deploy-monitor` | Post-merge-to-prod [[watch-entity|watch]] | Continuous polling every 5min for first 30min, then every 15min for 2h. Any RED triggers rollback dialogue. |
 | `/validate-release` | Pre-merge sanity | Run dashboard on prod BEFORE the merge as the baseline; compare post-deploy against this baseline, not yesterday's, to catch deploy-induced drift. |
 | `/daily-scope` | Every morning | Run dashboard as part of Step 2c fan-out; any RED is surfaced in the interview. |
 | Direct user invocation | Ad-hoc | Any time. |

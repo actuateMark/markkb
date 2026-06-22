@@ -7,10 +7,11 @@ tags: [morphean, edge, hardware, deepx, toradex, integration]
 jira: "PROD-67"
 incoming:
   - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+  - topics/fleet-architecture/notes/concepts/2026-06-01_terminology-conflict-watchman-ambiguity.md
   - topics/integrations/morphean/notes/concepts/cloud-to-cloud-architecture.md
   - topics/personal-laptop/notes/concepts/2026-04-23_firebat-minipc-network-setup.md
   - topics/product-roadmap/notes/concepts/revenue-drivers.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-06-02
 ---
 
 # Edge Hardware Track (Morphean)

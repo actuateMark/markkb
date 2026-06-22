@@ -13,12 +13,13 @@ author: kb-bot
 incoming:
   - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase1-network-probe.md
+  - topics/engineering-process/notes/syntheses/2026-05-20_ait-phase-7-alert-capture-replay.md
   - topics/personal-notes/notes/daily/2026-04-20.md
   - topics/personal-notes/notes/daily/2026-04-27.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
   - topics/vms-connector/notes/concepts/2026-04-20_streamid-null-patrol-alert-bug.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # dev.powerplus.com WebSocket SSL certificate verification failure

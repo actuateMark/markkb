@@ -14,8 +14,9 @@ incoming:
   - topics/data-science/notes/concepts/detection-pipeline.md
   - topics/data-science/notes/concepts/evaluation-tiers.md
   - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+  - topics/models/intruder-v8/_summary.md
   - topics/team-structure/notes/entities/vlad-sapeshka.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Intruder v8 Model (int07-actuate003-v8)

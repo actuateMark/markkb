@@ -2,7 +2,7 @@
 title: "Session Handoff — Cleanup Lambda Tenant Cascade + VCH Emit Fix + Dashboard Tuning"
 type: concept
 topic: personal-notes
-tags: [handoff, cleanup-lambda, tenant-cascade, vch, dashboard, mark-todos, in-flight, immix, immix, immix, immix, immix]
+tags: [handoff, cleanup-lambda, tenant-cascade, vch, dashboard, mark-todos, in-flight, immix]
 created: 2026-04-29
 updated: 2026-04-29
 author: kb-bot

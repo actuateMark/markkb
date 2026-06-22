@@ -8,11 +8,13 @@ updated: 2026-04-13
 author: kb-bot
 incoming:
   - topics/actuate-platform/notes/entities/alert-ui.md
+  - topics/admin-api/notes/concepts/2026-05-19_streaming-monitoring-api.md
   - topics/external-api/notes/entities/actuate-external-api-repo.md
   - topics/infrastructure/notes/entities/reusable-github-actions.md
   - topics/vms-connector/notes/entities/actuate-ailink.md
+  - topics/vms-connector/notes/syntheses/2026-05-19_live-streaming-v1-plan.md
   - topics/watchman/notes/entities/watchman-repo.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # actuate_monitoring_api

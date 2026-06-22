@@ -32,7 +32,7 @@ The job executor is the planned centralized system for running all scheduled and
 - **Infrastructure checks**: duplicate containers, old containers, CPU/memory review, connection checks.
 - **Camera operations**: status checks, stream checks, YOLO instances, configuration, motion triggers.
 - **Onboarding**: AWS/NewRelic log activation, camera configuration, auto-onboard validation.
-- **Integrations**: [[bold-components|Bold]] heartbeat, auto-training workflow, CRM sync, per-integration healthchecks.
+- **Integrations**: [[bold-components|Bold]] heartbeat, auto-training workflow, CRM sync, per-integration [[healthchecks]].
 
 ## Migration Strategy
 

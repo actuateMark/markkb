@@ -26,9 +26,9 @@ incoming:
   - topics/integrations/ajax/_summary.md
   - topics/integrations/ajax/notes/entities/ajax-components.md
   - topics/integrations/evalink/evalink-integration/notes/concepts/alarm-push-pattern.md
+  - topics/local-test-stack/notes/syntheses/2026-05-20_local-ap-e2e-stack-installed.md
   - topics/personal-notes/notes/daily/2026-04-24.md
-  - topics/team-structure/notes/entities/clarissa-herman.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 ## Purpose

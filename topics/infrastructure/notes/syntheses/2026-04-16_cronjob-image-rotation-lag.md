@@ -52,7 +52,7 @@ Stage deploy of `vms-connector` commit 17bbc1b4 published to ECR at 13:10 EDT.  
 
 ## Severity
 
-**Medium-to-high.**  Silent alert loss is already a known-hazardous failure mode — we have a dedicated investigation for it in the autopatrol topic.  This issue multiplies any such hazard by the length of the rotation window.  Worth cutting a ticket but not a P0 — the workaround (wait out the rotation + watch NR) is viable short-term.
+**Medium-to-high.**  Silent alert loss is already a known-hazardous failure mode — we have a dedicated investigation for it in the autopatrol topic.  This issue multiplies any such hazard by the length of the rotation window.  Worth cutting a ticket but not a P0 — the workaround (wait out the rotation + [[watch-entity|watch]] NR) is viable short-term.
 
 ## Related Notes
 

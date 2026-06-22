@@ -8,8 +8,12 @@ created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot
 incoming:
-  - No backlinks found.
-incoming_updated: 2026-05-01
+  - topics/actuate-platform/notes/entities/branch-conventions.md
+  - topics/engineering-process/notes/syntheses/2026-05-19_ait-extensions-spec.md
+  - topics/engineering-process/notes/syntheses/2026-05-19_ait-phase-2-validate.md
+  - topics/engineering-process/notes/syntheses/2026-05-19_ait-phase-3-audit-tier-emissions.md
+  - topics/personal-notes/notes/daily/2026-05-19.md
+incoming_updated: 2026-05-27
 ---
 
 # Connector & Library Deployment Lifecycle
@@ -270,7 +274,7 @@ This lifecycle was derived from the s3alerts/patrol-mode release but is designed
 - **Phase 1** applies whenever you have dev pins in `pyproject.toml` — regardless of which libraries or how many
 - **Phase 2** applies whenever library PRs need to become stable before the connector can merge — the CI workarounds are systemic, not release-specific
 - **Phase 3** applies to every PR merge — debug artifacts and merge conflicts are recurring themes
-- **Phase 4** monitoring queries work for any release — just change the `container_name` filter and the log patterns to watch for
+- **Phase 4** monitoring queries work for any release — just change the `container_name` filter and the log patterns to [[watch-entity|watch]] for
 - **Phase 5** (stage → rearchitecture) applies identically to every release
 
 The NR queries, CI workarounds, and anti-patterns below are **not specific to this release** — they are structural properties of the actuate-libraries CI pipeline and the Connector-EKS deployment model.

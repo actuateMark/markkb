@@ -98,7 +98,7 @@ Once those are clean, the PR is cleared for stage→rearchitecture promotion.
 ## Prevent
 
 - The dashboard signal `connector_no_patrols_to_run_24h` is the cheap-poll proxy for this runbook; trust it before scanning DDB by hand.
-- After the cleanup-Lambda DDB TTL ships, this runbook can collapse to "watch the dashboard signal" since flappers will physically expire from the table.
+- After the cleanup-Lambda DDB TTL ships, this runbook can collapse to "[[watch-entity|watch]] the dashboard signal" since flappers will physically expire from the table.
 - Any future change to `emit_no_patrols_signal` should drop a one-line note into the `vms-connector` PR template referencing this runbook so the soak period isn't skipped.
 
 ## Cross-refs

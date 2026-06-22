@@ -1,0 +1,1389 @@
+{
+  "generated_at": "2026-05-04T20:22:11.533773+00:00",
+  "csv": {
+    "path": "/home/mork/Downloads/2026-05-01 4_55pm_2026-05-01-1705.csv",
+    "filter": "not in snowflake (no events)",
+    "silent_cameras": 1023,
+    "silent_customers": 80
+  },
+  "cohort_counts": {
+    "A": 0,
+    "B": 31,
+    "C": 2,
+    "D": 0,
+    "E": 0,
+    "F": 45,
+    "Z": 2
+  },
+  "cohort_camera_counts": {
+    "A": 0,
+    "B": 353,
+    "C": 21,
+    "D": 0,
+    "E": 0,
+    "F": 642,
+    "Z": 7
+  },
+  "customers": [
+    {
+      "customer_id": 35829,
+      "customer_name": "Site 1",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 5,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 5,
+      "csv_silent_cameras": 100,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 36799,
+      "customer_name": "Site A",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 4,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 4,
+      "csv_silent_cameras": 42,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 39346,
+      "customer_name": "(RVM2730) PTI Monitoring - 420 William St Victoria",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 28,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 35878,
+      "customer_name": "400 North Ashley",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 3,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 3,
+      "csv_silent_cameras": 18,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 38314,
+      "customer_name": "Lab Hik",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 2,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 2,
+      "csv_silent_cameras": 16,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 40178,
+      "customer_name": "hanwha 3",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 14,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 37980,
+      "customer_name": "hanwha",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 13,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 43928,
+      "customer_name": "hanwha (Health Check)",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 13,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 35870,
+      "customer_name": "500 North Ashley",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 12,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 37458,
+      "customer_name": "400 North Ashley GF 1 (1)",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 12,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 46292,
+      "customer_name": "Victoria - Demo",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 9,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 35876,
+      "customer_name": "London",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 7,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 37325,
+      "customer_name": "Site 3",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 3,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 3,
+      "csv_silent_cameras": 7,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 35877,
+      "customer_name": "New York",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 6,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 45845,
+      "customer_name": "hanwha 2 (Health Check)",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 8,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 8,
+      "csv_silent_cameras": 6,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 42689,
+      "customer_name": "VCH Demo Site",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 2,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 2,
+      "csv_silent_cameras": 5,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 37255,
+      "customer_name": "Site 4",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 3,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 3,
+      "csv_silent_cameras": 4,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 38313,
+      "customer_name": "Lab Audio",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 4,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 4,
+      "csv_silent_cameras": 4,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 38578,
+      "customer_name": "9 Dibble Street",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 4,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 39455,
+      "customer_name": "ECS Coffee - 3100 Harvester Rd, Burlington",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 4,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 42376,
+      "customer_name": "Journey Juice (2)",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 4,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 38235,
+      "customer_name": "EB",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 3,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 3,
+      "csv_silent_cameras": 3,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 38315,
+      "customer_name": "AB",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 2,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 2,
+      "csv_silent_cameras": 3,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 38317,
+      "customer_name": "NS",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 2,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 2,
+      "csv_silent_cameras": 3,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 38318,
+      "customer_name": "McCall",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 2,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 2,
+      "csv_silent_cameras": 3,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 38319,
+      "customer_name": "Site 2",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 3,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 3,
+      "csv_silent_cameras": 3,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 39381,
+      "customer_name": "4.1 Test Legacy Sch 3",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 3,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 39221,
+      "customer_name": "Victoria - EE Demo",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 4,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 4,
+      "csv_silent_cameras": 2,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 39453,
+      "customer_name": "ECS Coffee - Etobicoke",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 2,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 43138,
+      "customer_name": "Elva Nunes Residence",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 2,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 37167,
+      "customer_name": "Guardian Test",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 1,
+      "cohorts": [
+        "B"
+      ],
+      "primary_cohort": "B"
+    },
+    {
+      "customer_id": 41265,
+      "customer_name": "Ace Hardware - Harris St.",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 1,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 15,
+      "cohorts": [
+        "C"
+      ],
+      "primary_cohort": "C"
+    },
+    {
+      "customer_id": 38580,
+      "customer_name": "St. Clair and Caledonia",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 1,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 6,
+      "cohorts": [
+        "C"
+      ],
+      "primary_cohort": "C"
+    },
+    {
+      "customer_id": 40499,
+      "customer_name": "ABC Liquor Store 8",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 40,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40507,
+      "customer_name": "ABC Liquor Store 14",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 39,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 41266,
+      "customer_name": "Advanced Security Systems - Eureka Office",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 32,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40506,
+      "customer_name": "ABC Liquor Store 15",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 30,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40504,
+      "customer_name": "ABC Liquor Store 2",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 29,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40672,
+      "customer_name": "AutoPatrol-Live",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 28,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40800,
+      "customer_name": "ABC Liquor Store 26",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 25,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 37744,
+      "customer_name": "400 North Ashley",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 3,
+      "schedules_alive": 3,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 20,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 38711,
+      "customer_name": "CORPORATE SERVICES (5600055)",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 2,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 20,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40797,
+      "customer_name": "ABC Liquor Store 21",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 18,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40508,
+      "customer_name": "ABC Liquor Store 13",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 16,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40802,
+      "customer_name": "ABC Liquor Store 24",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 16,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 39252,
+      "customer_name": "(RVM2657) 8A4265 - Pemberton HCC",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 15,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40796,
+      "customer_name": "ABC Liquor Store 22",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 15,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40801,
+      "customer_name": "ABC Liquor Store 25",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 15,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 37751,
+      "customer_name": "400 North Ashley",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 3,
+      "schedules_alive": 3,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 14,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40501,
+      "customer_name": "ABC Liquor Store 6",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 14,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40503,
+      "customer_name": "ABC Liquor Store 3",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 14,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40500,
+      "customer_name": "ABC Liquor Store 7",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 14,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40505,
+      "customer_name": "ABC Liquor Store 17",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 14,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40502,
+      "customer_name": "ABC Liquor Store 4",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 14,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40509,
+      "customer_name": "ABC Liquor Store 12",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 14,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40512,
+      "customer_name": "ABC Liquor Store 9",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 14,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40513,
+      "customer_name": "ABC Liquor Store 1",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 14,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40511,
+      "customer_name": "ABC Liquor Store 10",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 14,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 40510,
+      "customer_name": "ABC Liquor Store 11",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 14,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 37991,
+      "customer_name": "Tampa Office CS (1)",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 13,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 37837,
+      "customer_name": "Test - RTSP\\Generic",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 4,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 3,
+      "csv_silent_cameras": 12,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 37460,
+      "customer_name": "Tampa Office CS",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 10,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 38694,
+      "customer_name": "Immix Nottingham Office",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 3,
+      "schedules_alive": 3,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 10,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 41260,
+      "customer_name": "Cimino Electric",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 10,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 41263,
+      "customer_name": "Tate's Tire Pro's and Auto Service",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 10,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 38738,
+      "customer_name": "2 Fuller Road - Bergvliet",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 9,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 37989,
+      "customer_name": "Central District Complex - Site A",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 8,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 38575,
+      "customer_name": "2992 Sheppard Ave E",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 7,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 37743,
+      "customer_name": "New York",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 6,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 46560,
+      "customer_name": "hanwha 2",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 2,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 6,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 35828,
+      "customer_name": "Acme Bank",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 3,
+      "schedules_alive": 3,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 5,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 37742,
+      "customer_name": "London",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 5,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 37621,
+      "customer_name": "VCH 1",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 3,
+      "schedules_alive": 2,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 1,
+      "csv_silent_cameras": 5,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 41262,
+      "customer_name": "Link Housing - 550 M St, Eureka, CA",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 4,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 38316,
+      "customer_name": "DH",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 3,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 2,
+      "csv_silent_cameras": 3,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 41264,
+      "customer_name": "Mission Ace Hardware and Lumber",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 3,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 43637,
+      "customer_name": "RRMS Internal Testing - VID9999",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 2,
+      "schedules_alive": 2,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 3,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 44879,
+      "customer_name": "Solful - Petaluma",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 1,
+      "schedules_alive": 1,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 1,
+      "cohorts": [
+        "F"
+      ],
+      "primary_cohort": "F"
+    },
+    {
+      "customer_id": 41798,
+      "customer_name": "CC260",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 0,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 6,
+      "cohorts": [
+        "Z"
+      ],
+      "primary_cohort": "Z"
+    },
+    {
+      "customer_id": 39845,
+      "customer_name": "TRAVIS TEST",
+      "customer_active": true,
+      "integration_type": "autopatrol",
+      "tenant_id": null,
+      "tenant_status": null,
+      "schedules_total": 0,
+      "schedules_alive": 0,
+      "schedules_alive_no_devices": 0,
+      "schedules_deleted_or_disabled": 0,
+      "csv_silent_cameras": 1,
+      "cohorts": [
+        "Z"
+      ],
+      "primary_cohort": "Z"
+    }
+  ]
+}

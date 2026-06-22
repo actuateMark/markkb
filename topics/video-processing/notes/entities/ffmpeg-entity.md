@@ -7,17 +7,17 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
+  - topics/actuate-libraries/notes/concepts/2026-05-19_pyav17-ffmpeg8-migration.md
   - topics/admin-api/notes/entities/actuate-monitoring-api.md
   - topics/data-science/notes/entities/ds-analysis-microservice.md
   - topics/engineering-process/notes/syntheses/2026-04-21_rd-agent-pilot-learnings.md
+  - topics/engineering-process/notes/syntheses/2026-05-20_ait-phase-9-site-dump-crash-hook.md
   - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
   - topics/infrastructure/notes/entities/create-detection-window.md
   - topics/infrastructure/notes/entities/reusable-github-actions.md
-  - topics/personal-notes/notes/daily/2026-04-27.md
-  - topics/video-processing/_summary.md
-  - topics/video-processing/notes/concepts/av1-vp9-future.md
-  - topics/video-processing/notes/concepts/codecs-overview.md
-incoming_updated: 2026-05-01
+  - topics/llm-shop/notes/syntheses/2026-05-07_overnight-batch-pattern.md
+  - topics/personal-notes/notes/concepts/2026-05-28_session-handoff.md
+incoming_updated: 2026-05-29
 ---
 
 # FFmpeg

@@ -6,6 +6,18 @@ tags: [handoff, billing, fleet-architecture, software-architecture, session-boun
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
+incoming:
+  - topics/billing/notes/concepts/2026-05-11_billing-reconciliation-dashboard-design.md
+  - topics/billing/notes/concepts/2026-05-11_eng-242-substantially-answered.md
+  - topics/billing/notes/syntheses/2026-05-12_week-in-review-non-technical.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
+  - topics/personal-notes/notes/concepts/2026-05-11_next-session-handoff.md
+  - topics/personal-notes/notes/concepts/2026-05-11_pre-impl-research-priority-reorder.md
+  - topics/personal-notes/notes/daily/2026-05-11.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/software-architecture/notes/concepts/2026-05-11_enforcement-as-proposal-scorer.md
+  - topics/software-architecture/notes/concepts/2026-05-11_sketch-findings-enforcement.md
+incoming_updated: 2026-05-27
 ---
 
 # Handoff: billing topic landing + fleet/software-arch follow-ups
@@ -28,11 +40,11 @@ This handoff captures **what's done, what's next, and the context the next sessi
 | Reading list seed | [[billing/reading-list]] |
 | Founding post-mortem | [[2026-05-11_billing-pain-post-mortem]] |
 | Events catalog (the artifact whose absence cost the firefight) | [[billing-events-catalog]] |
-| Topic todo list (6 categories, 25 items) | [[billing/_todos]] |
+| Topic [[todo-list|todo list]] (6 categories, 25 items) | [[billing/_todos]] |
 
 ### Tag retrofit pass — 12 notes now tagged `billing`
 
-Across vms-connector / autopatrol / admin-api / actuate-libraries. Specifically: handoff-pr-1681, autopatrol-deferred-backlog, queue-consumer, admin-schedule-cascade-design, cohort-f3a-deactivate-runbook, cohort-b-no-backfill-decision, cohort-b-backfill-runbook, silent-cameras-diagnosis (×2), data-model-cascade-semantics, autopatrol-cleanup-lambda, actuate-queue-consumer. Cleaned up duplicate `immix` tags in three files as a side-effect.
+Across vms-connector / autopatrol / admin-api / actuate-libraries. Specifically: handoff-pr-1681, autopatrol-deferred-backlog, queue-consumer, admin-schedule-cascade-design, cohort-f3a-deactivate-runbook, cohort-b-no-backfill-decision, cohort-b-backfill-runbook, silent-cameras-diagnosis (×2), data-model-cascade-semantics, autopatrol-cleanup-lambda, [[actuate-queue-consumer]]. Cleaned up duplicate `immix` tags in three files as a side-effect.
 
 ### mark-todos §28 added
 
@@ -47,7 +59,7 @@ These were asked and answered at the end of session 2026-05-11. Captured here so
 | Snowflake DDL access for billing tables? | None currently. If critical, file a Jira ticket with thorough hows/whys. | [[billing/_todos]] C2 expanded with Jira-ticket spec (body + acceptance + project hint). To-do is "file the ticket"; data-team response is the blocker after that. |
 | Cohort F tracker handoff (`cohort_f_tracker.json`)? | Our part is done. Mark off our plate. | [[billing/_todos]] R2 marked **OUR PART DONE**; post-mortem table row updated. Data team owns ongoing; we re-engage only if escalated back. |
 | Extend post-mortem backwards through alibi billing-profile redesign? | No — alibi is old news, not relevant to current issues. | Post-mortem scope stays anchored at the PR-#1675 → #1688 connector firefight. Alibi remains cross-referenced as foundational primitive but not in the firefight narrative. |
-| R1 dashboard surface — operational dashboard, separate dashboard, or sales-dashboard integration? | **Separate billing dashboard**, sketched locally first, future integration with `https://sales-dashboard.internal.actuateui.net/`. Sales-dashboard deploy-repo unknown. | [[billing/_todos]] R1 surface decision added; new [[billing/_todos]] C6 created: "Locate the sales-dashboard deployment repo." |
+| R1 dashboard surface — operational dashboard, separate dashboard, or [[sales-dashboard]] integration? | **Separate billing dashboard**, sketched locally first, future integration with `https://sales-dashboard.internal.actuateui.net/`. [[sales-dashboard|Sales-dashboard]] deploy-repo unknown. | [[billing/_todos]] R1 surface decision added; new [[billing/_todos]] C6 created: "Locate the [[sales-dashboard]] deployment repo." |
 
 ## Highest-priority next move
 
@@ -63,12 +75,12 @@ The carry-over from session 2026-05-11, reordered for the post-mortem-shifted pi
 |---|------|---------|-------------|---|
 | 1 | **R1 dashboard spec** | Closes the unknown-drift-window risk; post-mortem headline | [[billing/_todos]] R1 | ✅ **DONE** — spec at [[2026-05-11_billing-reconciliation-dashboard-design]]; superseded by NF2 (operational impl) |
 | 2 | **C2 Jira ticket for Snowflake DDL** | Unblocks C5, T2, T3, T4, R2 closure. Cheap, file-and-forget | [[billing/_todos]] C2 | ✅ **DONE** — filed as ENG-242, then *closed Done* same day after [[sales-dashboard-repo]] + [[actuate-bi-repo]] surfaced the answers |
-| 3 | **Reeval scan** — pre-implementation research priority order | Billing is the new hot path. The session 2026-05-11 fleet pre-impl list (NR FDMD query, WireGuard inventory, PyAV GIL, etc.) needs reordering against billing items | Session 2026-05-11 last summary + [[2026-04-22_fleet-proposal-rescore-with-delta]] open questions | ✅ **DONE** — [[2026-05-11_pre-impl-research-priority-reorder]]; top 2 promoted to mark-todos §28 |
+| 3 | **Reeval scan** — pre-implementation research priority order | Billing is the new hot path. The session 2026-05-11 fleet pre-impl list (NR FDMD query, WireGuard inventory, [[pyav-entity|PyAV]] GIL, etc.) needs reordering against billing items | Session 2026-05-11 last summary + [[2026-04-22_fleet-proposal-rescore-with-delta]] open questions | ✅ **DONE** — [[2026-05-11_pre-impl-research-priority-reorder]]; top 2 promoted to mark-todos §28 |
 | 4 | **(b) Fleet rubric: add Monitoring & Alarms + Billing & Reconciliation dimensions** | Promised in 2026-04-23 `_summary` update; never landed. Both dimensions now relevant | [[2026-04-16_evaluation-rubric]] | ✅ **DONE** — [[2026-05-11_rubric-monitoring-billing-dimensions]] (weights rebalanced, 5 proposals rescored, ranking preserved with narrower lead) |
 | 5 | **(a) Reading-list additions to fleet + software-arch** | 10-13 items I listed in session 2026-05-11. Several are billing-adjacent (event-sourcing, idempotency, reconciliation) — coordinate with [[billing/reading-list]] | [[fleet-architecture/reading-list]], [[software-architecture/reading-list]] | ✅ **DONE** — 10 fleet items added (3 new sections created), 4 software-arch items added (2 new sections), Connascence moved fleet → software-arch |
 | 6 | **(c) Enforcement-sketch-as-proposal-scorer spec** | Quantitative Migration Risk axis for fleet rubric. Also gets billing-emit-site fitness functions per [[billing/_todos]] C1 | [[2026-04-16_architecture-enforcement]] | ✅ **DONE** — [[2026-05-11_enforcement-as-proposal-scorer]] (per-proposal target topologies, violation-bracket mapping, dual-use angle, billing fitness functions) |
 | 7 | **Sketch extension** — Enforcement collector beyond stub | Operationalizes #6 against vms-connector | `/home/mork/work/software-arch-sketches/src/software_arch_sketches/enforcement/` | ✅ **DONE** — collector ships, real run produced A=30 / B=203 / C=169 / D=202 / E=30 violations; rubric MR scores updated; [[2026-05-11_sketch-findings-enforcement]] |
-| 8 | **C6 — Locate sales-dashboard deployment repo** | Enables eventual R1 integration. LOW priority but small effort | [[billing/_todos]] C6 | ✅ **DONE** — by side-effect of #2 closure ([[sales-dashboard-repo]] entity note) |
+| 8 | **C6 — Locate [[sales-dashboard]] deployment repo** | Enables eventual R1 integration. LOW priority but small effort | [[billing/_todos]] C6 | ✅ **DONE** — by side-effect of #2 closure ([[sales-dashboard-repo]] entity note) |
 
 ## Net outcome of 2026-05-11 session
 
@@ -102,7 +114,7 @@ The carry-over from session 2026-05-11, reordered for the post-mortem-shifted pi
 - [[dashboard-check]] skill config — `~/.claude/skills/dashboard-check/config/signals.json` for the existing dashboard signal pattern
 - [[autopatrol-deferred-backlog]] "Cohort dashboard signals" — adjacent prior art
 
-**Blockers:** none for the design. Implementation later may chain on C2 Jira (Snowflake side) or C6 (sales-dashboard integration), but the local sketch can start today.
+**Blockers:** none for the design. Implementation later may chain on C2 Jira (Snowflake side) or C6 ([[sales-dashboard]] integration), but the local sketch can start today.
 
 ### 2. C2 Jira ticket for Snowflake DDL
 
@@ -125,7 +137,7 @@ The carry-over from session 2026-05-11, reordered for the post-mortem-shifted pi
 |---|---:|:---:|:---:|
 | NR query: actual FDMD drop rate fleet-wide | 2 | Yes | Was #1 — now likely #4 behind R1, C2, S1 |
 | WireGuard/tunnel inventory | 1d | Yes (flips C unviable) | Was #2 — still important but billing precedes |
-| PyAV GIL budget measurement at frame rate | 0.5d | Partially | Was #3 — same |
+| [[pyav-entity|PyAV]] GIL budget measurement at frame rate | 0.5d | Partially | Was #3 — same |
 | Confirm `connector validate` subcommand exists | 0.25h | No | Was #4 — same |
 | Lease-churn benchmark | 0.5d | No | Was #5 — same |
 | Tier3 replication investigation | 1h | No | Was #6 — same |
@@ -169,7 +181,7 @@ Fleet:
 4. Schema canary / contract testing (translator ↔ connector validate)
 5. gRPC service design + Raft/etcd leader election in Python
 6. Spot instances + ephemeral worker economics
-7. PyAV / encoder GIL budget benchmarks
+7. [[pyav-entity|PyAV]] / encoder GIL budget benchmarks
 8. NATS JetStream as ephemeral blob store (promote from Chunk 9)
 9. Connascence framework
 10. Lease-churn benchmarking for multi-tenant coordinators

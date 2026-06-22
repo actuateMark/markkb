@@ -2,7 +2,7 @@
 title: "Cleanup Lambda Rollout Day — 2026-04-23"
 type: concept
 topic: autopatrol
-tags: [autopatrol, cleanup-lambda, rollout, hotfix, threshold-tuning, incident-day, immix, immix, immix, immix, immix]
+tags: [autopatrol, cleanup-lambda, rollout, hotfix, threshold-tuning, incident-day, immix]
 created: 2026-04-23
 updated: 2026-04-23
 author: kb-bot
@@ -105,7 +105,7 @@ First `/autopatrol-cleanup-lambda-check` after the flip + threshold lower. Pipel
 | `636be1ba` | patrol_exit | 1 | 3 (stored) | Y | 19:09Z | Post-18:12 row, correctly-shaped. Below threshold. |
 | `1e2ee05f` | site_disabled | 12/56 | stored | Y | 18:38Z | Normal; site_disabled bucket far from threshold. |
 
-**What to watch next 24h:** each of `c3808175`, `fbdfdba6`, `ee1822f1` should either disappear (disabled) or get an anomaly-reset on their next 6h-cadence emit. If a row is still at count=3/4 by 2026-04-24T12:00Z, something's wrong with the threshold-clear or next-emit logic.
+**What to [[watch-entity|watch]] next 24h:** each of `c3808175`, `fbdfdba6`, `ee1822f1` should either disappear (disabled) or get an anomaly-reset on their next 6h-cadence emit. If a row is still at count=3/4 by 2026-04-24T12:00Z, something's wrong with the threshold-clear or next-emit logic.
 
 **Transient errors — all concentrated on one schedule:**
 - 9 transient errors in 24h, ALL for schedule `636be1ba` (admin_pk=235)
@@ -123,7 +123,7 @@ First `/autopatrol-cleanup-lambda-check` after the flip + threshold lower. Pipel
 - Task #22 — Step F (prod US scale-up) deferred until pod-redeploy mechanism exists
 - Task #23 — Step G (prod EU) deferred until EU infra is provisioned
 - Task #24 — Phase 1b dashboard signal activation (new signals added today: `cleanup_lambda_actual_disable_rate`, `cleanup_lambda_anomaly_reset_rate`, `cleanup_lambda_anomaly_repeat_offenders_7d`)
-- Task #25 — watch anomaly-reset rate under 18h threshold
+- Task #25 — [[watch-entity|watch]] anomaly-reset rate under 18h threshold
 - Task #26 — investigate schedule `636be1ba-57c9-4da1-c534-08de1b193ea0` (admin_pk=235) for persistent Immix transient errors (9 in 24h, 3 bursts of 3 retries at 6h cadence)
 - [[2026-04-23_feature-request-ad-hoc-connector-redeploy-api]] — KB feature-request for an API to redeploy connector pods on demand
 
@@ -131,6 +131,6 @@ First `/autopatrol-cleanup-lambda-check` after the flip + threshold lower. Pipel
 
 - [[2026-04-23_postmortem-onboarder-healthcheck]] — the post-mortem that started the day
 - [[2026-04-23_release-acceptance-criteria]] — rule derived from the post-mortem
-- [[2026-04-24_morning-watch-list]] — tomorrow's specific watch items
+- [[2026-04-24_morning-watch-list]] — tomorrow's specific [[watch-entity|watch]] items
 - [[autopatrol-cleanup-lambda]] — entity (current state)
 - [[2026-04-22_cleanup-lambda-bake-state]] — the pre-flip snapshot (superseded)

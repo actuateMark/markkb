@@ -175,7 +175,7 @@ This lifecycle assumes Claude Code as the development environment with access to
 ### Steps
 
 1. **Audit every input path** — For each field the user can control:
-   - What types are accepted? (string, int, float, bool — watch for JSON type coercion)
+   - What types are accepted? (string, int, float, bool — [[watch-entity|watch]] for JSON type coercion)
    - What are the bounds? (max length, min/max value, regex pattern)
    - What happens with malicious input? (SQL injection, path traversal, oversized payloads)
 

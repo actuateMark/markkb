@@ -2,7 +2,7 @@
 title: "Operational Pitfall: Three Patrol-Style Integration Types, Misleading Container Names"
 type: concept
 topic: autopatrol
-tags: [integration-types, naming-conventions, dashboard-signals, operational-debugging, vms-connector, nrql-filters, autopatrol, autopatrol, autopatrol, autopatrol, autopatrol]
+tags: [integration-types, naming-conventions, dashboard-signals, operational-debugging, vms-connector, nrql-filters, autopatrol]
 jira: "AUTO-566, AUTO-567"
 created: 2026-04-28
 updated: 2026-04-28

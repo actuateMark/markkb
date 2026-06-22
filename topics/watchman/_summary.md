@@ -18,6 +18,20 @@ author: kb-bot
 **Target release:** ASAP
 **MVP target:** 10-20 beta sites with live camera feeds
 
+## Platform layer (fleet-arch + Watch Management Service + MVP Slim Connector)
+
+Cross-cutting analysis correlating [[watchman-repo|Watchman]] with the connector fleet rearchitecture:
+
+**NEW (2026-06-01):** [[2026-06-01_adr-watchman-mvp-slim-connector|Watchman MVP Slim Connector Design]] — minimal [[rtsp-deep-dive|RTSP]]→inference→Watchman-services entrypoint built to feed cloud [[watchman-repo|Watchman]] without the full monolith (no window/billing/blacklist). Pluggable `WatchmanSink` enables growth path to fleet Proposals A & E.
+
+- [[2026-05-28_watch-management-service-index]] — index for the cross-architecture work
+- [[2026-05-29_watchman-prds-summary]] — PRD v2 + Agent Specs digest
+- [[2026-05-28_watch-management-service-design]] — master manager-service design
+- [[2026-05-29_site-supervisor-vs-watch-manager]] — Site Supervisor Agent ↔ Manager relationship
+- [[watch-entity]], [[calendar-set]] — core data-model concepts
+- [[2026-05-29_watchman-judge-backend-io-contract]] — judge agent wire-protocol contract (alert ingest → disposition fan-out)
+- [[2026-05-29_watchman-judge-immix-integration]] — Immix partner-integration captured separately
+
 ## Market Thesis
 
 - Global video surveillance market: $56-74B (2024)

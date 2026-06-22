@@ -2,7 +2,7 @@
 title: "Dashboard signal cookbook — adding a new signal to /dashboard-check"
 type: concept
 topic: operational-health
-tags: [dashboard-check, signals, cookbook, runbook, observability, monitoring, new-relic, new-relic, new-relic, new-relic, new-relic]
+tags: [dashboard-check, signals, cookbook, runbook, observability, monitoring, new-relic]
 created: 2026-04-27
 updated: 2026-04-28
 author: kb-bot
@@ -72,7 +72,7 @@ Source-specific (see sections below). Test it interactively first:
 - AWS CW: `AWS_PROFILE=dashboard-check aws logs filter-log-events ...` from the laptop or minipc
 - AWS CE: `aws ce get-cost-and-usage ...`
 
-**For NR**, watch out for query-cost limits (`NRDB:1107005` server error). FACETs over high-volume tables (`Log` over 12h+) hit this. Mitigate by tightening the time window, the `WHERE`, or the `LIMIT`.
+**For NR**, [[watch-entity|watch]] out for query-cost limits (`NRDB:1107005` server error). FACETs over high-volume tables (`Log` over 12h+) hit this. Mitigate by tightening the time window, the `WHERE`, or the `LIMIT`.
 
 ### 3. Add the entry to `config/signals.json`
 
@@ -383,7 +383,7 @@ Threshold calibration is the part most often skipped, then bites. Three patterns
 | **Below-thresholds** (activity, invocations, frame-rate) | Same data, invert: `yellow_below = p25`, `red_below = p5`. The `silent_drop` regression rule is a *separate* check on top of these. |
 | **Cluster utilization** (% used) | Static thresholds — yellow at 60%, red at 80% — UNLESS the workload is steady-state high (e.g. inference). For steady-state, baseline at p50 + 2σ. |
 
-After landing a new signal, watch its sink for 7 days. If it never goes yellow/red, thresholds are too loose — tighten. If it goes yellow daily, thresholds are too tight — loosen. Recalibrate quarterly or after major workload changes.
+After landing a new signal, [[watch-entity|watch]] its sink for 7 days. If it never goes yellow/red, thresholds are too loose — tighten. If it goes yellow daily, thresholds are too tight — loosen. Recalibrate quarterly or after major workload changes.
 
 ## Skill reference
 

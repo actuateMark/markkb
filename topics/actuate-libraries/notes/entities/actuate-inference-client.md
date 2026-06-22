@@ -16,8 +16,8 @@ incoming:
   - topics/data-science/notes/concepts/detection-pipeline.md
   - topics/data-science/notes/syntheses/model-lifecycle.md
   - topics/fleet-architecture/notes/concepts/inference-api-interaction.md
-  - topics/team-structure/notes/entities/michael-aleksa.md
-incoming_updated: 2026-05-01
+  - topics/fleet-architecture/notes/syntheses/2026-06-01_adr-watchman-mvp-slim-connector.md
+incoming_updated: 2026-06-02
 ---
 
 # actuate-inference-client

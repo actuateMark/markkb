@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: profiling-and-performance
+    filters:
+      and:
+        - file.folder.contains("topics/profiling-and-performance")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

@@ -6,8 +6,9 @@ updated: 2026-04-13
 tags: [person, engineering, inference, ml]
 incoming:
   - topics/actuate-platform/notes/concepts/data-flow-architecture.md
+  - topics/inference-api/_summary.md
   - topics/watchman/_summary.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Michael Aleksa

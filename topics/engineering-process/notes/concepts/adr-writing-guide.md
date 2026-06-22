@@ -26,7 +26,7 @@ ADRs capture significant technical decisions with their context, alternatives, a
 
 ## When to Write an ADR
 
-- Choosing between deployment strategies (Lambda vs k8s vs ECS)
+- Choosing between deployment [[strategies]] (Lambda vs k8s vs ECS)
 - Changing data storage patterns (DynamoDB vs PostgreSQL vs both)
 - Adding significant dependencies (actuate-libraries, new SDKs)
 - Altering the API contract in a way that affects partners

@@ -2,7 +2,7 @@
 title: "Immix DeviceWorker lifespan expiry mislabeled as 'streamfailed'"
 type: synthesis
 topic: vms-connector
-tags: [autopatrol, vch, immix, patrol-api, alert-dispatch, worker-lifecycle, immix, immix, immix, immix]
+tags: [autopatrol, vch, immix, patrol-api, alert-dispatch, worker-lifecycle]
 jira: ""
 created: 2026-05-06
 updated: 2026-05-06
@@ -12,13 +12,17 @@ outgoing:
   - topics/vms-connector/notes/concepts/2026-05-06_bugfix-stream-id-history-iteration.md
   - topics/autopatrol/notes/syntheses/2026-05-07_consumer-side-websocket-close-feasibility.md
 incoming:
+  - topics/autopatrol/notes/concepts/2026-05-14_autopatrol-tier-api-cross-reference.md
   - topics/autopatrol/notes/data/2026-05-06_immix-streamfinished-inquiry.md
   - topics/autopatrol/notes/entities/immix-vendor-api.md
   - topics/autopatrol/notes/syntheses/2026-05-07_consumer-side-websocket-close-feasibility.md
+  - topics/autopatrol/notes/syntheses/2026-05-14_autopatrol-tier-model-and-detection-types.md
+  - topics/billing/notes/syntheses/2026-05-12_week-in-review-non-technical.md
+  - topics/camera-health-monitoring/notes/concepts/2026-05-14_chm-multi-frame-quality-sampling-followup.md
+  - topics/integrations/vch/notes/syntheses/2026-05-18_libav-decoder-warmup-frame-fix.md
   - topics/personal-notes/notes/daily/2026-05-06.md
   - topics/personal-notes/notes/daily/2026-05-07.md
-  - topics/vms-connector/notes/concepts/2026-05-06_bugfix-stream-id-history-iteration.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 # Immix DeviceWorker lifespan expiry mislabeled as 'streamfailed'

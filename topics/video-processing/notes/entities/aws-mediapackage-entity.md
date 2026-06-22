@@ -62,7 +62,7 @@ For a single viewer, MediaPackage is a strict cost addition over "encoder writes
 - ✅ **Live / VOD content served to many concurrent browser-native players.** This is the textbook fit.
 - ✅ You need DRM (Widevine / FairPlay / PlayReady) and don't want to wire up a keyserver pipeline by hand — MediaPackage's SPEKE integration is the path of least resistance.
 - ✅ You need both [[hls-and-dash|HLS and DASH]] (and maybe LL-HLS) from a single source feed.
-- ✅ Time-shifted live ("watch from 30 minutes ago") with a moving DVR window.
+- ✅ Time-shifted live ("[[watch-entity|watch]] from 30 minutes ago") with a moving DVR window.
 
 ## When not to reach for it
 

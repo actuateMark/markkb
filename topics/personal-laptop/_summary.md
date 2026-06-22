@@ -14,7 +14,7 @@ Tracks operational state, incidents, and configurations specific to mork's perso
 
 ## Scope
 
-- **OS/driver state**: kernel upgrades, nvidia driver versions, DKMS vs prebuilt module strategies
+- **OS/driver state**: kernel upgrades, nvidia driver versions, DKMS vs prebuilt module [[strategies]]
 - **Hardware quirks**: GPU suspend/resume, power management edge cases, peripheral compatibility
 - **IT incidents**: crashes, boot failures, driver install failures, recovery procedures
 - **Configuration tuning**: power/sleep settings, display setup, network tweaks

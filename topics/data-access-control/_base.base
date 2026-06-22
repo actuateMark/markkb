@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: data-access-control
+    filters:
+      and:
+        - file.folder.contains("topics/data-access-control")
+    order:
+      - file.name
+      - type
+      - title
+      - tags
+      - updated

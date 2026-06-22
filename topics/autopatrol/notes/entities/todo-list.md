@@ -2,7 +2,7 @@
 title: "AutoPatrol Team Todo List"
 type: entity
 topic: autopatrol
-tags: [autopatrol, todos, tracker, team, autopatrol, autopatrol, autopatrol, autopatrol]
+tags: [autopatrol, todos, tracker, team]
 created: 2026-04-13
 updated: 2026-04-17
 author: kb-bot
@@ -11,9 +11,10 @@ outgoing:
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
   - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
+  - topics/billing/_summary.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 # AutoPatrol Team Todo List

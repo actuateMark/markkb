@@ -42,7 +42,7 @@ This has been a recurring pain. Mark (2026-04-23): *"I have been seeing a need f
 2. **Config-change propagation**: fleet-wide config update that needs to actually hit pods in a bounded time
 3. **Emergency kill-switch re-asserting**: if an ENV-var kill-switch needs to propagate fast (incident mitigation)
 4. **Ops hygiene**: today "I need to redeploy site X to get the new setting live" is a fiddly manual process
-5. **Canary rollouts**: redeploy 5%, watch, redeploy another 20%, etc. — currently blocked by lack of granular control
+5. **Canary rollouts**: redeploy 5%, [[watch-entity|watch]], redeploy another 20%, etc. — currently blocked by lack of granular control
 
 ## Approach sketch (not a plan yet)
 

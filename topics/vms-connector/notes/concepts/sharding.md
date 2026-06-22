@@ -13,13 +13,13 @@ incoming:
   - topics/aws-cost/_summary.md
   - topics/aws-cost/notes/syntheses/2026-04-27_aws-cost-topic-spinoff.md
   - topics/aws-cost/notes/syntheses/cost-architecture.md
+  - topics/fleet-architecture/notes/concepts/cardinality-decision.md
   - topics/fleet-architecture/notes/concepts/memory-and-fork-safety.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_evaluation-rubric.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_frame-transport-comparison.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-a-minimal-split.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
-  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-30
 ---
 
 # Camera Sharding

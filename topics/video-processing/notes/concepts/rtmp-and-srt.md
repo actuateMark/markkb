@@ -9,6 +9,7 @@ author: kb-bot
 incoming:
   - topics/infrastructure/notes/entities/remote-access-proxy.md
   - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/2026-05-18_mediamtx.md
   - topics/video-processing/notes/concepts/gstreamer-vs-ffmpeg.md
   - topics/video-processing/notes/concepts/mpeg-ts-over-udp.md
   - topics/video-processing/notes/concepts/protocol-latency-comparison.md
@@ -16,8 +17,7 @@ incoming:
   - topics/video-processing/notes/entities/aws-elemental-live-entity.md
   - topics/video-processing/notes/entities/aws-ivs-entity.md
   - topics/video-processing/notes/entities/aws-kvs-entity.md
-  - topics/video-processing/notes/entities/aws-medialive-entity.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # RTMP and SRT

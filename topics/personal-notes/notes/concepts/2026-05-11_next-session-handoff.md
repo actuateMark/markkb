@@ -6,6 +6,9 @@ tags: [handoff, session-boundary, next-session, billing, fleet-architecture, sof
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-05-27
 ---
 
 # Handoff — next session after 2026-05-11
@@ -42,7 +45,7 @@ Listed in rough priority order. **No item is critical-path; choose by mood / ban
 5. **PoC selection blockers (per [[mark-todos]] §5 carry-over):**
    - Pre-PoC open question — Tier3 replication driver investigation ($44k/year, 11.1% of S3 spend). 1h analyst-level dive into S3 Storage Lens or CUR+Athena.
    - WireGuard/tunnel inventory (blocks Proposal C if material site-share uses it).
-   - PyAV GIL budget measurement at frame rate (load-bearing for D/E motion-gate cost case).
+   - [[pyav-entity|PyAV]] GIL budget measurement at frame rate (load-bearing for D/E motion-gate cost case).
    - These are pre-existing fleet items, not new.
 
 ### Tier 3 — Sketch workstream (§6) continuation
@@ -57,7 +60,7 @@ Listed in rough priority order. **No item is critical-path; choose by mood / ban
 
 ### Tier 4 — Admin DB access hardening (new initiative)
 
-8. **`data-access-control` topic just stood up today** (parallel session). Driven by the Tati↔Mark thread; not on this handoff's critical path but a real multi-quarter workstream. Two team-discussion notes posted: [[2026-05-11_open-question-vini-gateway]] (parallel-but-compatible internal stack vs extend Vini's API GW) and [[2026-05-11_open-question-developer-tokens]] (composition approaches for new admin endpoints). Async items in team brief: `Group → Server CASCADE` (Mark leans SET_NULL), slow-query log verification, Terraformize parameter group. **Wait for team responses before more deep work.**
+8. **`data-access-control` topic just stood up today** (parallel session). Driven by the Tati↔Mark thread; not on this handoff's critical path but a real multi-quarter workstream. Two team-discussion notes posted: [[2026-05-11_open-question-vini-gateway]] (parallel-but-compatible internal stack vs extend Vini's API GW) and [[2026-05-11_open-question-developer-tokens]] (composition approaches for new admin endpoints). Async items in [[team-brief|team brief]]: `Group → Server CASCADE` (Mark leans SET_NULL), slow-query log verification, Terraformize parameter group. **Wait for team responses before more deep work.**
 
 9. **Admin reliability Tier 1 fixes** (per [[2026-05-11_admin-reliability-fix-plan]]) — 7 fixes, all cheap, none blocked. Headline: BT-926 N+1 has a precedented in-codebase fix (`GroupAdmin._compute_camera_counts()`); just needs replication for `sites()`. CustomerAdmin one-line prefetch adds. Slow-query log status verification (5-min) + Terraformize parameter group (drift-risk follow-up).
 
@@ -93,4 +96,4 @@ This handoff retires when:
 - [[2026-05-11_rubric-monitoring-billing-dimensions]] — fleet rubric extension + collector MR addendum
 - [[2026-05-11_admin-db-access-hardening]] — new multi-quarter initiative scaffolded today
 - PR #1688 (vms-connector, merged), PR #1689 (vms-connector, open) — recent connector chain
-- ENG-242 (Jira, Done) — closed same-day via sales-dashboard + actuate_bi inventory
+- ENG-242 (Jira, Done) — closed same-day via [[sales-dashboard]] + actuate_bi inventory

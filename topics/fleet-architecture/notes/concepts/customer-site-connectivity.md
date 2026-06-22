@@ -16,9 +16,9 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-d-event-driven.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-e-hybrid-sidecar.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-01_ephemeral-run-pilot/paradigm-c.md
   - topics/fleet-architecture/reading-list.md
-  - topics/video-processing/notes/syntheses/decode-locality-per-proposal.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Customer Site Connectivity

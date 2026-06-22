@@ -18,11 +18,11 @@ incoming:
   - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
   - topics/data-science/notes/concepts/line-crossing-detection.md
   - topics/engineering-process/notes/syntheses/2026-04-14_connector-library-deployment-lifecycle.md
-  - topics/vms-connector/notes/concepts/adaptive-temperature.md
-  - topics/vms-connector/notes/concepts/filter-pipeline-ordering.md
-  - topics/vms-connector/notes/concepts/ignore-zones.md
-  - topics/vms-connector/notes/concepts/memory-management.md
-incoming_updated: 2026-05-01
+  - topics/models/fire-detection/_summary.md
+  - topics/models/hardhat-detection/_summary.md
+  - topics/models/line-crossing/_summary.md
+  - topics/models/motion-plus/_summary.md
+incoming_updated: 2026-05-27
 ---
 
 # Pipeline Architecture

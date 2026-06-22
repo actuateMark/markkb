@@ -54,7 +54,7 @@ Tracks a change through the Actuate deployment chain — PR CI → merge → pub
 | `stage` | staging | post-deploy NR |
 | `rearchitecture` | connector prod | post-deploy + overnight |
 | `main` on `actuate-libraries` | CodeArtifact auto-publish | **verify GITHUB_TOKEN workflow triggered** |
-| `main` (other repos) | prod | NR watch |
+| `main` (other repos) | prod | NR [[watch-entity|watch]] |
 
 ## Gates Watched (in order)
 
@@ -82,7 +82,7 @@ Compact gate-status blocks (✓ / → / ✗) with timestamps. Final summary < 20
 
 | Skill | Where in skill | Notes |
 |-------|----------------|-------|
-| `/stage-release` | Steps 3 (watch CI), 6 (watch deploy), 7 (verify dev) | Primary host skill — use with `run_in_background: true` |
+| `/stage-release` | Steps 3 ([[watch-entity|watch]] CI), 6 ([[watch-entity|watch]] deploy), 7 (verify dev) | Primary host skill — use with `run_in_background: true` |
 
 Primary caller is `/stage-release`. Also invoked ad-hoc by the parent when merging PRs outside the skill flow.
 

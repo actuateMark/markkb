@@ -7,17 +7,17 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
+  - topics/fleet-architecture/notes/syntheses/2026-05-29_watch-manager-observability.md
+  - topics/infrastructure/notes/concepts/2026-05-19_mediamtx-chart-design.md
   - topics/video-processing/_summary.md
+  - topics/video-processing/notes/concepts/2026-05-18_go2rtc.md
+  - topics/video-processing/notes/concepts/2026-05-18_mediamtx.md
   - topics/video-processing/notes/concepts/av1-vp9-future.md
   - topics/video-processing/notes/concepts/gstreamer-vs-ffmpeg.md
   - topics/video-processing/notes/concepts/hls-and-dash.md
   - topics/video-processing/notes/concepts/mpeg-ts-over-udp.md
   - topics/video-processing/notes/concepts/protocol-latency-comparison.md
-  - topics/video-processing/notes/concepts/rtmp-and-srt.md
-  - topics/video-processing/notes/entities/aws-ivs-entity.md
-  - topics/video-processing/notes/entities/aws-kvs-entity.md
-  - topics/video-processing/notes/entities/aws-medialive-entity.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-30
 ---
 
 # WebRTC Deep Dive

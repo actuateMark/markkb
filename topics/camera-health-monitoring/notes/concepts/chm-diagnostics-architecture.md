@@ -7,6 +7,7 @@ created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
 incoming:
+  - topics/camera-health-monitoring/notes/concepts/2026-05-14_chm-multi-frame-quality-sampling-followup.md
   - topics/camera-health-monitoring/notes/syntheses/chm-end-to-end-flow.md
   - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase1-network-probe.md
@@ -16,8 +17,7 @@ incoming:
   - topics/camera-health-monitoring/notes/syntheses/chm-phase5-frame-probe.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase6-smtp-ailink-diagnostics.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase7-historical-trending.md
-  - topics/camera-health-monitoring/reading-list.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # CHM Diagnostics Architecture
@@ -82,7 +82,7 @@ Incident records are stored with attributes for incident type, status (pending/r
 
 The `HealthcheckConfig` class centralizes all configuration for a healthcheck run:
 
-- **Scheduling**: `schedule_id`, `cron_expression`, `timezone` -- defines when healthchecks execute.
+- **Scheduling**: `schedule_id`, `cron_expression`, `timezone` -- defines when [[healthchecks]] execute.
 - **Scope**: `customer_id`, `site_id`, `camera_ids` (optional subset) -- defines which cameras to check.
 - **Thresholds**: Blur threshold, scene-change sensitivity, minimum resolution, FPS floor -- defines what constitutes a failure.
 - **Alerting**: Email recipients, alert suppression windows, incident deduplication window -- controls notification behavior.

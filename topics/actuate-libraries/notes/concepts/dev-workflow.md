@@ -9,9 +9,11 @@ incoming:
   - topics/actuate-libraries/notes/concepts/dependency-graph.md
   - topics/actuate-libraries/notes/syntheses/2026-04-14_ci-pipeline-mechanics.md
   - topics/actuate-platform/notes/entities/camera-ui.md
+  - topics/autopatrol/notes/entities/autopatrol-server-deployment.md
   - topics/engineering-process/notes/syntheses/2026-04-14_connector-library-deployment-lifecycle.md
+  - topics/profiling-and-performance/notes/concepts/2026-05-19_handoff-cv2-dst-stage-deploy.md
   - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Library Development Workflow

@@ -6,6 +6,13 @@ tags: [sketch-findings, enforcement, import-linter, fleet-architecture, migratio
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
+  - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
+  - topics/personal-notes/notes/concepts/2026-05-11_next-session-handoff.md
+  - topics/personal-notes/notes/daily/2026-05-11.md
+  - topics/personal-notes/notes/daily/2026-05-12.md
+incoming_updated: 2026-05-27
 ---
 
 # Sketch findings — enforcement collector (handoff #7)

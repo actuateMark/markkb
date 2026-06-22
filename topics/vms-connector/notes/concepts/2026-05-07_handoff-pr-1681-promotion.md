@@ -10,10 +10,15 @@ outgoing:
   - topics/personal-notes/notes/daily/2026-05-07.md
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
+  - topics/billing/_todos.md
+  - topics/billing/notes/entities/billing-events-catalog.md
+  - topics/billing/notes/syntheses/2026-05-11_billing-pain-post-mortem.md
+  - topics/billing/reading-list.md
+  - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
   - topics/personal-notes/notes/daily/2026-05-07.md
   - topics/personal-notes/notes/daily/2026-05-08.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-09
+incoming_updated: 2026-05-27
 ---
 
 # Handoff: PR #1681 stage→rearch promotion (deferred 2026-05-07 → 2026-05-08)
@@ -113,7 +118,7 @@ Lean toward (1) only if the libs bump has independently soaked clean overnight. 
 3. **Refresh PR body if needed** to cover any new commits.
 4. **Get reviewer to clear `REVIEW_REQUIRED`.** The closed-#1681 approval did not carry over to #1688.
 5. **Merge** — squash subject must contain `[patch:vms-connector]` (or higher) and must NOT contain `[no ci]` / `[skip ci]`. Strip the auto-generated `📦 Update library changes report [skip ci]` lines from the squash body. Squash-merge default is unsafe — pass explicit `--subject` and `--body`, or edit in GitHub UI.
-6. **Post-merge soak monitor** — Tier-1 systemd one-shots on Firebat (now back online) mirroring the PR #1660 pattern. Watch `:rearchitecture` images for: zero `site_product_started` events; steady `_ended` volume; no new error classes vs the 12h pre-merge baseline.
+6. **Post-merge soak monitor** — Tier-1 systemd one-shots on Firebat (now back online) mirroring the PR #1660 pattern. [[watch-entity|Watch]] `:rearchitecture` images for: zero `site_product_started` events; steady `_ended` volume; no new error classes vs the 12h pre-merge baseline.
 7. **Close §20 fully** in mark-todos when soak holds 24h.
 
 ### Rule-compliance gotcha (saved as feedback memory)

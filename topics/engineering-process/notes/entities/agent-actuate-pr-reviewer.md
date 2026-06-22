@@ -56,7 +56,7 @@ Structured markdown: Blockers / Should-fix / Nits / Missing / Summary. Every iss
 | Skill | Where in skill | Notes |
 |-------|----------------|-------|
 | `/api-endpoint-development` | Phase 7/8 pre-commit self-review | Validates output against security + pydantic-as-contract rules |
-| `/stage-release` | Step 2 (after PR creation, before CI watch) | Pre-merge self-review |
+| `/stage-release` | Step 2 (after PR creation, before CI [[watch-entity|watch]]) | Pre-merge self-review |
 | `/write-external-docs` | Step 5 (verify / internal-leak audit) | Applies external-documentation-standards |
 
 ## Related

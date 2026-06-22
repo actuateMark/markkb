@@ -13,11 +13,11 @@ incoming:
   - topics/personal-laptop/notes/syntheses/2026-04-24_minipc-dashboard-static-gen-refactor.md
   - topics/personal-laptop/notes/syntheses/2026-04-27_minipc-tooling-improvements.md
   - topics/personal-laptop/notes/syntheses/2026-04-28_long-lived-credentials-on-headless-boxes.md
+  - topics/personal-laptop/notes/syntheses/2026-05-05_firebat-minipc-followups-context.md
   - topics/personal-notes/notes/daily/2026-04-23.md
   - topics/personal-notes/notes/daily/2026-04-29.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Firebat minipc as always-on Claude dev box

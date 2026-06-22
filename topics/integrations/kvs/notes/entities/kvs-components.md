@@ -15,9 +15,9 @@ incoming:
   - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
   - topics/infrastructure/notes/entities/remote-access-proxy.md
   - topics/integrations/kvs/_summary.md
+  - topics/obsidian/notes/syntheses/2026-05-01_context-efficient-kb-retrieval.md
   - topics/video-processing/_summary.md
-  - topics/video-processing/notes/concepts/av1-vp9-future.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # KVS Integration Components

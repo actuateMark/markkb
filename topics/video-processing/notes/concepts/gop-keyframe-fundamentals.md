@@ -7,17 +7,17 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
+  - topics/actuate-libraries/notes/concepts/2026-05-19_stream-publisher-design.md
+  - topics/admin-api/notes/concepts/2026-05-19_streaming-monitoring-api.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase2-stream-probe.md
+  - topics/infrastructure/notes/concepts/2026-05-19_mediamtx-chart-design.md
   - topics/personal-notes/notes/daily/2026-04-27.md
   - topics/video-processing/_summary.md
   - topics/video-processing/notes/concepts/codecs-overview.md
   - topics/video-processing/notes/concepts/cv2-videocapture-internals.md
   - topics/video-processing/notes/concepts/ffmpeg-command-anatomy.md
   - topics/video-processing/notes/concepts/frame-extraction-strategies.md
-  - topics/video-processing/notes/concepts/h264-deep-dive.md
-  - topics/video-processing/notes/concepts/h265-hevc-deep-dive.md
-  - topics/video-processing/notes/concepts/hardware-accelerated-codecs.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # GOP and Keyframe Fundamentals

@@ -27,7 +27,7 @@ Holds all shared run-loop logic. It launches a puller thread, drives a frame-pro
 
 ## PatrolCamera
 
-The generic subclass. Uses `AvUrlFramePuller` for [[rtsp-deep-dive|RTSP]] streams, designed so other pullers can be added without touching Immix code. Instantiated by `PatrolConnectorFactory`, which generates its own `patrol_id` locally (a UUID, no Immix API call) and reads settings via `PatrolConnectorConfig`.
+The generic subclass. Uses `AvUrlFramePuller` for [[rtsp-deep-dive|RTSP]] streams, designed so other pullers can be added without touching Immix code. Instantiated by `PatrolConnectorFactory`, which generates its own `patrol_id` locally (a UUID, no [[immix-vendor-api|Immix API]] call) and reads settings via `PatrolConnectorConfig`.
 
 ## Config Layer
 
@@ -36,7 +36,7 @@ The generic subclass. Uses `AvUrlFramePuller` for [[rtsp-deep-dive|RTSP]] stream
 ## Patrol as a Run Flag
 
 Prior to this change, patrol mode required `integration_type: autopatrol`. Generic mode adds `integration_type: patrol` as a first-class routing option in the [[connector-factory]]. The distinction:
-- **`autopatrol`**: Immix-driven scheduling, patrol ID from Immix API
+- **`autopatrol`**: Immix-driven scheduling, patrol ID from [[immix-vendor-api|Immix API]]
 - **`patrol`**: Self-contained, generates its own patrol ID, no Immix dependency
 
 ## Related

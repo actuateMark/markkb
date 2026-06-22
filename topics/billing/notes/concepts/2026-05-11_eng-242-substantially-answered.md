@@ -6,6 +6,13 @@ tags: [billing, eng-242, jira-followup, snowflake, sales-dashboard, c2, c5, c6, 
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
+incoming:
+  - topics/billing/_todos.md
+  - topics/billing/notes/entities/actuate-bi-repo.md
+  - topics/billing/notes/entities/sales-dashboard-repo.md
+  - topics/billing/notes/entities/snowflake-billing-tables.md
+  - topics/personal-notes/notes/daily/2026-05-11.md
+incoming_updated: 2026-05-27
 ---
 
 # ENG-242 — substantially answered by sales-dashboard repo
@@ -25,7 +32,7 @@ This note maps ENG-242 ask → what we now know, identifies what's still owed, a
 
 ## What's still owed (the 10% remaining gap)
 
-The above answers the *intent* of every numbered request in ENG-242, but the **literal DDL files** are not in the sales-dashboard repo — they live in sister repo `actuate_bi/sql/snowflake/`. Confirming the exact `CREATE TABLE` / `CREATE VIEW` definitions for:
+The above answers the *intent* of every numbered request in ENG-242, but the **literal DDL files** are not in the [[sales-dashboard]] repo — they live in sister repo `actuate_bi/sql/snowflake/`. Confirming the exact `CREATE TABLE` / `CREATE VIEW` definitions for:
 
 - `gold.billing.usage_monthly`
 - `gold.billing.usage_products` (the Ordway business-filter view — where `INNER JOIN raw.ordway.subscription` lives)
@@ -56,7 +63,7 @@ Items unblocked by what we've already learned (don't wait on ENG-242 to act on t
 | [[_todos]] item | Status pre-investigation | Status post-investigation |
 |---|---|---|
 | **C5** — Snowflake-side schema mirror | Blocked on C2 (ENG-242) | **DONE-equivalent** via [[snowflake-billing-tables]] — promote a follow-up to verify against `actuate_bi` DDL |
-| **C6** — Locate sales-dashboard deploy repo | Pending | **DONE** via [[sales-dashboard-repo]] |
+| **C6** — Locate [[sales-dashboard]] deploy repo | Pending | **DONE** via [[sales-dashboard-repo]] |
 | **T2** — Verify `act_a` discriminator coverage | Blocked on data-team confirmation | **Largely answered** — `act_a` in NR maps to `product` / `description` column in SPRD/`usage_monthly`. No `act_a` filter on the consumer side; the implicit filter is `INNER JOIN raw.ordway.subscription`. Open follow-up: confirm exhaustive `act_a` value set against actuate-libraries emit code (purely connector-side work). |
 | **T3** — Site-level vs per-stream emit invariants | Blocked on data-team | **Substantially answered** — `admin_camera_id=null` (site-level fallback) rows would never match `camera_id` column on the Snowflake side. They appear in raw events but get dropped at the `INNER JOIN top_parent` step (since the upstream view joins on `customer_id`, not `camera_id`). Site-level fallback emits **don't participate in billing** as currently designed. **This is a real finding for the team** — flag in connector-side review. |
 | **T4** — Sentinel-value billing audit | Blocked on data-team | **Substantially answered** — `_MISCONFIGURED_FALLBACK_PRODUCT` would appear in `product` column. Whether it joins to a real product_tier row is opaque to `reports@`. Since `usage_monthly` is built downstream of `usage_products` (which joins to Ordway), a fallback product without an Ordway SKU mapping likely silently drops too. **Confirm with data team.** |
@@ -69,9 +76,9 @@ To be added to [[_todos]] (see "Updates to topic todos" section below):
 
 - **NF1 — Clone and inventory `actuate_bi` repo.** Find the DDL files. Mirror the relevant ones in [[snowflake-billing-tables]] §"Table inventory." Closes the ENG-242 remainder.
 - **NF2 — Promote `reconcile_cameras.py` to a Tier-1 dashboard signal.** Capture stdout output into JSON; classify green/yellow/red per R1 thresholds; schedule via systemd timer. Largely replaces the from-scratch R1 implementation.
-- **NF3 — Production unbilled-camera follow-up — 444 cameras across 25 accounts.** Per `reconcile_cameras.py` Feb 2026 baseline ([[sales-dashboard-repo]]), Active Watch Security (132 cams), Aggregate Industries (102), Eagle Eye Networks (26), Alarm Watch (46), CAP Security (39) are running billable products but unbilled. **This is a direct revenue leak** — has been for at least a month. Coordinate with sales / billing to follow up.
+- **NF3 — Production unbilled-camera follow-up — 444 cameras across 25 accounts.** Per `reconcile_cameras.py` Feb 2026 baseline ([[sales-dashboard-repo]]), Active [[watch-entity|Watch]] Security (132 cams), Aggregate Industries (102), Eagle Eye Networks (26), Alarm [[watch-entity|Watch]] (46), CAP Security (39) are running billable products but unbilled. **This is a direct revenue leak** — has been for at least a month. Coordinate with sales / billing to follow up.
 - **NF4 — Trial conversion candidates — 1,169 cameras across 52 accounts.** Per same source: Securitas Australia (738 cams / 441 avg hrs), Fidelity ADT (20 / 877), Cam Security (11 / 1568) are running at production scale. Sales-facing follow-up.
-- **NF5 — Wire sales-dashboard data into [[2026-05-11_billing-reconciliation-dashboard-design|R1]] more directly.** The dashboard already exposes `/api/unbilled`, `/api/no-usage`, `/api/churn` — R1's signal can be a 1-line HTTP poll instead of re-running queries.
+- **NF5 — Wire [[sales-dashboard]] data into [[2026-05-11_billing-reconciliation-dashboard-design|R1]] more directly.** The dashboard already exposes `/api/unbilled`, `/api/no-usage`, `/api/churn` — R1's signal can be a 1-line HTTP poll instead of re-running queries.
 
 ## Updates owed to existing KB
 

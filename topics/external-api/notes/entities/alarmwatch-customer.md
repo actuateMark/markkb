@@ -9,9 +9,11 @@ author: kb-bot
 incoming:
   - topics/actuate-platform/notes/syntheses/integration-landscape.md
   - topics/admin-api/notes/concepts/integration-architecture.md
+  - topics/external-api/_summary.md
   - topics/external-api/notes/concepts/shared-auth-pattern.md
   - topics/external-api/notes/entities/alarmquip-customer.md
-incoming_updated: 2026-05-01
+  - topics/watchman/notes/syntheses/2026-05-29_watchman-judge-immix-integration.md
+incoming_updated: 2026-05-30
 ---
 
 # AlarmWatch / Crosbies (NZ)

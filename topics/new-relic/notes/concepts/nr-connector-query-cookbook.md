@@ -26,9 +26,9 @@ incoming:
   - topics/fleet-architecture/notes/concepts/observability-and-tracing.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-29_watch-manager-observability.md
   - topics/new-relic/_summary.md
-  - topics/new-relic/notes/concepts/actuate-nr-data-model.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-30
 ---
 
 # New Relic Connector Query Cookbook

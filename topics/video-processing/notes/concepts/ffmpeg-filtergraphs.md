@@ -146,7 +146,7 @@ This is exactly the pattern Actuate would need if it ever wanted GPU-side scale 
 
 ## Why filtergraphs are powerful but illegible
 
-The filtergraph mini-language is concise — too concise. Once you have three or more chains, the readability falls off a cliff. Strategies:
+The filtergraph mini-language is concise — too concise. Once you have three or more chains, the readability falls off a cliff. [[strategies|Strategies]]:
 
 1. **Use named pads liberally**, even when not strictly needed — `[v0]`, `[v1]`, `[scaled]`, `[overlaid]` is far easier to read than `[v]`, `[v]`, `[v]`.
 2. **Split into multiple chains** with `;` rather than chaining everything into one string.
@@ -208,7 +208,7 @@ When to stick with `-vf` / `-filter_complex` strings:
 - **`setpts=PTS-STARTPTS`** is the canonical "reset timestamps after `trim`" idiom.
 - **Audio filters require `-filter_complex` even for single audio chains** if there's any video output too; pass `[0:a]anull[aout]` to keep audio alive.
 - **`-vf` doesn't work on hardware streams** if they're flowing in GPU pixel formats — you need `-filter_complex` plus explicit `hwupload`/`hwdownload`.
-- **Filtergraph errors are evaluated at graph-build time**, not at first-frame time; watch for the `Filtering and streamcopy cannot be used together` class of error before you blame the input.
+- **Filtergraph errors are evaluated at graph-build time**, not at first-frame time; [[watch-entity|watch]] for the `Filtering and streamcopy cannot be used together` class of error before you blame the input.
 
 ## Actuate touchpoints
 
@@ -217,7 +217,7 @@ Actuate uses filtergraphs **sparingly** in the production decode path:
 - **Primary pattern**: `frame.to_ndarray(format="bgr24")` on each [[pyav-entity|PyAV]] frame at `actuate-libraries/actuate-pullers/src/actuate_pullers/url/av_url_puller.py:1351`. This is conceptually a tiny one-step filtergraph (`format=bgr24`) but [[pyav-entity|PyAV]] implements it as a direct swscale call in C, not through libavfilter. Functionally equivalent; better-performing.
 - **No explicit `av.filter.Graph` use** in the puller code — the only transformation we apply per-frame is the format conversion above. Resizing happens **downstream** in the inference path (Python-level `cv2.resize` / `Pillow` ops), not in libavfilter.
 - **Where filtergraphs would help but don't yet**: clip generation paths that re-encode for partner delivery would be cheaper if scale + format + encode happened in a single GPU-side hardware filtergraph. Currently the path reads YUV → numpy → BGR → [[opencv-entity|cv2]].resize → re-encode, which is wasteful. Tracked as a possible future optimization in [[actuate-clip-generation-flow]].
-- **Operator-level use**: when manually generating test fixtures or repackaging customer-supplied clips, the team uses ad-hoc `-vf` invocations (`scale=640:480,fps=5,format=yuvj420p` is a common pattern for shrinking captures into the test fixtures directory).
+- **Operator-level use**: when manually generating test fixtures or repackaging customer-supplied clips, the team uses ad-hoc `-vf` invocations (`scale=640:480,fps=5,format=yuvj420p` is a common pattern for [[shrinking]] captures into the test fixtures directory).
 - **[[gstreamer-entity|GStreamer]] alternative**: where a fleet pipeline does need multi-stage transforms (rare), [[gstreamer-entity|GStreamer]]'s element-graph model (see [[gstreamer-pipeline-model]] and [[gstreamer-vs-ffmpeg]]) is often more legible than libavfilter strings. The [[gstreamer-entity|GStreamer]] `videoconvert ! videoscale ! capsfilter` triplet is the ergonomic equivalent of `format=bgr24,scale=...`.
 
 Cross-refs: [[ffmpeg-entity]] | [[ffmpeg-command-anatomy]] | [[ffmpeg-libav-libraries]] | [[ffmpeg-hardware-acceleration]] | [[ffmpeg-python-bindings]] | [[pyav-entity]] | [[gstreamer-pipeline-model]] | [[gstreamer-vs-ffmpeg]]

@@ -33,7 +33,7 @@ There is no dedicated `actuate-integration-calls` module for [[evalink-component
 
 ### Puller
 
-No Evalink-specific puller exists. Evalink is a send-only monitoring integration; video comes from whichever [[vms-connector|VMS connector]] the site uses.
+No Evalink-specific puller exists. [[evalink-components|Evalink]] is a send-only monitoring integration; video comes from whichever [[vms-connector|VMS connector]] the site uses.
 
 ## Auth Method
 

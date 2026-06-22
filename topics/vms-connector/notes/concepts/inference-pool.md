@@ -10,14 +10,14 @@ incoming:
   - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
   - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
   - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
+  - topics/autopatrol/_summary.md
   - topics/autopatrol/notes/concepts/generic-patrol-mode.md
+  - topics/autopatrol/notes/entities/todo-list.md
+  - topics/engineering-process/notes/syntheses/2026-05-20_ait-phase-8-camera-from-dump.md
   - topics/fleet-architecture/notes/concepts/inference-api-interaction.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
-  - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-e-hybrid-sidecar.md
-  - topics/fleet-architecture/notes/syntheses/2026-04-22_fleet-proposal-rescore-with-delta.md
-  - topics/video-processing/notes/syntheses/decode-locality-per-proposal.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # AsyncInferencePool AIMD Congestion Control

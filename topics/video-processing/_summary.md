@@ -63,7 +63,7 @@ video-processing/
 ### 7. Cross-cutting Actuate mapping (synthesis)
 [[actuate-video-pipeline-walkthrough]] -- end-to-end map of every place video flows through Actuate
 [[actuate-clip-generation-flow]] -- alert clip assembly, S3 storage, monitoring-center delivery
-[[actuate-frame-ingest-decode-paths]] -- per-VMS decode strategies, what library handles what
+[[actuate-frame-ingest-decode-paths]] -- per-VMS decode [[strategies]], what library handles what
 [[actuate-build-vs-buy-tradeoffs]] -- where AWS managed services could replace homegrown code
 
 ## Cross-references to other topics

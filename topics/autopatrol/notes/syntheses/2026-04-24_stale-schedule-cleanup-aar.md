@@ -2,7 +2,7 @@
 title: "AAR — stale AutoPatrol/VCH schedule cleanup sweep"
 type: synthesis
 topic: autopatrol
-tags: [autopatrol, vch, cleanup-lambda, sweep, aar, post-mortem, stale-schedules, immix, immix, immix, immix, immix]
+tags: [autopatrol, vch, cleanup-lambda, sweep, aar, post-mortem, stale-schedules, immix]
 created: 2026-04-24
 updated: 2026-04-27
 author: kb-bot

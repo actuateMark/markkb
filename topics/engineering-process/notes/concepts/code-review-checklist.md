@@ -20,7 +20,8 @@ incoming:
   - topics/personal-notes/notes/daily/2026-05-03.md
   - topics/personal-notes/notes/daily/2026-05-04.md
   - topics/software-architecture/notes/syntheses/2026-04-16_architecture-enforcement.md
-incoming_updated: 2026-05-08
+  - topics/vms-connector/notes/syntheses/2026-05-28_per-frame-log-volume-stage-vs-rearch.md
+incoming_updated: 2026-05-29
 ---
 
 # Code Review Checklist

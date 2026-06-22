@@ -11,9 +11,10 @@ incoming:
   - topics/actuate-libraries/notes/concepts/dependency-graph.md
   - topics/actuate-libraries/notes/concepts/observer-pattern.md
   - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/personal-notes/notes/syntheses/2026-05-12_kb-ask_one-sentence-kb-jobs-reap-timer.md
   - topics/vms-connector/_summary.md
   - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # actuate-botsort

@@ -13,11 +13,11 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-04-16_frame-transport-comparison.md
   - topics/fleet-architecture/notes/syntheses/2026-04-17_preliminary-pilot-option.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
-  - topics/fleet-architecture/reading-list.md
-  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-  - topics/video-processing/notes/syntheses/decode-locality-per-proposal.md
-incoming_updated: 2026-05-01
+  - topics/fleet-architecture/notes/syntheses/2026-05-05_fleet-architecture-workstream-context.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-proposal-a.md
+  - topics/fleet-architecture/notes/syntheses/2026-06-01_adr-watchman-mvp-slim-connector.md
+incoming_updated: 2026-06-02
 ---
 
 # Proposal A — Minimal Split

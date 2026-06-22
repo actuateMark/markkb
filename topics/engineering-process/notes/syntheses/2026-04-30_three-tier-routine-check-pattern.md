@@ -13,16 +13,17 @@ outgoing:
   - topics/personal-notes/notes/daily/2026-05-01.md
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
+  - topics/billing/notes/concepts/2026-05-11_billing-reconciliation-dashboard-design.md
   - topics/engineering-process/notes/entities/automation-jira-sync.md
+  - topics/engineering-process/notes/syntheses/2026-05-20_ait-phase-10-s3-sink-review-ux.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
+  - topics/operational-health/notes/syntheses/2026-05-21_overnight-check.md
   - topics/personal-laptop/notes/concepts/2026-04-30_morning-prep-scripts-runbook.md
   - topics/personal-laptop/notes/syntheses/2026-04-30_firebat-script-conversion-candidates.md
   - topics/personal-laptop/notes/syntheses/2026-05-05_claude-context-optimization.md
   - topics/personal-laptop/notes/syntheses/2026-05-05_firebat-minipc-followups-context.md
   - topics/personal-laptop/notes/syntheses/2026-05-07_firebat-enhancements-batch.md
-  - topics/personal-notes/notes/daily/2026-05-01.md
-  - topics/personal-notes/notes/daily/2026-05-04.md
-  - topics/personal-notes/notes/daily/2026-05-06.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 # Three-tier routine check pattern: script first, LLM as fallback

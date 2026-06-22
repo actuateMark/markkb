@@ -2,7 +2,7 @@
 title: "Autopatrol Onboarder"
 type: entity
 topic: autopatrol
-tags: [autopatrol, lambda, onboarding, sync, immix, admin-api, autopatrol, autopatrol, autopatrol, autopatrol]
+tags: [autopatrol, lambda, onboarding, sync, immix, admin-api]
 created: 2026-04-13
 updated: 2026-04-17
 author: kb-bot
@@ -24,11 +24,11 @@ incoming:
   - topics/autopatrol/notes/concepts/2026-04-28_tenant-status-sync-gap.md
   - topics/autopatrol/notes/concepts/2026-04-29_immix-zombie-tenants.md
   - topics/autopatrol/notes/concepts/2026-05-04_autopatrol-server-release-process.md
+  - topics/autopatrol/notes/entities/autopatrol-aws-objects.md
   - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
   - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
   - topics/autopatrol/notes/entities/todo-list.md
-  - topics/autopatrol/notes/syntheses/2026-04-17_stale-schedule-cleanup-design.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 ## Overview
@@ -95,3 +95,4 @@ Manual deploy scripts are also available: `deploy.sh` (dev), `deploy_prod.sh` (U
 ## Incidents
 
 - **2026-04-23 silent-failure** — a healthcheck early-return guard added in the 2026-04-21 cleanup-Lambda merge silently disabled every 5-min onboarder invocation for ~47 hours. Users couldn't activate new schedules. Hotfix PR #4. Full write-up: [[2026-04-23_postmortem-onboarder-healthcheck]]. Rules derived: [[2026-04-23_release-acceptance-criteria]], hard rule in the repo's `CLAUDE.md` against aborting on HTTP failures.
+- **2026-06-18 deployment-divergence outage** — Merging PRs #14/#15/#16 to `master` triggered auto-deploy with a broken package (missing `deploy_verification.py`). Every invocation crashed with `ImportModuleError` for ~8 hours in both US and EU regions. Root cause: CI and manual deployment paths bundled different file sets. Fixed by adding the file to CI packaging. Full write-up: [[2026-06-18_onboarder-lambda-importerror-outage]]. Key lesson: split deployment paths are a landmine; packaging divergence = latent prod break.

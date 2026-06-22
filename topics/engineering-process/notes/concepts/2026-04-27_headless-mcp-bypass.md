@@ -7,9 +7,11 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
+  - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
   - topics/personal-notes/notes/daily/2026-04-27.md
+  - topics/personal-notes/notes/daily/2026-05-27.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-28
 ---
 
 # Headless MCP-bypass auth flow

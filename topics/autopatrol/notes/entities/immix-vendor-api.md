@@ -2,7 +2,7 @@
 title: "Immix Vendor API for AutoPatrol"
 type: entity
 topic: autopatrol
-tags: [immix, api-reference, autopatrol, partner-integration, vch, openapi, autopatrol, immix, autopatrol, immix]
+tags: [immix, api-reference, autopatrol, partner-integration, vch, openapi]
 jira: ""
 created: 2026-05-06
 updated: 2026-05-06

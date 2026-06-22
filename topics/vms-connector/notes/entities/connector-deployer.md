@@ -23,12 +23,12 @@ incoming:
   - topics/actuate-platform/notes/syntheses/integration-landscape.md
   - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
   - topics/autopatrol/notes/concepts/2026-04-28_tenant-status-sync-gap.md
+  - topics/autopatrol/notes/syntheses/2026-05-01_silent-cameras-diagnosis.md
   - topics/aws-cost/notes/syntheses/cost-architecture.md
   - topics/data-science/notes/syntheses/model-lifecycle.md
   - topics/personal-notes/notes/concepts/2026-04-29_cleanup-handoff.md
   - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
-  - topics/video-processing/notes/concepts/eks-prod-node-pool-gpu-availability.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 ## Overview

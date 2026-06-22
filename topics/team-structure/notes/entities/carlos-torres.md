@@ -5,17 +5,17 @@ created: 2026-04-15
 updated: 2026-04-15
 tags: [person, data-science, weapon-model, vlm, model-training, model-routing]
 incoming:
+  - topics/ai-models/_summary.md
   - topics/ai-models/notes/entities/weapon-v8-model.md
   - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
+  - topics/autopatrol/notes/concepts/vlm-integration.md
   - topics/data-science/notes/concepts/training-pipeline-architecture.md
   - topics/data-science/notes/entities/spektar.md
   - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
   - topics/data-science/notes/syntheses/model-lifecycle.md
   - topics/jira-organization/notes/concepts/confluence-spaces-map.md
-  - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
-  - topics/settings-automation/_summary.md
-  - topics/settings-automation/notes/concepts/vlm-fp-reduction.md
-incoming_updated: 2026-05-01
+  - topics/models/weapon-v8/_summary.md
+incoming_updated: 2026-05-27
 ---
 
 # Carlos Torres

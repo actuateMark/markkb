@@ -1,0 +1,335 @@
+{
+  "run_id": "2026-05-11T1914Z-video-processing-002",
+  "started_at": "2026-05-11T19:15:41Z",
+  "finished_at": "2026-05-11T20:53:24Z",
+  "exit": "partial",
+  "context": {
+    "type": "reading-list",
+    "topic": "video-processing",
+    "list_path": "topics/video-processing/reading-list.md"
+  },
+  "items": [
+    {
+      "ref_id": "0018",
+      "url": "https://github.com/master-of-zen/Av1an",
+      "status": "ok",
+      "draft_path": "drafts/2026-05-11_av1an-cross-platform-command-line-video-encoding-framework.md",
+      "topic_claimed": "video-processing",
+      "elapsed_ms": 403462,
+      "error": null,
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "2 section(s)",
+          "elapsed_ms": 947
+        },
+        {
+          "phase": "planner",
+          "status": "ok",
+          "detail": "topic=video-processing, 1 section(s)",
+          "elapsed_ms": 160388
+        },
+        {
+          "phase": "worker[0]",
+          "status": "ok",
+          "detail": "Overview",
+          "elapsed_ms": 89388
+        },
+        {
+          "phase": "composer",
+          "status": "ok",
+          "detail": "1698 chars",
+          "elapsed_ms": 152655
+        },
+        {
+          "phase": "linker",
+          "status": "ok",
+          "detail": "clean",
+          "elapsed_ms": 1
+        }
+      ]
+    },
+    {
+      "ref_id": "0021",
+      "url": "https://github.com/bluenviron/mediamtx",
+      "status": "ok",
+      "draft_path": "drafts/2026-05-11_mediamtx-a-comprehensive-media-server-and-proxy.md",
+      "topic_claimed": "video-processing",
+      "elapsed_ms": 505704,
+      "error": null,
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "1 section(s)",
+          "elapsed_ms": 595
+        },
+        {
+          "phase": "planner",
+          "status": "ok",
+          "detail": "topic=video-processing, 1 section(s)",
+          "elapsed_ms": 137549
+        },
+        {
+          "phase": "worker[0]",
+          "status": "ok",
+          "detail": "Overview",
+          "elapsed_ms": 114794
+        },
+        {
+          "phase": "composer",
+          "status": "ok",
+          "detail": "2518 chars",
+          "elapsed_ms": 252765
+        },
+        {
+          "phase": "linker",
+          "status": "ok",
+          "detail": "clean",
+          "elapsed_ms": 0
+        }
+      ]
+    },
+    {
+      "ref_id": "0024",
+      "url": "https://janus.conf.meetecho.com/",
+      "status": "ok",
+      "draft_path": "drafts/2026-05-11_janus-webrtc-server-overview-and-functionality.md",
+      "topic_claimed": "webrtc-deep-dive",
+      "elapsed_ms": 379234,
+      "error": null,
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "1 section(s)",
+          "elapsed_ms": 1150
+        },
+        {
+          "phase": "planner",
+          "status": "ok",
+          "detail": "topic=webrtc-deep-dive, 1 section(s)",
+          "elapsed_ms": 143680
+        },
+        {
+          "phase": "worker[0]",
+          "status": "ok",
+          "detail": "Introduction to Janus WebRTC Server",
+          "elapsed_ms": 63142
+        },
+        {
+          "phase": "composer",
+          "status": "ok",
+          "detail": "1591 chars",
+          "elapsed_ms": 171262
+        },
+        {
+          "phase": "linker",
+          "status": "ok",
+          "detail": "clean",
+          "elapsed_ms": 1
+        }
+      ]
+    },
+    {
+      "ref_id": "0025",
+      "url": "https://github.com/pion/webrtc",
+      "status": "failed",
+      "draft_path": null,
+      "topic_claimed": null,
+      "elapsed_ms": 1201149,
+      "error": "failed in phase: planner",
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "3 section(s)",
+          "elapsed_ms": 1033
+        },
+        {
+          "phase": "planner",
+          "status": "failed",
+          "detail": "timed out",
+          "elapsed_ms": 1200117
+        }
+      ]
+    },
+    {
+      "ref_id": "0026",
+      "url": "https://livekit.io/",
+      "status": "ok",
+      "draft_path": "drafts/2026-05-11_livekit-overview.md",
+      "topic_claimed": "actuate-platform",
+      "elapsed_ms": 356778,
+      "error": null,
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "1 section(s)",
+          "elapsed_ms": 190
+        },
+        {
+          "phase": "planner",
+          "status": "ok",
+          "detail": "topic=actuate-platform, 1 section(s)",
+          "elapsed_ms": 164834
+        },
+        {
+          "phase": "worker[0]",
+          "status": "ok",
+          "detail": "Introduction",
+          "elapsed_ms": 51464
+        },
+        {
+          "phase": "composer",
+          "status": "ok",
+          "detail": "1078 chars",
+          "elapsed_ms": 140290
+        },
+        {
+          "phase": "linker",
+          "status": "ok",
+          "detail": "clean",
+          "elapsed_ms": 0
+        }
+      ]
+    },
+    {
+      "ref_id": "0027",
+      "url": "https://datarhei.github.io/restreamer/",
+      "status": "ok",
+      "draft_path": "drafts/2026-05-11_restreamer-browser-compatibility.md",
+      "topic_claimed": "video-processing",
+      "elapsed_ms": 343152,
+      "error": null,
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "1 section(s)",
+          "elapsed_ms": 93
+        },
+        {
+          "phase": "planner",
+          "status": "ok",
+          "detail": "topic=video-processing, 1 section(s)",
+          "elapsed_ms": 170033
+        },
+        {
+          "phase": "worker[0]",
+          "status": "ok",
+          "detail": "Browser and Platform Support",
+          "elapsed_ms": 43613
+        },
+        {
+          "phase": "composer",
+          "status": "ok",
+          "detail": "1011 chars",
+          "elapsed_ms": 129413
+        },
+        {
+          "phase": "linker",
+          "status": "ok",
+          "detail": "clean",
+          "elapsed_ms": 0
+        }
+      ]
+    },
+    {
+      "ref_id": "0029",
+      "url": "http://www.live555.com/",
+      "status": "ok",
+      "draft_path": "drafts/2026-05-11_live555-com-overview.md",
+      "topic_claimed": "external-api",
+      "elapsed_ms": 323611,
+      "error": null,
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "2 section(s)",
+          "elapsed_ms": 378
+        },
+        {
+          "phase": "planner",
+          "status": "ok",
+          "detail": "topic=external-api, 1 section(s)",
+          "elapsed_ms": 185058
+        },
+        {
+          "phase": "worker[0]",
+          "status": "ok",
+          "detail": "UDP Multicast Tunneling Protocol",
+          "elapsed_ms": 33833
+        },
+        {
+          "phase": "composer",
+          "status": "ok",
+          "detail": "836 chars",
+          "elapsed_ms": 104342
+        },
+        {
+          "phase": "linker",
+          "status": "ok",
+          "detail": "clean",
+          "elapsed_ms": 0
+        }
+      ]
+    },
+    {
+      "ref_id": "0030",
+      "url": "https://github.com/AlexxIT/go2rtc",
+      "status": "ok",
+      "draft_path": "drafts/2026-05-11_go2rtc-ultimate-camera-streaming-application.md",
+      "topic_claimed": "integrations",
+      "elapsed_ms": 1034577,
+      "error": null,
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "3 section(s)",
+          "elapsed_ms": 689
+        },
+        {
+          "phase": "planner",
+          "status": "ok",
+          "detail": "topic=integrations, 3 section(s)",
+          "elapsed_ms": 454196
+        },
+        {
+          "phase": "worker[0]",
+          "status": "ok",
+          "detail": "Overview",
+          "elapsed_ms": 61135
+        },
+        {
+          "phase": "worker[1]",
+          "status": "ok",
+          "detail": "Home Assistant Add-on",
+          "elapsed_ms": 36997
+        },
+        {
+          "phase": "worker[2]",
+          "status": "ok",
+          "detail": "Home Assistant Integration",
+          "elapsed_ms": 205583
+        },
+        {
+          "phase": "composer",
+          "status": "ok",
+          "detail": "2904 chars",
+          "elapsed_ms": 275976
+        },
+        {
+          "phase": "linker",
+          "status": "ok",
+          "detail": "clean",
+          "elapsed_ms": 0
+        }
+      ]
+    }
+  ]
+}

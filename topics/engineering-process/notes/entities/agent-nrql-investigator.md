@@ -2,7 +2,7 @@
 title: "Agent: nrql-investigator"
 type: entity
 topic: engineering-process
-tags: [agent, new-relic, nrql, observability, context-protection, new-relic, new-relic, new-relic, new-relic, new-relic, new-relic, new-relic, new-relic]
+tags: [agent, new-relic, nrql, observability, context-protection]
 created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot

@@ -33,7 +33,7 @@ Trigger to write: hitting the situation a 2nd time + recognising you'd already l
 
 ## IaC
 
-- [ ] **Terragrunt apply-from-stage** — the right invocation order, where state lives, what to watch out for. Currently scattered across PR comments.
+- [ ] **Terragrunt apply-from-stage** — the right invocation order, where state lives, what to [[watch-entity|watch]] out for. Currently scattered across PR comments.
 - [ ] **Manual TF state surgery** — when import / state mv is required (rare, dangerous, document carefully).
 
 ## Process / Discipline

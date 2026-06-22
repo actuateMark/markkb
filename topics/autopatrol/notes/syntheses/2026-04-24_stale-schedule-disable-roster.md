@@ -2,7 +2,7 @@
 title: "Stale schedule cleanup — what we disabled (2026-04-24 sweep)"
 type: synthesis
 topic: autopatrol
-tags: [autopatrol, vch, cleanup-lambda, sweep, audit, report, immix, autopatrol, immix, autopatrol, immix, autopatrol, immix, autopatrol, immix]
+tags: [autopatrol, vch, cleanup-lambda, sweep, audit, report, immix]
 created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot

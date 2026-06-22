@@ -8,6 +8,7 @@ updated: 2026-04-16
 author: kb-bot
 incoming:
   - _index.md
+  - topics/personal-notes/notes/concepts/2026-05-11_next-session-handoff.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
   - topics/software-architecture/_summary.md
@@ -16,8 +17,7 @@ incoming:
   - topics/software-architecture/notes/syntheses/2026-04-16_metrics-to-track.md
   - topics/software-architecture/notes/syntheses/2026-04-16_tooling-landscape.md
   - topics/software-architecture/notes/syntheses/2026-04-17_local-sketches-plan.md
-  - topics/software-architecture/reading-list.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Automated Tech Debt Agent — Design Sketch

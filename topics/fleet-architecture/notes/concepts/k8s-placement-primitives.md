@@ -14,10 +14,10 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-04-16_graceful-failover-design.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-01_ephemeral-run-pilot/paradigm-e.md
   - topics/fleet-architecture/reading-list.md
   - topics/video-processing/notes/concepts/eks-prod-node-pool-gpu-availability.md
-  - topics/video-processing/notes/syntheses/gpu-substrate-and-fleet-placement.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # K8s Placement & Availability Primitives

@@ -14,7 +14,8 @@ incoming:
   - topics/engineering-process/notes/entities/skill-api-endpoint-development.md
   - topics/engineering-process/notes/syntheses/2026-04-14_feature-development-lifecycle.md
   - topics/inference-api/notes/concepts/2026-04-17_v5-motion-plus-500-fix.md
-incoming_updated: 2026-05-01
+  - topics/inference-api/notes/syntheses/2026-05-13_v5-prod-release.md
+incoming_updated: 2026-05-27
 ---
 
 # v5 Implementation Patterns Reference

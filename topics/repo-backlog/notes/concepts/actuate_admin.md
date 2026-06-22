@@ -4,29 +4,17 @@ type: concept
 topic: repo-backlog
 tags: [backlog, github, actuate_admin]
 repo: aegissystems/actuate_admin
-created: 2026-05-01
-updated: 2026-05-01
+created: 2026-06-18
+updated: 2026-06-18
 author: kb-bot
-issue_count_open: 49
-issue_count_high_impact: 5
+issue_count_open: 52
+issue_count_high_impact: 8
 issue_count_lhf: 10
 issue_count_stale: 41
-high_impact_issue_numbers: [2310, 1085, 899, 2230, 307]
-lhf_issue_numbers: [2239, 2233, 2177, 2310, 2238, 2237, 2230, 2224, 1165, 1145]
+high_impact_issue_numbers: [2310, 1085, 899, 2230, 2482, 2453, 2443, 307]
+lhf_issue_numbers: [2482, 2239, 2233, 2177, 2443, 2453, 2238, 2237, 2230, 2224]
 stale_issue_numbers: [306, 337, 336, 308, 416, 307, 471, 395, 448, 488, 446, 507, 514, 510, 551, 512, 571, 570, 564, 585, 594, 218, 663, 697, 694, 705, 734, 899, 809, 955, 956, 879, 707, 699, 1025, 1018, 1085, 1075, 1145, 1151, 1165]
-full_issue_numbers: [2310, 2239, 2238, 2237, 2233, 2230, 2224, 2177, 1165, 1151, 1145, 1085, 1075, 1025, 1018, 956, 955, 899, 879, 809, 734, 707, 705, 699, 697, 694, 663, 594, 585, 571, 570, 564, 551, 514, 512, 510, 507, 488, 471, 448, 446, 416, 395, 337, 336, 308, 307, 306, 218]
-incoming:
-  - topics/actuate-platform/notes/concepts/data-flow-architecture.md
-  - topics/actuate-platform/notes/entities/actuate-admin-api.md
-  - topics/actuate-platform/notes/entities/core-repo-suite.md
-  - topics/admin-api/notes/concepts/release-flow-stage-first.md
-  - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
-  - topics/engineering-process/notes/concepts/2026-04-17_local-testing-strategies-per-repo.md
-  - topics/engineering-process/notes/entities/agent-actuate-pr-reviewer.md
-  - topics/infrastructure/notes/entities/reusable-github-actions.md
-  - topics/personal-laptop/notes/concepts/2026-04-27_handoff-repos-architectural-dashboard.md
-  - topics/personal-laptop/notes/concepts/2026-04-28_handoff-repos-dashboard-phase-2-code-health.md
-incoming_updated: 2026-05-01
+full_issue_numbers: [2482, 2453, 2443, 2310, 2239, 2238, 2237, 2233, 2230, 2224, 2177, 1165, 1151, 1145, 1085, 1075, 1025, 1018, 956, 955, 899, 879, 809, 734, 707, 705, 699, 697, 694, 663, 594, 585, 571, 570, 564, 551, 514, 512, 510, 507, 488, 471, 448, 446, 416, 395, 337, 336, 308, 307, 306, 218]
 ---
 
 # actuate_admin backlog
@@ -72,32 +60,35 @@ Workflow per ticket: `git log --all --grep=<keyword>` + manual spot-check of the
 - No active assignees on any ticket — all community/Mark-led triage.
 
 <!-- BEGIN-AUTO-REFRESH repo-scan -->
-_Last refreshed: **2026-05-01** by [[skill-repo-scan]] — 49 open issues._
+_Last refreshed: **2026-06-18** by [[skill-repo-scan]] — 52 open issues._
 
 ### 🔥 High-impact (top 10 by score)
 
 | # | Title | Labels | Assignee | Score | Idle |
 |--:|-------|--------|----------|------:|------|
-| 2310 | [Schedule overrides firing at midnight cause sites to miss arm on override start…](https://github.com/aegissystems/actuate_admin/issues/2310) | `bug` | — | 5 | 1mo |
+| 2310 | [Schedule overrides firing at midnight cause sites to miss arm on override start…](https://github.com/aegissystems/actuate_admin/issues/2310) | `bug` | — | 5 | 2mo |
 | 1085 | [Schedule override for multiple days is not working](https://github.com/aegissystems/actuate_admin/issues/1085) | `bug` | — | 3 | 4y |
 | 899 | [Error with motion ignore zones calculation](https://github.com/aegissystems/actuate_admin/issues/899) | `bug` | — | 3 | 4y |
-| 2230 | [Global Guardian: Restore 234 deleted timed schedules (148 sites affected)](https://github.com/aegissystems/actuate_admin/issues/2230) | — | — | 2 | 3mo |
-| 307 | [Auto-add SMTP settings on Alibi](https://github.com/aegissystems/actuate_admin/issues/307) | — | — | 1 | 4y |
+| 2230 | [Global Guardian: Restore 234 deleted timed schedules (148 sites affected)](https://github.com/aegissystems/actuate_admin/issues/2230) | — | — | 2 | 4mo |
+| 2482 | [Auto-onboard NLSS cameras (create Camera/Stream/WebhookStream from a gateway se…](https://github.com/aegissystems/actuate_admin/issues/2482) | `enhancement` | — | 1 | 12d |
+| 2453 | [actuate_admin pod logs absent from New Relic — blocks AutoPatrol deploy-chain o…](https://github.com/aegissystems/actuate_admin/issues/2453) | — | — | 1 | 26d |
+| 2443 | [Speed up Sync / settings file generation for multi-site selections](https://github.com/aegissystems/actuate_admin/issues/2443) | — | — | 1 | 28d |
+| 307 | [Auto-add SMTP settings on Alibi](https://github.com/aegissystems/actuate_admin/issues/307) | — | — | 1 | 5y |
 
 ### 🧹 Low-hanging fruit (top 10 by score)
 
 | # | Title | Labels | Assignee | Score | Idle |
 |--:|-------|--------|----------|------:|------|
-| 2239 | [Aurora PostgreSQL Upgrade Failure - actuateadminprodcluster (Feb 5, 2026)](https://github.com/aegissystems/actuate_admin/issues/2239) | — | — | 5 | 2mo |
-| 2233 | [Auto-set alert sensitivity to 1/1 when motion ignore zones cover >50% of image](https://github.com/aegissystems/actuate_admin/issues/2233) | — | — | 5 | 3mo |
-| 2177 | [Missing prod-proxy endpoint for admin aurora in Europe](https://github.com/aegissystems/actuate_admin/issues/2177) | — | — | 5 | 3mo |
-| 2310 | [Schedule overrides firing at midnight cause sites to miss arm on override start…](https://github.com/aegissystems/actuate_admin/issues/2310) | `bug` | — | 3 | 1mo |
-| 2238 | [Validation for enabling CHM](https://github.com/aegissystems/actuate_admin/issues/2238) | — | — | 3 | 2mo |
-| 2237 | [Add validation to prevent launching sites with invalid configurations](https://github.com/aegissystems/actuate_admin/issues/2237) | — | — | 3 | 2mo |
-| 2230 | [Global Guardian: Restore 234 deleted timed schedules (148 sites affected)](https://github.com/aegissystems/actuate_admin/issues/2230) | — | — | 3 | 3mo |
-| 2224 | [Clear connector_version when deployment_phase is changed from CUSTOM](https://github.com/aegissystems/actuate_admin/issues/2224) | — | — | 3 | 3mo |
-| 1165 | [Monitoring UI: Labels for search not being inherited from parent](https://github.com/aegissystems/actuate_admin/issues/1165) | — | — | 3 | 3y |
-| 1145 | [Trigger motion on cameras failing](https://github.com/aegissystems/actuate_admin/issues/1145) | — | — | 3 | 3y |
+| 2482 | [Auto-onboard NLSS cameras (create Camera/Stream/WebhookStream from a gateway se…](https://github.com/aegissystems/actuate_admin/issues/2482) | `enhancement` | — | 5 | 12d |
+| 2239 | [Aurora PostgreSQL Upgrade Failure - actuateadminprodcluster (Feb 5, 2026)](https://github.com/aegissystems/actuate_admin/issues/2239) | — | — | 5 | 4mo |
+| 2233 | [Auto-set alert sensitivity to 1/1 when motion ignore zones cover >50% of image](https://github.com/aegissystems/actuate_admin/issues/2233) | — | — | 5 | 4mo |
+| 2177 | [Missing prod-proxy endpoint for admin aurora in Europe](https://github.com/aegissystems/actuate_admin/issues/2177) | — | — | 5 | 5mo |
+| 2443 | [Speed up Sync / settings file generation for multi-site selections](https://github.com/aegissystems/actuate_admin/issues/2443) | — | — | 4 | 28d |
+| 2453 | [actuate_admin pod logs absent from New Relic — blocks AutoPatrol deploy-chain o…](https://github.com/aegissystems/actuate_admin/issues/2453) | — | — | 3 | 26d |
+| 2238 | [Validation for enabling CHM](https://github.com/aegissystems/actuate_admin/issues/2238) | — | — | 3 | 4mo |
+| 2237 | [Add validation to prevent launching sites with invalid configurations](https://github.com/aegissystems/actuate_admin/issues/2237) | — | — | 3 | 4mo |
+| 2230 | [Global Guardian: Restore 234 deleted timed schedules (148 sites affected)](https://github.com/aegissystems/actuate_admin/issues/2230) | — | — | 3 | 4mo |
+| 2224 | [Clear connector_version when deployment_phase is changed from CUSTOM](https://github.com/aegissystems/actuate_admin/issues/2224) | — | — | 3 | 4mo |
 
 ### 🔍 Codebase-scan follow-up candidates (idle >180d)
 
@@ -105,21 +96,21 @@ _Last refreshed: **2026-05-01** by [[skill-repo-scan]] — 49 open issues._
 
 | # | Title | Labels | Idle |
 |--:|-------|--------|------|
-| 306 | [Axis camera configuration - support for multiviews](https://github.com/aegissystems/actuate_admin/issues/306) | — | 1816d |
-| 337 | [Auto-Add for SMTP needs to get the output name from the NVR](https://github.com/aegissystems/actuate_admin/issues/337) | — | 1809d |
-| 336 | [Auto-add if Immix is selected, add a field per camera to enter the immix e-mail](https://github.com/aegissystems/actuate_admin/issues/336) | — | 1809d |
-| 308 | [Auto-add SMTP on Alibi: add with SMTP-specific settings](https://github.com/aegissystems/actuate_admin/issues/308) | — | 1800d |
-| 416 | [Sort columns on customer site to find issues](https://github.com/aegissystems/actuate_admin/issues/416) | — | 1784d |
-| 307 | [Auto-add SMTP settings on Alibi](https://github.com/aegissystems/actuate_admin/issues/307) | — | 1779d |
-| 471 | [Expose configurable period for no motion and video loss alerts to customers](https://github.com/aegissystems/actuate_admin/issues/471) | — | 1759d |
-| 395 | [Monitoring UI: Audit trail that the operator viewed the video](https://github.com/aegissystems/actuate_admin/issues/395) | `backlog` | 1759d |
-| 448 | [Feature: Customer Profiles with default metrics](https://github.com/aegissystems/actuate_admin/issues/448) | — | 1758d |
-| 488 | [Quick way to have all the cameras have the same settings](https://github.com/aegissystems/actuate_admin/issues/488) | `wishlist` | 1752d |
-| 446 | [Error creating a site with a fake IP](https://github.com/aegissystems/actuate_admin/issues/446) | — | 1752d |
-| 507 | [Import ignore zones from Axis](https://github.com/aegissystems/actuate_admin/issues/507) | — | 1749d |
-| 514 | [Monitoring: Customizable outcomes](https://github.com/aegissystems/actuate_admin/issues/514) | — | 1745d |
-| 510 | [Validate credentials on wizard](https://github.com/aegissystems/actuate_admin/issues/510) | — | 1739d |
-| 551 | [Onboarding Enhancements](https://github.com/aegissystems/actuate_admin/issues/551) | — | 1737d |
+| 306 | [Axis camera configuration - support for multiviews](https://github.com/aegissystems/actuate_admin/issues/306) | — | 1864d |
+| 337 | [Auto-Add for SMTP needs to get the output name from the NVR](https://github.com/aegissystems/actuate_admin/issues/337) | — | 1857d |
+| 336 | [Auto-add if Immix is selected, add a field per camera to enter the immix e-mail](https://github.com/aegissystems/actuate_admin/issues/336) | — | 1857d |
+| 308 | [Auto-add SMTP on Alibi: add with SMTP-specific settings](https://github.com/aegissystems/actuate_admin/issues/308) | — | 1848d |
+| 416 | [Sort columns on customer site to find issues](https://github.com/aegissystems/actuate_admin/issues/416) | — | 1832d |
+| 307 | [Auto-add SMTP settings on Alibi](https://github.com/aegissystems/actuate_admin/issues/307) | — | 1827d |
+| 471 | [Expose configurable period for no motion and video loss alerts to customers](https://github.com/aegissystems/actuate_admin/issues/471) | — | 1807d |
+| 395 | [Monitoring UI: Audit trail that the operator viewed the video](https://github.com/aegissystems/actuate_admin/issues/395) | `backlog` | 1807d |
+| 448 | [Feature: Customer Profiles with default metrics](https://github.com/aegissystems/actuate_admin/issues/448) | — | 1806d |
+| 488 | [Quick way to have all the cameras have the same settings](https://github.com/aegissystems/actuate_admin/issues/488) | `wishlist` | 1800d |
+| 446 | [Error creating a site with a fake IP](https://github.com/aegissystems/actuate_admin/issues/446) | — | 1800d |
+| 507 | [Import ignore zones from Axis](https://github.com/aegissystems/actuate_admin/issues/507) | — | 1797d |
+| 514 | [Monitoring: Customizable outcomes](https://github.com/aegissystems/actuate_admin/issues/514) | — | 1793d |
+| 510 | [Validate credentials on wizard](https://github.com/aegissystems/actuate_admin/issues/510) | — | 1787d |
+| 551 | [Onboarding Enhancements](https://github.com/aegissystems/actuate_admin/issues/551) | — | 1785d |
 
 _(26 more stale issues — full list in `stale_issue_numbers` frontmatter property.)_
 
@@ -131,22 +122,26 @@ _(26 more stale issues — full list in `stale_issue_numbers` frontmatter proper
 | `bug` | 3 |
 | `backlog` | 2 |
 | `needs more info` | 2 |
+| `enhancement` | 1 |
 | `verify` | 1 |
 
 ### 🗃️ Full open inventory
 
-<details><summary>All 49 open issues (click to expand — sorted newest first)</summary>
+<details><summary>All 52 open issues (click to expand — sorted newest first)</summary>
 
 | # | Title | Labels | Assignee | Age | Idle |
 |--:|-------|--------|----------|-----|------|
-| 2310 | [Schedule overrides firing at midnight cause sites to miss arm on override start…](https://github.com/aegissystems/actuate_admin/issues/2310) | `bug` | — | 1mo | 1mo |
-| 2239 | [Aurora PostgreSQL Upgrade Failure - actuateadminprodcluster (Feb 5, 2026)](https://github.com/aegissystems/actuate_admin/issues/2239) | — | — | 2mo | 2mo |
-| 2238 | [Validation for enabling CHM](https://github.com/aegissystems/actuate_admin/issues/2238) | — | — | 2mo | 2mo |
-| 2237 | [Add validation to prevent launching sites with invalid configurations](https://github.com/aegissystems/actuate_admin/issues/2237) | — | — | 2mo | 2mo |
-| 2233 | [Auto-set alert sensitivity to 1/1 when motion ignore zones cover >50% of image](https://github.com/aegissystems/actuate_admin/issues/2233) | — | — | 3mo | 3mo |
-| 2230 | [Global Guardian: Restore 234 deleted timed schedules (148 sites affected)](https://github.com/aegissystems/actuate_admin/issues/2230) | — | — | 3mo | 3mo |
-| 2224 | [Clear connector_version when deployment_phase is changed from CUSTOM](https://github.com/aegissystems/actuate_admin/issues/2224) | — | — | 3mo | 3mo |
-| 2177 | [Missing prod-proxy endpoint for admin aurora in Europe](https://github.com/aegissystems/actuate_admin/issues/2177) | — | — | 3mo | 3mo |
+| 2482 | [Auto-onboard NLSS cameras (create Camera/Stream/WebhookStream from a gateway se…](https://github.com/aegissystems/actuate_admin/issues/2482) | `enhancement` | — | 12d | 12d |
+| 2453 | [actuate_admin pod logs absent from New Relic — blocks AutoPatrol deploy-chain o…](https://github.com/aegissystems/actuate_admin/issues/2453) | — | — | 26d | 26d |
+| 2443 | [Speed up Sync / settings file generation for multi-site selections](https://github.com/aegissystems/actuate_admin/issues/2443) | — | — | 28d | 28d |
+| 2310 | [Schedule overrides firing at midnight cause sites to miss arm on override start…](https://github.com/aegissystems/actuate_admin/issues/2310) | `bug` | — | 2mo | 2mo |
+| 2239 | [Aurora PostgreSQL Upgrade Failure - actuateadminprodcluster (Feb 5, 2026)](https://github.com/aegissystems/actuate_admin/issues/2239) | — | — | 4mo | 4mo |
+| 2238 | [Validation for enabling CHM](https://github.com/aegissystems/actuate_admin/issues/2238) | — | — | 4mo | 4mo |
+| 2237 | [Add validation to prevent launching sites with invalid configurations](https://github.com/aegissystems/actuate_admin/issues/2237) | — | — | 4mo | 4mo |
+| 2233 | [Auto-set alert sensitivity to 1/1 when motion ignore zones cover >50% of image](https://github.com/aegissystems/actuate_admin/issues/2233) | — | — | 4mo | 4mo |
+| 2230 | [Global Guardian: Restore 234 deleted timed schedules (148 sites affected)](https://github.com/aegissystems/actuate_admin/issues/2230) | — | — | 4mo | 4mo |
+| 2224 | [Clear connector_version when deployment_phase is changed from CUSTOM](https://github.com/aegissystems/actuate_admin/issues/2224) | — | — | 4mo | 4mo |
+| 2177 | [Missing prod-proxy endpoint for admin aurora in Europe](https://github.com/aegissystems/actuate_admin/issues/2177) | — | — | 5mo | 5mo |
 | 1165 | [Monitoring UI: Labels for search not being inherited from parent](https://github.com/aegissystems/actuate_admin/issues/1165) | — | — | 3y | 3y |
 | 1151 | [Mobotix: Buttons to remove Actuate settings](https://github.com/aegissystems/actuate_admin/issues/1151) | — | — | 3y | 3y |
 | 1145 | [Trigger motion on cameras failing](https://github.com/aegissystems/actuate_admin/issues/1145) | — | — | 3y | 3y |
@@ -180,13 +175,13 @@ _(26 more stale issues — full list in `stale_issue_numbers` frontmatter proper
 | 471 | [Expose configurable period for no motion and video loss alerts to customers](https://github.com/aegissystems/actuate_admin/issues/471) | — | — | 4y | 4y |
 | 448 | [Feature: Customer Profiles with default metrics](https://github.com/aegissystems/actuate_admin/issues/448) | — | — | 4y | 4y |
 | 446 | [Error creating a site with a fake IP](https://github.com/aegissystems/actuate_admin/issues/446) | — | actuateMark | 4y | 4y |
-| 416 | [Sort columns on customer site to find issues](https://github.com/aegissystems/actuate_admin/issues/416) | — | — | 4y | 4y |
-| 395 | [Monitoring UI: Audit trail that the operator viewed the video](https://github.com/aegissystems/actuate_admin/issues/395) | `backlog` | — | 4y | 4y |
-| 337 | [Auto-Add for SMTP needs to get the output name from the NVR](https://github.com/aegissystems/actuate_admin/issues/337) | — | — | 4y | 4y |
-| 336 | [Auto-add if Immix is selected, add a field per camera to enter the immix e-mail](https://github.com/aegissystems/actuate_admin/issues/336) | — | — | 4y | 4y |
-| 308 | [Auto-add SMTP on Alibi: add with SMTP-specific settings](https://github.com/aegissystems/actuate_admin/issues/308) | — | — | 4y | 4y |
-| 307 | [Auto-add SMTP settings on Alibi](https://github.com/aegissystems/actuate_admin/issues/307) | — | — | 4y | 4y |
-| 306 | [Axis camera configuration - support for multiviews](https://github.com/aegissystems/actuate_admin/issues/306) | — | — | 4y | 4y |
+| 416 | [Sort columns on customer site to find issues](https://github.com/aegissystems/actuate_admin/issues/416) | — | — | 5y | 5y |
+| 395 | [Monitoring UI: Audit trail that the operator viewed the video](https://github.com/aegissystems/actuate_admin/issues/395) | `backlog` | — | 5y | 4y |
+| 337 | [Auto-Add for SMTP needs to get the output name from the NVR](https://github.com/aegissystems/actuate_admin/issues/337) | — | — | 5y | 5y |
+| 336 | [Auto-add if Immix is selected, add a field per camera to enter the immix e-mail](https://github.com/aegissystems/actuate_admin/issues/336) | — | — | 5y | 5y |
+| 308 | [Auto-add SMTP on Alibi: add with SMTP-specific settings](https://github.com/aegissystems/actuate_admin/issues/308) | — | — | 5y | 5y |
+| 307 | [Auto-add SMTP settings on Alibi](https://github.com/aegissystems/actuate_admin/issues/307) | — | — | 5y | 5y |
+| 306 | [Axis camera configuration - support for multiviews](https://github.com/aegissystems/actuate_admin/issues/306) | — | — | 5y | 5y |
 | 218 | [Fish2Eye previewer](https://github.com/aegissystems/actuate_admin/issues/218) | `wishlist` | — | 5y | 4y |
 
 </details>
@@ -196,5 +191,5 @@ _(26 more stale issues — full list in `stale_issue_numbers` frontmatter proper
 ## Related
 
 - [[repo-backlog/_summary|repo-backlog topic]]
-- Latest scan: [[2026-05-01_scan]]
+- Latest scan: [[2026-06-18_scan]]
 - GitHub: [aegissystems/actuate_admin/issues](https://github.com/aegissystems/actuate_admin/issues)

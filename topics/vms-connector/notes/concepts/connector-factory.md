@@ -12,12 +12,12 @@ incoming:
   - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
   - topics/actuate-platform/notes/syntheses/integration-landscape.md
   - topics/autopatrol/notes/concepts/generic-patrol-mode.md
+  - topics/autopatrol/notes/syntheses/2026-04-17_stale-schedule-cleanup-design.md
   - topics/fleet-architecture/notes/concepts/library-decomposition-required.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-a-minimal-split.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
   - topics/integrations/genetec/notes/entities/genetec-components.md
-  - topics/integrations/luxriot/notes/entities/luxriot-components.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Connector Factory Pattern
@@ -95,7 +95,7 @@ Both modes run patrol workflows, but they differ in how they obtain a patrol ID 
 |---|---|---|
 | Factory | `AutoPatrolConnectorFactory` | `PatrolConnectorFactory` |
 | Config class | `AutoPatrolConnectorConfig` | `PatrolConnectorConfig` |
-| `patrol_id` source | Fetched from Immix API during `default()` | Generated locally with `uuid.uuid4().hex` — no external call |
+| `patrol_id` source | Fetched from [[immix-vendor-api|Immix API]] during `default()` | Generated locally with `uuid.uuid4().hex` — no external call |
 | Immix dependency | Yes (calls Immix to register the patrol run) | None |
 | Module path | `connector_factories/autopatrol/` | `connector_factories/patrol/` |
 

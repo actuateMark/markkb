@@ -1,0 +1,84 @@
+customer_id,customer_name,cohort,site_camera_count,schedule_camera_count_max,orphan_cams_minimum,active_schedules_count,deleted_schedules_count,schedule_titles
+35829,Site 1,B,100,0,100,0,3,160|50 test|VisualCameraHealth|Deleted|cams=50/100; 340|Open and close|AutoPatrol|Paused|cams=100/100; 192|Raise|VisualCameraHealth|Deleted|cams=100/100; 341|test|AutoPatrol|Deleted|cams=100/100; 339|VCH Demo|VisualCameraHealth|Paused|cams=100/100
+36799,Site A,B,42,0,42,0,3,320|50 Camera Test - 2|AutoPatrol|Paused|cams=41/42; 256|asdf|AutoPatrol|Deleted|cams=41/42; 193|Raise|VisualCameraHealth|Deleted|cams=3/42; 344|test|AutoPatrol|Deleted|cams=41/42
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,28,0,28,0,0,221|Test VCH Victoria|VisualCameraHealth|Paused|cams=1/28
+38711,CORPORATE SERVICES (5600055),F,29,9,20,1,1,210|Visual Camera Health|VisualCameraHealth|Active|cams=9/29; 1048|Visual Camera Health|VisualCameraHealth|Deleted|cams=29/29
+35878,400 North Ashley,B,18,0,18,0,3,153|400NA AP Actuate Daily 11:00|AutoPatrol|Deleted|cams=18/18; 152|400NA AP Actuate Sat/Sun 13:00|AutoPatrol|Deleted|cams=18/18; 147|400NA VCH Actuate Test 1|VisualCameraHealth|Deleted|cams=16/18
+40672,AutoPatrol-Live,F,45,28,17,1,0,1027|test1|AutoPatrol|Active|cams=28/45
+38314,Lab Hik,B,16,0,16,0,2,185|Raise|VisualCameraHealth|Deleted|cams=16/16; 172|VCH 2|VisualCameraHealth|Deleted|cams=16/16
+40508,ABC Liquor Store 13,F,33,17,16,1,0,1088|Visual Camera Health|VisualCameraHealth|Active|cams=17/33
+40510,ABC Liquor Store 11,F,32,17,15,1,0,1090|Visual Camera Health|VisualCameraHealth|Active|cams=17/32
+41265,Ace Hardware - Harris St.,C,15,0,15,1,0,336|VCH Check|VisualCameraHealth|Active|cams=0/15
+40178,hanwha 3,B,14,0,14,0,0,252|Actuate AP Live Site 1|AutoPatrol|Paused|cams=14/14
+40499,ABC Liquor Store 8,F,40,26,14,1,0,1079|Visual Camera Health|VisualCameraHealth|Active|cams=26/40
+40500,ABC Liquor Store 7,F,31,17,14,1,0,1080|Visual Camera Health|VisualCameraHealth|Active|cams=17/31
+40501,ABC Liquor Store 6,F,39,25,14,1,0,1081|Visual Camera Health|VisualCameraHealth|Active|cams=25/39
+40502,ABC Liquor Store 4,F,15,1,14,1,0,1082|Visual Camera Health|VisualCameraHealth|Active|cams=1/15
+40503,ABC Liquor Store 3,F,28,14,14,1,0,1083|Visual Camera Health|VisualCameraHealth|Active|cams=14/28
+40504,ABC Liquor Store 2,F,29,15,14,1,0,1084|Visual Camera Health|VisualCameraHealth|Active|cams=15/29
+40505,ABC Liquor Store 17,F,30,16,14,1,0,1085|Visual Camera Health|VisualCameraHealth|Active|cams=16/30
+40506,ABC Liquor Store 15,F,30,16,14,1,0,1086|Visual Camera Health|VisualCameraHealth|Active|cams=16/30
+40507,ABC Liquor Store 14,F,39,25,14,1,0,1087|Visual Camera Health|VisualCameraHealth|Active|cams=25/39
+40509,ABC Liquor Store 12,F,29,15,14,1,0,1089|Visual Camera Health|VisualCameraHealth|Active|cams=15/29
+40511,ABC Liquor Store 10,F,30,16,14,1,0,1091|Visual Camera Health|VisualCameraHealth|Active|cams=16/30
+40512,ABC Liquor Store 9,F,22,8,14,1,0,1092|Visual Camera Health|VisualCameraHealth|Active|cams=8/22
+40513,ABC Liquor Store 1,F,37,23,14,1,0,1093|Visual Camera Health|VisualCameraHealth|Active|cams=23/37
+37980,hanwha,B,13,0,13,0,1,157|Test Device Workers 1|VisualCameraHealth|Deleted|cams=13/13
+43928,hanwha (Health Check),B,13,0,13,0,1,663|Visual Camera Health|VisualCameraHealth|Deleted|cams=13/13
+35870,500 North Ashley,B,12,0,12,0,1,146|500NA VCH Actuate Test 1|VisualCameraHealth|Deleted|cams=12/12
+37458,400 North Ashley GF 1 (1),B,12,0,12,0,1,136|asdfasdf|VisualCameraHealth|Deleted|cams=12/12
+38580,St. Clair and Caledonia,C,12,0,12,1,0,206|VCH Check|VisualCameraHealth|Active|cams=0/12
+37460,Tampa Office CS,F,14,4,10,1,0,137|VCH trial test|VisualCameraHealth|Active|cams=4/14
+46292,Victoria - Demo,B,9,0,9,0,1,1057|Visual Camera Health|VisualCameraHealth|Deleted|cams=9/9
+35876,London,B,7,0,7,0,1,148|London VCH Actuate Test 1|VisualCameraHealth|Deleted|cams=6/7
+37325,Site 3,B,7,0,7,0,3,170|Raise|VisualCameraHealth|Deleted|cams=5/7; 190|VCH|VisualCameraHealth|Deleted|cams=5/7; 257|VCH Demo|VisualCameraHealth|Deleted|cams=5/7
+38738,2 Fuller Road - Bergvliet,F,9,2,7,1,0,212|2 Camera Check|VisualCameraHealth|Active|cams=2/9
+35877,New York,B,6,0,6,0,1,149|New York VCH Actuate Test 1|VisualCameraHealth|Deleted|cams=6/6
+41263,Tate's Tire Pro's and Auto Service,F,10,4,6,1,0,334|VCH Check|VisualCameraHealth|Active|cams=4/10
+43637,RRMS Internal Testing - VID9999,F,7,1,6,2,0,1065|Corona NE Gen|VisualCameraHealth|Active|cams=1/7; 1060|RRMS VCH Test|VisualCameraHealth|Active|cams=1/7
+45845,hanwha 2 (Health Check),B,6,0,6,0,8,1032|Visual Camera Health|VisualCameraHealth|Deleted|cams=6/6; 1033|Visual Camera Health|VisualCameraHealth|Deleted|cams=6/6; 1034|Visual Camera Health|VisualCameraHealth|Deleted|cams=6/6; 1035|Visual Camera Health|VisualCameraHealth|Deleted|cams=4/6; 1036|Visual Camera Health|VisualCameraHealth|Deleted|cams=6/6; 1037|Visual Camera Health|VisualCameraHealth|Deleted|cams=6/6; 1051|Visual Camera Health|VisualCameraHealth|Deleted|cams=6/6; 1052|Visual Camera Health|VisualCameraHealth|Deleted|cams=6/6
+42689,VCH Demo Site,B,5,0,5,0,1,431|AutoPatrol|AutoPatrol|Deleted|cams=5/5; 430|Visual Camera Health | 2|VisualCameraHealth|Paused|cams=3/5
+46560,hanwha 2,F,6,1,5,1,1,1067|AutoPatrol|AutoPatrol|Deleted|cams=6/6; 1066|Test No Raise|AutoPatrol|Active|cams=1/6
+37255,Site 4,B,4,0,4,0,3,124|Demo VCH|VisualCameraHealth|Deleted|cams=3/4; 166|VCH|VisualCameraHealth|Deleted|cams=4/4; 173|VCH 2|VisualCameraHealth|Deleted|cams=4/4
+38313,Lab Audio,B,4,0,4,0,3,497|AutoPatrol|AutoPatrol|Paused|cams=2/4; 184|Raise|VisualCameraHealth|Deleted|cams=1/4; 498|test|AutoPatrol|Deleted|cams=2/4; 250|Test AP 3 Actuate|AutoPatrol|Deleted|cams=2/4
+38578,9 Dibble Street,B,4,0,4,0,1,204|VCH Check|VisualCameraHealth|Deleted|cams=4/4
+39455,"ECS Coffee - 3100 Harvester Rd, Burlington",B,4,0,4,0,1,240|VCH|VisualCameraHealth|Deleted|cams=4/4
+42376,Journey Juice (2),B,4,0,4,0,1,352|JJ patrol|AutoPatrol|Deleted|cams=4/4
+38235,EB,B,3,0,3,0,3,168|Raise|VisualCameraHealth|Deleted|cams=3/3; 167|Remote Patrol for Persons Afterhours|AutoPatrol|Deleted|cams=3/3; 174|VCH 2|VisualCameraHealth|Deleted|cams=3/3
+38315,AB,B,3,0,3,0,2,186|Raise|VisualCameraHealth|Deleted|cams=3/3; 175|VCH 2|VisualCameraHealth|Deleted|cams=3/3
+38317,NS,B,3,0,3,0,2,188|Raise|VisualCameraHealth|Deleted|cams=3/3; 177|VCH 2|VisualCameraHealth|Deleted|cams=3/3
+38318,McCall,B,3,0,3,0,2,189|Raise|VisualCameraHealth|Deleted|cams=3/3; 178|VCH 2|VisualCameraHealth|Deleted|cams=3/3
+38319,Site 2,B,3,0,3,0,3,992|AutoPatrol|AutoPatrol|Deleted|cams=3/3; 191|Raise|VisualCameraHealth|Deleted|cams=3/3; 993|test|AutoPatrol|Deleted|cams=3/3
+39381,4.1 Test Legacy Sch 3,B,3,0,3,0,1,220|VCH - RL|VisualCameraHealth|Deleted|cams=3/3
+39221,Victoria - EE Demo,B,2,0,2,0,4,214|NewT|VisualCameraHealth|Deleted|cams=2/2; 213|Test|VisualCameraHealth|Deleted|cams=2/2; 215|test1|VisualCameraHealth|Deleted|cams=2/2; 216|test1|VisualCameraHealth|Deleted|cams=2/2
+39453,ECS Coffee - Etobicoke,B,2,0,2,0,1,239|VCH|VisualCameraHealth|Deleted|cams=2/2
+43138,Elva Nunes Residence,B,2,0,2,0,1,595|VCH Check|VisualCameraHealth|Deleted|cams=2/2
+37167,Guardian Test,B,1,0,1,0,1,120|test|VisualCameraHealth|Deleted|cams=1/1
+37742,London,F,5,4,1,1,0,143|London VCH Actuate Test 1|VisualCameraHealth|Active|cams=4/5
+44879,Solful - Petaluma,F,23,22,1,1,0,860|VCH Check|VisualCameraHealth|Active|cams=22/23
+35828,Acme Bank,F,5,5,0,3,0,1|Acme Bank ATM|VisualCameraHealth|Active|cams=5/5; 126|Test 123|VisualCameraHealth|Active|cams=5/5; 125|Test new Schedule|VisualCameraHealth|Active|cams=5/5
+37621,VCH 1,F,5,5,0,2,1,156|Open store (0800)|VisualCameraHealth|Active|cams=5/5; 139|VCH Demo - UK|VisualCameraHealth|Active|cams=5/5; 140|VCH Demo - UK|VisualCameraHealth|Deleted|cams=5/5
+37743,New York,F,6,6,0,1,0,144|New York VCH Actuate Test 1|VisualCameraHealth|Active|cams=6/6
+37744,400 North Ashley,F,20,20,0,3,0,151|400NA AP Actuate Daily 11:00|AutoPatrol|Active|cams=20/20; 150|400NA AP Actuate Sat/Sun 13:00|AutoPatrol|Active|cams=20/20; 145|400NA VCH Actuate Test 1|VisualCameraHealth|Active|cams=5/20
+37751,400 North Ashley,F,14,14,0,3,0,196|All Indoor Cameras|AutoPatrol|Active|cams=14/14; 154|Test Site|VisualCameraHealth|Active|cams=14/14; 197|Ward Demo|AutoPatrol|Active|cams=14/14
+37837,Test - RTSP\Generic,F,12,12,0,1,3,199|Action|AutoPatrol|Deleted|cams=12/12; 255|Test|VisualCameraHealth|Deleted|cams=4/12; 238|Test2|VisualCameraHealth|Deleted|cams=4/12; 1028|test5|AutoPatrol|Active|cams=12/12
+37989,Central District Complex - Site A,F,8,8,0,1,0,161|VCH - Raise|VisualCameraHealth|Active|cams=8/8
+37991,Tampa Office CS (1),F,13,13,0,1,0,162|VCH - Raise|VisualCameraHealth|Active|cams=13/13
+38316,DH,F,3,3,0,1,2,597|AutoPatrol|AutoPatrol|Active|cams=3/3; 187|Raise|VisualCameraHealth|Deleted|cams=3/3; 598|test|AutoPatrol|Deleted|cams=3/3
+38575,2992 Sheppard Ave E,F,7,7,0,1,0,201|VCH Check|VisualCameraHealth|Active|cams=7/7
+38694,Immix Nottingham Office,F,10,10,0,3,0,276|CAM TEST DEMO|VisualCameraHealth|Active|cams=9/10; 247|DFaily Camera Check|VisualCameraHealth|Active|cams=4/10; 246|Site Camera Check|VisualCameraHealth|Active|cams=10/10
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,15,15,0,1,0,217|test|VisualCameraHealth|Active|cams=15/15
+39845,TRAVIS TEST,Z,0,0,0,0,0,
+401951,,—,0,0,0,0,0,None||||cams=0/0
+401952,,—,0,0,0,0,0,None||||cams=0/0
+401953,,—,0,0,0,0,0,None||||cams=0/0
+40796,ABC Liquor Store 22,F,15,15,0,1,0,1074|Visual Camera Health|VisualCameraHealth|Active|cams=15/15
+40797,ABC Liquor Store 21,F,18,18,0,1,0,1075|Visual Camera Health|VisualCameraHealth|Active|cams=18/18
+40800,ABC Liquor Store 26,F,25,25,0,1,0,1070|Visual Camera Health|VisualCameraHealth|Active|cams=25/25
+40801,ABC Liquor Store 25,F,15,15,0,1,0,1071|Visual Camera Health|VisualCameraHealth|Active|cams=15/15
+40802,ABC Liquor Store 24,F,16,16,0,1,0,1072|Visual Camera Health|VisualCameraHealth|Active|cams=16/16
+41260,Cimino Electric,F,10,10,0,1,0,331|VCH Check|VisualCameraHealth|Active|cams=10/10
+41262,"Link Housing - 550 M St, Eureka, CA",F,4,4,0,1,0,333|VCH Check|VisualCameraHealth|Active|cams=4/4
+41264,Mission Ace Hardware and Lumber,F,3,3,0,1,0,335|VCH Check|VisualCameraHealth|Active|cams=3/3
+41266,Advanced Security Systems - Eureka Office,F,32,32,0,1,0,337|VCH Check|VisualCameraHealth|Active|cams=32/32
+41798,CC260,Z,0,0,0,0,0,

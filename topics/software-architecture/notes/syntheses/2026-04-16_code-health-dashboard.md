@@ -12,12 +12,12 @@ incoming:
   - topics/fleet-architecture/notes/concepts/observability-and-tracing.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
   - topics/operational-health/notes/syntheses/2026-04-23_dashboard-sketch.md
+  - topics/operational-health/notes/syntheses/2026-05-05_operational-dashboard-context.md
+  - topics/personal-notes/notes/concepts/2026-05-11_next-session-handoff.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
   - topics/software-architecture/_summary.md
-  - topics/software-architecture/notes/concepts/2026-04-23_sketch-findings-metrics.md
-  - topics/software-architecture/notes/syntheses/2026-04-16_architecture-enforcement.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Code Health Dashboard — Design

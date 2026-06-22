@@ -10,14 +10,14 @@ incoming:
   - topics/actuate-platform/notes/concepts/rbac-model.md
   - topics/actuate-platform/notes/syntheses/integration-landscape.md
   - topics/admin-api/notes/concepts/integration-architecture.md
+  - topics/data-access-control/notes/concepts/2026-05-11_open-question-vini-gateway.md
+  - topics/data-access-control/notes/syntheses/2026-05-11_admin-db-access-hardening.md
   - topics/external-api/notes/concepts/partner-api-credential-runbook.md
   - topics/external-api/notes/concepts/shared-auth-pattern.md
   - topics/external-api/notes/entities/alarmwatch-customer.md
+  - topics/inference-api/_summary.md
   - topics/inference-api/notes/concepts/2026-04-14_dev-deployment-issues.md
-  - topics/inference-api/notes/concepts/api-key-lifecycle.md
-  - topics/inference-api/notes/syntheses/2026-04-13_v5-revised-architecture-plan.md
-  - topics/inference-api/notes/syntheses/2026-04-14_v5-implementation-complete.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Rust Lambda Authorizer

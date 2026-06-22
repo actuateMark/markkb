@@ -65,11 +65,11 @@ Where AWS managed video services could replace homegrown code in our connector /
 
 **State today.** Frame transport between fleet pods is via S3 + DDB (the EnrichedFrame model in `actuate-libraries/actuate-frames/src/actuate_frames/save_frame_meta.py:12-79`). For real-time pod-to-pod video transport (e.g. one pod decoding, another pod inference-batching, a third pod assembling alerts) we don't have a dedicated wire format -- just S3.
 
-**Why KVS WebRTC?** WebRTC is data-channel-and-media-channel together; it could carry both frame batches and detection metadata over a single peer connection. But the use case is unclear: are we trying to move *raw frames* between pods (tens of MB/s per camera per pod), *encoded packets* (kilobits/s per camera), or *decoded numpy arrays + detection metadata* (current model)?
+**Why [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]]?** [[webrtc-deep-dive|WebRTC]] is data-channel-and-media-channel together; it could carry both frame batches and detection metadata over a single peer connection. But the use case is unclear: are we trying to move *raw frames* between pods (tens of MB/s per camera per pod), *encoded packets* (kilobits/s per camera), or *decoded numpy arrays + detection metadata* (current model)?
 
-If the answer is "encoded packets" -- which is roughly what KVS WebRTC carries -- then we'd be re-encoding on the source pod (CPU cost) and re-decoding on the destination pod (CPU cost). That's worse than what we have today unless the source already has the encoded bytes (which the puller, in fact, does -- but throws them away after decoding).
+If the answer is "encoded packets" -- which is roughly what [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] carries -- then we'd be re-encoding on the source pod (CPU cost) and re-decoding on the destination pod (CPU cost). That's worse than what we have today unless the source already has the encoded bytes (which the puller, in fact, does -- but throws them away after decoding).
 
-**The right move.** Probably not WebRTC. **Probably gRPC + protobuf** for frame batches with detection metadata, if anything. Decoded frames + metadata, framed protobuf, push over HTTP/2. That's the "cross-fleet transport" pattern that matches our actual data shape. See [[fleet-architecture/_summary]] for context; this is more a fleet-architecture problem than a video-processing one.
+**The right move.** Probably not [[webrtc-deep-dive|WebRTC]]. **Probably gRPC + protobuf** for frame batches with detection metadata, if anything. Decoded frames + metadata, framed protobuf, push over HTTP/2. That's the "cross-fleet transport" pattern that matches our actual data shape. See [[fleet-architecture/_summary]] for context; this is more a fleet-architecture problem than a video-processing one.
 
 **Investigation deliverable.** Defer to fleet-architecture topic. Tag the synthesis there with a back-reference once written.
 
@@ -96,11 +96,11 @@ then `cv2.imdecode` the JPEG buffer back to numpy at line 119. **JPEG encode in 
 **Two clean fixes:**
 
 1. **[[gstreamer-entity|GStreamer]] caps fix.** Terminate the pipeline at `appsink` with `caps="video/x-raw,format=BGR"` and skip `jpegenc` entirely. The `appsink` buffer is then a raw BGR plane; `np.frombuffer + reshape` produces the numpy array directly. No JPEG round-trip. Lowest-effort fix, stays in [[gstreamer-entity|GStreamer]].
-2. **Move KVS to PyAV-on-MKV.** KVS streams are MKV containing [[h264-deep-dive|H.264]] / [[h265-hevc-deep-dive|H.265]]. [[pyav-entity|PyAV]] can demux MKV byte streams via a custom `AvIOContext` reading from the boto3 `kinesis-video-media` GetMedia stream. This unifies the KVS path with the [[rtsp-deep-dive|RTSP]] path -- same decoder substrate, same hardware-accel logic, same fMP4-style edge-case handling. Higher effort, but eliminates the [[gstreamer-entity|GStreamer]] dependency for KVS entirely.
+2. **Move [[kvs-components|KVS]] to PyAV-on-MKV.** [[kvs-components|KVS]] streams are MKV containing [[h264-deep-dive|H.264]] / [[h265-hevc-deep-dive|H.265]]. [[pyav-entity|PyAV]] can demux MKV byte streams via a custom `AvIOContext` reading from the boto3 `kinesis-video-media` GetMedia stream. This unifies the [[kvs-components|KVS]] path with the [[rtsp-deep-dive|RTSP]] path -- same decoder substrate, same hardware-accel logic, same fMP4-style edge-case handling. Higher effort, but eliminates the [[gstreamer-entity|GStreamer]] dependency for [[kvs-components|KVS]] entirely.
 
-**The right move.** Option 1 first (low-risk, weeks not months). Option 2 as a follow-on if we want to deprecate [[gstreamer-entity|GStreamer]] for KVS.
+**The right move.** Option 1 first (low-risk, weeks not months). Option 2 as a follow-on if we want to deprecate [[gstreamer-entity|GStreamer]] for [[kvs-components|KVS]].
 
-**Investigation deliverable.** A spike: change `kvs_ingestor.py` to terminate at raw BGR `appsink`. Measure CPU before/after on a representative KVS-heavy customer. Expected savings: 10-25% per-stream CPU on the KVS path. See [[gstreamer-entity]], [[gstreamer-pipeline-model]], [[pyav-entity]], [[aws-kvs-entity]].
+**Investigation deliverable.** A spike: change `kvs_ingestor.py` to terminate at raw BGR `appsink`. Measure CPU before/after on a representative KVS-heavy customer. Expected savings: 10-25% per-stream CPU on the [[kvs-components|KVS]] path. See [[gstreamer-entity]], [[gstreamer-pipeline-model]], [[pyav-entity]], [[aws-kvs-entity]].
 
 ### F. Hardware-accel substrate -- EC2 G5/G6/L4 + NVIDIA Container Toolkit -- do we use NVENC/NVDEC today?
 

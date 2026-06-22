@@ -7,12 +7,16 @@ created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
 incoming:
+  - topics/actuate-platform/notes/entities/branch-conventions.md
   - topics/actuate-platform/notes/entities/core-repo-suite.md
   - topics/actuate-platform/notes/syntheses/2026-04-29_iam-tf-import-pattern.md
+  - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
+  - topics/autopatrol/notes/syntheses/2026-04-17_stale-schedule-cleanup-design.md
+  - topics/engineering-process/notes/concepts/2026-05-12_stale-pr-triage-punchlist.md
   - topics/inference-api/notes/concepts/lambda-to-k8s-migration.md
   - topics/infrastructure/notes/entities/argocd.md
   - topics/runbooks/notes/concepts/2026-04-29_iam-access-denied-missing-resource-arn.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # ds-terraform-eks-v2

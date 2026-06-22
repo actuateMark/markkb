@@ -2,7 +2,7 @@
 title: "VCH and CHM are Not AutoPatrol — Container Names Are Misleading"
 type: concept
 topic: camera-health-monitoring
-tags: [vch, chm, autopatrol, integration-types, naming-confusion, operational-debugging, autopatrol, autopatrol, autopatrol, autopatrol]
+tags: [vch, chm, autopatrol, integration-types, naming-confusion, operational-debugging]
 jira: "AUTO-566, AUTO-567"
 created: 2026-04-28
 updated: 2026-04-28

@@ -8,7 +8,9 @@ updated: 2026-04-17
 author: kb-bot
 incoming:
   - topics/personal-laptop/_summary.md
-incoming_updated: 2026-05-01
+  - topics/personal-laptop/notes/concepts/2026-05-12_nvidia-stale-crash-popup-cleanup.md
+  - topics/personal-laptop/notes/concepts/2026-05-12_nvidia-suspend-hooks-disabled.md
+incoming_updated: 2026-05-27
 ---
 
 Automatic nvidia driver update attempted 565-server install, failed mid-transaction, left GPU in broken state. Recovery via upgrade to 580-open (prebuilt modules) succeeded and is now stable.

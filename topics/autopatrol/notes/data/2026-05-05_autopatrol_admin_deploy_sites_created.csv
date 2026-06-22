@@ -1,0 +1,36 @@
+site_name,immix_site_id,tenant_id,new_group_id,new_group_name
+RRMS Internal Testing - VID9999,113,69e1fb38-3413-4023-b6f8-c3d687bd6f61,56365,Rapid Response - Patrol
+ABC Liquor Store 28,16259,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 27,16258,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 26,16257,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 25,16256,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 24,16255,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 23,16254,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 22,16253,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 21,16252,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 20,16251,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 19,16250,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 18,16249,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 17,16180,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 15,16179,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 14,16178,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 13,16177,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 12,16176,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 11,16175,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 10,16174,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 9,16173,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 8,16186,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 7,16185,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 6,16184,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 5,16011,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 4,16183,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 3,16182,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 2,16181,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+ABC Liquor Store 1,16172,7b533b5a-a071-43ab-beb9-fb1cb9ea4ce1,56366,Eyeforce - Patrol
+86 Kenwood,1292,74cf336c-f671-45ad-ba7b-193d4f2540f1,56368,Live Patrol - Patrol
+2992 Sheppard Ave E,1285,74cf336c-f671-45ad-ba7b-193d4f2540f1,56368,Live Patrol - Patrol
+St. Clair and Caledonia,901,74cf336c-f671-45ad-ba7b-193d4f2540f1,56368,Live Patrol - Patrol
+Alpa Roof Trusses - 5532 Slaters Road,814,74cf336c-f671-45ad-ba7b-193d4f2540f1,56368,Live Patrol - Patrol
+26 Steve Fonyo Drive,449,74cf336c-f671-45ad-ba7b-193d4f2540f1,56368,Live Patrol - Patrol
+"CINTAS #0066 DENVER, CO (5600405)",41232,f858b03b-2a85-4771-89d5-dbf62456ed7b,56369,Vector Security - Patrol
+Sports Rental site,34,47dc2c1f-5c19-43fb-b5d5-753c5e96eb14,,Vendor.Actuate.Prod (existing tenant, not in 56365-56369 batch)

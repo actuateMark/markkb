@@ -6,6 +6,18 @@ tags: [billing, reconciliation, dashboard, nrql, vms-connector, site_product_end
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
+incoming:
+  - topics/billing/_todos.md
+  - topics/billing/notes/concepts/2026-05-11_eng-242-substantially-answered.md
+  - topics/billing/notes/concepts/2026-05-11_nf2-deployment-state.md
+  - topics/billing/notes/entities/sales-dashboard-repo.md
+  - topics/billing/notes/entities/snowflake-billing-tables.md
+  - topics/billing/notes/syntheses/2026-05-11_billing-pain-post-mortem.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
+  - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
+  - topics/personal-notes/notes/concepts/2026-05-11_pre-impl-research-priority-reorder.md
+  - topics/personal-notes/notes/daily/2026-05-11.md
+incoming_updated: 2026-05-27
 ---
 
 # Billing-reconciliation dashboard — admin ↔ emit signal (R1 design)
@@ -29,7 +41,7 @@ This is the same shape that the cohort F audit used manually ([[2026-05-06_cohor
 | Admin DB ↔ SQS-emit reconciliation (the two layers we own) | Snowflake-side ingestion gap (F6/F5 — data-team-owned per [[_todos]] R2) |
 | Daily cadence (mirrors the cohort-audit pattern) | Intra-day high-frequency reconciliation (future O2) |
 | Per-product gap detection at the (camera, product) granularity | Per-`act_a` rate-anomaly detection (future T2-adjacent) |
-| Separate billing dashboard surface (local first, sales-dashboard later) | Integration into the operational-health dashboard at `mork-firebat/dashboard/` (cross-link only) |
+| Separate billing dashboard surface (local first, [[sales-dashboard]] later) | Integration into the operational-health dashboard at `mork-firebat/dashboard/` (cross-link only) |
 
 ## Data source decision — NRQL-first
 
@@ -106,9 +118,9 @@ gap_pct = len(missing_pairs) / max(1, len(expected_pairs))
 
 1. **Local sketch (Phase 1)** — Tier-1 script on Firebat OR laptop, writes signal to `~/.local/state/minipc-tasks/billing/reconciliation-YYYY-MM-DD.json`. Read by `/dashboard-check` collector as a new signal (or by a new `/billing-dashboard-check` skill if the catalog grows). Surfaces in the existing dashboard heat-grid alongside operational signals, **labeled distinctly** as a billing-class signal.
 2. **Standalone billing dashboard (Phase 2)** — once 2-3 billing signals exist (R1 + O2 + O3 from [[_todos]]), break them out into a separate `/home/mork/Documents/worklog/billing-dashboard/` surface, served via Caddy same as the ops dashboard.
-3. **Sales-dashboard integration (Phase 3)** — port the signal to `https://sales-dashboard.internal.actuateui.net/` once the deploy repo is identified per [[_todos]] C6. This is the "right" long-term home — it co-locates the reconciliation signal with the revenue surface stakeholders already watch.
+3. **[[sales-dashboard|Sales-dashboard]] integration (Phase 3)** — port the signal to `https://sales-dashboard.internal.actuateui.net/` once the deploy repo is identified per [[_todos]] C6. This is the "right" long-term home — it co-locates the reconciliation signal with the revenue surface stakeholders already [[watch-entity|watch]].
 
-The phasing is intentional: prove the signal locally before negotiating sales-dashboard real estate.
+The phasing is intentional: prove the signal locally before negotiating [[sales-dashboard]] real estate.
 
 ## Alert thresholds
 

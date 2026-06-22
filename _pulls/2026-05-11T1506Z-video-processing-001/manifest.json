@@ -1,0 +1,285 @@
+{
+  "run_id": "2026-05-11T1506Z-video-processing-001",
+  "started_at": "2026-05-11T15:09:27Z",
+  "finished_at": "2026-05-11T18:23:02Z",
+  "exit": "partial",
+  "context": {
+    "type": "reading-list",
+    "topic": "video-processing",
+    "list_path": "topics/video-processing/reading-list.md"
+  },
+  "items": [
+    {
+      "ref_id": "0016",
+      "url": "https://github.com/Zulko/moviepy",
+      "status": "ok",
+      "draft_path": "drafts/2026-05-11_moviepy-video-editing-with-python.md",
+      "topic_claimed": "video-processing",
+      "elapsed_ms": 500498,
+      "error": null,
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "2 section(s)",
+          "elapsed_ms": 914
+        },
+        {
+          "phase": "planner",
+          "status": "ok",
+          "detail": "topic=video-processing, 1 section(s)",
+          "elapsed_ms": 165504
+        },
+        {
+          "phase": "worker[0]",
+          "status": "ok",
+          "detail": "Introduction and Capabilities",
+          "elapsed_ms": 128282
+        },
+        {
+          "phase": "composer",
+          "status": "ok",
+          "detail": "1911 chars",
+          "elapsed_ms": 205721
+        },
+        {
+          "phase": "linker",
+          "status": "ok",
+          "detail": "clean",
+          "elapsed_ms": 1
+        }
+      ]
+    },
+    {
+      "ref_id": "0017",
+      "url": "https://github.com/aiortc/aiortc",
+      "status": "ok",
+      "draft_path": "drafts/2026-05-11_aiortc-webrtc-and-ortc-implementation-for-python.md",
+      "topic_claimed": "webrtc-deep-dive",
+      "elapsed_ms": 1486386,
+      "error": null,
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "1 section(s)",
+          "elapsed_ms": 820
+        },
+        {
+          "phase": "planner",
+          "status": "ok",
+          "detail": "topic=webrtc-deep-dive, 1 section(s)",
+          "elapsed_ms": 160979
+        },
+        {
+          "phase": "worker[0]",
+          "status": "ok",
+          "detail": "Overview",
+          "elapsed_ms": 124471
+        },
+        {
+          "phase": "composer",
+          "status": "failed",
+          "detail": "timed out",
+          "elapsed_ms": 1200116
+        },
+        {
+          "phase": "composer",
+          "status": "fallback",
+          "detail": "templated assembly used",
+          "elapsed_ms": 0
+        },
+        {
+          "phase": "linker",
+          "status": "ok",
+          "detail": "clean",
+          "elapsed_ms": 0
+        }
+      ]
+    },
+    {
+      "ref_id": "0018",
+      "url": "https://github.com/master-of-zen/Av1an",
+      "status": "failed",
+      "draft_path": null,
+      "topic_claimed": null,
+      "elapsed_ms": 1200927,
+      "error": "failed in phase: planner",
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "2 section(s)",
+          "elapsed_ms": 806
+        },
+        {
+          "phase": "planner",
+          "status": "failed",
+          "detail": "timed out",
+          "elapsed_ms": 1200122
+        }
+      ]
+    },
+    {
+      "ref_id": "0021",
+      "url": "https://github.com/bluenviron/mediamtx",
+      "status": "failed",
+      "draft_path": null,
+      "topic_claimed": null,
+      "elapsed_ms": 1200752,
+      "error": "failed in phase: planner",
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "1 section(s)",
+          "elapsed_ms": 637
+        },
+        {
+          "phase": "planner",
+          "status": "failed",
+          "detail": "timed out",
+          "elapsed_ms": 1200116
+        }
+      ]
+    },
+    {
+      "ref_id": "0024",
+      "url": "https://janus.conf.meetecho.com/",
+      "status": "failed",
+      "draft_path": null,
+      "topic_claimed": null,
+      "elapsed_ms": 1202170,
+      "error": "failed in phase: planner",
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "1 section(s)",
+          "elapsed_ms": 2067
+        },
+        {
+          "phase": "planner",
+          "status": "failed",
+          "detail": "timed out",
+          "elapsed_ms": 1200104
+        }
+      ]
+    },
+    {
+      "ref_id": "0025",
+      "url": "https://github.com/pion/webrtc",
+      "status": "failed",
+      "draft_path": null,
+      "topic_claimed": null,
+      "elapsed_ms": 1217016,
+      "error": "failed in phase: planner",
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "3 section(s)",
+          "elapsed_ms": 16901
+        },
+        {
+          "phase": "planner",
+          "status": "failed",
+          "detail": "timed out",
+          "elapsed_ms": 1200116
+        }
+      ]
+    },
+    {
+      "ref_id": "0026",
+      "url": "https://livekit.io/",
+      "status": "failed",
+      "draft_path": null,
+      "topic_claimed": null,
+      "elapsed_ms": 1201536,
+      "error": "failed in phase: planner",
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "1 section(s)",
+          "elapsed_ms": 1421
+        },
+        {
+          "phase": "planner",
+          "status": "failed",
+          "detail": "timed out",
+          "elapsed_ms": 1200115
+        }
+      ]
+    },
+    {
+      "ref_id": "0027",
+      "url": "https://datarhei.github.io/restreamer/",
+      "status": "failed",
+      "draft_path": null,
+      "topic_claimed": null,
+      "elapsed_ms": 1200817,
+      "error": "failed in phase: planner",
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "1 section(s)",
+          "elapsed_ms": 704
+        },
+        {
+          "phase": "planner",
+          "status": "failed",
+          "detail": "timed out",
+          "elapsed_ms": 1200114
+        }
+      ]
+    },
+    {
+      "ref_id": "0029",
+      "url": "http://www.live555.com/",
+      "status": "failed",
+      "draft_path": null,
+      "topic_claimed": null,
+      "elapsed_ms": 1203992,
+      "error": "failed in phase: planner",
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "2 section(s)",
+          "elapsed_ms": 3878
+        },
+        {
+          "phase": "planner",
+          "status": "failed",
+          "detail": "timed out",
+          "elapsed_ms": 1200114
+        }
+      ]
+    },
+    {
+      "ref_id": "0030",
+      "url": "https://github.com/AlexxIT/go2rtc",
+      "status": "failed",
+      "draft_path": null,
+      "topic_claimed": null,
+      "elapsed_ms": 1200734,
+      "error": "failed in phase: planner",
+      "phase_log": [
+        {
+          "phase": "parser",
+          "status": "ok",
+          "detail": "3 section(s)",
+          "elapsed_ms": 617
+        },
+        {
+          "phase": "planner",
+          "status": "failed",
+          "detail": "timed out",
+          "elapsed_ms": 1200118
+        }
+      ]
+    }
+  ]
+}

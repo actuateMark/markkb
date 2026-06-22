@@ -44,7 +44,7 @@ This flag was added defensively on the assumption that the sync endpoint was a d
 **Future readers and planners will assume the safety flag works.** When designing per-schedule cleanup logic, you must not rely on the admin sync endpoint for deletions. The actual deletion path is:
 
 1. Cleanup Lambda detects a stale schedule via SQS emit + counter threshold
-2. Cleanup Lambda confirms via Immix API that the schedule is gone
+2. Cleanup Lambda confirms via [[immix-vendor-api|Immix API]] that the schedule is gone
 3. Cleanup Lambda directly PATCHes the schedule on admin (`is_deleted=True`)
 
 See [[2026-04-17_stale-schedule-cleanup-design]] for the full architecture.

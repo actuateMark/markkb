@@ -16,8 +16,8 @@ incoming:
   - topics/personal-notes/notes/daily/2026-04-23.md
   - topics/personal-notes/notes/daily/2026-04-27.md
   - topics/personal-notes/notes/daily/2026-04-30.md
-  - topics/personal-notes/notes/daily/README.md
-incoming_updated: 2026-05-01
+  - topics/personal-notes/notes/daily/2026-05-02.md
+incoming_updated: 2026-05-27
 ---
 
 # /daily-wrap

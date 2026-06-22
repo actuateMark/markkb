@@ -8,10 +8,11 @@ tags: [line-crossing, tracking, trajectory, observer, alert-reduction]
 incoming:
   - topics/data-science/notes/concepts/botsort-tracking.md
   - topics/data-science/notes/concepts/detection-pipeline.md
+  - topics/models/line-crossing/_summary.md
   - topics/team-structure/notes/entities/tatiana-hanazaki.md
   - topics/watchman/notes/entities/actuate-watchman-internal.md
   - topics/watchman/notes/entities/actuate-watchman-repo.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Line Crossing Detection

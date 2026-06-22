@@ -11,9 +11,10 @@ incoming:
   - topics/camera-health-monitoring/_summary.md
   - topics/camera-health-monitoring/notes/concepts/chm-rd-opportunities.md
   - topics/camera-health-monitoring/notes/concepts/health-check-types.md
+  - topics/integrations/vch/_summary.md
   - topics/team-structure/notes/entities/mark-barbera.md
   - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Scene Change Detection

@@ -1,0 +1,1239 @@
+customer_id,customer_name,cohort,camera_id,camera_name,on_schedule,matched_schedule
+35828,Acme Bank,F,401951,ATM 1079 camera (1),Y,1|Acme Bank ATM|Active
+35828,Acme Bank,F,401952,1310 camera (1),Y,1|Acme Bank ATM|Active
+35828,Acme Bank,F,401953,3016 camera (1),Y,1|Acme Bank ATM|Active
+35828,Acme Bank,F,401954,7485 camera (1),Y,1|Acme Bank ATM|Active
+35828,Acme Bank,F,401955,ATM 8679 camera (1),Y,1|Acme Bank ATM|Active
+35829,Site 1,B,401956,Office Alarm camera (1),Y,340|Open and close|Paused
+35829,Site 1,B,401957,Hallway Alarm camera (1),Y,340|Open and close|Paused
+35829,Site 1,B,401958,Stored Video camera (1),Y,340|Open and close|Paused
+35829,Site 1,B,401959,4,Y,340|Open and close|Paused
+35829,Site 1,B,401960,5,Y,340|Open and close|Paused
+35829,Site 1,B,401961,6,Y,340|Open and close|Paused
+35829,Site 1,B,401962,7,Y,340|Open and close|Paused
+35829,Site 1,B,401963,8,Y,340|Open and close|Paused
+35829,Site 1,B,401964,9,Y,340|Open and close|Paused
+35829,Site 1,B,401965,10,Y,340|Open and close|Paused
+35829,Site 1,B,401966,11,Y,340|Open and close|Paused
+35829,Site 1,B,401967,12,Y,340|Open and close|Paused
+35829,Site 1,B,401968,13,Y,340|Open and close|Paused
+35829,Site 1,B,401969,14,Y,340|Open and close|Paused
+35829,Site 1,B,401970,15,Y,340|Open and close|Paused
+35829,Site 1,B,401971,16,Y,340|Open and close|Paused
+35829,Site 1,B,401972,17,Y,340|Open and close|Paused
+35829,Site 1,B,401973,18,Y,340|Open and close|Paused
+35829,Site 1,B,401974,19,Y,340|Open and close|Paused
+35829,Site 1,B,401975,20,Y,340|Open and close|Paused
+35829,Site 1,B,401976,21,Y,340|Open and close|Paused
+35829,Site 1,B,401977,22,Y,340|Open and close|Paused
+35829,Site 1,B,401978,23,Y,340|Open and close|Paused
+35829,Site 1,B,401979,24,Y,340|Open and close|Paused
+35829,Site 1,B,401980,25,Y,340|Open and close|Paused
+35829,Site 1,B,401981,26,Y,340|Open and close|Paused
+35829,Site 1,B,401982,27,Y,340|Open and close|Paused
+35829,Site 1,B,401983,28,Y,340|Open and close|Paused
+35829,Site 1,B,401984,29,Y,340|Open and close|Paused
+35829,Site 1,B,401985,30,Y,340|Open and close|Paused
+35829,Site 1,B,401986,31,Y,340|Open and close|Paused
+35829,Site 1,B,401987,32,Y,340|Open and close|Paused
+35829,Site 1,B,401988,33,Y,340|Open and close|Paused
+35829,Site 1,B,401989,34,Y,340|Open and close|Paused
+35829,Site 1,B,401990,35,Y,340|Open and close|Paused
+35829,Site 1,B,401991,36,Y,340|Open and close|Paused
+35829,Site 1,B,401992,37,Y,340|Open and close|Paused
+35829,Site 1,B,401993,38,Y,340|Open and close|Paused
+35829,Site 1,B,401994,39,Y,340|Open and close|Paused
+35829,Site 1,B,401995,40,Y,340|Open and close|Paused
+35829,Site 1,B,401996,41,Y,340|Open and close|Paused
+35829,Site 1,B,401997,42,Y,340|Open and close|Paused
+35829,Site 1,B,401998,43,Y,340|Open and close|Paused
+35829,Site 1,B,401999,44,Y,340|Open and close|Paused
+35829,Site 1,B,402000,45,Y,340|Open and close|Paused
+35829,Site 1,B,402001,46,Y,340|Open and close|Paused
+35829,Site 1,B,402002,47,Y,340|Open and close|Paused
+35829,Site 1,B,402003,48,Y,340|Open and close|Paused
+35829,Site 1,B,402004,49,Y,340|Open and close|Paused
+35829,Site 1,B,402005,50,Y,340|Open and close|Paused
+35829,Site 1,B,402006,51,Y,340|Open and close|Paused
+35829,Site 1,B,402007,52,Y,340|Open and close|Paused
+35829,Site 1,B,402008,53,Y,340|Open and close|Paused
+35829,Site 1,B,402009,54,Y,340|Open and close|Paused
+35829,Site 1,B,402010,55,Y,340|Open and close|Paused
+35829,Site 1,B,402011,56,Y,340|Open and close|Paused
+35829,Site 1,B,402012,57,Y,340|Open and close|Paused
+35829,Site 1,B,402013,58,Y,340|Open and close|Paused
+35829,Site 1,B,402014,59,Y,340|Open and close|Paused
+35829,Site 1,B,402015,60,Y,340|Open and close|Paused
+35829,Site 1,B,402016,61,Y,340|Open and close|Paused
+35829,Site 1,B,402017,62,Y,340|Open and close|Paused
+35829,Site 1,B,402018,63,Y,340|Open and close|Paused
+35829,Site 1,B,402019,64,Y,340|Open and close|Paused
+35829,Site 1,B,402020,65,Y,340|Open and close|Paused
+35829,Site 1,B,402021,66,Y,340|Open and close|Paused
+35829,Site 1,B,402022,67,Y,340|Open and close|Paused
+35829,Site 1,B,402023,68,Y,340|Open and close|Paused
+35829,Site 1,B,402024,69,Y,340|Open and close|Paused
+35829,Site 1,B,402025,70,Y,340|Open and close|Paused
+35829,Site 1,B,402026,71,Y,340|Open and close|Paused
+35829,Site 1,B,402027,72,Y,340|Open and close|Paused
+35829,Site 1,B,402028,73,Y,340|Open and close|Paused
+35829,Site 1,B,402029,74,Y,340|Open and close|Paused
+35829,Site 1,B,402030,75,Y,340|Open and close|Paused
+35829,Site 1,B,402031,76,Y,340|Open and close|Paused
+35829,Site 1,B,402032,77,Y,340|Open and close|Paused
+35829,Site 1,B,402033,78,Y,340|Open and close|Paused
+35829,Site 1,B,402034,79,Y,340|Open and close|Paused
+35829,Site 1,B,402035,80,Y,340|Open and close|Paused
+35829,Site 1,B,402036,81,Y,340|Open and close|Paused
+35829,Site 1,B,402037,82,Y,340|Open and close|Paused
+35829,Site 1,B,402038,83,Y,340|Open and close|Paused
+35829,Site 1,B,402039,84,Y,340|Open and close|Paused
+35829,Site 1,B,402040,85,Y,340|Open and close|Paused
+35829,Site 1,B,402041,86,Y,340|Open and close|Paused
+35829,Site 1,B,402042,87,Y,340|Open and close|Paused
+35829,Site 1,B,402043,88,Y,340|Open and close|Paused
+35829,Site 1,B,402044,89,Y,340|Open and close|Paused
+35829,Site 1,B,402045,90,Y,340|Open and close|Paused
+35829,Site 1,B,402046,91,Y,340|Open and close|Paused
+35829,Site 1,B,402047,92,Y,340|Open and close|Paused
+35829,Site 1,B,402048,93,Y,340|Open and close|Paused
+35829,Site 1,B,402049,94,Y,340|Open and close|Paused
+35829,Site 1,B,402050,95,Y,340|Open and close|Paused
+35829,Site 1,B,402051,96,Y,340|Open and close|Paused
+35829,Site 1,B,402052,97,Y,340|Open and close|Paused
+35829,Site 1,B,402053,98,Y,340|Open and close|Paused
+35829,Site 1,B,402054,99,Y,340|Open and close|Paused
+35829,Site 1,B,402055,100,Y,340|Open and close|Paused
+35870,500 North Ashley,B,402268,Conference,N,
+35870,500 North Ashley,B,402269,Hallway,N,
+35870,500 North Ashley,B,402270,Classroom,N,
+35870,500 North Ashley,B,402271,Classroom 2,N,
+35870,500 North Ashley,B,402272,Car Park,N,
+35870,500 North Ashley,B,402273,Entrance,N,
+35870,500 North Ashley,B,402274,Lounge,N,
+35870,500 North Ashley,B,402275,Waiting Room,N,
+35870,500 North Ashley,B,402276,Stairs,N,
+35870,500 North Ashley,B,402277,Lifts,N,
+35870,500 North Ashley,B,402278,Lifts 2,N,
+35870,500 North Ashley,B,402279,River Front,N,
+35876,London,B,402347,Stairs,N,
+35876,London,B,402348,Lifts,N,
+35876,London,B,402349,Lifts 2,N,
+35876,London,B,402350,River Front,N,
+35876,London,B,402351,Stairwell (Empty),N,
+35876,London,B,402352,Office outside,N,
+35876,London,B,402353,Dahua Dome 1,N,
+35877,New York,B,402354,Car Park,N,
+35877,New York,B,402355,Entrance,N,
+35877,New York,B,402356,Lounge,N,
+35877,New York,B,402357,Waiting Room,N,
+35877,New York,B,402358,Building Side Entrance (Empty),N,
+35877,New York,B,402359,Tenant Lounge (Door Opens),N,
+35878,400 North Ashley,B,402360,Conference,N,
+35878,400 North Ashley,B,402361,Classroom,N,
+35878,400 North Ashley,B,402362,Classroom 2,N,
+35878,400 North Ashley,B,402363,Conference Room (Empty),N,
+35878,400 North Ashley,B,402364,Corridor (Door Opens),N,
+35878,400 North Ashley,B,402365,Conference Room Again,N,
+35878,400 North Ashley,B,402366,Corridor,N,
+35878,400 North Ashley,B,402367,Main Office,N,
+35878,400 North Ashley,B,402368,City,N,
+35878,400 North Ashley,B,402369,Building Side Entrance,N,
+35878,400 North Ashley,B,402370,Tenant Lounge Entrance,N,
+35878,400 North Ashley,B,402371,Tenant Lounge,N,
+35878,400 North Ashley,B,402372,Stairwell,N,
+35878,400 North Ashley,B,402373,Stairwell Entrance,N,
+35878,400 North Ashley,B,402374,Elevator,N,
+35878,400 North Ashley,B,402375,Riverwalk,N,
+35878,400 North Ashley,B,402376,Fight1-1,N,
+35878,400 North Ashley,B,402377,Dahua Dome 1,N,
+36799,Site A,B,408555,F2,N,
+36799,Site A,B,408556,2N Audio Test camera (1),Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,408557,Camera,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,408558,OSD Test,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429778,P12-MkII,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429779,P12-MkII (LowRes),Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429780,Q1808-LE,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429781,M4318-PLR,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429782,M5000-G,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429783,M5000-G,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429784,M5000-G,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429785,M5000-G,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429786,Stream,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429787,XNP-6400R,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429788,XNP-6400R (LowRes),Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429789,Test PNM-C32083RVQ V1 Main,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429790,PNM-C32083RVQ V1 Main (LowRes),Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429791,PNM-C32083RVQ V2,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429792,PNM-C32083RVQ V2 (LowRes),Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429793,PNM-C32083RVQ V3,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429794,PNM-C32083RVQ V3 (LowRes),Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429795,PNM-C32083RVQ V4,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429796,PNM-C32083RVQ V4 (LowRes),Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429797,Analog - Live TV,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429798,Analog - Live TV (1),Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429799,Analog - North Window,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429800,Analog - Camera Storage,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429801,Analog - SysEng Lab,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429802,Analog - North Vestibule,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429803,Analog - Old Disco,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429804,Analog - Northeast Entry,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429805,Analog - South Parking,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429806,Analog - Old South Enrty,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429807,Analog - South Entry Inside,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429808,Analog - Old Cafe,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429809,Analog - Server Room Entry,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429810,Analog - Old Camera Storage,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429811,Analog - Old Front Entry,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429812,Not Used,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429813,Not Used (LowRes),Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429814,Not Used,Y,320|50 Camera Test - 2|Paused
+36799,Site A,B,429815,Not Used (LowRes),Y,320|50 Camera Test - 2|Paused
+37167,Guardian Test,B,410457,ABBX-SAY2-IMCZ,N,
+37255,Site 4,B,410912,Stored Video camera (1),N,
+37255,Site 4,B,410913,2 camera (1),N,
+37255,Site 4,B,410914,4 camera (1),N,
+37255,Site 4,B,410915,6 camera (1),N,
+37325,Site 3,B,411357,Store camera (1),N,
+37325,Site 3,B,411358,Lot 1,N,
+37325,Site 3,B,411359,Lot 2,N,
+37325,Site 3,B,411382,Stored Video camera (1),N,
+37325,Site 3,B,411383,Cam 5 camera (1),N,
+37325,Site 3,B,411385,Waiting room camera (1),N,
+37325,Site 3,B,411386,Factory 1 camera (1),N,
+37458,400 North Ashley GF 1 (1),B,412320,Conference Room,N,
+37458,400 North Ashley GF 1 (1),B,412321,Main Office,N,
+37458,400 North Ashley GF 1 (1),B,412322,Corridor,N,
+37458,400 North Ashley GF 1 (1),B,412323,Finance Office,N,
+37458,400 North Ashley GF 1 (1),B,412324,City,N,
+37458,400 North Ashley GF 1 (1),B,412325,Building Side Entrance,N,
+37458,400 North Ashley GF 1 (1),B,412326,Tenant Lounge,N,
+37458,400 North Ashley GF 1 (1),B,412327,Tenant Lounge Entrance,N,
+37458,400 North Ashley GF 1 (1),B,412328,Stairwell,N,
+37458,400 North Ashley GF 1 (1),B,412329,Stairwell Entrance,N,
+37458,400 North Ashley GF 1 (1),B,412330,Elevator,N,
+37458,400 North Ashley GF 1 (1),B,412331,Riverwalk,N,
+37460,Tampa Office CS,F,412374,2. Outside  Roof (Tour),N,
+37460,Tampa Office CS,F,412376,4. Inside Door/Elevator,N,
+37460,Tampa Office CS,F,412379,Eagle Eye camera (1),N,
+37460,Tampa Office CS,F,412380,Eagle Eye camera (2),N,
+37460,Tampa Office CS,F,412381,Eagle Eyec amera (3),N,
+37460,Tampa Office CS,F,412382,Eagel Eyecamera (4),N,
+37460,Tampa Office CS,F,412383,1. Front Door,N,
+37460,Tampa Office CS,F,412384,Front Door B,N,
+37460,Tampa Office CS,F,412385,Axis V5 camera (1),N,
+37460,Tampa Office CS,F,412386,Generic Stream - AVTech camera (1),N,
+37460,Tampa Office CS,F,412373,Front Door,Y,137|VCH trial test|Active
+37460,Tampa Office CS,F,412375,3. Gate,Y,137|VCH trial test|Active
+37460,Tampa Office CS,F,412377,5. Cafeteria,Y,137|VCH trial test|Active
+37460,Tampa Office CS,F,412378,6. Office Lobby,Y,137|VCH trial test|Active
+37621,VCH 1,F,413719,Parking Lot 1 camera (1),Y,156|Open store (0800)|Active
+37621,VCH 1,F,413720,Parking lot 2 camera (1),Y,156|Open store (0800)|Active
+37621,VCH 1,F,413721,Store 1 camera (1),Y,156|Open store (0800)|Active
+37621,VCH 1,F,413722,Office 1 camera (1),Y,156|Open store (0800)|Active
+37621,VCH 1,F,413723,Factory 1 camera (1),Y,156|Open store (0800)|Active
+37742,London,F,414447,Stairwell (Empty),N,
+37742,London,F,414443,Stairwell,Y,143|London VCH Actuate Test 1|Active
+37742,London,F,414444,Stairwell Entrance,Y,143|London VCH Actuate Test 1|Active
+37742,London,F,414445,Elevator,Y,143|London VCH Actuate Test 1|Active
+37742,London,F,414446,Riverwalk,Y,143|London VCH Actuate Test 1|Active
+37743,New York,F,414448,City,Y,144|New York VCH Actuate Test 1|Active
+37743,New York,F,414449,Building Side Entrance,Y,144|New York VCH Actuate Test 1|Active
+37743,New York,F,414450,Tenant Lounge Entrance,Y,144|New York VCH Actuate Test 1|Active
+37743,New York,F,414451,Tenant Lounge,Y,144|New York VCH Actuate Test 1|Active
+37743,New York,F,414452,Building Side Entrance (Empty),Y,144|New York VCH Actuate Test 1|Active
+37743,New York,F,414453,Tenant Lounge (Door Opens),Y,144|New York VCH Actuate Test 1|Active
+37744,400 North Ashley,F,414454,Conference Room,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414455,Main Office,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414456,Finance Office,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414457,Conference Room (Empty),Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414458,Corridor (Door Opens),Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414459,Fight1-1,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414460,Corridor,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414461,City,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414462,Building Side Entrance,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414463,Tenant Lounge Entrance,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414464,Tenant Lounge,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414465,Stairwell,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414466,Stairwell Entrance,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414467,Elevator,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414468,Riverwalk,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414469,Conference Room Again,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414470,Hikvision Camera 1,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414471,Hikvision Passthrough Camera 1,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414472,Dahua Dome 1,Y,151|400NA AP Actuate Daily 11:00|Active
+37744,400 North Ashley,F,414473,Dahua Dome 1-2,Y,151|400NA AP Actuate Daily 11:00|Active
+37751,400 North Ashley,F,414510,Conference Room,Y,196|All Indoor Cameras|Active
+37751,400 North Ashley,F,414511,Main Office,Y,196|All Indoor Cameras|Active
+37751,400 North Ashley,F,414512,Corridor,Y,196|All Indoor Cameras|Active
+37751,400 North Ashley,F,414513,Finance Office,Y,196|All Indoor Cameras|Active
+37751,400 North Ashley,F,414514,City,Y,196|All Indoor Cameras|Active
+37751,400 North Ashley,F,414515,Building Side Entrance,Y,196|All Indoor Cameras|Active
+37751,400 North Ashley,F,414516,Tenant Lounge,Y,196|All Indoor Cameras|Active
+37751,400 North Ashley,F,414517,Tenant Lounge Entrance,Y,196|All Indoor Cameras|Active
+37751,400 North Ashley,F,414518,Stairwell,Y,196|All Indoor Cameras|Active
+37751,400 North Ashley,F,414519,Stairwell Entrance,Y,196|All Indoor Cameras|Active
+37751,400 North Ashley,F,414520,Elevator,Y,196|All Indoor Cameras|Active
+37751,400 North Ashley,F,414521,Riverwalk,Y,196|All Indoor Cameras|Active
+37751,400 North Ashley,F,414522,Link to WhatApp camera (1),Y,196|All Indoor Cameras|Active
+37751,400 North Ashley,F,414523,Mobotix Native camera (1),Y,196|All Indoor Cameras|Active
+37837,Test - RTSP\Generic,F,415101,Mobotix Native camera (1),Y,1028|test5|Active
+37837,Test - RTSP\Generic,F,419682,Generic Stream Dahua camera (1),Y,1028|test5|Active
+37837,Test - RTSP\Generic,F,419688,Generic Stream Flir stream 3 camera (1),Y,1028|test5|Active
+37837,Test - RTSP\Generic,F,419689,Generic Stream Flir stream 1 camera (1),Y,1028|test5|Active
+37837,Test - RTSP\Generic,F,437745,F2 camera (1),Y,1028|test5|Active
+37837,Test - RTSP\Generic,F,437746,F3 camera (1),Y,1028|test5|Active
+37837,Test - RTSP\Generic,F,437747,F4 camera (1),Y,1028|test5|Active
+37837,Test - RTSP\Generic,F,437748,F5 camera (1),Y,1028|test5|Active
+37837,Test - RTSP\Generic,F,437749,F7 camera (1),Y,1028|test5|Active
+37837,Test - RTSP\Generic,F,437750,F8 camera (1),Y,1028|test5|Active
+37837,Test - RTSP\Generic,F,437751,F9 camera (1),Y,1028|test5|Active
+37837,Test - RTSP\Generic,F,442665,2N camera (1),Y,1028|test5|Active
+37980,hanwha,B,416279,ECBsmntRm14,N,
+37980,hanwha,B,416280,EG2ndFlrElevatorLobby,N,
+37980,hanwha,B,416281,ECBsmntRm18,N,
+37980,hanwha,B,416282,ECRoofStairs,N,
+37980,hanwha,B,416283,EGTherapyRoom3,N,
+37980,hanwha,B,416284,EG2ndFlrOfficeNurseEntrance,N,
+37980,hanwha,B,416285,EGAveYMcDonald,N,
+37980,hanwha,B,416286,EGRoom312,N,
+37980,hanwha,B,416287,ECAveMEntrance,N,
+37980,hanwha,B,416288,BHSRoom111,N,
+37980,hanwha,B,416289,EG2ndFlrHallway,N,
+37980,hanwha,B,416290,EBRoom310,N,
+37980,hanwha,B,416291,EGRoom318,N,
+37989,Central District Complex - Site A,F,416381,Front Door,Y,161|VCH - Raise|Active
+37989,Central District Complex - Site A,F,416382,2. Outside  Roof (Tour),Y,161|VCH - Raise|Active
+37989,Central District Complex - Site A,F,416383,3. Gate,Y,161|VCH - Raise|Active
+37989,Central District Complex - Site A,F,416384,4. Inside Door/Elevator,Y,161|VCH - Raise|Active
+37989,Central District Complex - Site A,F,416385,5. Cafeteria,Y,161|VCH - Raise|Active
+37989,Central District Complex - Site A,F,416386,6. Office Lobby,Y,161|VCH - Raise|Active
+37989,Central District Complex - Site A,F,416387,1. Front Door,Y,161|VCH - Raise|Active
+37989,Central District Complex - Site A,F,416388,Front Door B,Y,161|VCH - Raise|Active
+37991,Tampa Office CS (1),F,416389,Front Door,Y,162|VCH - Raise|Active
+37991,Tampa Office CS (1),F,416390,2. Outside  Roof (Tour),Y,162|VCH - Raise|Active
+37991,Tampa Office CS (1),F,416391,3. Gate,Y,162|VCH - Raise|Active
+37991,Tampa Office CS (1),F,416392,4. Inside Door/Elevator,Y,162|VCH - Raise|Active
+37991,Tampa Office CS (1),F,416393,5. Cafeteria,Y,162|VCH - Raise|Active
+37991,Tampa Office CS (1),F,416394,6. Office Lobby,Y,162|VCH - Raise|Active
+37991,Tampa Office CS (1),F,416395,1. Front Door,Y,162|VCH - Raise|Active
+37991,Tampa Office CS (1),F,416396,Front Door B,Y,162|VCH - Raise|Active
+37991,Tampa Office CS (1),F,416397,Axis V5 camera (1),Y,162|VCH - Raise|Active
+37991,Tampa Office CS (1),F,416398,Axis V5 camera (2),Y,162|VCH - Raise|Active
+37991,Tampa Office CS (1),F,416399,Axis V5 camera (3),Y,162|VCH - Raise|Active
+37991,Tampa Office CS (1),F,416400,Axis V5 camera (4),Y,162|VCH - Raise|Active
+37991,Tampa Office CS (1),F,416401,IncidentCODE Dispatch Alarms - DO NOT DELETE camera (1),Y,162|VCH - Raise|Active
+38235,EB,B,417857,Hallway Alarm camera (1),N,
+38235,EB,B,417858,Office Alarm camera (1),N,
+38235,EB,B,417859,Office 2 Alarm camera (1),N,
+38313,Lab Audio,B,418347,Axis V5 camera (1),N,
+38313,Lab Audio,B,418348,Axis C1610-VE Loud Speaker camera (1),N,
+38313,Lab Audio,B,418346,2N camera (1),Y,497|AutoPatrol|Paused
+38313,Lab Audio,B,448344,Exit camera (1),Y,497|AutoPatrol|Paused
+38314,Lab Hik,B,418349,IP Camera 1,N,
+38314,Lab Hik,B,418350,IP Camera 2,N,
+38314,Lab Hik,B,418351,IP Camera 3,N,
+38314,Lab Hik,B,418352,IP Camera 4,N,
+38314,Lab Hik,B,418353,IP Camera 5,N,
+38314,Lab Hik,B,418354,IP Camera 6,N,
+38314,Lab Hik,B,418355,IP Camera 7,N,
+38314,Lab Hik,B,418356,IP Camera 8,N,
+38314,Lab Hik,B,418357,IP Camera 9,N,
+38314,Lab Hik,B,418358,IP Camera 10,N,
+38314,Lab Hik,B,418359,IP Camera 11,N,
+38314,Lab Hik,B,418360,IP Camera 12,N,
+38314,Lab Hik,B,418361,IP Camera 13,N,
+38314,Lab Hik,B,418362,IP Camera 14,N,
+38314,Lab Hik,B,418363,IP Camera 15,N,
+38314,Lab Hik,B,418364,IP Camera 16,N,
+38315,AB,B,418365,Hallway Alarm camera (1),N,
+38315,AB,B,418366,Office Alarm camera (1),N,
+38315,AB,B,418367,Office 2 Alarm camera (1),N,
+38316,DH,F,418368,Hallway Alarm camera (1),Y,597|AutoPatrol|Active
+38316,DH,F,418369,Office Alarm camera (1),Y,597|AutoPatrol|Active
+38316,DH,F,418370,Office 2 Alarm camera (1),Y,597|AutoPatrol|Active
+38317,NS,B,418371,Hallway Alarm camera (1),N,
+38317,NS,B,418372,Office Alarm camera (1),N,
+38317,NS,B,418373,Office 2 Alarm camera (1),N,
+38318,McCall,B,418374,Hallway Alarm camera (1),N,
+38318,McCall,B,418375,Office Alarm camera (1),N,
+38318,McCall,B,418376,Office 2 Alarm camera (1),N,
+38319,Site 2,B,418377,Office Alarm camera (1),N,
+38319,Site 2,B,418378,Office 1 Alarm camera (1),N,
+38319,Site 2,B,418379,Hallway Alarm camera (1),N,
+38575,2992 Sheppard Ave E,F,420146,09. Northwest Corner East,Y,201|VCH Check|Active
+38575,2992 Sheppard Ave E,F,420147,02. Northeast Corner SE,Y,201|VCH Check|Active
+38575,2992 Sheppard Ave E,F,420148,01. Northeast Corner NE,Y,201|VCH Check|Active
+38575,2992 Sheppard Ave E,F,420149,07. Northwest Corner South,Y,201|VCH Check|Active
+38575,2992 Sheppard Ave E,F,420150,05. Southwest Corner East,Y,201|VCH Check|Active
+38575,2992 Sheppard Ave E,F,420151,08. Northwest Corner PTZ,Y,201|VCH Check|Active
+38575,2992 Sheppard Ave E,F,420152,06. Southwest Corner North,Y,201|VCH Check|Active
+38578,9 Dibble Street,B,420155,4. PTZ,N,
+38578,9 Dibble Street,B,420156,3. Yard East,N,
+38578,9 Dibble Street,B,420157,2. Yard South East,N,
+38578,9 Dibble Street,B,420158,1. Yard South West,N,
+38580,St. Clair and Caledonia,C,420186,3. West Side West,N,
+38580,St. Clair and Caledonia,C,420187,2. West Side SW,N,
+38580,St. Clair and Caledonia,C,420188,4. North West East,N,
+38580,St. Clair and Caledonia,C,420189,6. South East North,N,
+38580,St. Clair and Caledonia,C,420190,1. South West Corner,N,
+38580,St. Clair and Caledonia,C,420191,5. North East SE,N,
+38580,St. Clair and Caledonia,C,464248,2. West Side SW,N,
+38580,St. Clair and Caledonia,C,464249,4. North West East,N,
+38580,St. Clair and Caledonia,C,464250,6. South East North,N,
+38580,St. Clair and Caledonia,C,464251,3. West Side West,N,
+38580,St. Clair and Caledonia,C,464252,1. South West Corner,N,
+38580,St. Clair and Caledonia,C,464253,5. North East SE,N,
+38694,Immix Nottingham Office,F,421185,Conference Room,Y,276|CAM TEST DEMO|Active
+38694,Immix Nottingham Office,F,421186,Corridor,Y,276|CAM TEST DEMO|Active
+38694,Immix Nottingham Office,F,421187,Training Room,Y,276|CAM TEST DEMO|Active
+38694,Immix Nottingham Office,F,421188,Office,Y,276|CAM TEST DEMO|Active
+38694,Immix Nottingham Office,F,421189,Roof camera,Y,276|CAM TEST DEMO|Active
+38694,Immix Nottingham Office,F,421190,Entrance,Y,276|CAM TEST DEMO|Active
+38694,Immix Nottingham Office,F,421191,Tenant Lounge Entrance,Y,276|CAM TEST DEMO|Active
+38694,Immix Nottingham Office,F,421192,Breakout room,Y,276|CAM TEST DEMO|Active
+38694,Immix Nottingham Office,F,421193,Stairwell,Y,276|CAM TEST DEMO|Active
+38694,Immix Nottingham Office,F,421194,Dahua IPC,Y,246|Site Camera Check|Active
+38711,CORPORATE SERVICES (5600055),F,421276,CS # 1,N,
+38711,CORPORATE SERVICES (5600055),F,421277,Front of Generator  (1/2),N,
+38711,CORPORATE SERVICES (5600055),F,421278,Smoking Door  (2/2),N,
+38711,CORPORATE SERVICES (5600055),F,421280,It Storage,N,
+38711,CORPORATE SERVICES (5600055),F,421281,Main Hallway,N,
+38711,CORPORATE SERVICES (5600055),F,421282,Front Reception,N,
+38711,CORPORATE SERVICES (5600055),F,421283,Interior Mantrap Suite entry,N,
+38711,CORPORATE SERVICES (5600055),F,421284,Back Stairwell,N,
+38711,CORPORATE SERVICES (5600055),F,421285,1st Floor Main Entrance,N,
+38711,CORPORATE SERVICES (5600055),F,421287,CS #3,N,
+38711,CORPORATE SERVICES (5600055),F,421288,CS # 2,N,
+38711,CORPORATE SERVICES (5600055),F,421289,CS # 4,N,
+38711,CORPORATE SERVICES (5600055),F,421290,Executive Hallway,N,
+38711,CORPORATE SERVICES (5600055),F,421294,Utility Room Hallways,N,
+38711,CORPORATE SERVICES (5600055),F,421295,Rear Collabortion Area,N,
+38711,CORPORATE SERVICES (5600055),F,421296,External Mantrap Interior,N,
+38711,CORPORATE SERVICES (5600055),F,421297,Interior Mantrap CS Entry,N,
+38711,CORPORATE SERVICES (5600055),F,421298,Front Foyer,N,
+38711,CORPORATE SERVICES (5600055),F,421299,Exterior Mantrap Exterior,N,
+38711,CORPORATE SERVICES (5600055),F,421300,Interior Mantrap to CS,N,
+38711,CORPORATE SERVICES (5600055),F,421272,Generator (4/4),Y,210|Visual Camera Health|Active
+38711,CORPORATE SERVICES (5600055),F,421273,Generator (2/4),Y,210|Visual Camera Health|Active
+38711,CORPORATE SERVICES (5600055),F,421274,Generator (1/4),Y,210|Visual Camera Health|Active
+38711,CORPORATE SERVICES (5600055),F,421275,Generator (3/4),Y,210|Visual Camera Health|Active
+38711,CORPORATE SERVICES (5600055),F,421279,Data Center 3,Y,210|Visual Camera Health|Active
+38711,CORPORATE SERVICES (5600055),F,421286,Data Center 1,Y,210|Visual Camera Health|Active
+38711,CORPORATE SERVICES (5600055),F,421291,Data Center 4,Y,210|Visual Camera Health|Active
+38711,CORPORATE SERVICES (5600055),F,421292,Data Center 2,Y,210|Visual Camera Health|Active
+38711,CORPORATE SERVICES (5600055),F,421293,Main Break Area (Rear suite Entry),Y,210|Visual Camera Health|Active
+38738,2 Fuller Road - Bergvliet,F,421495,Yard to Driveway,N,
+38738,2 Fuller Road - Bergvliet,F,421497,Trampoline,N,
+38738,2 Fuller Road - Bergvliet,F,421498,Driveway,N,
+38738,2 Fuller Road - Bergvliet,F,421499,Pool Corner,N,
+38738,2 Fuller Road - Bergvliet,F,421500,Kitchen Door,N,
+38738,2 Fuller Road - Bergvliet,F,421501,Garage,N,
+38738,2 Fuller Road - Bergvliet,F,421496,Front Door,Y,212|2 Camera Check|Active
+38738,2 Fuller Road - Bergvliet,F,421502,Garden,Y,212|2 Camera Check|Active
+38738,2 Fuller Road - Bergvliet,F,426258,Garden,Y,212|2 Camera Check|Active
+39221,Victoria - EE Demo,B,425148,ANO-L7012R,N,
+39221,Victoria - EE Demo,B,425149,EN-CDUM-008b-3,N,
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425351,PHCC - Exterior - Emerg W Exit,Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425352,PHCC - Emerg - Nursing Station,Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425353,PHCC - Clinic - Reception,Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425354,PHCC - Health Centre - Main Entry,Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425355,PHCC - Emerg - Admitting,Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425356,PHCC - Exterior - Emerg E Parking,Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425357,PHCC - Health Centre - Admitting 113,Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425358,PHCC - Health Centre - Admitting 114,Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425359,PHCC - Exterior - Health Centre N Exit (New),Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425360,PHCC - Exterior - E Field,Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425361,PHCC - Exterior - Health Centre S Parking,Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425362,PHCC - Exterior - Emerg Entry,Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425363,PHCC - Emerg - Ward Entry,Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425364,PHCC - Emerg - Rear Exit,Y,217|test|Active
+39252,(RVM2657) 8A4265 - Pemberton HCC,F,425365,PHCC - Exterior - Emerg W Parking,Y,217|test|Active
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426132,Inventory Room Exterior Entry Door  (172.17.32.108),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426133,2nd Floor Landing (172.17.32.133),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426134,Secure Compound by Seacan (172.17.32.120),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426135,Mantrap Door into Back Hallway (172.17.32.113),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426136,Server Room Rear (172.17.32.112),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426137,Inventory Room Above Interior Door (172.17.32.110),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426138,Server Room Front  (172.17.32.116),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426139,Operations Room West Camera (172.17.32.121),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426140,Parking Lot West Camera (172.17.32.123),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426141,2nd Floor Tech Office  (172.17.32.131),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426142,Mantrap Interior to Back Hallway  (172.17.32.117),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426143,William Street Exterior Camera  (172.17.32.109),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426144,Kitchen  (172.17.32.125),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426145,Exterior Door William Street to Inventory (172.17.32.107),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426146,Employee Entrance by Sprinkler System (172.17.32.111),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426147,Inventory Room Front Camera (172.17.32.106),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426148,Mantrap to Office Door  (172.17.32.114),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426149,Generator in Back Compound (172.17.32.119),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426150,2nd Floor Small Office top of Stairs (172.17.32.132),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426151,Parking Lot North View (172.17.32.123),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426153,Back Compound with Side Gate to William Street (172.17.32.129),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426154,Parking Lot East View (172.17.32.123),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426155,Reception Desk  (172.17.32.109),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426156,Operations Room East Corner (172.17.32.124),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426157,Loading Dock (172.17.32.105),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426158,Mantrap Interior to Office (172.17.32.118),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426159,Warehouse  (172.17.32.122),N,
+39346,(RVM2730) PTI Monitoring - 420 William St Victoria,B,426152,Operations Center Rooftop (172.17.32.115),Y,221|Test VCH Victoria|Paused
+39381,4.1 Test Legacy Sch 3,B,426319,Office Alarm camera (1),N,
+39381,4.1 Test Legacy Sch 3,B,426320,Office 1 Alarm camera (1),N,
+39381,4.1 Test Legacy Sch 3,B,426321,Hallway Alarm camera (1),N,
+39453,ECS Coffee - Etobicoke,B,426772,AiColor Base NVR camera (1),N,
+39453,ECS Coffee - Etobicoke,B,426773,AiColor Base NVR camera (2),N,
+39455,"ECS Coffee - 3100 Harvester Rd, Burlington",B,426806,CH1,N,
+39455,"ECS Coffee - 3100 Harvester Rd, Burlington",B,426807,CH2,N,
+39455,"ECS Coffee - 3100 Harvester Rd, Burlington",B,426808,CH3,N,
+39455,"ECS Coffee - 3100 Harvester Rd, Burlington",B,426809,CH4,N,
+39845,TRAVIS TEST,Z,429503,UNIVIEW - STARLINK-CORE TRANSIT,N,
+40178,hanwha 3,B,432410,OutdoorGravesendYard2,Y,252|Actuate AP Live Site 1|Paused
+40178,hanwha 3,B,432411,ECOutdoorLocustCIA,Y,252|Actuate AP Live Site 1|Paused
+40178,hanwha 3,B,432412,ECRoof,Y,252|Actuate AP Live Site 1|Paused
+40178,hanwha 3,B,432413,OutdoorGravesend1,Y,252|Actuate AP Live Site 1|Paused
+40178,hanwha 3,B,432414,ECOutdoorAveMCIA,Y,252|Actuate AP Live Site 1|Paused
+40178,hanwha 3,B,432415,OutdoorGravesendPlayground1,Y,252|Actuate AP Live Site 1|Paused
+40178,hanwha 3,B,432416,OutdoorConeyIslanAveV,Y,252|Actuate AP Live Site 1|Paused
+40178,hanwha 3,B,432417,OutdoorGravesendGarbage,Y,252|Actuate AP Live Site 1|Paused
+40178,hanwha 3,B,432418,OutdoorConeyIsland,Y,252|Actuate AP Live Site 1|Paused
+40178,hanwha 3,B,432419,ECRoof2,Y,252|Actuate AP Live Site 1|Paused
+40178,hanwha 3,B,432420,OutdoorConeyIsland,Y,252|Actuate AP Live Site 1|Paused
+40178,hanwha 3,B,432421,OutdoorConeyIslandGravesend,Y,252|Actuate AP Live Site 1|Paused
+40178,hanwha 3,B,432422,OutdoorEast12-4,Y,252|Actuate AP Live Site 1|Paused
+40178,hanwha 3,B,432423,OutdoorConeyIslandDoor,Y,252|Actuate AP Live Site 1|Paused
+40499,ABC Liquor Store 8,F,434575,cam2,N,
+40499,ABC Liquor Store 8,F,434581,Cam 8,N,
+40499,ABC Liquor Store 8,F,434574,Cam1,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,434576,Cam3,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,434577,Cam4,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,434578,Cam5,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,434579,Cam6,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,434580,Cam7,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,434582,Cam9,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,434583,Cam10,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,434584,Cam11,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,434585,Cam12,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,434586,Cam13,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,434587,Cam14,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437302,Cam1,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437303,Cam,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437304,Cam3,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437305,Cam4,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437306,Cam5,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437307,Cam6,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437308,Cam7,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437309,Cam8,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437310,Cam9,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437311,Cam10,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437312,Cam11,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437313,Cam12,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437314,Cam13,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437315,Cam14,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437316,Cam15,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437317,Cam16,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437318,Cam17,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437319,Cam18,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437320,Cam19,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437321,Cam20,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437322,Cam21,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437323,Cam22,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437324,Cam23,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437325,Cam24,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437326,Cam25,Y,1079|Visual Camera Health|Active
+40499,ABC Liquor Store 8,F,437327,Cam26,Y,1079|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,434595,Cam 8,N,
+40500,ABC Liquor Store 7,F,434588,Cam1,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,434589,cam2,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,434590,Cam3,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,434591,Cam4,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,434592,Cam5,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,434593,Cam6,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,434594,Cam7,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,434596,Cam9,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,434597,Cam10,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,434598,Cam11,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,434599,Cam12,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,434600,Cam13,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,434601,Cam14,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452382,Cam1,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452383,Cam2,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452384,Cam3,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452385,Cam4,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452386,Cam5,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452387,Cam6,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452388,Cam7,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452389,Cam8,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452390,Cam9,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452391,Cam10,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452392,Cam11,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452393,Cam12,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452394,Cam13,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452395,Cam14,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452396,Cam15,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452397,Cam16,Y,1080|Visual Camera Health|Active
+40500,ABC Liquor Store 7,F,452398,Cam17,Y,1080|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,434606,Cam5,N,
+40501,ABC Liquor Store 6,F,434609,Cam 8,N,
+40501,ABC Liquor Store 6,F,434602,Cam1,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,434603,cam2,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,434604,Cam3,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,434605,Cam4,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,434607,Cam6,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,434608,Cam7,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,434610,Cam9,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,434611,Cam10,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,434612,Cam11,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,434613,Cam12,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,434614,Cam13,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,434615,Cam14,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437277,Cam1,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437278,Cam2,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437279,Cam3,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437280,Cam4,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437281,Cam,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437282,Cam6,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437283,Cam7,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437284,Cam8,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437285,Cam9,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437286,Cam10,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437287,Cam11,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437288,Cam12,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437289,Cam13,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437290,Cam14,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437291,Cam15,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437292,Cam16,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437293,Cam17,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437294,Cam18,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437295,Cam19,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437296,Cam20,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437297,Cam21,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437298,Cam22,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437299,Cam23,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437300,Cam24,Y,1081|Visual Camera Health|Active
+40501,ABC Liquor Store 6,F,437301,Cam25,Y,1081|Visual Camera Health|Active
+40502,ABC Liquor Store 4,F,434616,Cam1,N,
+40502,ABC Liquor Store 4,F,434617,cam2,N,
+40502,ABC Liquor Store 4,F,434618,Cam3,N,
+40502,ABC Liquor Store 4,F,434619,Cam4,N,
+40502,ABC Liquor Store 4,F,434620,Cam5,N,
+40502,ABC Liquor Store 4,F,434621,Cam6,N,
+40502,ABC Liquor Store 4,F,434622,Cam7,N,
+40502,ABC Liquor Store 4,F,434623,Cam 8,N,
+40502,ABC Liquor Store 4,F,434624,Cam9,N,
+40502,ABC Liquor Store 4,F,434625,Cam10,N,
+40502,ABC Liquor Store 4,F,434626,Cam11,N,
+40502,ABC Liquor Store 4,F,434627,Cam12,N,
+40502,ABC Liquor Store 4,F,434628,Cam13,N,
+40502,ABC Liquor Store 4,F,434629,Cam14,N,
+40502,ABC Liquor Store 4,F,443028,Ext Rear Allin1,Y,1082|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,434633,Cam4,N,
+40503,ABC Liquor Store 3,F,434637,Cam 8,N,
+40503,ABC Liquor Store 3,F,434638,Cam9,N,
+40503,ABC Liquor Store 3,F,434630,Cam1,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,434631,cam2,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,434632,Cam3,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,434634,Cam5,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,434635,Cam6,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,434636,Cam7,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,434639,Cam10,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,434640,Cam11,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,434641,Cam12,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,434642,Cam13,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,434643,Cam14,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437263,Cam1,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437264,Cam2,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437265,Cam3,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437266,Cam,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437267,Cam5,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437268,Cam6,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437269,Cam7,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437270,Cam8,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437271,Cam,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437272,Cam10,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437273,Cam11,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437274,Cam12,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437275,Cam13,Y,1083|Visual Camera Health|Active
+40503,ABC Liquor Store 3,F,437276,Cam14,Y,1083|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,434651,Cam 8,N,
+40504,ABC Liquor Store 2,F,434644,Cam1,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,434645,cam2,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,434646,Cam3,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,434647,Cam4,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,434648,Cam5,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,434649,Cam6,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,434650,Cam7,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,434652,Cam9,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,434653,Cam10,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,434654,Cam11,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,434655,Cam12,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,434656,Cam13,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,434657,Cam14,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437225,Cam1,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437226,Cam2,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437227,Cam3,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437228,Cam4,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437229,Cam5,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437230,Cam6,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437231,Cam7,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437232,Cam8,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437233,Cam9,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437234,Cam10,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437235,Cam11,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437236,Cam12,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437237,Cam13,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437238,Cam14,Y,1084|Visual Camera Health|Active
+40504,ABC Liquor Store 2,F,437239,Cam15,Y,1084|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,434665,Cam 8,N,
+40505,ABC Liquor Store 17,F,434658,Cam1,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,434659,cam2,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,434660,Cam3,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,434661,Cam4,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,434662,Cam5,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,434663,Cam6,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,434664,Cam7,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,434666,Cam9,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,434667,Cam10,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,434668,Cam11,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,434669,Cam12,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,434670,Cam13,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,434671,Cam14,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443084,Cam1,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443085,Cam2,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443086,Cam3,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443087,Cam4,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443088,Cam5,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443089,Cam6,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443090,Cam7,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443091,Cam8,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443092,Cam9,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443093,Cam10,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443094,Cam11,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443095,Cam12,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443096,Cam13,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443097,Cam14,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443098,Cam15,Y,1085|Visual Camera Health|Active
+40505,ABC Liquor Store 17,F,443099,Cam16,Y,1085|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,434675,Cam4,N,
+40506,ABC Liquor Store 15,F,434677,Cam6,N,
+40506,ABC Liquor Store 15,F,434679,Cam 8,N,
+40506,ABC Liquor Store 15,F,434672,Cam1,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,434673,cam2,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,434674,Cam3,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,434676,Cam5,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,434678,Cam7,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,434680,Cam9,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,434681,Cam10,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,434682,Cam11,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,434683,Cam12,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,434684,Cam13,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,434685,Cam14,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437335,Cam1,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437336,Cam2,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437337,Cam3,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437338,Cam,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437339,Cam5,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437340,Cam,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437341,Cam7,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437342,Cam8,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437343,Cam9,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437344,Cam10,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437345,Cam11,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437346,Cam12,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437347,Cam13,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437348,Cam14,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437349,Cam15,Y,1086|Visual Camera Health|Active
+40506,ABC Liquor Store 15,F,437350,Cam16,Y,1086|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,434687,cam2,N,
+40507,ABC Liquor Store 14,F,434693,Cam 8,N,
+40507,ABC Liquor Store 14,F,434694,Cam9,N,
+40507,ABC Liquor Store 14,F,434686,Cam1,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,434688,Cam3,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,434689,Cam4,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,434690,Cam5,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,434691,Cam6,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,434692,Cam7,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,434695,Cam10,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,434696,Cam11,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,434697,Cam12,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,434698,Cam13,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,434699,Cam14,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437351,Cam1,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437352,Cam,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437353,Cam3,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437354,Cam4,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437355,Cam5,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437356,Cam6,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437357,Cam7,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437358,Cam,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437359,Cam,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437360,Cam10,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437361,Cam11,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437362,Cam12,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437363,Cam13,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437364,Cam14,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437365,Cam15,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437366,Cam16,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437367,Cam17,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437368,Cam18,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437369,Cam19,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437370,Cam20,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437371,Cam21,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437372,Cam22,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437373,Cam23,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437374,Cam24,Y,1087|Visual Camera Health|Active
+40507,ABC Liquor Store 14,F,437375,Cam25,Y,1087|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,434703,Cam4,N,
+40508,ABC Liquor Store 13,F,434708,Cam9,N,
+40508,ABC Liquor Store 13,F,452161,Rear Ext,N,
+40508,ABC Liquor Store 13,F,452162,Cam 1 camera (1),N,
+40508,ABC Liquor Store 13,F,434700,Cam1,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,434701,cam2,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,434702,Cam3,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,434704,Cam5,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,434705,Cam6,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,434706,Cam7,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,434707,Cam 8,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,434709,Cam10,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,434710,Cam11,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,434711,Cam12,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,434712,Cam13,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,434713,Cam14,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456362,Cam1,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456363,Cam2,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456364,Cam3,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456365,Cam,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456366,Cam5,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456367,Cam6,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456368,Cam7,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456369,Cam 8,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456370,Cam 9,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456371,Cam10,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456372,Cam11,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456373,Cam12,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456374,Cam13,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456375,Cam14,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456376,Cam15,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456377,Cam16,Y,1088|Visual Camera Health|Active
+40508,ABC Liquor Store 13,F,456378,Cam17,Y,1088|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,434719,Cam6,N,
+40509,ABC Liquor Store 12,F,434721,Cam 8,N,
+40509,ABC Liquor Store 12,F,434714,Cam1,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,434715,cam2,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,434716,Cam3,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,434717,Cam4,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,434718,Cam5,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,434720,Cam7,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,434722,Cam9,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,434723,Cam10,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,434724,Cam11,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,434725,Cam12,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,434726,Cam13,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,434727,Cam14,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443050,Cam1,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443051,Cam2,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443052,Cam3,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443053,Cam4,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443054,Cam5,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443055,Cam,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443056,Cam7,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443057,Cam,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443058,Cam9,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443059,Cam10,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443060,Cam11,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443061,Cam12,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443062,Cam13,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443063,Cam14,Y,1089|Visual Camera Health|Active
+40509,ABC Liquor Store 12,F,443064,Cam15,Y,1089|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,434728,Cam1,N,
+40510,ABC Liquor Store 11,F,434735,Cam 8,N,
+40510,ABC Liquor Store 11,F,452143,Rear Ext,N,
+40510,ABC Liquor Store 11,F,434729,cam2,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,434730,Cam3,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,434731,Cam4,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,434732,Cam5,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,434733,Cam6,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,434734,Cam7,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,434736,Cam9,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,434737,Cam10,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,434738,Cam11,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,434739,Cam12,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,434740,Cam13,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,434741,Cam14,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452365,Cam,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452366,Cam2,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452367,Cam3,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452368,Cam4,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452369,Cam5,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452370,Cam6,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452371,Cam7,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452372,Cam8,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452373,Cam9,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452374,Cam10,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452375,Cam11,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452376,Cam12,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452377,Cam13,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452378,Cam14,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452379,Cam15,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452380,Cam16,Y,1090|Visual Camera Health|Active
+40510,ABC Liquor Store 11,F,452381,Cam17,Y,1090|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,434749,Cam 8,N,
+40511,ABC Liquor Store 10,F,434742,Cam1,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,434743,cam2,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,434744,Cam3,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,434745,Cam4,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,434746,Cam5,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,434747,Cam6,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,434748,Cam7,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,434750,Cam9,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,434751,Cam10,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,434752,Cam11,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,434753,Cam12,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,434754,Cam13,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,434755,Cam14,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452399,Cam1,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452400,Cam2,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452401,Cam3,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452402,Cam4,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452403,Cam5,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452404,Cam6,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452405,Cam7,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452406,Cam,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452407,Cam9,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452408,Cam10,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452409,Cam11,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452410,Cam12,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452411,Cam13,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452412,Cam14,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452413,Cam15,Y,1091|Visual Camera Health|Active
+40511,ABC Liquor Store 10,F,452414,Cam16,Y,1091|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,434763,Cam 8,N,
+40512,ABC Liquor Store 9,F,434764,Cam9,N,
+40512,ABC Liquor Store 9,F,434765,Cam10,N,
+40512,ABC Liquor Store 9,F,434766,Cam11,N,
+40512,ABC Liquor Store 9,F,434767,Cam12,N,
+40512,ABC Liquor Store 9,F,434768,Cam13,N,
+40512,ABC Liquor Store 9,F,434769,Cam14,N,
+40512,ABC Liquor Store 9,F,434756,Cam1,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,434757,cam2,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,434758,Cam3,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,434759,Cam4,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,434760,Cam5,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,434761,Cam6,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,434762,Cam7,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,443029,Cam1,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,443030,Cam2,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,443031,Cam3,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,443032,Cam4,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,443033,Cam5,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,443034,cam6,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,443035,Cam7,Y,1092|Visual Camera Health|Active
+40512,ABC Liquor Store 9,F,443036,Cam8,Y,1092|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,434777,Cam 8,N,
+40513,ABC Liquor Store 1,F,434770,Cam1,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,434771,cam2,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,434772,Cam3,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,434773,Cam4,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,434774,Cam5,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,434775,Cam6,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,434776,Cam7,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,434778,Cam9,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,434779,Cam10,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,434780,Cam11,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,434781,Cam12,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,434782,Cam13,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,434783,Cam14,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437240,Cam1,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437241,Cam2,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437242,Cam3,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437243,Cam4,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437244,Cam5,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437245,Cam6,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437246,Cam7,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437247,Cam8,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437248,Cam9,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437249,Cam10,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437250,Cam11,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437251,Cam12,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437252,Cam13,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437253,Cam14,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437254,Cam15,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437255,Cam16,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437256,Cam17,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437257,Cam18,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437258,Cam19,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437259,Cam20,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437260,Cam21,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437261,Cam22,Y,1093|Visual Camera Health|Active
+40513,ABC Liquor Store 1,F,437262,Cam23,Y,1093|Visual Camera Health|Active
+40672,AutoPatrol-Live,F,440617,KG Cohen 103,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440618,AveS Middle School Receptionist,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440619,EGRoom308,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440620,AveS Dining Room 2,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440621,EG3rdFlrHallway,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440622,EG3rdFlrElevatorLobby,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440623,EGOffice218,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440624,AveS Cellar Art/Dance Room,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440625,EGRoom206,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440626,BHSHallwayBathroom,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440627,EBTrailerHallway313-316,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440628,ECBsmntRm12,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440629,ECElevator,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440630,EBRoom232,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440631,EG4thFlStairB,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440632,EBStorage,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440633,2505GateEntrance,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440634,BHSRoom110,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440635,EGRoom402,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440636,EGRoom408,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440637,ECRoofStairs,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440638,2505ConeyAveV,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440639,EGArtRoom,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440640,EG3rdFlrHallway,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440641,2nd Erani 112,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440642,ECBsmntDafna,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440643,Trash Area,Y,1027|test1|Active
+40672,AutoPatrol-Live,F,440644,Ave S. 4,Y,1027|test1|Active
+40796,ABC Liquor Store 22,F,437397,Cam1,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437398,Cam2,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437399,Cam3,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437400,Cam,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437401,Cam5,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437402,Cam6,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437403,Cam7,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437404,Cam8,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437405,Cam9,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437406,Cam10,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437407,Cam11,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437408,Cam12,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437409,Cam13,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437410,Cam14,Y,1074|Visual Camera Health|Active
+40796,ABC Liquor Store 22,F,437411,Cam15,Y,1074|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437412,Cam1,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437413,Cam2,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437414,Cam3,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437415,Cam4,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437416,Cam5,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437417,Cam6,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437418,Cam7,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437419,Cam8,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437420,Cam9,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437421,Cam10,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437422,Cam11,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437423,Cam12,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437424,Cam13,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437425,Cam14,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437426,Cam15,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437427,Cam16,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437428,Cam17,Y,1075|Visual Camera Health|Active
+40797,ABC Liquor Store 21,F,437429,Driveway Exit,Y,1075|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437430,Cam1,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437431,Cam2,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437432,Cam3,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437433,Cam4,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437434,Cam5,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437435,Cam6,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437436,Cam7,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437437,Cam8,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437438,Cam9,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437439,Cam10,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437440,Cam11,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437441,Cam12,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437442,Cam13,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437443,Cam14,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437444,Cam15,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437445,Cam16,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437446,Cam17,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437447,Cam18,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437448,Cam19,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437449,Cam20,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437450,Cam21,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437451,Cam22,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437452,Cam23,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437453,Cam24,Y,1070|Visual Camera Health|Active
+40800,ABC Liquor Store 26,F,437454,Cam25,Y,1070|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437455,Cam1,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437456,Cam2,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437457,Cam3,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437458,Cam4,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437459,Cam5,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437460,Cam6,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437461,Cam,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437462,Cam8,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437463,Cam9,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437464,Cam10,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437465,Cam11,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437466,Cam12,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437467,Cam14,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437468,Cam15,Y,1071|Visual Camera Health|Active
+40801,ABC Liquor Store 25,F,437469,Cam16,Y,1071|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437470,Cam,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437471,Cam2,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437472,Cam3,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437473,Cam4,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437474,Cam5,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437475,Cam,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437476,Cam7,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437477,Cam8,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437478,Cam9,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437479,Cam10,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437480,Cam11,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437481,Cam12,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437482,Cam13,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437483,Cam14,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437484,Cam15,Y,1072|Visual Camera Health|Active
+40802,ABC Liquor Store 24,F,437485,Cam16,Y,1072|Visual Camera Health|Active
+41260,Cimino Electric,F,440776,PARKING,Y,331|VCH Check|Active
+41260,Cimino Electric,F,440777,YARD LEFT,Y,331|VCH Check|Active
+41260,Cimino Electric,F,440778,LICENSE GATE,Y,331|VCH Check|Active
+41260,Cimino Electric,F,440779,SHOP MID ROW,Y,331|VCH Check|Active
+41260,Cimino Electric,F,440780,YARD CENTER,Y,331|VCH Check|Active
+41260,Cimino Electric,F,440781,SHOP,Y,331|VCH Check|Active
+41260,Cimino Electric,F,440782,FRONT ENTRY,Y,331|VCH Check|Active
+41260,Cimino Electric,F,440783,GATE,Y,331|VCH Check|Active
+41260,Cimino Electric,F,440784,SOUTH SHOP CORNER,Y,331|VCH Check|Active
+41260,Cimino Electric,F,440785,Yard 180,Y,331|VCH Check|Active
+41262,"Link Housing - 550 M St, Eureka, CA",F,440790,D1 Parking East,Y,333|VCH Check|Active
+41262,"Link Housing - 550 M St, Eureka, CA",F,440791,D2 Alley South,Y,333|VCH Check|Active
+41262,"Link Housing - 550 M St, Eureka, CA",F,440792,D3 Pole N/W View,Y,333|VCH Check|Active
+41262,"Link Housing - 550 M St, Eureka, CA",F,440793,D4 Pole S/W View,Y,333|VCH Check|Active
+41263,Tate's Tire Pro's and Auto Service,F,440799,Lobby,N,
+41263,Tate's Tire Pro's and Auto Service,F,440803,Front Door,N,
+41263,Tate's Tire Pro's and Auto Service,F,440794,Front Lot,Y,334|VCH Check|Active
+41263,Tate's Tire Pro's and Auto Service,F,440795,Gate,Y,334|VCH Check|Active
+41263,Tate's Tire Pro's and Auto Service,F,440796,Side Lot,Y,334|VCH Check|Active
+41263,Tate's Tire Pro's and Auto Service,F,440797,Back Lot,Y,334|VCH Check|Active
+41263,Tate's Tire Pro's and Auto Service,F,440798,Front Lot,Y,334|VCH Check|Active
+41263,Tate's Tire Pro's and Auto Service,F,440800,Gate,Y,334|VCH Check|Active
+41263,Tate's Tire Pro's and Auto Service,F,440801,Side Lot,Y,334|VCH Check|Active
+41263,Tate's Tire Pro's and Auto Service,F,440802,Back Lot,Y,334|VCH Check|Active
+41264,Mission Ace Hardware and Lumber,F,440804,Entry Camera,Y,335|VCH Check|Active
+41264,Mission Ace Hardware and Lumber,F,440805,Parking Lot Camera,Y,335|VCH Check|Active
+41264,Mission Ace Hardware and Lumber,F,440806,Rear Lot Camera,Y,335|VCH Check|Active
+41265,Ace Hardware - Harris St.,C,440807,Potting Soil,N,
+41265,Ace Hardware - Harris St.,C,440808,South Front Lot,N,
+41265,Ace Hardware - Harris St.,C,441712,POTTING SOIL SPEAKER,N,
+41265,Ace Hardware - Harris St.,C,441713,SHEETROCK,N,
+41265,Ace Hardware - Harris St.,C,441714,SOUTH EXIT,N,
+41265,Ace Hardware - Harris St.,C,441715,SOUTH FRONT LOT,N,
+41265,Ace Hardware - Harris St.,C,441716,GUN/ FISH AND GAME,N,
+41265,Ace Hardware - Harris St.,C,441717,S/E LUMBER YARD,N,
+41265,Ace Hardware - Harris St.,C,441718,SOUTH LOT SPEAKER,N,
+41265,Ace Hardware - Harris St.,C,441719,N/E LUMBER YARD,N,
+41265,Ace Hardware - Harris St.,C,441720,FRONT ENTRY,N,
+41265,Ace Hardware - Harris St.,C,441721,BBQ'S,N,
+41265,Ace Hardware - Harris St.,C,441722,POTTING SOIL,N,
+41265,Ace Hardware - Harris St.,C,441723,REGISTERS,N,
+41265,Ace Hardware - Harris St.,C,441724,SOUTH LUMBER YARD,N,
+41266,Advanced Security Systems - Eureka Office,F,440809,Generator Patio,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440810,4th St. W.,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440811,4th & O St.,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440812,Back Lot PTZ,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440813,Back Parking E.,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440814,Front Office,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440815,Annex Front Lobby,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440816,O St. S.,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440817,Back Lot Northeast,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440818,Conference Back Entry,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440819,Kitchen,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440820,Annex Back Entry,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440821,Conference Room,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440822,5th St Looking North,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440823,Back Parking W.,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440824,4th st. E.,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440825,Annex Interior Looking North,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440826,Annex Alley Looking South,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440827,Conference Front Entry,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440828,O St Looking West,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440829,Annex to Parking Lot Doors,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440830,Service Department,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440831,Parts Shelf,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440832,Back Lot Southeast,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440833,Back Lot Northwest,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440834,5th Street looking South,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440835,Annex Interior Looking South,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440836,Reception,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440837,Back Exit,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440838,O St. Parking,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440839,Annex Alley Looking North,Y,337|VCH Check|Active
+41266,Advanced Security Systems - Eureka Office,F,440840,Annex Back Above Door,Y,337|VCH Check|Active
+41798,CC260,Z,444361,360 View 1,N,
+41798,CC260,Z,444362,360 View 2,N,
+41798,CC260,Z,444363,360 View 3,N,
+41798,CC260,Z,444364,360 View 4,N,
+41798,CC260,Z,444365,PTZ,N,
+41798,CC260,Z,444366,SightLogix HD,N,
+42376,Journey Juice (2),B,445438,Dumpster*,N,
+42376,Journey Juice (2),B,445439,Front Porch*,N,
+42376,Journey Juice (2),B,445440,Back Porch*,N,
+42376,Journey Juice (2),B,445441,Laundromat*,N,
+42689,VCH Demo Site,B,447148,Store camera (1),N,
+42689,VCH Demo Site,B,447149,Lot 1,N,
+42689,VCH Demo Site,B,447150,Lot 2,Y,430|Visual Camera Health | 2|Paused
+42689,VCH Demo Site,B,447151,Waiting room camera (1),Y,430|Visual Camera Health | 2|Paused
+42689,VCH Demo Site,B,447152,Factory 1 camera (1),Y,430|Visual Camera Health | 2|Paused
+43138,Elva Nunes Residence,B,449248,OE-CC51D5-50 (141F1),N,
+43138,Elva Nunes Residence,B,449258,Speaker,N,
+43637,RRMS Internal Testing - VID9999,F,452159,Pole 17 West Division Street View,N,
+43637,RRMS Internal Testing - VID9999,F,452279,Pole 7 South West View,N,
+43637,RRMS Internal Testing - VID9999,F,452280,Camera 1,N,
+43637,RRMS Internal Testing - VID9999,F,461559,Exterior Cam 2,N,
+43637,RRMS Internal Testing - VID9999,F,464564,NE Outside Generator,N,
+43637,RRMS Internal Testing - VID9999,F,450815,VCH Test Camera in Technical,Y,1060|RRMS VCH Test|Active
+43637,RRMS Internal Testing - VID9999,F,465576,NW Generator Ext,Y,1065|Corona NE Gen|Active
+43928,hanwha (Health Check),B,451627,ECBsmntRm14,N,
+43928,hanwha (Health Check),B,451628,EG2ndFlrElevatorLobby,N,
+43928,hanwha (Health Check),B,451629,ECBsmntRm18,N,
+43928,hanwha (Health Check),B,451630,ECRoofStairs,N,
+43928,hanwha (Health Check),B,451631,EGTherapyRoom3,N,
+43928,hanwha (Health Check),B,451632,EG2ndFlrOfficeNurseEntrance,N,
+43928,hanwha (Health Check),B,451633,EGAveYMcDonald,N,
+43928,hanwha (Health Check),B,451634,EGRoom312,N,
+43928,hanwha (Health Check),B,451635,ECAveMEntrance,N,
+43928,hanwha (Health Check),B,451636,BHSRoom111,N,
+43928,hanwha (Health Check),B,451637,EG2ndFlrHallway,N,
+43928,hanwha (Health Check),B,451638,EBRoom310,N,
+43928,hanwha (Health Check),B,451639,EGRoom318,N,
+44879,Solful - Petaluma,F,456313,Parking Lot Speaker,N,
+44879,Solful - Petaluma,F,456301,Building West (Cam 17),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456302,Retail Entry (Cam 9),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456303,Pickup Fisheye (Cam 10),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456304,Building Southwest (Cam 16),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456305,Front South (Cam 21),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456306,Retail Northeast (Cam 8),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456307,Breakroom (Cam 3),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456308,Parking Lot 180 (Cam 20),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456309,Building South (Cam 22),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456310,Front North (Cam 18),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456311,POS Fisheye (Cam 7),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456312,Retail Southwest (Cam 13),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456314,Retail Southeast (Cam 12),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456315,Retail Northwest (Cam 6),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456316,Retail Fisheye (Cam 11),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456317,Intake Storage Fisheye (Cam 14),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456318,Cannabis Storage Fisheye (Cam 15),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456319,IT Room Fisheye (Cam 1),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456320,Security Fisheye (Cam 19),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456321,Office Fisheye (Cam 2),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456322,Kitchenette (Cam 4),Y,860|VCH Check|Active
+44879,Solful - Petaluma,F,456323,Vestibule (Cam 5),Y,860|VCH Check|Active
+45845,hanwha 2 (Health Check),B,460586,ECBsmntRm04,N,
+45845,hanwha 2 (Health Check),B,460587,BMSHallwayE12,N,
+45845,hanwha 2 (Health Check),B,460588,EG4thFlrTerrace,N,
+45845,hanwha 2 (Health Check),B,460589,GHSMainEntrance,N,
+45845,hanwha 2 (Health Check),B,460590,EBTrailerYardSideRight,N,
+45845,hanwha 2 (Health Check),B,460591,EGParkingFront,N,
+46292,Victoria - Demo,B,463908,IP Camera 01,N,
+46292,Victoria - Demo,B,463909,IP Camera 02,N,
+46292,Victoria - Demo,B,463910,IP Camera 01,N,
+46292,Victoria - Demo,B,463911,IP Camera 02,N,
+46292,Victoria - Demo,B,463912,Test,N,
+46292,Victoria - Demo,B,463913,Generic Stream camera (1),N,
+46292,Victoria - Demo,B,463914,TITUS TS2506 - C2 camera (1),N,
+46292,Victoria - Demo,B,463915,TITUS TS2506 - C3 PTZ camera (1),N,
+46292,Victoria - Demo,B,463916,Perimeter Sensing Camera,N,
+46560,hanwha 2,F,464956,ECBsmntRm04,N,
+46560,hanwha 2,F,464958,EG4thFlrTerrace,N,
+46560,hanwha 2,F,464959,EBTrailerYardSideRight,N,
+46560,hanwha 2,F,464960,EGParkingFront,N,
+46560,hanwha 2,F,464961,Stored Video test camera (1),N,
+46560,hanwha 2,F,464957,BMSHallwayE12,Y,1066|Test No Raise|Active

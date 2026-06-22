@@ -12,9 +12,10 @@ incoming:
   - topics/data-science/notes/concepts/detection-pipeline.md
   - topics/data-science/notes/concepts/evaluation-tiers.md
   - topics/data-science/notes/concepts/training-pipeline-architecture.md
+  - topics/models/weapon-v8/_summary.md
   - topics/team-structure/notes/entities/carlos-torres.md
   - topics/team-structure/notes/entities/zack-schmidt.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Weapon v8 Model (weapon-v8-XL-736)

@@ -10,9 +10,14 @@ outgoing:
   - topics/personal-notes/notes/entities/mark-todos.md
   - topics/personal-notes/notes/daily/2026-05-07.md
 incoming:
+  - topics/billing/_summary.md
+  - topics/billing/_todos.md
+  - topics/billing/notes/entities/billing-events-catalog.md
+  - topics/billing/notes/syntheses/2026-05-11_billing-pain-post-mortem.md
+  - topics/billing/reading-list.md
   - topics/personal-notes/notes/daily/2026-05-07.md
   - topics/vms-connector/notes/concepts/2026-05-07_handoff-pr-1681-promotion.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 # `site_product_started` is functionally dead — do not re-enable

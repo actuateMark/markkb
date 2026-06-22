@@ -9,6 +9,7 @@ author: kb-bot
 incoming:
   - topics/actuate-libraries/notes/entities/actuate-vlm.md
   - topics/actuate-platform/notes/entities/core-repo-suite.md
+  - topics/ai-models/_summary.md
   - topics/ai-models/notes/concepts/vlm-pipeline-architecture.md
   - topics/ai-models/notes/entities/ds-smart-alert-supervisor.md
   - topics/ai-models/notes/entities/qwen3vl-aws.md
@@ -16,8 +17,7 @@ incoming:
   - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
   - topics/aws-cost/notes/syntheses/cost-architecture.md
   - topics/settings-automation/notes/concepts/vlm-fp-reduction.md
-  - topics/team-structure/notes/entities/clarissa-herman.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # vlm-inference

@@ -10,14 +10,14 @@ incoming:
   - _index.md
   - topics/fleet-architecture/notes/concepts/library-decomposition-required.md
   - topics/fleet-architecture/notes/concepts/observability-and-tracing.md
+  - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
+  - topics/personal-notes/notes/concepts/2026-05-11_next-session-handoff.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
   - topics/software-architecture/_summary.md
-  - topics/software-architecture/notes/syntheses/2026-04-16_code-health-dashboard.md
-  - topics/software-architecture/notes/syntheses/2026-04-16_metrics-to-track.md
-  - topics/software-architecture/notes/syntheses/2026-04-16_tech-debt-agent.md
-  - topics/software-architecture/notes/syntheses/2026-04-16_tooling-landscape.md
-incoming_updated: 2026-05-01
+  - topics/software-architecture/notes/concepts/2026-05-11_enforcement-as-proposal-scorer.md
+  - topics/software-architecture/notes/concepts/2026-05-11_sketch-findings-enforcement.md
+incoming_updated: 2026-05-27
 ---
 
 # Architecture Enforcement & Fitness Functions

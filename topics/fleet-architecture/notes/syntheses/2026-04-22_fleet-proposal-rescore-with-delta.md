@@ -12,10 +12,12 @@ incoming:
   - topics/aws-cost/notes/syntheses/2026-04-23_s3-tier3-cost-investigation.md
   - topics/aws-cost/notes/syntheses/2026-04-27_aws-cost-topic-spinoff.md
   - topics/aws-cost/notes/syntheses/2026-04-28_s3-cost-reduction-action-plan.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-05_fleet-architecture-workstream-context.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
+  - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
+  - topics/personal-notes/notes/concepts/2026-05-11_pre-impl-research-priority-reorder.md
   - topics/personal-notes/notes/daily/2026-04-22.md
-  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Fleet Proposal Re-Score with 2026-04-22 Delta + Real CE Data
@@ -67,7 +69,7 @@ The 2026-04-16 scoring used a projected "10× fleet" lens with the cost-delta br
 
 - **Motion-gating-at-puller (D, E)**: if FDMD drops 60-80% of raw frames before they hit Redis/NATS/S3, both PUT volume and storage GB-months drop proportionally. On the $33k/mo baseline with 62.7% request cost and 35.2% storage cost, a 70% frame drop would linearly reduce ~97.9% of the S3 workload's drivers (all the frame paths). In practice the non-frame paths (clip uploads, spray bucket, replication) don't drop — call it a ~50-60% S3 cost reduction if motion-gating works as modeled, i.e. ~$16-20k/mo savings (~$200-240k/year). This is the single largest lever in any proposal.
 - **Conditional-promotion-at-window-close (applies to all delta-adopting proposals, most structurally to A, C, E)**: corrected to ~1.45× PUT reduction on the non-eventful-window population, i.e. ~$4.7k/mo of the $15k/mo Tier1 bill (~$56k/year). This is real but modest, and it stacks multiplicatively with motion-gating for D/E.
-- **No-frame-transport (C)**: per `[[2026-04-16_proposal-c-camera-worker]]` §"Cost model", C's zero-cross-AZ-frame-transit and absence of a Redis frames-bus delivers −15% to −30% projected at 10× fleet. That projection predates the CE data but is consistent with it — the savings come from avoiding the data-transfer bill plus shrinking the Redis cluster to a control-plane-only footprint, not from S3 directly. C does not *natively* do motion-gating but can adopt the in-cluster-blob-plus-conditional-promotion pattern trivially (delta synthesis §"Proposal C" explicitly calls this out as "Natural fit"), so C picks up the ~$4.7k/mo conditional-promotion win plus its existing structural savings.
+- **No-frame-transport (C)**: per `[[2026-04-16_proposal-c-camera-worker]]` §"Cost model", C's zero-cross-AZ-frame-transit and absence of a Redis frames-bus delivers −15% to −30% projected at 10× fleet. That projection predates the CE data but is consistent with it — the savings come from avoiding the data-transfer bill plus [[shrinking]] the Redis cluster to a control-plane-only footprint, not from S3 directly. C does not *natively* do motion-gating but can adopt the in-cluster-blob-plus-conditional-promotion pattern trivially (delta synthesis §"Proposal C" explicitly calls this out as "Natural fit"), so C picks up the ~$4.7k/mo conditional-promotion win plus its existing structural savings.
 - **B's 4-hop frame transport (B)**: baseline projected +15-25% at current scale, break-even at 3-5× fleet. The CE data confirms that cross-AZ data transfer is only 2.1% of S3 cost today ($695/mo), but B's cost story is about the much larger ~$400k/mo projected inter-AZ bill at scale driven by full JPEG bytes traversing 4 Redis Streams hops — the CE data neither confirms nor refutes that projection (today's bill isn't 4-hop-based; the projection is what B's architecture would incur). No change to B's cost score.
 - **A (minimal split)**: A's +10-15% vs today was based on one Redis hop plus added pod count. CE data doesn't change A's story. If A adopts the delta (it can, with moderate code churn in `SlidingWindowStep.close_window`), it picks up the ~$4.7k/mo conditional-promotion win — enough to move A from "+10-15%" to "roughly neutral," but not into cost-win territory.
 
@@ -87,27 +89,27 @@ Each table carries 2026-04-16 scores in column 2, the 2026-04-22 rescore in colu
 
 ### Proposal A — Minimal Split
 
-| Dimension | 2026-04-16 | 2026-04-22 | Delta + rationale |
-|-----------|-----------:|-----------:|-------------------|
-| Independent scalability (35%) | 3 | 3 | No change. Pipeline still site-pod. |
-| Cost reduction (20%) | 3 | 4 | +1. Adopting the conditional-promotion delta saves ~$4.7k/mo; moves A from "+10-15%" to "roughly neutral." Still doesn't reach the -10% bracket. |
-| Failure isolation (15%) | 4 | 4 | No change. |
-| Operational simplicity (15%) | 6 | 6 | No change. |
-| Migration risk (10%) | 9 | 9 | No change (delta is ~1-2 weeks additive, within bracket). |
-| Failover quality (5%) | 4 | 4 | No change. |
+| Dimension                     | 2026-04-16 | 2026-04-22 | Delta + rationale                                                                                                                                |
+| ----------------------------- | ---------: | ---------: | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Independent scalability (35%) |          3 |          3 | No change. Pipeline still site-pod.                                                                                                              |
+| Cost reduction (20%)          |          3 |          4 | +1. Adopting the conditional-promotion delta saves ~$4.7k/mo; moves A from "+10-15%" to "roughly neutral." Still doesn't reach the -10% bracket. |
+| Failure isolation (15%)       |          4 |          4 | No change.                                                                                                                                       |
+| Operational simplicity (15%)  |          6 |          6 | No change.                                                                                                                                       |
+| Migration risk (10%)          |          9 |          9 | No change (delta is ~1-2 weeks additive, within bracket).                                                                                        |
+| Failover quality (5%)         |          4 |          4 | No change.                                                                                                                                       |
 
 Weighted 2026-04-22: `(3×0.35)+(4×0.20)+(4×0.15)+(6×0.15)+(9×0.10)+(4×0.05) = 4.45 / 10` (vs 4.25).
 
 ### Proposal B — Stage Fleets
 
-| Dimension | 2026-04-16 | 2026-04-22 | Delta + rationale |
-|-----------|-----------:|-----------:|-------------------|
-| Independent scalability (35%) | 10 | 10 | No change. Strongest on primary criterion. |
-| Cost reduction (20%) | 6 | 6 | No change. The delta-synthesis's "awkward fit" analysis for B is retained as architecturally valid, but the ~1.45× corrected multiplier doesn't make the awkwardness materially worse or better — the CE data doesn't meaningfully revise B's 10× projection. |
-| Failure isolation (15%) | 9 | 9 | No change. |
-| Operational simplicity (15%) | 3 | 3 | No change. |
-| Migration risk (10%) | 3 | 3 | No change. |
-| Failover quality (5%) | 9 | 9 | No change. |
+| Dimension                     | 2026-04-16 | 2026-04-22 | Delta + rationale                                                                                                                                                                                                                                             |
+| ----------------------------- | ---------: | ---------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Independent scalability (35%) |         10 |         10 | No change. Strongest on primary criterion.                                                                                                                                                                                                                    |
+| Cost reduction (20%)          |          6 |          6 | No change. The delta-synthesis's "awkward fit" analysis for B is retained as architecturally valid, but the ~1.45× corrected multiplier doesn't make the awkwardness materially worse or better — the CE data doesn't meaningfully revise B's 10× projection. |
+| Failure isolation (15%)       |          9 |          9 | No change.                                                                                                                                                                                                                                                    |
+| Operational simplicity (15%)  |          3 |          3 | No change.                                                                                                                                                                                                                                                    |
+| Migration risk (10%)          |          3 |          3 | No change.                                                                                                                                                                                                                                                    |
+| Failover quality (5%)         |          9 |          9 | No change.                                                                                                                                                                                                                                                    |
 
 Weighted 2026-04-22: `(10×0.35)+(6×0.20)+(9×0.15)+(3×0.15)+(3×0.10)+(9×0.05) = 7.25 / 10` (unchanged).
 

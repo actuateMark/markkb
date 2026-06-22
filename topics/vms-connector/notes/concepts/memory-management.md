@@ -19,8 +19,8 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
   - topics/integrations/rtsp/notes/syntheses/rtsp-robustness-enhancement-plan.md
   - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
-  - topics/vms-connector/notes/syntheses/performance-optimization-landscape.md
-incoming_updated: 2026-05-01
+  - topics/profiling-and-performance/_summary.md
+incoming_updated: 2026-05-27
 ---
 
 # Memory Management

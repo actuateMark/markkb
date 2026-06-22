@@ -167,7 +167,7 @@ affinity:
 
 1. **Consolidation can evict GPU pods** — annotate any pod holding live state with `karpenter.sh/do-not-disrupt: "true"`. For proposals C & E, this affects any camera-group-pinned worker.
 2. **Driver version skew** — Karpenter's default AMI may lag NVIDIA driver versions. Verify `ds-terraform-eks-v2` pins a recent GPU-enabled EKS-optimized AMI.
-3. **GPU oversubscription is invisible** — K8s doesn't natively over-commit GPUs. One `nvidia.com/gpu: 1` request per pod; Karpenter respects hard limits. **High pod-density strategies require custom Karpenter plugins or manual bin-packing**, not standard K8s.
+3. **GPU oversubscription is invisible** — K8s doesn't natively over-commit GPUs. One `nvidia.com/gpu: 1` request per pod; Karpenter respects hard limits. **High pod-density [[strategies]] require custom Karpenter plugins or manual bin-packing**, not standard K8s.
 4. **[[hardware-accelerated-codecs|NVDEC]] engine contention** — if two pods on the same G6 node both saturate their local [[hardware-accelerated-codecs|NVDEC]] engine, both stall. Pod density planning is essential (see throughput note above).
 
 ## Open blockers (before proposal scoring)

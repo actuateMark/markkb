@@ -4,17 +4,22 @@ type: entity
 topic: autopatrol
 tags: [autopatrol, backlog, deferred, mark, work-plan, immix, billing]
 created: 2026-05-07
-updated: 2026-05-07
+updated: 2026-06-03
 author: kb-bot
 outgoing:
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
   - topics/autopatrol/notes/syntheses/2026-05-07_cleanup-lambda-state-matrix-verify.md
   - topics/autopatrol/notes/syntheses/2026-05-07_cohort-b-no-backfill-decision.md
-  - topics/personal-notes/notes/daily/2026-05-07.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-  - topics/vms-connector/notes/concepts/2026-05-07_site-product-started-deprecated.md
-incoming_updated: 2026-05-08
+  - topics/billing/_summary.md
+  - topics/billing/_todos.md
+  - topics/billing/notes/concepts/2026-05-11_billing-reconciliation-dashboard-design.md
+  - topics/billing/notes/entities/billing-deferred-backlog.md
+  - topics/billing/notes/entities/billing-events-catalog.md
+  - topics/billing/notes/syntheses/2026-05-11_billing-pain-post-mortem.md
+  - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
+  - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
+incoming_updated: 2026-05-27
 ---
 
 # AutoPatrol Deferred Backlog
@@ -33,6 +38,7 @@ Active AP work — anything still moving — stays in [[mark-todos]] under its o
 
 | Item | Source §N | Status | Decision Owner | Decision Trigger |
 |------|-----------|--------|----------------|------------------|
+| [AP schedule-sync resilience (post-2026-06-03)](#ap-schedule-sync-resilience-post-2026-06-03) | 2026-06-03 incident | Interim fix shipped | Mark | Layer-2 promotion if next redeploy-suppression incident, or Layer-3 (NR instrumentation) lands independently |
 | [§25 Cohort B no-backfill decision](#25-cohort-b-no-backfill-decision-archived-2026-05-07) | §25 archived 2026-05-07 | DECIDED — no backfill | Mark | Re-open if cohort grows or customer complaints surface |
 | [§26 Cohort F + §16 hardening tail](#26-cohort-f--16-hardening-tail) | §26 deferred 2026-05-07 | Wait | Mark | PR #14 merge + first end-to-end classifier run |
 | [§27 Group demotion PR 1](#27-autopatrol-group-demotion-pr-1) | §27 deferred 2026-05-07 | Wait | Mark + admin team | Ops manual-promotion volume becomes painful |
@@ -55,6 +61,9 @@ Active AP work — anything still moving — stays in [[mark-todos]] under its o
 | [Immix zombie-tenants Jira ticket draft](#immix-zombie-tenants-jira-ticket) | rolled morning followup | Wait | Mark | When ready to engage Immix engineering |
 | [Cleanup-Lambda canary across state matrix](#cleanup-lambda-canary-across-state-matrix) | §3 follow-up | Surfaced 2026-05-07 | Mark | Real customer case fires unexpectedly OR before next §3 code change |
 | [Billing emit on crash / early-endrun paths](#billing-emit-on-crash--early-endrun-paths) | PR #1675 / #1680 / #1682 follow-up | Surfaced 2026-05-07 | Mark | After PR #1683 (rename + VCH started-fix) lands; investigate when crash patterns surface in fleet_error_top15 |
+| [PR #1662 VCH no_patrols suppression verify](#pr-1662-vch-no_patrols-suppression-verify) | §17 / dashboard signal investigation | Surfaced 2026-05-19 | Mark | VCH share of `connector_no_patrols_to_run_24h` doesn't drop after rolling-restart fully rolls the #1662 image |
+| [6 autopatrol pods looping empty queue](#6-autopatrol-pods-looping-empty-queue) | dashboard signal investigation 2026-05-19 | Surfaced 2026-05-19 | Mark | Count grows beyond 6, or any of these 6 sites becomes a customer escalation |
+| [AP schedule settings regen-from-here capability](#ap-schedule-settings-regen-from-here-capability) | empty-metrics fix 2026-05-27 | Surfaced 2026-05-27 | Mark + admin team | Next time a schedule needs a settings-only regen and we're not at an admin UI |
 
 ---
 
@@ -309,6 +318,116 @@ Surfaced 2026-05-07 during the §3 verify pass — see [[2026-05-07_cleanup-lamb
 - [[2026-04-17_stale-schedule-cleanup-design]] — state-matrix design
 - [[autopatrol-cleanup-lambda]] — entity
 - Health-check JSON: `~/.local/state/minipc-tasks/autopatrol/cleanup-YYYY-MM-DD.json`
+
+---
+
+## PR #1662 VCH no_patrols suppression verify
+
+Surfaced 2026-05-19 while root-causing the `connector_no_patrols_to_run_24h=32` RED signal that previously hid under `error` (sink renderer bug, also fixed 2026-05-19 — see [[2026-05-19_dashboard-signal-repairs]] once written). Of the 32 distinct containers logging "No patrols to run after all attempts" in 24h, **25 are VCH containers** (4 hits/pod, ~1/cron tick). PR #1662 was supposed to drop this emit from VCH integration containers — clearly incomplete on rearch.
+
+**Why deferred:** Not customer-facing; signal is steady-state noise not a regression. But it means the actually-noisy autopatrol subset (the other 6/32) is masked by the VCH residual, so the threshold can't be recalibrated downward without first fixing VCH.
+
+**Open work (when revived):**
+- Pull the deployed `:rearchitecture` image SHA for a VCH pod (e.g. site 41261 — first VCH in the FACET list)
+- Confirm PR #1662's suppression code is present in that image (`integration_type` gate at the emit site)
+- If present-but-not-firing: the gate condition is wrong (logging integration_type at runtime would confirm)
+- If absent: the rearch image hasn't picked up #1662's changes — investigate via Argo / image promotion chain
+- After fix lands + rolls: recalibrate `connector_no_patrols_to_run_24h` thresholds (pairs with the existing "Recalibrate connector_no_patrols_to_run_24h thresholds" entry above)
+
+**Re-open trigger:**
+- VCH share of `connector_no_patrols_to_run_24h` doesn't drop after the next rolling-restart fully rolls the latest rearch image
+- A real autopatrol regression hides because we can't see it through the VCH noise floor
+
+**Resources:**
+- vms-connector PR [#1662](https://github.com/aegissystems/vms-connector/pull/1662) — VCH `no_patrols` emit drop (merged stage 2026-04-28 → rearch 2026-05-01 bundled in #1660)
+- `connector_no_patrols_to_run_24h` signal in `~/.claude/skills/dashboard-check/config/signals.json`
+- nrql-investigator 2026-05-19 finding (`FACET container_name SINCE 24 hours ago` → 32 containers, 25 VCH / 7 autopatrol)
+
+---
+
+## 6 autopatrol pods looping empty queue
+
+Surfaced 2026-05-19 during the `connector_no_patrols_to_run_24h=32` investigation. Of the 32 containers firing "No patrols to run after all attempts", 6 are autopatrol pods looping every 15 min on an empty queue:
+
+| Site | Container | Hits/24h |
+|------|-----------|----------|
+| 38316 | `connector-38316-autopatrol-597` | 96 |
+| 46560 | `connector-46560-autopatrol-1066` | 96 |
+| 37837 | `connector-37837-autopatrol-1028` | 24 |
+| 41070 | `connector-41070-autopatrol-1029` | 24 |
+| 40672 | `connector-40672-autopatrol-1027` | 24 |
+| 41178 | `connector-41178-autopatrol-350` | 24 |
+| 46560 | `connector-46560-autopatrol-1100` | 2 |
+
+96/24h = once per 15 minutes — matches the cron schedule firing repeatedly against an empty patrol queue. Almost certainly schedules in "Awaiting" state on admin side, OR misconfigured dispatch.
+
+**Why deferred:** Pre-existing, not escalating, no customer escalation tied to these sites yet. The time-series is flat over 24h — no spike. These are the kind of items that get fixed in batch when an admin ops sweep happens, not one-off.
+
+**Open work (when revived):**
+- Cross-reference each of the 6 site_ids against admin Postgres: `select id, name, autopatrol_schedule_id, schedule_status from camera_site where id in (38316, 46560, 37837, 41070, 40672, 41178)` — or via admin UI
+- For each: confirm whether the schedule is `Awaiting`, `Active`, or `Disabled`; whether the connector is supposed to be running autopatrol at all
+- Decide per site: re-activate schedule, disable cronjob, or accept noise (e.g. customer-paused)
+- If a pattern emerges (e.g. all 6 came through cohort-F migration), document it in [[2026-05-06_cohort-f-investigation]] as a sub-class
+
+**Re-open trigger:**
+- Count grows materially beyond 6
+- Any of these 6 sites becomes a customer escalation
+- Operational ops sweep schedules a batch admin-cleanup pass
+
+**Resources:**
+- nrql-investigator 2026-05-19 finding (per-pod 24h FACET counts)
+- `connector_no_patrols_to_run_24h` signal description: see `~/.claude/skills/dashboard-check/config/signals.json`
+
+---
+
+## AP schedule-sync resilience (post-2026-06-03)
+
+Surfaced 2026-06-03 during incident recovery for ScheduleID `53C62AD7-B167-4E77-F72B-08DEC0C9AF65` (site 37255). Redeploy-suppression flag used a rolling 24h TTL with no calendar-day awareness, causing up to ~24h of legitimate-redeploy suppression. Calendar-day fix shipped in `fix/ap-redeploy-flag-calendar-day`; larger resilience backlog below.
+
+See [[2026-06-03_ap-redeploy-flag-calendar-day-stranding]] for incident and diagnosis.
+
+### Open work (resilience layers)
+
+1. **Admin-side reconciliation cron / DB deploy-state machine (Layer 2 — the real fix):** `AutoPatrolSchedule.settings_deploy_state` (pending|settings_uploaded|cronjob_created|failed) + attempts + last_error + last_attempted_at. Replace fire-and-forget Thread with enqueue + periodic retry of pending/failed rows. Makes deploy chain observable from the DB (dashboard query "schedules not in cronjob_created"). Covers BOTH Mechanism A (thread crash) and Mechanism B (redeploy flag).
+
+2. **Bounded retry + error escalation + structured greppable logging in _delayed_deploy_settings (Mechanism A):** Currently no retry on thread failure; silent death via `logger.error` in admin pod not in NR.
+
+3. **Tie redeploy-suppression flag to committed deploy-success marker (DB last_successful_deploy_date), not just "deploy_schedule_changes ran":** Today's calendar-day fix is interim; this is the durable version. Suppression can never outlive an actually-failed sync.
+
+4. **Admin pod into New Relic (Layer 3):** Gap documented at `topics/new-relic/notes/concepts/nr-connector-query-cookbook.md:314` (separate from AUTO-566). Deploy-thread + redeploy-skip logs become alertable. Independent track.
+
+5. **Onboarder-side post-deploy verification (Layer 1):** For each activated schedule, verify the K8s cronjob exists within ~15 min; emit OnboarderDeployStalled + Slack alert if absent.
+
+6. **Deploy_chain_check tool:** Immix → admin DB → S3 → K8s for a given schedule_id, building on `missing_schedule_probe.py` from [[2026-05-22_autopatrol-onboarding-silent-deploy-failure]] (see [[autopatrol-integration-tools]] TBD).
+
+**Why deferred:** Calendar-day fix is shipped as interim. Layers 2–6 are the durable architecture; trigger Layer-2 promotion if another redeploy-suppression incident surfaces or Layer-3 (NR instrumentation) lands independently.
+
+---
+
+## AP schedule settings regen-from-here capability
+
+Surfaced 2026-05-27 closing out the empty-metrics fix (vms-connector #1712 + [[actuate_admin]] #2451). After both fixes shipped, the two still-broken sites (37837, 41070) needed their S3 settings **regenerated** — the code fix only changes future generation, it doesn't rewrite existing `settings.json`. We discovered there's **no clean way to trigger a settings-only regen remotely**:
+
+- **The clean call** — `AutoPatrolSchedule.deploy_schedule_settings(call_deployer=False)` (rewrites S3 only, no cronjob churn) — needs a **prod Django shell**, which isn't wired up locally (local admin bring-up uses a DB restore, not prod RDS).
+- **The only remote trigger** — `PATCH /api/autopatrol_schedule/{id}/` (`autopatrol_schedule_view.py:64` `update`) — fires `deploy_schedule_settings(**call_deployer=True**)`, which also re-invokes the deployer and redeploys the cronjob (heavier than needed), needs a valid PATCH payload (mutation risk on a live customer schedule), and is gated by `CheckModelPermission` (the connector's read-mostly `api-token-prod` likely 403s on write).
+
+So today the practical path is an **admin-UI save** (what was done 2026-05-27 — worked for 37837, the 41070 trigger silently didn't land) or a prod shell one-liner if you have access.
+
+**Open work (when revived):**
+- Add a dedicated DRF `@action`, e.g. `POST /api/autopatrol_schedule/{id}/redeploy_settings/` (detail=True), that calls `deploy_schedule_settings(call_deployer=False)` and returns the resulting S3 key + a non-empty-metrics assertion. Settings-only, idempotent, no cronjob redeploy. Gate with `CheckModelPermission` or a service-account permission.
+- OR: extend the headless MCP-bypass pattern ([[2026-04-27_headless-mcp-bypass]]) with an admin-write helper (`~/.claude/lib/admin_write.py`) that hits the new endpoint with a write-scoped token — so regen + the follow-on verification (S3 non-empty → connector fallback clears) can run start-to-finish from here.
+- Either way, pair with a small batch helper: given a list of `deployment_id`s, regen each + verify the new settings carry non-empty metrics, and report State-A (fixed) vs State-B (stream_metrics empty in DB → needs data fix).
+
+**Why deferred:** not blocking — the immediate two sites get handled via UI save. This is about not having to round-trip through the admin UI (or a coworker) the next time settings need a forced regen. Pairs naturally with whoever owns the admin endpoint surface.
+
+**Re-open trigger:** next time a schedule needs a settings-only regen and we're not sitting at an admin UI — or when the empty-metrics dashboard signal (`ap_empty_metrics_warn_6h`) flags a new site and we want to self-serve the fix.
+
+**Resources:**
+- vms-connector PR [#1712](https://github.com/aegissystems/vms-connector/pull/1712) — connector-side `empty_metrics_dict` guard
+- [[actuate_admin]] PR [#2451](https://github.com/aegissystems/actuate_admin/pull/2451) — generator fallback (commit `0d8f1e5a`, in main/develop/staging)
+- [[autopatrol-aws-objects]] — where the regenerated `settings.json` lands (`actuate-settings` bucket)
+- [[2026-04-27_headless-mcp-bypass]] — the wrapper pattern to extend for admin writes
+- `autopatrol_schedule_view.py:64` (`update`) / `autopatrol_schedule_model.py:937` (`deploy_schedule_settings`) — current trigger surface
 
 ---
 

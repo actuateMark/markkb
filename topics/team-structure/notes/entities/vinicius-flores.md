@@ -6,11 +6,12 @@ updated: 2026-04-13
 tags: [person, engineering, external-api, scheduling]
 incoming:
   - topics/actuate-platform/notes/concepts/data-flow-architecture.md
+  - topics/external-api/_summary.md
   - topics/external-api/notes/entities/alarmwatch-customer.md
   - topics/product-roadmap/notes/concepts/active-risks.md
   - topics/team-structure/notes/entities/mark-barbera.md
   - topics/team-structure/notes/entities/tatiana-hanazaki.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Vinicius Flores

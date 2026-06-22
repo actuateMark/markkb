@@ -7,6 +7,7 @@ created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
 incoming:
+  - topics/actuate-platform/notes/entities/branch-conventions.md
   - topics/actuate-platform/notes/entities/core-repo-suite.md
   - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
   - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
@@ -16,8 +17,7 @@ incoming:
   - topics/aws-cost/notes/syntheses/cost-architecture.md
   - topics/data-science/notes/concepts/training-pipeline-architecture.md
   - topics/data-science/notes/entities/ds-training-pipeline.md
-  - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # ds-server-container

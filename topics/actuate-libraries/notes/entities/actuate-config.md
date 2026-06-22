@@ -22,7 +22,7 @@ incoming_updated: 2026-05-01
 
 ## Purpose
 
-actuate-config (v1.9.12) is the foundational configuration library for the Actuate platform. It parses the per-site `settings.json` file into strongly-typed Python configuration objects that the rest of the stack -- connectors, DAOs, monitoring, healthchecks -- consumes at runtime. Every [[vms-connector|VMS connector]] deployment starts by loading settings.json through this library.
+actuate-config (v1.9.12) is the foundational configuration library for the Actuate platform. It parses the per-site `settings.json` file into strongly-typed Python configuration objects that the rest of the stack -- connectors, DAOs, monitoring, [[healthchecks]] -- consumes at runtime. Every [[vms-connector|VMS connector]] deployment starts by loading settings.json through this library.
 
 ## Architecture
 

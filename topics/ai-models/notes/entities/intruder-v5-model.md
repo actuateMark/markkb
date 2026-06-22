@@ -11,8 +11,9 @@ incoming:
   - topics/data-science/notes/concepts/detection-pipeline.md
   - topics/data-science/notes/concepts/motion-detection-challenge.md
   - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
+  - topics/models/intruder-v5/_summary.md
   - topics/team-structure/notes/entities/vlad-sapeshka.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Intruder v5 Model (intruder-384h-512w-svc)

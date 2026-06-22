@@ -24,8 +24,9 @@ incoming:
   - topics/engineering-process/notes/entities/agent-issue-auditor.md
   - topics/engineering-process/notes/entities/agents-catalog.md
   - topics/engineering-process/notes/entities/skill-api-endpoint-development.md
+  - topics/personal-notes/notes/concepts/2026-05-19_handoff-anomaly-branches-triage.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 # Security Hardening Checklist

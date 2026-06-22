@@ -6,11 +6,22 @@ tags: [billing, snowflake, gold-billing, usage-monthly, site-product-run-day, cl
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
+incoming:
+  - topics/billing/_todos.md
+  - topics/billing/notes/concepts/2026-05-11_eng-242-substantially-answered.md
+  - topics/billing/notes/concepts/2026-05-11_nf2-deployment-state.md
+  - topics/billing/notes/entities/actuate-bi-repo.md
+  - topics/billing/notes/entities/billing-deferred-backlog.md
+  - topics/billing/notes/entities/sales-dashboard-repo.md
+  - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
+  - topics/personal-notes/notes/daily/2026-05-11.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-27
 ---
 
 # Snowflake Billing Tables
 
-Authoritative inventory of the Snowflake tables/views that consume customer-billing events from `event_queue_analytics.fifo` (via S3 + `actuate_bi` pipeline) and produce the revenue surface used by Ordway invoicing and the sales dashboard.
+Authoritative inventory of the Snowflake tables/views that consume customer-billing events from `event_queue_analytics.fifo` (via S3 + `actuate_bi` pipeline) and produce the revenue surface used by Ordway invoicing and the [[sales-dashboard|sales dashboard]].
 
 Closes [[_todos]] C5. Substantially answers ENG-242 (per [[2026-05-11_eng-242-substantially-answered]] — the remaining gap is the upstream DDL files in `actuate_bi/sql/snowflake/`).
 
@@ -95,7 +106,7 @@ Full column list (24):
 | `top_parent` / `second_parent` | string | Hierarchy |
 | `top_parent_id` | int | — |
 | `site_name` | string | — |
-| `integration_type` | string | RTSP, Milestone, Hanwha/DW/Nx, Exacq, Avigilon, Eagle Eye, Auto Patrol / Visual Camera Health, … |
+| `integration_type` | string | [[rtsp-deep-dive|RTSP]], Milestone, Hanwha/DW/Nx, Exacq, Avigilon, Eagle Eye, Auto Patrol / Visual Camera Health, … |
 | `customer_id` | int(38,0) | Maps to admin Postgres customer pk |
 | `product` | string | Product slug (matches NR log `act_a` field) |
 | `camera_id` | int | — |
@@ -131,12 +142,12 @@ Plus a filter: `event_type = 'site_product_ended' AND event_timestamp >= current
 
 **Invariant — clip cameras don't have ids on the Snowflake side.** Reconciliation must join on `(site_name, camera_name)`. The reconcile script uses `site_name || '::' || camera_name` as a synthetic key everywhere clip data is touched ([[sales-dashboard-repo]] `snowflake.py` L332-1403).
 
-`clip_received` does **not** flow through SPRD. Sentinel Verifier / AI Link / Clips bypass `usage_monthly`'s 3h threshold entirely — they're billed (or not) per clip-received regardless of runtime. Pipeline mapping (per [[sales-dashboard-repo]] CLAUDE.md L298-302):
+`clip_received` does **not** flow through SPRD. [[sentinel-components|Sentinel]] Verifier / AI Link / Clips bypass `usage_monthly`'s 3h threshold entirely — they're billed (or not) per clip-received regardless of runtime. Pipeline mapping (per [[sales-dashboard-repo]] CLAUDE.md L298-302):
 
 | Postgres integration_type | Snowflake pipeline | Billed? |
 |---|---|---|
-| RTSP / Milestone / Hanwha / DW / Nx / Exacq / Avigilon / Eagle Eye / etc. | SPRD → `usage_monthly` | Yes, **iff** 3h+ runtime AND has Ordway subscription |
-| Sentinel Verifier / AI Link / Clips / Umbo | `clip_received` | Yes (no threshold) |
+| [[rtsp-deep-dive|RTSP]] / Milestone / Hanwha / DW / Nx / Exacq / Avigilon / Eagle Eye / etc. | SPRD → `usage_monthly` | Yes, **iff** 3h+ runtime AND has Ordway subscription |
+| [[sentinel-components|Sentinel]] Verifier / AI Link / Clips / Umbo | `clip_received` | Yes (no threshold) |
 | Auto Patrol / Visual Camera Health | SPRD (filtered out by `usage_products`) | No — billed externally via Immix |
 
 ### `gold.billing.top_parent` — customer-hierarchy dimension

@@ -3,7 +3,7 @@ type: entity
 author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
-tags: [person, engineering, autopatrol, ebus, chm, autopatrol, autopatrol, autopatrol, autopatrol, autopatrol, autopatrol, autopatrol, autopatrol, autopatrol]
+tags: [person, engineering, autopatrol, ebus, chm]
 outgoing:
   - topics/actuate-platform/notes/concepts/multi-region-deployment.md
   - topics/admin-api/_summary.md
@@ -23,10 +23,10 @@ incoming:
   - topics/autopatrol/notes/entities/todo-list.md
   - topics/autopatrol/notes/syntheses/2026-04-28_failed-patrol-investigation-handoff.md
   - topics/camera-health-monitoring/_summary.md
+  - topics/data-access-control/_summary.md
   - topics/inference-api/_summary.md
   - topics/integrations/ebus/notes/concepts/phase1-vs-phase2.md
-  - topics/personal-notes/_summary.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 # Mark Barbera

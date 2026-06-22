@@ -2,7 +2,7 @@
 title: "AutoPatrol Failed-Patrol Investigation — Handoff (2026-04-28)"
 type: synthesis
 topic: autopatrol
-tags: [investigation, handoff, AUTO-566, AUTO-567, customer-incident, product-sync, settings-deploy, immix, immix, immix, immix, immix]
+tags: [investigation, handoff, AUTO-566, AUTO-567, customer-incident, product-sync, settings-deploy, immix]
 jira: ["AUTO-566", "AUTO-567", "AUTO-553", "AUTO-525"]
 created: 2026-04-28
 updated: 2026-04-29

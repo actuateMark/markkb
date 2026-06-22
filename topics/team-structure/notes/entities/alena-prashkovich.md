@@ -6,12 +6,15 @@ updated: 2026-04-15
 tags: [person, data-science, vlm, prompt-engineering, camera-screening]
 incoming:
   - topics/ai-models/notes/syntheses/yolo-vs-vlm-detection-future.md
+  - topics/autopatrol/_summary.md
+  - topics/autopatrol/notes/concepts/vlm-integration.md
+  - topics/autopatrol/notes/entities/todo-list.md
   - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
   - topics/jira-organization/notes/concepts/confluence-spaces-map.md
   - topics/product-roadmap/notes/syntheses/b2b2b-vs-b2b-go-to-market.md
   - topics/team-structure/_summary.md
   - topics/team-structure/notes/entities/carlos-torres.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Alena Prashkovich

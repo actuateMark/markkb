@@ -2,7 +2,7 @@
 title: "stream_id history tracking and fallback iteration (Immix session refresh bug)"
 type: concept
 topic: vms-connector
-tags: [bugfix, autopatrol, vch, immix, stream_id, patrol-api, websocket, immix, immix, immix, immix]
+tags: [bugfix, autopatrol, vch, immix, stream_id, patrol-api, websocket]
 jira: ""
 created: 2026-05-06
 updated: 2026-05-06
@@ -11,12 +11,12 @@ outgoing:
   - topics/actuate-libraries/_summary.md
   - topics/personal-notes/notes/daily/2026-05-06.md
 incoming:
-  - topics/actuate-libraries/_summary.md
   - topics/autopatrol/notes/data/2026-05-06_immix-streamfinished-inquiry.md
   - topics/autopatrol/notes/entities/immix-vendor-api.md
   - topics/autopatrol/notes/syntheses/2026-05-07_consumer-side-websocket-close-feasibility.md
+  - topics/billing/notes/syntheses/2026-05-12_week-in-review-non-technical.md
   - topics/personal-notes/notes/daily/2026-05-06.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 # stream_id history tracking and fallback iteration

@@ -4,29 +4,17 @@ type: concept
 topic: repo-backlog
 tags: [backlog, github, actuate-libraries]
 repo: aegissystems/actuate-libraries
-created: 2026-05-01
-updated: 2026-05-01
+created: 2026-06-18
+updated: 2026-06-18
 author: kb-bot
-issue_count_open: 33
-issue_count_high_impact: 9
+issue_count_open: 34
+issue_count_high_impact: 8
 issue_count_lhf: 10
 issue_count_stale: 0
-high_impact_issue_numbers: [236, 305, 290, 243, 242, 233, 337, 256, 234]
-lhf_issue_numbers: [244, 234, 233, 327, 305, 297, 337, 290, 285, 280]
+high_impact_issue_numbers: [236, 305, 290, 243, 242, 233, 256, 234]
+lhf_issue_numbers: [244, 234, 233, 327, 305, 297, 290, 285, 280, 266]
 stale_issue_numbers: []
-full_issue_numbers: [337, 327, 305, 297, 290, 285, 283, 280, 266, 257, 256, 252, 251, 248, 247, 245, 244, 243, 242, 241, 240, 239, 238, 237, 236, 234, 233, 232, 231, 230, 229, 228, 51]
-incoming:
-  - topics/actuate-libraries/notes/entities/actuate-filterpy.md
-  - topics/actuate-platform/_summary.md
-  - topics/actuate-platform/notes/entities/camera-ui.md
-  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
-  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
-  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
-  - topics/admin-api/notes/entities/actuate-monitoring-api.md
-  - topics/camera-health-monitoring/notes/entities/health-report.md
-  - topics/engineering-process/notes/syntheses/2026-04-14_connector-library-deployment-lifecycle.md
-  - topics/engineering-process/notes/syntheses/2026-04-14_feature-development-lifecycle.md
-incoming_updated: 2026-05-01
+full_issue_numbers: [348, 337, 327, 305, 297, 290, 285, 283, 280, 266, 257, 256, 252, 251, 248, 247, 245, 244, 243, 242, 241, 240, 239, 238, 237, 236, 234, 233, 232, 231, 230, 229, 228, 51]
 ---
 
 # actuate-libraries backlog
@@ -72,36 +60,35 @@ No >180d-idle issues. If stale accumulates: walk the relevant sub-library's `git
 Never push to `actuate-libraries` **main** without explicit user approval — auto-publishes stable versions to CodeArtifact.
 
 <!-- BEGIN-AUTO-REFRESH repo-scan -->
-_Last refreshed: **2026-05-01** by [[skill-repo-scan]] — 33 open issues._
+_Last refreshed: **2026-06-18** by [[skill-repo-scan]] — 34 open issues._
 
 ### 🔥 High-impact (top 10 by score)
 
 | # | Title | Labels | Assignee | Score | Idle |
 |--:|-------|--------|----------|------:|------|
-| 236 | [[BUG] Memory Leak in CameraDisturbanceDetectorBank - Missing Cleanup Methods](https://github.com/aegissystems/actuate-libraries/issues/236) | `bug` | — | 3 | 3mo |
-| 305 | [Share internal executor pools across observers per camera](https://github.com/aegissystems/actuate-libraries/issues/305) | `enhancement` | — | 2 | 1mo |
-| 290 | [Switch version bump tagging from commit messages to PR labels](https://github.com/aegissystems/actuate-libraries/issues/290) | — | — | 2 | 2mo |
-| 243 | [CleanupStep: Remove unnecessary 10-frame floor when pre_alarm is set](https://github.com/aegissystems/actuate-libraries/issues/243) | — | — | 2 | 3mo |
-| 242 | [Add defensive checks and logging for cache misses in pipeline steps](https://github.com/aegissystems/actuate-libraries/issues/242) | — | — | 2 | 3mo |
-| 233 | [S3 Frame Upload Batching - Connector Implementation](https://github.com/aegissystems/actuate-libraries/issues/233) | `enhancement` | — | 2 | 3mo |
-| 337 | [[Enhancement] [[actuate-pullers]]: Expose stream diagnostics metadata from AvUrlFra…](https://github.com/aegissystems/actuate-libraries/issues/337) | — | — | 1 | 15d |
-| 256 | [Line Crossing: Trajectory linking causes chaotic drawings in crowded scenes](https://github.com/aegissystems/actuate-libraries/issues/256) | — | — | 1 | 3mo |
-| 234 | [Create actuate-onvif Library](https://github.com/aegissystems/actuate-libraries/issues/234) | — | — | 1 | 3mo |
+| 236 | [[BUG] Memory Leak in CameraDisturbanceDetectorBank - Missing Cleanup Methods](https://github.com/aegissystems/actuate-libraries/issues/236) | `bug` | — | 3 | 5mo |
+| 305 | [Share internal executor pools across observers per camera](https://github.com/aegissystems/actuate-libraries/issues/305) | `enhancement` | — | 2 | 3mo |
+| 290 | [Switch version bump tagging from commit messages to PR labels](https://github.com/aegissystems/actuate-libraries/issues/290) | — | — | 2 | 3mo |
+| 243 | [CleanupStep: Remove unnecessary 10-frame floor when pre_alarm is set](https://github.com/aegissystems/actuate-libraries/issues/243) | — | — | 2 | 5mo |
+| 242 | [Add defensive checks and logging for cache misses in pipeline steps](https://github.com/aegissystems/actuate-libraries/issues/242) | — | — | 2 | 5mo |
+| 233 | [S3 Frame Upload Batching - Connector Implementation](https://github.com/aegissystems/actuate-libraries/issues/233) | `enhancement` | — | 2 | 5mo |
+| 256 | [Line Crossing: Trajectory linking causes chaotic drawings in crowded scenes](https://github.com/aegissystems/actuate-libraries/issues/256) | — | — | 1 | 4mo |
+| 234 | [Create actuate-onvif Library](https://github.com/aegissystems/actuate-libraries/issues/234) | — | — | 1 | 5mo |
 
 ### 🧹 Low-hanging fruit (top 10 by score)
 
 | # | Title | Labels | Assignee | Score | Idle |
 |--:|-------|--------|----------|------:|------|
-| 244 | [Reduce verbosity of 'after filters' log lines without losing context](https://github.com/aegissystems/actuate-libraries/issues/244) | — | — | 5 | 3mo |
-| 234 | [Create actuate-onvif Library](https://github.com/aegissystems/actuate-libraries/issues/234) | — | — | 5 | 3mo |
-| 233 | [S3 Frame Upload Batching - Connector Implementation](https://github.com/aegissystems/actuate-libraries/issues/233) | `enhancement` | — | 5 | 3mo |
-| 327 | [Blacklist groups accumulate without bound on static scenes](https://github.com/aegissystems/actuate-libraries/issues/327) | — | — | 4 | 1mo |
-| 305 | [Share internal executor pools across observers per camera](https://github.com/aegissystems/actuate-libraries/issues/305) | `enhancement` | — | 4 | 1mo |
-| 297 | [Blacklist Filter: Storm & Weather Noise Mitigation](https://github.com/aegissystems/actuate-libraries/issues/297) | `enhancement` | — | 4 | 1mo |
-| 337 | [[Enhancement] [[actuate-pullers]]: Expose stream diagnostics metadata from AvUrlFra…](https://github.com/aegissystems/actuate-libraries/issues/337) | — | — | 3 | 15d |
-| 290 | [Switch version bump tagging from commit messages to PR labels](https://github.com/aegissystems/actuate-libraries/issues/290) | — | — | 3 | 2mo |
-| 285 | [FDMD: Consider EMA background blending for smoother adaptation](https://github.com/aegissystems/actuate-libraries/issues/285) | — | — | 3 | 2mo |
-| 280 | [Milestone alarm sender retry logic is broken](https://github.com/aegissystems/actuate-libraries/issues/280) | — | — | 3 | 2mo |
+| 244 | [Reduce verbosity of 'after filters' log lines without losing context](https://github.com/aegissystems/actuate-libraries/issues/244) | — | — | 5 | 5mo |
+| 234 | [Create actuate-onvif Library](https://github.com/aegissystems/actuate-libraries/issues/234) | — | — | 5 | 5mo |
+| 233 | [S3 Frame Upload Batching - Connector Implementation](https://github.com/aegissystems/actuate-libraries/issues/233) | `enhancement` | — | 5 | 5mo |
+| 327 | [Blacklist groups accumulate without bound on static scenes](https://github.com/aegissystems/actuate-libraries/issues/327) | — | — | 3 | 2mo |
+| 305 | [Share internal executor pools across observers per camera](https://github.com/aegissystems/actuate-libraries/issues/305) | `enhancement` | — | 3 | 3mo |
+| 297 | [Blacklist Filter: Storm & Weather Noise Mitigation](https://github.com/aegissystems/actuate-libraries/issues/297) | `enhancement` | — | 3 | 3mo |
+| 290 | [Switch version bump tagging from commit messages to PR labels](https://github.com/aegissystems/actuate-libraries/issues/290) | — | — | 3 | 3mo |
+| 285 | [FDMD: Consider EMA background blending for smoother adaptation](https://github.com/aegissystems/actuate-libraries/issues/285) | — | — | 3 | 3mo |
+| 280 | [Milestone alarm sender retry logic is broken](https://github.com/aegissystems/actuate-libraries/issues/280) | — | — | 3 | 4mo |
+| 266 | [Release actuate-suddenscenechange v1.2.0 from 1.x line](https://github.com/aegissystems/actuate-libraries/issues/266) | — | — | 3 | 4mo |
 
 ### 🔍 Codebase-scan follow-up candidates (idle >180d)
 
@@ -118,43 +105,44 @@ _(none)_
 
 ### 🗃️ Full open inventory
 
-<details><summary>All 33 open issues (click to expand — sorted newest first)</summary>
+<details><summary>All 34 open issues (click to expand — sorted newest first)</summary>
 
 | # | Title | Labels | Assignee | Age | Idle |
 |--:|-------|--------|----------|-----|------|
-| 337 | [[Enhancement] [[actuate-pullers]]: Expose stream diagnostics metadata from AvUrlFra…](https://github.com/aegissystems/actuate-libraries/issues/337) | — | — | 15d | 15d |
-| 327 | [Blacklist groups accumulate without bound on static scenes](https://github.com/aegissystems/actuate-libraries/issues/327) | — | — | 1mo | 1mo |
-| 305 | [Share internal executor pools across observers per camera](https://github.com/aegissystems/actuate-libraries/issues/305) | `enhancement` | — | 1mo | 1mo |
-| 297 | [Blacklist Filter: Storm & Weather Noise Mitigation](https://github.com/aegissystems/actuate-libraries/issues/297) | `enhancement` | — | 1mo | 1mo |
-| 290 | [Switch version bump tagging from commit messages to PR labels](https://github.com/aegissystems/actuate-libraries/issues/290) | — | — | 2mo | 2mo |
-| 285 | [FDMD: Consider EMA background blending for smoother adaptation](https://github.com/aegissystems/actuate-libraries/issues/285) | — | — | 2mo | 2mo |
-| 283 | [BaseDynamoDAO.batch_get silently drops items when DynamoDB returns UnprocessedK…](https://github.com/aegissystems/actuate-libraries/issues/283) | — | — | 2mo | 2mo |
-| 280 | [Milestone alarm sender retry logic is broken](https://github.com/aegissystems/actuate-libraries/issues/280) | — | — | 2mo | 2mo |
-| 266 | [Release actuate-suddenscenechange v1.2.0 from 1.x line](https://github.com/aegissystems/actuate-libraries/issues/266) | — | — | 3mo | 3mo |
-| 257 | [Add retry logic for create-detection-window 503 responses](https://github.com/aegissystems/actuate-libraries/issues/257) | — | — | 3mo | 3mo |
-| 256 | [Line Crossing: Trajectory linking causes chaotic drawings in crowded scenes](https://github.com/aegissystems/actuate-libraries/issues/256) | — | — | 3mo | 3mo |
-| 252 | [Line Crossing: Verify direction interpretation matches UI](https://github.com/aegissystems/actuate-libraries/issues/252) | — | — | 3mo | 3mo |
-| 251 | [Improve RawModelFilterStep logging to clarify label filtering vs ignore zones](https://github.com/aegissystems/actuate-libraries/issues/251) | — | — | 3mo | 3mo |
-| 248 | [Create new version of all branch libraries on merge](https://github.com/aegissystems/actuate-libraries/issues/248) | — | — | 3mo | 3mo |
-| 247 | [Frame queue overflow: discard oldest frames instead of clearing entire queue](https://github.com/aegissystems/actuate-libraries/issues/247) | — | — | 3mo | 3mo |
-| 245 | [VideoQueuePuller: AttributeError when frame is None in check_frame_motion_and_p…](https://github.com/aegissystems/actuate-libraries/issues/245) | — | — | 3mo | 3mo |
-| 244 | [Reduce verbosity of 'after filters' log lines without losing context](https://github.com/aegissystems/actuate-libraries/issues/244) | — | — | 3mo | 3mo |
-| 243 | [CleanupStep: Remove unnecessary 10-frame floor when pre_alarm is set](https://github.com/aegissystems/actuate-libraries/issues/243) | — | — | 3mo | 3mo |
-| 242 | [Add defensive checks and logging for cache misses in pipeline steps](https://github.com/aegissystems/actuate-libraries/issues/242) | — | — | 3mo | 3mo |
-| 241 | [Optimize previous_frame_ids buffer when pre_alarm is not used](https://github.com/aegissystems/actuate-libraries/issues/241) | — | — | 3mo | 3mo |
-| 240 | [Add FFmpeg flags for improved RTSP stream tolerance (jittery/spotty connections)](https://github.com/aegissystems/actuate-libraries/issues/240) | — | — | 3mo | 3mo |
-| 239 | [Add CI check for inter-package dependency version constraints](https://github.com/aegissystems/actuate-libraries/issues/239) | — | — | 3mo | 3mo |
-| 238 | [Add bandwidth tracking (DynamoDB + New Relic) to all pullers](https://github.com/aegissystems/actuate-libraries/issues/238) | — | — | 3mo | 3mo |
-| 237 | [EU Support: Make actuate_base_url a required parameter for AdminDAO/AdminApi](https://github.com/aegissystems/actuate-libraries/issues/237) | — | — | 3mo | 3mo |
-| 236 | [[BUG] Memory Leak in CameraDisturbanceDetectorBank - Missing Cleanup Methods](https://github.com/aegissystems/actuate-libraries/issues/236) | `bug` | — | 3mo | 3mo |
-| 234 | [Create actuate-onvif Library](https://github.com/aegissystems/actuate-libraries/issues/234) | — | — | 3mo | 3mo |
-| 233 | [S3 Frame Upload Batching - Connector Implementation](https://github.com/aegissystems/actuate-libraries/issues/233) | `enhancement` | — | 3mo | 3mo |
-| 232 | [Review and enable disabled test files](https://github.com/aegissystems/actuate-libraries/issues/232) | — | — | 3mo | 3mo |
-| 231 | [Add tests for pipeline steps](https://github.com/aegissystems/actuate-libraries/issues/231) | — | — | 3mo | 3mo |
-| 230 | [Add tests for sudden scene change detection](https://github.com/aegissystems/actuate-libraries/issues/230) | — | — | 3mo | 3mo |
-| 229 | [Add tests for alert senders](https://github.com/aegissystems/actuate-libraries/issues/229) | — | — | 3mo | 3mo |
-| 228 | [Add tests for video pullers](https://github.com/aegissystems/actuate-libraries/issues/228) | — | — | 3mo | 3mo |
-| 51 | [Optimization of IOU Calculation Function](https://github.com/aegissystems/actuate-libraries/issues/51) | `enhancement` | actuateMark | 1y | 3mo |
+| 348 | [actuate-movement: preallocate cv2 output buffers in frame-diff pipeline (~40% a…](https://github.com/aegissystems/actuate-libraries/issues/348) | — | actuateMark | 1mo | 1mo |
+| 337 | [[Enhancement] actuate-pullers: Expose stream diagnostics metadata from AvUrlFra…](https://github.com/aegissystems/actuate-libraries/issues/337) | — | — | 2mo | 2mo |
+| 327 | [Blacklist groups accumulate without bound on static scenes](https://github.com/aegissystems/actuate-libraries/issues/327) | — | — | 2mo | 2mo |
+| 305 | [Share internal executor pools across observers per camera](https://github.com/aegissystems/actuate-libraries/issues/305) | `enhancement` | — | 3mo | 3mo |
+| 297 | [Blacklist Filter: Storm & Weather Noise Mitigation](https://github.com/aegissystems/actuate-libraries/issues/297) | `enhancement` | — | 3mo | 3mo |
+| 290 | [Switch version bump tagging from commit messages to PR labels](https://github.com/aegissystems/actuate-libraries/issues/290) | — | — | 3mo | 3mo |
+| 285 | [FDMD: Consider EMA background blending for smoother adaptation](https://github.com/aegissystems/actuate-libraries/issues/285) | — | — | 3mo | 3mo |
+| 283 | [BaseDynamoDAO.batch_get silently drops items when DynamoDB returns UnprocessedK…](https://github.com/aegissystems/actuate-libraries/issues/283) | — | — | 4mo | 4mo |
+| 280 | [Milestone alarm sender retry logic is broken](https://github.com/aegissystems/actuate-libraries/issues/280) | — | — | 4mo | 4mo |
+| 266 | [Release actuate-suddenscenechange v1.2.0 from 1.x line](https://github.com/aegissystems/actuate-libraries/issues/266) | — | — | 4mo | 4mo |
+| 257 | [Add retry logic for create-detection-window 503 responses](https://github.com/aegissystems/actuate-libraries/issues/257) | — | — | 4mo | 4mo |
+| 256 | [Line Crossing: Trajectory linking causes chaotic drawings in crowded scenes](https://github.com/aegissystems/actuate-libraries/issues/256) | — | — | 4mo | 4mo |
+| 252 | [Line Crossing: Verify direction interpretation matches UI](https://github.com/aegissystems/actuate-libraries/issues/252) | — | — | 5mo | 5mo |
+| 251 | [Improve RawModelFilterStep logging to clarify label filtering vs ignore zones](https://github.com/aegissystems/actuate-libraries/issues/251) | — | — | 5mo | 5mo |
+| 248 | [Create new version of all branch libraries on merge](https://github.com/aegissystems/actuate-libraries/issues/248) | — | — | 5mo | 5mo |
+| 247 | [Frame queue overflow: discard oldest frames instead of clearing entire queue](https://github.com/aegissystems/actuate-libraries/issues/247) | — | — | 5mo | 5mo |
+| 245 | [VideoQueuePuller: AttributeError when frame is None in check_frame_motion_and_p…](https://github.com/aegissystems/actuate-libraries/issues/245) | — | — | 5mo | 5mo |
+| 244 | [Reduce verbosity of 'after filters' log lines without losing context](https://github.com/aegissystems/actuate-libraries/issues/244) | — | — | 5mo | 5mo |
+| 243 | [CleanupStep: Remove unnecessary 10-frame floor when pre_alarm is set](https://github.com/aegissystems/actuate-libraries/issues/243) | — | — | 5mo | 5mo |
+| 242 | [Add defensive checks and logging for cache misses in pipeline steps](https://github.com/aegissystems/actuate-libraries/issues/242) | — | — | 5mo | 5mo |
+| 241 | [Optimize previous_frame_ids buffer when pre_alarm is not used](https://github.com/aegissystems/actuate-libraries/issues/241) | — | — | 5mo | 5mo |
+| 240 | [Add FFmpeg flags for improved RTSP stream tolerance (jittery/spotty connections)](https://github.com/aegissystems/actuate-libraries/issues/240) | — | — | 5mo | 5mo |
+| 239 | [Add CI check for inter-package dependency version constraints](https://github.com/aegissystems/actuate-libraries/issues/239) | — | — | 5mo | 5mo |
+| 238 | [Add bandwidth tracking (DynamoDB + New Relic) to all pullers](https://github.com/aegissystems/actuate-libraries/issues/238) | — | — | 5mo | 5mo |
+| 237 | [EU Support: Make actuate_base_url a required parameter for AdminDAO/AdminApi](https://github.com/aegissystems/actuate-libraries/issues/237) | — | — | 5mo | 5mo |
+| 236 | [[BUG] Memory Leak in CameraDisturbanceDetectorBank - Missing Cleanup Methods](https://github.com/aegissystems/actuate-libraries/issues/236) | `bug` | — | 5mo | 5mo |
+| 234 | [Create actuate-onvif Library](https://github.com/aegissystems/actuate-libraries/issues/234) | — | — | 5mo | 5mo |
+| 233 | [S3 Frame Upload Batching - Connector Implementation](https://github.com/aegissystems/actuate-libraries/issues/233) | `enhancement` | — | 5mo | 5mo |
+| 232 | [Review and enable disabled test files](https://github.com/aegissystems/actuate-libraries/issues/232) | — | — | 5mo | 5mo |
+| 231 | [Add tests for pipeline steps](https://github.com/aegissystems/actuate-libraries/issues/231) | — | — | 5mo | 5mo |
+| 230 | [Add tests for sudden scene change detection](https://github.com/aegissystems/actuate-libraries/issues/230) | — | — | 5mo | 5mo |
+| 229 | [Add tests for alert senders](https://github.com/aegissystems/actuate-libraries/issues/229) | — | — | 5mo | 5mo |
+| 228 | [Add tests for video pullers](https://github.com/aegissystems/actuate-libraries/issues/228) | — | — | 5mo | 5mo |
+| 51 | [Optimization of IOU Calculation Function](https://github.com/aegissystems/actuate-libraries/issues/51) | `enhancement` | actuateMark | 1y | 5mo |
 
 </details>
 
@@ -163,5 +151,5 @@ _(none)_
 ## Related
 
 - [[repo-backlog/_summary|repo-backlog topic]]
-- Latest scan: [[2026-05-01_scan]]
+- Latest scan: [[2026-06-18_scan]]
 - GitHub: [aegissystems/actuate-libraries/issues](https://github.com/aegissystems/actuate-libraries/issues)

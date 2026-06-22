@@ -2,7 +2,7 @@
 title: "Chronic Flapper Investigation — Cleanup Lambda Anomaly-Reset Repeat Offenders"
 type: concept
 topic: autopatrol
-tags: [cleanup-lambda, anomaly-reset, vch, flapper, investigation, finding, autopatrol, immix, autopatrol, immix, autopatrol, immix, autopatrol, immix, autopatrol, immix]
+tags: [cleanup-lambda, anomaly-reset, vch, flapper, investigation, finding, autopatrol, immix]
 created: 2026-04-28
 updated: 2026-04-28
 author: kb-bot

@@ -2,7 +2,7 @@
 title: "LLM Shop — Initial Architecture (2026-05-04)"
 type: synthesis
 topic: llm-shop
-tags: [llm-shop, architecture, adr, ollama, openvino, fastapi, caddy, tailnet, npu-server, watchman, watchman, watchman, watchman, watchman, watchman]
+tags: [llm-shop, architecture, adr, ollama, openvino, fastapi, caddy, tailnet, npu-server, watchman]
 jira: ""
 created: 2026-05-04
 updated: 2026-05-04
@@ -88,7 +88,7 @@ A *fallback* hook (read [[watchman-repo|Watchman]] benchmark scripts from `~/act
 
 | Workload | Hardware | Why |
 |---|---|---|
-| Always-on triage / embeddings | NPU (`/dev/accel/accel0`) | Separate silicon from iGPU — never competes with Watchman |
+| Always-on triage / embeddings | NPU (`/dev/accel/accel0`) | Separate silicon from iGPU — never competes with [[watchman-repo|Watchman]] |
 | Main coding model | iGPU (`xe` driver) | 14B+ models need iGPU compute. Loaded on-demand, evicted after `OLLAMA_KEEP_ALIVE=10m` |
 | Heavy batch inference | iGPU | 32B model for "give me the smartest answer, I'll wait" tasks |
 | CPU fallback | 16C of 155H | Used when iGPU contention detected |
@@ -109,7 +109,7 @@ Every harness logs one NDJSON line per request to `~/llm-shop/logs/requests-<dat
 {"ts":"2026-05-04T10:23:14Z","harness":"kb-intake","model":"llama-3.1-8b","user":"mark","tokens_in":1240,"tokens_out":380,"latency_ms":4218,"status":"ok"}
 ```
 
-A static HTML dashboard at `https://npu-server.<tailnet>.ts.net/` shows uptime, RAM, loaded models, recent request rates, and Watchman activity. See [[2026-05-04_status-dashboard-sketch]].
+A static HTML dashboard at `https://npu-server.<tailnet>.ts.net/` shows uptime, RAM, loaded models, recent request rates, and [[watchman-repo|Watchman]] activity. See [[2026-05-04_status-dashboard-sketch]].
 
 ### D7. Federation via Tailscale tags
 
@@ -132,7 +132,7 @@ If both work end-to-end, the pattern scales. If they don't, the architecture has
 **Locked 2026-05-04 after a re-evaluation pass.** Earlier draft of D10 deferred model selection. The hot-swap requirement collapses the choice space:
 
 - **iGPU side: Ollama.** Of the four candidate runtimes (Ollama, llama.cpp+SYCL, IPEX-LLM, OpenVINO Model Server), only Ollama and OVMS have native multi-model hot-swap. Ollama wins on ergonomics: GGUF catalog (no per-model conversion), `OLLAMA_MAX_LOADED_MODELS=N` + `OLLAMA_KEEP_ALIVE=10m` give us LRU-evict for free, model name in the request body switches between models. OVMS is enterprise-grade but each model needs OV-IR conversion — too heavy for a fast-iterating shop.
-- **NPU side: OpenVINO genai.** The NPU is *separate silicon* from the iGPU; running a small model there has zero contention with Watchman or with Ollama's iGPU work. OpenVINO is the only real path to NPU compute. One model (Qwen2.5-Coder-1.5B INT4) lives there always-on for sub-second triage / embeddings.
+- **NPU side: OpenVINO genai.** The NPU is *separate silicon* from the iGPU; running a small model there has zero contention with [[watchman-repo|Watchman]] or with Ollama's iGPU work. OpenVINO is the only real path to NPU compute. One model (Qwen2.5-Coder-1.5B INT4) lives there always-on for sub-second triage / embeddings.
 
 **Perf trade-off accepted.** Ollama is ~30% slower on Intel iGPU than IPEX-LLM (which uses Intel oneAPI directly). For Qwen2.5-Coder-14B Q4_K_M that's roughly 10-15 tok/s vs 20-30 tok/s. Both are fine for "delegate a coding task," neither is fit for "real-time IDE completion." The hot-swap UX wins.
 
@@ -168,7 +168,7 @@ OLLAMA_MODELS=~/llm-shop/models
 RAM budget under steady state with `MAX_LOADED_MODELS=2`:
 - NPU (OpenVINO): always 1.2 GB
 - Ollama iGPU (peak 2 models loaded): up to ~14-18 GB
-- Watchman: ~10 GB
+- [[watchman-repo|Watchman]]: ~10 GB
 - System: ~2 GB
 - **Total peak: ~28-31 GB** on a 30 GB box. Tight when 32B is loaded; can swap at startup. Adjust `MAX_LOADED_MODELS=1` for batch jobs.
 

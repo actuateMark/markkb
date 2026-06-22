@@ -2,7 +2,7 @@
 title: "AutoPatrol Stale-Schedule Cleanup Lambda — Operations Runbook"
 type: concept
 topic: autopatrol
-tags: [runbook, ops, lambda, sqs, dynamodb, autopatrol, cleanup, immix, immix, immix, immix, immix]
+tags: [runbook, ops, lambda, sqs, dynamodb, autopatrol, cleanup, immix]
 created: 2026-04-20
 updated: 2026-04-20
 author: kb-bot
@@ -23,12 +23,12 @@ incoming:
   - topics/autopatrol/notes/concepts/2026-05-07_handoff-cleanup-lambda-interpretive-checks.md
   - topics/autopatrol/notes/entities/autopatrol-cleanup-lambda.md
   - topics/autopatrol/notes/syntheses/2026-04-23_alarm-dashboard-sketch.md
+  - topics/billing/reading-list.md
   - topics/engineering-process/notes/concepts/2026-04-20_overnight-check-skill-pattern.md
   - topics/personal-laptop/notes/concepts/2026-04-30_morning-prep-scripts-runbook.md
   - topics/personal-notes/notes/concepts/2026-04-29_cleanup-handoff.md
   - topics/personal-notes/notes/daily/2026-04-23.md
-  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-05-27
 ---
 
 # AutoPatrol Stale-Schedule Cleanup Lambda — Operations Runbook
@@ -121,7 +121,7 @@ AWS_PROFILE=prod aws logs tail /aws/lambda/immix-autopatrol-schedule-cleanup \
   --region us-west-2 --follow --format short
 ```
 
-Key log lines to watch for:
+Key log lines to [[watch-entity|watch]] for:
 - `cleanup_lambda invoked: enabled=<bool> dry_run=<bool> records=<n>` — every invocation
 - `processing schedule_id=... reason=<r> bucket=<patrol_exit|site_disabled> target_hours=<N>` — per-message
 - `counter schedule_id=... bucket=<b> count=<c>/<threshold>` — counter state after increment

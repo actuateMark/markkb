@@ -52,7 +52,7 @@ Three structural reasons:
 2. **VMS / cloud sides aren't asking.** Genetec, Milestone, Avigilon, Eagle Eye — none default to AV1. Cloud-VMS partners may eventually for delivery (browser side), but their camera-ingestion side remains [[h264-deep-dive|H.264]]/[[h265-hevc-deep-dive|H.265]].
 3. **Decoder install-base is fine on our side, but worthless without producers.** We have the hardware to decode AV1 on G5/G6/L4 nodes; nobody is sending it.
 
-The corollary: **AV1 won't matter for our ingestion path until cameras ship it**, which is a 5+ year horizon for any meaningful share. Watch the SoC vendors, not the standards bodies.
+The corollary: **AV1 won't matter for our ingestion path until cameras ship it**, which is a 5+ year horizon for any meaningful share. [[watch-entity|Watch]] the SoC vendors, not the standards bodies.
 
 ## Where AV1 / VP9 *could* matter for Actuate
 

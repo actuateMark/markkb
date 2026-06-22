@@ -2,7 +2,7 @@
 title: "Morning-prep scripts — operations runbook"
 type: concept
 topic: personal-laptop
-tags: [runbook, ops, firebat, morning-prep, scripts, repo-scan, jira-sync, autopatrol, pr-review-digest, three-tier, new-relic, new-relic, new-relic, new-relic, new-relic]
+tags: [runbook, ops, firebat, morning-prep, scripts, repo-scan, jira-sync, autopatrol, pr-review-digest, three-tier, new-relic]
 created: 2026-04-30
 updated: 2026-04-30
 author: kb-bot

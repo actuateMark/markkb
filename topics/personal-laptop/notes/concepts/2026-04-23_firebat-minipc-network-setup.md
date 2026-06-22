@@ -7,13 +7,14 @@ created: 2026-04-23
 updated: 2026-04-23
 author: kb-bot
 incoming:
+  - topics/personal-laptop/notes/concepts/2026-05-22_gnome-terminal-focus-steal-fix.md
   - topics/personal-laptop/notes/syntheses/2026-04-23_firebat-minipc-as-claude-dev-box.md
   - topics/personal-laptop/notes/syntheses/2026-04-24_minipc-dashboard-static-gen-refactor.md
   - topics/personal-laptop/notes/syntheses/2026-04-30_firebat-script-conversion-candidates.md
+  - topics/personal-laptop/notes/syntheses/2026-05-05_firebat-minipc-followups-context.md
   - topics/personal-notes/notes/daily/2026-04-23.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # Firebat minipc — direct-ethernet setup

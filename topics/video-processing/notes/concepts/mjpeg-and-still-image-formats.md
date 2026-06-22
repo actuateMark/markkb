@@ -7,6 +7,7 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
+  - topics/actuate-libraries/notes/concepts/2026-05-19_stream-publisher-design.md
   - topics/actuate-libraries/notes/entities/actuate-integration-calls.md
   - topics/actuate-libraries/notes/entities/actuate-pullers.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase2-stream-probe.md
@@ -16,8 +17,7 @@ incoming:
   - topics/video-processing/notes/concepts/codecs-overview.md
   - topics/video-processing/notes/concepts/connector-decoder-routing-map.md
   - topics/video-processing/notes/concepts/connector-docker-system-deps.md
-  - topics/video-processing/notes/concepts/gop-keyframe-fundamentals.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 # MJPEG and Still-Image Formats

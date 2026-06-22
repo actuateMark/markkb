@@ -61,13 +61,13 @@ Once signaling completes, media flows **peer-to-peer** (if both sides can negoti
 - **Costs are reasonable:** If only "active alert" cameras stream (not all cameras simultaneously), the channel-minute cost is predictable. TURN relay kicks in only for ~10–15% of client pairs.
 - **Producer path is natural:** [[h264-deep-dive|H.264]] encoder already exists in the pipeline; WebRTC-encode a copy to a [[kvs-components|KVS]] signaling channel as a secondary output.
 
-**Verdict: ✅ Plausible and worth a spike.** This is a live-preview-to-dispatcher use case Actuate doesn't have today (operators see alert clips, not live video). [[kvs-components|KVS]] WebRTC would be the simplest AWS-native path.
+**Verdict: ✅ Plausible and worth a spike.** This is a live-preview-to-dispatcher use case Actuate doesn't have today (operators see alert clips, not live video). [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] would be the simplest AWS-native path.
 
 ### 3. [[watchman-repo|Watchman]] live-view / real-time monitoring
 
 **Model:** A VLM (vision language model) agent watches a live frame stream and reasons about it in real time. Today, [[watchman-repo|Watchman]] processes alert clips after the fact; for live triage, you want the agent to see frames now.
 
-**Could [[kvs-components|KVS]] WebRTC work?** Yes, same mechanics as #2.
+**Could [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] work?** Yes, same mechanics as #2.
 
 **Why it's plausible:**
 
@@ -90,7 +90,7 @@ Once signaling completes, media flows **peer-to-peer** (if both sides can negoti
 ### LiveKit (open core + cloud option)
 
 - **Intermediate:** More features than bare Pion (recording, analytics, composition), less operational toil than self-hosted.
-- **Cost:** per-minute participant pricing similar to IVS Real-Time — potentially expensive if every camera is a publisher and multiple viewers watch.
+- **Cost:** per-minute participant pricing similar to IVS Real-Time — potentially expensive if every camera is a publisher and multiple viewers [[watch-entity|watch]].
 
 **Verdict:** Reasonable as a fallback if [[kvs-components|KVS]] [[webrtc-deep-dive|WebRTC]] proves too limiting. Not the first choice for Actuate.
 

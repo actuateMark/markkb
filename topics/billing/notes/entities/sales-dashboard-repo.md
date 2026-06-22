@@ -6,6 +6,16 @@ tags: [billing, sales-dashboard, repo, snowflake, ordway, reconciliation, fastap
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
+incoming:
+  - topics/billing/_todos.md
+  - topics/billing/notes/concepts/2026-05-11_eng-242-substantially-answered.md
+  - topics/billing/notes/concepts/2026-05-11_nf2-deployment-state.md
+  - topics/billing/notes/entities/actuate-bi-repo.md
+  - topics/billing/notes/entities/snowflake-billing-tables.md
+  - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
+  - topics/personal-notes/notes/daily/2026-05-11.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-05-27
 ---
 
 # Sales Dashboard Repo (`aegissystems/sales-dashboard`)
@@ -15,7 +25,7 @@ author: kb-bot
 **Production URL:** `https://sales-dashboard.internal.actuateui.net/`
 **Current version (clone date 2026-05-11):** `v0.22.2`
 
-Closes [[_todos]] **C6** (locate the sales-dashboard deployment repo). This is the home for the existing internal billing-and-revenue surface — and the canonical source for how to talk to the Snowflake billing tables (see [[snowflake-billing-tables]]).
+Closes [[_todos]] **C6** (locate the [[sales-dashboard]] deployment repo). This is the home for the existing internal billing-and-revenue surface — and the canonical source for how to talk to the [[snowflake-billing-tables|Snowflake billing tables]] (see [[snowflake-billing-tables]]).
 
 ## What this repo is
 
@@ -29,7 +39,7 @@ A read-only FastAPI service + vanilla-JS frontend that aggregates four (now five
 | **AWS S3 CSVs** | Daily per-site infra cost (compute, inference, slicing, storage) | Cost; Pass 2 fallback for cost-only accounts |
 | **HubSpot** | Account type, status, owner, region | Enrichment |
 | **Snowflake** | Site hierarchy, billed cameras, usage trends, churn detection (see [[snowflake-billing-tables]]) | Enrichment + drill-downs |
-| **PostgreSQL (admin)** | Provisioned fleet — all onboarded cameras incl. Sentinel / AI Link / VCH | Reconciliation (via `reconcile_cameras.py`) |
+| **PostgreSQL (admin)** | Provisioned fleet — all onboarded cameras incl. [[sentinel-components|Sentinel]] / AI Link / VCH | Reconciliation (via `reconcile_cameras.py`) |
 
 ### Existing pages (each `/<name>` route + `static/<name>.html`)
 
@@ -41,7 +51,7 @@ Already-shipped billing-and-revenue surfaces — these are reusable / extensible
 | `/unbilled` | **Cameras with 3h+ usage but not in `usage_monthly`** | **Directly relevant** — this is the [[2026-05-11_billing-reconciliation-dashboard-design\|R1]] surface already shipped, in a different form |
 | `/no-usage` | Cameras provisioned in admin Postgres but zero events in Snowflake | **High** — surfaces the "is it onboarding or genuinely silent" question |
 | `/billing-view` | Per-camera billing replica of Tableau "Total Cameras Report" | **High** — every camera with `is_billed` flag, source ∈ {Connector, VCH, CHM, Clip} |
-| `/clip-billing` | Clip-pipeline-specific billing surface | Medium — Sentinel / AI Link / Umbo billing analysis |
+| `/clip-billing` | Clip-pipeline-specific billing surface | Medium — [[sentinel-components|Sentinel]] / AI Link / Umbo billing analysis |
 | `/churn` | Cameras billed this month but inactive in last 7 days | Medium — mid-month churn detection |
 | `/duplicates` | Clip cameras with duplicate `(site, camera_name)` pairs in provisioning | Medium — billing-confusion source |
 | `/vch` | Auto Patrol / VCH provisioning vs activity (these are excluded from `usage_monthly`) | Medium — VCH-side fleet tracker |
@@ -105,9 +115,9 @@ L2 S3 TTL defaults to 1h (`CACHE_TTL_S3_L2=3600`). Cache key → S3 path mapping
 2. `uv lock` if deps changed.
 3. Commit, tag (`vX.Y.Z`), push — CI builds Docker image → ECR.
 4. Update `imageTag` in **`kubernetes-deployments` repo** at `argocd/env/388576304176/us-west-2/inference-eks-Ny9n/cluster-values.yaml`.
-5. Push — ArgoCD auto-syncs.
+5. Push — [[argocd|ArgoCD]] auto-syncs.
 
-**Cluster:** `inference-eks-Ny9n` (us-west-2). **Not** Connector-EKS — sales-dashboard rides the inference-EKS cluster.
+**Cluster:** `inference-eks-Ny9n` (us-west-2). **Not** Connector-EKS — [[sales-dashboard]] rides the inference-EKS cluster.
 
 ## `reconcile_cameras.py` specifics (the script most directly relevant to billing reconciliation)
 
@@ -154,7 +164,7 @@ WHERE c.active AND ca.active
 | Category | Postgres | Snowflake | Gap |
 |---|---:|---:|---:|
 | Connector cameras | 80,807 | 80,765 in SPRD | 257 (<1%) |
-| Sentinel Verifier | 16,003 | 7,377 matched | 8,626 (54%) |
+| [[sentinel-components|Sentinel]] Verifier | 16,003 | 7,377 matched | 8,626 (54%) |
 | AI Link | 5,417 | 3,165 matched | 2,252 (42%) |
 | Auto Patrol / VCH | 2,406 | — | 2,406 (filtered by `usage_products`) |
 | **Total** | **104,640** | **93,713** | **10,927** |
@@ -210,7 +220,7 @@ All are pool-aware (size 8, `_MAX_CONN_AGE=3600s`, retry-after-2s) and L1+L2 cac
 - [[2026-05-11_billing-reconciliation-dashboard-design|R1 design]] — design that `reconcile_cameras.py` largely already implements
 - [[billing-events-catalog]] — SQS-side vocabulary the dashboard's Snowflake-side resolves
 - [[_todos]] — billing topic todos (C6 closes via this note; new follow-ups added)
-- [[aws-cost/_summary]] — sales-dashboard also covers infra-cost surface; cross-link, don't duplicate
-- [[core-repo-suite]] — should move sales-dashboard from "Clone on Need" to "Local"
+- [[aws-cost/_summary]] — [[sales-dashboard]] also covers infra-cost surface; cross-link, don't duplicate
+- [[core-repo-suite]] — should move [[sales-dashboard]] from "Clone on Need" to "Local"
 - `kubernetes-deployments` repo — `argocd/env/388576304176/us-west-2/inference-eks-Ny9n/cluster-values.yaml` (where `imageTag` is updated to deploy)
 - `actuate_bi` repo — sister repo with pipeline DDL (not yet cloned)

@@ -2,7 +2,7 @@
 title: "AutoPatrol state-mismatch audit — manage.py audit_autopatrol_state"
 type: synthesis
 topic: admin-api
-tags: [autopatrol, audit, db, customer, schedule, propagation, planning, mgmt-command, immix, immix, immix, immix, immix, immix, immix, immix, immix, immix]
+tags: [autopatrol, audit, db, customer, schedule, propagation, planning, mgmt-command, immix]
 created: 2026-04-30
 updated: 2026-05-01
 author: kb-bot
@@ -13,14 +13,15 @@ outgoing:
   - topics/personal-notes/notes/daily/2026-05-01.md
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
+  - topics/actuate-platform/notes/syntheses/2026-05-12_internal-test-deploy-lane.md
   - topics/admin-api/notes/concepts/release-flow-stage-first.md
+  - topics/admin-api/notes/syntheses/2026-05-13_customer-model-dissection.md
   - topics/autopatrol/notes/concepts/2026-05-05_cohort-b-backfill-runbook.md
   - topics/autopatrol/notes/syntheses/2026-05-01_silent-cameras-diagnosis.md
   - topics/personal-notes/notes/concepts/2026-04-30_admin-propagation-handoff.md
   - topics/personal-notes/notes/concepts/2026-05-01_pre-endrun-crashes-handoff.md
-  - topics/personal-notes/notes/daily/2026-05-01.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-08
+  - topics/personal-notes/notes/daily/2026-05-11.md
+incoming_updated: 2026-05-27
 ---
 
 # AutoPatrol state-mismatch audit — `manage.py audit_autopatrol_state`

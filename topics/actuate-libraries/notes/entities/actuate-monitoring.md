@@ -15,9 +15,9 @@ incoming:
   - topics/actuate-libraries/notes/entities/actuate-daos.md
   - topics/actuate-libraries/notes/entities/actuate-secrets.md
   - topics/actuate-platform/notes/entities/alertviewer.md
+  - topics/data-access-control/notes/syntheses/2026-05-13_dig-followups.md
   - topics/data-science/notes/syntheses/model-lifecycle-end-to-end.md
-  - topics/data-science/notes/syntheses/model-lifecycle.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-05-27
 ---
 
 ## Purpose

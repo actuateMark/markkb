@@ -10,7 +10,8 @@ incoming:
   - topics/data-science/notes/concepts/botsort-tracking.md
   - topics/data-science/notes/concepts/detection-pipeline.md
   - topics/data-science/notes/concepts/line-crossing-detection.md
-incoming_updated: 2026-05-01
+  - topics/models/motion-plus/_summary.md
+incoming_updated: 2026-05-27
 ---
 
 # Motion Detection Challenge
@@ -50,7 +51,7 @@ For clips containing only a single frame, there is no previous frame to diff aga
 
 ### Parameter Research
 
-Additional work is needed to tune FDMD thresholds and parameters specifically for clip-based scenarios. The current parameters were optimised for [[rtsp-deep-dive|RTSP]] streams, and different decay rates, sensitivity thresholds, and blob merging strategies may be needed for the clip-based fleet.
+Additional work is needed to tune FDMD thresholds and parameters specifically for clip-based scenarios. The current parameters were optimised for [[rtsp-deep-dive|RTSP]] streams, and different decay rates, sensitivity thresholds, and blob merging [[strategies]] may be needed for the clip-based fleet.
 
 ## Impact
 
