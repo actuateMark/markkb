@@ -73,7 +73,8 @@ Baseline captured pre-re-home: `~/identity-baseline-pre-rehome.json` (0 FAIL / 3
 ## 7. If something breaks after Mark leaves
 
 - Run `~/bin/firebat-identity-verify.py` — pinpoints which identity/timer failed.
-- **Dead-man's checklist** (WS-E, pending) will list "if X breaks → check Y."
+- **[[2026-06-22_dead-mans-checklist]]** — the symptom→cause→fix table ("if X breaks → check Y").
+- Secret hygiene: a `gitleaks` pre-commit hook now guards both KB + claude-config (`.githooks/`); both scanned clean (0 leaks in history).
 - Three-tier routine-check pattern: [[2026-04-30_three-tier-routine-check-pattern]] — firebat script → laptop script → LLM skill.
 
 ## Related

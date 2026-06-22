@@ -75,10 +75,9 @@ During the WS-B markkb push, GitHub push-protection caught a **live NR Personal 
 
 ## Workstream B — Liberate personal-account artifacts  *(Mon first thing, then Wed)*
 
-- [ ] **Push markkb's 11 unpushed commits NOW** (last push 2026-05-22 — a month of work at risk). No-brainer, do Monday first thing.
-- [ ] **Privacy scrub — markkb.** Strip secrets/tokens, the non-work dirs (`rpg junk/`, `world/`, `cool stuff/` sit *outside* the KB but verify nothing personal leaked in), colleague-naming in any "mistake" context (per the no-naming-in-Jira norm — apply the same to mirrored docs), and personal opinions. Then mirror to an `aegissystems` org repo.
-- [ ] **Privacy scrub — claude-config.** Hooks/scripts may embed tokens, absolute personal paths, or opinions. Scrub, push current (1 commit ahead), mirror to org.
-- [ ] **KB source-of-truth.** The bare repo lives on firebat (`mork@mork-firebat:~/git/knowledgebase.git`). Make the org repo the canonical remote, not Mark's personal `actuateMark/markkb`.
+- [x] **markkb committed + pushed** 2026-06-22 — 521 files of drift committed (junk gitignored), leaked NR key purged from all history, pushed clean to github + firebat.
+- [x] **Scrub gate CLEARED** — `gitleaks detect` over full history: **0 leaks in markkb (22 commits) AND claude-config (12 commits)**. The non-work dirs (`rpg junk/`, `world/`, `cool stuff/`) sit *outside* the KB repo so won't mirror. Both repos are secret-clean and safe to mirror.
+- [ ] **Mirror to aegissystems org** — the one remaining step, **gated on the WS-A org GitHub identity** (firebat/laptop `gh` is personal `actuateMark`; need org perms to create the repos). Once identity lands: create `aegissystems/markkb` (or similar) + `aegissystems/claude-config`, push, set as canonical remote.
 
 ## Workstream C — Knowledge handoff for a no-owner team  *(Tue–Fri)*
 
@@ -100,8 +99,9 @@ During the WS-B markkb push, GitHub push-protection caught a **live NR Personal 
 ## Workstream E — Decommission what can't transfer  *(Fri)*
 
 - [ ] Identify anything irreducibly tied to Mark: personal Anthropic API key billing (note: firebat timers are **script-based, zero-token** by design — Anthropic key is a laptop/Claude-Code concern, not firebat), personal Slack webhooks, the laptop itself.
-- [ ] **Teammate-vantage verification:** have a colleague confirm from *their* machine — reach firebat over Tailscale, timers run green, KB org repo + Confluence readable. The real test of "did the re-home work."
-- [ ] **Dead-man's checklist:** a one-pager of "if X breaks the week after Mark leaves, check Y" for the team.
+- [ ] **Teammate-vantage verification:** have a colleague confirm from *their* machine — reach firebat over Tailscale, timers run green, KB org repo + Confluence readable. The real test of "did the re-home work." *(Fri, after WS-A)*
+- [x] **Dead-man's checklist** — WRITTEN 2026-06-22 → [[2026-06-22_dead-mans-checklist]]. Symptom→cause→fix table keyed to the 4 re-homed identities; "first move = run the verify harness."
+- [x] **gitleaks pre-commit hook** installed + verified-blocking in both markkb + claude-config (`.githooks/pre-commit`, `core.hooksPath`); closes the documented [[2026-04-28_long-lived-credentials-on-headless-boxes]] follow-up.
 
 ---
 
