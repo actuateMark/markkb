@@ -4,9 +4,10 @@ type: entity
 topic: personal-notes
 tags: [todos, mark, work-plan, priorities, personal]
 created: 2026-04-16
-updated: 2026-05-11
+updated: 2026-06-22
+last_scope: 2026-06-22
+last_wrap: 2026-06-16
 author: kb-bot
-last_wrap: 2026-05-08
 backlog: topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
 ---
 
@@ -115,10 +116,12 @@ Immix-side schedule deletions never flow back to our admin DB — stale cronjobs
 
 Active checkboxes only — proposal rescores, Run Service framing, Tier3 replication detail, KB cross-refs all factored to [[2026-05-05_fleet-architecture-workstream-context]].
 
+> **2026-06-02 — Watchman Phase-0 fleet fit decided.** Best fit = **E (simplified)** = "E's split + C's bin-packing"; grow-into target = **v10 via E**. Greenfield standalone repo, RTSP-only, per-camera (no site), Redis Streams, uniform bin-packed pullers, stateless trimmed detection, WMS-as-FleetCoordinator. Frontend sketch cataloged. Full analysis + M0–M5 build plan: [[2026-06-02_watchman-phase0-fleet-fit]]. Sketch: [[2026-06-02_frontend-sketch-ui]].
+
+> **2026-06-16 — Watchman pipeline/backend meeting.** Backend direction = **doubletake-pattern Lambda** (invoked during connector run, writes to window-id table/db); storage **OPEN** (Postgres vs OpenSearch [Jagadish] vs S3-vector [Otzar]); forensic search needs GPUs + sentence-transformers + vector DBs; **AWS stays on dev account w/ Terraform** (no new account → avoids separate NR + GDPR); Valeri building connector-side Lambda (~end of next week). Open Qs: storage choice timing, Lambda invocation point (sync vs async), alert grouping/id cleanup, pipeline-vs-connector parity. Full integration vs phase-0: [[2026-06-16_watchman-pipeline-backend-meeting]].
+
 ### Review + PoC selection
 
-- [x] **Handoff #4** ✅ Done 2026-05-11 — Added M&A + B&R dimensions; reallocated weights (IS 35→30, Cost 20→17.5, FI 15→12.5; both new dims 5% each). Rescored A-E with new dimensions: E 7.775 (lead narrowed to 0.375), C 7.40 (unchanged — most rubric-robust), B 6.875 (−0.375), D 6.40 (−0.45), A 4.90 (+0.45). PoC-1=E PoC-2=C recommendation preserved. Synthesis: [[2026-05-11_rubric-monitoring-billing-dimensions]].
-- [x] **Handoff #5a** ✅ Done 2026-05-11 — Added 10 fleet reading-list items across K8s Multi-Deployment (Jobs/Indexed), Workflow Orchestration (new "API Gateway → Lambda → K8s" section), Contract & Schema Governance (new section for Pydantic v2 + schema canary), Coordinator / Lease Mechanisms (new section for gRPC + Raft + lease-churn), NATS JetStream-as-blob annotation, PyAV GIL, Spot economics. Item 9 (Connascence) moved to software-arch reading-list. See [[fleet-architecture/reading-list]].
 - [ ] Review each proposal and annotate with questions / concerns / deal-breakers
 - [ ] Apply [[2026-04-16_evaluation-rubric|evaluation rubric]] consistently across all 5
 - [ ] Pick top 2 for team deep-dive *(rescore says E first, C runner-up)*
@@ -179,9 +182,6 @@ Goal: stand up **minimal local sketches** of each of the 5 projects/designs draf
 
 ### Open work
 
-- [x] **Handoff #6** ✅ Done 2026-05-11 — Spec landed at [[2026-05-11_enforcement-as-proposal-scorer]]. Per-proposal target import-linter contracts (A: low ~10-50 violations, B: high ~200-500+, C: moderate ~50-150, D: highest ~400-1000+, E: moderate ~50-150). Violation-count → Migration-Risk bracket mapping (0-25→10, 26-75→8, 76-150→6, 151-300→4, 301-600→2, 600+→0). Billing-emit-site fitness functions defined (centralization + idempotency-reach checks; will need pytest sibling for AST checks import-linter can't express). Dual-use angle: pre-PoC scorer + post-PoC enforcer.
-- [x] **Handoff #7** ✅ Done 2026-05-11 — Enforcement collector ships. import-linter `>=2.0` added as dep; 5 per-proposal `.ini` contracts under `data/proposal-contracts/`; collector at `src/software_arch_sketches/enforcement/rules.py` subprocess-invokes lint-imports + counts `(l.N)` edges. Real run: A=30 (MR 8/10), B=203 (4/10), C=169 (4/10), D=202 (4/10), E=30 (8/10). **2 real findings vs human estimates**: C harder than thought (−2pt MR — connector_factories hub-coupling is the cost driver), D easier than thought (+2pt — complexity lives in infra not imports). E's lead over C in composite widens from 0.375 → **0.675**. Rubric synthesis updated with collector MR addendum. Findings: [[2026-05-11_sketch-findings-enforcement]]. Dual-use: contracts → CI gate post-PoC selection.
-- [x] **Handoff #5b** ✅ Done 2026-05-11 — Added 3 software-arch items + connascence (moved from fleet): tach-vs-import-linter benchmark goes under Fitness Functions; ODD/PRR new section "Operational Readiness & Observability-Driven Development"; migration-safety new section "Migration-Safety Patterns" (strangler fig, feature-flag-driven migrations, multi-quarter migration discipline). See [[software-architecture/reading-list]].
 - [ ] [[2026-04-16_code-health-dashboard|Code health dashboard]] — extensible dashboard consolidating code health metrics
 - [ ] [[2026-04-16_tooling-landscape|Tooling landscape]] — pick 2-3 tools from the catalog to actually try locally
 - [ ] [[2026-04-16_architecture-enforcement|Architecture enforcement]] — prototype one fitness function / import-rule check
@@ -266,6 +266,8 @@ Cross-repo silent-regression dashboard generated by `/dashboard-check`, surfaced
 - [ ] **Catalog coverage enrichment** — actuate-admin, inference-api per-model, autopatrol-server, actuate-libraries, config-drift signals
 - [ ] **Baseline recalibration pass** — after ~1 week of sink accumulation (target 2026-05-01+)
 - [ ] **NEW (2026-04-23): Config-drift signals from OOM surge triage.** (a) `connector_pods_under_1gb_limit`; (b) `connector_pod_headroom_over_70pct`; (c) `vpa_updatemode_drift`; (d) (future) `s3_lifecycle_rules_disabled`. See [[2026-04-23_oom-surge-connector-limit-drift]].
+- [ ] **NEW (2026-05-14): Wire existing inference-api E2M signals into firebat dashboard.** Three rules created 2025-09-11 in [[2026-05-14_inference-api-e2m-rules]]: `inferenceApi.billing.requests`, `inferenceApi.billing.frames`, `inferenceApi.inference.slices`. Each gets a tracked dashboard signal with baseline + regression rule so silent drops in any of the three count classes surface in `/dashboard-check`. One-shot; closes when all three render on the dashboard. *Pre-req:* resolve the account-ID question (graphql targets `7081731`, KB-documented primary is `3421145`) before wiring queries.
+- [ ] **NEW (2026-05-14, ongoing discipline): Every new inference-api E2M rule ships with a dashboard signal.** When adding a rule to `EventsToMetricRules.graphql` (or via NR UI), update `~/.claude/skills/dashboard-check/config/signals.json` in the same change. Don't let metric series exist without a regression-aware view. Permanent standing item — does not close; reminder lives here as a discipline gate. Active surface: [[2026-05-14_v5-tracking-fields-e2m-design]] proposed follow-up rules (per-camera, per-error) when written must include dashboard signals.
 
 ### Phase 2+
 
@@ -349,7 +351,6 @@ One-command bootstrap to reconstitute this laptop's Actuate config (Claude Code 
 - ~~§12i — Strip LLM narrative pass from minipc `/dashboard-check` cron~~ → CLOSED 2026-05-06, moved to [[2026-05-06]] § Closed Sub-items. Subsumes §11e.
 - ~~§12i.b — Port `/kb-recap` to script~~ → CLOSED 2026-05-07 (verification only — already deployed). See [[2026-05-07]] § Closed Sub-items + [[2026-05-07_firebat-enhancements-batch]].
 - ~~§12j core dashboard follow-ups (per-repo 7d deltas, FACET-classify in render.py, sparklines per metric, drilldown detail pages)~~ → CLOSED 2026-05-07. See [[2026-05-07_firebat-enhancements-batch]]. **§12j tail still open:**
-  - [x] **Threshold recalibration against 7d distribution** — DONE 2026-05-07. Reframed handoff's red/yellow split into regression-vs-debt taxonomy: 3 regression signals (ci_failure 15/30, mtm 1/3, open_prs_age 15/60) keep red as alarm; 5 debt signals (todo, radon, ruff, stale_branches, vulture) drop red entirely — yellow only as leaderboard. 21% flip rate, 3 legit reds today (ailink CI 35%, inference-api 714d PR, watchman 3.17d MTM).
   - [ ] **Cleanup-lambda interpretive checks (Step 8b/8d remaining)** — Step 8c DONE 2026-05-07: new `onboarder_healthcheck_hotfix_in_effect` git_local signal (boolean, red_below=1) catches revert of 2026-04-23 healthcheck-warning hotfix. 8b (DDB drift, 4-6h, needs new `cw_dynamodb` source) and 8d (gh-log scan, "last or never") still optional. Handoff: [[2026-05-07_handoff-cleanup-lambda-interpretive-checks]].
   - [ ] **vms-connector stale-branch review** — dedicated session: walk all 229 stale branches (>60d), classify each (merged-elsewhere / abandoned / WIP-someone-still-cares), produce a report with per-branch recommendation + author callout, post to team for approval, then execute the cleanup. Output is a *reviewable artifact*, not a unilateral delete. Single-session scope, ~2-3h. Surfaced by 2026-05-07 dashboard signals.
   - [ ] **actuate-inference-api 724d-old open PR** — single-PR review: re-baseline against current main, decide rebase / close / hand-off. Single-session, ~30min.
@@ -445,6 +446,7 @@ Three-part race in `actuate_admin`:
 - `fleet_new_oom_offender` 2026-04-29: connector-14170=13, clips-prod=6, create-detection-window=5, connector-39467=4, connector-44740=3, connector-38396=3, connector-39350=3, connector-33724=2 (top of fleet, sustained-RED)
 - connector-45999: 96/24h sustained, 2 days running per yesterday's carry-over
 - Per-incident proven-fix on connector-20628 (2026-04-23): bump 384 MB → 1.6 GB stopped OOMs immediately; working set was genuine 950 MB
+- **2026-05-21 LHF triage finding:** `connector-36180` (32 OOMs/24h) is a Global Guardian / Avigilon **rearchitecture** pod — new cohort vs the original Securitas-Trial gate-strip analysis. Worth folding into the broader VPA-floor audit once the §18 PR is in flight; not Securitas-cohort-specific. Surfaced via [[skill-daily-scope|/daily-scope]] fleet-RED sweep.
 
 ### Open work
 
@@ -506,8 +508,8 @@ Three-part race in `actuate_admin`:
 
 ### Open work
 
-- [ ] **Promote stage → rearchitecture** via standard release-train PR after stage soak clean. **Pulled into 2026-05-07 Today's Scope** — bundle naturally with PR #1679 territory or open a discrete fix-only PR. [Closed sub-items: PR #1671 opened + merged to stage 2026-05-05 — see [[2026-05-05]] § Closed Sub-items.]
-- [ ] **Site-side investigation (post-merge)** — once noise is bounded, look at WARNING-level body previews. If a specific HTTP status / body shape recurs (503, rate-limit, relay-resetting empty), file a separate issue with upstream-firmware vs network-LB classification.
+- [ ] **NEW: DW relay-host timeout investigation (Monitex-Security)** — distinct failure mode surfaced 2026-05-12. `connector-37811` (lead=Monitex-Security, integration=digital_watchdog) hits `b7d3f761-…relay-us-nyc-1-prod-dp.vmsproxy.com` with `HTTPSConnectionPool Read timed out (read timeout=30)` at ~700/hr (99.96% pure — 2,854 of 2,855 ERRORs in 4h). Trend escalating: peak 12h bucket = 9,261 vs historical 1-4k. 0 LINECROSS_ALERT_FIRED in 4h → camera reachability degraded for this site. Other 11 connectors hitting same relay cluster show ≤176 events in 4h (minor spillover). **Diagnosis:** vendor-side (DW relay) or customer-side (NVR) connectivity, not Actuate code. **Recommended actions:** (a) ping CS/Monitex about NVR/relay health, (b) consider code-side circuit-breaker / exp-backoff on these timeouts — pounds the sick endpoint at 700/hr with no payoff. File a Jira ticket once you pick a path.
+- [ ] **NEW: WARN-downgrade the four catch-all `except Exception` arms in DW auth retry loops** *(surfaced 2026-05-21 fleet-RED triage)*. PR #1671's `JSONDecodeError`-specific WARNING fix narrowed the cohort but the generic catch-all below it is still firing at ERROR — ~22k events/24h today (connector-11202=14k DW auth, connector-39966=2.9k at 1100 Rt 208). All four sites are inside `while retries < 3` retry loops and have an in-code precedent two lines above: `_DwAuthBodyError` is already commented `# WARNING already logged inside _parse_dw_auth_response. Treat as transient endpoint flake — retry without ERROR-level noise.` The generic `except Exception` arms got missed in PR #1671's scope. **Sites:** `camera/digital_watchdog/dw_camera.py:400`, `dw_camera.py:490`, `camera/digital_watchdog/dw_healthcheck_camera.py:257`, `dw_healthcheck_camera.py:321`. **Fix:** 4× `logging.error(...)` → `logging.warning(...)`. Closes the §20 acceptance criteria "Empty-body / non-JSON responses log as WARNING (not ERROR)" against the catch-all arm. Per the new [[feedback-error-vs-warn-evaluation]] rule.
 
 ### Acceptance criteria
 
@@ -542,7 +544,6 @@ Weeks of incremental connector PRs (#1675, #1680, #1682, #1683, #1684, #1685, pl
 - [ ] **T1 — Close the crash-path emit gap.** Spot-check 5-10 silent containers in NR; design crash-emit mechanism; aim for fleet silent-cronjob rate <5% over 24h sustained 7d. Blocked-by: PR #1688 baseline established. *(billing/_todos T1)*
   - [ ] **T1 pre-impl — Spot-check 5-10 silent containers in NR** (~4h). Classify each into {completed-no-emit, signal-killed, crashed, stuck-in-healthcheck} per last-log-line + duration signature. Pre-impl research for the crash-emit design. Top-2 per [[2026-05-11_pre-impl-research-priority-reorder]]. *(billing/_todos T1 step 1)*
 - [ ] **R1 — Admin↔emit dashboard signal (continuous reconciliation).** Design landed 2026-05-11: [[2026-05-11_billing-reconciliation-dashboard-design]] (query shape, NRQL+admin-DB data source, separate billing dashboard local-first, 5% → 1% threshold ramp, 5 open impl questions pinned). Implementation PR is the next loop. This is the post-mortem's headline action item — closes the "unknown drift window" risk. *(billing/_todos R1)*
-  - [x] **NF2 — Promote `reconcile_cameras.py` to a Tier-1 dashboard signal** ✅ DEPLOYED 2026-05-11. Tier-1 on Firebat (daily 04:00 PT timer), 3 signals enabled in signals.json. First real run: `production_missing_subscription.cameras=2024` → RED (value-add demo working). Deploy codified at `local_network_scripts/phase-16-billing-reconcile.sh` (re-runnable, idempotent). *(billing/_todos NF2)*
   - [ ] **NF1 — Clone + inventory `actuate_bi` repo** (~2h). Find DDL files in `sql/snowflake/`, mirror in [[snowflake-billing-tables]] §"Table inventory" replacing inferred column lists, document the swap-task schedule mechanism. Closes ENG-242 remainder. *(billing/_todos NF1)*
   - [ ] **NF3 — Production unbilled-camera ops follow-up** (sales coordination). **2,024 cameras** (May 2026 actual via NF2's first real run — up from 803 in Feb 2026, +150%). 4M compute-hours/month. Re-frame: not engineering scope, but a demo that the reconciliation signal NF2 just shipped is surfacing real growing revenue gaps. Filing target TBD — likely Slack to sales-ops/Tatiana with the trend. *(billing/_todos NF3)*
 - [ ] **R2 — Emit↔Snowflake reconciliation.** Data-team-owned. Engage on the Cohort F6/F5 ingestion gap; produce a daily SQS-sent vs Snowflake-landed delta query. *(billing/_todos R2)*
@@ -572,39 +573,205 @@ The full categorized list (24 items across 6 categories) lives in [[billing/_tod
 
 ---
 
-## 29. Internal-test deploy lane — custom-branch wiring via admin API
+## 29. Custom-branch deploy lifecycle — admin endpoints + CI/CD cleanup
 
-**Priority:** This-week-or-next (planning) — not active today.
-**Status:** Idea captured 2026-05-11 during the AutoPatrol queue-routing drill. Needs design before any code.
+**Priority:** Active 2026-05-20 (scope expanded; ENG-282 cut). **2026-05-21: local e2e cycle verified.**
+**Status:** Local admin on `localhost:8001` ([[2026-05-20_actuate-admin-local-bringup]]). Migration `0547_custombranch_branchdeploymentevent` applied locally. All 8 endpoints (3 per-customer + 5 branch-scoped) implemented. **End-to-end cycle verified 2026-05-21** ([[2026-05-21_deploy-branch-e2e-cycle-verified]]) — STAGE customer → register → deploy → delete-branch orchestrator → flipped back, 4 audit events. Safe-test-site convention codified ([[actuate-admin-safe-test-sites]]). Full design: [[2026-05-20_deploy-branch-full-scope]].
+**Tickets:** ENG-269 (per-customer surface) · ENG-282 (branch-scoped surface + CI/CD cleanup)
 
-### The problem
+### Why
 
-Today, untested dev branches must be promoted to `stage` to be exercised against any real workload, which pollutes stage with churn and means every stage→rearch promotion drags along revertible-but-noisy iterations (see the #1681 → #1686 → #1687 → #1688 chain). We need an internal-test lane that lets us point selected sites (Alibi, Securitas trial, internal eval) at a custom branch image *without* touching stage.
+Per-customer surface alone leaks sites onto stale custom branches after a feature branch merges. CI/CD-driven register/cleanup with a first-class `CustomBranch` object closes the loop. Full design + acceptance criteria in [[2026-05-20_deploy-branch-full-scope]].
 
-### Design surface
+### Open work (local-first — no CI/CD until local end-to-end passes)
 
-- **Admin-side wiring:** how to configure a custom branch (image tag) at the site / customer level. Likely via a new field on the connector deploy config, exposed through an admin API endpoint.
-- **API automation:** so we can flip a cohort of sites onto a branch and back without manual DB edits. Idempotent endpoint + audit log.
-- **Cohort definition:** what's the "internal-test cohort" canonically? Lead-implied (today's `lead_implies_dev` heuristic), explicit opt-in flag, or both?
-- **Deploy interaction:** ArgoCD / connector_deployer needs to honor the per-site image-tag override. Today the deploy chain is per-cluster, not per-site — this is the heaviest lift.
-- **Cleanup discipline:** stale custom-branch assignments must auto-expire (e.g., 7d TTL) or the cohort drifts off latest-known-good.
+*Scaffolding through dev + staging-PR closed 2026-05-20 + 2026-05-21; verbatim `[x]` history swept to [[2026-05-20]] § Closed Sub-items + [[2026-05-21]] § Closed Sub-items by /daily-wrap.*
 
-### Why now
-
-Surfaced by the 2026-05-11 AP signal investigation — the `lead_implies_dev` queue heuristic is *already* doing 80% of this routing for the SQS layer (Alibi's patrols land on dev queue, dev pod processes them on dev image tag `1.0.1-dev`). A formal internal-test lane would generalize that into a first-class lever for the connector image itself, with safety rails.
-
-### Open work
-
-- [ ] **Design synthesis** — write the ADR-style note covering admin model, API surface, deploy-chain integration, cohort semantics, TTL/cleanup. Lives in `topics/actuate-platform/notes/syntheses/{date}_internal-test-deploy-lane.md` once drafted.
-- [ ] **Stakeholder ping** — connector_deployer owner + admin-side owner for buy-in on the deploy-chain change before scoping further.
-- [ ] **Prototype scope** — proposed phasing (admin schema first, then API, then deploy override, then cohort opt-in).
+- [ ] **`expire_custom_branches` cron — two-phase body** (per-customer TTL + per-branch TTL).
+- [ ] **Fill 16 existing test stubs** in `api/tests/test_customer_deploy_branch.py` (still pytest.skip).
+- [ ] **Add ~20 new tests** for branch-scoped surface; mock the deployer call.
+- [ ] **Seam-A ADR** — `CustomerViewSet` vs new `DeployBranchViewSet`.
+- [ ] **CI/CD wiring (separate PR, gated on PR #2445 deploy)** — vms-connector GH Actions on `pull_request: [opened, closed]`.
 
 ### Related
 
-- §3 / §27 (AutoPatrol routing) — the SQS-side precedent for cohort-based dev routing
+- Synthesis (full design): [[2026-05-20_deploy-branch-full-scope]]
+- Local bring-up runbook: [[2026-05-20_actuate-admin-local-bringup]]
+- Original design (per-customer only): [[2026-05-12_internal-test-deploy-lane]]
+- Customer model dissection (Seam-A context): [[2026-05-13_customer-model-dissection]]
+- §3 / §27 (AutoPatrol routing) — SQS-side precedent for cohort-based dev routing
 - §5 (Fleet Architecture) — any fleet redesign must accommodate per-site image-tag overrides
 - §28 (Billing Pipeline) — internal-test traffic must NOT pollute billing-emit counts; cohort opt-in needs a billing-suppression switch
-- Existing `lead_implies_dev` heuristic at `actuate-libraries/actuate-config/.../patrol_config.py:31-34` — first place a generalized opt-in flag would replace
+
+---
+
+## 31. Gmail tier-1 digest — passive inbox surfacing for critical-but-quiet threads
+
+**Priority:** This-week (small scope, high leverage on missed-thread risk)
+**Status:** Scoped 2026-05-12. Design in [[2026-05-12_gmail-tier-1-digest-design]]. Not yet built.
+**Tickets:** *(pre-ticket — personal infra)*
+
+### Why
+
+Triggering use case: a slightly dead Gmail thread about v5 inference-api testing that needs better visibility. Broader pattern: external partner replies, dead-but-active threads, and critical-sender pings all go quiet inside a heavy inbox. A nightly tier-1 firebat script can convert inbox state into a structured digest the morning ritual reads, with zero token cost per check.
+
+### Open work
+
+- [ ] **Phase 0** — Google Cloud project + OAuth desktop client (~15 min). Confirm `actuate.ai` workspace allows OAuth desktop apps; if blocked, fall back to IMAP + app password.
+- [ ] **Phase 1** — `gmail-digest.py` skeleton + auth bootstrap on laptop (~30 min). Prove headless refresh-token flow works end-to-end.
+- [ ] **Phase 2** — Classification (awaiting-reply / stale-mine / critical-sender) + noise filters (promotions / GitHub / Jira) + markdown digest writer (~30 min). Output to `~/.local/state/claude-jobs/gmail-digest/YYYY-MM-DD.md`.
+- [ ] **Phase 3** — systemd `--user` unit + timer (06:00 daily, before morning ritual) (~15 min). Source-controlled in `local_network_scripts/files/`.
+- [ ] **Phase 4** — Deploy to firebat (one-time scp of `token.json` after laptop OAuth consent) (~15 min). Add deploy script.
+- [ ] **Phase 5** — Wire into `/daily-scope` (~15 min). Read digest pre-pick; surface critical entries as scope candidates, awaiting-reply as Morning Follow-Ups verify lines.
+
+### Cross-references
+
+- §10 (Laptop-config portability) — `credentials.json` / `token.json` must enter the bootstrap inventory; without them a fresh laptop loses inbox surfacing.
+- `/daily-scope` skill — consumer.
+- Three-tier routine-check pattern: [[2026-04-30_three-tier-routine-check-pattern]].
+
+**Full design:** [[2026-05-12_gmail-tier-1-digest-design]]
+
+---
+
+## 30. Profiling & Optimization Initiative — VMS + libraries
+
+**Priority:** Background — Phase 1 items are quick wins; Phase 2+ scheduled as bandwidth allows.
+**Status:** Phase 2 v1 on `actuate-libraries/feature/actuate-instrumentation-v1` (**unpushed; push blocked on verify gate**). Plan [[2026-05-12_actuate-instrumentation-v1-verification-plan]]; ADR [[2026-05-12_adr-actuate-instrumentation-v1]]; install [[2026-05-12_actuate-instrumentation-v1-installed]]; roadmap [[2026-05-12_profiling-toolkit-and-roadmap]]. **2026-05-13**: harness + `actuate-profile` CLI scaffolded; Exp 1 GREEN. **2026-05-14**: `report` subcommand ([[2026-05-14_actuate-profile-report-subcommand]]) + first hotspot read ([[2026-05-14_first-hotspot-findings]]) — −42% cumulative bytes, −86% in `actuate_movement`. 47 tests pass. **2026-05-15**: cv2 dst= PRs pushed — [aegissystems/actuate-libraries#349](https://github.com/aegissystems/actuate-libraries/pull/349) + [aegissystems/vms-connector#1696](https://github.com/aegissystems/vms-connector/pull/1696), both draft, CI green. **2026-05-18**: webcam test fixture landed on #1696 ([[2026-05-18]]); 90 s validation pass clean. **2026-05-19**: plan revised — cv2-dst stays on dev pin until a real-customer soak signs off (handoff [[2026-05-19_handoff-cv2-dst-stage-deploy]] superseded); new Phase 2.6 sub-block added for the [vms-connector#1703](https://github.com/aegissystems/vms-connector/issues/1703) PyAV 17 / FFmpeg 8 / OpenCV 4.13 bump driven by MISS-685; Live Streaming v1 plan decomposed into KB (umbrella [[2026-05-19_live-streaming-v1-plan]] + per-repo concepts + crosscut [[2026-05-19_streaming-pyav17-crosscut]]). Exp 2/3 still gated. ENG-246 status comment 2026-05-14.
+
+### Context
+
+Connector has a mature in-process memory hook (`_log_memory_breakdown` w/ jemalloc + smaps + tracemalloc gating) and several one-shot tools (`cpu_profile.sh`/py-spy, `memory_profile.sh`/memray, GIL benchmarks, frame-deletion A/B). Libraries side is essentially empty — no telemetry primitives, `actuate-instrumentation` is a misnamed stub. Python 3.15 stdlib `profiling.sampling` (PEP 799) is genuinely new but blocked behind 3.15 final (~Oct 2027); py-spy stays the equivalent until then.
+
+### Phase 1 — quick wins (unblocked today)
+
+- [ ] **Item 1: Wire `FrameBufferPool.get_stats()` into `_log_memory_breakdown`** — pull `PooledTTLImageCache.get_pool_stats()` per camera, log aggregate hit-rate + per-shape pool sizes. ~30 min. `vms-connector/site_manager/connector/analytics_site_manager.py`.
+- [ ] **Item 2: Promote `test_vms/test_gil_benchmarks.py` to a nightly CI job** — new `nightly-perf.yml` GHA workflow, perf-baseline file, regression notification when GIL metrics drift > 20%. Not a PR gate (too noisy on shared runners). ~2 h.
+- [ ] **Item 5: New Relic dashboard tile — RSS per camera by integration** vs the 270 MB target from `CLAUDE.md`. Add to local operational dashboard sink too. ~1 h.
+
+### Phase 2 — library-side foundation
+
+**← START HERE.** This phase is the kickoff. The README expansion is the cheapest, lowest-risk first action and sets the scope contract that everything in Phase 2 is built against. Phase 1 connector items are independent and can happen in parallel.
+
+- [ ] **Wire Exp 2 (`@timed` vs py-spy) verdict in the verify command** — probe's @timed-on-pre_process histogram captures are scaffolded (dumps p50/p95/p99 every 30 s); py-spy speedscope cross-read primitive (`exp2_timed_vs_pyspy.pyspy_p95_ms_for_function`) is implemented. Remaining: have `verify --experiment 2` accept a probe-output + speedscope path and run the comparison; OR fold both spawns into a single self-contained `verify --experiment 2` that runs the connector under both the probe AND py-spy in parallel sessions.
+- [ ] **Self-contained `verify --experiment 1`** — currently the workflow is "run probe_runner externally, then run verify --experiment 1 --exp1-parity-log path." Fold the connector spawn into the verify command directly so a single CLI invocation produces a verdict. Will need to handle the PYTHONPATH override (lib is 0.0.3 in the connector venv; harness lives only in the unpushed v1 source).
+- [ ] **Tune Exp 3 pass threshold** — first standalone run on the plan's parameters (reservoir=1000, N=18000, log-normal) hit 12% spread vs the plan's 8% threshold. Either the threshold is too aggressive for those parameters or `ReservoirHistogram` has more variance than ideal; investigate before treating Exp 3 as a real gate.
+- [ ] **Pre-push verification gate** — Exp 1 ✅; Exp 2 still requires the verify-command wiring; Exp 3 threshold tuning. Push blocked until all three pass; experiments 4-5 are post-PR.
+- [ ] **Push branch + open PR** *(blocked by gate)* — `git push -u origin feature/actuate-instrumentation-v1`; preserve `[major:actuate-instrumentation]` in squash subject; strip dev-bump bot lines from squash body.
+- [ ] **Connector dogfood PR** — replace inline tracemalloc block in `_log_memory_breakdown` with `actuate_instrumentation.memory.tracemalloc_top`; keep existing log-line format. ~half-day.
+- [ ] **Remove `LogTimeElapsedMixin` from `actuate-log`** — next minor after `actuate-instrumentation` 1.0.0 lands (one-cycle overlap).
+
+### Phase 2.5 — easy-fix candidates surfaced by first report (2026-05-14)
+
+- [ ] **cv2 `dst=` preallocation in `actuate-movement`** — [aegissystems/actuate-libraries#348](https://github.com/aegissystems/actuate-libraries/issues/348). Implementation + numerical-equivalence tests done; library PR [#349](https://github.com/aegissystems/actuate-libraries/pull/349) + connector test PR [#1696](https://github.com/aegissystems/vms-connector/pull/1696) both draft, CI green for 3 days. Webcam fixture validated 2026-05-18. **Updated 2026-05-19: do NOT promote #349 to stable yet.** Plan: keep #349 draft, keep #1696 on the `1.2.7.dev1+...` dev pin, deploy the dev-pinned connector branch to a real customer site via connector_deployer first, soak, then promote.
+  - [ ] Pick soak target site (TBD — avoid co-stacking with [[2026-05-19_pyav17-ffmpeg8-migration|#1703]] candidate cust 41399 if possible)
+  - [ ] **Deploy `feature/test-actuate-movement-cv2-dst` to the soak target site — use §29's new admin-API custom-branch deploy flow (PREFERRED) once it's wired, OR connector_deployer as fallback.** *(blocked by §29 per-customer endpoint bodies + DeployBranchActionMixin wire-in)*. Pinned for 2026-05-21 follow-through: if §29 lands its per-customer surface today, this is the first end-to-end customer of the new flow and validates the deploy-lifecycle path against a real branch with bundled connector changes (cv2-dst + #1694). If §29 slips, fall back to connector_deployer same-day rather than further delay. Verify the cronjob's `container_image` tag is slash-encoded either way (`feat-foo` not `feat/foo`) — see `feedback_check_image_tag_after_deployer_push`.
+  - [ ] Soak 24–48 h, compare RSS slope + motion-event counts + alert verdicts vs same-site `rearchitecture` baseline
+  - [ ] If clean → ready #349 → merge → bump #1696 pin to stable → merge to stage
+  - [ ] If regressed → keep dev pin, iterate on library branch
+  Original (now superseded) merge-tomorrow handoff is in [[2026-05-19_handoff-cv2-dst-stage-deploy]] for reference.
+- [ ] **Investigate SSL-context churn in vms-connector** — [aegissystems/vms-connector#1693](https://github.com/aegissystems/vms-connector/issues/1693). 1.25 M `ssl_wrap_socket` calls (60% of all allocations by count). Confirm intent first (may be deliberate per-tenant isolation); if not, hoist to persistent `Session` / shared boto3 client.
+- [ ] **Configurable `_log_memory_breakdown` interval (vms-connector)** — [aegissystems/vms-connector#1694](https://github.com/aegissystems/vms-connector/issues/1694). Root-cause why 390s memray run captured zero cycles, then expose the interval via env-var so verify-mode runs capture cycles.
+- [ ] **memray flamegraph render hang on larger output.bin** — surfaced 2026-05-18 webcam validation run. Process goes to `S` state with 0% CPU; never produces HTML. Same root cause appears to break `memray stats --json` (report's allocation-hotspots section comes up empty). Fix: timeout the `subprocess.run` in the harness's `render_flamegraph` and fall back to stats-only. See [[2026-05-19_handoff-cv2-dst-stage-deploy#harness-papercuts-not-blocking-step-1-but-worth-landing-before-the-next-long-run]].
+- [ ] **Drop `--idle` from py-spy invocation if set** — `expire_items` (TTLImageCache sleep loop) showing as 11% CPU is a measurement artifact. Check `runners/pyspy.py`. ~5 min, no GH issue needed.
+- [ ] **Native `webcam-local` harness scenario** — current wrapper at `vms-connector/test_settings/run-webcam-profile.sh` swaps LOCAL_WEBCAM settings over LOCAL_RTSP to route around the missing scenario. Drop the swap when the harness lands stable.
+
+### Phase 2.6 — PyAV/FFmpeg/OpenCV bump (#1703) — testing arc
+
+[aegissystems/vms-connector#1703](https://github.com/aegissystems/vms-connector/issues/1703). PyAV 13.1 → 17.0.1, FFmpeg 7.1.3 → 8.1.1, OpenCV 4.11 → 4.13. Primary driver is MISS-685 (HEVC corruption / gray-frame missed detection). Supersedes older PR [#1621](https://github.com/aegissystems/vms-connector/pull/1621). Risk surface, breaking-changes audit, Graviton 4 CPU caveat: [[2026-05-19_pyav17-ffmpeg8-migration]]. Sequencing vs Live Streaming v1: [[2026-05-19_streaming-pyav17-crosscut]].
+
+- [ ] Open `actuate-pullers` feature branch with the API renames (`av.AVError` → `av.FFmpegError` at 2 sites; `codec_context.skip_frame` strings → `SkipType` enum at 6 sites)
+- [ ] Bump `pyproject.toml` pins (`av~=17.0.0`, `opencv-python-headless~=4.13`); bump FFmpeg in `docker_files/dependencies/build_ffmpeg.sh` to `n8.1.1` (or evaluate dropping the custom build entirely — see migration concept §"Drop the custom FFmpeg build?")
+- [ ] Wait for dev wheel publish; pin dev wheel in a vms-connector feature branch
+- [ ] Deploy via connector_deployer to **cust 41399 (Eyeforce: AmeriGas Sacramento)** — the MISS-685 site, known-bad camera; immediate signal
+- [ ] Run 24–48 h soak; compare:
+  - Stream-lost / broken-stream reconnect rate vs ~28/4h baseline on cam ST24-3
+  - Snapshot preview quality in admin UI (no gray previews)
+  - Inference detection rate (MISS-685 is a missed-detection case)
+  - CPU per pod (Graviton bench predicts ~+5%; confirm or refute)
+- [ ] If clean → deploy to 1–2 other HEVC-heavy sites for wider read
+- [ ] Promote library to stable; bump connector pin; merge to `stage`
+- [ ] Stage soak; if clean, promote to `rearchitecture` with `[minor:actuate-pullers]`
+- [ ] Decide custom-FFmpeg-build fate (drop or keep) once the GPU connector roadmap is concrete
+
+### Phase 3 — workflow tooling
+
+- [ ] **Item 4: `/profile-on-stage` skill** — kubectl-debug sidecar (py-spy + memray + ptrace cap), record for N minutes, pull artifacts to `~/Documents/worklog/profiles/YYYY-MM-DD/`. ~1 day.
+- [ ] **Item 6: Memory regression baseline file + PR diff comment** — `.perf-baselines/memory.json` in vms-connector; CI runs `frame_deletion_memory_test.py`, posts PR comment on >threshold delta. ~1 day (deterministic-environment risk).
+
+### Phase 4 — production observability (separate workstream once Phase 1-3 ground)
+
+- [ ] **Item 7: Profiler sidecar `ACTUATE_PYSPY=1`** — Helm-toggleable; py-spy attaches to main container PID via `shareProcessNamespace: true` + `CAP_SYS_PTRACE`; dumps to shared volume, uploads to S3 on shutdown. Touches `vms-connector`, `kubernetes-deployments`, `connector_deployer`. ~3–5 days when scheduled.
+
+### Watchlist
+
+- [ ] **Python 3.15 migration** — revisit `profiling.sampling` adoption when connector reaches 3.15. Hard blocker is profiler/target minor-version match. Tracked also in `docs/OPTIMIZED-CONNECTOR.md` 3.13/3.14 evaluation sections.
+
+### Out of scope
+
+Rust hot-loop acceleration, GStreamer puller alternative, scalene adoption, full OpenTelemetry stack — referenced in [[2026-05-12_profiling-toolkit-and-roadmap]] decision log.
+
+### Related
+
+- §6 (Software Architecture) — any local prototype that touches the inference path benefits from Phase 2 timing primitives
+- §18 (Memory-limit drift) — Phase 1 item 5's dashboard tile directly supports this workstream
+- §28 (Billing Pipeline) — billing-emit overhead is one of the future targets for per-stage timing
+- KB topic: [[profiling-and-performance/_summary]]
+- Roadmap synthesis: [[2026-05-12_profiling-toolkit-and-roadmap]]
+- 3.15 brief: [[2026-05-12_python-3.15-profiling-sampling-watchlist]]
+- Tooling inventory: [[tooling-inventory]]
+- Adjacent connector docs: `docs/OPTIMIZED-CONNECTOR.md` (82 KB authoritative roadmap)
+
+---
+
+## 32. Local Test Stack — expand beyond AutoPatrol to every connector run type
+
+**Priority:** This-week. Builds on the AP-validated harness ([[2026-05-20_local-ap-e2e-stack-installed]]).
+**Status:** Scoped 2026-05-20. AP path works end-to-end. Spec + expansion start 2026-05-21.
+
+### Why
+
+The harness at `/home/mork/work/local-test-stack/` already drives a single AutoPatrol run through the full vms-connector → SQS → autopatrol-server chain with no real AWS (LocalStack + Immix monkey-patch). Cost was ~half a day; payoff was immediate (validated the AP-summary-disable change before opening PRs). The pattern generalizes — every other connector run type has the same shape: settings.json + factory + site manager + lifecycle → side-effects. With seed extensions + a settings file per run type we get a laptop-resident validation harness for the whole connector surface.
+
+### Run types to cover
+
+- [ ] **Analytics (main RTSP / Milestone / Avigilon / etc.)** — the dominant path. Most cameras, longest-running, hits inference pool + alerting + S3 frame writes. Probably needs a mock inference endpoint or stubbed YOLO client.
+- [ ] **Camera Health Monitoring (CHM)** — periodic health metrics emit. Probably less infra-dependent than Analytics; check what DDB/SQS targets it touches.
+- [ ] **Video Camera Healthcheck (VCH)** — the "verified clip" path with `_end_patrol_once`. Touches autopatrol API + SQS. Confirm whether it needs its own emulator targets (autopatrol-server consumes from a different queue, possibly).
+- [ ] **AutoPatrol (DONE — 2026-05-20)** — baseline. ✅
+- [ ] **Generic Patrol** — `PatrolSiteManager` (distinct from AutoPatrol). Same SQS path? Verify.
+- [ ] **Clip-related runs** — verify which mode is "clip-only" (Verifier?). Some path raises clips to an inference pool without the full Analytics loop. Need to inventory.
+- [ ] **Spray / low-confidence / blacklist** — sub-flows of Analytics, not separate run types, but worth confirming the stack covers them.
+
+### Spec deliverables
+
+- [ ] Inventory: enumerate every `Factory` subclass in `connector_factories/`, map each to a run type + the AWS resources it touches (SQS queues, DDB tables, S3 buckets, external APIs). Use the `connector-pipeline-expert` agent.
+- [ ] Settings catalog: identify or stage a minimal `test_settings/*.json` for each run type that routes to LocalStack-side resources (queue_stage=dev pattern works for AP; verify analogs for others).
+- [ ] Stub catalog: for each external API touched (Immix already done; possibly admin API, inference endpoints, queue_consumer-side), spec the stub shape and where it lives in `pythonpath/sitecustomize.py` or a new entry.
+- [ ] Seed extension: list new SQS queues / DDB tables / S3 buckets / secrets the seed script needs for each run type. Capture real prod key schemas via `aws dynamodb describe-table` where placeholder `id:S` doesn't suffice.
+- [ ] Runner scripts: one `run-<runtype>.sh` per run type (or a single `run-connector.sh <runtype>` dispatcher).
+- [ ] Per-run-type validation procedure documented in `topics/local-test-stack/notes/syntheses/`.
+
+### Phase plan
+
+1. **Phase 0** — Spec (`topics/local-test-stack/notes/syntheses/2026-05-21_runtype-expansion-spec.md`). ~half day.
+2. **Phase 1** — Analytics first (largest unlock). ~1 day.
+3. **Phase 2** — VCH + CHM. ~half day each.
+4. **Phase 3** — Generic Patrol + Clip-related. ~half day each.
+5. **Phase 4** — CI gating (run the full stack on PR open against multiple connector branches). Future work, gated on whether Phases 1-3 stay green for a few weeks.
+
+### Stretch goals
+
+- [ ] Real RTSP frame ingestion via the existing `rtsp-camera-simulator` container — point a test camera at it and assert detections flow through the inference stub.
+- [ ] Real DDB schema fidelity — dump every prod schema we hit and update `seed.sh` so writes succeed instead of relying on the broad try/except in service code.
+- [ ] One-shot harness exits with non-zero rc if expected Immix-call fingerprint doesn't match — turns the validation into an assertion not just a recording.
+
+### Cross-references
+
+- [[local-test-stack/_summary]] — topic.
+- [[2026-05-20_local-ap-e2e-stack-installed]] — what we built first.
+- [[2026-05-20_localstack-vs-elasticmq-decision]] — emulator choice.
+- §30 (Profiling & Optimization) — adjacent infra work; coverage of the same code paths but for performance not lifecycle.
 
 ---
 
@@ -701,6 +868,61 @@ Items surfaced during the 2026-04-22 morning fan-out that don't map to an active
 - [ ] **`silent_drop_inverse` calibration on billing signals** — once 7d of history accumulates (~2026-05-10), confirm the rule on `vch/chm/autopatrol/analytics/fleet_billing_emit_6h` doesn't false-positive on weekend traffic dips. Tune `yellow_below` if needed. Signals at `~/.claude/skills/dashboard-check/config/signals.json`.
 - [ ] **Optional sibling signal `vch_runs_6h`** — count of distinct VCH cronjob pods that ran. Pairs with `vch_billing_emit_6h` to show events-per-run alongside the absolute. Useful if the per-camera multiplier ever drifts (e.g., a new emit gap drops events-per-run from 10 → 6 without changing run count). Defer until a real symptom shows up.
 
+### Generic config / settings integrity scanner — cross-project (2026-05-19)
+
+Mark surfaced 2026-05-19 mid-Phase-1B: the pattern of "load real settings, parse through the production code, surface integrity issues" generalizes beyond vms-connector. AIT's `validate` (Phase 2) is the connector-specific instance, but other repos with config-driven behaviour (autopatrol-server, connector_deployer, actuate-inference-api, admin-API tenant settings, kubernetes-deployments helm values) all have the same shape of bug: a config field gets silently dropped / misinterpreted / mis-mapped because the parser's table is incomplete.
+
+Two existing AIT findings illustrate the shape and value:
+1. Branded vehicle ID metric keys missing from `METRIC_KEY_TO_AUTOPATROL_CODE` — fixed via [actuate-libraries#353](https://github.com/aegissystems/actuate-libraries/pull/353).
+2. `non_ups` metric key also missing (still open, tracked in [[2026-05-19_ait-phase-1-diff]]).
+
+A generic scanner would let us surface these classes of bug across repos without writing a per-repo tool each time.
+
+Open design questions for a follow-up session:
+
+- [ ] What's the right abstraction layer? "Walk a parsed config and surface fields not appearing in known mappings" feels right. Probably a `Scanner` base class + per-repo subclasses that supply (a) settings-fetch source, (b) parse function, (c) integrity-check battery.
+- [ ] Where does it live? A new repo (`actuate-config-scanner`?) or as a subpackage of `actuate-integration-tools`? Lean toward separate repo with `ait` as a consumer once it grows beyond the vms-connector case.
+- [ ] Discovery: how do we automatically find "fields that look like detection codes / metric keys / branded labels but aren't mapped"? Heuristics include enum-value membership, snake_case naming patterns, model-output label vocabularies. Probably starts manual (annotate known taxonomies per repo) and grows toward automated detection later.
+- [ ] What's the trigger model? Manual CLI invocation (like `ait`)? Scheduled fleet sweeps? Pre-merge git hooks? Likely all three eventually.
+- [ ] Integration with the existing dashboard signals (`~/.claude/skills/dashboard-check/config/signals.json`) — could surface scanner findings as additional signals.
+
+Not started — surface area is wide. Start with the focused tool (AIT phases 1-3) and let the generic pattern crystallize from concrete experience.
+
+### actuate-integration-tools — what else should live here? (2026-05-19)
+
+Created `/home/mork/work/actuate-integration-tools` 2026-05-19 — a standalone Python package that loads a real connector's `settings.json` from S3 (key pattern `actuate-settings/<deployment_id>/settings.json`, same code path the connector itself uses), parses it through `actuate-config`, and exposes derived properties via a CLI (`ait tier <deployment_id>`, `ait detections ...`, `ait dump ...`). Its first real-customer query (site 35831) surfaced a silent under-classification bug in `METRIC_KEY_TO_AUTOPATROL_CODE` that would have shipped to prod otherwise — branded vehicle IDs (`ups`/`fedex`/etc.) were missing from the table. Fix shipped same day via [actuate-libraries#353](https://github.com/aegissystems/actuate-libraries/pull/353).
+
+The clear-win pattern: **load real customer config, parse through the actual library code, surface derived properties as a CLI — no connector boot, no NR logs needed.** That pattern is reusable for many other classes of question. Candidates to consider:
+
+- [ ] **`ait diff <deployment_a> <deployment_b>`** — side-by-side comparison of two deployments' configs. Useful for "why is site A behaving differently from site B" debugging. Output: structured diff of detection codes, integration types, healthcheck flags, feature_deployments. Probably highest-impact next addition.
+- [ ] **`ait validate <deployment_id>`** — runs every `actuate-config` constructor assertion + a few semantic checks (e.g. patrol_type matches integration_type, branded vehicle ID feature_deployments are paired with a base intruder/vehicle deployment, etc.) and surfaces failures. Effectively pre-flight checks before customer-facing deploys.
+- [ ] **`ait scan-fleet --metric-key foo`** — sweeps every deployment in the `actuate-settings` bucket and reports which have a specific metric key configured. Useful for "how many sites have CROWD enabled?" / "where is feature X used?" answers. Bucket-scale risk: lots of S3 calls; bound it with prefix-listing + selective fetch.
+- [ ] **Mock Immix endpoint** for testing AutoPatrol API flows without touching live Immix. Different shape from the CLI tools — would be a fastapi server you point a feature-deployment at. Larger scope; defer until there's an active test case demanding it.
+- [ ] **`ait audit-tier-emissions`** — given a deployment_id, predict the tier it *should* emit per the spec, then NR-query its recent `raise_patrol_alert` log lines and assert they match. Useful for catching drift between config and runtime behaviour (e.g. if the library is bumped on one branch but not another).
+- [ ] **Property-based testing harness** — given a real settings.json, generate variations (drop cameras, swap detection types, mutate feature_deployments) and assert invariants hold. Helps catch the "configured set is empty → tier defaults to 1" class of bug *before* shipping.
+- [ ] **Library: add a `logging.info` line in `autopatrol_api.get_patrol_stream`** before the request so the `Tier=N` query param becomes NR-observable. Closes the live-validation gap on the stream-fetch tier surface that the actuate-pr-reviewer flagged on PR #1699.
+
+Promotion criteria: when the tool has 3+ subcommands actively used and another contributor wants to extend it, promote `/home/mork/work/actuate-integration-tools` to its own GitHub repo (`aegissystems/actuate-integration-tools`) and wire up CI. Until then, keep it as a local-only repo to avoid premature governance overhead.
+
+### VCH multi-frame entropy + AutoPatrol tier work — merge follow-up (2026-05-18)
+
+Validated on Eyeforce site 16258 over the weekend: NOVIDEO alerts dropped from 39/39 baseline to 0–8 per run (~91% drop), multi-frame drain working, alert copy `"Camera Image Blank"` confirmed in raw payloads. Source: [[2026-05-15]] § Closed Line Items.
+
+Branch sits at `feat/vch-multi-frame-quality-sampling` HEAD `572f33478` (vms-connector). It currently bundles two unrelated things: (a) the VCH multi-frame + copy fix (validated on Eyeforce); (b) AutoPatrol tier dev-pin bumps to four `actuate-libraries` dev wheels (NOT validated end-to-end yet — VCH-only site doesn't exercise the patrol-wide tier path).
+
+To merge to `stage`:
+
+- [ ] **Open the actuate-libraries PR for the tier work** — branch `feat/autopatrol-tier-from-configured-codes` is pushed to actuate-libraries with the helper + accessor + sender/puller wiring. PR to `main`. Squash subject must carry the right `[patch:<lib>]` tags for each of the 4 changed libs (or split into per-lib PRs if reviewers prefer); strip any auto-bump commit lines from the squash body so CI publishes stable.
+- [ ] **Wait for stable publish**, then bump the connector's `pyproject.toml` from the 4 dev pins back to the published stables (`actuate-integration-calls`, `actuate-config`, `actuate-alarm-senders`, `actuate-pullers`). Run `uv lock` with CodeArtifact auth.
+- [ ] **Validate AutoPatrol tier path on a non-VCH AutoPatrol site** — VCH=Tier 1 path is unchanged so Eyeforce alone is insufficient. Pick an AP patrol with mixed intrusion + threat detections configured and confirm both `get_patrol_stream` and `raise_patrol_alert` carry the patrol's highest configured tier. Spot-check raw payloads.
+- [ ] **PR vms-connector → `stage`** — base `stage` per [[feedback_feature_branches_target_stage]]. Pre-merge: confirm no `.devN+` pins remain in `pyproject.toml`/`uv.lock`, CHANGELOG entry covers both pieces of work.
+- [ ] **Stage → rearchitecture promotion** in its own PR per the established workflow. Bundle into the next `/pre-merge-workflow` batch if convenient.
+
+Side items (separable):
+
+- [ ] **Bring [[2026-05-14_chm-multi-frame-quality-sampling-followup]] off the shelf** once the VCH soak has accumulated ~2 weeks of green: decide whether to flip `_score_full_clip = True` on non-VCH `*HealthcheckCamera` subclasses (RTSP/DW/Avigilon/Exacq/Hikcentral/Openeye/Star4Live). Needs a metric review first (max vs median aggregation, S3-cost impact).
+- [ ] **Track [aegissystems/connector_deployer#171](https://github.com/aegissystems/connector_deployer/issues/171)** — slash-in-tag bug. Not blocking the VCH merge (we worked around it via `kubectl patch`), but every future feature-branch deploy with a `/` will hit it until fixed.
+
 ### From NR reversal + CE validation (2026-04-22 afternoon)
 
 - [ ] **Fleet-coordinator unification question — scoping** — `topics/fleet-architecture/notes/concepts/fleet-coordinator-unification-question.md` tracks the structural observation. RESOLVED viable via API sketch 2026-04-22; next steps in concept note's §"Track / next steps" — sketch minimum-viable gRPC API, benchmark lease-churn, prior-art scan. **Feeds the formal A-E re-score when it runs.**
@@ -712,6 +934,36 @@ Items surfaced during the 2026-04-22 morning fan-out that don't map to an active
 - [ ] **AWS Config cost ($3,719/30d = $45k/year, 1.7% of total)** — surprising line item. Review Config recording scope + rules + delivery channel volume.
 - [ ] **Final composite ranking after both refinements** (recorded for reference): E 8.00 (PoC-1), C 7.55 (PoC-2), B 7.25, D 6.85, A 4.45, B-prime CLOSED 6.25.
 - [ ] **PoC-1 (E) invalidation criterion tightened** — if E's measured FDMD drop is <40%, C overtakes on composite. Flip primary to C unconditionally in that case.
+
+---
+
+## 33. RDS Postgres extended-support upgrades
+
+**Priority:** current (cost + EOL — ~$613/mo extended-support surcharge; PG12 Year-3 cost-cliff ~Mar 2027)
+**Tickets:** [BACK-625](https://actuate-team.atlassian.net/browse/BACK-625) (supportwiki, To Do) · [BACK-673](https://actuate-team.atlassian.net/browse/BACK-673) (jobschedulerdjangoq + dev EU Aurora, filed 2026-06-03)
+**Status:** supportwiki **UPGRADED to PG16.11 2026-06-17** (verified, rehearsed first) — saves $297.60/mo; other two DBs not yet started
+**Runbook:** [[2026-06-02_rds-extended-support-upgrade-runbook]]
+
+Three Postgres DBs on EOL majors incur AWS RDS Extended-Support surcharges (real CE figures, May 2026). Target **PG16** — single-step `12.22→16.11` / `13.20→16.11` direct upgrade verified for all three. Full procedure + CLI + rollback in the runbook.
+
+| DB | ver | acct/region | $/mo |
+|---|---|---|---|
+| actuateadminsupportwiki | PG12 (Multi-AZ) | prod / us-west-2 | $297.60 |
+| jobschedulerdjangoq | PG13 | prod / us-west-2 | $148.80 |
+| actuate-dev-eu-west-1-aurora-writter | Aurora PG12 | dev / eu-west-1 | $166.66 |
+
+### Open work
+
+- [x] **Apply #99 → supportwiki PG12→16.11** — DONE 2026-06-17 ~20:30 UTC (immediate, not the window). Snapshot taken, preflight clean, **fixed module bug** (`allow_major_version_upgrade` never wired to standalone-instance path; commit `f86c599`), **dress-rehearsed** (snapshot→temp→PG16, schema+data parity confirmed), then real `--apply-immediately`. Verified: 16.11/default.postgres16, schema md5 + rowcounts match (cms 102/9751, kbcms 37/5481), VACUUM ANALYZE done, error log clean, kb+support.actuateui.net 302→login→200.
+- [ ] **Final confirmations (supportwiki):** human logged-in article/search spot-check on kb+support.actuateui.net; surcharge→$0 in Cost Explorer (~48h); transition BACK-625 Done; delete pre-pg16 snapshot after ~30d.
+- [ ] **Apply #99 → jobschedulerdjangoq PG13→16.11** — single-AZ; coordinate with `job_scheduler` ECS service (no quiet window). Same snapshot→apply→ANALYZE→verify flow. (module fix `f86c599` now unblocks this standalone-RDS path too.)
+- [ ] **Apply #100 → dev EU Aurora PG12→16.11** — dev/low-risk; snapshot first (retention only 1d) → `terragrunt apply` → `ANALYZE` → verify surcharge→$0. Also weigh r6g.large right-size / whether dev EU Aurora is still needed.
+- [ ] **Verify surcharge → $0** next Cost Explorer cycle after each apply.
+
+### Related
+
+- [[2026-06-02_rds-extended-support-upgrade-runbook]] — e2e procedure
+- §28 Customer Billing Pipeline · §9 dashboard cost signals
 
 ---
 
@@ -771,9 +1023,9 @@ Status (2026-05-11): Phase 2A/2A.2/2B/2C/2D.1/2D.2/2F/2G/2H + kb-deep-intake shi
 - [ ] **Phase 2E status page polish** — warm-up button, model live state, NDJSON log viewer, iGPU/NPU util banner.
 - [ ] **IPEX-LLM evaluation** as faster alternative to llama.cpp+SYCL on Intel iGPU (heavier setup; should beat current ~3.4 tok/s on 14B).
 - [ ] **`eval_count` cosmetic fix** in `_stream_sycl` — null on `done` events because llama.cpp's stats chunk shape doesn't always carry `usage.completion_tokens` where the adapter looks. `predicted_per_second` works.
-- [⏳] **First real SYCL batch in flight** — run-id `2026-05-11T1506Z-video-processing-001`, 10 URLs (moviepy, aiortc, Av1an, mediamtx, janus, pion/webrtc, livekit, restreamer, live555, go2rtc). SYCL healthy at 3.32 tok/s post-restart (root cause of prior degradation: stuck May-7 curl client wedging the queue). ETA ~5.8 hr wallclock. Pull when DONE, review drafts.
-- [ ] **Composer prompt tuning** — planner side landed 2026-05-11 (commit `7b05908`); composer-side observations (key claims sometimes echo source verbatim, occasional flat sections) carry forward to a tuning pass post-overnight.
-- [ ] **SYCL queue-health pre-flight** — add a `kb-batch-doctor` or pre-submit check that detects stale clients holding the SYCL request slot (today's 4-day-old curl wedged the queue invisibly). Either kill-stale-or-warn at submit time, OR a periodic Tier-1 systemd timer.
+- [ ] **Composer prompt tuning** — planner side landed 2026-05-11 (commit `7b05908`); composer-side observations (key claims sometimes echo source verbatim, occasional flat sections, off-topic placements like livekit→actuate-platform) carry forward to a future tuning pass.
+- [ ] **SYCL queue-health pre-flight** — `kb-batch-doctor` or pre-submit check that detects stale clients holding the SYCL request slot. Auto-recovery now in-runner via `c186107`; pre-flight would save the K=2 trigger cost on a known-wedged queue.
+- [ ] **Validate pipeline enhancements on a real batch** — 2026-05-18 shipped 5 pre-batch quality gates to `kb_deep_intake` (min-content gate in parser, topic-description map in planner, SYCL-14B relevance pre-check, post-plan substance check, submit-side URL dedup). Deployed to box; thin-page test confirmed `parser_too_thin` short-circuits at zero LLM cost. Next batch run will exercise the relevance gate (`high|medium|low`) and topic-description routing live. Code in `local_network_scripts/files/llm-shop/harnesses/kb_deep_intake/` (uncommitted as of 2026-05-18).
 
 **Open questions inbox** (different idea — sketched 2026-05-05): [[2026-05-05_open-questions-inbox-idea]]. Schedule alongside Phase 2E.
 
@@ -806,33 +1058,38 @@ Status (2026-05-11): Phase 2A/2A.2/2B/2C/2D.1/2D.2/2F/2G/2H + kb-deep-intake shi
 <!-- BEGIN-AUTOSYNC-JIRA -->
 ## Current Jira Queue (auto-synced)
 
-**Last synced:** 2026-05-11
+**Last synced:** 2026-06-22
 **Source:** `assignee = currentUser() AND statusCategory != Done ORDER BY updated DESC`
 
 This section is **fully replaced** on every sync by the `jira-sync` automation (see [[automation-jira-sync]]). Manual edits in this section will be lost — add notes against tickets in the workstream sections above instead.
 
-### Ready to Deploy (4)
+### Ready to Deploy (6)
 
 | Ticket | Priority | Type | Summary |
 |--------|----------|------|---------|
-| CS3-430 | Medium | Sub-task | Account for dummy incident type in CHM API |
+| ENG-246 | Medium | Task | actuate-instrumentation: extend to better support performance instrumentation *(tracked in §30)* |
+| ENG-282 | Medium | Task | Custom-branch lifecycle: branch-scoped admin endpoints + vms-connector CI/CD cleanup wiri… *(tracked in §29)* |
+| ENG-136 | High | Task | PyAV upgrade 13.1 → 17.0 (nogil pixel conversion) |
 | CS3-31 | Highest | Sub-task | Automatically update the reference image |
 | CS3-58 | Lowest | Task | Configuration per camera |
 | CS3-323 | High | Bug | Discrepancy in cam count btwn dashboard and report |
 
-### In Progress / In Review (3)
+### In Progress / In Review (6)
 
 | Ticket | Status | Priority | Type | Summary |
 |--------|--------|----------|------|---------|
-| ENG-198 | In Progress | Medium | Bug | AutoPatrol modelless patrol: signal-flow fixes + investigation |
-| ENG-219 | In Progress | Medium | Task | Local GPU agent / GPU server R&amp;D box setup |
-| ENG-217 | In Progress | Medium | Task | AutoPatrol "no-schedule" cascade cleanup (~350 cams) + Cohort F deep classifier |
+| ENG-300 | In Progress | Medium | Task | Watchman watch-management service: fleet & scheduling architecture design |
+| ENG-352 | In Review | Medium | Task | AutoPatrol per-camera tier + crowd-not-Tier3 escalation fix |
+| ENG-309 | In Progress | Medium | Task | PyAV 13.1.0 → 17 upgrade: vms-connector + watchman-internal (AmeriGas soak) |
+| ENG-289 | In Progress | Medium | Task | autopatrol_onboarder: track local ops tooling + post-deploy verification |
+| ENG-269 | In Progress | Medium | Task | actuate_admin: automated endpoints for deploying/managing custom branches *(tracked in §29)* |
+| ENG-247 | In Progress | Medium | Task | Research: move away from raw SQL access to postgres in non-admin contexts |
 
 ### To Do (4)
 
 | Ticket | Priority | Type | Summary |
 |--------|----------|------|---------|
-| ENG-136 | High | Task | PyAV upgrade 13.1 → 17.0 (nogil pixel conversion) |
+| CS3-537 | High | Sub-task | Add resolved_user to each healthcheck_sites on the api/healthcheck_result/rollup/ call |
 | ENG-183 | Medium | Task | S3 Cost Reduction — Ranked Action Plan |
 | CS3-505 | Medium | Sub-task | add outcome to the API for CHM alerts |
 | ENG-94 | Medium | Task | Deferred alerts: send without frame as fallback when cache expires |
@@ -848,38 +1105,34 @@ This section is **fully replaced** on every sync by the `jira-sync` automation (
 ---
 
 <!-- BEGIN-TODAY-SCOPE -->
-## Today's Scope (2026-05-11)
+## Today's Scope (2026-06-22)
 
-Picked via [[skill-daily-scope|/daily-scope]]. Line items close via [[skill-daily-wrap|/daily-wrap]] at end-of-day — closed items get a summary in the daily note, not deleted here.
+Picked via [[skill-daily-scope|/daily-scope]]. **OFFBOARDING WEEK — last day Fri 2026-06-26.** Full plan of attack: [[2026-06-22_offboarding-plan]]. Tracked in Jira: **[ENG-375](https://actuate-team.atlassian.net/browse/ENG-375)** (epic) + ENG-376…382 (WS-A…E), all assigned to Mark, closes Fri. Line items close via [[skill-daily-wrap|/daily-wrap]] at EOD.
 
-**Morning context:** Friday's deferred PR [#1688](https://github.com/aegissystems/vms-connector/pull/1688) (stage→rearch, bundles #1684 line-crossing libs + 10 other PRs) is **cleared for merge**: zero weekend stage drift (tip `6d95785d`), targeted re-soak via `nrql-investigator` confirmed line-crossing bundle GREEN on stage — ERROR rate down 50-58%, per-pod alarm rate down ~46% (expected parked-vehicle suppression), zero pod restarts/OOMKills, no new error classes. CI 4 SUCCESS. Mechanical blocker: `REVIEW_REQUIRED`. Morning fan-out also surfaced a **prod-side AutoPatrol RED**: `autopatrol-server` prod is starved (0 SQS msg/24h+) while `autopatrol-server-dev` is consuming the prod queue (2.5k log lines / 6h: SQS receives, S3 uploads, Immix 200s). Queue-routing config drift — not stage-correlated, but blast radius unknown (dev pod may be writing to dev-tier infra for prod patrols). Picked into today.
+> **Guiding principle:** Mark's access dies Friday EOD. Re-home anything that authenticates as Mark, mirror anything on a personal account, write down anything only in Mark's head. Order by *"breaks silently when Mark leaves."* Effort split: land cheap PRs today, then all-in on handoff/persistence (no Envera cutover, no new code).
+> **Health (06-22 cache):** RED but chronic — `billing_unbilled`=2510, `no_patrols`=33, OOM offender connector-44712=23, `cost_s3_tier3`=$202/day. Nothing new-critical; not blocking offboarding work.
 
-**Active picks:**
+- [ ] **Push markkb 11 commits** — last push 2026-05-22; a month of KB work is unpushed and only on Mark's laptop + personal `actuateMark` remote. Push first thing — no-brainer. *(Plan WS-B)*
+- [ ] **Kick off firebat identity re-home (external asks)** — has lead time, needs other people. Raise Monday AM: (1) Tailscale admin reassign `mork-firebat` + npu-server device ownership off `mark@`; (2) org GitHub machine account / PAT to replace personal `actuateMark` gh auth; (3) team AWS IAM identity for the `dashboard-check` profile. *(Plan WS-A — critical path)*
+- [ ] **Land cheap MERGEABLE PRs + freeze** — onboarder #14/#15/#16 (ENG-289); admin #2506 (⚠️ admin main = prod; re-run `makemigrations --check`); commit the squash-body CI-skip skill fix; triage actuate-libraries main orphan tests. Then freeze code. *(Plan WS-0)*
 
-- [ ] **Ship PR #1688** — **MERGED 2026-05-11T18:55:37Z, commit `f4ccd2296322`.** APPROVED by Zack, all checks green pre-merge. **POST-MERGE INCIDENT:** the draft squash body I generated leaked CI-skip-directive token text inside instructional prose. GitHub Actions parsed it as a directive and skipped all push-triggered workflows on `rearchitecture` (build, reset-stage, sonar). Recovered the build via `gh workflow run rearch.yml --ref rearchitecture` (workflow_dispatch). The other two lack `workflow_dispatch` triggers — separate follow-up needed (empty push, or add the trigger). Rule enshrined: new feedback memory `feedback_ci_skip_tokens_anywhere.md` + strengthened global CLAUDE.md Git Safety section. Post-merge release-chain-watcher launched as background agent. Tier-1 systemd soak on Firebat will be stood up once build completes. Closes [§20](#20-dw_url_up-empty-body-errors--fleet-wide-dw-auth-endpoint-flake) fully on clean rearch soak. Handoff: [[2026-05-07_handoff-pr-1681-promotion]].
-- [ ] **Follow-up: rearch.yml + reset-stage-after-merge + sonar re-trigger** — `reset-stage-after-merge.yml` and `sonar.yml` are missing `workflow_dispatch` triggers, so they can't be manually re-fired for the f4ccd2296322 commit. Options: (a) push an empty commit to rearchitecture (risky — alters tip), (b) add `workflow_dispatch:` triggers in a follow-up PR (preferred), (c) accept the gap until next rearch push. Recommend (b).
-- [x] **AutoPatrol queue-routing investigation** — RESOLVED, no outage. Root cause: legacy `lead_implies_dev` fallback in [actuate-config/patrol_config.py:31-34](https://github.com/aegissystems/actuate-libraries/blob/main/actuate-config/src/actuate_config/connector/patrol/patrol_config.py#L31) routes any customer with "actuate" in `lead` to the dev queue. Only AP-running tenant right now is Alibi (`47dc2c1f-...`, sites 35830/35832) → all 52 patrols/6h route to dev → autopatrol-server-dev (imageTag `1.0.1-dev`, DEV=true) consumes them correctly. autopatrol-server prod (`0.1.25`) is idle because no GA-tier customer is on AP yet. Dashboard `autopatrol_sqs_messages` polls only prod queue → false-RED. Real fix is signal redesign — moved to **AutoPatrol signal redesign** below.
-- [ ] **AutoPatrol signal redesign** *(post-#1688)* — Split into two signals: `autopatrol_sqs_messages_dev` (polls dev container) + `autopatrol_sqs_messages_prod` (polls prod container, threshold normalized against expected-prod-routed-patrol count — when expected=0, suppress RED). Updates: `~/.claude/skills/dashboard-check/config/signals.json` + `~/bin/autopatrol-overnight-check.sh` (source at `/home/mork/work/local_network_scripts/files/`).
-- [ ] **Review/merge PR #2389** — actuate_admin draft (`audit_autopatrol_state` mgmt command). Read diff, push from draft, merge to `staging`, wait for Staging CI, eventually flow through release-train to `main` then prod. Then `kubectl exec` on prod admin → run command → paste cohort sizes back into [[2026-04-30_autopatrol-state-audit]]. Carry-forward from 2026-05-01 follow-up.
-- [ ] **IAM access-denied triage** — Dashboard RED: `iam_access_denied_cluster_wide` shows `camera-admin-staging=12, microservice=9`. Pull last 24h denials via NRQL or CloudWatch, identify role/policy gap, file ticket or fix in `kubernetes-deployments`. Single-pass triage, not a full project.
+**This week (sequenced in plan):**
 
-**Tracked as relevant (carry-forward):**
+- **WS-A** finish identity re-home + verify every timer runs green (Tue).
+- **WS-B** privacy-scrub + mirror markkb & claude-config to aegissystems org (Wed).
+- **WS-C** Confluence handoff page + reassign all open Jira/PRs + Envera cutover runbook (Tue–Fri).
+- **WS-D** firebat / npu-server / dashboard operating runbooks (Wed–Fri).
+- **WS-E** decommission + teammate-vantage verification + dead-man's checklist (Fri).
 
-- **§5 Run Service sub-project** — 6 docs drafted; top blockers: vestigial customer-fields, image `validate` subcommand status, sensitivity preset numeric calibration. Forward context.
-- **§18 fleet memory-limit drift** — handed off to infra team; follow up later in week to confirm VPA floor restoration landed. **Not our task today.**
-- **§24 LLM shop** — Phase 2A.2 shipped 2026-05-06; forward context.
-- **AUTO-351 BB push to prod** (§2c) — Ready-to-Deploy, Brad-assigned.
-- **§16 lifecycle log silence debug** + **Immix zombie-tenants Jira draft** — in [[autopatrol-deferred-backlog]].
-- **vms-connector#1656 streamId-null patrol-alert** (§2d.2) — Unassigned.
+**Frozen / handed off (not finishing personally):**
 
-**Surface (camera-ui audit-flag):** Login.tsx — runbook landed via [[2026-04-30_camera-ui-login-tsx-audit-flag]] should retire; carrying.
-**Surface (jira-sync):** stale (`Last synced: 2026-05-07`); refresh after the AP drill.
-**Surface (orphan branches):** `vms-connector@stage-to-rearch-2026-05-08-billing` (current — keep till #1688 merges), other orphans unchanged.
+- **Envera TLS hardening + cutover** — hand off with exact runbook (scale master→0, rearch up, 60s queue retention, poll queue `envera_id`). *(was 🔝; frozen per offboarding effort split)*
+- **PR #91** v5 split-intruder decision; **§18** VPA-floor PR; **§14** midnight arm-miss race; **§5** fleet-arch PoC pick — reassign via WS-C.
 
 <!-- END-TODAY-SCOPE -->
 
 <!-- BEGIN-MORNING-FOLLOWUPS -->
-## Morning Follow-Ups (for 2026-05-01)
+## Morning Follow-Ups (for 2026-05-22)
 
 Time-bound checks seeded by [[skill-daily-wrap|/daily-wrap]] and consumed by the morning ritual ([[skill-daily-scope|/daily-scope]] or a future `/morning`). Each item is tagged with how it should be handled:
 
@@ -889,70 +1142,40 @@ Time-bound checks seeded by [[skill-daily-wrap|/daily-wrap]] and consumed by the
 
 Consumed items get `[x]` and **immediately move to that day's daily note's `## Closed Sub-items` section** (rolling-forward convention 2026-04-27). Items not acted on roll over with a `*(rolled YYYY-MM-DD)*` qualifier.
 
-- [ ] **decide**: [connector_deployer#160](https://github.com/aegissystems/connector_deployer/issues/160) — orphan container cleanup *(rolled 2026-04-25 → 2026-04-27 → 2026-04-28, not picked again)*. Still assigned; 2 orphans observed (`51c72148`, `798e6dde`). Scope for first session: decide approach (Option 1 recommended), draft the scan.
+> **Sweep history (2026-05-22):** 15 OBE items ticked + swept into [[2026-05-22#Closed-Sub-items]]. The rolled-forward set below was filtered against today's "Tracked as relevant" block in `## Today's Scope` — three items that already live there (rolling-restart, ghost cronjob, AP signal redesign) are not duplicated here. Previous swept dates' bullet history lives in their respective daily notes.
 
-### Seeded for 2026-04-29
+### Seeded for 2026-05-28 (PyAV-17 overnight soak) — swept to [[2026-05-28#Closed-Sub-items]]
 
-- [x] **verify**: §16 admin PR #2376 (`actuate_admin@81523258` — `disable_tenant` cascade endpoint) merge-to-staging status — **MERGED to staging 2026-04-28T20:04:14Z** ✓. Step 4a DRY_RUN canary gate clear, descoped from today's active scope (folded into "Tracked as relevant"). *(seeded 2026-04-28; ran 2026-04-29)*
-- [x] **verify**: §17 vms-connector PR #1662 (`8f771f3c` — VCH `no_patrols` emit drop) stage merge status — **MERGED to stage 2026-04-28T20:01:08Z** ✓. 24h post-merge verify window opens ~20:00Z tonight; descoped from today's active scope. *(seeded 2026-04-28; ran 2026-04-29)*
-- [x] **decide**: connector-45999 OOMKill promotion target — **picked into today's scope as part of "Carry-over decides"**. *(seeded 2026-04-28; rolled into 2026-04-29 scope)*
-- [x] **decide**: ENG-179 close-out — **picked into today's scope as part of "Carry-over decides"**. *(seeded 2026-04-28; rolled into 2026-04-29 scope)*
-- [x] **decide**: Jira Todo-audit — **picked into today's scope as part of "Carry-over decides"**. *(seeded 2026-04-28; rolled into 2026-04-29 scope)*
+### Seeded for 2026-05-23
 
-### Seeded for 2026-04-30
+- [ ] **verify**: vms-connector PR [#1711](https://github.com/aegissystems/vms-connector/pull/1711) T+24h post-merge soak (merged 2026-05-22 18:00 UTC, commit `8cd265c8f`). Expect `end_patrol succeeded on attempt 1/3` count climbing linearly; zero `attempt N/3 non-ok` / `raised` / `exhausted 3 attempts`; SMTP FDMD `warm-started motion detector from clip` still firing; `empty_metrics_dict` WARN active. Also check feature-branch-tag pod drain (`s3alerts` 6→0, `featvch-multi-frame-quality-sampling` 1→0) — once both clear, kubernetes-deployments [PR #392](https://github.com/aegissystems/kubernetes-deployments/pull/392) hold can release. *(seeded 2026-05-22 for 2026-05-23)*
+- [ ] **decide**: PR #91 hand-review (in Today's Scope deferred line). Untouched 2026-05-22. *(seeded 2026-05-22 for 2026-05-23)*
 
-*Closed-out swept to [[2026-04-30]] § "Closed Sub-items" by `/daily-wrap` 2026-04-30. Pending items rolled to "Seeded for 2026-05-01" below.*
+### Seeded for next week (2026-05-26 / 2026-05-27)
 
-### Seeded for 2026-05-01
+- [ ] **investigate**: **Why does the NAT Instance Proxy hang?** Tonight was the only documented hang but it was zombied for 12h with no obvious trigger. CPU was 0.17% (no exhaustion), NetworkOut was 0 (couldn't have been congestion), instance had been up since 2023-03-01 (1135 days — possibly an uptime-related kernel issue). Check OS-level logs after a future hang (or rebuild on a newer Amazon Linux AMI + apply current kernel patches). Consider replacing the t3.micro NAT-instance pattern entirely. Driving incident: [[2026-05-24_genesis-no-alerts-milestone-token-rejection]]. *(seeded 2026-05-24)*
 
-- [ ] **verify+exec**: Continuation of 2026-04-30 planning session for admin-side state propagation. **Already done:** deep-dive expanded ([[2026-04-30_data-model-cascade-semantics]] now has verified findings on all 8 open questions w/ file:line); audit synthesis with cohort filter logic ([[2026-04-30_autopatrol-state-audit]]); read-only `audit_autopatrol_state` mgmt command shipped as actuate_admin PR [#2389](https://github.com/aegissystems/actuate_admin/pull/2389) (draft, supersedes closed #2388 which had a stale base off `main` instead of `staging`). **Today's task:** (1) review + merge PR #2389 to `staging`, (2) wait for `Staging CI` (post-merge), (3) eventually flow through release-train to `main` then prod deploy, (4) `kubectl exec` on prod admin and run `python manage.py audit_autopatrol_state` to get cohort sizes, (5) paste numbers back into [[2026-04-30_autopatrol-state-audit]], (6) use the numbers to design propagation-hook ADR + `reconcile_autopatrol_state` companion command. *(seeded 2026-04-30 for 2026-05-01)*
-- [ ] **verify**: §16 onboarder lifecycle pass next-day soak — confirm logs are emitting properly (post PR #13 fix at 19:07Z). Look for: (a) `tenant lifecycle pass: tenants checked=18 suspended/removed=2 active=16 cascaded=2` line on each invocation US, (b) any new `cascade-disabled tenant_id=...` lines on tenants OTHER than RSS/Legacy (would indicate new suspensions or zombie tenants surfacing), (c) `cascade-reenabled` lines (would indicate Active flip-back). Run `AWS_PROFILE=prod aws logs tail /aws/lambda/immix-autopatrol-onboarding --region us-west-2 --since 1h --format short | grep "tenant lifecycle"`. *(seeded 2026-04-30 for 2026-05-01)*
-- [ ] **exec**: Still-pending — paste Jira ticket draft for **Immix zombie-tenant API contract violations** into AUTO project. Rolled from 2026-04-30 (deferred — Atlassian write not in fan-out scope). Full draft at [[2026-04-29_immix-zombie-tenants]]. *(rolled 2026-04-30 → 2026-05-01)*
-- [ ] **decide**: Cascade-disable propagation hooks — schedule → customer → site → cameras (per [[2026-04-30_admin-propagation-handoff]]). Captured in cascade-rollout-aftermath section above; pull into Today's Scope if planning session bears fruit. *(seeded 2026-04-30 for 2026-05-01)*
-- [x] **decide**: §17 stage→rearchitecture promotion of PR #1662 (VCH `no_patrols` emit drop). **CLOSED — bundled into vms-connector PR [#1660](https://github.com/aegissystems/vms-connector/pull/1660) (stage→rearchitecture promotion), MERGED 2026-05-01T14:28:26Z, commit `73fd3bf`.** Post-merge soak items now seeded for 2026-05-02. *(rolled from 2026-04-30 carry-forward → seeded for 2026-05-01 → ran 2026-05-01)*
-- [ ] **decide**: §16 effective-close-out — 24h soak verdict came in clean (1 expected cascade against RSS canary, DLQ 0). Tomorrow's `/daily-scope` should consider full §16 archival (move §16 → `## Archive`). Open subtasks: Step 5 re-enable path + Step 6 `disable_tenant` permission_classes hardening — keep tracked even after archival. *(seeded 2026-04-30 for 2026-05-01)*
-- [ ] **decide**: §18 fleet memory-limit drift pickup. RED on `fleet_new_oom_offender` 2 days running (connector-14170 top). Restore VPA min-memory floor in `connector_deployer` (strip `Securitas Australia - Trial` gate from a5de5db). Per-incident OOMKill runbook just landed for triage but the fleet fix is still §18. *(seeded 2026-04-30 for 2026-05-01)*
-- [ ] **verify**: morning-prep cron output now that allowlist landed today via sibling session. Check `http://mork-firebat/logs/morning-prep-2026-05-01.summary.json` and per-skill stdout — should be populated with real `/repo-scan` + `/autopatrol-overnight-check` + `/autopatrol-cleanup-lambda-check` output now (not the BLOCKED stubs from today). If still blocked, re-open the allowlist ticket. *(seeded 2026-04-30 for 2026-05-01)*
-- [ ] **decide**: Recalibrate `connector_no_patrols_to_run_24h` thresholds — gated on PR #1662 reaching prod (not stage). *(rolled 2026-04-30 → 2026-05-01)*
-- [ ] **decide**: Repo-backlog per-repo concept refresh cadence — daily vs weekly. *(rolled 2026-04-30 → 2026-05-01)*
 
-### Seeded for 2026-05-02
 
-- [ ] **verify**: vms-connector PR [#1660](https://github.com/aegissystems/vms-connector/pull/1660) post-merge soak (merged 2026-05-01T14:28:26Z, commit `73fd3bf` to `rearchitecture`). **Autonomous Tier-1 monitoring in place:** `~/bin/pr-1660-soak-check` on Firebat with 4 systemd one-shots (T+6h 20:30Z today, T+8h 22:30Z today, T+18h 12:00Z 2026-05-02, T+24h 14:30Z 2026-05-02). Verdicts auto-append to daily notes under `## PR #1660 Post-Merge Monitoring`. RED runs surface via `systemctl --user --failed`. Source-controlled at `local_network_scripts/files/pr-1660-soak-*`. **Manual fan-out below is now redundant** unless an autonomous run goes RED. Bundled 6 commits: AP cleanup connector emit (#1657), stream_id null guard (#1659), VCH `no_patrols` drop (#1662), YAM polygon hints (#1655), pullers stable bump (#1661), BT-949 pano-split IZ fix. Verification fan-out:
-  1. **YAM emit (1h post-deploy first, 24h confirm):** any YAM-eligible site emits `motion_polygons` WKT to slicing server, no `motion_mask`-related `AttributeError` in connector logs. NRQL: `SELECT count(*) FROM Log WHERE container_name LIKE '%connector%' AND message LIKE '%motion_mask%' AND level = 'ERROR' SINCE 24 hours ago` — expect 0.
-  2. **VCH `no_patrols` traffic drop (24h):** cleanup-Lambda `integration=vch reason=no_patrols` event count drops to near-zero for Vendor.Actuate.Prod. Unblocks `decide: Recalibrate connector_no_patrols_to_run_24h thresholds` once landed in prod (not just rearchitecture).
-  3. **stream_id null guard (24h):** no `raise_patrol_alert` handler errors with null `stream_id`. Spot-check: `SELECT count(*) FROM Log WHERE message LIKE '%raise_patrol_alert%' AND message LIKE '%null%' SINCE 24 hours ago`.
-  4. **AP cleanup connector emit (24h):** SQS `autopatrol_stale_schedule_cleanup_dev.fifo` (or prod equivalent) receives messages from connector terminal exits at expected rate. Cross-check against cleanup-Lambda invocation count.
-  5. **BT-949 pano-split IZ fix (multi-day watch):** TJ Hamilton Cars M5/M7/M19 false-positive vehicle alerts trend down vs 7-day baseline. Manual spot-check needed on a pano clip with aspect > 2.0 and a drawn vehicle IZ.
-  6. **Connector-pod error baseline (24h):** total connector-pod errors flat or improved vs prior 24h. Use `/post-deploy-monitor` if it's been retrofitted to take a merge timestamp.
-- [ ] **exec**: File follow-up issue in vms-connector for direct unit tests on `connector_factories/shared/cleanup_emitter.py` (167 LOC, broad `except Exception`, zero direct tests). Tests should assert: emit fires under terminal exits, suppressed for pending/transient, no-op when env flag off, no-op when `schedule_id` empty. Surfaced in PR [#1660](https://github.com/aegissystems/vms-connector/pull/1660) review 2026-05-01. *(seeded 2026-05-01 for 2026-05-02)*
-- [ ] **exec**: File follow-up issue (or one-line PR) for explicit `boto3.client("sqs", region_name=...)` in `cleanup_emitter.py:87` so a region-mismatched stage pod surfaces a distinguishable warning instead of opaque `NonExistentQueue`. Surfaced in PR [#1660](https://github.com/aegissystems/vms-connector/pull/1660) review 2026-05-01. *(seeded 2026-05-01 for 2026-05-02)*
-- [ ] **exec**: KB synthesis closing the loop on YAM motion-bridge removal landing in connector — one-line update under `topics/vms-connector` YAM polygon-hint workstream noting PR #1660 closes the connector-side loop. Per global CLAUDE.md "After Work: Log to KB." *(seeded 2026-05-01 for 2026-05-02)*
+- [ ] **decide**: **Wire PagerDuty for AWS CloudWatch alarms** — CloudWatch `DjangoQ CPU High` alarm fired 2026-05-23 00:01 UTC via SNS topics `customer-warnings` + `Engineering-Alarms` (us-west-2, acct 388576304176) → email-only. No PagerDuty integration. Wiring path: create a PD service for "Actuate infra"; copy the Events API v2 integration URL; subscribe the SNS topic to that URL (HTTPS subscription, raw delivery off). ~15-30 min job. Apply to both SNS topics. Investigation context for the alarm that surfaced this gap: [[2026-05-22_djangoq-cpu-spike-v8-rollback-verify-scan]] (incident: an engineer fired `find_v8_sites.sh` with `xargs -P 16 aws s3 cp` in the `admin-scripts` screen on the prod admin EC2 box to verify intruder-v8 → intruder rollback completion across 28k connector settings; load avg hit 19.6 on an 8-vCPU box; renice +19 + ionice idle applied to recover; scan completed with zero v8 matches — rollback was clean).
 
-### Seeded for 2026-05-03
+- [ ] **decide**: **Prevent future "ad-hoc scan pegs the admin box" incidents** — driving incident 2026-05-22 `DjangoQ CPU High` (above). Today's lesson: a single engineer's parallel-subprocess scan saturated the prod admin web tier for 1-2h. Saturday evening saved us (2 requests in 3h on the AdminUIHttps ALB) but the same pattern hitting a weekday morning would burn user-facing latency hard. Possible prevention surfaces (decide which to invest in):
+  1. **Tooling layer:** sanctioned helper script for bulk-S3-scan use cases — boto3 in-process with shared client + connection pool, not subprocess `aws cli -P N`. ~half-day to write + document.
+  2. **Operational policy:** "admin-scripts screen on prod EC2 is for surgical commands only; bulk work goes on a separate utility box." Document in a connecting README or repo CLAUDE.md.
+  3. **Infra layer:** move admin web tier off the single EC2 box onto ECS/EKS behind autoscaling. Bigger lift but eliminates whole class of "one big task pegs the box" risks. Probably overlaps with the §5 Fleet Architecture rethink.
+  4. **Observability layer:** CloudWatch alarm on EC2 CPU is too late — fires after sustained 99%. Add a process-class alarm or NR infra agent on `i-035d255c2c64bb324` (currently has no NR instrumentation; only the EKS DjangoQ pods are in NR) so we get richer signals + faster page.
+  5. **NR instrumentation gap:** today's recovery check tried to verify admin web latency via NR and discovered the EC2 admin host has no NR agent / no gunicorn log forwarding. Adding either would have shaved the verification time tonight from "look at ALB CloudWatch metrics manually" to "one NRQL query." Standalone follow-up regardless of the prevention decision above. *(seeded 2026-05-22 for next-week pickup)* *(seeded 2026-05-22 for next-week pickup)*
 
-- [ ] **verify**: §21 — VCH SIGTERM billing-event fix (PR [#1667](https://github.com/aegissystems/vms-connector/pull/1667), merged 2026-05-02 to stage). 36h soak window: by Sunday afternoon there should be multiple SIGTERM'd VCH cronjob pods in the 24h window — confirm each emitted `site_product_ended` events (pre-fix: zero). Run the four NRQL queries in §21 via `nrql-investigator`. If green: comment on PR, close issue [#1666](https://github.com/aegissystems/vms-connector/issues/1666), promote to rearch (separate stage→rearch PR opened from this same session). If red: pull pre/post comparison, figure out what the fix missed. *(seeded 2026-05-02 for 2026-05-03)*
+### Seeded for 2026-05-22
 
-### Seeded for 2026-05-04
-
-- [x] **investigate**: §22 — staging VCH `KeyError: 'monitoring'` startup crash → **picked into 2026-05-04 Today's Scope**. *(seeded 2026-05-03 for 2026-05-04; ran 2026-05-04 — promoted)*
-- [x] **harden**: rotate the Firebat box's user account / SSH password → **picked into 2026-05-04 Today's Scope**. *(seeded 2026-05-03 for 2026-05-04; ran 2026-05-04 — promoted)*
-
-### Seeded for 2026-05-07
-
-- [ ] **verify**: vms-connector PR [#1679](https://github.com/aegissystems/vms-connector/pull/1679) post-merge soak — gated on user merge. Watch `succeeded on stream_id candidate #N` (iteration safety net firing) and `raise_patrol_alert ... failed` (regression) on `:rearchitecture` images for 24h post-merge. Stage validation already proved `stream_ids=[...]` history accumulation is firing (9 events in 30 min) and 0 raise failures; rearch should mirror. **PULLED INTO TODAY'S SCOPE 2026-05-07.** *(seeded 2026-05-06 for 2026-05-07)*
-- [x] **decide**: Send the Immix `StreamFinished` inquiry — **DONE 2026-05-06 evening (sent).** Standing follow-up watch for Immix response per the inquiry's post-response branching plan in [[2026-05-06_immix-streamfinished-inquiry]]. *(seeded 2026-05-06 for 2026-05-07; done 2026-05-06)*
-- [ ] **verify**: Confirm patrol-A188AC1E-style runs on `:rearchitecture` are succeeding without the silent-400 failure mode. Spot-check via `SELECT count(*) FROM Log WHERE cluster_name='Connector-EKS' AND container_image LIKE '%:rearchitecture%' AND message LIKE '%raise_patrol_alert%' AND message LIKE '%failed%' SINCE 24 hours ago` — expect 0. **Folded into PR #1679 soak** above. *(seeded 2026-05-06 for 2026-05-07)*
-- [ ] **exec**: §3 cleanup-Lambda correctness verify pass across Immix-state matrix — see Today's Scope. *(seeded 2026-05-07 for 2026-05-07)*
-- [ ] **exec**: fleet_error_top15 triage — see Today's Scope. *(seeded 2026-05-07 for 2026-05-07)*
-
-### Seeded for 2026-05-06 (or later evening when #2406 lands)
-
-- [x] **DECIDED 2026-05-07 — NO BACKFILL.** §25 Cohort B one-time backfill is no longer REQUIRED. Decision documented in [[2026-05-07_cohort-b-no-backfill-decision]]; cascade hook stays flag-disabled. Re-open conditions tracked in [[autopatrol-deferred-backlog]]. *(seeded 2026-05-05; decided 2026-05-07)*
-
-### Seeded for 2026-05-11
-
-- [x] **verify**: vms-connector PR [#1688](https://github.com/aegissystems/vms-connector/pull/1688) stage tip + re-soak before merge — **GREEN.** Zero weekend drift on stage (tip `6d95785d` matches Friday capture). Targeted re-soak of the #1684/#345 line-crossing bundle via `nrql-investigator`: ERROR rate down 50-58% post-merge (1744 → ~770/24h), per-pod alarm rate down ~46% (expected parked-vehicle suppression, not over-suppressed — volume non-zero), zero pod restarts/OOMKills, no new error classes referencing `actuate_filters`/`actuate_connector_observers`/`line_crossing`. PR status: OPEN, MERGEABLE/BLOCKED, `REVIEW_REQUIRED`, 4 CI checks SUCCESS. Mechanical blocker only: reviewer approval. *(seeded 2026-05-08; ran 2026-05-11)*
+- [ ] **decide**: [connector_deployer#160](https://github.com/aegissystems/connector_deployer/issues/160) — orphan container cleanup. Issue still OPEN; 2 orphans observed (`51c72148`, `798e6dde`). Scope: decide approach (Option 1 recommended), draft the scan. *(rolled 2026-04-25 → 2026-04-27 → 2026-04-28 → 2026-05-22)*
+- [ ] **exec**: Paste Jira ticket draft for **Immix zombie-tenant API contract violations** into AUTO project. Full draft at [[2026-04-29_immix-zombie-tenants]]. Pairs with the broader [[mark-todos#comprehensive-immix-tenant-failure-census]] expansion. *(rolled 2026-04-30 → 2026-05-01 → 2026-05-22)*
+- [ ] **decide**: Cascade-disable propagation hooks — schedule → customer → site → cameras (per [[2026-04-30_admin-propagation-handoff]] + line 852). Partial overlap with §29 deploy-lifecycle work but cascade-policy is a distinct admin-side concern. Promote to active scope when the §29 staging promotion lands. *(rolled 2026-04-30 → 2026-05-01 → 2026-05-22)*
+- [ ] **decide**: Recalibrate `connector_no_patrols_to_run_24h` thresholds — gated on PR #1662 reaching **prod** (currently in rearch via PR #1660; prod cut TBD). *(rolled 2026-04-30 → 2026-05-01 → 2026-05-22)*
+- [ ] **exec**: File follow-up issue in vms-connector for direct unit tests on `connector_factories/shared/cleanup_emitter.py` (167 LOC, broad `except Exception`, zero direct tests). Tests should assert: emit fires under terminal exits, suppressed for pending/transient, no-op when env flag off, no-op when `schedule_id` empty. Surfaced in PR [#1660](https://github.com/aegissystems/vms-connector/pull/1660) review 2026-05-01. *(rolled 2026-05-01 → 2026-05-22)*
+- [ ] **exec**: File follow-up issue (or one-line PR) for explicit `boto3.client("sqs", region_name=...)` in `cleanup_emitter.py:87` so a region-mismatched stage pod surfaces a distinguishable warning instead of opaque `NonExistentQueue`. Surfaced in PR [#1660](https://github.com/aegissystems/vms-connector/pull/1660) review 2026-05-01. *(rolled 2026-05-01 → 2026-05-22)*
+- [ ] **exec**: KB synthesis closing the loop on YAM motion-bridge removal landing in connector — one-line update under `topics/vms-connector` YAM polygon-hint workstream noting PR #1660 closed the connector-side loop. Per global CLAUDE.md "After Work: Log to KB." *(rolled 2026-05-01 → 2026-05-22)*
+- [ ] **exec**: §3 cleanup-Lambda correctness verify pass across the Immix-state matrix (Immix-Deleted / Immix-Suspended / Paused / genuine-offline). See §3 "Open work" — still the active path on that workstream. *(rolled 2026-05-07 → 2026-05-22)*
 
 <!-- END-MORNING-FOLLOWUPS -->
 
