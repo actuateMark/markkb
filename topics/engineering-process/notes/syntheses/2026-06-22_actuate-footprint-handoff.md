@@ -38,7 +38,7 @@ Baseline captured pre-re-home: `~/identity-baseline-pre-rehome.json` (0 FAIL / 3
 ## 3. Knowledge base — where it is & how to use it
 
 - **Content:** this Obsidian vault (`~/Documents/worklog/knowledgebase/`), one topic per directory, notes typed concept/synthesis/entity/source.
-- **Remotes:** firebat bare repo (`mork@mork-firebat:~/git/knowledgebase.git`) + **`actuateMark/markkb`** (personal). **WS-B pending:** scrub + mirror to the `aegissystems` org so the team has it; secret-scan is now enforced (gitignore + planned `gitleaks` hook).
+- **Remotes:** ✅ **`aegissystems/actuate-kb`** (private, org-owned — the durable team home, pushed 2026-06-23) + firebat bare repo + `actuateMark/markkb` (personal). Scrubbed before mirroring (gitleaks-clean; a colleague IP + incident naming purged). gitleaks pre-commit hook enforced.
 - **How to query:** Obsidian app + the `obsidian` CLI (backlinks/tags/search/orphans). Health probe: `~/.local/bin/obsidian vault`.
 - **High-value entry points:** each workstream below links its load-bearing notes.
 

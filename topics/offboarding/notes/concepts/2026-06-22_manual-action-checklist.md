@@ -70,10 +70,10 @@ Goal: make the firebat + npu-server nodes **tag-owned** (`tag:server`) so they s
 
 ---
 
-## §E — KB org mirror  *(after §B1 GitHub identity)*
-- [ ] Create `aegissystems/markkb` + `aegissystems/claude-config` (both are **gitleaks-clean**, verified).
-- [ ] `git remote add org <url>` in each + `git push org master/main`.
-- [ ] Set the org repo as the canonical remote; tell the team where the KB now lives.
+## §E — KB / config org mirror
+- [x] **KB → `aegissystems/actuate-kb` (private) — DONE 2026-06-23.** Pushed via actuateMark (org allows member repo creation; didn't need the §A decision after all). Scrubbed first: gitleaks-clean + a colleague's personal IP purged from all history + incident-note naming neutralized. All 3 remotes (org, firebat, personal) carry the cleaned history.
+- [ ] **claude-config → org** — still to mirror (gitleaks-clean, verified). Push to `aegissystems/claude-config` the same way.
+- [ ] Tell the team the KB now lives at `aegissystems/actuate-kb` (make it the canonical remote).
 
 ---
 
