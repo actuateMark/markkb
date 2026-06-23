@@ -22,7 +22,7 @@ author: kb-bot
 | **autopatrol-server** | 40 | none (has README+ARCHITECTURE) | new CLAUDE + port release-process; core analysis backend | 🔴 |
 | **ds-terraform-eks-v2** | 11 (in-flight) | none | new CLAUDE — PG16 fix only on branch; capture branch state + roadmap | 🔴 |
 | **actuate_bi** | low / role-critical | none | new CLAUDE — canonical billing DDL; tf-vs-sql drift rule KB-only | 🔴 |
-| **actuate-integration-tools** | 9 (Mark-only) | none | new CLAUDE — opaque without it | 🔴 |
+| **actuate-integration-tools** | 9 (Mark-only) | none | 🚨 **LOCAL-ONLY — no git remote; push to org or it's lost** + new CLAUDE (done, committed locally) | 🔴 |
 | **actuate-libraries** | 1380 | 120L | update — **CI-skip-token / dev-version CI-safety knowledge** | 🔴 |
 | **vms-connector** | 2463 | 360L (strong) | port architecture rationale (AIMD/fork-safety) → docs/ | 🟠 |
 | **actuate_admin** | 522 | 76L (thin) | port release-flow + local-bringup + AutoPatrol PATCH gotcha | 🟠 |
@@ -51,6 +51,17 @@ author: kb-bot
 **🟡 kubernetes-deployments** — absorb ArgoCD/Helm/app-of-apps + Karpenter + 3-cluster RBAC beyond the existing Cognito incident runbook. Sources: [[kubernetes-deployments]] entity, [[argocd]], argocd-gitops-workflow.
 **🟡 camera-ui** — merge version/coverage/styling + the `enable-live-streaming` LD flag reference. Sources: [[camera-ui]] entity, [[2026-05-19_live-streaming-v1-plan]].
 **🟡 software-arch-sketches** — thin CLAUDE: make targets, `SKETCH_INPUT_REPO` env, `data/*.json` outputs, links to the 5 sketch-findings notes.
+
+## Execution status (2026-06-23)
+
+**🔴 HIGH new-CLAUDE.md — PRs opened:**
+- autopatrol-server → [PR #29](https://github.com/aegissystems/autopatrol-server/pull/29) (CLAUDE.md + docs/release-process.md)
+- actuate_bi → [PR #12](https://github.com/aegissystems/actuate_bi/pull/12)
+- ds-terraform-eks-v2 → [PR #104](https://github.com/aegissystems/ds-terraform-eks-v2/pull/104) (captures the PG16-fix-on-branch state)
+- local_network_scripts → [PR #1](https://github.com/aegissystems/actuate-dev-toolkit/pull/1)
+- **actuate-integration-tools → 🚨 NO REMOTE (local-only).** CLAUDE.md committed locally. **Action (WS-B): create `aegissystems/actuate-integration-tools` + push, or the whole tool dies with the laptop.**
+
+**🔴 HIGH updates/ports + 🟡 MED — in progress** (actuate-libraries, vms-connector, actuate_admin, actuate-inference-api; queue_consumer, kubernetes-deployments, camera-ui, software-arch-sketches).
 
 ## Related
 - [[2026-06-22_offboarding-plan]] · [[2026-06-22_manual-action-checklist]] · [[2026-06-22_actuate-footprint-handoff]]
