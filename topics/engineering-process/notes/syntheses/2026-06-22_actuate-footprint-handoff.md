@@ -40,6 +40,7 @@ Baseline captured pre-re-home: `~/identity-baseline-pre-rehome.json` (0 FAIL / 3
 - **Content:** this Obsidian vault (`~/Documents/worklog/knowledgebase/`), one topic per directory, notes typed concept/synthesis/entity/source.
 - **Remotes:** ✅ **`aegissystems/actuate-kb`** (private, org-owned — the durable team home, pushed 2026-06-23) + firebat bare repo + `actuateMark/markkb` (personal). Scrubbed before mirroring (gitleaks-clean; a colleague IP + incident naming purged). gitleaks pre-commit hook enforced.
 - **How to query:** Obsidian app + the `obsidian` CLI (backlinks/tags/search/orphans). Health probe: `~/.local/bin/obsidian vault`.
+- **Self-host:** the repo bundles **`_tooling/`** (10 kb-* skills, 4 agents, ~19 automation scripts, the obsidian CLI, shared lib) + **`_tooling/SETUP.md`** — clone `aegissystems/actuate-kb` and stand up your own KB instance (content + tooling).
 - **High-value entry points:** each workstream below links its load-bearing notes.
 
 ## 4. Workstreams — status & where each lives
