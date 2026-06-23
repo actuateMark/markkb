@@ -35,7 +35,7 @@ CloudWatch alarm `DjangoQ CPU High` (us-west-2 / acct 388576304176 / instance `i
 | 00:25 | `sudo renice +19 -g $PGID` on the xargs process group; `sudo ionice -c 3 -P $PGID`. All current children inherit the niceness. Admin/Django services (NI=0) now preempt scan workers. |
 | 00:35 | Recovery check via NR fails — admin EC2 host has no NR agent. Falls back to CloudWatch ALB metrics: AdminUIHttps target group had **2 total requests in 3 hours** (Saturday evening floor). Zero 5XX errors across the entire spike. |
 | 00:55 | Scan completes. Load avg drops 19.62 → 2.82 (1-min). Output file has **701 connector IDs** still matching "EKS to EKS intruder-v8" — not a rollback failure, just the S3 lag from `--skip-deploy` (those connectors will pick up the new model on their next deploy cycle). |
-| 00:57 | **Alarm manually deleted by user `thanazaki`** (Tatiana, AdministratorAccess SSO, source IP `[redacted-ip]`, MacOS Chrome). State at delete: still ALARM. No prior OK transition. |
+| 00:57 | **Alarm manually deleted via the AWS console** (AdministratorAccess SSO). State at delete: still ALARM. No prior OK transition. |
 | 01:42 | Monitor detects alarm no longer exists (`MetricAlarms: []`). |
 
 ## What the renice actually did (and didn't)
@@ -78,8 +78,8 @@ Not an incident artifact. Just the inherent lag of `--skip-deploy`.
 
 ## Three engineers, one incident — coordination note
 
-- **Rollback engineer** (likely [[jacob-weiss]] given today's v5 split-intruder + v8 context): ran the swap + verify scan from the prod admin EC2 shell.
-- **Tatiana ([[tatiana-hanazaki|thanazaki]])**: deleted the alarm at 00:57 UTC while still in ALARM state. Source IP indicates personal device (MacOS Chrome). Likely saw the page, eyeballed the box, judged safe, dismissed.
+- **Rollback engineer** (running the v5 split-intruder + v8 rollback): ran the swap + verify scan from the prod admin EC2 shell.
+- **Admin user**: deleted the alarm at 00:57 UTC while still in ALARM state — likely saw the page, eyeballed the box, judged safe, and dismissed it.
 - **Mark**: paged at 00:01 UTC, investigated, applied the renice mitigation, wrote this note.
 
 Monday Slack thread to align on:
@@ -91,5 +91,5 @@ Monday Slack thread to align on:
 
 - [[mark-todos]] § "Seeded for next week (2026-05-26 / 2026-05-27)" — PagerDuty wiring + ad-hoc-scan prevention follow-ups
 - [[2026-05-22_gnome-terminal-focus-steal-fix]] — unrelated, but same day
-- [[jacob-weiss]] / [[tatiana-hanazaki]] — likely participants
+- (participant names omitted per no-naming-in-incidents norm)
 - [[2026-05-22|today's daily note]]
