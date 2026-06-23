@@ -99,6 +99,9 @@ Goal: make the firebat + npu-server nodes **tag-owned** (`tag:server`) so they s
 - [ ] **Run the Watchman walkthrough** (Mark + Mike + Paolo, 60–90 min) — the irreplaceable knowledge transfer; do before Friday.
 - [ ] **Park ENG-183** (S3 cost) with whoever takes infra.
 - [ ] **Name owners for the remaining unowned workstreams** and build a handoff plan for each (candidates: firebat automation + operational dashboard §9/§12; AutoPatrol §3/§14; billing §28; RDS upgrades §33; connector/PyAV §15). The dashboard/firebat-automation layer is the most uniquely Mark's — it runs without an owner but won't be *maintained or extended* without one.
+- [ ] **Review + merge the 10 repo-doc PRs** (CLAUDE.md / docs handoff — see [[2026-06-23_local-repo-audit]] § Execution status): autopatrol-server #29, actuate_bi #12, ds-terraform-eks-v2 #104, actuate-dev-toolkit #1, vms-connector #1765, actuate_admin #2537, actuate-inference-api #95, actuate-libraries #392, kubernetes-deployments #419, queue_consumer #194. Docs-only, low-risk.
+- [ ] **🚨 Push 2 LOCAL-ONLY repos to the org** — `actuate-integration-tools` and `software-arch-sketches` have **no git remote**; they exist only on Mark's laptop (CLAUDE.md committed locally). Create `aegissystems/<repo>` + push both, or they die with the laptop. *(Audit for other local-only repos too.)*
+- [ ] **camera-ui CLAUDE.md** — skipped (local main 249 behind, stale base); apply the small tech-stack + live-streaming note manually on current main if desired.
 
 ## Related
 - [[2026-06-22_offboarding-plan]] · [[2026-06-22_actuate-footprint-handoff]] · [[2026-06-22_dead-mans-checklist]] · [[2026-06-23_watchman-fleet-handoff-paolo-mike]]
