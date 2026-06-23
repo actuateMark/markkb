@@ -61,7 +61,17 @@ author: kb-bot
 - local_network_scripts → [PR #1](https://github.com/aegissystems/actuate-dev-toolkit/pull/1)
 - **actuate-integration-tools → 🚨 NO REMOTE (local-only).** CLAUDE.md committed locally. **Action (WS-B): create `aegissystems/actuate-integration-tools` + push, or the whole tool dies with the laptop.**
 
-**🔴 HIGH updates/ports + 🟡 MED — in progress** (actuate-libraries, vms-connector, actuate_admin, actuate-inference-api; queue_consumer, kubernetes-deployments, camera-ui, software-arch-sketches).
+**🔴 HIGH updates/ports + 🟡 MED — PRs opened:**
+- vms-connector → [PR #1765](https://github.com/aegissystems/vms-connector/pull/1765) (docs/architecture-rationale.md)
+- actuate_admin → [PR #2537](https://github.com/aegissystems/actuate_admin/pull/2537) (CLAUDE.md gotchas + docs/release-flow + docs/local-bringup)
+- actuate-inference-api → [PR #95](https://github.com/aegissystems/actuate-inference-api/pull/95) (CLAUDE.md auth/v5/multi-model)
+- actuate-libraries → [PR #392](https://github.com/aegissystems/actuate-libraries/pull/392) (docs/CI.md — CI-skip-marker hazards)
+- kubernetes-deployments → [PR #419](https://github.com/aegissystems/kubernetes-deployments/pull/419) (CLAUDE.md ArgoCD workflow)
+- queue_consumer → [PR #194](https://github.com/aegissystems/queue_consumer/pull/194) (CLAUDE.md)
+- **software-arch-sketches → 🚨 NO REMOTE (local-only, 2nd one).** CLAUDE.md committed locally; push the repo to org to preserve.
+- **camera-ui → SKIPPED.** Local main is 249 commits behind and CLAUDE.md base differs; the minor append (tech-stack + a not-yet-landed live-streaming flag) isn't worth a stale-base PR. Recommend a manual 2-line touch on current main.
+
+**Note:** all PRs were opened from clean git worktrees off each repo's real default branch (main/rearchitecture/helm) to avoid the stale/divergent local checkouts — docs only, no code. **2 local-only repos** (actuate-integration-tools, software-arch-sketches) are the notable finding: Mark-authored work that exists nowhere but the laptop — push both to the org (WS-B).
 
 ## Related
 - [[2026-06-22_offboarding-plan]] · [[2026-06-22_manual-action-checklist]] · [[2026-06-22_actuate-footprint-handoff]]
