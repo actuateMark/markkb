@@ -8,6 +8,10 @@ confluence: "https://aws.amazon.com/blogs/database/introducing-the-amazon-dynamo
 created: 2026-06-02
 updated: 2026-06-02
 author: kb-bot
+incoming:
+  - topics/infrastructure/_summary.md
+  - topics/infrastructure/notes/syntheses/2026-06-02_dynamodb-fit-assessment-ait-phase-10.md
+incoming_updated: 2026-06-19
 ---
 
 # Amazon DynamoDB Data Modeling MCP Tool

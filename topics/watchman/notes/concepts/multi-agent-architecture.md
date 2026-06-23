@@ -13,9 +13,9 @@ incoming:
   - topics/team-structure/notes/entities/brad-murphy.md
   - topics/team-structure/notes/entities/brian-leary.md
   - topics/team-structure/notes/entities/laura-reno.md
+  - topics/watchman/notes/concepts/2026-06-02_frontend-sketch-ui.md
   - topics/watchman/notes/concepts/onboarding-wizard.md
-  - topics/watchman/notes/concepts/patrol-vs-active-modes.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-06-19
 ---
 
 # Multi-Agent Architecture

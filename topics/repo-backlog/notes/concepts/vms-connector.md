@@ -4,15 +4,15 @@ type: concept
 topic: repo-backlog
 tags: [backlog, github, vms-connector]
 repo: aegissystems/vms-connector
-created: 2026-06-18
-updated: 2026-06-18
+created: 2026-06-23
+updated: 2026-06-23
 author: kb-bot
 issue_count_open: 110
 issue_count_high_impact: 10
 issue_count_lhf: 10
 issue_count_stale: 0
 high_impact_issue_numbers: [1656, 1754, 1703, 1691, 1658, 1629, 1622, 1559, 1549, 1483]
-lhf_issue_numbers: [1502, 1695, 1656, 1596, 1594, 1552, 1549, 1544, 1529, 1528]
+lhf_issue_numbers: [1502, 1695, 1596, 1594, 1552, 1549, 1544, 1529, 1528, 1523]
 stale_issue_numbers: []
 full_issue_numbers: [1754, 1703, 1701, 1695, 1694, 1693, 1691, 1690, 1673, 1672, 1658, 1656, 1652, 1651, 1650, 1649, 1648, 1647, 1646, 1645, 1642, 1640, 1636, 1635, 1630, 1629, 1628, 1626, 1625, 1623, 1622, 1618, 1616, 1606, 1600, 1599, 1598, 1597, 1596, 1594, 1591, 1589, 1584, 1582, 1572, 1571, 1570, 1565, 1563, 1560, 1559, 1558, 1557, 1556, 1555, 1554, 1553, 1552, 1549, 1544, 1531, 1529, 1528, 1525, 1524, 1523, 1522, 1520, 1518, 1517, 1516, 1515, 1514, 1511, 1509, 1508, 1503, 1502, 1500, 1499, 1497, 1496, 1495, 1492, 1491, 1490, 1489, 1488, 1487, 1486, 1485, 1484, 1483, 1481, 1480, 1479, 1478, 1477, 1476, 1475, 1474, 1472, 1471, 1470, 1469, 1468, 1467, 1466, 1465, 1464]
 ---
@@ -53,17 +53,17 @@ Groups of related open issues — when picking one up, consider whether adjacent
 vms-connector currently has **zero** issues >180d idle — active repo. If stale accumulates in future scans, walk `git log --since=...` for the relevant subsystem before commenting, then either bump with new context or close with `addressed by <commit>`. **Never bulk-close.**
 
 <!-- BEGIN-AUTO-REFRESH repo-scan -->
-_Last refreshed: **2026-06-18** by [[skill-repo-scan]] — 110 open issues._
+_Last refreshed: **2026-06-23** by [[skill-repo-scan]] — 110 open issues._
 
 ### 🔥 High-impact (top 10 by score)
 
 | # | Title | Labels | Assignee | Score | Idle |
 |--:|-------|--------|----------|------:|------|
-| 1656 | [AP/VCH: Immix rejects CNCTNFAIL alerts with HTTP 400 — streamId null when strea…](https://github.com/aegissystems/vms-connector/issues/1656) | `bug` | — | 9 | 1mo |
-| 1754 | [WindowIdsV2 retention: enable TTL (free, ~Aug) + decide on 7-year legacy cleanup](https://github.com/aegissystems/vms-connector/issues/1754) | — | — | 3 | 1d |
-| 1703 | [Bump FFmpeg 7.1.3 → 8.1.1, PyAV 13.1.0 → 17.0.1, OpenCV 4.11 → 4.13](https://github.com/aegissystems/vms-connector/issues/1703) | — | — | 3 | 16d |
+| 1656 | [AP/VCH: Immix rejects CNCTNFAIL alerts with HTTP 400 — streamId null when strea…](https://github.com/aegissystems/vms-connector/issues/1656) | `bug` | — | 9 | 2mo |
+| 1754 | [WindowIdsV2 retention: enable TTL (free, ~Aug) + decide on 7-year legacy cleanup](https://github.com/aegissystems/vms-connector/issues/1754) | — | — | 3 | 6d |
+| 1703 | [Bump FFmpeg 7.1.3 → 8.1.1, PyAV 13.1.0 → 17.0.1, OpenCV 4.11 → 4.13](https://github.com/aegissystems/vms-connector/issues/1703) | — | — | 3 | 21d |
 | 1691 | [Docker/library optimization: Graviton 4 tuning, OpenCV/FFmpeg/PyAV bumps, GStre…](https://github.com/aegissystems/vms-connector/issues/1691) | — | — | 3 | 1mo |
-| 1658 | [AP/VCH: WebSocket frame retrieval fails fleet-wide — dev.powerplus.com serves i…](https://github.com/aegissystems/vms-connector/issues/1658) | `bug` | actuateMark | 3 | 1mo |
+| 1658 | [AP/VCH: WebSocket frame retrieval fails fleet-wide — dev.powerplus.com serves i…](https://github.com/aegissystems/vms-connector/issues/1658) | `bug` | actuateMark | 3 | 2mo |
 | 1629 | [Eliminate 300s frame retention buffer for deferred tag-zone alerts](https://github.com/aegissystems/vms-connector/issues/1629) | — | — | 3 | 2mo |
 | 1622 | [Intermittent create-video 502 errors from detection-window service](https://github.com/aegissystems/vms-connector/issues/1622) | `bug` | — | 3 | 3mo |
 | 1559 | [[BUG] SMTP_per_camera integration type missing camera runner implementation](https://github.com/aegissystems/vms-connector/issues/1559) | — | — | 3 | 4mo |
@@ -76,7 +76,6 @@ _Last refreshed: **2026-06-18** by [[skill-repo-scan]] — 110 open issues._
 |--:|-------|--------|----------|------:|------|
 | 1502 | [📚 Architecture Documentation: RTSP Connector Lifecycle Diagram](https://github.com/aegissystems/vms-connector/issues/1502) | `documentation` | — | 8 | 5mo |
 | 1695 | [Redirect Logs to S3](https://github.com/aegissystems/vms-connector/issues/1695) | — | — | 6 | 1mo |
-| 1656 | [AP/VCH: Immix rejects CNCTNFAIL alerts with HTTP 400 — streamId null when strea…](https://github.com/aegissystems/vms-connector/issues/1656) | `bug` | — | 5 | 1mo |
 | 1596 | [Adopt squash merge for stage → rearchitecture PRs](https://github.com/aegissystems/vms-connector/issues/1596) | — | — | 5 | 3mo |
 | 1594 | [Pod state checkpoint: persist camera state across rolling restarts](https://github.com/aegissystems/vms-connector/issues/1594) | `enhancement` | — | 5 | 3mo |
 | 1552 | [Daily Log Report Automation - Agent-Generated Monitoring](https://github.com/aegissystems/vms-connector/issues/1552) | — | — | 5 | 4mo |
@@ -84,6 +83,7 @@ _Last refreshed: **2026-06-18** by [[skill-repo-scan]] — 110 open issues._
 | 1544 | [Optimize OpenCV for Graviton 4 with Kleidicv](https://github.com/aegissystems/vms-connector/issues/1544) | — | — | 5 | 4mo |
 | 1529 | [Create dedicated c8g nodepool for CPU-heavy workloads (gun detection)](https://github.com/aegissystems/vms-connector/issues/1529) | — | — | 5 | 5mo |
 | 1528 | [Add ECR lifecycle policy to delete untagged images after 90 days](https://github.com/aegissystems/vms-connector/issues/1528) | — | — | 5 | 5mo |
+| 1523 | [Support muting alerts at camera/site level from Camera UI](https://github.com/aegissystems/vms-connector/issues/1523) | — | — | 5 | 5mo |
 
 ### 🔍 Codebase-scan follow-up candidates (idle >180d)
 
@@ -105,8 +105,8 @@ _(none)_
 
 | # | Title | Labels | Assignee | Age | Idle |
 |--:|-------|--------|----------|-----|------|
-| 1754 | [WindowIdsV2 retention: enable TTL (free, ~Aug) + decide on 7-year legacy cleanup](https://github.com/aegissystems/vms-connector/issues/1754) | — | — | 1d | 1d |
-| 1703 | [Bump FFmpeg 7.1.3 → 8.1.1, PyAV 13.1.0 → 17.0.1, OpenCV 4.11 → 4.13](https://github.com/aegissystems/vms-connector/issues/1703) | — | — | 29d | 16d |
+| 1754 | [WindowIdsV2 retention: enable TTL (free, ~Aug) + decide on 7-year legacy cleanup](https://github.com/aegissystems/vms-connector/issues/1754) | — | — | 6d | 6d |
+| 1703 | [Bump FFmpeg 7.1.3 → 8.1.1, PyAV 13.1.0 → 17.0.1, OpenCV 4.11 → 4.13](https://github.com/aegissystems/vms-connector/issues/1703) | — | — | 1mo | 21d |
 | 1701 | [Honor camera_duplicates.json billing_id as canonical camera_id on event emit](https://github.com/aegissystems/vms-connector/issues/1701) | — | — | 1mo | 1mo |
 | 1695 | [Redirect Logs to S3](https://github.com/aegissystems/vms-connector/issues/1695) | — | — | 1mo | 1mo |
 | 1694 | [Make _log_memory_breakdown interval env-var configurable (currently 100s hard-c…](https://github.com/aegissystems/vms-connector/issues/1694) | — | actuateMark | 1mo | 1mo |
@@ -115,8 +115,8 @@ _(none)_
 | 1690 | [Batch frame uploads to cut S3 bill ~91% (~$164K/yr)](https://github.com/aegissystems/vms-connector/issues/1690) | — | — | 1mo | 1mo |
 | 1673 | [Site 11202: VMS relay (relay-us-dal-2-prod-dp.vmsproxy.com) timing out for 25+ …](https://github.com/aegissystems/vms-connector/issues/1673) | — | — | 1mo | 1mo |
 | 1672 | [Site 36681 (Procimmo - St-Martin): VMS credential is wrong account type — /api/…](https://github.com/aegissystems/vms-connector/issues/1672) | — | — | 1mo | 1mo |
-| 1658 | [AP/VCH: WebSocket frame retrieval fails fleet-wide — dev.powerplus.com serves i…](https://github.com/aegissystems/vms-connector/issues/1658) | `bug` | actuateMark | 1mo | 1mo |
-| 1656 | [AP/VCH: Immix rejects CNCTNFAIL alerts with HTTP 400 — streamId null when strea…](https://github.com/aegissystems/vms-connector/issues/1656) | `bug` | — | 1mo | 1mo |
+| 1658 | [AP/VCH: WebSocket frame retrieval fails fleet-wide — dev.powerplus.com serves i…](https://github.com/aegissystems/vms-connector/issues/1658) | `bug` | actuateMark | 2mo | 2mo |
+| 1656 | [AP/VCH: Immix rejects CNCTNFAIL alerts with HTTP 400 — streamId null when strea…](https://github.com/aegissystems/vms-connector/issues/1656) | `bug` | — | 2mo | 2mo |
 | 1652 | [[Cleanup] Fix bare except: blocks in RTSP puller code](https://github.com/aegissystems/vms-connector/issues/1652) | — | — | 2mo | 2mo |
 | 1651 | [[Enhancement] RTSP: Connection health scoring and graceful degradation](https://github.com/aegissystems/vms-connector/issues/1651) | — | — | 2mo | 2mo |
 | 1650 | [[Enhancement] RTSP: Transport fallback chain (TCP → UDP → interleaved)](https://github.com/aegissystems/vms-connector/issues/1650) | — | — | 2mo | 2mo |
@@ -129,11 +129,11 @@ _(none)_
 | 1640 | [DynamoDB ThrottlingException on WindowIdsV2 PutItem during arm/disarm burst](https://github.com/aegissystems/vms-connector/issues/1640) | — | — | 2mo | 2mo |
 | 1636 | [Tag zones on analytic (continuous-run) sites: deferred alert lifecycle](https://github.com/aegissystems/vms-connector/issues/1636) | — | actuateMark | 2mo | 2mo |
 | 1635 | [feat: Generic patrol mode — integration-agnostic patrol runs](https://github.com/aegissystems/vms-connector/issues/1635) | — | actuateMark | 2mo | 2mo |
-| 1630 | [Optimize alert frame source: use S3 frames instead of in-cache for deferred ale…](https://github.com/aegissystems/vms-connector/issues/1630) | — | actuateMark | 2mo | 2mo |
-| 1629 | [Eliminate 300s frame retention buffer for deferred tag-zone alerts](https://github.com/aegissystems/vms-connector/issues/1629) | — | — | 2mo | 2mo |
-| 1628 | [Deferred alerts: send without frame fallback + cache optimizations](https://github.com/aegissystems/vms-connector/issues/1628) | — | — | 2mo | 2mo |
-| 1626 | [feat: evaluate and migrate annotation rendering to improve visual quality and r…](https://github.com/aegissystems/vms-connector/issues/1626) | `enhancement` | — | 2mo | 2mo |
-| 1625 | [Exacq JPEG connector-34880 has linear memory growth ~30 MB/min](https://github.com/aegissystems/vms-connector/issues/1625) | — | — | 2mo | 2mo |
+| 1630 | [Optimize alert frame source: use S3 frames instead of in-cache for deferred ale…](https://github.com/aegissystems/vms-connector/issues/1630) | — | actuateMark | 3mo | 2mo |
+| 1629 | [Eliminate 300s frame retention buffer for deferred tag-zone alerts](https://github.com/aegissystems/vms-connector/issues/1629) | — | — | 3mo | 2mo |
+| 1628 | [Deferred alerts: send without frame fallback + cache optimizations](https://github.com/aegissystems/vms-connector/issues/1628) | — | — | 3mo | 2mo |
+| 1626 | [feat: evaluate and migrate annotation rendering to improve visual quality and r…](https://github.com/aegissystems/vms-connector/issues/1626) | `enhancement` | — | 3mo | 3mo |
+| 1625 | [Exacq JPEG connector-34880 has linear memory growth ~30 MB/min](https://github.com/aegissystems/vms-connector/issues/1625) | — | — | 3mo | 3mo |
 | 1623 | [Rate-limit JpgFrameQueuePuller to target FPS instead of pulling at native rate](https://github.com/aegissystems/vms-connector/issues/1623) | — | — | 3mo | 3mo |
 | 1622 | [Intermittent create-video 502 errors from detection-window service](https://github.com/aegissystems/vms-connector/issues/1622) | `bug` | — | 3mo | 3mo |
 | 1618 | [Reduce exacq session/frame retrieval error log noise when VMS is unreachable](https://github.com/aegissystems/vms-connector/issues/1618) | — | — | 3mo | 2mo |
@@ -147,7 +147,7 @@ _(none)_
 | 1594 | [Pod state checkpoint: persist camera state across rolling restarts](https://github.com/aegissystems/vms-connector/issues/1594) | `enhancement` | — | 3mo | 3mo |
 | 1591 | [VPA checkpoints lost during daily arm/disarm cycle — pods cold-start with stale…](https://github.com/aegissystems/vms-connector/issues/1591) | — | — | 3mo | 3mo |
 | 1589 | [DW/NX: Send detection bounding boxes via Analytics REST API](https://github.com/aegissystems/vms-connector/issues/1589) | — | — | 3mo | 3mo |
-| 1584 | [Investigate repeated 'open_email_sent is blank' retry errors in connector cronj…](https://github.com/aegissystems/vms-connector/issues/1584) | — | — | 3mo | 3mo |
+| 1584 | [Investigate repeated 'open_email_sent is blank' retry errors in connector cronj…](https://github.com/aegissystems/vms-connector/issues/1584) | — | — | 4mo | 4mo |
 | 1582 | [Downgrade 'No cameras found in config' from ERROR to WARN with notification](https://github.com/aegissystems/vms-connector/issues/1582) | — | — | 4mo | 4mo |
 | 1572 | [DW login() returns Exception objects as response, causing type confusion](https://github.com/aegissystems/vms-connector/issues/1572) | — | — | 4mo | 4mo |
 | 1571 | [Healthcheck thread.join() has no timeout, causing potential hangs](https://github.com/aegissystems/vms-connector/issues/1571) | — | — | 4mo | 4mo |
@@ -223,5 +223,5 @@ _(none)_
 ## Related
 
 - [[repo-backlog/_summary|repo-backlog topic]]
-- Latest scan: [[2026-06-18_scan]]
+- Latest scan: [[2026-06-23_scan]]
 - GitHub: [aegissystems/vms-connector/issues](https://github.com/aegissystems/vms-connector/issues)

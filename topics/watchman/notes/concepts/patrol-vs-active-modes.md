@@ -6,9 +6,10 @@ updated: 2026-04-13
 tags: [watchman, modes, patrol, active-monitoring, site-supervisor]
 incoming:
   - topics/autopatrol/notes/concepts/flex-ignore-zones.md
+  - topics/watchman/notes/concepts/2026-06-02_frontend-sketch-ui.md
   - topics/watchman/notes/concepts/multi-agent-architecture.md
   - topics/watchman/notes/concepts/onboarding-wizard.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-06-19
 ---
 
 # Patrol vs Active Monitoring Modes

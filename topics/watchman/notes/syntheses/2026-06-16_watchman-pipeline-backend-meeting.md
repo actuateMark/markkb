@@ -14,6 +14,10 @@ related:
   - "[[2026-05-29_watchman-prds-summary]]"
   - "[[2026-06-02_frontend-sketch-ui]]"
   - "[[topics/fleet-architecture/_summary]]"
+incoming:
+  - topics/personal-notes/notes/daily/2026-06-17.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-06-19
 ---
 
 # 2026-06-16 Watchman Pipeline & Backend Architecture Meeting
@@ -26,7 +30,7 @@ Planning output from Valeri's pipeline review and backend architecture kickoff. 
 
 **Parity question:** Pipeline output has NOT yet been apples-to-apples compared against the [[vms-connector]]. The connector can supply motion blobs, frames, and all upstream signals the pipeline needs. Before backend plumbing, validate that pipeline output matches connector capability and that there are no missing inputs.
 
-**Key artifact:** Confluence JSON schema pages define the concrete output contract: "Watchman WS /events/stream — v1 schema" (page 600637443) and detection-output schema. Pipeline output must conform to these objects.
+**Key artifact:** Confluence JSON schema pages define the concrete output contract: "[[watchman-repo|Watchman]] WS /events/stream — v1 schema" (page 600637443) and detection-output schema. Pipeline output must conform to these objects.
 
 ## Backend Architecture Direction
 
@@ -37,13 +41,13 @@ Planning output from Valeri's pipeline review and backend architecture kickoff. 
 - **OpenSearch** — Jagadish's suggestion; simplifies integration to the current Actuate stack (already in use elsewhere).
 - **S3 vector search** — Otzar has prior experience; decouples storage from index.
 
-**API layer:** After Watchman operators label site/alert/event metadata, engineering builds the REST/GraphQL API on top of the chosen store to feed Brad's [[2026-06-02_frontend-sketch-ui|UI]].
+**API layer:** After [[watchman-repo|Watchman]] operators label site/alert/event metadata, engineering builds the REST/GraphQL API on top of the chosen store to feed Brad's [[2026-06-02_frontend-sketch-ui|UI]].
 
 **Forensic search backend:** Separate track. Requires GPUs, sentence-transformers, vector DBs for the conversational "find vehicles at sports rental" UX.
 
 ## Operational & AWS Decisions
 
-**AWS account:** NO new account for now. Terraform on the **dev account is acceptable** for pipeline + backend development. Cost is lower; avoiding a new account sidesteps the overhead of a separate New Relic account + GDPR setup.
+**AWS account:** NO new account for now. Terraform on the **dev account is acceptable** for pipeline + backend development. Cost is lower; avoiding a new account sidesteps the overhead of a separate [[new-relic|New Relic]] account + GDPR setup.
 
 **Gotcha:** Before dev pushes code, add a **cleanup + documentation step** to the task. Frame it as a security-hardening opportunity (tear down test infra, document what was temporary, archive results).
 
@@ -89,7 +93,7 @@ This meeting **refines and extends** [[2026-06-02_watchman-phase0-fleet-fit]] in
 **STILL OPEN from phase-0:**
 - Backend storage choice (Postgres vs OpenSearch vs S3).
 - Lambda invocation point in the connector lifecycle.
-- Full Watch entity schema integration (phase-0 defers this; now part of backend API design).
+- Full [[watch-entity|Watch]] entity schema integration (phase-0 defers this; now part of backend API design).
 
 **Unchanged from phase-0:**
 - Stateless detection fleet for phase 0 (windowing / tracker state deferred to E-proper).
@@ -100,7 +104,7 @@ This meeting **refines and extends** [[2026-06-02_watchman-phase0-fleet-fit]] in
 ## Related Decisions Implicit Here
 
 - **Surveillance stream:** Phase 0 pins to Redis Streams as the frame-bus (per [[2026-06-02_watchman-phase0-fleet-fit]]); pipeline consumes that stream + motion signals from the connector.
-- **Watch arming:** Manager Service arms/disarms; disarmed cameras emit no detections (phase-0 design confirmed by this meeting's Lambda-invocation context).
+- **[[watch-entity|Watch]] arming:** Manager Service arms/disarms; disarmed cameras emit no detections (phase-0 design confirmed by this meeting's Lambda-invocation context).
 - **Frontend contract:** Brad's UI expects [[2026-06-02_frontend-sketch-ui]] — conversational forensic search + Patrol/Active mode toggle. Backend must support queryable detection history + per-site mode state.
 
 ## Cross-references
@@ -108,7 +112,7 @@ This meeting **refines and extends** [[2026-06-02_watchman-phase0-fleet-fit]] in
 - **Fleet architecture parent:** [[topics/fleet-architecture/_summary]]
 - **Phase-0 ingest pipeline:** [[2026-06-02_watchman-phase0-fleet-fit]]
 - **Judge alert contract:** [[2026-05-29_watchman-judge-backend-io-contract]]
-- **Watch Management Service:** [[2026-05-28_watch-management-service-design]]
+- **[[watch-entity|Watch]] Management Service:** [[2026-05-28_watch-management-service-design]]
 - **Frontend design:** [[2026-06-02_frontend-sketch-ui]]
 - **Workstream §5:** Active workstream tracking backend build progress
 

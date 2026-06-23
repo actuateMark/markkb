@@ -17,10 +17,12 @@ incoming:
   - topics/fleet-architecture/_summary.md
   - topics/fleet-architecture/notes/syntheses/2026-05-28_fleet-rearch-briefing-overview.md
   - topics/fleet-architecture/notes/syntheses/2026-06-01_adr-watchman-mvp-slim-connector.md
+  - topics/fleet-architecture/notes/syntheses/2026-06-02_watchman-phase0-fleet-fit.md
   - topics/watchman/_summary.md
   - topics/watchman/notes/syntheses/2026-05-28_watch-management-service-index.md
   - topics/watchman/notes/syntheses/2026-05-29_watchman-judge-immix-integration.md
-incoming_updated: 2026-06-02
+  - topics/watchman/notes/syntheses/2026-06-16_watchman-pipeline-backend-meeting.md
+incoming_updated: 2026-06-19
 ---
 
 # Watchman Judge ⇔ Backend I/O Contract — Analysis & Correlation

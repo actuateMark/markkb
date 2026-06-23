@@ -6,6 +6,11 @@ tags: [verifier, video-integration, alerts, window_ids, create-detection-window,
 created: 2026-06-03
 updated: 2026-06-03
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-06-03.md
+  - topics/personal-notes/notes/daily/2026-06-04.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-06-19
 ---
 
 # Verifier / video-clip "no alerts found" investigation
@@ -38,13 +43,13 @@ The video factory (`vms-connector/connector_factories/video/videoclip_factory.py
 - `default()`/`dev()`/`local()` → `VerifierCamera` (`camera/videoclip/verifier_camera.py:14`) which **extends `BaseStreamCamera`** — full alert pipeline (send_alerts, trigger_alert, put_detection_window, create_detection_window in endrun). Uses `S3FramePuller`.
 - `robo()`/`healthcheck()` → `VideoClipCamera` (`camera/videoclip/videoclip_camera.py:14`) which extends `BaseVerifierCamera` (`camera/shared/base_verifier_camera.py:26`) which extends `BaseCamera` (NOT BaseStreamCamera). This path has **NO MultiAlertSender, NO send_alerts, NO trigger_alert, NO put_detection_window, NO create_detection_window**; its `run()` drains the result_buffer and discards results (line 95-96), and `endrun()` is a no-op (line 140). Clip uploads launched via `--robo <batch_id>` (`connector.py:208,281`; `factory.py:143`) take this path → never writes WindowIdsV2 at all.
 
-Both video camera classes route through the same admin/config plumbing (group/customer/feature_deployment) as RTSP — there is **no provisioning gap** on group/location/alert-config. The break is in the **runtime alert path**, not config.
+Both video camera classes route through the same admin/config plumbing (group/customer/feature_deployment) as [[rtsp-deep-dive|RTSP]] — there is **no provisioning gap** on group/location/alert-config. The break is in the **runtime alert path**, not config.
 
 ## Verdict
 
 Since the user observed create-detection-window being POSTed (it logged "no alerts found"), connector-34952 was running the `VerifierCamera`/BaseStreamCamera path (the robo path never POSTs). Most-likely cause **(b)+(threshold)**: the window opened and closed without reaching the 2-of-5 alert threshold on the short clip, so `put_detection_window` never wrote the WindowIdsV2 record. This is **largely by-design behaviour of the sliding window** (a 1-2 frame detection shouldn't necessarily alert) colliding with a **gap**: the create-detection-window POST and the admin-record write are decoupled, so a closed-but-not-alerted window produces a spurious "no alerts found" and zero admin visibility even though a high-confidence detection occurred.
 
-It is **not** the no-recipient explanation (a) — `put_detection_window` precedes the `live_alert` dispatch gate, so a recipient-less test site would STILL get the admin record IF the threshold were reached. It is **not** a group/location/alert-config provisioning gap (c) — video uses the same config plumbing as RTSP.
+It is **not** the no-recipient explanation (a) — `put_detection_window` precedes the `live_alert` dispatch gate, so a recipient-less test site would STILL get the admin record IF the threshold were reached. It is **not** a group/location/alert-config provisioning gap (c) — video uses the same config plumbing as [[rtsp-deep-dive|RTSP]].
 
 ## Where a fix would go
 

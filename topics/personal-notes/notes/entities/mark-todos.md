@@ -4,7 +4,7 @@ type: entity
 topic: personal-notes
 tags: [todos, mark, work-plan, priorities, personal]
 created: 2026-04-16
-updated: 2026-06-22
+updated: 2026-06-23
 last_scope: 2026-06-22
 last_wrap: 2026-06-16
 author: kb-bot
@@ -1058,41 +1058,45 @@ Status (2026-05-11): Phase 2A/2A.2/2B/2C/2D.1/2D.2/2F/2G/2H + kb-deep-intake shi
 <!-- BEGIN-AUTOSYNC-JIRA -->
 ## Current Jira Queue (auto-synced)
 
-**Last synced:** 2026-06-22
+**Last synced:** 2026-06-23
 **Source:** `assignee = currentUser() AND statusCategory != Done ORDER BY updated DESC`
 
 This section is **fully replaced** on every sync by the `jira-sync` automation (see [[automation-jira-sync]]). Manual edits in this section will be lost — add notes against tickets in the workstream sections above instead.
 
-### Ready to Deploy (6)
+### Ready to Deploy (5)
 
 | Ticket | Priority | Type | Summary |
 |--------|----------|------|---------|
-| ENG-246 | Medium | Task | actuate-instrumentation: extend to better support performance instrumentation *(tracked in §30)* |
-| ENG-282 | Medium | Task | Custom-branch lifecycle: branch-scoped admin endpoints + vms-connector CI/CD cleanup wiri… *(tracked in §29)* |
-| ENG-136 | High | Task | PyAV upgrade 13.1 → 17.0 (nogil pixel conversion) |
 | CS3-31 | Highest | Sub-task | Automatically update the reference image |
 | CS3-58 | Lowest | Task | Configuration per camera |
 | CS3-323 | High | Bug | Discrepancy in cam count btwn dashboard and report |
+| ENG-246 | Medium | Task | actuate-instrumentation: extend to better support performance instrumentation *(tracked in §30)* |
+| ENG-282 | Medium | Task | Custom-branch lifecycle: branch-scoped admin endpoints + vms-connector CI/CD cleanup wiri… *(tracked in §29)* |
 
-### In Progress / In Review (6)
+### In Progress / In Review (3)
 
 | Ticket | Status | Priority | Type | Summary |
 |--------|--------|----------|------|---------|
-| ENG-300 | In Progress | Medium | Task | Watchman watch-management service: fleet & scheduling architecture design |
-| ENG-352 | In Review | Medium | Task | AutoPatrol per-camera tier + crowd-not-Tier3 escalation fix |
-| ENG-309 | In Progress | Medium | Task | PyAV 13.1.0 → 17 upgrade: vms-connector + watchman-internal (AmeriGas soak) |
-| ENG-289 | In Progress | Medium | Task | autopatrol_onboarder: track local ops tooling + post-deploy verification |
-| ENG-269 | In Progress | Medium | Task | actuate_admin: automated endpoints for deploying/managing custom branches *(tracked in §29)* |
 | ENG-247 | In Progress | Medium | Task | Research: move away from raw SQL access to postgres in non-admin contexts |
+| ENG-269 | In Progress | Medium | Task | actuate_admin: automated endpoints for deploying/managing custom branches *(tracked in §29)* |
+| ENG-300 | In Progress | Medium | Task | Watchman watch-management service: fleet & scheduling architecture design |
 
-### To Do (4)
+### To Do (12)
 
 | Ticket | Priority | Type | Summary |
 |--------|----------|------|---------|
-| CS3-537 | High | Sub-task | Add resolved_user to each healthcheck_sites on the api/healthcheck_result/rollup/ call |
-| ENG-183 | Medium | Task | S3 Cost Reduction — Ranked Action Plan |
+| ENG-376 | Highest | Task | WS-A: Re-home firebat's 4 identities (CRITICAL PATH, external deps) |
 | CS3-505 | Medium | Sub-task | add outcome to the API for CHM alerts |
+| CS3-537 | High | Sub-task | Add resolved_user to each healthcheck_sites on the api/healthcheck_result/rollup/ call |
 | ENG-94 | Medium | Task | Deferred alerts: send without frame as fallback when cache expires |
+| ENG-183 | Medium | Task | S3 Cost Reduction — Ranked Action Plan |
+| ENG-382 | High | Task | WS-E: Decommission + teammate-vantage verification + dead-man's checklist |
+| ENG-381 | Medium | Task | WS-D: Operating runbooks (firebat / npu-server / dashboard) |
+| ENG-380 | High | Task | WS-C2: Reassign the 17 open assigned tickets |
+| ENG-379 | High | Task | WS-C1: Confluence 'Mark's Actuate footprint' handoff page + KB highlights |
+| ENG-378 | High | Task | WS-B: Mirror markkb + claude-config to the org (scrub first) |
+| ENG-377 | High | Task | WS-0: Land cheap in-flight PRs, then freeze code |
+| ENG-375 | High | Epic | Mark offboarding — knowledge & infra transfer (last day Fri 2026-06-26) |
 
 ### Open (1)
 

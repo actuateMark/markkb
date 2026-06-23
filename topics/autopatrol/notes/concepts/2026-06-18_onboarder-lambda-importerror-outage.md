@@ -7,6 +7,10 @@ jira: ""
 created: 2026-06-18
 updated: 2026-06-18
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/entities/autopatrol-onboarder.md
+  - topics/personal-notes/notes/daily/2026-06-17.md
+incoming_updated: 2026-06-19
 ---
 
 ## Incident: Lambda Deployment Divergence

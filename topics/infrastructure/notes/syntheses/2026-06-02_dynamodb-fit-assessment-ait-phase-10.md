@@ -8,6 +8,9 @@ confluence: null
 created: 2026-06-02
 updated: 2026-06-02
 author: kb-bot
+incoming:
+  - topics/infrastructure/_summary.md
+incoming_updated: 2026-06-19
 ---
 
 # DynamoDB MCP Tool Fit Assessment
@@ -18,7 +21,7 @@ The [[dynamodb-mcp-tool|DynamoDB Data Modeling MCP]] is worth adding to the tool
 
 ## Current DynamoDB footprint
 
-**AutoPatrol cleanup Lambda** ([[autopatrol-cleanup-lambda]]) uses DynamoDB per-schedule counters (the "no patrols" emit accumulator, window reads, repeat-offender scans). That's our clearest existing DynamoDB surface. Beyond that, [[admin-api]] and [[inference-api]] may have DDB tables (API key lookups, rate-limit state), and [[actuate-platform/_summary]] should clarify current usage.
+**[[autopatrol-cleanup-lambda|AutoPatrol cleanup Lambda]]** ([[autopatrol-cleanup-lambda]]) uses DynamoDB per-schedule counters (the "no patrols" emit accumulator, window reads, repeat-offender scans). That's our clearest existing DynamoDB surface. Beyond that, [[admin-api/_summary|Actuate Admin API]] and [[inference-api/_summary|Actuate Inference API]] may have DDB tables (API key lookups, rate-limit state), and [[actuate-platform/_summary]] should clarify current usage.
 
 ## AIT Phase 10 fit — the concrete opportunity
 

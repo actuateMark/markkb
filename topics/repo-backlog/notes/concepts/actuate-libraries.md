@@ -4,8 +4,8 @@ type: concept
 topic: repo-backlog
 tags: [backlog, github, actuate-libraries]
 repo: aegissystems/actuate-libraries
-created: 2026-06-18
-updated: 2026-06-18
+created: 2026-06-23
+updated: 2026-06-23
 author: kb-bot
 issue_count_open: 34
 issue_count_high_impact: 8
@@ -60,7 +60,7 @@ No >180d-idle issues. If stale accumulates: walk the relevant sub-library's `git
 Never push to `actuate-libraries` **main** without explicit user approval — auto-publishes stable versions to CodeArtifact.
 
 <!-- BEGIN-AUTO-REFRESH repo-scan -->
-_Last refreshed: **2026-06-18** by [[skill-repo-scan]] — 34 open issues._
+_Last refreshed: **2026-06-23** by [[skill-repo-scan]] — 34 open issues._
 
 ### 🔥 High-impact (top 10 by score)
 
@@ -72,7 +72,7 @@ _Last refreshed: **2026-06-18** by [[skill-repo-scan]] — 34 open issues._
 | 243 | [CleanupStep: Remove unnecessary 10-frame floor when pre_alarm is set](https://github.com/aegissystems/actuate-libraries/issues/243) | — | — | 2 | 5mo |
 | 242 | [Add defensive checks and logging for cache misses in pipeline steps](https://github.com/aegissystems/actuate-libraries/issues/242) | — | — | 2 | 5mo |
 | 233 | [S3 Frame Upload Batching - Connector Implementation](https://github.com/aegissystems/actuate-libraries/issues/233) | `enhancement` | — | 2 | 5mo |
-| 256 | [Line Crossing: Trajectory linking causes chaotic drawings in crowded scenes](https://github.com/aegissystems/actuate-libraries/issues/256) | — | — | 1 | 4mo |
+| 256 | [Line Crossing: Trajectory linking causes chaotic drawings in crowded scenes](https://github.com/aegissystems/actuate-libraries/issues/256) | — | — | 1 | 5mo |
 | 234 | [Create actuate-onvif Library](https://github.com/aegissystems/actuate-libraries/issues/234) | — | — | 1 | 5mo |
 
 ### 🧹 Low-hanging fruit (top 10 by score)
@@ -86,7 +86,7 @@ _Last refreshed: **2026-06-18** by [[skill-repo-scan]] — 34 open issues._
 | 305 | [Share internal executor pools across observers per camera](https://github.com/aegissystems/actuate-libraries/issues/305) | `enhancement` | — | 3 | 3mo |
 | 297 | [Blacklist Filter: Storm & Weather Noise Mitigation](https://github.com/aegissystems/actuate-libraries/issues/297) | `enhancement` | — | 3 | 3mo |
 | 290 | [Switch version bump tagging from commit messages to PR labels](https://github.com/aegissystems/actuate-libraries/issues/290) | — | — | 3 | 3mo |
-| 285 | [FDMD: Consider EMA background blending for smoother adaptation](https://github.com/aegissystems/actuate-libraries/issues/285) | — | — | 3 | 3mo |
+| 285 | [FDMD: Consider EMA background blending for smoother adaptation](https://github.com/aegissystems/actuate-libraries/issues/285) | — | — | 3 | 4mo |
 | 280 | [Milestone alarm sender retry logic is broken](https://github.com/aegissystems/actuate-libraries/issues/280) | — | — | 3 | 4mo |
 | 266 | [Release actuate-suddenscenechange v1.2.0 from 1.x line](https://github.com/aegissystems/actuate-libraries/issues/266) | — | — | 3 | 4mo |
 
@@ -115,12 +115,12 @@ _(none)_
 | 305 | [Share internal executor pools across observers per camera](https://github.com/aegissystems/actuate-libraries/issues/305) | `enhancement` | — | 3mo | 3mo |
 | 297 | [Blacklist Filter: Storm & Weather Noise Mitigation](https://github.com/aegissystems/actuate-libraries/issues/297) | `enhancement` | — | 3mo | 3mo |
 | 290 | [Switch version bump tagging from commit messages to PR labels](https://github.com/aegissystems/actuate-libraries/issues/290) | — | — | 3mo | 3mo |
-| 285 | [FDMD: Consider EMA background blending for smoother adaptation](https://github.com/aegissystems/actuate-libraries/issues/285) | — | — | 3mo | 3mo |
+| 285 | [FDMD: Consider EMA background blending for smoother adaptation](https://github.com/aegissystems/actuate-libraries/issues/285) | — | — | 4mo | 4mo |
 | 283 | [BaseDynamoDAO.batch_get silently drops items when DynamoDB returns UnprocessedK…](https://github.com/aegissystems/actuate-libraries/issues/283) | — | — | 4mo | 4mo |
 | 280 | [Milestone alarm sender retry logic is broken](https://github.com/aegissystems/actuate-libraries/issues/280) | — | — | 4mo | 4mo |
 | 266 | [Release actuate-suddenscenechange v1.2.0 from 1.x line](https://github.com/aegissystems/actuate-libraries/issues/266) | — | — | 4mo | 4mo |
-| 257 | [Add retry logic for create-detection-window 503 responses](https://github.com/aegissystems/actuate-libraries/issues/257) | — | — | 4mo | 4mo |
-| 256 | [Line Crossing: Trajectory linking causes chaotic drawings in crowded scenes](https://github.com/aegissystems/actuate-libraries/issues/256) | — | — | 4mo | 4mo |
+| 257 | [Add retry logic for create-detection-window 503 responses](https://github.com/aegissystems/actuate-libraries/issues/257) | — | — | 5mo | 5mo |
+| 256 | [Line Crossing: Trajectory linking causes chaotic drawings in crowded scenes](https://github.com/aegissystems/actuate-libraries/issues/256) | — | — | 5mo | 5mo |
 | 252 | [Line Crossing: Verify direction interpretation matches UI](https://github.com/aegissystems/actuate-libraries/issues/252) | — | — | 5mo | 5mo |
 | 251 | [Improve RawModelFilterStep logging to clarify label filtering vs ignore zones](https://github.com/aegissystems/actuate-libraries/issues/251) | — | — | 5mo | 5mo |
 | 248 | [Create new version of all branch libraries on merge](https://github.com/aegissystems/actuate-libraries/issues/248) | — | — | 5mo | 5mo |
@@ -151,5 +151,5 @@ _(none)_
 ## Related
 
 - [[repo-backlog/_summary|repo-backlog topic]]
-- Latest scan: [[2026-06-18_scan]]
+- Latest scan: [[2026-06-23_scan]]
 - GitHub: [aegissystems/actuate-libraries/issues](https://github.com/aegissystems/actuate-libraries/issues)

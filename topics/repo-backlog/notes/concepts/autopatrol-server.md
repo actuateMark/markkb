@@ -4,8 +4,8 @@ type: concept
 topic: repo-backlog
 tags: [backlog, github, autopatrol-server]
 repo: aegissystems/autopatrol-server
-created: 2026-06-18
-updated: 2026-06-18
+created: 2026-06-23
+updated: 2026-06-23
 author: kb-bot
 issue_count_open: 1
 issue_count_high_impact: 0
@@ -28,7 +28,7 @@ Full open-issue inventory for [aegissystems/autopatrol-server](https://github.co
 _(empty — populate on first curation pass)_
 
 <!-- BEGIN-AUTO-REFRESH repo-scan -->
-_Last refreshed: **2026-06-18** by [[skill-repo-scan]] — 1 open issues._
+_Last refreshed: **2026-06-23** by [[skill-repo-scan]] — 1 open issues._
 
 ### 🔥 High-impact (top 10 by score)
 
@@ -38,7 +38,7 @@ _(no high-impact candidates — all scored ≤ 0)_
 
 | # | Title | Labels | Assignee | Score | Idle |
 |--:|-------|--------|----------|------:|------|
-| 17 | [Bug: end_patrol silently fails with 401 for Alibi Vigilant staging tenant](https://github.com/aegissystems/autopatrol-server/issues/17) | — | — | 3 | 2mo |
+| 17 | [Bug: end_patrol silently fails with 401 for Alibi Vigilant staging tenant](https://github.com/aegissystems/autopatrol-server/issues/17) | — | — | 3 | 3mo |
 
 ### 🔍 Codebase-scan follow-up candidates (idle >180d)
 
@@ -56,7 +56,7 @@ _(no labeled issues)_
 
 | # | Title | Labels | Assignee | Age | Idle |
 |--:|-------|--------|----------|-----|------|
-| 17 | [Bug: end_patrol silently fails with 401 for Alibi Vigilant staging tenant](https://github.com/aegissystems/autopatrol-server/issues/17) | — | — | 2mo | 2mo |
+| 17 | [Bug: end_patrol silently fails with 401 for Alibi Vigilant staging tenant](https://github.com/aegissystems/autopatrol-server/issues/17) | — | — | 3mo | 3mo |
 
 </details>
 
@@ -65,5 +65,5 @@ _(no labeled issues)_
 ## Related
 
 - [[repo-backlog/_summary|repo-backlog topic]]
-- Latest scan: [[2026-06-18_scan]]
+- Latest scan: [[2026-06-23_scan]]
 - GitHub: [aegissystems/autopatrol-server/issues](https://github.com/aegissystems/autopatrol-server/issues)

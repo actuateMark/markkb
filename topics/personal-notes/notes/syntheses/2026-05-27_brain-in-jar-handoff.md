@@ -11,8 +11,8 @@ incoming:
   - topics/engineering-process/notes/syntheses/2026-05-27_zack-coordination-brain-in-jar.md
   - topics/engineering-process/notes/syntheses/2026-05-29_ait-watch-manager-integration.md
   - topics/personal-notes/notes/daily/2026-05-27.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-06-02
+  - topics/personal-notes/notes/daily/2026-06-04.md
+incoming_updated: 2026-06-19
 ---
 
 # Brain-in-jar arc — handoff (2026-05-27)

@@ -7,11 +7,14 @@ created: 2026-06-05
 updated: 2026-06-05
 author: kb-bot
 status: failed
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-06-19
 ---
 
 # FAILED: Overnight Check 2026-06-05
 
-The automated overnight check failed at 2026-06-05T10:14:01-04:00.
+The automated [[automation-overnight-check|overnight check]] failed at 2026-06-05T10:14:01-04:00.
 
 - **Exit code:** 0
 - **Host:** mork-ThinkPad-P14s-Gen-5

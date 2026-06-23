@@ -14,10 +14,10 @@ incoming:
   - topics/aws-cost/notes/syntheses/2026-04-28_s3-cost-reduction-action-plan.md
   - topics/fleet-architecture/notes/syntheses/2026-05-05_fleet-architecture-workstream-context.md
   - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
+  - topics/fleet-architecture/notes/syntheses/2026-06-02_watchman-phase0-fleet-fit.md
   - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
   - topics/personal-notes/notes/concepts/2026-05-11_pre-impl-research-priority-reorder.md
-  - topics/personal-notes/notes/daily/2026-04-22.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-19
 ---
 
 # Fleet Proposal Re-Score with 2026-04-22 Delta + Real CE Data

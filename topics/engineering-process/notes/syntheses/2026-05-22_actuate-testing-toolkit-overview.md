@@ -10,11 +10,13 @@ incoming:
   - topics/engineering-process/notes/entities/actuate-integration-tools.md
   - topics/engineering-process/notes/syntheses/2026-05-22_ait-phase-12-sweep.md
   - topics/engineering-process/notes/syntheses/2026-05-27_zack-coordination-brain-in-jar.md
+  - topics/infrastructure/_summary.md
+  - topics/infrastructure/notes/syntheses/2026-06-02_dynamodb-fit-assessment-ait-phase-10.md
   - topics/personal-notes/notes/daily/2026-05-22.md
   - topics/personal-notes/notes/daily/2026-05-27.md
   - topics/personal-notes/notes/syntheses/2026-05-27_brain-in-jar-handoff.md
   - topics/vms-connector/notes/syntheses/2026-05-26_pyav17-local-validation.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-19
 ---
 
 # Actuate testing toolkit — unified overview

@@ -15,23 +15,28 @@ related:
   - "[[2026-05-29_watchman-judge-backend-io-contract]]"
   - "[[2026-04-22_fleet-proposal-rescore-with-delta]]"
   - "[[2026-06-02_frontend-sketch-ui]]"
+incoming:
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/watchman/notes/concepts/2026-06-02_frontend-sketch-ui.md
+  - topics/watchman/notes/syntheses/2026-06-16_watchman-pipeline-backend-meeting.md
+incoming_updated: 2026-06-19
 ---
 
 # Watchman Phase 0 — Fleet-Architecture Fit & Phased Build Plan
 
-> Planning-session output, 2026-06-02. Answers the question: **which fleet-architecture proposal best fits a clean, greenfield Phase-0 Watchman product, and which should it be scaffolded to grow into?** Companion to the cataloged [[2026-06-02_frontend-sketch-ui|frontend sketch]].
+> Planning-session output, 2026-06-02. Answers the question: **which fleet-architecture proposal best fits a clean, greenfield Phase-0 [[watchman-repo|Watchman]] product, and which should it be scaffolded to grow into?** Companion to the cataloged [[2026-06-02_frontend-sketch-ui|frontend sketch]].
 
 ## Phase 0 — the stated shape
 
 A **full fleet** (independently-scaling K8s deployments), scoped to the **[[watchman-repo|Watchman]]** product only, built **greenfield** with no obligation to today's [[vms-connector|connector]] (it may stand alone as a product forever, or absorb full connector functionality later). Constraints (decided this session):
 
 - **RTSP-only** ingest.
-- **Per-camera runs; no `site` abstraction** — Watch ≈ `(camera, product)` for Phase 0.
-- **Simple scheduling**, owned by a real (if minimal) Watch Management Service — *not* a throwaway stub.
+- **Per-camera runs; no `site` abstraction** — [[watch-entity|Watch]] ≈ `(camera, product)` for Phase 0.
+- **Simple scheduling**, owned by a real (if minimal) [[watch-entity|Watch]] Management Service — *not* a throwaway stub.
 - **Uniform, bin-packed puller pods** — same pod size across the whole fleet (k8s-ops simplicity is the explicit driver). `cameras_per_puller` is the one knob.
 - **[[redis-streams|Redis Streams]]** for the puller→pipeline frame hop (decided over Kinesis — matches A/B/E + the [[2026-06-01_cloud-video-analytics-platform-v10|v10]] frame-bus; TTL auto-expiry, consumer-group FIFO, cheaper at fleet scale).
 - **Motion gating present but default-OFF** (per-camera toggle, pluggable — matches the [[2026-06-01_adr-watchman-mvp-slim-connector|Slim Connector ADR]]).
-- **Trimmed pipeline** (confidence + zone-polygon filter only — no window / billing / blacklist) emitting alerts to the rest of Watchman.
+- **Trimmed pipeline** (confidence + zone-polygon filter only — no window / billing / blacklist) emitting alerts to the rest of [[watchman-repo|Watchman]].
 - **Low cost.**
 
 ### Topology
@@ -101,11 +106,11 @@ v10 Cloud Platform  ("move the whole system onto this", ~100k cameras)
 
 ### Greenfield kills the migration tax
 
-The [[2026-05-28_watch-management-service-design|WMS design]] carries a 5-phase Django-Q→manager migration and 10 legacy constraints (ScheduleV2, `connector_deployer` create/delete arm, Redis `MotionStatus` debounce, etc.). **None of that applies to a greenfield Watchman fleet** — the WMS is built directly in its target form: a **K8s-native fleet-singleton reconciler** with arm/disarm via `replicas`/enable-gate (constraint T9 by construction, not by migration), observed-state-is-truth reconcile loop (T10/T16), and a clean per-camera Watch model. This is a major argument for building Phase 0 greenfield: the manager is born in the shape every proposal eventually wants.
+The [[2026-05-28_watch-management-service-design|WMS design]] carries a 5-phase Django-Q→manager migration and 10 legacy constraints (ScheduleV2, `connector_deployer` create/delete arm, Redis `MotionStatus` debounce, etc.). **None of that applies to a greenfield [[watchman-repo|Watchman]] fleet** — the WMS is built directly in its target form: a **K8s-native fleet-singleton reconciler** with arm/disarm via `replicas`/enable-gate (constraint T9 by construction, not by migration), observed-state-is-truth reconcile loop (T10/T16), and a clean per-camera [[watch-entity|Watch]] model. This is a major argument for building Phase 0 greenfield: the manager is born in the shape every proposal eventually wants.
 
 ## Emit contract — what the trimmed pipeline sends to "the rest of Watchman"
 
-Per [[2026-05-29_watchman-judge-backend-io-contract]], the alert-dispatch fleet publishes metadata-only messages (frames stay in S3) to SQS, consumed by the Watchman Judge/Assessment loop, which fans out via SNS to operator UI / audit / Immix. Phase-0 `WatchmanSink` emits the input schema:
+Per [[2026-05-29_watchman-judge-backend-io-contract]], the alert-dispatch fleet publishes metadata-only messages (frames stay in S3) to SQS, consumed by the [[watchman-repo|Watchman]] Judge/Assessment loop, which fans out via SNS to operator UI / audit / Immix. Phase-0 `WatchmanSink` emits the input schema:
 
 `alert_id` · `camera_id` · `alert_ts` (ISO-8601 UTC) · **`product`** (not `yolo_class`) · `confidence` · `bbox` (pin `xywh` vs `xyxy` against `actuate-pipeline-objects`) · `s3_prefix` · `schema_version` · **`watch_id`** · **`run_id`**.
 
@@ -118,10 +123,10 @@ New **standalone repo** (greenfield; `uv`-managed; depends on `actuate-inference
 | Milestone | Deliverable | Proves |
 |---|---|---|
 | **M0 — Repo + skeleton** | New repo, `pyproject.toml` (uv), CI, three base images (uniform puller / stateless detection / WMS), library deps wired. | Build & deploy substrate. |
-| **M1 — Single-camera vertical slice** | 1 puller (1 RTSP cam) → Redis → 1 detection pod → inference → `HttpWatchmanSink` → mock Judge (stdout). | The end-to-end seam (graduates the "CSV-in/stdout-out POC" of the Judge contract). |
+| **M1 — Single-camera vertical slice** | 1 puller (1 [[rtsp-deep-dive|RTSP]] cam) → Redis → 1 detection pod → inference → `HttpWatchmanSink` → mock Judge (stdout). | The end-to-end seam (graduates the "CSV-in/stdout-out POC" of the Judge contract). |
 | **M2 — Bin-packed puller fleet** | WMS bin-packs `N` cameras across uniform puller pods; `cameras_per_puller` knob; HPA on puller count; one Redis stream per camera. | Uniform-pod fleet + the core ops-simplicity claim. |
-| **M3 — Trimmed detection fleet + real emit** | Confidence + zone-polygon filter; real Judge-contract schema to SQS; stand up SQS + stub Judge consumer; stateless detection scaling on consumer-group lag. | The "alerts for the rest of Watchman" boundary. |
-| **M4 — Watch Management Service** | Fleet-singleton reconciler: Watch lifecycle, arm/disarm enable-gate, observed-state reconcile loop; simple per-camera schedule growing toward `calendar_set`; motion toggle plumbed (default OFF). | The control plane in target FleetCoordinator form. |
+| **M3 — Trimmed detection fleet + real emit** | Confidence + zone-polygon filter; real Judge-contract schema to SQS; stand up SQS + stub Judge consumer; stateless detection scaling on consumer-group lag. | The "alerts for the rest of [[watchman-repo|Watchman]]" boundary. |
+| **M4 — [[watch-entity|Watch]] Management Service** | Fleet-singleton reconciler: [[watch-entity|Watch]] lifecycle, arm/disarm enable-gate, observed-state reconcile loop; simple per-camera schedule growing toward `calendar_set`; motion toggle plumbed (default OFF). | The control plane in target FleetCoordinator form. |
 | **M5 — Observability + hardening + cost** | NR/ClickHouse audit, `run_id`/`watch_id` propagation, graceful teardown, PDB + topology-spread for uniform pods, **measured cost/frames/inference** to feed the §5 PoC pick. | Production-readiness + the low-cost validation with real numbers. |
 
 ## Open decisions (carry into build)

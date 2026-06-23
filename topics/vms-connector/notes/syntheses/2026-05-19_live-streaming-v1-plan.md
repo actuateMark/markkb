@@ -18,9 +18,10 @@ incoming:
   - topics/infrastructure/notes/concepts/2026-05-19_mediamtx-chart-design.md
   - topics/personal-notes/notes/daily/2026-05-19.md
   - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/vms-connector/notes/concepts/2026-06-02_handoff-pyav17-corner-case-plan.md
   - topics/vms-connector/notes/syntheses/2026-05-19_live-streaming-v1-status.md
   - topics/vms-connector/notes/syntheses/2026-05-19_streaming-pyav17-crosscut.md
-incoming_updated: 2026-05-20
+incoming_updated: 2026-06-19
 ---
 
 # Live Streaming for Operator Viewing — v1 Plan

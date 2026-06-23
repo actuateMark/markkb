@@ -11,7 +11,8 @@ author: kb-bot
 incoming:
   - topics/fleet-architecture/_summary.md
   - topics/fleet-architecture/notes/syntheses/2026-06-01_adr-watchman-mvp-slim-connector.md
-incoming_updated: 2026-06-02
+  - topics/personal-notes/notes/daily/2026-06-01.md
+incoming_updated: 2026-06-19
 ---
 
 # Terminology Conflict: Watchman Product Definition (Cloud vs Edge) — RESOLVED

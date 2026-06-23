@@ -7,6 +7,9 @@ created: 2026-06-04
 updated: 2026-06-04
 author: kb-bot
 status: warn
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-06-19
 ---
 
 # Overnight Health Check 2026-06-04
@@ -17,7 +20,7 @@ Degraded — autopatrol end-patrol calls to Immix are failing fleet-wide (HTTP 4
 
 ## Issues Found
 
-- **AutoPatrol end_patrol failing fleet-wide** — 7 autopatrol cronjob containers, 222 total ERROR logs, all the identical message `end_patrol exhausted 3 attempts (last status=400); patrol may remain in STARTED on Immix`. Systemic upstream Immix API rejection; patrols likely accumulating in STARTED state.
+- **AutoPatrol end_patrol failing fleet-wide** — 7 autopatrol cronjob containers, 222 total ERROR logs, all the identical message `end_patrol exhausted 3 attempts (last status=400); patrol may remain in STARTED on Immix`. Systemic upstream [[immix-vendor-api|Immix API]] rejection; patrols likely accumulating in STARTED state.
 - **Site 41158 — 0 autopatrol-container hits** — 886 general patrol-term log matches but zero when scoped to `container_name LIKE '%autopatrol%'`. Needs follow-up to confirm which container executes patrols for this site.
 - **Connector fleet error volume high** — all top-15 connector containers exceed 100 ERROR logs in 12h; `connector-11202` is a 7,893-error outlier (~2.8× the next highest). LIMIT 15 means more sub-threshold containers likely exist below the cap.
 - **Alert delivery — `queue-evalink-consumer` over threshold** — 246 errors (threshold >20). The other four monitored consumers/workers are clean (0 errors).

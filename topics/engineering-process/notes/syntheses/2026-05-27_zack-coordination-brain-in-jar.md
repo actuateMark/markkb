@@ -9,9 +9,8 @@ author: mark
 incoming:
   - topics/engineering-process/notes/entities/actuate-integration-tools.md
   - topics/personal-notes/notes/daily/2026-05-27.md
-  - topics/personal-notes/notes/entities/mark-todos.md
   - topics/personal-notes/notes/syntheses/2026-05-27_brain-in-jar-handoff.md
-incoming_updated: 2026-06-02
+incoming_updated: 2026-06-19
 ---
 
 # Brain-in-jar arc — coordination doc for Zack

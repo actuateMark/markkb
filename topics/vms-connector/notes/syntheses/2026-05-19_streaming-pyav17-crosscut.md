@@ -11,10 +11,11 @@ incoming:
   - topics/actuate-libraries/notes/concepts/2026-05-19_stream-publisher-design.md
   - topics/personal-notes/notes/daily/2026-05-19.md
   - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/vms-connector/notes/concepts/2026-06-02_handoff-pyav17-corner-case-plan.md
   - topics/vms-connector/notes/syntheses/2026-05-19_live-streaming-v1-plan.md
   - topics/vms-connector/notes/syntheses/2026-05-19_live-streaming-v1-status.md
   - topics/vms-connector/notes/syntheses/2026-05-26_pyav17-local-validation.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-19
 ---
 
 # Streaming v1 ↔ #1703 crosscut

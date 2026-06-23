@@ -11,8 +11,9 @@ incoming:
   - topics/personal-notes/notes/daily/2026-05-26.md
   - topics/personal-notes/notes/daily/2026-05-27.md
   - topics/personal-notes/notes/daily/2026-05-28.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-30
+  - topics/personal-notes/notes/daily/2026-06-02.md
+  - topics/vms-connector/notes/concepts/2026-06-02_handoff-pyav17-corner-case-plan.md
+incoming_updated: 2026-06-19
 ---
 
 # PyAV 17 migration — local-validation ladder

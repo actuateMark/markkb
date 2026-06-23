@@ -11,6 +11,7 @@ outgoing:
 incoming:
   - topics/autopatrol/notes/syntheses/2026-05-07_cleanup-lambda-state-matrix-verify.md
   - topics/autopatrol/notes/syntheses/2026-05-07_cohort-b-no-backfill-decision.md
+  - topics/autopatrol/notes/syntheses/2026-06-03_ap-redeploy-flag-calendar-day-stranding.md
   - topics/billing/_summary.md
   - topics/billing/_todos.md
   - topics/billing/notes/concepts/2026-05-11_billing-reconciliation-dashboard-design.md
@@ -18,8 +19,7 @@ incoming:
   - topics/billing/notes/entities/billing-events-catalog.md
   - topics/billing/notes/syntheses/2026-05-11_billing-pain-post-mortem.md
   - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
-  - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-19
 ---
 
 # AutoPatrol Deferred Backlog
@@ -394,7 +394,7 @@ See [[2026-06-03_ap-redeploy-flag-calendar-day-stranding]] for incident and diag
 
 3. **Tie redeploy-suppression flag to committed deploy-success marker (DB last_successful_deploy_date), not just "deploy_schedule_changes ran":** Today's calendar-day fix is interim; this is the durable version. Suppression can never outlive an actually-failed sync.
 
-4. **Admin pod into New Relic (Layer 3):** Gap documented at `topics/new-relic/notes/concepts/nr-connector-query-cookbook.md:314` (separate from AUTO-566). Deploy-thread + redeploy-skip logs become alertable. Independent track.
+4. **Admin pod into [[new-relic|New Relic]] (Layer 3):** Gap documented at `topics/new-relic/notes/concepts/nr-connector-query-cookbook.md:314` (separate from AUTO-566). Deploy-thread + redeploy-skip logs become alertable. Independent track.
 
 5. **Onboarder-side post-deploy verification (Layer 1):** For each activated schedule, verify the K8s cronjob exists within ~15 min; emit OnboarderDeployStalled + Slack alert if absent.
 

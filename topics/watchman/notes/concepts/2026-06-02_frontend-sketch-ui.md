@@ -8,15 +8,20 @@ confluence: null
 created: 2026-06-02
 updated: 2026-06-02
 author: kb-bot
+incoming:
+  - topics/fleet-architecture/notes/syntheses/2026-06-02_watchman-phase0-fleet-fit.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/watchman/notes/syntheses/2026-06-16_watchman-pipeline-backend-meeting.md
+incoming_updated: 2026-06-19
 ---
 
-Look-and-feel prototype of the Watchman cloud product UX. Auth-gated demo at demo.watchmansecurity.ai. Validates the agentic-first, terminal-style conversational design already outlined in [[watchman-repo|Watchman]] architecture docs. Not functional; conveys visual direction and interaction flow.
+Look-and-feel prototype of the [[watchman-repo|Watchman]] cloud product UX. Auth-gated demo at demo.watchmansecurity.ai. Validates the agentic-first, terminal-style conversational design already outlined in [[watchman-repo|Watchman]] architecture docs. Not functional; conveys visual direction and interaction flow.
 
 ## Dashboard / Home View
 
 ![Dashboard home view](../assets/2026-06-02_watchman-ui-dashboard-home.png)
 
-Centered greeting ("Good morning, Laura") with the Watchman logo—three curved orange triangular segments—and tagline "AI-powered security you can trust."
+Centered greeting ("Good morning, Laura") with the [[watchman-repo|Watchman]] logo—three curved orange triangular segments—and tagline "AI-powered security you can trust."
 
 Three ghost-tile stat counters in a row:
 - **6 Attention** (red, location-pin icon)
@@ -33,7 +38,7 @@ An embedded terminal panel repeats the conversational interface (see below), sho
 
 ![Terminal search interface](../assets/2026-06-02_watchman-ui-terminal-search.png)
 
-Dark terminal titled "watchman". Header: "Watchman v1.0 · 28 cameras across 7 sites · type 'help' for commands".
+Dark terminal titled "watchman". Header: "[[watchman-repo|Watchman]] v1.0 · 28 cameras across 7 sites · type 'help' for commands".
 
 **Conversational flow:**
 1. User types `$ intruders` (a natural-language query).
@@ -66,7 +71,7 @@ Dark terminal titled "watchman". Header: "Watchman v1.0 · 28 cameras across 7 s
 
 ## Related
 
-- [[watchman-repo]] — Watchman backend/platform repo
+- [[watchman-repo]] — [[watchman-repo|Watchman]] backend/platform repo
 - [[patrol-vs-active-modes]] — Patrol monitoring vs. Active heightened-alertness mode
 - [[multi-agent-architecture]] — Site Supervisor, Assessment, Judge agents
 - [[triage-gamification]] — Detection triage workflows

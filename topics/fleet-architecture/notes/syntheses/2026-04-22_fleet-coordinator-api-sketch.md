@@ -12,9 +12,10 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-proposal-b-prime.md
   - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-proposal-b.md
   - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-service-design.md
+  - topics/fleet-architecture/notes/syntheses/2026-06-02_watchman-phase0-fleet-fit.md
   - topics/personal-notes/notes/daily/2026-04-22.md
   - topics/watchman/notes/syntheses/2026-05-28_watch-management-service-index.md
-incoming_updated: 2026-05-29
+incoming_updated: 2026-06-19
 ---
 
 # Fleet-Coordinator API Sketch — Unification Viability Review

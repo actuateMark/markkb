@@ -7,6 +7,9 @@ created: 2026-06-15
 updated: 2026-06-15
 author: kb-bot
 status: degraded
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-06-19
 ---
 
 # Overnight Health Check 2026-06-15
@@ -20,7 +23,7 @@ Degraded — 2 monitored autopatrol sites silent for 12h+ (41158, 45061), a flee
 - **Autopatrol — site 41158:** 0 patrol logs over 12h *and* 7 days; no autopatrol container has ever registered in NR. Possible un-provisioned cronjob or offboarded site. Investigate.
 - **Autopatrol — site 45061:** Same as 41158 — zero patrol logs across a 7-day lookback, no container ever visible in NR.
 - **Connector fleet — connector-30022:** 9,005 ERRORs/12h, ~3x the next-highest container. Severe outlier; needs message-level drill-down.
-- **Alert delivery — queue-evalink-consumer:** 318 ERRORs/12h, far over the 20 threshold. Evalink alert delivery likely impaired.
+- **Alert delivery — queue-evalink-consumer:** 318 ERRORs/12h, far over the 20 threshold. [[evalink-components|Evalink]] alert delivery likely impaired.
 - **NR Issues — mass pod-unavailability event (~11:45 UTC):** 14+ simultaneous CRITICAL issues across connectors, clips-prod/clips-frontel, and queue-eagle-eye-consumer; most still ACTIVATED.
 - **Fleet noise:** all top-15 connector containers exceed 100 errors/12h — broadly noisy baseline.
 
@@ -101,7 +104,7 @@ ERROR counts SINCE 12h for canonical alert-path containers:
 | cert-manager-webhook | 0 | OK |
 | clips-smtp-worker | 0 | OK |
 
-**queue-evalink-consumer** is well over the 20-error threshold — Evalink alert delivery likely impaired; drill into its message distribution for root cause. The three zero-count containers are active on other log levels (no data gap).
+**queue-evalink-consumer** is well over the 20-error threshold — [[evalink-components|Evalink]] alert delivery likely impaired; drill into its message distribution for root cause. The three zero-count containers are active on other log levels (no data gap).
 
 ## New Issues
 

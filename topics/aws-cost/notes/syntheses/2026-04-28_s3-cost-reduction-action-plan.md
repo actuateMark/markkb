@@ -14,7 +14,8 @@ incoming:
   - topics/aws-cost/sources/2026-04-29_minio-self-hosted-s3-tutorial.md
   - topics/personal-notes/notes/daily/2026-04-28.md
   - topics/personal-notes/notes/daily/2026-04-29.md
-incoming_updated: 2026-05-01
+  - topics/runbooks/notes/concepts/2026-06-02_rds-extended-support-upgrade-runbook.md
+incoming_updated: 2026-06-19
 ---
 
 # S3 Cost Reduction — Ranked Action Plan with Savings / Effort Table

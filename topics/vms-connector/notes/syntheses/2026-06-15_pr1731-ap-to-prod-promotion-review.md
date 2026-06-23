@@ -2,11 +2,17 @@
 title: "PR #1731 — AutoPatrol-to-prod promotion review"
 type: synthesis
 topic: vms-connector
-tags: [vms-connector, autopatrol, release, pyav, promotion, tier, streaming, envera, billing]
+tags: [vms-connector, autopatrol, release, pyav, promotion, tier, streaming, envera, billing, ffmpeg]
 jira: "ENG-352, BT-1049"
 created: 2026-06-15
 updated: 2026-06-15
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/concepts/2026-06-16_squash-merge-ci-skip-suppression-recurrence.md
+  - topics/personal-notes/notes/daily/2026-06-15.md
+  - topics/personal-notes/notes/daily/2026-06-16.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+incoming_updated: 2026-06-19
 ---
 
 # PR #1731 — AutoPatrol-to-prod promotion review
@@ -25,7 +31,7 @@ All validated on stage; no urgent customer impact (first tier fix [[2026-06-09]]
 - **#1709 connector-side end_patrol** — closes detection window during `endrun()` with proper observer/tracker cleanup and idempotent re-entry guard.
 - **#1712 ap-empty-metrics WARN guard** — produces WARN when patrol metrics are empty (observability for stuck/zero-emit conditions).
 - **Autopatrol/VCH stream-listener exclusion** — AutoPatrol stream-listener routes only AP messages; VCH routes VCH messages; mutual exclusion via routed mp.Queue key.
-- **actuate-daos WindowIdsV2 flat-60-day TTL** — simplifies retention from per-product to fleet-wide 60-day shelf-life.
+- **[[actuate-daos]] WindowIdsV2 flat-60-day TTL** — simplifies retention from per-product to fleet-wide 60-day shelf-life.
 
 ## Options Considered
 
@@ -39,7 +45,7 @@ All validated on stage; no urgent customer impact (first tier fix [[2026-06-09]]
 
 Weekend validation — clean fleet signal:
 
-- **AmeriGas 41399** (PyAV17/FFmpeg 8.1.1 ARM wheel, HEVC anchor) — **0 ERRORs, 0 AVDiscard starvation events, RSS ~75MB/camera, restartCount=0**. Corruption signal still live (pre-2026-05-19 baseline ~28 reconnects/4h); no gray-frame misses. Leg-2 of the PyAV17 bump A/B.
+- **AmeriGas 41399** (PyAV17/[[ffmpeg-entity|FFmpeg]] 8.1.1 ARM wheel, [[h265-hevc-deep-dive|HEVC]] anchor) — **0 ERRORs, 0 AVDiscard starvation events, RSS ~75MB/camera, restartCount=0**. Corruption signal still live (pre-2026-05-19 baseline ~28 reconnects/4h); no gray-frame misses. Leg-2 of the PyAV17 bump A/B.
 - **connector-16851** (publish-on-demand streaming, new feature) — clean init, no MediaMTX/SQS failures, pod lifecycle steady.
 - **connector-47873** (Envera Eagle Eye, shard-safe state attaching every boot) — outcome 200s, no hangs or state-corruption edge cases.
 - **General fleet** — all errors pre-existing device issues (dead Exacq at 209.171.216.141; connector-44300-fs S3-settings crash-loop, pre-existing).
@@ -64,7 +70,7 @@ Zero blockers. Fork-safety verified in detail:
 
 **Question:** actuate-libraries #367 (PyAV17 followups — AVDiscard anti-thrash, stale-preview guard) is OPEN/CONFLICTING, NOT in the pinned pullers 1.20.3. Friday's note flagged this as a risk.
 
-**Resolution:** Moot. FFmpeg 8.1.1 sets `AV_FRAME_FLAG_CORRUPT` natively (closes FFmpeg upstream #9805), and the weekend soak showed **zero starvation or gray-frame events**. The guards in #367 (C1 hysteresis, stale-preview WARN) are hardening measures, not blockers. #367 should be reconciled separately (71 commits behind main); re-base + merge in parallel track, bump pullers pin 1.20.3 → ~1.21 before fleet rollout to pick up the guards. **Not blocking stage→rarch promotion.**
+**Resolution:** Moot. [[ffmpeg-entity|FFmpeg]] 8.1.1 sets `AV_FRAME_FLAG_CORRUPT` natively (closes [[ffmpeg-entity|FFmpeg]] upstream #9805), and the weekend soak showed **zero starvation or gray-frame events**. The guards in #367 (C1 hysteresis, stale-preview WARN) are hardening measures, not blockers. #367 should be reconciled separately (71 commits behind main); re-base + merge in parallel track, bump pullers pin 1.20.3 → ~1.21 before fleet rollout to pick up the guards. **Not blocking stage→rarch promotion.**
 
 ## Cross-Repo Ordering: actuate_admin #2506
 

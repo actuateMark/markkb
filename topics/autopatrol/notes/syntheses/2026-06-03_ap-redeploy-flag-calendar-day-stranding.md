@@ -8,6 +8,10 @@ confluence: ""
 created: 2026-06-03
 updated: 2026-06-03
 author: kb-bot
+incoming:
+  - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
+  - topics/personal-notes/notes/daily/2026-06-03.md
+incoming_updated: 2026-06-19
 ---
 
 # AutoPatrol schedule-sync stranding — redeploy flag calendar-day defect and fix
@@ -51,7 +55,7 @@ Could not reach the admin cluster via kubectl from the laptop (only inference-ek
 
 ## Fix shipped today (targeted patch)
 
-Branch `fix/ap-redeploy-flag-calendar-day` off develop (actuate_admin). Not yet pushed/PR'd.
+Branch `fix/ap-redeploy-flag-calendar-day` off develop ([[actuate_admin]]). Not yet pushed/PR'd.
 
 ### Changes
 
@@ -73,7 +77,7 @@ Branch `fix/ap-redeploy-flag-calendar-day` off develop (actuate_admin). Not yet 
 
 Once merged to stage, confirm via:
 
-1. Map ScheduleID `53C62AD7-B167-4E77-F72B-08DEC0C9AF65` to admin schedule id (via autopatrol_onboarder probe or Immix API lookup)
+1. Map ScheduleID `53C62AD7-B167-4E77-F72B-08DEC0C9AF65` to admin schedule id (via autopatrol_onboarder probe or [[immix-vendor-api|Immix API]] lookup)
 2. Check redis value: `redis-cli GET admin:schedule_redeployed:{id}` — should be empty (post-fix, stale bare `1` self-heals) or an ISO date from today
 3. CloudWatch search in camera-admin pod logs around the incident window for: `was_redeployed_today` WARN or INFO lines showing the schedule was/wasn't suppressed
 
@@ -87,7 +91,7 @@ The calendar-day fix is interim. The durable solution requires three layers:
 
 - **Layer 2 (the real fix):** Admin-side reconciliation cron / DB deploy-state machine (`settings_deploy_state: pending|settings_uploaded|cronjob_created|failed`). See [[2026-05-22_autopatrol-onboarding-silent-deploy-failure]]#Layer-2 and the deferred backlog for the full backlog of follow-ups.
 - **Layer 1:** Onboarder-side post-deploy verification — verify K8s cronjob exists within ~15 min.
-- **Layer 3:** Admin pod into New Relic so deploy-thread and redeploy-skip logs become alertable.
+- **Layer 3:** Admin pod into [[new-relic|New Relic]] so deploy-thread and redeploy-skip logs become alertable.
 
 All follow-ups added to [[autopatrol-deferred-backlog]] under "AP schedule-sync resilience (post-2026-06-03)".
 

@@ -14,7 +14,8 @@ incoming:
   - topics/engineering-process/notes/entities/dev-test-tooling-pattern.md
   - topics/engineering-process/notes/syntheses/2026-05-20_local-ap-e2e-test-stack-plan.md
   - topics/personal-laptop/notes/syntheses/2026-04-23_firebat-minipc-as-claude-dev-box.md
-incoming_updated: 2026-05-27
+  - topics/runbooks/notes/concepts/2026-06-02_rds-extended-support-upgrade-runbook.md
+incoming_updated: 2026-06-19
 ---
 
 # dev-environment

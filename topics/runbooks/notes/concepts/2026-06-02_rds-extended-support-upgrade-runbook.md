@@ -7,6 +7,11 @@ jira: "cost-optimization"
 created: 2026-06-02
 updated: 2026-06-02
 author: kb-bot
+incoming:
+  - topics/personal-notes/notes/daily/2026-06-03.md
+  - topics/personal-notes/notes/entities/mark-todos.md
+  - topics/runbooks/_summary.md
+incoming_updated: 2026-06-19
 ---
 
 # RDS & Aurora PostgreSQL Extended-Support Upgrade
@@ -54,7 +59,7 @@ Repo: `ds-terraform-eks-v2` (`git@github.com:aegissystems/ds-terraform-eks-v2.gi
 
 > **✅ RESOLVED 2026-06-03 — RESULT: LIVE, upgrade (do NOT delete).** The gate ran and the DB is in active use, NOT redundant with the Aurora clusters:
 > - **30d CloudWatch:** DatabaseConnections 3–5 sustained (avg 3.33), CPU ~7.6% steady, **WriteIOPS ~12/day (active writes)**, ReadIOPS ~5.5 — an idle DB would show ~0 writes.
-> - **Code/IaC refs:** backs the standalone `job_scheduler` ECS service (3-container task def + `job_scheduler_ui` daphne ASGI + `job_scheduler` / `job_scheduler_healthcheck` ECR repos) and the actuate_admin `inframap` db_router → `job_scheduler` connection (`job_scheduler_jobfailure/jobormq/jobschedule/jobsuccess/jobtask` tables). Distinct system from the Aurora `djangoqcluster` (autopatrol Django Q). IaC-managed in `ds-terraform-eks-v2/stages/prod/us-west-2/rds`.
+> - **Code/IaC refs:** backs the standalone `job_scheduler` ECS service (3-container task def + `job_scheduler_ui` daphne ASGI + `job_scheduler` / `job_scheduler_healthcheck` ECR repos) and the [[actuate_admin]] `inframap` db_router → `job_scheduler` connection (`job_scheduler_jobfailure/jobormq/jobschedule/jobsuccess/jobtask` tables). Distinct system from the Aurora `djangoqcluster` (autopatrol Django Q). IaC-managed in `ds-terraform-eks-v2/stages/prod/us-west-2/rds`.
 > - **Created** 2022-03-04; single-AZ db.t3.micro; endpoint `jobschedulerdjangoq.c6tcmklzkcgl.us-west-2.rds.amazonaws.com:5432`.
 > - **→ Proceed to the PG13→16.11 upgrade.** Single-AZ means a brief downtime window — schedule low-activity and coordinate with the `job_scheduler` service.
 
@@ -172,7 +177,7 @@ This snapshot is your **rollback baseline**. Major upgrades are not reversible i
 
 - **supportwiki** = internal users → coordinate with team.
 - **jobschedulerdjangoq** = job pipeline → notify job-dependent services (if any).
-- **dev Aurora** = dev environment → low risk, but notify dev users.
+- **dev Aurora** = [[dev-environment|dev environment]] → low risk, but notify dev users.
 
 Pick a maintenance window outside peak usage.
 
@@ -200,7 +205,7 @@ aws rds describe-db-instances \
   --region us-west-2
 ```
 
-Watch for `status: available` and `ver: 16.11`.
+[[watch-entity|Watch]] for `status: available` and `ver: 16.11`.
 
 ### For jobschedulerdjangoq (if still in use)
 
@@ -275,7 +280,7 @@ psql -h <endpoint> -U postgres -d <db> -c "ANALYZE;"
 aws logs tail /aws/rds/instance/actuateadminsupportwiki/error --follow --region us-west-2
 ```
 
-Watch for `ERROR` lines in the first 10 min post-upgrade. Expected: none (or innocuous startup messages).
+[[watch-entity|Watch]] for `ERROR` lines in the first 10 min post-upgrade. Expected: none (or innocuous startup messages).
 
 **5. Verify the surcharge dropped:**
 
@@ -291,7 +296,7 @@ Or use the `/cost-check` skill for a programmatic query.
 
 **6. Soak for 24h:**
 
-Monitor [[infrastructure/_summary|connection counts]], error rates, query latency over a full day. Watch especially:
+Monitor [[infrastructure/_summary|connection counts]], error rates, query latency over a full day. [[watch-entity|Watch]] especially:
 - `DatabaseConnections` metric stays flat.
 - `DatabaseLatency` didn't spike.
 - Autovacuum is working normally (check `log_autovacuum_min_duration` in CloudWatch Logs).
@@ -338,7 +343,7 @@ Findings / implications:
 ## Cross-refs
 
 - [[infrastructure/_summary]] — RDS service baseline, EKS, ECR pipeline
-- [[aws-cost/_summary]] — cost research and optimization strategies; see active right-sizing threads table
+- [[aws-cost/_summary]] — cost research and optimization [[strategies]]; see active right-sizing threads table
 - [[2026-04-28_s3-cost-reduction-action-plan]] — broader cost optimization context; database upgrades are one vector among S3, EKS, GPU
 - [[skill-cost-check]] — `/cost-check` skill for Cost Explorer queries to verify surcharge drop post-upgrade
 - [[runbooks/_summary|Runbooks]] — parent runbook index

@@ -10,8 +10,9 @@ incoming:
   - topics/repo-backlog/notes/concepts/actuate_admin.md
   - topics/settings-automation/notes/concepts/pixels-per-foot.md
   - topics/team-structure/notes/entities/brian-leary.md
+  - topics/watchman/notes/concepts/2026-06-02_frontend-sketch-ui.md
   - topics/watchman/notes/concepts/patrol-vs-active-modes.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-06-19
 ---
 
 # Onboarding Wizard

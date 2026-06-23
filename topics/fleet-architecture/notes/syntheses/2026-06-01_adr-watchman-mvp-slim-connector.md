@@ -11,8 +11,10 @@ author: kb-bot
 incoming:
   - topics/fleet-architecture/_summary.md
   - topics/fleet-architecture/notes/concepts/2026-06-01_terminology-conflict-watchman-ambiguity.md
+  - topics/fleet-architecture/notes/syntheses/2026-06-02_watchman-phase0-fleet-fit.md
+  - topics/personal-notes/notes/daily/2026-06-01.md
   - topics/watchman/_summary.md
-incoming_updated: 2026-06-02
+incoming_updated: 2026-06-19
 ---
 
 # ADR: Watchman MVP Slim Connector Design

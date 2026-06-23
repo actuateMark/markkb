@@ -11,7 +11,8 @@ author: kb-bot
 incoming:
   - topics/fleet-architecture/_summary.md
   - topics/fleet-architecture/sources/2026-06-01_cloud-video-analytics-platform-v10.md
-incoming_updated: 2026-06-02
+  - topics/personal-notes/notes/daily/2026-06-01.md
+incoming_updated: 2026-06-19
 ---
 
 # v10 Scheduler-Service & Per-Camera-Per-Product State Resolution
