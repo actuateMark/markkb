@@ -22,7 +22,7 @@ author: kb-bot
 | **autopatrol-server** | 40 | none (has README+ARCHITECTURE) | new CLAUDE + port release-process; core analysis backend | 🔴 |
 | **ds-terraform-eks-v2** | 11 (in-flight) | none | new CLAUDE — PG16 fix only on branch; capture branch state + roadmap | 🔴 |
 | **actuate_bi** | low / role-critical | none | new CLAUDE — canonical billing DDL; tf-vs-sql drift rule KB-only | 🔴 |
-| **actuate-integration-tools** | 9 (Mark-only) | none | 🚨 **LOCAL-ONLY — no git remote; push to org or it's lost** + new CLAUDE (done, committed locally) | 🔴 |
+| **actuate-integration-tools** | 9 (Mark-only) | none | ✅ **was local-only → pushed to `aegissystems/actuate-integration-tools` 2026-06-23** + CLAUDE.md | 🔴 |
 | **actuate-libraries** | 1380 | 120L | update — **CI-skip-token / dev-version CI-safety knowledge** | 🔴 |
 | **vms-connector** | 2463 | 360L (strong) | port architecture rationale (AIMD/fork-safety) → docs/ | 🟠 |
 | **actuate_admin** | 522 | 76L (thin) | port release-flow + local-bringup + AutoPatrol PATCH gotcha | 🟠 |
@@ -59,7 +59,7 @@ author: kb-bot
 - actuate_bi → [PR #12](https://github.com/aegissystems/actuate_bi/pull/12)
 - ds-terraform-eks-v2 → [PR #104](https://github.com/aegissystems/ds-terraform-eks-v2/pull/104) (captures the PG16-fix-on-branch state)
 - local_network_scripts → [PR #1](https://github.com/aegissystems/actuate-dev-toolkit/pull/1)
-- **actuate-integration-tools → 🚨 NO REMOTE (local-only).** CLAUDE.md committed locally. **Action (WS-B): create `aegissystems/actuate-integration-tools` + push, or the whole tool dies with the laptop.**
+- **actuate-integration-tools → ✅ PUSHED to `aegissystems/actuate-integration-tools`** (private) 2026-06-23 — was local-only; CLAUDE.md included.
 
 **🔴 HIGH updates/ports + 🟡 MED — PRs opened:**
 - vms-connector → [PR #1765](https://github.com/aegissystems/vms-connector/pull/1765) (docs/architecture-rationale.md)
@@ -68,10 +68,10 @@ author: kb-bot
 - actuate-libraries → [PR #392](https://github.com/aegissystems/actuate-libraries/pull/392) (docs/CI.md — CI-skip-marker hazards)
 - kubernetes-deployments → [PR #419](https://github.com/aegissystems/kubernetes-deployments/pull/419) (CLAUDE.md ArgoCD workflow)
 - queue_consumer → [PR #194](https://github.com/aegissystems/queue_consumer/pull/194) (CLAUDE.md)
-- **software-arch-sketches → 🚨 NO REMOTE (local-only, 2nd one).** CLAUDE.md committed locally; push the repo to org to preserve.
+- **software-arch-sketches → ✅ PUSHED to `aegissystems/software-arch-sketches`** (private) 2026-06-23 — was local-only; CLAUDE.md included.
 - **camera-ui → SKIPPED.** Local main is 249 commits behind and CLAUDE.md base differs; the minor append (tech-stack + a not-yet-landed live-streaming flag) isn't worth a stale-base PR. Recommend a manual 2-line touch on current main.
 
-**Note:** all PRs were opened from clean git worktrees off each repo's real default branch (main/rearchitecture/helm) to avoid the stale/divergent local checkouts — docs only, no code. **2 local-only repos** (actuate-integration-tools, software-arch-sketches) are the notable finding: Mark-authored work that exists nowhere but the laptop — push both to the org (WS-B).
+**Note:** all PRs were opened from clean git worktrees off each repo's real default branch (main/rearchitecture/helm) to avoid the stale/divergent local checkouts — docs only, no code. **2 local-only repos** (actuate-integration-tools, software-arch-sketches) — the notable finding — are now **pushed to the org** (2026-06-23). A full 25-repo sweep confirmed no others lack a remote.
 
 ## Related
 - [[2026-06-22_offboarding-plan]] · [[2026-06-22_manual-action-checklist]] · [[2026-06-22_actuate-footprint-handoff]]
