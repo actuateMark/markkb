@@ -94,6 +94,12 @@ Goal: make the firebat + npu-server nodes **tag-owned** (`tag:server`) so they s
 - [ ] Decommission Mark-tied bits: personal Anthropic API key, personal Slack webhooks, the laptop.
 - [ ] When green, transition the ENG-375 children to Done.
 
+## §I — Successor handoffs  *(name an owner per workstream, then walk it)*
+- [x] **Watchman + fleet-arch** → Mike (ENG-300) + Paolo (ENG-383). Plan: [[2026-06-23_watchman-fleet-handoff-paolo-mike]].
+- [ ] **Run the Watchman walkthrough** (Mark + Mike + Paolo, 60–90 min) — the irreplaceable knowledge transfer; do before Friday.
+- [ ] **Park ENG-183** (S3 cost) with whoever takes infra.
+- [ ] **Name owners for the remaining unowned workstreams** and build a handoff plan for each (candidates: firebat automation + operational dashboard §9/§12; AutoPatrol §3/§14; billing §28; RDS upgrades §33; connector/PyAV §15). The dashboard/firebat-automation layer is the most uniquely Mark's — it runs without an owner but won't be *maintained or extended* without one.
+
 ## Related
-- [[2026-06-22_offboarding-plan]] · [[2026-06-22_actuate-footprint-handoff]] · [[2026-06-22_dead-mans-checklist]]
+- [[2026-06-22_offboarding-plan]] · [[2026-06-22_actuate-footprint-handoff]] · [[2026-06-22_dead-mans-checklist]] · [[2026-06-23_watchman-fleet-handoff-paolo-mike]]
 - [[2026-06-22_firebat-operations-runbook]] · [[2026-06-22_dashboard-signals-catalog]] · [[2026-06-22_npu-server-llm-shop-runbook]]
