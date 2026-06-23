@@ -18,6 +18,9 @@ Consolidates Mark's departure handoff (last day **2026-06-26**): transferring hi
 - 📋 [[2026-06-22_offboarding-plan]] — the full plan, decisions, Jira reassignment ledger, in-office execution sequence.
 - 🚨 [[2026-06-22_dead-mans-checklist]] — if something breaks after Friday: symptom → cause → fix.
 
+## Successor handoffs
+- [[2026-06-23_watchman-fleet-handoff-paolo-mike]] — Watchman + fleet-arch (ENG-300) split to **Paolo** (deploy/connector layer) + **Mike** (fleet/k8s layer), with reading lists, joint decisions, and a walkthrough agenda.
+
 ## Operating runbooks (for whoever inherits each system)
 - [[2026-06-22_firebat-operations-runbook]] — the minipc: 14 timers, creds, dashboard, KB repo
 - [[2026-06-22_dashboard-signals-catalog]] — the ~89-signal operational dashboard
