@@ -51,7 +51,7 @@ Owns the *how it gets built, deployed, and wired to the connector* questions. Ad
 
 ## Handoff mechanics (this week)
 1. **One 60–90 min joint walkthrough** (Mark + Paolo + Mike), spine = the two 06-02 / 06-16 notes. Agenda: Phase-0 shape (15m) → topology + proposal fit, Mike-led (20m) → backend/Lambda/storage, Paolo-led (20m) → open-decision ownership split (20m) → Jira + next steps (15m).
-2. **Jira:** reassign **ENG-300** → **Mike** (fleet & scheduling design — he's already a collaborator); create a sibling ticket under the Watchman epic for **Paolo** — "Watchman connector-side Lambda + backend deploy integration." Park **ENG-183** with whoever takes infra (lean shared).
+2. **Jira — DONE 2026-06-23:** **ENG-300** reassigned → **Mike** (Michael Aleksa); **[ENG-383](https://actuate-team.atlassian.net/browse/ENG-383)** created → **Paolo** ("Watchman connector-side Lambda + backend deploy integration", under ENG-5, linked to ENG-300). Both carry the full split in their descriptions/comments. Still to do: park **ENG-183** (S3 cost) with whoever takes infra (lean shared).
 3. **Immediate next steps:** Valeri's connector-side Lambda lands ~end of week → Paolo wires the deployer side; Mike stands up the E PoC; joint storage bake-off kicks off (unblocks the API skeleton).
 
 ## Related
