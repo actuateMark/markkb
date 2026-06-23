@@ -21,7 +21,8 @@ Consolidates Mark's departure handoff (last day **2026-06-26**): transferring hi
 ## Successor handoffs
 - [[2026-06-23_watchman-fleet-handoff-paolo-mike]] — Watchman + fleet-arch (ENG-300/ENG-383) split to **Paolo** (deploy/connector) + **Mike** (fleet/k8s).
 - [[2026-06-23_firebat-dashboard-ownership-handoff]] — the firebat automation + operational dashboard (§9/§12) ownership charter. **⚠ no owner named yet.**
-- *(in progress)* AutoPatrol (§3 cleanup Lambda + §14 arm-miss) handoff; local-repo CLAUDE.md / KB-sync audit (fan-out running).
+- [[2026-06-23_autopatrol-handoff]] — cleanup Lambda (§3) + arm-miss race (§14) + alert-flow (§2) → **Brad** (cleanup-Lambda internals are Mark's; reading list is load-bearing).
+- *(in progress)* local-repo CLAUDE.md / KB-sync audit (4-agent fan-out running).
 
 ## Operating runbooks (for whoever inherits each system)
 - [[2026-06-22_firebat-operations-runbook]] — the minipc: 14 timers, creds, dashboard, KB repo
