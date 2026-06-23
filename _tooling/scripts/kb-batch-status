@@ -1,0 +1,120 @@
+#!/usr/bin/env python3
+"""kb-batch-status — quick "is the batch done yet?" check on a remote run.
+
+ssh's to the box, reports:
+  - DONE sentinel: present / missing
+  - manifest exit + counts (running/success/partial/error)
+  - last 10 events from log.jsonl (latest first)
+  - in-flight item if running
+
+Usage:
+  kb-batch-status <run-id>
+  kb-batch-status --list                 (show all run dirs on the box)
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+
+BOX_HOST = os.getenv("LLM_SHOP_HOST", "npu-server")
+BOX_RESEARCH_ROOT = "/home/actuate/llm-shop/research-output"
+
+
+def ssh(cmd: str, timeout: int = 15) -> tuple[int, str, str]:
+    proc = subprocess.run(
+        ["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=8", BOX_HOST, cmd],
+        capture_output=True, text=True, timeout=timeout,
+    )
+    return proc.returncode, proc.stdout, proc.stderr
+
+
+def list_runs() -> int:
+    rc, out, err = ssh(f"ls -1t {BOX_RESEARCH_ROOT} 2>/dev/null | grep -v '^\\.' | head -20")
+    if rc != 0:
+        print(f"FATAL: ssh failed: {err}", file=sys.stderr)
+        return 1
+    if not out.strip():
+        print("(no runs on box)")
+        return 0
+    print("Recent runs (newest first):")
+    for name in out.strip().splitlines():
+        rc2, done_out, _ = ssh(f"test -f {BOX_RESEARCH_ROOT}/{name}/DONE && echo DONE || echo running")
+        marker = done_out.strip() if rc2 == 0 else "?"
+        print(f"  {marker:8s} {name}")
+    return 0
+
+
+def status(run_id: str) -> int:
+    base = f"{BOX_RESEARCH_ROOT}/{run_id}"
+    rc, out, err = ssh(
+        f"test -d {base} && echo present || echo missing; "
+        f"test -f {base}/DONE && echo done || echo running; "
+        f"echo ---MANIFEST---; "
+        f"cat {base}/manifest.json 2>/dev/null || echo '{{}}'; "
+        f"echo ---LOG---; "
+        f"tail -n 12 {base}/log.jsonl 2>/dev/null"
+    )
+    if rc != 0:
+        print(f"FATAL: ssh failed: {err}", file=sys.stderr)
+        return 1
+    parts = out.split("---MANIFEST---", 1)
+    head = parts[0].strip().splitlines()
+    if len(head) < 2:
+        print(f"FATAL: unexpected ssh output: {out[:200]}", file=sys.stderr)
+        return 1
+    dir_state, done_state = head[0], head[1]
+    if dir_state == "missing":
+        print(f"run {run_id} not found on box.")
+        return 1
+    rest = parts[1] if len(parts) > 1 else ""
+    manifest_blob, _, log_blob = rest.partition("---LOG---")
+    try:
+        manifest = json.loads(manifest_blob.strip() or "{}")
+    except json.JSONDecodeError:
+        manifest = {}
+
+    items = manifest.get("items", [])
+    n_ok = sum(1 for i in items if i.get("status") == "ok")
+    n_failed = sum(1 for i in items if i.get("status") == "failed")
+    n_total = len(items)
+
+    print(f"=== {run_id}")
+    print(f"  state:        {dir_state} / {done_state}")
+    print(f"  manifest exit: {manifest.get('exit', 'n/a')}")
+    print(f"  items:        {n_ok} ok, {n_failed} failed, {n_total} processed")
+    print(f"  started:      {manifest.get('started_at', 'n/a')}")
+    print(f"  finished:     {manifest.get('finished_at') or '(in flight)'}")
+    if manifest.get("error"):
+        print(f"  error:        {manifest['error']}")
+
+    print(f"\n--- last 10 log events ---")
+    log_lines = [ln for ln in log_blob.strip().splitlines() if ln][-10:]
+    for ln in log_lines:
+        try:
+            ev = json.loads(ln)
+            ts = ev.pop("ts", "")
+            kind = ev.pop("event", "")
+            tail = " ".join(f"{k}={v}" for k, v in ev.items() if v is not None)
+            print(f"  {ts} {kind} {tail}")
+        except json.JSONDecodeError:
+            print(f"  {ln}")
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("run_id", nargs="?", help="Run ID")
+    ap.add_argument("--list", action="store_true", help="List recent runs on the box")
+    args = ap.parse_args()
+    if args.list:
+        return list_runs()
+    if not args.run_id:
+        ap.error("run_id required (or use --list)")
+    return status(args.run_id)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

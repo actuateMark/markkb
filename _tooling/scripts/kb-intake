@@ -1,0 +1,170 @@
+#!/usr/bin/env python3
+"""kb-intake — laptop CLI driver for the kb-intake harness on the LLM shop.
+
+Reads existing topic slugs from the local KB, calls the harness on npu-server,
+writes the drafted source note to topics/<topic>/_research-inbox/<slug>.md.
+
+Usage:
+  kb-intake <url>
+  kb-intake <url> --hint <topic>
+  kb-intake <url> --hint llm-shop --max-words 200
+  kb-intake <url> --print           # don't write, just print to stdout
+  kb-intake <url> --anchors-from llm-shop  # include topic's existing anchors as hints
+
+The harness is stateless wrt the KB; we tell it what topics + anchors exist,
+it returns the draft, we write the file. Per kb-starter Rule 1 the file gets
+`author: kb-bot` and `status: research-draft` for safe human review.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import re
+import sys
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+KB_ROOT = Path(os.getenv("KB_ROOT", str(Path.home() / "Documents/worklog/knowledgebase")))
+HARNESS_URL = os.getenv(
+    "LLM_SHOP_BASE",
+    "http://npu-server.tail9b2a4e.ts.net:8110",
+).rstrip("/") + "/kb-intake"
+
+
+def list_topics() -> list[str]:
+    topics_dir = KB_ROOT / "topics"
+    if not topics_dir.exists():
+        sys.exit(f"FATAL: KB_ROOT/topics not found: {topics_dir}")
+    return sorted(p.name for p in topics_dir.iterdir() if p.is_dir() and not p.name.startswith("_"))
+
+
+def list_anchors_for_topic(topic: str, max_anchors: int = 80) -> list[str]:
+    """Find existing note slugs (filenames without .md) within a topic.
+
+    Used as wikilink hints so the model cross-links to existing notes rather
+    than inventing new anchors.
+    """
+    topic_dir = KB_ROOT / "topics" / topic
+    if not topic_dir.exists():
+        return []
+    anchors: set[str] = set()
+    for md in topic_dir.rglob("*.md"):
+        if "/_research-inbox/" in md.as_posix() or "/sources/" in md.as_posix():
+            continue
+        anchors.add(md.stem)
+    return sorted(anchors)[:max_anchors]
+
+
+def call_harness(payload: dict, timeout_s: float = 600.0) -> dict:
+    body = json.dumps(payload).encode()
+    req = urllib.request.Request(
+        HARNESS_URL,
+        data=body,
+        headers={"Content-Type": "application/json"},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=timeout_s) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")
+        sys.exit(f"FATAL: harness HTTP {e.code}: {body[:500]}")
+    except urllib.error.URLError as e:
+        sys.exit(f"FATAL: cannot reach harness at {HARNESS_URL}: {e}")
+
+
+def write_draft(topic: str, slug: str, draft: str, dry: bool) -> Path | None:
+    out_dir = KB_ROOT / "topics" / topic / "_research-inbox"
+    out_path = out_dir / f"{slug}.md"
+    if dry:
+        return None
+    out_dir.mkdir(parents=True, exist_ok=True)
+    if out_path.exists():
+        n = 2
+        while True:
+            alt = out_dir / f"{slug}-v{n}.md"
+            if not alt.exists():
+                out_path = alt
+                break
+            n += 1
+    out_path.write_text(draft, encoding="utf-8")
+    return out_path
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("url", help="URL to ingest")
+    ap.add_argument("--hint", help="Bias topic classification toward this slug")
+    ap.add_argument("--anchors-from", action="append", default=[],
+                    help="Include existing anchors from this topic as wikilink hints. Repeatable.")
+    ap.add_argument("--max-words", type=int, default=300, help="Summary word budget")
+    ap.add_argument("--model", help="Override Ollama model (default llama3.1:8b)")
+    ap.add_argument("--print", dest="print_only", action="store_true",
+                    help="Print draft to stdout, don't write to KB")
+    args = ap.parse_args()
+
+    topics = list_topics()
+    if not topics:
+        sys.exit("FATAL: no topics found in KB_ROOT/topics/")
+
+    # Anchors: aggregate from --anchors-from + the hint topic
+    anchors: list[str] = []
+    seen: set[str] = set()
+    anchor_topics = list(args.anchors_from)
+    if args.hint and args.hint not in anchor_topics:
+        anchor_topics.append(args.hint)
+    for t in anchor_topics:
+        for a in list_anchors_for_topic(t):
+            if a not in seen:
+                seen.add(a)
+                anchors.append(a)
+
+    payload = {
+        "url": args.url,
+        "topics": topics,
+        "max_summary_words": args.max_words,
+    }
+    if args.hint:
+        payload["hint_topic"] = args.hint
+    if anchors:
+        payload["anchors"] = anchors
+    if args.model:
+        payload["model"] = args.model
+
+    print(f"=== kb-intake: {args.url}", file=sys.stderr)
+    print(f"  topics in catalog: {len(topics)}", file=sys.stderr)
+    print(f"  anchors hinted:    {len(anchors)}{' (from ' + ','.join(anchor_topics) + ')' if anchors else ''}", file=sys.stderr)
+    if args.hint:
+        print(f"  topic hint:        {args.hint}", file=sys.stderr)
+    print(f"  calling {HARNESS_URL} (cold load can take ~3 min)...", file=sys.stderr)
+
+    t0 = time.monotonic()
+    resp = call_harness(payload)
+    elapsed_s = time.monotonic() - t0
+
+    fetched = resp["fetched"]
+    proposed = resp["proposed"]
+    stats = resp["stats"]
+    print(f"  fetched: '{fetched['title']}' ({fetched['content_chars']} chars, {stats['fetch_ms']}ms)", file=sys.stderr)
+    print(f"  generated: {stats['completion_tokens']} tokens in {stats['elapsed_ms']/1000:.1f}s "
+          f"(prompt {stats['prompt_tokens']} tok)", file=sys.stderr)
+    print(f"  proposed topic: {proposed['topic']}", file=sys.stderr)
+
+    if args.print_only:
+        print(proposed["draft"])
+        return 0
+
+    out_path = write_draft(proposed["topic"], proposed["slug"], proposed["draft"], dry=False)
+    if out_path is None:
+        print("(--print mode; no file written)", file=sys.stderr)
+        return 0
+    print(f"\nwrote: {out_path}", file=sys.stderr)
+    print(f"  total round-trip: {elapsed_s:.1f}s", file=sys.stderr)
+    print(str(out_path))  # stdout: the path, for chaining
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

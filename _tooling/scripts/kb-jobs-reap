@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+# ~/.local/bin/kb-jobs-reap — reaper for ~/.local/state/kb-jobs/.
+#
+# Run by kb-jobs-reap.timer every 5 min.
+#
+# Rules:
+#   - Job still running (no status.json) and age > 600s  → SIGTERM the group.
+#     The runner script will then write status.json with the non-zero exit code
+#     after claude shuts down.
+#   - Job still running and age > 780s → SIGKILL the group AND write a
+#     synthetic status.json so SSE clients close out (since bash dies before
+#     reaching the status-writing block).
+#   - Any job dir older than 24h → delete (cleanup).
+#
+# Idempotent: re-sending SIGTERM is harmless; SIGKILL after status.json write
+# is a no-op once the process is gone.
+
+set -u
+
+JOBS_ROOT="${KB_JOBS_ROOT:-$HOME/.local/state/kb-jobs}"
+[ -d "$JOBS_ROOT" ] || exit 0
+
+now=$(date +%s)
+
+shopt -s nullglob
+for d in "$JOBS_ROOT"/*/; do
+    d="${d%/}"
+    meta="$d/meta.json"
+    status="$d/status.json"
+    [ -f "$meta" ] || continue
+
+    age=$(( now - $(stat -c %Y "$meta") ))
+
+    if [ -f "$status" ]; then
+        # Already finished — purge if older than 24h.
+        if [ "$age" -gt 86400 ]; then
+            rm -rf "$d"
+        fi
+        continue
+    fi
+
+    # Still running. Read pid from meta.json.
+    pid=$(python3 -c '
+import json, sys
+try:
+    print(json.load(open(sys.argv[1])).get("pid", "") or "")
+except Exception:
+    pass
+' "$meta" 2>/dev/null)
+    [ -n "$pid" ] || continue
+
+    if [ "$age" -gt 780 ]; then
+        # > 13 min — SIGKILL the whole group, write status.json ourselves.
+        kill -KILL -- "-$pid" 2>/dev/null || true
+        ts=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+        printf '{"status":"timeout","exit_code":137,"finished_at":"%s","reason":"reaper SIGKILL after %ds"}\n' \
+            "$ts" "$age" > "$d/status.json.tmp"
+        mv "$d/status.json.tmp" "$d/status.json"
+        echo "[reap] SIGKILL job $(basename "$d") pid=$pid age=${age}s" >&2
+    elif [ "$age" -gt 600 ]; then
+        # > 10 min — SIGTERM the group; runner writes status.json on exit.
+        kill -TERM -- "-$pid" 2>/dev/null || true
+        echo "[reap] SIGTERM job $(basename "$d") pid=$pid age=${age}s" >&2
+    fi
+done

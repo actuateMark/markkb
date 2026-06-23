@@ -1,0 +1,215 @@
+#!/usr/bin/env python3
+"""kb-batch-pull — fetch an overnight kb-deep-intake run from npu-server,
+re-link drafts against the live KB, drop them into `_research-inbox/`,
+flip reading-list lines, archive the manifest.
+
+Run sequence:
+  1. scp -r the box's run dir to ~/.cache/kb-batch-pulls/<run-id>/
+  2. Parse manifest.json
+  3. For each ok item: re-run the linker (with the live anchor index) to add
+     wikilinks; write to topics/<topic>/_research-inbox/<slug>.md
+  4. Walk topics/<context.topic>/reading-list.md, match by URL primary /
+     ref_id tiebreaker, flip `[ ]` → `[x]` and append `→ [[slug]]`
+  5. Copy manifest.json to ~/Documents/worklog/knowledgebase/_pulls/<run-id>/
+  6. Print summary
+
+Partial runs (no DONE sentinel) are still pulled; the summary calls out
+unprocessed items so the user can resubmit them.
+
+Usage:
+  kb-batch-pull <run-id>
+  kb-batch-pull --pulled-dir <path>   (skip scp; act on an already-pulled dir)
+
+Exit codes: 0 = clean; 2 = some items failed/unprocessed (summary explains).
+"""
+from __future__ import annotations
+
+import argparse
+import importlib.util
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+KB_ROOT = Path(os.getenv("KB_ROOT", str(Path.home() / "Documents/worklog/knowledgebase")))
+BOX_HOST = os.getenv("LLM_SHOP_HOST", "npu-server")
+BOX_RESEARCH_ROOT = "/home/actuate/llm-shop/research-output"
+PULL_CACHE = Path.home() / ".cache" / "kb-batch-pulls"
+PULL_ARCHIVE = KB_ROOT / "_pulls"
+LINKER_PATH = Path("/home/mork/work/local_network_scripts/files/llm-shop/harnesses/kb_deep_intake/linker.py")
+
+
+def _load_linker():
+    """Import the linker module from the mirrored source — avoid the
+    `types.py` shadow trap by using a custom spec instead of sys.path."""
+    spec = importlib.util.spec_from_file_location("kbdi_linker", str(LINKER_PATH))
+    if spec is None or spec.loader is None:
+        sys.exit(f"FATAL: can't load linker from {LINKER_PATH}")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def scp_run_dir(run_id: str) -> Path:
+    """Pull the run directory from the box. Returns local path."""
+    PULL_CACHE.mkdir(parents=True, exist_ok=True)
+    local = PULL_CACHE / run_id
+    if local.exists():
+        # Re-pull is fine — manifest may have advanced since last try
+        shutil.rmtree(local)
+    proc = subprocess.run(
+        ["scp", "-q", "-r", f"{BOX_HOST}:{BOX_RESEARCH_ROOT}/{run_id}", str(local)],
+        capture_output=True, text=True, timeout=300,
+    )
+    if proc.returncode != 0:
+        sys.exit(f"FATAL: scp failed: {proc.stderr.strip()}")
+    return local
+
+
+def write_draft(text: str, topic: str, slug: str) -> Path:
+    """Write a re-linked draft into the topic's _research-inbox/."""
+    inbox = KB_ROOT / "topics" / topic / "_research-inbox"
+    inbox.mkdir(parents=True, exist_ok=True)
+    target = inbox / f"{slug}.md"
+    n = 1
+    while target.exists():
+        n += 1
+        target = inbox / f"{slug}-{n}.md"
+    target.write_text(text, encoding="utf-8")
+    return target
+
+
+URL_RE = re.compile(r"https?://[^\s)>\]]+")
+UNCHECKED_RE = re.compile(r"^- \[ \] ")
+
+
+def flip_reading_list(reading_list: Path, merges: list[tuple[str, str, int]]) -> tuple[int, int]:
+    """For each (url, slug, ref_id_int) merge: find unchecked line whose first URL
+    matches `url`. Tiebreaker: prefer the line whose 0-based index equals ref_id_int.
+    Replace `[ ]` → `[x]` and append → [[slug]]. Returns (flipped, missed)."""
+    if not reading_list.exists():
+        return 0, len(merges)
+    lines = reading_list.read_text(encoding="utf-8").splitlines()
+    flipped = 0
+    missed = 0
+    for url, slug, ref_id_int in merges:
+        # Primary: URL match on unchecked lines
+        candidates = [
+            i for i, ln in enumerate(lines)
+            if UNCHECKED_RE.match(ln) and any(u == url for u in URL_RE.findall(ln))
+        ]
+        if not candidates:
+            missed += 1
+            continue
+        # Tiebreaker: prefer the line whose original index matches ref_id
+        chosen = candidates[0]
+        if ref_id_int >= 0 and ref_id_int in candidates:
+            chosen = ref_id_int
+        lines[chosen] = re.sub(r"^- \[ \] ", "- [x] ", lines[chosen], count=1) + f" → [[{slug}]]"
+        flipped += 1
+    reading_list.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return flipped, missed
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("run_id", nargs="?", help="Run ID to pull from the box")
+    ap.add_argument("--pulled-dir", help="Skip scp; use an already-pulled run dir")
+    ap.add_argument("--no-flip", action="store_true", help="Don't modify reading-list.md")
+    args = ap.parse_args()
+
+    if args.pulled_dir:
+        local = Path(args.pulled_dir)
+        run_id = local.name
+    else:
+        if not args.run_id:
+            sys.exit("FATAL: run_id required (or use --pulled-dir)")
+        run_id = args.run_id
+        local = scp_run_dir(run_id)
+
+    manifest_path = local / "manifest.json"
+    if not manifest_path.exists():
+        sys.exit(f"FATAL: no manifest.json in {local} — run never wrote one")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+
+    done_present = (local / "DONE").exists()
+    items = manifest.get("items", [])
+    exit_state = manifest.get("exit", "unknown")
+
+    print(f"=== kb-batch-pull: {run_id}", file=sys.stderr)
+    print(f"  exit:       {exit_state} (DONE sentinel: {'present' if done_present else 'MISSING'})", file=sys.stderr)
+    print(f"  manifest:   {len(items)} items", file=sys.stderr)
+
+    linker = _load_linker()
+    context = manifest.get("context", {})
+    list_topic = context.get("topic")
+    merges_for_list: list[tuple[str, str, int]] = []
+    written: list[Path] = []
+    failed: list[dict] = []
+    for item in items:
+        if item.get("status") != "ok":
+            failed.append(item)
+            continue
+        draft_path = item.get("draft_path")
+        if not draft_path:
+            failed.append({**item, "error": "ok status but no draft_path"})
+            continue
+        src = local / draft_path
+        if not src.exists():
+            failed.append({**item, "error": f"draft file missing: {draft_path}"})
+            continue
+        text = src.read_text(encoding="utf-8")
+        topic = item.get("topic_claimed") or list_topic or "uncategorized"
+        try:
+            linked, warnings = linker.link(text, topic=topic, kb_root=str(KB_ROOT))
+        except Exception as e:
+            linked = text  # ship un-linked; the human reviewer will catch it
+            warnings = [f"linker raised: {type(e).__name__}: {e}"]
+        slug = Path(draft_path).stem
+        written_path = write_draft(linked, topic, slug)
+        written.append(written_path)
+        try:
+            ref_id_int = int(item.get("ref_id", "-1"))
+        except (TypeError, ValueError):
+            ref_id_int = -1
+        if topic == list_topic:
+            merges_for_list.append((item["url"], slug, ref_id_int))
+        rel = written_path.relative_to(KB_ROOT)
+        warn_str = f" ({len(warnings)} linker warn)" if warnings else ""
+        print(f"  + {rel}{warn_str}", file=sys.stderr)
+
+    # Reading-list flip — only for items whose topic matches the submission context
+    flipped, missed = (0, 0)
+    if not args.no_flip and list_topic and merges_for_list:
+        rl = KB_ROOT / "topics" / list_topic / "reading-list.md"
+        flipped, missed = flip_reading_list(rl, merges_for_list)
+        print(f"  reading-list: flipped {flipped} / missed {missed}", file=sys.stderr)
+
+    # Archive manifest for audit
+    archive_dir = PULL_ARCHIVE / run_id
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(manifest_path, archive_dir / "manifest.json")
+
+    n_ok = len(written)
+    n_failed = len(failed)
+    n_unprocessed = 0
+    if not done_present:
+        # Items not in the manifest at all are unprocessed
+        n_unprocessed = max(0, len(items) - n_ok - n_failed)
+    print(f"\n=== summary: {n_ok} drafts merged; {n_failed} failed; {n_unprocessed} unprocessed", file=sys.stderr)
+    if failed:
+        print("  failed items:", file=sys.stderr)
+        for f in failed:
+            print(f"    - {f.get('url', '?')}  ({f.get('error', 'unknown')})", file=sys.stderr)
+    if not done_present:
+        print("  WARNING: DONE sentinel missing — run did not finish cleanly. "
+              "Resubmit the unprocessed items.", file=sys.stderr)
+
+    return 0 if (n_failed == 0 and n_unprocessed == 0 and done_present) else 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

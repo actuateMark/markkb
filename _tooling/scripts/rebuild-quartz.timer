@@ -1,0 +1,13 @@
+# ~/.config/systemd/user/rebuild-quartz.timer
+[Unit]
+Description=Rebuild Quartz every 5 minutes
+Requires=rebuild-quartz.service
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=5min
+AccuracySec=30s
+Unit=rebuild-quartz.service
+
+[Install]
+WantedBy=timers.target

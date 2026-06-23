@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+# kb-todo-scan v2 — first iteration in production, learned that:
+#   `obsidian backlinks file=<X>` only works when X exists as a file. For
+#   unresolved targets (which is the whole point), the CLI says "not found".
+#   So we read all topic .md files once, build a target → [(file,line)] index,
+#   then intersect with `obsidian unresolved`.
+#
+# Single-pass over the vault is O(files), not O(targets × files).
+
+import json
+import os
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+KB_ROOT = Path(os.getenv('KB_ROOT', str(Path.home() / 'Documents/worklog/knowledgebase')))
+OBSIDIAN_CLI = str(Path.home() / '.local/bin/obsidian')
+
+# Match [[<target>]] or [[<target>|<display>]]. Captures the target.
+# Skip URL-form `[[https://...]]` (kb-starter rule explicitly forbids these but
+# people write them anyway — don't waste research on them).
+WIKILINK_RE = re.compile(r'\[\[([^\[\]\|]+?)(?:\|[^\[\]]*)?\]\]')
+
+
+def list_unresolved_targets():
+    try:
+        result = subprocess.run(
+            [OBSIDIAN_CLI, 'unresolved'],
+            capture_output=True, text=True, timeout=10, check=True,
+        )
+        return [t for t in result.stdout.strip().splitlines() if t]
+    except subprocess.CalledProcessError as e:
+        print(f"Error running obsidian unresolved: {e.stderr}", file=sys.stderr)
+        sys.exit(1)
+
+
+def is_in_scope(target: str) -> bool:
+    """Filter rule from the spec. Skip path-form, spaced, glob-y, and system targets."""
+    if not target:
+        return False
+    if '/' in target or ' ' in target or '*' in target:
+        return False
+    if target.startswith('_'):
+        return False
+    if target.startswith('http://') or target.startswith('https://'):
+        return False
+    return True
+
+
+def categorize_target(target: str) -> str:
+    if re.match(r'^[A-Z][a-zA-Z0-9]+$', target):
+        return 'class'
+    if re.match(r'^\d{4}-\d{2}-\d{2}_', target):
+        return 'synthesis'
+    return 'concept'
+
+
+def index_wikilinks() -> dict[str, list[dict]]:
+    """Single pass over all topic .md files. Returns target → [reference dicts]."""
+    index: dict[str, list[dict]] = {}
+    topics_dir = KB_ROOT / 'topics'
+    for md_path in topics_dir.rglob('*.md'):
+        rel = md_path.relative_to(KB_ROOT).as_posix()
+        if '/sources/' in rel:
+            # Source notes are immutable per kb-starter Rule 11; never research them.
+            continue
+        try:
+            text = md_path.read_text(encoding='utf-8')
+        except OSError:
+            continue
+        lines = text.splitlines()
+        for i, line in enumerate(lines):
+            for m in WIKILINK_RE.finditer(line):
+                target = m.group(1).strip()
+                if not target:
+                    continue
+                index.setdefault(target, []).append({
+                    'file': rel,
+                    'line': i + 1,
+                    'before': lines[i - 1] if i > 0 else '',
+                    'text': line,
+                    'after': lines[i + 1] if i < len(lines) - 1 else '',
+                })
+    return index
+
+
+def main():
+    if not KB_ROOT.exists():
+        print(f"KB_ROOT not found: {KB_ROOT}", file=sys.stderr)
+        sys.exit(1)
+
+    unresolved = list_unresolved_targets()
+    in_scope = [t for t in unresolved if is_in_scope(t)]
+    index = index_wikilinks()
+
+    results = []
+    for target in in_scope:
+        refs = index.get(target, [])
+        if not refs:
+            continue  # could be a path-form mismatch or test-noise
+        results.append({
+            'target': target,
+            'category': categorize_target(target),
+            'ref_count': len(refs),
+            'references': refs,
+        })
+
+    results.sort(key=lambda x: (-x['ref_count'], x['target']))
+    json.dump(results, sys.stdout, indent=2, ensure_ascii=False)
+    sys.stdout.write('\n')
+
+
+if __name__ == '__main__':
+    main()

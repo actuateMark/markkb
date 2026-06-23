@@ -1,0 +1,11 @@
+# ~/.config/systemd/user/rebuild-quartz.service — pushed by phase-14b-quartz.sh
+
+[Unit]
+Description=Rebuild Quartz KB site from the synced vault
+
+[Service]
+Type=oneshot
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+TimeoutStartSec=5min
+WorkingDirectory=%h/quartz
+ExecStart=%h/bin/rebuild-quartz.sh

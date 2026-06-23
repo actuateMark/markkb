@@ -1,0 +1,9 @@
+[Unit]
+Description=Reap stale kb-jobs (SIGTERM > 10min, SIGKILL > 13min, purge dirs > 24h)
+
+[Service]
+Type=oneshot
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=%h/.local/bin/kb-jobs-reap
+StandardOutput=journal
+StandardError=journal

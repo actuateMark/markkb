@@ -1,0 +1,216 @@
+#!/usr/bin/env python3
+"""kb-fix-frontmatter — repair broken YAML frontmatter in the Obsidian KB vault.
+
+Two corruption patterns are known to break the Quartz site rebuild:
+
+Type A — orphan list with missing parent key.
+    A `- topics/foo.md` (or `- Error: File "..." not found.`) list appears
+    directly under a scalar key (`tags:`, `author:`, …) with no parent
+    `outgoing:` block. Caused by an upstream writer dropping the key.
+
+Type B — unquoted title containing `:`.
+    `title: MoviePy: Video Editing with Python` — YAML parses the second
+    colon as a nested mapping and errors with "mapping values are not
+    allowed here". Caused by writers that don't quote string values.
+
+Strategy: read each .md, attempt yaml.safe_load on the frontmatter. If it
+parses, skip. Otherwise apply both fix passes, drop `- Error:` injections,
+re-parse. Only write back if the rewrite parses cleanly. Files that can't
+be auto-fixed are reported (and the script exits nonzero).
+
+Usage:
+  kb-fix-frontmatter                    # scan only, report counts
+  kb-fix-frontmatter --write            # apply fixes in place
+  kb-fix-frontmatter --sample 3         # show first 3 fixed frontmatters (dry-run)
+  kb-fix-frontmatter --vault /path/to/topics
+  KB_VAULT=/path/to/topics kb-fix-frontmatter --write
+
+Exit codes:
+  0 — no broken files (or all fixed when --write)
+  1 — broken files remain that could not be auto-fixed
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import pathlib
+import re
+import sys
+
+import yaml
+
+DEFAULT_VAULT = pathlib.Path(
+    os.environ.get(
+        "KB_VAULT",
+        str(pathlib.Path.home() / "Documents/worklog/knowledgebase/topics"),
+    )
+)
+
+FM_RE = re.compile(r"^(---\n)(.*?\n)(---\n)(.*)$", re.DOTALL)
+ERROR_LINE_RE = re.compile(r'^\s*-\s+Error:\s+File\s+".*"\s+not\s+found\.\s*$')
+SCALAR_KEY_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_-]*\s*:")
+LIST_LINE_RE = re.compile(r"^\s*-\s")
+TITLE_LINE_RE = re.compile(r"^title:\s*(.*)$")
+
+
+def fix_title_colon(fm_lines: list[str]) -> list[str]:
+    out = []
+    for line in fm_lines:
+        m = TITLE_LINE_RE.match(line)
+        if not m:
+            out.append(line)
+            continue
+        val = m.group(1).rstrip()
+        if not val:
+            out.append(line)
+            continue
+        if (val.startswith('"') and val.endswith('"')) or (
+            val.startswith("'") and val.endswith("'")
+        ):
+            out.append(line)
+            continue
+        if ": " in val or val.endswith(":"):
+            escaped = val.replace("\\", "\\\\").replace('"', '\\"')
+            out.append(f'title: "{escaped}"\n')
+        else:
+            out.append(line)
+    return out
+
+
+def fix_orphan_outgoing_list(fm_lines: list[str]) -> list[str]:
+    out: list[str] = []
+    i = 0
+    n = len(fm_lines)
+    while i < n:
+        line = fm_lines[i]
+        if not LIST_LINE_RE.match(line):
+            out.append(line)
+            i += 1
+            continue
+        prev_non_blank = None
+        for prev in reversed(out):
+            if prev.strip():
+                prev_non_blank = prev
+                break
+        # Inside an existing valid list block: leave alone.
+        if prev_non_blank is not None and LIST_LINE_RE.match(prev_non_blank):
+            out.append(line)
+            i += 1
+            continue
+        # Previous line is a block-opener key (`foo:`): leave alone.
+        if (
+            prev_non_blank is not None
+            and prev_non_blank.rstrip().endswith(":")
+            and SCALAR_KEY_RE.match(prev_non_blank)
+        ):
+            out.append(line)
+            i += 1
+            continue
+        # Orphan list block: collect consecutive list-or-indented lines.
+        block: list[str] = []
+        while i < n and (LIST_LINE_RE.match(fm_lines[i]) or fm_lines[i].startswith("  ")):
+            block.append(fm_lines[i])
+            i += 1
+            if i < n:
+                nxt = fm_lines[i]
+                if SCALAR_KEY_RE.match(nxt) and not nxt.startswith(" "):
+                    break
+        filtered = [b for b in block if not ERROR_LINE_RE.match(b)]
+        normalized: list[str] = []
+        for b in filtered:
+            stripped = b.lstrip()
+            if stripped.startswith("- "):
+                normalized.append(f"  {stripped}")
+            else:
+                normalized.append(b)
+        if normalized:
+            out.append("outgoing:\n")
+            out.extend(normalized)
+    return out
+
+
+def fix_file(path: pathlib.Path, write: bool) -> tuple[str, str | None]:
+    raw = path.read_text(encoding="utf-8")
+    m = FM_RE.match(raw)
+    if not m:
+        return ("no-frontmatter", None)
+    open_d, fm_text, close_d, body = m.groups()
+    try:
+        yaml.safe_load(fm_text)
+        return ("already-valid", None)
+    except yaml.YAMLError:
+        pass
+    lines = fm_text.splitlines(keepends=True)
+    fixed = fix_title_colon(lines)
+    fixed = fix_orphan_outgoing_list(fixed)
+    new_fm_text = "".join(fixed)
+    try:
+        parsed = yaml.safe_load(new_fm_text)
+        if parsed is None:
+            return ("fix-yields-empty", new_fm_text)
+    except yaml.YAMLError as e:
+        return (f"unfixed: {str(e).splitlines()[0]}", new_fm_text)
+    if write:
+        path.write_text(f"{open_d}{new_fm_text}{close_d}{body}", encoding="utf-8")
+    return ("fixed", new_fm_text)
+
+
+def scan_broken(vault: pathlib.Path) -> list[pathlib.Path]:
+    broken: list[pathlib.Path] = []
+    for md in vault.rglob("*.md"):
+        raw = md.read_text(encoding="utf-8", errors="replace")
+        m = FM_RE.match(raw)
+        if not m:
+            continue
+        try:
+            yaml.safe_load(m.group(2))
+        except yaml.YAMLError:
+            broken.append(md)
+    return broken
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    ap.add_argument(
+        "--vault",
+        type=pathlib.Path,
+        default=DEFAULT_VAULT,
+        help=f"path to vault topics/ dir (default: {DEFAULT_VAULT})",
+    )
+    ap.add_argument("--write", action="store_true", help="apply fixes in place")
+    ap.add_argument("--sample", type=int, default=0, help="print first N fixed frontmatters")
+    args = ap.parse_args()
+
+    if not args.vault.is_dir():
+        print(f"vault dir not found: {args.vault}", file=sys.stderr)
+        return 2
+
+    broken = scan_broken(args.vault)
+    if not broken:
+        print(f"kb-fix-frontmatter: {args.vault} — 0 broken files")
+        return 0
+
+    results: dict[str, list[pathlib.Path]] = {}
+    samples_shown = 0
+    for path in broken:
+        status, new_fm = fix_file(path, write=args.write)
+        results.setdefault(status, []).append(path)
+        if args.sample and samples_shown < args.sample and status == "fixed" and new_fm:
+            print(f"\n=== SAMPLE: {path.relative_to(args.vault)} ===")
+            print(new_fm)
+            samples_shown += 1
+
+    mode = "WRITE" if args.write else "DRY-RUN"
+    print(f"\nkb-fix-frontmatter [{mode}] {args.vault} — {len(broken)} broken")
+    for status, paths in sorted(results.items()):
+        print(f"  {status}: {len(paths)}")
+        if status.startswith("unfixed"):
+            for p in paths[:10]:
+                print(f"    {p.relative_to(args.vault)}")
+
+    return 1 if results.get("unfixed", []) or "fix-yields-empty" in results else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

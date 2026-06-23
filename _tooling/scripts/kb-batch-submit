@@ -1,0 +1,270 @@
+#!/usr/bin/env python3
+"""kb-batch-submit — dispatch an overnight kb-deep-intake batch to npu-server.
+
+Reads `topics/<topic>/reading-list.md`, picks unchecked URLs (skipping confluence
+and entity-prefixed lines), builds a self-describing `input.json`, scp's it to
+`~/llm-shop/research-output/<run-id>/` on the box, kicks off the templated
+systemd unit, and exits — no in-flight work on the laptop.
+
+Print the run-id on stdout (so a wrapper script can capture it). Status-watching
+and result-pulling are separate commands (`kb-batch-status`, `kb-batch-pull`).
+
+Usage:
+  kb-batch-submit --topic <slug> [--limit N] [--max-words N] [--dry-run]
+
+Exit codes: 0 success; 1 fatal (missing list, no candidates, ssh failure).
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import re
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+KB_ROOT = Path(os.getenv("KB_ROOT", str(Path.home() / "Documents/worklog/knowledgebase")))
+BOX_HOST = os.getenv("LLM_SHOP_HOST", "npu-server")
+BOX_RESEARCH_ROOT = "/home/actuate/llm-shop/research-output"
+ANCHOR_NOTE_KINDS = ("concepts", "entities", "syntheses")
+
+URL_RE = re.compile(r"https?://[^\s)>\]]+")
+ENTITY_PREFIX_RE = re.compile(r"^- \[ \] \*\*\[\[")
+UNCHECKED_RE = re.compile(r"^- \[ \] ")
+ORIGIN_RE = re.compile(r'^origin:\s*["\']?(https?://[^"\'\s]+)', re.MULTILINE)
+SUMMARY_LEDE_MAX_CHARS = 240
+
+
+def extract_candidates(reading_list: Path) -> list[tuple[int, str, str]]:
+    """[(line_index, full_line, chosen_url)] — duplicates kb-readinglist-drive's
+    logic so we can submit the same set of URLs the sync driver would."""
+    if not reading_list.exists():
+        sys.exit(f"FATAL: reading list not found: {reading_list}")
+    lines = reading_list.read_text(encoding="utf-8").splitlines()
+    out: list[tuple[int, str, str]] = []
+    for i, line in enumerate(lines):
+        if not UNCHECKED_RE.match(line):
+            continue
+        if ENTITY_PREFIX_RE.match(line):
+            continue
+        urls = URL_RE.findall(line)
+        urls = [u for u in urls if "atlassian.net" not in u and "confluence" not in u]
+        if not urls:
+            continue
+        out.append((i, line, urls[0]))
+    return out
+
+
+def list_topics() -> list[str]:
+    """All topic slugs under topics/ — given to the planner so it can pick the
+    best fit when the URL doesn't obviously belong to the hint topic."""
+    topics_dir = KB_ROOT / "topics"
+    if not topics_dir.is_dir():
+        return []
+    return sorted(p.name for p in topics_dir.iterdir() if p.is_dir() and not p.name.startswith("_"))
+
+
+def build_topic_descriptions() -> dict[str, str]:
+    """Walk topics/*/_summary.md; extract the first non-frontmatter, non-heading
+    paragraph as a one-line description. Empty when a topic has no _summary
+    (e.g. skeletal `webrtc-deep-dive`)."""
+    out: dict[str, str] = {}
+    topics_dir = KB_ROOT / "topics"
+    if not topics_dir.is_dir():
+        return out
+    for p in sorted(topics_dir.iterdir()):
+        if not p.is_dir() or p.name.startswith("_"):
+            continue
+        summary_path = p / "_summary.md"
+        if not summary_path.is_file():
+            continue
+        text = summary_path.read_text(encoding="utf-8", errors="replace")
+        # Strip frontmatter
+        if text.startswith("---"):
+            end = text.find("\n---", 3)
+            if end != -1:
+                text = text[end + 4:]
+        # First non-empty, non-heading line, trimmed
+        for raw_line in text.splitlines():
+            line = raw_line.strip()
+            if not line or line.startswith("#") or line.startswith(">"):
+                continue
+            # Collapse internal whitespace
+            line = re.sub(r"\s+", " ", line)
+            if len(line) > SUMMARY_LEDE_MAX_CHARS:
+                line = line[: SUMMARY_LEDE_MAX_CHARS - 1].rstrip() + "…"
+            out[p.name] = line
+            break
+    return out
+
+
+def existing_inbox_origins() -> set[str]:
+    """Walk every `_research-inbox/*.md` in the KB; extract `origin:` URLs from
+    frontmatter. Used to dedup pre-submit so we don't re-burn cycles on the
+    same URL across batches."""
+    origins: set[str] = set()
+    for inbox in KB_ROOT.rglob("_research-inbox"):
+        if not inbox.is_dir():
+            continue
+        for md in inbox.glob("*.md"):
+            try:
+                head = md.read_text(encoding="utf-8", errors="replace")[:2000]
+            except OSError:
+                continue
+            m = ORIGIN_RE.search(head)
+            if m:
+                origins.add(m.group(1).rstrip("/"))
+    return origins
+
+
+def list_anchors(topic: str) -> list[str]:
+    """All anchor slugs for the topic — given to the planner to suggest as
+    wikilink candidates."""
+    out: list[str] = []
+    base = KB_ROOT / "topics" / topic / "notes"
+    if not base.is_dir():
+        return out
+    for kind in ANCHOR_NOTE_KINDS:
+        d = base / kind
+        if not d.is_dir():
+            continue
+        for fname in sorted(p.name for p in d.iterdir()):
+            if fname.endswith(".md"):
+                out.append(fname[:-3])
+    return out
+
+
+def next_seq_for_topic(topic: str, hhmm: str, ymd: str) -> int:
+    """Walk box's research-output dir; pick next seq for this minute+topic."""
+    cmd = [
+        "ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=8", BOX_HOST,
+        f"ls -1 {BOX_RESEARCH_ROOT} 2>/dev/null | grep -c '^{ymd}T{hhmm}Z-{topic}-' || echo 0",
+    ]
+    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=15)
+    if proc.returncode != 0:
+        return 1
+    try:
+        return int(proc.stdout.strip().splitlines()[-1]) + 1
+    except (ValueError, IndexError):
+        return 1
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--topic", required=True, help="Topic slug — must exist as topics/<topic>/")
+    ap.add_argument("--limit", type=int, default=10, help="Max URLs per batch (default 10)")
+    ap.add_argument("--max-words", type=int, default=400, help="Per-draft summary word budget (default 400)")
+    ap.add_argument("--dry-run", action="store_true", help="Build input.json locally, don't scp/start")
+    ap.add_argument(
+        "--force-redo",
+        action="store_true",
+        help="Submit even if the URL already has a draft in some topic's _research-inbox/",
+    )
+    args = ap.parse_args()
+
+    list_path = KB_ROOT / "topics" / args.topic / "reading-list.md"
+    candidates = extract_candidates(list_path)
+    if not candidates:
+        sys.exit(f"FATAL: no ingestible candidates in {list_path}")
+
+    skipped_dups: list[tuple[str, str]] = []
+    if not args.force_redo:
+        seen = existing_inbox_origins()
+        deduped: list[tuple[int, str, str]] = []
+        for line_idx, line, url in candidates:
+            if url.rstrip("/") in seen:
+                skipped_dups.append((url, line))
+                continue
+            deduped.append((line_idx, line, url))
+        candidates = deduped
+        if not candidates:
+            sys.exit(
+                f"FATAL: all candidates already have drafts in _research-inbox/ "
+                f"(skipped {len(skipped_dups)}). Re-run with --force-redo to override."
+            )
+    pick = candidates[: args.limit]
+
+    now = datetime.now(timezone.utc)
+    ymd = now.strftime("%Y-%m-%d")
+    hhmm = now.strftime("%H%M")
+    seq = 1 if args.dry_run else next_seq_for_topic(args.topic, hhmm, ymd)
+    run_id = f"{ymd}T{hhmm}Z-{args.topic}-{seq:03d}"
+
+    items = []
+    for line_idx, line, url in pick:
+        items.append({
+            "ref_id": f"{line_idx:04d}",
+            "url": url,
+            "hint_topic": args.topic,
+            "max_summary_words": args.max_words,
+        })
+
+    topic_descriptions = build_topic_descriptions()
+    input_doc = {
+        "run_id": run_id,
+        "submitted_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "context": {"type": "reading-list", "topic": args.topic, "list_path": str(list_path.relative_to(KB_ROOT))},
+        "topics": list_topics(),
+        "topic_descriptions": topic_descriptions,
+        "anchors": list_anchors(args.topic),
+        "items": items,
+    }
+
+    print(f"=== kb-batch-submit", file=sys.stderr)
+    print(f"  run-id:     {run_id}", file=sys.stderr)
+    print(f"  topic:      {args.topic}", file=sys.stderr)
+    print(f"  picked:     {len(items)} of {len(candidates)} candidates", file=sys.stderr)
+    if skipped_dups:
+        print(f"  deduped:    {len(skipped_dups)} URL(s) already in _research-inbox/", file=sys.stderr)
+        for url, _line in skipped_dups[:5]:
+            print(f"              - {url}", file=sys.stderr)
+        if len(skipped_dups) > 5:
+            print(f"              … {len(skipped_dups) - 5} more", file=sys.stderr)
+    print(f"  anchors:    {len(input_doc['anchors'])}", file=sys.stderr)
+    print(f"  topics:     {len(input_doc['topics'])} known ({len(topic_descriptions)} with description)", file=sys.stderr)
+    print(f"  est. wall:  ~{len(items) * 35} min @ 35 min/article (sycl); ~{len(items) * 8} min (ollama)", file=sys.stderr)
+
+    if args.dry_run:
+        local_dump = Path(f"/tmp/kb-batch-{run_id}.json")
+        local_dump.write_text(json.dumps(input_doc, indent=2) + "\n")
+        print(f"\n[dry-run] wrote {local_dump} — not dispatched", file=sys.stderr)
+        print(run_id)
+        return 0
+
+    box_run_dir = f"{BOX_RESEARCH_ROOT}/{run_id}"
+    mkdir = subprocess.run(
+        ["ssh", "-o", "BatchMode=yes", BOX_HOST, f"mkdir -p {box_run_dir}/drafts"],
+        capture_output=True, text=True, timeout=20,
+    )
+    if mkdir.returncode != 0:
+        sys.exit(f"FATAL: ssh mkdir failed: {mkdir.stderr.strip()}")
+
+    local_input = Path(f"/tmp/kb-batch-{run_id}-input.json")
+    local_input.write_text(json.dumps(input_doc, indent=2) + "\n")
+    scp = subprocess.run(
+        ["scp", "-q", str(local_input), f"{BOX_HOST}:{box_run_dir}/input.json"],
+        capture_output=True, text=True, timeout=30,
+    )
+    if scp.returncode != 0:
+        sys.exit(f"FATAL: scp input.json failed: {scp.stderr.strip()}")
+
+    start = subprocess.run(
+        ["ssh", "-o", "BatchMode=yes", BOX_HOST,
+         f"systemctl --user start llm-shop-kb-batch@{run_id}.service"],
+        capture_output=True, text=True, timeout=20,
+    )
+    if start.returncode != 0:
+        sys.exit(f"FATAL: systemctl start failed: {start.stderr.strip()}")
+
+    print(f"\n  dispatched. monitor with:", file=sys.stderr)
+    print(f"    kb-batch-status {run_id}", file=sys.stderr)
+    print(f"  pull when DONE:", file=sys.stderr)
+    print(f"    kb-batch-pull {run_id}", file=sys.stderr)
+    print(run_id)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

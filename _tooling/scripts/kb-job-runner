@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# ~/.local/bin/kb-job-runner — runs a single /kb-ask query as a detached job.
+#
+# Invoked by minipc-app POST /app/kb/query/ via subprocess.Popen(start_new_session=True),
+# so this script is the session/process-group leader of the whole subtree.
+# Reaper kills via `kill -- -<pid>` to reach claude through the group.
+#
+# Layout written under <job_dir> = ~/.local/state/kb-jobs/<id>/:
+#   meta.json    — written by caller (question, started_at, pid)
+#   stdout       — claude stream-json events (one JSON per line)
+#   stderr       — claude stderr
+#   status.json  — written here on exit: {"status":"done|error", "exit_code": N, "finished_at": "..."}
+#                  (the reaper writes its own status.json when it SIGKILLs us)
+
+set -u
+
+job_dir="${1:?missing job_dir}"
+question="${2:?missing question}"
+
+CLAUDE_BIN="${CLAUDE_BIN:-$HOME/.local/bin/claude}"
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin${PATH:+:$PATH}"
+
+# Run claude. --include-partial-messages gives token-level streaming via
+# stream_event records (content_block_delta), which the SSE handler turns into
+# text-delta events for the browser. Output goes to stdout; redirection to a
+# regular file is fine because claude-code uses one write() per event.
+"$CLAUDE_BIN" -p \
+    --permission-mode acceptEdits \
+    --output-format stream-json \
+    --verbose \
+    --include-partial-messages \
+    "/kb-ask $question" \
+    > "$job_dir/stdout" 2> "$job_dir/stderr"
+ec=$?
+
+# On clean exit, archive the answer to the KB. kb-job-archive emits one
+# JSON-line event on its stdout, which we append to the job's stdout so the
+# SSE handler can surface it ("Saved to KB: …") in the live UI.
+if [ "$ec" -eq 0 ]; then
+    "$HOME/.local/bin/kb-job-archive" "$job_dir" >> "$job_dir/stdout" 2>> "$job_dir/stderr" || true
+fi
+
+ts=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+if [ "$ec" -eq 0 ]; then
+    status="done"
+else
+    status="error"
+fi
+printf '{"status":"%s","exit_code":%d,"finished_at":"%s"}\n' \
+    "$status" "$ec" "$ts" > "$job_dir/status.json.tmp"
+mv "$job_dir/status.json.tmp" "$job_dir/status.json"

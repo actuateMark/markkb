@@ -1,0 +1,339 @@
+#!/usr/bin/env python3
+"""kb-job-archive — write a completed kb-job's final answer to the KB.
+
+Invoked by ~/.local/bin/kb-job-runner after `claude -p /kb-ask` exits 0:
+
+    kb-job-archive <job_dir> >> <job_dir>/stdout
+
+The script:
+  1. Reads <job_dir>/stdout for stream-json events.
+  2. Pulls out the last `type:result` event's `result` text.
+  3. Walks tool_use events (Read/Grep/Glob) to tally which top-level
+     `topics/<topic>/...` directory got the most attention, breaking ties by
+     cumulative path-length (deepest engagement).
+  4. Slugifies the question, picks a non-colliding path:
+       <VAULT>/topics/<topic>/notes/syntheses/<YYYY-MM-DD>_kb-ask_<slug>.md
+  5. Writes the synthesis (frontmatter + body + provenance footer) atomically.
+  6. Records archive_path / archive_topic on meta.json.
+  7. Emits one JSON line on stdout — the runner appends it to <job_dir>/stdout
+     so the SSE handler can surface "saved to KB: <path>" in the live UI.
+
+Idempotent: if meta.json already has archive_path, no-op.
+Skips silently if the result event is missing or empty.
+"""
+from __future__ import annotations
+
+import json
+import os
+import re
+import sys
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+
+def _resolve_vault() -> Path:
+    """Find the KB root.
+
+    Honors KB_VAULT first (unambiguous), then VAULT_PATH. Because VAULT_PATH
+    by Actuate convention points at the *parent* of the KB (e.g.
+    ~/Documents/worklog, with the KB at ~/Documents/worklog/knowledgebase),
+    we accept both: if the given path doesn't contain `topics/`, descend into
+    `knowledgebase/`.
+    """
+    raw = os.environ.get("KB_VAULT") or os.environ.get("VAULT_PATH")
+    if raw:
+        p = Path(raw).expanduser()
+    else:
+        p = Path.home() / "Documents/worklog/knowledgebase"
+    if (p / "topics").is_dir():
+        return p
+    nested = p / "knowledgebase"
+    if (nested / "topics").is_dir():
+        return nested
+    return p  # let downstream mkdir create the structure
+
+
+VAULT = _resolve_vault()
+FALLBACK_TOPIC = "personal-notes"
+
+# Common short words to drop when slugifying. Tuned for question-style input.
+STOPWORDS = {
+    "a", "an", "the", "and", "or", "of", "in", "on", "for", "to", "from",
+    "with", "by", "my", "your", "our", "their", "is", "are", "was", "were",
+    "be", "been", "do", "does", "did", "can", "will", "would", "should",
+    "what", "why", "where", "when", "how", "who", "which", "that", "this",
+    "these", "those", "it", "its", "as", "at", "if", "but", "so", "than",
+    "then", "into", "out", "up", "down", "over", "under", "about",
+}
+
+
+def _now_iso() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _today() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+
+def _emit(event: dict) -> None:
+    """Print a synthetic stream-json line for the SSE handler to pick up."""
+    sys.stdout.write(json.dumps(event, ensure_ascii=False) + "\n")
+    sys.stdout.flush()
+
+
+def _read_lines(path: Path):
+    try:
+        with path.open("r", encoding="utf-8", errors="replace") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    yield json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        return
+
+
+def _extract(events) -> dict:
+    """Walk stream-json events; return result-text + tool-call paths + metadata."""
+    result_text: str | None = None
+    session_id: str | None = None
+    model: str | None = None
+    cost: float | None = None
+    duration_ms: int | None = None
+    paths: list[str] = []
+
+    for evt in events:
+        t = evt.get("type")
+        if t == "system" and evt.get("subtype") == "init":
+            session_id = evt.get("session_id")
+            model = evt.get("model")
+        elif t == "assistant":
+            for c in ((evt.get("message") or {}).get("content") or []):
+                if c.get("type") == "tool_use":
+                    inp = c.get("input") or {}
+                    p = inp.get("file_path") or inp.get("path") or ""
+                    if p:
+                        paths.append(p)
+        elif t == "result":
+            # Last one wins.
+            if not evt.get("is_error"):
+                result_text = evt.get("result")
+                cost = evt.get("total_cost_usd")
+                duration_ms = evt.get("duration_ms")
+
+    return {
+        "result_text": result_text,
+        "session_id": session_id,
+        "model": model,
+        "cost_usd": cost,
+        "duration_ms": duration_ms,
+        "paths": paths,
+    }
+
+
+TOPIC_RE = re.compile(r"(?:^|/)topics/([^/]+)/")
+
+
+def _infer_topic(paths: list[str]) -> str:
+    """Count topic hits across all tool_use paths; pick by (count, cum_len)."""
+    counts: dict[str, int] = {}
+    cum_len: dict[str, int] = {}
+    for p in paths:
+        m = TOPIC_RE.search(p)
+        if not m:
+            continue
+        topic = m.group(1)
+        counts[topic] = counts.get(topic, 0) + 1
+        cum_len[topic] = cum_len.get(topic, 0) + len(p)
+    if not counts:
+        return FALLBACK_TOPIC
+    # winner = max count; tiebreaker = longest cumulative path length
+    return max(counts.keys(), key=lambda k: (counts[k], cum_len[k]))
+
+
+def _slugify(text: str, max_words: int = 7, max_chars: int = 60) -> str:
+    text = text.lower()
+    text = re.sub(r"[^\w\s-]", " ", text)  # drop punctuation
+    words = [w for w in text.split() if w and w not in STOPWORDS]
+    if not words:
+        words = text.split()
+    slug = "-".join(words[:max_words])
+    slug = re.sub(r"-+", "-", slug).strip("-")
+    return slug[:max_chars].rstrip("-") or "kb-ask"
+
+
+def _pick_path(syntheses_dir: Path, date: str, slug: str) -> Path:
+    base = f"{date}_kb-ask_{slug}"
+    cand = syntheses_dir / f"{base}.md"
+    if not cand.exists():
+        return cand
+    for i in range(2, 100):
+        cand = syntheses_dir / f"{base}-{i}.md"
+        if not cand.exists():
+            return cand
+    # absurd collision; tack on a timestamp suffix.
+    return syntheses_dir / f"{base}-{int(time.time())}.md"
+
+
+def _format_note(*, title: str, topic: str, date: str, question: str,
+                 body: str, job_id: str, session_id: str | None,
+                 model: str | None, cost_usd: float | None,
+                 duration_ms: int | None, paths: list[str]) -> str:
+    # Cap title length so frontmatter stays scannable; full question lives in
+    # the body and in source_question.
+    title_short = title.strip().rstrip("?.! ")[:80]
+
+    # Outgoing wikilinks: deduped topics/<x>/_summary.md for each topic touched.
+    referenced_topics: list[str] = []
+    seen = set()
+    for p in paths:
+        m = TOPIC_RE.search(p)
+        if m and m.group(1) not in seen:
+            seen.add(m.group(1))
+            referenced_topics.append(m.group(1))
+    outgoing_lines = [f"  - topics/{t}/_summary.md" for t in referenced_topics[:8]]
+
+    fm_lines = [
+        "---",
+        f'title: "{title_short} — {date}"',
+        "type: synthesis",
+        f"topic: {topic}",
+        "tags: [kb-ask, auto-archived]",
+        f"created: {date}",
+        f"updated: {date}",
+        "author: kb-bot",
+        f"source_endpoint: /app/kb/query",
+        f"source_job_id: {job_id}",
+    ]
+    if session_id:
+        fm_lines.append(f"source_session_id: {session_id}")
+    if outgoing_lines:
+        fm_lines.append("outgoing:")
+        fm_lines.extend(outgoing_lines)
+    fm_lines.append("---")
+    fm = "\n".join(fm_lines)
+
+    # Provenance footer — small, factual, doesn't dominate the page.
+    prov_lines = ["## Provenance", ""]
+    prov_lines.append(f"- Generated by `/kb-ask` via `/app/kb/query` on {_now_iso()}")
+    prov_lines.append(f"- Job: `{job_id}`")
+    if session_id:
+        prov_lines.append(f"- Claude session: `{session_id}`")
+    if model:
+        prov_lines.append(f"- Model: `{model}`")
+    if duration_ms is not None:
+        prov_lines.append(f"- Duration: {duration_ms / 1000:.1f}s")
+    if cost_usd is not None:
+        prov_lines.append(f"- Cost: ${cost_usd:.4f}")
+    if referenced_topics:
+        prov_lines.append("- Topics touched: " +
+                          ", ".join(f"[[topics/{t}/_summary]]"
+                                    for t in referenced_topics[:8]))
+    provenance = "\n".join(prov_lines)
+
+    return (
+        f"{fm}\n\n"
+        f"# {title_short}\n\n"
+        f"## Question\n\n{question.strip()}\n\n"
+        f"## Answer\n\n{body.strip()}\n\n"
+        f"---\n\n"
+        f"{provenance}\n"
+    )
+
+
+def main(argv: list[str]) -> int:
+    if len(argv) < 2:
+        sys.stderr.write("usage: kb-job-archive <job_dir>\n")
+        return 2
+    job_dir = Path(argv[1]).resolve()
+    meta_path = job_dir / "meta.json"
+    stdout_path = job_dir / "stdout"
+    if not meta_path.exists() or not stdout_path.exists():
+        sys.stderr.write(f"kb-job-archive: missing meta.json or stdout in {job_dir}\n")
+        return 1
+
+    try:
+        meta = json.loads(meta_path.read_text())
+    except Exception as e:
+        sys.stderr.write(f"kb-job-archive: cannot read meta.json: {e}\n")
+        return 1
+
+    if meta.get("archive_path"):
+        # Already done — idempotent no-op. Emit the same event so the SSE
+        # handler can re-surface it on replay.
+        _emit({"type": "archive",
+               "path": meta["archive_path"],
+               "topic": meta.get("archive_topic"),
+               "rel": meta.get("archive_rel"),
+               "url": meta.get("archive_url")})
+        return 0
+
+    extracted = _extract(_read_lines(stdout_path))
+    body = (extracted["result_text"] or "").strip()
+    if not body:
+        # No final answer — skip archival entirely.
+        _emit({"type": "archive_skipped", "reason": "no result text"})
+        return 0
+
+    topic = _infer_topic(extracted["paths"])
+    syntheses_dir = VAULT / "topics" / topic / "notes" / "syntheses"
+    syntheses_dir.mkdir(parents=True, exist_ok=True)
+
+    question = meta.get("question", "")
+    slug = _slugify(question)
+    date = _today()
+    target = _pick_path(syntheses_dir, date, slug)
+
+    content = _format_note(
+        title=question or slug,
+        topic=topic,
+        date=date,
+        question=question,
+        body=body,
+        job_id=meta.get("job_id", ""),
+        session_id=extracted["session_id"],
+        model=extracted["model"],
+        cost_usd=extracted["cost_usd"],
+        duration_ms=extracted["duration_ms"],
+        paths=extracted["paths"],
+    )
+
+    # Atomic write.
+    tmp = target.with_suffix(target.suffix + ".tmp")
+    tmp.write_text(content, encoding="utf-8")
+    os.replace(tmp, target)
+
+    rel = str(target.relative_to(VAULT))
+    # Quartz public URL on this mini PC.
+    quartz_url = "/app/kb/" + re.sub(r"\.md$", "", rel)
+
+    # Record on meta.json (also atomic).
+    meta["archive_path"] = str(target)
+    meta["archive_rel"] = rel
+    meta["archive_topic"] = topic
+    meta["archive_url"] = quartz_url
+    meta["archived_at"] = _now_iso()
+    tmp_meta = meta_path.with_suffix(meta_path.suffix + ".tmp")
+    tmp_meta.write_text(json.dumps(meta) + "\n", encoding="utf-8")
+    os.replace(tmp_meta, meta_path)
+
+    sys.stderr.write(f"kb-job-archive: wrote {rel} (topic={topic})\n")
+    _emit({"type": "archive", "path": str(target),
+           "rel": rel, "topic": topic, "url": quartz_url})
+    return 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main(sys.argv))
+    except SystemExit:
+        raise
+    except Exception as e:  # noqa: BLE001
+        # Don't let an archival bug leave the user without any signal.
+        sys.stderr.write(f"kb-job-archive: unhandled {type(e).__name__}: {e}\n")
+        _emit({"type": "archive_skipped",
+               "reason": f"{type(e).__name__}: {str(e)[:200]}"})
+        sys.exit(0)

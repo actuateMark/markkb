@@ -1,0 +1,163 @@
+#!/usr/bin/env python3
+"""kb-readinglist-drive — walk a topic's reading-list.md, ingest external URLs.
+
+Pilot (simple) version:
+  1. Parse topics/<topic>/reading-list.md
+  2. Find unchecked lines `- [ ] ... https?://...` that are NOT Confluence (atlassian.net)
+     and NOT entity-prefixed (`- [ ] **[[...]]**`)
+  3. Run the existing `kb-intake` CLI on each URL with --hint <topic>
+  4. Replace the line's `[ ]` with `[x]` and append a wikilink to the draft
+  5. Write the updated reading-list.md back
+
+Not in pilot (followups): retries, parallelism, progress journal, batch report.
+
+Usage:
+  kb-readinglist-drive <topic> [--limit N] [--dry-run]
+  KB_ROOT=/path kb-readinglist-drive video-processing --limit 5
+
+Exit codes: 0 = clean run; 1 = fatal (bad topic, missing list, etc.); 2 = some
+URLs failed but the rest succeeded (caller decides what to do).
+"""
+from __future__ import annotations
+
+import argparse
+import os
+import re
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+KB_ROOT = Path(os.getenv("KB_ROOT", str(Path.home() / "Documents/worklog/knowledgebase")))
+KB_INTAKE_BIN = os.getenv("KB_INTAKE_BIN", str(Path.home() / "bin/kb-intake"))
+
+URL_RE = re.compile(r"https?://[^\s)>\]]+")
+ENTITY_PREFIX_RE = re.compile(r"^- \[ \] \*\*\[\[")
+UNCHECKED_RE = re.compile(r"^- \[ \] ")
+
+
+def extract_candidates(reading_list: Path, skip_confluence: bool = True) -> list[tuple[int, str, str]]:
+    """Return [(line_index, full_line, chosen_url)] for ingestible candidates."""
+    if not reading_list.exists():
+        sys.exit(f"FATAL: reading list not found: {reading_list}")
+    lines = reading_list.read_text(encoding="utf-8").splitlines()
+    out: list[tuple[int, str, str]] = []
+    for i, line in enumerate(lines):
+        if not UNCHECKED_RE.match(line):
+            continue
+        if ENTITY_PREFIX_RE.match(line):
+            continue  # already has an entity note
+        urls = URL_RE.findall(line)
+        if not urls:
+            continue
+        if skip_confluence:
+            urls = [u for u in urls if "atlassian.net" not in u and "confluence" not in u]
+            if not urls:
+                continue
+        # Prefer the FIRST URL on the line — typically the markdown-link target,
+        # which is the canonical doc/repo. Trailing URLs are often supplementary.
+        out.append((i, line, urls[0]))
+    return out
+
+
+def short_hint(line: str, max_len: int = 80) -> str:
+    """Pull a short readable hint from the bullet for logging."""
+    s = re.sub(r"^- \[ \] ", "", line)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s[:max_len] + ("…" if len(s) > max_len else "")
+
+
+def call_kb_intake(url: str, topic: str, max_words: int = 300) -> tuple[Path | None, str]:
+    """Invoke the kb-intake CLI. Returns (draft_path, stderr_text)."""
+    cmd = [KB_INTAKE_BIN, url, "--hint", topic, "--anchors-from", topic, "--max-words", str(max_words)]
+    try:
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=900)
+    except FileNotFoundError:
+        sys.exit(f"FATAL: kb-intake CLI not found at {KB_INTAKE_BIN} — set KB_INTAKE_BIN env or install it.")
+    except subprocess.TimeoutExpired:
+        return None, "timeout after 900s"
+    if proc.returncode != 0:
+        return None, proc.stderr.strip() or f"exit {proc.returncode}"
+    # stdout is the path to the written draft (last line)
+    out = proc.stdout.strip().splitlines()
+    if not out:
+        return None, "no path on stdout; stderr: " + proc.stderr.strip()[-300:]
+    return Path(out[-1]), proc.stderr
+
+
+def mark_done(line: str, slug: str) -> str:
+    """Replace `[ ]` with `[x]` and append a wikilink to the draft."""
+    return re.sub(r"^- \[ \] ", f"- [x] ", line, count=1) + f" → [[{slug}]]"
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    ap.add_argument("topic", help="Topic slug (matches topics/<topic>/reading-list.md)")
+    ap.add_argument("--limit", type=int, default=5, help="Max URLs to process this run (default 5)")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="Print candidates and what would happen, don't call harness or modify list")
+    ap.add_argument("--max-words", type=int, default=300, help="Per-draft summary word budget")
+    ap.add_argument("--skip-confluence", action="store_true", default=True,
+                    help="(default) Skip atlassian.net URLs (no auth in harness)")
+    args = ap.parse_args()
+
+    list_path = KB_ROOT / "topics" / args.topic / "reading-list.md"
+    candidates = extract_candidates(list_path, skip_confluence=args.skip_confluence)
+    if not candidates:
+        print(f"no ingestible candidates in {list_path} (all checked, all confluence, or no URLs)",
+              file=sys.stderr)
+        return 0
+
+    pick = candidates[: args.limit]
+    print(f"=== kb-readinglist-drive: {args.topic}", file=sys.stderr)
+    print(f"  list:        {list_path}", file=sys.stderr)
+    print(f"  total open:  {len(candidates)} candidates with URLs", file=sys.stderr)
+    print(f"  picking:     first {len(pick)} (limit={args.limit})", file=sys.stderr)
+    if args.dry_run:
+        print("\n[dry-run] would process:", file=sys.stderr)
+        for _, line, url in pick:
+            print(f"  • {url}", file=sys.stderr)
+            print(f"      hint: {short_hint(line)}", file=sys.stderr)
+        return 0
+
+    # Real run — process sequentially, update list in-place after each success.
+    raw = list_path.read_text(encoding="utf-8")
+    lines = raw.splitlines(keepends=False)
+    succeeded = 0
+    failed: list[tuple[str, str]] = []
+    t_total_0 = time.monotonic()
+    for n, (idx, line, url) in enumerate(pick, 1):
+        print(f"\n--- [{n}/{len(pick)}] {url}", file=sys.stderr)
+        print(f"      hint: {short_hint(line)}", file=sys.stderr)
+        t0 = time.monotonic()
+        path, stderr_or_err = call_kb_intake(url, args.topic, max_words=args.max_words)
+        dt = time.monotonic() - t0
+        if path is None:
+            print(f"      FAILED ({dt:.1f}s): {stderr_or_err.splitlines()[-1] if stderr_or_err else 'unknown'}",
+                  file=sys.stderr)
+            failed.append((url, stderr_or_err))
+            continue
+        slug = path.stem
+        lines[idx] = mark_done(line, slug)
+        # Persist after each success — if we crash midway, the list reflects partial progress.
+        list_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        succeeded += 1
+        rel = path.relative_to(KB_ROOT) if path.is_absolute() else path
+        print(f"      OK ({dt:.1f}s) → {rel}", file=sys.stderr)
+
+    elapsed = time.monotonic() - t_total_0
+    print(f"\n=== summary: {succeeded}/{len(pick)} succeeded in {elapsed:.1f}s "
+          f"({elapsed/max(succeeded,1):.1f}s avg)", file=sys.stderr)
+    if failed:
+        print(f"  failed:", file=sys.stderr)
+        for url, err in failed:
+            print(f"    - {url}", file=sys.stderr)
+            print(f"      {(err or '').splitlines()[-1] if err else ''}", file=sys.stderr)
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,173 @@
+#!/usr/bin/env python3
+"""kb-batch-watch — monitor an in-flight kb-batch run for health + completion.
+
+Replaces the naive `until test -f DONE` poller. Exits non-zero AS SOON AS any
+pathological pattern is detected, so the dispatcher (Claude, a shell wrapper)
+notices early rather than burning the full bake time on items that are
+guaranteed to fail.
+
+Health checks (in priority order):
+  1. DONE sentinel present → exit 0
+  2. Manifest missing or stale (>STALE_S since started_at) → exit 11
+  3. K consecutive planner-timeout failures → exit 12 (SYCL likely wedged)
+  4. No item_done event in QUIET_S → exit 13 (stalled mid-item)
+  5. Run has exit != 'running' but no DONE → exit 14 (orphaned partial)
+  6. Otherwise, sleep INTERVAL_S and re-check
+
+Usage:
+  kb-batch-watch <run-id> [--interval 60] [--quiet 1800] [--stale 1200] [-k 3]
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+import time
+from datetime import datetime, timezone
+
+BOX_HOST = os.getenv("LLM_SHOP_HOST", "npu-server")
+BOX_ROOT = "/home/actuate/llm-shop/research-output"
+
+
+def _ssh(cmd: str, timeout: int = 20) -> tuple[int, str, str]:
+    p = subprocess.run(
+        ["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=8", BOX_HOST, cmd],
+        capture_output=True, text=True, timeout=timeout,
+    )
+    return p.returncode, p.stdout, p.stderr
+
+
+def _utc_now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def _parse_iso(s: str | None) -> datetime | None:
+    if not s:
+        return None
+    try:
+        # tolerate both Z and offset forms
+        return datetime.fromisoformat(s.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
+def _fetch_state(run_id: str) -> dict:
+    """Return {done_present, manifest_json, last_log_line}. Empty dict on
+    transport failure (caller decides whether to retry)."""
+    base = f"{BOX_ROOT}/{run_id}"
+    rc, out, _err = _ssh(
+        f"test -f {base}/DONE && echo DONE || echo running; "
+        f"echo ===M===; "
+        f"cat {base}/manifest.json 2>/dev/null || echo '{{}}'; "
+        f"echo ===L===; "
+        f"tail -n 1 {base}/log.jsonl 2>/dev/null || echo ''"
+    )
+    if rc != 0:
+        return {}
+    parts = out.split("===M===", 1)
+    head = parts[0].strip().splitlines()
+    done_present = bool(head and head[0].strip() == "DONE")
+    rest = parts[1] if len(parts) > 1 else ""
+    m_blob, _, l_blob = rest.partition("===L===")
+    try:
+        manifest = json.loads(m_blob.strip() or "{}")
+    except json.JSONDecodeError:
+        manifest = {}
+    last_log = l_blob.strip().splitlines()
+    last = {}
+    if last_log:
+        try:
+            last = json.loads(last_log[-1])
+        except json.JSONDecodeError:
+            pass
+    return {"done": done_present, "manifest": manifest, "last": last}
+
+
+def _classify(state: dict, *, k_fails: int, quiet_s: int, stale_s: int) -> tuple[str, str]:
+    """Return (status, detail). status ∈ {ok, done, stall, wedge, orphan, transport, in_progress}."""
+    if not state:
+        return ("transport", "ssh failed; will retry")
+    if state.get("done"):
+        return ("done", "DONE sentinel present")
+
+    manifest = state.get("manifest") or {}
+    if not manifest:
+        return ("transport", "manifest.json not yet written")
+
+    # Orphan: manifest declares terminal exit but no DONE — runner died after
+    # writing the final manifest but before touch DONE, which means the
+    # outer except path wrote it as an error.
+    exit_state = manifest.get("exit")
+    if exit_state and exit_state not in ("running",):
+        return ("orphan", f"manifest exit={exit_state} but no DONE sentinel")
+
+    items = manifest.get("items") or []
+    # Consecutive planner failures at the tail → SYCL wedge signature
+    tail = items[-k_fails:]
+    if len(tail) >= k_fails and all(
+        (it.get("status") == "failed"
+         and "phase: planner" in (it.get("error") or "").lower())
+        for it in tail
+    ):
+        return ("wedge", f"{k_fails} consecutive planner-timeout failures: " +
+                ", ".join(it["url"][:60] for it in tail))
+
+    # Stall: no item_done event in quiet_s, AND the run has been alive for stale_s
+    last = state.get("last") or {}
+    last_ts = _parse_iso(last.get("ts"))
+    started_ts = _parse_iso(manifest.get("started_at"))
+    now = _utc_now()
+    if last_ts and (now - last_ts).total_seconds() > quiet_s:
+        return ("stall", f"no event in {int((now - last_ts).total_seconds() / 60)} min "
+                f"(last={last.get('event', '?')} ts={last.get('ts', '?')})")
+    if not last_ts and started_ts and (now - started_ts).total_seconds() > stale_s:
+        return ("stall", f"no log events {int((now - started_ts).total_seconds() / 60)} min after start")
+
+    return ("in_progress",
+            f"items={len(items)} ok={sum(1 for i in items if i.get('status') == 'ok')} "
+            f"failed={sum(1 for i in items if i.get('status') == 'failed')} "
+            f"last={last.get('event', '-')}")
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("run_id")
+    ap.add_argument("--interval", type=int, default=120, help="Poll period in seconds (default 120)")
+    ap.add_argument("--quiet", type=int, default=1800, help="Seconds since last log event = stall (default 1800)")
+    ap.add_argument("--stale", type=int, default=1500, help="Seconds since start with no events = stall (default 1500)")
+    ap.add_argument("-k", "--k-fails", type=int, default=3, help="Consecutive planner fails = wedge (default 3)")
+    ap.add_argument("--once", action="store_true", help="Run one classification cycle and exit")
+    args = ap.parse_args()
+
+    transport_misses = 0
+    while True:
+        state = _fetch_state(args.run_id)
+        status, detail = _classify(state, k_fails=args.k_fails, quiet_s=args.quiet, stale_s=args.stale)
+        ts = _utc_now().strftime("%H:%MZ")
+        print(f"{ts} [{status:<12}] {detail}", file=sys.stderr)
+
+        if status == "done":
+            return 0
+        if status == "wedge":
+            return 12
+        if status == "stall":
+            return 13
+        if status == "orphan":
+            return 14
+        if status == "transport":
+            transport_misses += 1
+            if transport_misses >= 5:
+                print(f"{ts} [transport-fail ] 5 consecutive ssh failures", file=sys.stderr)
+                return 11
+        else:
+            transport_misses = 0
+
+        if args.once:
+            return 0
+        time.sleep(args.interval)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

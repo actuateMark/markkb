@@ -1,0 +1,513 @@
+#!/usr/bin/env python3
+"""kb-todo-research v2 — drives the LLM shop to draft stubs for broken-wikilink targets.
+
+Pipeline:
+  1. Run kb-todo-scan (or read its JSON from --queue path).
+  2. Pick a target (--target X) or the top N by ref_count (--top N, default 1).
+  3. For each target:
+     a. (NEW v2) For `class`-category targets, ripgrep ~/work/* for the symbol;
+        include matched code in the prompt as ground truth.
+     b. Build a prompt with the in-KB reference contexts + (optionally) code matches.
+     c. Call the model via OpenAI-compat endpoint.
+     d. (NEW v2) Optional --review pass: re-prompt a stronger model to flag
+        factual inversions vs the source contexts.
+     e. Strip markdown fences from the response.
+     f. Write to topics/<topic>/_research-inbox/<slug>.md.
+
+Topic detection: most-referencing source note's `topics/<X>/...` path component wins.
+Target slug: lowercase + hyphens (CamelCase → camel-case where helpful).
+
+Usage:
+  kb-todo-research --target BlurHandler
+  kb-todo-research --top 3
+  kb-todo-research --target BlurHandler --review        # second-pass review with 32B
+  kb-todo-research --target BlurHandler --no-code       # skip code search even for class-category
+  kb-todo-research --top 1 --model qwen2.5-coder:32b-instruct
+  kb-todo-research --dry-run --target BlurHandler
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import re
+import subprocess
+import sys
+import time
+import urllib.error
+import urllib.request
+from collections import Counter
+from pathlib import Path
+
+KB_ROOT = Path(os.getenv('KB_ROOT', str(Path.home() / 'Documents/worklog/knowledgebase')))
+OLLAMA_URL = os.getenv(
+    'LLM_SHOP_BASE',
+    'http://npu-server.tail9b2a4e.ts.net:8200',  # llama.cpp+SYCL on iGPU (was :11434 Ollama-CPU; broken Vulkan, see KB)
+).rstrip('/') + '/v1/chat/completions'
+DEFAULT_MODEL = os.getenv('LLM_SHOP_MODEL', 'qwen2.5-coder:14b-instruct-sycl')
+# 32B doesn't have a SYCL container yet (would need its own); --review falls through to 14B for now.
+REVIEW_MODEL = os.getenv('LLM_SHOP_REVIEW_MODEL', 'qwen2.5-coder:14b-instruct-sycl')
+
+# Where to search for class-named symbols in real code. Default is ~/work, which
+# is where Mark clones internal repos. Override via LLM_SHOP_CODE_ROOTS.
+CODE_ROOTS = os.getenv(
+    'LLM_SHOP_CODE_ROOTS',
+    str(Path.home() / 'work'),
+).split(':')
+CODE_ROOTS = [Path(p).expanduser() for p in CODE_ROOTS if p]
+# Avoid heavy / generated dirs
+CODE_GLOB_EXCLUDES = ['*/.venv/*', '*/node_modules/*', '*/dist/*', '*/build/*',
+                      '*/__pycache__/*', '*/.git/*', '*/target/*']
+
+SYSTEM_PROMPT = (
+    "You are drafting stub KB notes for an Obsidian knowledge base. "
+    "Output only the file content, starting with the YAML frontmatter. "
+    "No markdown fences. No preamble. No trailing commentary."
+)
+
+USER_TEMPLATE = """The anchor `{target}` is referenced from {n_refs} other notes in this knowledge base \
+but has no note of its own yet. Draft a stub note explaining what `{target}` is, based ONLY on the \
+reference contexts below{code_suffix}. If the contexts are insufficient to write a useful stub, say so explicitly \
+in an "Open questions" section rather than fabricating detail. **Do not invert directionality of technical \
+claims** — if a context says "below threshold X means BLANK", do not write "above X means BLANK." When uncertain, \
+quote the source verbatim.
+
+ANCHOR: `{target}`
+CATEGORY: {category}  ({category_explanation})
+TARGET TOPIC: {topic}
+
+REFERENCE CONTEXTS ({n_refs} occurrences across {n_files} files):
+
+{contexts}
+{code_block}
+REQUIRED OUTPUT FORMAT (no markdown fences — just the file content starting with the frontmatter delimiter):
+
+---
+title: "<descriptive human-readable title>"
+type: {note_type}
+topic: {topic}
+tags: [<2-5 short tags inferred from context>]
+created: {today}
+updated: {today}
+author: kb-bot
+status: research-draft
+---
+
+# <Title>
+
+<200-400 words explaining what `{target}` is. Use plain prose, not bullet dumps. Cite related notes inline \
+with [[wikilinks]] when the context shows them. Distinguish between what the contexts CLAIM and what they \
+HINT but don't prove.>
+
+## Open questions
+
+<Bullet list of things the contexts don't answer that a follow-up reader would need to clarify (read the \
+codebase, ask the team, etc.). At least one item even if the stub seems complete.>
+
+WRITE THE NOTE NOW.
+"""
+
+CATEGORY_EXPLANATION = {
+    'class': 'CamelCase identifier — likely a Python class or component in the codebase',
+    'concept': 'lowercase-slug — likely a concept, pattern, or named convention',
+    'synthesis': 'date-prefixed slug — likely an investigation / ADR / writeup',
+}
+NOTE_TYPE = {
+    'class': 'entity',
+    'concept': 'concept',
+    'synthesis': 'synthesis',
+}
+
+
+def detect_topic(refs: list[dict]) -> str:
+    """The topic with the most reference hits wins."""
+    topics = []
+    for r in refs:
+        # path looks like 'topics/<X>/notes/.../foo.md' — pick segment 1
+        parts = r['file'].split('/')
+        if len(parts) >= 2 and parts[0] == 'topics':
+            topics.append(parts[1])
+    if not topics:
+        return 'inbox'
+    return Counter(topics).most_common(1)[0][0]
+
+
+def slugify(target: str) -> str:
+    """CamelCase → camel-case. Lowercase. ASCII only."""
+    s = re.sub(r'(?<!^)(?=[A-Z])', '-', target)
+    s = s.lower().replace('_', '-')
+    s = re.sub(r'[^a-z0-9\-]', '', s)
+    s = re.sub(r'-+', '-', s).strip('-')
+    return s
+
+
+def topic_biased_roots(topic: str) -> list[Path]:
+    """Pick code roots that match the topic name. E.g. topic 'autopatrol' → autopatrol_*.
+
+    Heuristic: any sub-directory of CODE_ROOTS whose name contains the topic slug
+    (case-insensitive, with both `-` and `_` accepted as separators) is preferred.
+    Falls back to all roots if no match.
+    """
+    if not topic or topic == 'inbox':
+        return [p for p in CODE_ROOTS if p.exists()]
+    slug_variants = {topic.lower(), topic.lower().replace('-', '_'), topic.lower().replace('_', '-')}
+    matched: list[Path] = []
+    all_roots: list[Path] = []
+    for root in CODE_ROOTS:
+        if not root.exists():
+            continue
+        all_roots.append(root)
+        for child in root.iterdir():
+            if child.is_dir() and any(v in child.name.lower() for v in slug_variants):
+                matched.append(child)
+    return matched if matched else all_roots
+
+
+def search_codebase(symbol: str, topic: str = '', max_hits: int = 8) -> list[dict]:
+    """Find symbol definitions/usages in the configured code roots via grep.
+
+    If `topic` is given, biases search toward sub-directories whose name matches
+    the topic (e.g. topic='autopatrol' → ~/work/autopatrol_onboarder/, autopatrol-server/).
+    Falls back to all CODE_ROOTS if no topic match.
+
+    Uses standard `grep -rn` (rg is nicer but not always installed; grep is
+    everywhere). Returns a list of {file, line, text, is_def} dicts.
+    """
+    roots = topic_biased_roots(topic)
+    if not roots:
+        return []
+
+    # grep -E with extended regex; match definition lines as well as usages.
+    pattern = rf'(\b(class|def)\s+{re.escape(symbol)}\b|\b{re.escape(symbol)}\b)'
+
+    cmd = [
+        'grep', '-rnE',
+        '--include=*.py', '--include=*.ts', '--include=*.tsx',
+        '--include=*.js', '--include=*.go', '--include=*.rs',
+        '--exclude-dir=.git', '--exclude-dir=.venv', '--exclude-dir=node_modules',
+        '--exclude-dir=__pycache__', '--exclude-dir=dist', '--exclude-dir=build',
+        '--exclude-dir=target', '--exclude-dir=.pytest_cache',
+        pattern,
+    ] + [str(p) for p in roots]
+
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+    except subprocess.TimeoutExpired:
+        return []
+
+    # grep returns 1 on no matches; that's not an error here.
+    if result.returncode not in (0, 1):
+        return []
+
+    hits = []
+    def_re = re.compile(rf'\s*(class|def)\s+{re.escape(symbol)}\b')
+    for line in result.stdout.splitlines():
+        # grep -n format: file:line:text
+        parts = line.split(':', 2)
+        if len(parts) < 3:
+            continue
+        file_path, line_no_str, text = parts
+        try:
+            line_no = int(line_no_str)
+        except ValueError:
+            continue
+        hits.append({
+            'file': file_path,
+            'line': line_no,
+            'text': text.strip()[:280],
+            'is_def': bool(def_re.match(text)),
+        })
+
+    # Sort: definitions first, then file path. Cap to max_hits.
+    hits.sort(key=lambda h: (not h['is_def'], h['file'], h['line']))
+
+    # Dedup near-duplicate "usage" lines: keep at most 2 usages per file
+    seen_usages_per_file: dict[str, int] = {}
+    out: list[dict] = []
+    for h in hits:
+        if h['is_def']:
+            out.append(h)
+            continue
+        c = seen_usages_per_file.get(h['file'], 0)
+        if c < 2:
+            out.append(h)
+            seen_usages_per_file[h['file']] = c + 1
+        if len(out) >= max_hits:
+            break
+    return out[:max_hits]
+
+
+def format_code_hits(hits: list[dict]) -> str:
+    if not hits:
+        return ""
+    chunks = ["", "CODEBASE EVIDENCE (ripgrep over ~/work):", ""]
+    for h in hits:
+        marker = "[def]" if h['is_def'] else "[ref]"
+        chunks.append(f"--- {marker} {h['file']}:{h['line']}")
+        chunks.append(f"  {h['text']}")
+    chunks.append("")
+    return "\n".join(chunks)
+
+
+def format_contexts(refs: list[dict], max_refs: int = 12) -> str:
+    """Render the reference list compactly. Cap to max_refs to keep prompt under token budget."""
+    chunks = []
+    for r in refs[:max_refs]:
+        chunks.append(
+            f"--- {r['file']}:{r['line']}\n"
+            f"  before: {r['before'].strip()[:200]}\n"
+            f"  text:   {r['text'].strip()[:200]}\n"
+            f"  after:  {r['after'].strip()[:200]}\n"
+        )
+    if len(refs) > max_refs:
+        chunks.append(f"... ({len(refs) - max_refs} more references not shown)")
+    return "\n".join(chunks)
+
+
+def call_ollama(model: str, system: str, user: str, max_tokens: int = 1200) -> tuple[str, dict]:
+    """Returns (text, stats) where stats has elapsed_s + token counts when available."""
+    body = json.dumps({
+        "model": model,
+        "messages": [
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ],
+        "max_tokens": max_tokens,
+        "temperature": 0.2,
+    }).encode()
+    req = urllib.request.Request(
+        OLLAMA_URL,
+        data=body,
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": "Bearer ollama",
+        },
+    )
+    t0 = time.monotonic()
+    try:
+        with urllib.request.urlopen(req, timeout=600) as r:
+            payload = json.load(r)
+    except urllib.error.URLError as e:
+        raise SystemExit(f"FATAL: cannot reach LLM shop at {OLLAMA_URL}: {e}")
+    elapsed = time.monotonic() - t0
+    text = payload['choices'][0]['message']['content']
+    usage = payload.get('usage', {})
+    stats = {
+        'elapsed_s': round(elapsed, 1),
+        'prompt_tokens': usage.get('prompt_tokens'),
+        'completion_tokens': usage.get('completion_tokens'),
+    }
+    return text, stats
+
+
+def repair_frontmatter(text: str) -> str:
+    """Ensure frontmatter has both opening AND closing `---` delimiters.
+
+    Common LLM bug: emits `---\\n<yaml keys>\\n` then jumps straight to body
+    without the closing delimiter. Detect and patch — same logic as kb-intake.
+    """
+    lines = text.splitlines(keepends=True)
+    if not lines or lines[0].rstrip() != '---':
+        return text
+    for i in range(1, min(len(lines), 60)):
+        if lines[i].rstrip() == '---':
+            return text  # well-formed
+    yaml_re = re.compile(r'^[A-Za-z_][\w-]*\s*:')
+    list_re = re.compile(r'^\s+-\s')
+    last_yaml_line = 1
+    seen_blank = False
+    for i in range(1, len(lines)):
+        s = lines[i].rstrip()
+        if not s:
+            if seen_blank:
+                break
+            seen_blank = True
+            continue
+        if yaml_re.match(s) or list_re.match(s):
+            last_yaml_line = i
+            seen_blank = False
+            continue
+        break
+    insert_at = last_yaml_line + 1
+    closer = '---\n' if (insert_at >= len(lines) or not lines[insert_at].strip()) else '---\n\n'
+    lines.insert(insert_at, closer)
+    return ''.join(lines)
+
+
+def strip_fences(text: str) -> str:
+    """Models reflexively wrap output in markdown fences. Strip them."""
+    text = text.strip()
+    if text.startswith('```'):
+        # remove first line (` ``` ` or ` ```markdown `)
+        text = text.split('\n', 1)[1] if '\n' in text else ''
+    if text.endswith('```'):
+        text = text.rsplit('```', 1)[0]
+    return text.strip() + '\n'
+
+
+def write_draft(target: str, topic: str, body: str, dry_run: bool) -> Path:
+    inbox = KB_ROOT / 'topics' / topic / '_research-inbox'
+    out_path = inbox / f'{slugify(target)}.md'
+    if dry_run:
+        print(f"[dry-run] would write to: {out_path}")
+        print("---")
+        print(body)
+        return out_path
+    inbox.mkdir(parents=True, exist_ok=True)
+    if out_path.exists():
+        # don't clobber; emit a versioned copy
+        n = 2
+        while True:
+            alt = inbox / f'{slugify(target)}-v{n}.md'
+            if not alt.exists():
+                out_path = alt
+                break
+            n += 1
+    out_path.write_text(body, encoding='utf-8')
+    return out_path
+
+
+def load_queue(queue_path: str | None) -> list[dict]:
+    if queue_path and queue_path != '-':
+        return json.loads(Path(queue_path).read_text())
+    # Default: run kb-todo-scan
+    p = subprocess.run([str(Path.home() / 'bin/kb-todo-scan')], capture_output=True, text=True, check=True)
+    return json.loads(p.stdout)
+
+
+REVIEW_PROMPT = """You are reviewing a draft KB stub note for factual accuracy against its source contexts.
+
+The draft was generated by another model from the contexts below. Your job: identify any \
+factual claims in the DRAFT that are NOT supported by the CONTEXTS, OR that INVERT directionality \
+("below threshold X means Y" misread as "above X means Y"), OR that overreach beyond what the \
+contexts state. Then output a CORRECTED VERSION OF THE FULL DRAFT with the issues fixed. Keep \
+the original frontmatter exactly. Keep the original section structure. Edit only the prose claims \
+that are wrong.
+
+If the draft is already accurate, output it unchanged.
+
+Output ONLY the corrected note content, starting with the frontmatter delimiter. No markdown \
+fences, no preamble, no review-meta-commentary.
+
+ORIGINAL CONTEXTS:
+
+{contexts}
+{code_block}
+DRAFT TO REVIEW:
+
+{draft}
+
+OUTPUT THE CORRECTED NOTE NOW.
+"""
+
+
+def review_draft(draft: str, contexts: str, code_block: str, model: str) -> tuple[str, dict]:
+    """Second-pass review by a stronger model. Returns (corrected_text, stats)."""
+    prompt = REVIEW_PROMPT.format(contexts=contexts, code_block=code_block, draft=draft)
+    raw, stats = call_ollama(model, SYSTEM_PROMPT, prompt, max_tokens=1800)
+    return strip_fences(raw), stats
+
+
+def research_one(item: dict, model: str, dry_run: bool, do_review: bool, do_code: bool, review_model: str) -> dict:
+    target = item['target']
+    refs = item['references']
+    n_refs = len(refs)
+    n_files = len({r['file'] for r in refs})
+    topic = detect_topic(refs)
+    today = time.strftime('%Y-%m-%d')
+
+    # Code search for class-named targets — major quality boost since the in-KB
+    # contexts are usually summarized prose, not source-of-truth code.
+    code_hits = []
+    if do_code and item['category'] == 'class':
+        code_hits = search_codebase(target, topic=topic)
+        if code_hits:
+            biased = topic_biased_roots(topic)
+            biased_note = f" [biased: {','.join(p.name for p in biased[:3])}]" if biased and len(biased) <= 5 else ""
+            print(f"  code-search hits: {len(code_hits)} ({sum(1 for h in code_hits if h['is_def'])} defs){biased_note}", file=sys.stderr)
+    code_block = format_code_hits(code_hits)
+    code_suffix = " AND the codebase evidence below" if code_hits else ""
+    contexts_str = format_contexts(refs)
+
+    user_prompt = USER_TEMPLATE.format(
+        target=target,
+        n_refs=n_refs,
+        n_files=n_files,
+        category=item['category'],
+        category_explanation=CATEGORY_EXPLANATION[item['category']],
+        note_type=NOTE_TYPE[item['category']],
+        topic=topic,
+        today=today,
+        contexts=contexts_str,
+        code_block=code_block,
+        code_suffix=code_suffix,
+    )
+
+    print(f"\n=== researching: {target} ({item['category']}, {n_refs} refs in {n_files} files, topic={topic}) ===", file=sys.stderr)
+    raw, draft_stats = call_ollama(model, SYSTEM_PROMPT, user_prompt)
+    body = repair_frontmatter(strip_fences(raw))
+    review_stats = None
+
+    if do_review:
+        print(f"  review pass with {review_model}...", file=sys.stderr)
+        body, review_stats = review_draft(body, contexts_str, code_block, review_model)
+        body = repair_frontmatter(body)
+
+    out_path = write_draft(target, topic, body, dry_run)
+
+    return {
+        'target': target,
+        'topic': topic,
+        'category': item['category'],
+        'ref_count': n_refs,
+        'code_hits': len(code_hits),
+        'output_path': str(out_path),
+        'draft_stats': draft_stats,
+        'review_stats': review_stats,
+        'body_chars': len(body),
+    }
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument('--target', help='Specific target to research (skips top selection)')
+    ap.add_argument('--top', type=int, default=1, help='Process top N by ref_count (default 1)')
+    ap.add_argument('--queue', help='Path to a kb-todo-scan JSON file (default: run scanner)')
+    ap.add_argument('--model', default=DEFAULT_MODEL, help=f'Ollama model tag (default {DEFAULT_MODEL})')
+    ap.add_argument('--review', action='store_true',
+                    help=f'Second-pass review with {REVIEW_MODEL} (slower, fewer factual inversions)')
+    ap.add_argument('--review-model', default=REVIEW_MODEL,
+                    help=f'Model for the review pass (default {REVIEW_MODEL})')
+    ap.add_argument('--no-code', action='store_true',
+                    help='Skip code-search even for class-category targets')
+    ap.add_argument('--dry-run', action='store_true', help="Print, don't write")
+    args = ap.parse_args()
+
+    queue = load_queue(args.queue)
+    if args.target:
+        queue = [q for q in queue if q['target'] == args.target]
+        if not queue:
+            print(f"target not found in scanner output: {args.target}", file=sys.stderr)
+            sys.exit(1)
+    else:
+        queue = queue[:args.top]
+
+    summary = []
+    for item in queue:
+        try:
+            summary.append(research_one(
+                item,
+                model=args.model,
+                dry_run=args.dry_run,
+                do_review=args.review,
+                do_code=not args.no_code,
+                review_model=args.review_model,
+            ))
+        except Exception as e:
+            print(f"ERROR for {item['target']}: {e}", file=sys.stderr)
+
+    print(json.dumps(summary, indent=2), file=sys.stderr)
+
+
+if __name__ == '__main__':
+    main()
