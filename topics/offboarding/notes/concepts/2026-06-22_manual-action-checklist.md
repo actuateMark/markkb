@@ -79,7 +79,7 @@ Goal: make the firebat + npu-server nodes **tag-owned** (`tag:server`) so they s
 
 ## §E — KB / config org mirror
 - [x] **KB → `aegissystems/actuate-kb` (private) — DONE 2026-06-23.** Pushed via actuateMark (org allows member repo creation; didn't need the §A decision after all). Scrubbed first: gitleaks-clean + a colleague's personal IP purged from all history + incident-note naming neutralized. All 3 remotes (org, firebat, personal) carry the cleaned history.
-- [ ] **claude-config → org** — still to mirror (gitleaks-clean, verified). Push to `aegissystems/claude-config` the same way.
+- [x] **claude-config → `aegissystems/claude-config` (private) — DONE 2026-06-24.** 64 files (skills/agents/hooks/rules; no credentials/transcripts tracked); gitleaks-clean; 0 name-blame/IP/profanity. Last personal-account repo mirrored.
 - [ ] Tell the team the KB now lives at `aegissystems/actuate-kb` (make it the canonical remote).
 - [x] **firebat KB sync → git-pull from `aegissystems/actuate-kb` — DONE 2026-06-24** — firebat currently updates the vault via **Obsidian Sync (Mark's account)**, which freezes when that account ends. Replace with a `git pull` timer (pull-only, org canonical). At-the-box change; pairs with WS-A. Design + steps: [[2026-06-24_firebat-kb-git-sync-task]].
 
