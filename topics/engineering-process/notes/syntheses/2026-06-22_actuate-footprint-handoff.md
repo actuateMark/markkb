@@ -49,6 +49,7 @@ Baseline captured pre-re-home: `~/identity-baseline-pre-rehome.json` (0 FAIL / 3
 - **Remotes:** ✅ **`aegissystems/actuate-kb`** (private, org-owned — the durable team home, pushed 2026-06-23) + firebat bare repo + `actuateMark/markkb` (personal). Scrubbed before mirroring (gitleaks-clean; a colleague IP + incident naming purged). gitleaks pre-commit hook enforced.
 - **How to query:** Obsidian app + the `obsidian` CLI (backlinks/tags/search/orphans). Health probe: `~/.local/bin/obsidian vault`.
 - **Self-host:** the repo bundles **`_tooling/`** (10 kb-* skills, 4 agents, ~19 automation scripts, the [[obsidian-cli|obsidian CLI]], shared lib) + **`_tooling/SETUP.md`** — clone `aegissystems/actuate-kb` and stand up your own KB instance (content + tooling).
+- **firebat auto-syncs:** as of 2026-06-24 firebat git-pulls the KB from the org every 30 min (`kb-org-sync` timer) and pushes its relink enrichment back; **Obsidian Sync (Mark's account) is disabled** — no personal-account dependency. See [[2026-06-24_firebat-kb-git-sync-task]].
 - **High-value entry points:** each workstream below links its load-bearing notes.
 
 ## 4. Workstreams — status & where each lives
@@ -75,7 +76,7 @@ Baseline captured pre-re-home: `~/identity-baseline-pre-rehome.json` (0 FAIL / 3
 
 ## 6. The automation layer (Claude Code config)
 
-- **Repo:** `actuateMark/claude-config` (personal; WS-B mirror to org pending). Holds skills (`~/.claude/skills/`), subagents (`~/.claude/agents/`), hooks, global rules (`CLAUDE.md`).
+- **Repo:** ✅ **`aegissystems/claude-config`** (org-mirrored 2026-06-24) + personal `actuateMark/claude-config`. Holds skills (`~/.claude/skills/`), subagents (`~/.claude/agents/`), hooks, global rules (`CLAUDE.md`).
 - **Daily rituals:** `/daily-scope` (morning), `/daily-wrap` (EOD), `/dashboard-check`, `/repo-scan`, the autopatrol checks. The morning automation depends on the firebat cron cache (`morning-prep.sh`) — see firebat runbook.
 - **Subagent catalog:** [[agents-catalog]].
 
