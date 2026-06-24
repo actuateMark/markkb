@@ -108,7 +108,7 @@ Both pullers are wrapped in `try/except ImportError` blocks in `actuate_pullers/
 - [[hardware-accelerated-codecs]] -- where the `nvcodec` / `vaapi` / `vtdec` plugins fit
 - [[rtsp-deep-dive]] -- the protocol `rtspsrc` implements
 - [[aws-kvs-entity]] -- consumer of the GStreamer [[kvs-components|KVS]] path
-- Reading list: [[reading-list]] -- MediaMTX, GO2RTC, Live555, Janus, gst-[[rtsp-deep-dive|rtsp]]-server are the GStreamer-adjacent tools worth knowing
+- Reading list: [[knowledgebase/topics/billing/reading-list]] -- MediaMTX, GO2RTC, Live555, Janus, gst-[[rtsp-deep-dive|rtsp]]-server are the GStreamer-adjacent tools worth knowing
 
 ## Cross-topic
 

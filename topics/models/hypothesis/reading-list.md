@@ -28,7 +28,7 @@ Canonical sources for the Hypothesis library, with KB notes mirroring the most-r
 
 | Note | What it covers |
 |---|---|
-| [[_summary]] | Topic overview + quick reference |
+| [[knowledgebase/topics/models/hypothesis/_summary]] | Topic overview + quick reference |
 | [[strategies]] | Primitive strategy reference |
 | [[given-and-settings]] | `@given` + `settings()` options |
 | [[composite-strategies]] | `@composite`, `draw()`, when to use it |

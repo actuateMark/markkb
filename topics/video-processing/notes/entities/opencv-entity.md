@@ -63,7 +63,7 @@ OpenCV is everywhere in actuate-libraries -- the historical default decoder, enc
 - `actuate-libraries/actuate-pullers/src/actuate_pullers/webcam/webcam_puller.py:13-60+` -- `cv2.VideoCapture(0)` dev path.
 
 **Encode and image work (sticking with OpenCV):**
-- `actuate-libraries/actuate-pipeline/src/actuate_pipeline/steps/pre_processors/cv2encode_step.py:9-24` -- `cv2.imencode(".jpg", frame)` JPEG encode fallback when [[reading-list#niche|TurboJPEG]] isn't available.
+- `actuate-libraries/actuate-pipeline/src/actuate_pipeline/steps/pre_processors/cv2encode_step.py:9-24` -- `cv2.imencode(".jpg", frame)` JPEG encode fallback when [[knowledgebase/topics/billing/reading-list#niche|TurboJPEG]] isn't available.
 - `actuate-libraries/actuate-pullers/src/actuate_pullers/shared/base_puller.py:267-286, 301-307` -- `cv2.imencode(".jpg")` for camera-status preview frames.
 - `actuate-libraries/actuate-image-cache/src/actuate_image_cache/_decode.py:15-29` -- JPEG-bytes → numpy: TurboJPEG-then-`cv2.imdecode` fallback chain. The `cv2.imdecode` fallback exists *because* OpenCV is more tolerant of malformed JPEGs than TurboJPEG.
 - `actuate-libraries/actuate-pullers/src/actuate_pullers/url/av_url_puller.py:139-171` -- inside the [[pyav-entity|PyAV]] puller, `cv2.rotate` is used for 90/180/270 frame rotation derived from MP4 `displaymatrix` side-data. Hybrid: [[pyav-entity|PyAV]] for decode + side-data extraction, OpenCV for the geometric op.

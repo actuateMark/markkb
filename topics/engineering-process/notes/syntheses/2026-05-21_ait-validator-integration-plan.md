@@ -12,11 +12,11 @@ incoming:
   - topics/engineering-process/notes/syntheses/2026-05-22_ait-phase-12-sweep.md
   - topics/engineering-process/notes/syntheses/2026-05-27_zack-coordination-brain-in-jar.md
   - topics/engineering-process/notes/syntheses/2026-05-29_ait-watch-manager-integration.md
-  - topics/hypothesis/notes/syntheses/2026-05-21_hypothesis-in-actuate.md
+  - topics/models/hypothesis/notes/syntheses/2026-05-21_hypothesis-in-actuate.md
   - topics/personal-notes/notes/daily/2026-05-21.md
   - topics/personal-notes/notes/daily/2026-05-27.md
   - topics/personal-notes/notes/syntheses/2026-05-27_brain-in-jar-handoff.md
-incoming_updated: 2026-05-30
+incoming_updated: 2026-06-24
 ---
 
 # AIT ↔ actuate-validator integration plan

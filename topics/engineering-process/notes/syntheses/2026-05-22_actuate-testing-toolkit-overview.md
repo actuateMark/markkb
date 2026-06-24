@@ -261,7 +261,7 @@ To anchor the scope:
 ### Tool-level entities
 - [[actuate-integration-tools]] — the AIT toolkit
 - [[actuate-validator]] — Zack's golden-set framework
-- [[hypothesis/_summary|Hypothesis (property-based testing)]] — property-based testing reference
+- [[knowledgebase/topics/models/hypothesis/_summary|Hypothesis (property-based testing)]] — property-based testing reference
 
 ### Master roadmap syntheses
 - [[2026-05-19_ait-extensions-spec]] — Phases 1-3 (inspect arc)

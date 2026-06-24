@@ -76,7 +76,7 @@ JPEG / still-image sibling
 
 Our world is overwhelmingly [[h264-deep-dive|H.264]], with a long tail of [[h265-hevc-deep-dive|H.265]] (newer cameras, some Avigilon flows), [[mjpeg-and-still-image-formats|MJPEG]] (legacy or low-end cameras and snapshot endpoints), and a near-zero presence of [[av1-vp9-future|VP9]]/[[av1-vp9-future|AV1]]. Encode is exclusively to JPEG for frame storage and downstream consumption. Decode happens in three primary places: [[pyav-entity|PyAV]] inside `actuate-pullers` for the URL/[[rtsp-deep-dive|RTSP]] path, [[gstreamer-entity|GStreamer]] for the [[kvs-components|KVS]] path, and AutoPatrol's bespoke ISO-BMFF parser for the WebSocket path.
 
-Reading-list pointers: see [[reading-list]] for the underlying encoder/decoder libraries (x264, x265, SVT-AV1, dav1d, aom-av1) that [[ffmpeg-entity|ffmpeg]]/[[pyav-entity|PyAV]]/[[gstreamer-entity|GStreamer]] ultimately wrap.
+Reading-list pointers: see [[knowledgebase/topics/billing/reading-list]] for the underlying encoder/decoder libraries (x264, x265, SVT-AV1, dav1d, aom-av1) that [[ffmpeg-entity|ffmpeg]]/[[pyav-entity|PyAV]]/[[gstreamer-entity|GStreamer]] ultimately wrap.
 
 ## Actuate touchpoints
 

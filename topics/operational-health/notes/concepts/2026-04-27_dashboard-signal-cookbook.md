@@ -20,8 +20,9 @@ incoming:
   - topics/personal-laptop/notes/concepts/2026-04-29_repos-dashboard-followups.md
   - topics/personal-laptop/notes/concepts/2026-05-07_handoff-dashboard-threshold-calibration.md
   - topics/personal-laptop/notes/syntheses/2026-04-27_minipc-tooling-improvements.md
+  - topics/personal-notes/notes/concepts/2026-06-22_dashboard-signals-catalog.md
   - topics/personal-notes/notes/daily/2026-04-27.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-06-24
 ---
 
 # Dashboard signal cookbook

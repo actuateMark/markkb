@@ -7,16 +7,16 @@ created: 2026-05-21
 updated: 2026-05-21
 author: mark
 incoming:
-  - topics/hypothesis/_summary.md
-  - topics/hypothesis/notes/concepts/given-and-settings.md
-  - topics/hypothesis/notes/concepts/healthchecks.md
-  - topics/hypothesis/notes/concepts/shrinking.md
-  - topics/hypothesis/notes/concepts/strategies.md
-  - topics/hypothesis/notes/syntheses/2026-05-21_hypothesis-in-actuate.md
-  - topics/hypothesis/reading-list.md
-  - topics/hypothesis/sources/hypothesis-quickstart.md
-  - topics/hypothesis/sources/hypothesis-strategies-reference.md
-incoming_updated: 2026-05-27
+  - topics/models/hypothesis/_summary.md
+  - topics/models/hypothesis/notes/concepts/given-and-settings.md
+  - topics/models/hypothesis/notes/concepts/healthchecks.md
+  - topics/models/hypothesis/notes/concepts/shrinking.md
+  - topics/models/hypothesis/notes/concepts/strategies.md
+  - topics/models/hypothesis/notes/syntheses/2026-05-21_hypothesis-in-actuate.md
+  - topics/models/hypothesis/reading-list.md
+  - topics/models/hypothesis/sources/hypothesis-quickstart.md
+  - topics/models/hypothesis/sources/hypothesis-strategies-reference.md
+incoming_updated: 2026-06-24
 ---
 
 # Composite strategies (`@st.composite`)
@@ -141,5 +141,5 @@ This is the most common pattern in our codebase — see `actuate-pipeline-object
 - [[strategies]] — primitive [[strategies]] that `draw()` consumes
 - [[given-and-settings]] — the `@given` decorator that consumes composite [[strategies]]
 - [[shrinking]] — composite [[strategies]] still shrink; Hypothesis tracks which `draw()` call produced which value
-- [[../syntheses/2026-05-21_hypothesis-in-actuate]] — how we layer composites in Actuate code
+- [[2026-05-21_hypothesis-in-actuate]] — how we layer composites in Actuate code
 - [[../sources/hypothesis-custom-strategies]] — upstream tutorial

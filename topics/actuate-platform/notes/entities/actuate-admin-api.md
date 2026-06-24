@@ -23,13 +23,13 @@ incoming:
   - topics/autopatrol/notes/entities/autopatrol-onboarder.md
   - topics/autopatrol/notes/syntheses/2026-04-24_stale-schedule-cleanup-aar.md
   - topics/camera-health-monitoring/notes/entities/health-report.md
+  - topics/camera-health-monitoring/notes/syntheses/2026-06-23_daily-report-pipeline-audit-and-deploy-fixes.md
   - topics/external-api/notes/entities/actuate-external-api-repo.md
   - topics/integrations/ajax/_summary.md
   - topics/integrations/ajax/notes/entities/ajax-components.md
   - topics/integrations/evalink/evalink-integration/notes/concepts/alarm-push-pattern.md
   - topics/local-test-stack/notes/syntheses/2026-05-20_local-ap-e2e-stack-installed.md
-  - topics/personal-notes/notes/daily/2026-04-24.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-24
 ---
 
 # Actuate Admin API — endpoint catalog

@@ -105,5 +105,5 @@ We may eventually evaluate WebP or AVIF for storage cost reduction, but the deco
 - Encode-path selection per customer — `actuate-libraries/actuate-pipeline/src/actuate_pipeline/core/pipeline_factory.py:102-126`
 - JPEG-bytes → numpy decode — `actuate-libraries/actuate-image-cache/src/actuate_image_cache/_decode.py:15-29`
 - S3 key layout for stored JPEG frames — `actuate-libraries/actuate-frames/src/actuate_frames/save_frame_meta.py:43`
-- Cross-topic: [[actuate-clip-generation-flow]], [[actuate-frame-ingest-decode-paths]], [[ai-models/_summary]], [[reading-list]] for libjpeg-turbo / mozjpeg alternatives.
+- Cross-topic: [[actuate-clip-generation-flow]], [[actuate-frame-ingest-decode-paths]], [[ai-models/_summary]], [[knowledgebase/topics/billing/reading-list]] for libjpeg-turbo / mozjpeg alternatives.
 - Per-format overviews: [[codecs-overview]], [[containers-overview]]

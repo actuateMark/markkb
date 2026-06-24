@@ -19,7 +19,7 @@ Consolidates Mark's departure handoff (last day **2026-06-26**): transferring hi
 - 🚨 [[2026-06-22_dead-mans-checklist]] — if something breaks after Friday: symptom → cause → fix.
 
 ## Successor handoffs
-- [[2026-06-23_watchman-fleet-handoff-paolo-mike]] — Watchman + fleet-arch (ENG-300/ENG-383) split to **Paolo** (deploy/connector) + **Mike** (fleet/k8s).
+- [[2026-06-23_watchman-fleet-handoff-paolo-mike]] — [[watchman-repo|Watchman]] + fleet-arch (ENG-300/ENG-383) split to **Paolo** (deploy/connector) + **Mike** (fleet/k8s).
 - [[2026-06-23_firebat-dashboard-ownership-handoff]] — the firebat automation + operational dashboard (§9/§12) ownership charter. **⚠ no owner named yet.**
 - [[2026-06-23_autopatrol-handoff]] — cleanup Lambda (§3) + arm-miss race (§14) + alert-flow (§2) → **Brad** (cleanup-Lambda internals are Mark's; reading list is load-bearing).
 - [[2026-06-23_local-repo-audit]] — CLAUDE.md / KB-port status across all 25 local repos; HIGH+MED repos being drafted as branch+PR per repo.

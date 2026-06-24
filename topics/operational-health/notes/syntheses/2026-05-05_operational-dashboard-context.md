@@ -7,9 +7,12 @@ created: 2026-05-05
 updated: 2026-05-05
 author: kb-bot
 incoming:
+  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
+  - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
   - topics/personal-laptop/notes/syntheses/2026-05-05_claude-context-optimization.md
+  - topics/personal-notes/notes/concepts/2026-06-22_dashboard-signals-catalog.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-06
+incoming_updated: 2026-06-24
 ---
 
 Factored out of mark-todos §9 on 2026-05-05 to keep the live workstream tracker lean. See [[mark-todos]] §9 for active checkboxes.

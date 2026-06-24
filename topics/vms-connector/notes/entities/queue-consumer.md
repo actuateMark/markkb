@@ -16,8 +16,8 @@ incoming:
   - topics/billing/notes/entities/billing-events-catalog.md
   - topics/billing/reading-list.md
   - topics/integrations/evalink/notes/entities/evalink-components.md
-  - topics/vms-connector/notes/concepts/sliding-window-mechanics.md
-incoming_updated: 2026-05-27
+  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
+incoming_updated: 2026-06-24
 ---
 
 ## Overview

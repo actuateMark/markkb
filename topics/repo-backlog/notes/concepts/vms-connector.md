@@ -4,17 +4,17 @@ type: concept
 topic: repo-backlog
 tags: [backlog, github, vms-connector]
 repo: aegissystems/vms-connector
-created: 2026-06-23
-updated: 2026-06-23
+created: 2026-06-24
+updated: 2026-06-24
 author: kb-bot
-issue_count_open: 110
+issue_count_open: 111
 issue_count_high_impact: 10
 issue_count_lhf: 10
 issue_count_stale: 0
 high_impact_issue_numbers: [1656, 1754, 1703, 1691, 1658, 1629, 1622, 1559, 1549, 1483]
 lhf_issue_numbers: [1502, 1695, 1596, 1594, 1552, 1549, 1544, 1529, 1528, 1523]
 stale_issue_numbers: []
-full_issue_numbers: [1754, 1703, 1701, 1695, 1694, 1693, 1691, 1690, 1673, 1672, 1658, 1656, 1652, 1651, 1650, 1649, 1648, 1647, 1646, 1645, 1642, 1640, 1636, 1635, 1630, 1629, 1628, 1626, 1625, 1623, 1622, 1618, 1616, 1606, 1600, 1599, 1598, 1597, 1596, 1594, 1591, 1589, 1584, 1582, 1572, 1571, 1570, 1565, 1563, 1560, 1559, 1558, 1557, 1556, 1555, 1554, 1553, 1552, 1549, 1544, 1531, 1529, 1528, 1525, 1524, 1523, 1522, 1520, 1518, 1517, 1516, 1515, 1514, 1511, 1509, 1508, 1503, 1502, 1500, 1499, 1497, 1496, 1495, 1492, 1491, 1490, 1489, 1488, 1487, 1486, 1485, 1484, 1483, 1481, 1480, 1479, 1478, 1477, 1476, 1475, 1474, 1472, 1471, 1470, 1469, 1468, 1467, 1466, 1465, 1464]
+full_issue_numbers: [1766, 1754, 1703, 1701, 1695, 1694, 1693, 1691, 1690, 1673, 1672, 1658, 1656, 1652, 1651, 1650, 1649, 1648, 1647, 1646, 1645, 1642, 1640, 1636, 1635, 1630, 1629, 1628, 1626, 1625, 1623, 1622, 1618, 1616, 1606, 1600, 1599, 1598, 1597, 1596, 1594, 1591, 1589, 1584, 1582, 1572, 1571, 1570, 1565, 1563, 1560, 1559, 1558, 1557, 1556, 1555, 1554, 1553, 1552, 1549, 1544, 1531, 1529, 1528, 1525, 1524, 1523, 1522, 1520, 1518, 1517, 1516, 1515, 1514, 1511, 1509, 1508, 1503, 1502, 1500, 1499, 1497, 1496, 1495, 1492, 1491, 1490, 1489, 1488, 1487, 1486, 1485, 1484, 1483, 1481, 1480, 1479, 1478, 1477, 1476, 1475, 1474, 1472, 1471, 1470, 1469, 1468, 1467, 1466, 1465, 1464]
 ---
 
 # vms-connector backlog
@@ -53,15 +53,15 @@ Groups of related open issues — when picking one up, consider whether adjacent
 vms-connector currently has **zero** issues >180d idle — active repo. If stale accumulates in future scans, walk `git log --since=...` for the relevant subsystem before commenting, then either bump with new context or close with `addressed by <commit>`. **Never bulk-close.**
 
 <!-- BEGIN-AUTO-REFRESH repo-scan -->
-_Last refreshed: **2026-06-23** by [[skill-repo-scan]] — 110 open issues._
+_Last refreshed: **2026-06-24** by [[skill-repo-scan]] — 111 open issues._
 
 ### 🔥 High-impact (top 10 by score)
 
 | # | Title | Labels | Assignee | Score | Idle |
 |--:|-------|--------|----------|------:|------|
 | 1656 | [AP/VCH: Immix rejects CNCTNFAIL alerts with HTTP 400 — streamId null when strea…](https://github.com/aegissystems/vms-connector/issues/1656) | `bug` | — | 9 | 2mo |
-| 1754 | [WindowIdsV2 retention: enable TTL (free, ~Aug) + decide on 7-year legacy cleanup](https://github.com/aegissystems/vms-connector/issues/1754) | — | — | 3 | 6d |
-| 1703 | [Bump FFmpeg 7.1.3 → 8.1.1, PyAV 13.1.0 → 17.0.1, OpenCV 4.11 → 4.13](https://github.com/aegissystems/vms-connector/issues/1703) | — | — | 3 | 21d |
+| 1754 | [WindowIdsV2 retention: enable TTL (free, ~Aug) + decide on 7-year legacy cleanup](https://github.com/aegissystems/vms-connector/issues/1754) | — | — | 3 | 7d |
+| 1703 | [Bump FFmpeg 7.1.3 → 8.1.1, PyAV 13.1.0 → 17.0.1, OpenCV 4.11 → 4.13](https://github.com/aegissystems/vms-connector/issues/1703) | — | — | 3 | 22d |
 | 1691 | [Docker/library optimization: Graviton 4 tuning, OpenCV/FFmpeg/PyAV bumps, GStre…](https://github.com/aegissystems/vms-connector/issues/1691) | — | — | 3 | 1mo |
 | 1658 | [AP/VCH: WebSocket frame retrieval fails fleet-wide — dev.powerplus.com serves i…](https://github.com/aegissystems/vms-connector/issues/1658) | `bug` | actuateMark | 3 | 2mo |
 | 1629 | [Eliminate 300s frame retention buffer for deferred tag-zone alerts](https://github.com/aegissystems/vms-connector/issues/1629) | — | — | 3 | 2mo |
@@ -101,12 +101,13 @@ _(none)_
 
 ### 🗃️ Full open inventory
 
-<details><summary>All 110 open issues (click to expand — sorted newest first)</summary>
+<details><summary>All 111 open issues (click to expand — sorted newest first)</summary>
 
 | # | Title | Labels | Assignee | Age | Idle |
 |--:|-------|--------|----------|-----|------|
-| 1754 | [WindowIdsV2 retention: enable TTL (free, ~Aug) + decide on 7-year legacy cleanup](https://github.com/aegissystems/vms-connector/issues/1754) | — | — | 6d | 6d |
-| 1703 | [Bump FFmpeg 7.1.3 → 8.1.1, PyAV 13.1.0 → 17.0.1, OpenCV 4.11 → 4.13](https://github.com/aegissystems/vms-connector/issues/1703) | — | — | 1mo | 21d |
+| 1766 | [Convert all of this into an envera observer](https://github.com/aegissystems/vms-connector/issues/1766) | — | — | today | today |
+| 1754 | [WindowIdsV2 retention: enable TTL (free, ~Aug) + decide on 7-year legacy cleanup](https://github.com/aegissystems/vms-connector/issues/1754) | — | — | 7d | 7d |
+| 1703 | [Bump FFmpeg 7.1.3 → 8.1.1, PyAV 13.1.0 → 17.0.1, OpenCV 4.11 → 4.13](https://github.com/aegissystems/vms-connector/issues/1703) | — | — | 1mo | 22d |
 | 1701 | [Honor camera_duplicates.json billing_id as canonical camera_id on event emit](https://github.com/aegissystems/vms-connector/issues/1701) | — | — | 1mo | 1mo |
 | 1695 | [Redirect Logs to S3](https://github.com/aegissystems/vms-connector/issues/1695) | — | — | 1mo | 1mo |
 | 1694 | [Make _log_memory_breakdown interval env-var configurable (currently 100s hard-c…](https://github.com/aegissystems/vms-connector/issues/1694) | — | actuateMark | 1mo | 1mo |
@@ -223,5 +224,5 @@ _(none)_
 ## Related
 
 - [[repo-backlog/_summary|repo-backlog topic]]
-- Latest scan: [[2026-06-23_scan]]
+- Latest scan: [[2026-06-24_scan]]
 - GitHub: [aegissystems/vms-connector/issues](https://github.com/aegissystems/vms-connector/issues)

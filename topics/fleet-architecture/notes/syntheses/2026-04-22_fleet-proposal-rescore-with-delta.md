@@ -15,9 +15,9 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-05-05_fleet-architecture-workstream-context.md
   - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
   - topics/fleet-architecture/notes/syntheses/2026-06-02_watchman-phase0-fleet-fit.md
+  - topics/offboarding/notes/concepts/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
-  - topics/personal-notes/notes/concepts/2026-05-11_pre-impl-research-priority-reorder.md
-incoming_updated: 2026-06-19
+incoming_updated: 2026-06-24
 ---
 
 # Fleet Proposal Re-Score with 2026-04-22 Delta + Real CE Data

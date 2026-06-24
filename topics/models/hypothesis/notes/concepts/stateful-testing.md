@@ -8,11 +8,11 @@ updated: 2026-05-21
 author: mark
 incoming:
   - topics/engineering-process/notes/syntheses/2026-05-29_ait-watch-manager-integration.md
-  - topics/hypothesis/_summary.md
-  - topics/hypothesis/notes/concepts/given-and-settings.md
-  - topics/hypothesis/notes/syntheses/2026-05-21_hypothesis-in-actuate.md
-  - topics/hypothesis/reading-list.md
-incoming_updated: 2026-05-30
+  - topics/models/hypothesis/_summary.md
+  - topics/models/hypothesis/notes/concepts/given-and-settings.md
+  - topics/models/hypothesis/notes/syntheses/2026-05-21_hypothesis-in-actuate.md
+  - topics/models/hypothesis/reading-list.md
+incoming_updated: 2026-06-24
 ---
 
 # Stateful testing with `RuleBasedStateMachine`

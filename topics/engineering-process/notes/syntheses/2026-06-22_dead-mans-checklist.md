@@ -6,6 +6,13 @@ tags: [offboarding, runbook, break-glass, firebat, troubleshooting, dead-mans-ch
 created: 2026-06-22
 updated: 2026-06-22
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
+  - topics/engineering-process/notes/syntheses/2026-06-22_offboarding-plan.md
+  - topics/offboarding/_summary.md
+  - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
+  - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
+incoming_updated: 2026-06-24
 ---
 
 # Dead-man's checklist

@@ -90,7 +90,7 @@ def test_pairs_are_ordered(pair):
 
 ## Cross-references
 
-- [[../notes/concepts/strategies]]
-- [[../notes/concepts/given-and-settings]]
-- [[../notes/concepts/composite-strategies]]
-- [[../notes/concepts/shrinking]]
+- [[strategies]]
+- [[given-and-settings]]
+- [[composite-strategies]]
+- [[shrinking]]

@@ -9,7 +9,7 @@ author: mark
 
 # Hypothesis strategies reference (source notes)
 
-Source-note distillation of [https://hypothesis.readthedocs.io/en/latest/reference/strategies.html](https://hypothesis.readthedocs.io/en/latest/reference/strategies.html), captured 2026-05-21. See [[../notes/concepts/strategies]] for our internal cheat sheet.
+Source-note distillation of [https://hypothesis.readthedocs.io/en/latest/reference/strategies.html](https://hypothesis.readthedocs.io/en/latest/reference/strategies.html), captured 2026-05-21. See [[strategies]] for our internal cheat sheet.
 
 ## Categorized inventory
 
@@ -86,7 +86,7 @@ Source-note distillation of [https://hypothesis.readthedocs.io/en/latest/referen
 
 ## Cross-references
 
-- [[../notes/concepts/strategies]] — internal cheat sheet
-- [[../notes/concepts/composite-strategies]]
-- [[../notes/concepts/shrinking]]
+- [[strategies]] — internal cheat sheet
+- [[composite-strategies]]
+- [[shrinking]]
 - [[hypothesis-custom-strategies]]

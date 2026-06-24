@@ -16,12 +16,13 @@ incoming:
   - topics/actuate-libraries/notes/concepts/2026-05-19_stream-publisher-design.md
   - topics/admin-api/notes/concepts/2026-05-19_streaming-monitoring-api.md
   - topics/infrastructure/notes/concepts/2026-05-19_mediamtx-chart-design.md
+  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
   - topics/personal-notes/notes/daily/2026-05-19.md
   - topics/personal-notes/notes/entities/mark-todos.md
   - topics/vms-connector/notes/concepts/2026-06-02_handoff-pyav17-corner-case-plan.md
   - topics/vms-connector/notes/syntheses/2026-05-19_live-streaming-v1-status.md
   - topics/vms-connector/notes/syntheses/2026-05-19_streaming-pyav17-crosscut.md
-incoming_updated: 2026-06-19
+incoming_updated: 2026-06-24
 ---
 
 # Live Streaming for Operator Viewing — v1 Plan

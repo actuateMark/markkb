@@ -15,6 +15,7 @@ outgoing:
   - topics/llm-shop/notes/syntheses/2026-05-05_using-the-llm-shop.md
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
+  - topics/actuate-platform/notes/concepts/2026-06-22_npu-server-llm-shop-runbook.md
   - topics/llm-shop/_summary.md
   - topics/llm-shop/notes/concepts/2026-05-05_first-real-tasks-experiments.md
   - topics/llm-shop/notes/concepts/2026-05-05_ollama-vulkan-broken-on-meteor-lake.md
@@ -23,7 +24,7 @@ incoming:
   - topics/llm-shop/notes/syntheses/2026-05-04_phase-2-day-to-day-usage.md
   - topics/llm-shop/notes/syntheses/2026-05-05_using-the-llm-shop.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-06-24
 ---
 
 # LLM Shop — Phase 1 Installed (2026-05-04)

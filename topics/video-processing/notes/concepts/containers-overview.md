@@ -73,7 +73,7 @@ A demuxer that fakes PTS by counting frames will produce subtly broken playback 
 
 We do **not** mux clips in-process anywhere in the libraries. Detection frames go to S3 as JPEGs (per-frame, not muxed video). Clip muxing for alert delivery happens downstream of the pipeline.
 
-See [[reading-list]] for inspection tools (MediaInfo, ffprobe, GPAC/MP4Box) and the underlying ISO/IEC standards.
+See [[knowledgebase/topics/billing/reading-list]] for inspection tools (MediaInfo, ffprobe, GPAC/MP4Box) and the underlying ISO/IEC standards.
 
 ## Actuate touchpoints
 

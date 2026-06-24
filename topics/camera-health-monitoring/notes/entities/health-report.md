@@ -8,8 +8,9 @@ updated: 2026-04-13
 author: kb-bot
 incoming:
   - topics/actuate-platform/notes/entities/camera-ui.md
+  - topics/camera-health-monitoring/notes/syntheses/2026-06-23_daily-report-pipeline-audit-and-deploy-fixes.md
   - topics/software-architecture/notes/syntheses/2026-04-16_code-health-dashboard.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-24
 ---
 
 # Health Report

@@ -102,7 +102,7 @@ The structural problem was that we had **four independent layers** — admin DB,
 
 ### Topic anchors
 
-- [[_summary]] — billing topic overview
+- [[knowledgebase/topics/billing/_summary]] — billing topic overview
 - [[_todos]] — outstanding follow-ups
 - [[autopatrol/_summary]] — sibling topic (AutoPatrol entity + cohort history)
 - [[vms-connector/_summary]] — code surface where the fixes landed

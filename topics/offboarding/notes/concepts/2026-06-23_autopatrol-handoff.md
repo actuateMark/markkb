@@ -6,6 +6,9 @@ tags: [offboarding, handoff, autopatrol, cleanup-lambda, arm-miss, brad]
 created: 2026-06-23
 updated: 2026-06-23
 author: kb-bot
+incoming:
+  - topics/offboarding/_summary.md
+incoming_updated: 2026-06-24
 ---
 
 # AutoPatrol handoff

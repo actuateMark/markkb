@@ -130,5 +130,5 @@ These aren't really transport "protocols" in the network sense -- they're applic
 - Per-protocol deep dives: [[rtsp-deep-dive]], [[rtmp-and-srt]], [[hls-and-dash]], [[webrtc-deep-dive]], [[mpeg-ts-over-udp]]
 - Codec layer underneath these transports: [[h264-deep-dive]], [[h265-hevc-deep-dive]], [[mjpeg-and-still-image-formats]]
 - Actuate-side mapping: [[actuate-frame-ingest-decode-paths]], [[actuate-video-pipeline-walkthrough]]
-- Tooling alternatives: [[reading-list]] (MediaMTX, Pion, LiveKit, Janus, GO2RTC)
+- Tooling alternatives: [[knowledgebase/topics/billing/reading-list]] (MediaMTX, Pion, LiveKit, Janus, GO2RTC)
 - AWS managed offerings: [[aws-kvs-entity]], [[aws-ivs-entity]]

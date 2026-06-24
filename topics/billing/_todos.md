@@ -574,10 +574,10 @@ When promoting, format:
 
 ## Related
 
-- [[_summary]] — topic overview
+- [[knowledgebase/topics/billing/_summary]] — topic overview
 - [[2026-05-11_billing-pain-post-mortem]] — narrative the categories trace back to
 - [[billing-events-catalog]] — catalog the items reference
-- [[reading-list]] — sources informing the work
+- [[knowledgebase/topics/billing/reading-list]] — sources informing the work
 - [[mark-todos]] — workstream tracker (loose-linked, not duplicated)
 - [[autopatrol-deferred-backlog]] — sibling topic backlog with overlapping items
 - [[2026-04-30_data-model-cascade-semantics]] — primary source for S1-S4

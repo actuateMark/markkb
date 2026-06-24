@@ -183,5 +183,5 @@ Related: `actuate-libraries/actuate-image-manipulation/src/actuate_image_manipul
 - Library positioning -- [[ffmpeg-entity]], [[gstreamer-entity]], [[opencv-entity]], [[pyav-entity]], [[aws-kvs-entity]]
 - Codec deep-dives -- [[h264-deep-dive]], [[h265-hevc-deep-dive]], [[mjpeg-and-still-image-formats]], [[hardware-accelerated-codecs]], [[gop-keyframe-fundamentals]]
 - Transport protocols -- [[rtsp-deep-dive]], [[mpeg-ts-over-udp]], [[protocol-latency-comparison]]
-- Topic landing -- [[reading-list]]
+- Topic landing -- [[knowledgebase/topics/billing/reading-list]]
 - Cross-topic -- [[vms-connector/_summary]], [[actuate-libraries/_summary]], [[integrations/kvs/_summary]], [[integrations/rtsp/_summary]], [[autopatrol/_summary]]

@@ -17,6 +17,7 @@ outgoing:
   - topics/llm-shop/notes/syntheses/2026-05-04_phase-2-day-to-day-usage.md
   - topics/llm-shop/notes/syntheses/2026-05-05_using-the-llm-shop.md
 incoming:
+  - topics/actuate-platform/notes/concepts/2026-06-22_npu-server-llm-shop-runbook.md
   - topics/engineering-process/notes/concepts/2026-05-05_open-questions-inbox-idea.md
   - topics/llm-shop/_summary.md
   - topics/llm-shop/notes/concepts/2026-05-04_phase-1-installed.md
@@ -26,8 +27,7 @@ incoming:
   - topics/llm-shop/notes/syntheses/2026-05-04_llm-shop-initial-architecture.md
   - topics/llm-shop/notes/syntheses/2026-05-04_phase-2-day-to-day-usage.md
   - topics/llm-shop/notes/syntheses/2026-05-05_using-the-llm-shop.md
-  - topics/llm-shop/notes/syntheses/2026-05-07_kb-deep-intake-architecture.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-06-24
 ---
 
 # Harness Pattern

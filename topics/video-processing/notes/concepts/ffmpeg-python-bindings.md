@@ -148,7 +148,7 @@ while True:
 | Multi-input filtergraph with overlays | **[[pyav-entity|PyAV]]** (`av.filter.Graph`) or **`ffmpeg-python`** | Both expose filtergraph composition |
 | Streaming [[webrtc-deep-dive|WebRTC]] | None of these — use **aiortc** | FFmpeg-family [[webrtc-deep-dive|WebRTC]] support is weak |
 
-See [[reading-list]] for the full catalog (decord, vidgear, scikit-video, aiortc).
+See [[knowledgebase/topics/billing/reading-list]] for the full catalog (decord, vidgear, scikit-video, aiortc).
 
 ## Subprocess-builders (a meta-category)
 
@@ -193,4 +193,4 @@ Actuate uses three of the five options, with deliberate role separation:
 
 If you're adding a new puller or transcode path: default to [[pyav-entity|PyAV]]. Use [[opencv-entity|OpenCV]]'s `VideoCapture` only when matching an existing pattern in the same file. Justify any subprocess-builder choice in the PR description — the team has hit subprocess-pipe latency bugs before and the bias is against re-introducing them.
 
-Cross-refs: [[ffmpeg-entity]] | [[ffmpeg-libav-libraries]] | [[ffmpeg-hardware-acceleration]] | [[pyav-entity]] | [[opencv-entity]] | [[actuate-frame-ingest-decode-paths]] | [[reading-list]]
+Cross-refs: [[ffmpeg-entity]] | [[ffmpeg-libav-libraries]] | [[ffmpeg-hardware-acceleration]] | [[pyav-entity]] | [[opencv-entity]] | [[actuate-frame-ingest-decode-paths]] | [[knowledgebase/topics/billing/reading-list]]

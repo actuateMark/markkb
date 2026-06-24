@@ -87,7 +87,7 @@ Everything else: **document, don't adopt.** This note is the persistent answer f
 - [[actuate-clip-generation-flow]] (the clip pipeline these AWS services would plug into)
 - [[fleet-architecture/_summary]] (cross-topic: frame-transport question)
 - [[ai-models/_summary]] · [[watchman/_summary]] (why we don't use Rekognition)
-- [[reading-list]] for adjacent services (MediaTailor, MediaConnect, Elemental Conductor, GroundTruth Video)
+- [[knowledgebase/topics/billing/reading-list]] for adjacent services (MediaTailor, MediaConnect, Elemental Conductor, GroundTruth Video)
 
 ## Actuate touchpoints
 

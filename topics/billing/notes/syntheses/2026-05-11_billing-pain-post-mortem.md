@@ -23,7 +23,7 @@ incoming_updated: 2026-05-27
 
 # Billing-pipeline pain — post-mortem on the April-May 2026 emit-gap firefight
 
-This is the founding document of the [[_summary|billing topic]]. It synthesizes the ~four weeks of incremental connector PRs, cohort audits, and admin-side cascade work driven by the discovery that we had been silently leaking customer billing events for an unknown period. The point of this post-mortem is **not** to relitigate each PR — those are documented in their own concept notes — but to extract the **structural lesson** so the next time this surface drifts we catch it in days, not weeks, and ideally automatically.
+This is the founding document of the [[knowledgebase/topics/billing/_summary|billing topic]]. It synthesizes the ~four weeks of incremental connector PRs, cohort audits, and admin-side cascade work driven by the discovery that we had been silently leaking customer billing events for an unknown period. The point of this post-mortem is **not** to relitigate each PR — those are documented in their own concept notes — but to extract the **structural lesson** so the next time this surface drifts we catch it in days, not weeks, and ideally automatically.
 
 ## What happened (compressed timeline)
 
@@ -114,7 +114,7 @@ The 642-camera cohort F was discovered manually. By the time it surfaced, custom
 
 ### 4. We confused customer billing pipeline with infra cost pipeline. ⟶ Now two separate topics.
 
-For weeks, "billing" and "AWS cost" were the same Confluence query in some heads and not in others. They're connected (every SQS PUT costs both a fraction-of-a-cent in AWS and triggers a customer-revenue line in Snowflake) but the **failure modes, audiences, and remediation paths are unrelated**. Action: this topic ([[_summary]]) is parallel to [[aws-cost/_summary]]; cross-link, don't conflate.
+For weeks, "billing" and "AWS cost" were the same Confluence query in some heads and not in others. They're connected (every SQS PUT costs both a fraction-of-a-cent in AWS and triggers a customer-revenue line in Snowflake) but the **failure modes, audiences, and remediation paths are unrelated**. Action: this topic ([[knowledgebase/topics/billing/_summary]]) is parallel to [[aws-cost/_summary]]; cross-link, don't conflate.
 
 ### 5. The admin source-of-truth state has signal-wiring gaps. ⟶ [[2026-04-30_data-model-cascade-semantics]] inventoried them; topic todos owns the closures.
 
@@ -159,10 +159,10 @@ Post-merge monitor: Tier-1 systemd one-shots on Firebat mirroring PR #1660 patte
 
 ## Cross-references
 
-- [[_summary]] — topic overview
+- [[knowledgebase/topics/billing/_summary]] — topic overview
 - [[billing-events-catalog]] — what events exist (the catalog this firefight finally produced)
 - [[_todos]] — work owed
-- [[reading-list]] — external + internal sources
+- [[knowledgebase/topics/billing/reading-list]] — external + internal sources
 - [[2026-05-06_cohort-f-investigation]] — the audit that surfaced the gap
 - [[2026-05-04_silent-camera-diagnosis]] — the original cohort decomposition
 - [[2026-05-05_cohort-b-backfill-runbook]] — sibling cohort that informed the runbook pattern

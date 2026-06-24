@@ -85,4 +85,4 @@ For reference and context only:
 
 - See [[aws-medialive-entity]] for the cloud successor.
 - See [[aws-mediaconvert-entity]] for the file-based cloud cousin.
-- See [[reading-list]] under "AWS-specific reading" for AWS Elemental Server / Conductor / Statmux references.
+- See [[knowledgebase/topics/billing/reading-list]] under "AWS-specific reading" for AWS Elemental Server / Conductor / Statmux references.

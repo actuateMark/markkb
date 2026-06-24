@@ -21,6 +21,7 @@ outgoing:
   - topics/llm-shop/notes/concepts/harness-pattern.md
   - topics/llm-shop/notes/syntheses/2026-05-04_llm-shop-initial-architecture.md
 incoming:
+  - topics/actuate-platform/notes/concepts/2026-06-22_npu-server-llm-shop-runbook.md
   - topics/compute-fleet/_summary.md
   - topics/compute-fleet/notes/entities/host-actuate-dev.md
   - topics/compute-fleet/notes/entities/host-laptop.md
@@ -30,8 +31,7 @@ incoming:
   - topics/llm-shop/notes/concepts/2026-05-04_status-dashboard-sketch.md
   - topics/llm-shop/notes/concepts/2026-05-05_ollama-vulkan-broken-on-meteor-lake.md
   - topics/llm-shop/notes/concepts/2026-05-06_model-routed-proxy.md
-  - topics/llm-shop/notes/concepts/harness-pattern.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-06-24
 ---
 
 # Host: npu-server

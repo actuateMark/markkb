@@ -9,12 +9,13 @@ author: mark
 incoming:
   - topics/engineering-process/notes/syntheses/2026-05-22_actuate-testing-toolkit-overview.md
   - topics/engineering-process/notes/syntheses/2026-05-29_ait-watch-manager-integration.md
-  - topics/hypothesis/_summary.md
-  - topics/hypothesis/notes/concepts/composite-strategies.md
-  - topics/hypothesis/reading-list.md
+  - topics/models/hypothesis/_summary.md
+  - topics/models/hypothesis/notes/concepts/composite-strategies.md
+  - topics/models/hypothesis/reading-list.md
+  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
   - topics/personal-notes/notes/daily/2026-05-21.md
   - topics/personal-notes/notes/syntheses/2026-05-27_brain-in-jar-handoff.md
-incoming_updated: 2026-05-30
+incoming_updated: 2026-06-24
 ---
 
 # Hypothesis in the Actuate codebase

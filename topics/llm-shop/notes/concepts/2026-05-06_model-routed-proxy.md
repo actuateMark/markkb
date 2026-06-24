@@ -7,11 +7,12 @@ created: 2026-05-06
 updated: 2026-05-06
 author: kb-bot
 incoming:
+  - topics/actuate-platform/notes/concepts/2026-06-22_npu-server-llm-shop-runbook.md
   - topics/llm-shop/_summary.md
   - topics/llm-shop/notes/concepts/2026-05-05_phase-2-next-steps.md
   - topics/personal-notes/notes/daily/2026-05-06.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-07
+incoming_updated: 2026-06-24
 ---
 
 # LLM Shop — model-routed `/api/proxy/chat` + source-control sync
@@ -141,7 +142,7 @@ Future deploy convention: edit `local_network_scripts/files/llm-shop/...`, scp t
 
 ## Cross-references
 
-- [[_summary|llm-shop/_summary]] — topic summary (refresh status row)
+- [[knowledgebase/topics/billing/_summary|llm-shop/_summary]] — topic summary (refresh status row)
 - [[2026-05-04_phase-1-installed]] — Phase 1 install record
 - [[2026-05-04_phase-2-day-to-day-usage]] — Phase 2 design ADR (multi-page dashboard, IDE integration)
 - [[2026-05-05_ollama-vulkan-broken-on-meteor-lake]] — why we have a SYCL container in the first place

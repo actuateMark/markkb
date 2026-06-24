@@ -12,7 +12,7 @@ author: kb-bot
 
 Open-ended research topic covering the **video processing landscape** -- the tools, codecs, containers, transport protocols, and managed services that move pixels around -- mapped onto **how Actuate uses them today**. Engineering reference + strategic decision-making in equal weight.
 
-Coverage scope (see [[reading-list]] for alternatives + peripheral tools):
+Coverage scope (see [[knowledgebase/topics/video-processing/reading-list]] for alternatives + peripheral tools):
 
 - **Tools / libraries:** [[ffmpeg-entity|FFmpeg]], [[gstreamer-entity|GStreamer]], [[opencv-entity|OpenCV]], [[pyav-entity|PyAV]], [[imageio-entity|imageio]]
 - **AWS managed services:** [[aws-kvs-entity|Kinesis Video Streams]], Elemental [[aws-mediaconvert-entity|MediaConvert]] / [[aws-medialive-entity|MediaLive]] / [[aws-mediapackage-entity|MediaPackage]], [[aws-elemental-live-entity|Elemental Live]] (on-prem), [[aws-rekognition-video-entity|Rekognition Video]], IVS
@@ -119,4 +119,4 @@ These syntheses bridge video-processing knowledge into the fleet-architecture pr
 
 ## See also
 
-- Reading list: [[reading-list]]
+- Reading list: [[knowledgebase/topics/video-processing/reading-list]]

@@ -11,13 +11,13 @@ incoming:
   - topics/engineering-process/notes/syntheses/2026-05-22_actuate-testing-toolkit-overview.md
   - topics/engineering-process/notes/syntheses/2026-05-29_ait-watch-manager-integration.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_fleet-proposal-rescore-with-delta.md
-  - topics/hypothesis/_summary.md
-  - topics/hypothesis/notes/concepts/composite-strategies.md
-  - topics/hypothesis/notes/concepts/example-database.md
-  - topics/hypothesis/notes/concepts/given-and-settings.md
-  - topics/hypothesis/notes/concepts/healthchecks.md
-  - topics/hypothesis/notes/concepts/stateful-testing.md
-incoming_updated: 2026-05-30
+  - topics/models/hypothesis/_summary.md
+  - topics/models/hypothesis/notes/concepts/composite-strategies.md
+  - topics/models/hypothesis/notes/concepts/example-database.md
+  - topics/models/hypothesis/notes/concepts/given-and-settings.md
+  - topics/models/hypothesis/notes/concepts/healthchecks.md
+  - topics/models/hypothesis/notes/concepts/stateful-testing.md
+incoming_updated: 2026-06-24
 ---
 
 # Shrinking

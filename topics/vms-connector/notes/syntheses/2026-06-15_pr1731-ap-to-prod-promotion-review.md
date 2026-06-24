@@ -11,8 +11,7 @@ incoming:
   - topics/engineering-process/notes/concepts/2026-06-16_squash-merge-ci-skip-suppression-recurrence.md
   - topics/personal-notes/notes/daily/2026-06-15.md
   - topics/personal-notes/notes/daily/2026-06-16.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-06-19
+incoming_updated: 2026-06-24
 ---
 
 # PR #1731 — AutoPatrol-to-prod promotion review

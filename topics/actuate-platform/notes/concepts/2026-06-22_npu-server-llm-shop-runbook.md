@@ -1,10 +1,17 @@
 ---
 type: concept
 topic: actuate-platform
-tags: [npu-server, llm-shop, runbook, offboarding, local-llm]
+tags: [npu-server, llm-shop, runbook, offboarding, local-llm, watchman]
 created: 2026-06-22
 updated: 2026-06-22
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
+  - topics/engineering-process/notes/syntheses/2026-06-22_dead-mans-checklist.md
+  - topics/engineering-process/notes/syntheses/2026-06-22_offboarding-plan.md
+  - topics/offboarding/_summary.md
+  - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
+incoming_updated: 2026-06-24
 ---
 
 # npu-server / LLM-shop operations runbook
@@ -17,7 +24,7 @@ Operating runbook for the internal local-LLM service ("the LLM shop") on `npu-se
 
 ## 1. What it is and why it exists
 
-The LLM shop is an internal, **tailnet-only** suite of locally-served LLMs exposed as task-specific HTTP endpoints ("harnesses"). It runs on company-shared compute (`npu-server`) alongside the Watchman test service, and is consumed by Mark's laptop tooling, Claude Code subagents, and KB-ingest skills.
+The LLM shop is an internal, **tailnet-only** suite of locally-served LLMs exposed as task-specific HTTP endpoints ("harnesses"). It runs on company-shared compute (`npu-server`) alongside the [[watchman-repo|Watchman]] test service, and is consumed by Mark's laptop tooling, Claude Code subagents, and KB-ingest skills.
 
 **Why it exists — three drivers:**
 
@@ -48,7 +55,7 @@ Full host entity: [[host-npu-server]].
 | RAM | 30 GiB (+ 8 GiB swap) |
 | Disk | 937 GB NVMe |
 
-**Co-tenant — DO NOT DISTURB.** The box's primary tenant is the **Watchman test service** (`~/actuate-watchman/`, a continuously-running process), plus benchmark scaffolding. All LLM-shop work is confined to `~/llm-shop/`. The shop is deliberately a *polite tenant* (RAM-capped, CPU-yielding) so it never starves Watchman. Never modify `~/actuate-watchman/`, `~/intel/`, `~/venvs/`, `~/model_cache/`, or the benchmark scripts without coordinating with whoever owns Watchman dev.
+**Co-tenant — DO NOT DISTURB.** The box's primary tenant is the **[[watchman-repo|Watchman]] test service** (`~/actuate-watchman/`, a continuously-running process), plus benchmark scaffolding. All LLM-shop work is confined to `~/llm-shop/`. The shop is deliberately a *polite tenant* (RAM-capped, CPU-yielding) so it never starves Watchman. Never modify `~/actuate-watchman/`, `~/intel/`, `~/venvs/`, `~/model_cache/`, or the benchmark scripts without coordinating with whoever owns Watchman dev.
 
 ---
 
@@ -62,7 +69,7 @@ There are **three serving backends**, each on its own port, plus harness service
 |---|---|---|---|---|
 | **SYCL llama.cpp** (iGPU) | `:8200` | `ghcr.io/ggml-org/llama.cpp:server-intel` Docker container | `qwen2.5-coder:14b-instruct-sycl` (Q4 GGUF) | **The real iGPU-accelerated workhorse.** ~1.5 tok/s warm (degrades to 0.5–0.7 under load). 4096 ctx (`-c 4096`), all layers on iGPU (`--n-gpu-layers 99`), `--jinja` chat template. Container runs via `sg docker -c` because the user unit doesn't inherit the `docker` group. |
 | **Ollama** (CPU) | `:11434` (bound `0.0.0.0`) | Ollama 0.23.0 user-mode at `~/llm-shop/bin/ollama` | 6 models on disk (below) | **CPU-only fallback** (`OLLAMA_VULKAN` is deliberately OFF — Vulkan produces garbage tokens on Meteor Lake, see [[2026-05-05_ollama-vulkan-broken-on-meteor-lake]]). Slow (1–3 tok/s on 14B). Also exposes the **OpenAI-compat API at `:11434/v1`** for IDE tools. `OLLAMA_MAX_LOADED_MODELS=2`, `OLLAMA_KEEP_ALIVE=10m`, `OLLAMA_CONTEXT_LENGTH=16384`. |
-| **OpenVINO NPU** | `:8090` (bound `0.0.0.0`) | OpenVINO GenAI pipeline pinned to `NPU` device | `tinyllama-1.1b-int4-ov` (Intel-published OV-IR INT4) | Always-on small model for sub-second triage/classify. ~8 tok/s on the NPU 3720. Uses **zero iGPU time** — pure win when Watchman wants the iGPU. First load ~5s (graph compile). |
+| **OpenVINO NPU** | `:8090` (bound `0.0.0.0`) | OpenVINO GenAI pipeline pinned to `NPU` device | `tinyllama-1.1b-int4-ov` (Intel-published OV-IR INT4) | Always-on small model for sub-second triage/classify. ~8 tok/s on the NPU 3720. Uses **zero iGPU time** — pure win when [[watchman-repo|Watchman]] wants the iGPU. First load ~5s (graph compile). |
 
 **Models on disk (Ollama, `~/llm-shop/models/`):** `qwen2.5-coder:1.5b` (986 MB), `qwen2.5-coder:7b-instruct` (4.7 GB), `qwen2.5-coder:14b-instruct` (9.0 GB), `qwen2.5-coder:32b-instruct` (19 GB), `llama3.1:8b` (4.9 GB), `deepseek-coder-v2:16b` (8.9 GB). NPU side (`~/llm-shop/models-ov/`): `tinyllama-1.1b-int4-ov` (served) and a self-converted `qwen-1.5b` (NPU-incompatible, kept as CPU fallback).
 
@@ -190,7 +197,7 @@ The hardware and the deployment tree survive Mark's departure. The thing that **
 | **SSH access** | `ssh npu-server` works only from Mark's laptop (key `~/.ssh/npu-server`). Firebat's pubkey was never pushed. Password auth for `actuate` still on (port 3327 external). | Push a team member's / firebat's SSH pubkey to `actuate@npu-server:~/.ssh/authorized_keys` before Friday, or you lose key access when the laptop goes. The external `:3327` fallback + `actuate` password still works as a break-glass path (see credential note). |
 | **`actuate` user password** | Shared account; password is in a credential manager (not stored in KB). **It was leaked in a Claude chat session on 2026-05-04** and should be rotated. | Rotate when the team coordinates (rotation affects everyone who SSHes via the public IP). |
 | **Auth on the harness endpoints** | **None.** The shop is tailnet-only and currently unauthenticated ("reachable from this laptop without auth (yet)"); the bearer-token + Caddy-TLS layer was designed but never shipped (HTTPS-via-tailscale-cert deferred, needs tailnet admin). | Fine while tailnet-only and WireGuard-encrypted. If the box stays on the tailnet under the team's control, no creds to hand off. If you want auth, the Caddy/bearer-token design is in [[harness-pattern]] / the architecture ADR. |
-| **Watchman co-tenant** | Unaffected by the shop. | Keep treating `~/actuate-watchman/` as load-bearing; the shop's RAM/CPU caps protect it. |
+| **[[watchman-repo|Watchman]] co-tenant** | Unaffected by the shop. | Keep treating `~/actuate-watchman/` as load-bearing; the shop's RAM/CPU caps protect it. |
 | **What it costs to do nothing** | Shop is a token-saving convenience, no prod dependency. | If the Tailscale re-home is missed and the node drops, callers simply fall back to Anthropic. Worst case is higher token spend, not an outage. |
 
 **Source control already safe:** the deployment tree is committed in `aegissystems/local_network_scripts` (`files/llm-shop/`), so the code, systemd units, harnesses, and dashboard survive regardless. Only the on-box runtime state (`.venv`, model blobs) is machine-local and re-creatable via `bin/install.sh` + `bin/pull-models.sh`.

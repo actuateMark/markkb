@@ -7,12 +7,12 @@ created: 2026-05-21
 updated: 2026-05-21
 author: mark
 incoming:
-  - topics/hypothesis/_summary.md
-  - topics/hypothesis/notes/concepts/given-and-settings.md
-  - topics/hypothesis/notes/concepts/shrinking.md
-  - topics/hypothesis/reading-list.md
-  - topics/hypothesis/sources/hypothesis-api-reference.md
-incoming_updated: 2026-05-27
+  - topics/models/hypothesis/_summary.md
+  - topics/models/hypothesis/notes/concepts/given-and-settings.md
+  - topics/models/hypothesis/notes/concepts/shrinking.md
+  - topics/models/hypothesis/reading-list.md
+  - topics/models/hypothesis/sources/hypothesis-api-reference.md
+incoming_updated: 2026-06-24
 ---
 
 # Hypothesis example database

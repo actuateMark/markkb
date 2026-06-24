@@ -276,7 +276,7 @@ To verify: sum `act_10` from NR for events **before 06:00 UTC** (the SPRD rebuil
 
 ## Cross-references
 
-- [[_summary]] — topic overview
+- [[knowledgebase/topics/billing/_summary]] — topic overview
 - [[billing-events-catalog]] — the SQS-side vocabulary (this note is the Snowflake-side counterpart)
 - [[sales-dashboard-repo]] — entity note for the repo that exposes this data
 - [[2026-05-11_eng-242-substantially-answered]] — what ENG-242 asked vs what we found here

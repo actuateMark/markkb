@@ -86,4 +86,4 @@ Plausible Actuate applications, in priority order:
 2. **Clip-replay UI [[hls-and-dash|HLS]] packaging** ([[actuate-clip-generation-flow]]). Today every alert frame is a JPEG in S3 (`actuate-libraries/actuate-frames/src/actuate_frames/save_frame_meta.py:43`); a clip-replay UI would need MP4 or [[hls-and-dash|HLS]], generated on demand or pre-rendered. MediaConvert + [[aws-mediapackage-entity]] is the canonical combo.
 3. **Format-canonicalization on inbound SMTP/SMTP-attachment clips** (the `actuate-temp-smtp` bucket).
 
-Referenced reading: AWS MediaConvert job specification docs ([[reading-list]]), [[ffmpeg-entity]] for the in-house alternative.
+Referenced reading: AWS MediaConvert job specification docs ([[knowledgebase/topics/billing/reading-list]]), [[ffmpeg-entity]] for the in-house alternative.

@@ -137,7 +137,7 @@ These are aspirational — the topic todos own the enforcement plan. Not all hol
 
 ## Related
 
-- [[_summary]] — topic overview
+- [[knowledgebase/topics/billing/_summary]] — topic overview
 - [[2026-05-11_billing-pain-post-mortem]] — why this catalog exists
 - [[_todos]] — work to operationalize the invariants
 - [[2026-05-07_site-product-started-deprecated]] — dormant-event warning

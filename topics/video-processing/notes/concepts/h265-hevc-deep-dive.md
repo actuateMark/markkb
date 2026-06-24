@@ -99,4 +99,4 @@ EC2-side, our G5/G6/L4 substrate has full [[hardware-accelerated-codecs|NVDEC]] 
 - Keyframe-wait guard (skip packets until first IDR) — `av_url_puller.py:1318-1335`
 - HW decoder mapping (`hevc_cuvid` etc.) — `av_url_puller.py:24-77`
 - Per-hwaccel options / no special H.265 tuning — `av_url_puller.py:412-494`
-- Cross-topic: [[hardware-accelerated-codecs]], [[h264-deep-dive]], [[gop-keyframe-fundamentals]], [[reading-list]] for x265 / openHEVC encoder/decoder reference.
+- Cross-topic: [[hardware-accelerated-codecs]], [[h264-deep-dive]], [[gop-keyframe-fundamentals]], [[knowledgebase/topics/billing/reading-list]] for x265 / openHEVC encoder/decoder reference.

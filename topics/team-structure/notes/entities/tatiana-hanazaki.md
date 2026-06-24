@@ -10,12 +10,10 @@ incoming:
   - topics/admin-api/_summary.md
   - topics/admin-api/notes/concepts/integration-architecture.md
   - topics/data-access-control/_summary.md
-  - topics/operational-health/notes/concepts/2026-05-22_djangoq-cpu-spike-v8-rollback-verify-scan.md
-  - topics/personal-notes/notes/daily/2026-05-22.md
   - topics/product-roadmap/notes/concepts/active-risks.md
   - topics/product-roadmap/notes/concepts/revenue-drivers.md
   - topics/team-structure/notes/entities/mark-barbera.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-24
 ---
 
 # Tatiana Hanazaki

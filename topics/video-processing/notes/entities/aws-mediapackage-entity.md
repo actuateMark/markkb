@@ -87,4 +87,4 @@ The "many concurrent viewers" property doesn't really hold for monitoring-center
 
 For a public-facing customer dashboard with many concurrent viewers (hypothetical), MediaPackage becomes much more compelling.
 
-Cross-references: [[aws-mediaconvert-entity]] (the upstream encoder that feeds it), [[aws-ivs-entity]] (the lower-latency alternative for live), [[hls-and-dash]] (the protocol primitives), [[reading-list]] for MediaStore deprecation context.
+Cross-references: [[aws-mediaconvert-entity]] (the upstream encoder that feeds it), [[aws-ivs-entity]] (the lower-latency alternative for live), [[hls-and-dash]] (the protocol primitives), [[knowledgebase/topics/billing/reading-list]] for MediaStore deprecation context.

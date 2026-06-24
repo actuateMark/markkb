@@ -6,6 +6,15 @@ tags: [firebat, runbook, offboarding, systemd, operations]
 created: 2026-06-22
 updated: 2026-06-22
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
+  - topics/engineering-process/notes/syntheses/2026-06-22_dead-mans-checklist.md
+  - topics/engineering-process/notes/syntheses/2026-06-22_offboarding-plan.md
+  - topics/offboarding/_summary.md
+  - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
+  - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
+  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
+incoming_updated: 2026-06-24
 ---
 
 # Firebat operations runbook
@@ -87,7 +96,7 @@ Four identities. AWS is already team-owned; the other three are still Mark-perso
 |---|---|---|---|---|
 | **AWS** (Roles Anywhere) | run-dashboard-check, billing-reconcile-check, ecr-lifecycle-audit, morning-prep | Host X.509 cert `~/.config/aws-rolesanywhere/mork-firebat.{crt,key}` → role `dashboard-check-rolesanywhere`, trust-anchor `328fdc80-…`, account `388576304176`. `AWS_PROFILE=dashboard-check`. | **Team-owned machine identity** (survives Mark). Named "mork-firebat" but is a host cert, not Mark's SSO. | Check expiry `openssl x509 -in ~/.config/aws-rolesanywhere/mork-firebat.crt -noout -dates`. Reissue via IAM → Roles Anywhere console, replace both files, test `aws sts get-caller-identity --profile dashboard-check`. |
 | **GitHub** (`gh`) | repo-scan, git-fetch-major-repos, pr-review-digest, KB bare-repo push | `~/.config/gh/hosts.yml` (PAT). gh credential helper injects it for HTTPS git. | **PERSONAL `actuateMark`** — re-home to an org machine account / org PAT. | Mint org PAT (scopes `repo`, `read:org`), replace `oauth_token:` in `hosts.yml`, `gh auth status` to verify. Prior art: [[2026-04-28_minting-github-pats-for-automation]]. |
-| **New Relic** | run-dashboard-check, autopatrol checks | `~/.config/newrelic/key` (NRAK) + `~/.config/newrelic/account_id` (`3421145`). NOT NR MCP — direct nerdgraph. | **PERSONAL `mark@actuate.ai` NRAK** (pending WS-A rotation). *(The `~/.config/nr/api-key` in old notes is the laptop path, not Firebat.)* | New User key in NR UI (ideally team/service), `echo NEWKEY > ~/.config/newrelic/key && chmod 600`. **A leaked NR key was purged from KB git history 2026-06-22 — rotate it.** |
+| **[[new-relic|New Relic]]** | run-dashboard-check, autopatrol checks | `~/.config/newrelic/key` (NRAK) + `~/.config/newrelic/account_id` (`3421145`). NOT NR MCP — direct nerdgraph. | **PERSONAL `mark@actuate.ai` NRAK** (pending WS-A rotation). *(The `~/.config/nr/api-key` in old notes is the laptop path, not Firebat.)* | New User key in NR UI (ideally team/service), `echo NEWKEY > ~/.config/newrelic/key && chmod 600`. **A leaked NR key was purged from KB git history 2026-06-22 — rotate it.** |
 | **Atlassian** | jira-sync | `~/.config/atlassian/api-token` JSON `{email, token, site}` | **PERSONAL `mark@actuate.ai`** — re-issue under a service account. | New token at id.atlassian.com → Security → API tokens, update the JSON, `chmod 600`, verify `~/bin/jira-sync.sh --force --dry-run`. |
 | **Tailscale** | network reachability of all the above | node identity in tailscaled state | **USER-owned by `mark@`** (key expiry 2026-10-20) — re-tag to `tag:server`. | Re-auth at the box (**console/physical — can drop SSH**): `sudo tailscale up --authkey=tskey-… --advertise-tags=tag:server`. Needs a tagged auth key + `tag:server` in the ACL. |
 

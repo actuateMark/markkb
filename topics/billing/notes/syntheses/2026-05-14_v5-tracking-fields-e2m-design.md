@@ -12,9 +12,10 @@ incoming:
   - topics/inference-api/notes/concepts/2026-05-14_handoff-v5-release-verification.md
   - topics/inference-api/notes/concepts/2026-05-19_handoff-v5-post-release-watch.md
   - topics/inference-api/notes/syntheses/2026-05-14_v5-motion-history-single-frame-design.md
+  - topics/personal-notes/notes/concepts/2026-06-22_dashboard-signals-catalog.md
   - topics/personal-notes/notes/daily/2026-05-14.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-24
 ---
 
 # v5 tracking fields → E2M design

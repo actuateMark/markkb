@@ -14,10 +14,10 @@ incoming:
   - topics/engineering-process/notes/syntheses/2026-05-22_actuate-testing-toolkit-overview.md
   - topics/engineering-process/notes/syntheses/2026-05-22_ait-phase-12-sweep.md
   - topics/engineering-process/notes/syntheses/2026-05-27_zack-coordination-brain-in-jar.md
-  - topics/hypothesis/_summary.md
+  - topics/models/hypothesis/_summary.md
   - topics/personal-notes/notes/daily/2026-05-21.md
   - topics/personal-notes/notes/syntheses/2026-05-27_brain-in-jar-handoff.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-24
 ---
 
 # actuate-validator

@@ -1,10 +1,18 @@
 ---
 type: concept
 topic: personal-notes
-tags: [dashboard, signals, operational, offboarding, monitoring]
+tags: [dashboard, signals, operational, offboarding, monitoring, actuate-inference-api]
 created: 2026-06-22
 updated: 2026-06-22
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
+  - topics/engineering-process/notes/syntheses/2026-06-22_dead-mans-checklist.md
+  - topics/engineering-process/notes/syntheses/2026-06-22_offboarding-plan.md
+  - topics/offboarding/_summary.md
+  - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
+  - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
+incoming_updated: 2026-06-24
 ---
 
 # Dashboard Signals Catalog + How-To
@@ -47,7 +55,7 @@ JSON `signals.json` catalog itself defines the source signal set below.
 Each row: real signal `id` from `signals.json` · what it measures · severity threshold
 or regression basis · source. `source` legend: `cw_log`/`cw_metric`/`cw_sqs`/`cw_lambda` =
 AWS CloudWatch CLI under `AWS_PROFILE=prod`; `nr_log`/`nr_k8s_*`/`nr_transaction`/`nr_issues` =
-New Relic NRQL via MCP; `ce_daily` = AWS Cost Explorer (cached aggregate); `git_local` =
+[[new-relic|New Relic]] NRQL via MCP; `ce_daily` = AWS Cost Explorer (cached aggregate); `git_local` =
 local git/lint tooling over `~/work/<repo>`; `tls_cert` = Python TLS probe; `minipc_local` =
 local shell on firebat/minipc; `external` = written by a separate firebat timer into the sink.
 `(off)` = `enabled: false` in the catalog (defined but not executed).
@@ -112,7 +120,7 @@ local shell on firebat/minipc; `external` = written by a separate firebat timer 
 ### alert-pipeline
 | id | measures | threshold / basis | source |
 |---|---|---|---|
-| `queue_evalink_errors_12h` | Evalink consumer ERROR rate (recalibrated 2026-04-24) | yellow>1200, red>1800 /12h | nr_log |
+| `queue_evalink_errors_12h` | [[evalink-components|Evalink]] consumer ERROR rate (recalibrated 2026-04-24) | yellow>1200, red>1800 /12h | nr_log |
 | `queue_eagle_eye_errors_12h` *(off)* | Eagle Eye consumer ERROR rate | yellow>20, red>100 /12h | nr_log |
 | `smtp_frame_receiver_errors_12h` *(off)* | smtp-frame-receiver ERROR rate | yellow>50, red>500 /12h; baseline_drift | nr_log |
 | `queue_eagle_eye_volume_12h` | Eagle Eye total log volume (silent-stop) | yellow<500, red<50 /12h; silent_drop | nr_log |
@@ -160,7 +168,7 @@ local shell on firebat/minipc; `external` = written by a separate firebat timer 
 | `cluster_deployment_unavailable` | sum(desired − available) replicas | yellow>5, red>15; baseline_drift | nr_k8s_deployment_sample |
 | `cluster_pod_restarts_5m` *(off)* | restart-count delta /5m | yellow>5, red>15; baseline_drift | nr_k8s_container_sample |
 | `k8s_hpa_saturation` *(off)* | HPAs at max replicas | new_pattern | nr_k8s_hpa_sample |
-| `argocd_out_of_sync_count` *(off)* | ArgoCD apps out-of-sync | yellow>0, red>3 | cw_log |
+| `argocd_out_of_sync_count` *(off)* | [[argocd|ArgoCD]] apps out-of-sync | yellow>0, red>3 | cw_log |
 
 ### cross-cutting
 | id | measures | threshold / basis | source |

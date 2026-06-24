@@ -13,8 +13,9 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-06-01_adr-watchman-mvp-slim-connector.md
   - topics/fleet-architecture/notes/syntheses/2026-06-01_v10-scheduler-and-state-resolution.md
   - topics/fleet-architecture/notes/syntheses/2026-06-02_watchman-phase0-fleet-fit.md
+  - topics/offboarding/notes/concepts/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/personal-notes/notes/daily/2026-06-01.md
-incoming_updated: 2026-06-19
+incoming_updated: 2026-06-24
 ---
 
 # Cloud Video Analytics v10 vs Fleet-Architecture Proposals

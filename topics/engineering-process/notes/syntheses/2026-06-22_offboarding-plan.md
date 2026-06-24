@@ -6,6 +6,18 @@ tags: [offboarding, handoff, firebat, disaster-recovery, persistence, mark]
 created: 2026-06-22
 updated: 2026-06-22
 author: kb-bot
+incoming:
+  - topics/actuate-platform/notes/concepts/2026-06-22_npu-server-llm-shop-runbook.md
+  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
+  - topics/engineering-process/notes/syntheses/2026-06-22_dead-mans-checklist.md
+  - topics/offboarding/_summary.md
+  - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
+  - topics/offboarding/notes/concepts/2026-06-23_autopatrol-handoff.md
+  - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
+  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
+  - topics/offboarding/notes/concepts/2026-06-23_watchman-fleet-handoff-paolo-mike.md
+  - topics/personal-laptop/notes/concepts/2026-06-22_firebat-operations-runbook.md
+incoming_updated: 2026-06-24
 ---
 
 # Offboarding plan of attack (last day: Fri 2026-06-26)
@@ -64,7 +76,7 @@ This is what makes "company-owned hardware" actually persist. Each timer on fire
   1. **Staying teammate/owner fine-grained org PAT** *(fastest, ~5 min)* — an org owner or staying teammate mints a fine-grained PAT (Contents/Metadata/Issues/PRs read on all repos + Contents write on the mirror repos); firebat uses it via `gh auth login --with-token`. Durable past Mark; tied to that person (note for a later bot swap). **Recommended for this week** — also unblocks the WS-B org mirror.
   2. **Dedicated bot/machine account** *(most durable, ~20–30 min)* — new GitHub account (e.g. `actuate-automation`) with a shared email, org owner invites to `aegissystems`, mint its PAT. Decoupled from all individuals; may consume a paid seat.
   3. **Defer** — firebat stays on `actuateMark` until the account is deactivated; org owner provisions option 1/2 post-departure. Risk: gh-based timers break the moment `actuateMark` loses org access. Prior art: [[2026-04-28_minting-github-pats-for-automation]].
-- ⏳ **New Relic + Atlassian tokens.** Token paths on firebat (verified 2026-06-22): NR → **`~/.config/newrelic/key`** (a personal `NRAK-` key owned by `mark@actuate.ai`); Atlassian → `~/.config/atlassian/api-token` (`mark@actuate.ai`). *(Note: `~/.config/nr/api-key` referenced in old notes is the **laptop** path, not firebat.)* **INCIDENT 2026-06-22: a NR Personal API Key was found leaked in KB git history** (purged — see § below). Rotation deferred per decision, but both tokens must be re-homed in this WS: revoke + mint NR replacement (ideally team/service) in NR UI → write to `~/.config/newrelic/key`; re-issue Atlassian token under a service account → write to `~/.config/atlassian/api-token`.
+- ⏳ **[[new-relic|New Relic]] + Atlassian tokens.** Token paths on firebat (verified 2026-06-22): NR → **`~/.config/newrelic/key`** (a personal `NRAK-` key owned by `mark@actuate.ai`); Atlassian → `~/.config/atlassian/api-token` (`mark@actuate.ai`). *(Note: `~/.config/nr/api-key` referenced in old notes is the **laptop** path, not firebat.)* **INCIDENT 2026-06-22: a NR Personal API Key was found leaked in KB git history** (purged — see § below). Rotation deferred per decision, but both tokens must be re-homed in this WS: revoke + mint NR replacement (ideally team/service) in NR UI → write to `~/.config/newrelic/key`; re-issue Atlassian token under a service account → write to `~/.config/atlassian/api-token`.
 - [ ] **Verify pass — use the harness.** `~/bin/firebat-identity-verify.py` (source: `actuate-dev-toolkit/files/firebat-identity-verify.py`) checks all 4 identities + all 14 timers and prints PASS/WARN/FAIL. **Baseline captured 2026-06-22** at `~/identity-baseline-pre-rehome.json` (0 FAIL, 3 WARN = the 3 re-home targets). Wed/Thu workflow: re-home → `firebat-identity-verify.py` (warnings should flip to ✅) → `firebat-identity-verify.py --run-timers` (actively fires each credential-dependent timer to confirm exit 0 under the new identity). **⚠ Do the Tailscale re-auth with console/physical access — it can drop SSH if misconfigured.**
 - [ ] Write the **credential map** (timer → identity → where the secret lives → how to rotate) into the firebat runbook (Workstream D).
 
@@ -85,7 +97,7 @@ During the WS-B markkb push, GitHub push-protection caught a **live NR Personal 
 ## Workstream C — Knowledge handoff for a no-owner team  *(Tue–Fri)*
 
 - [ ] **Confluence landing page: "Mark's Actuate footprint."** The map — what runs where, how to operate it, where each knowledge thread lives. The single entry point for whoever picks up any thread.
-- [ ] **Surface high-value KB syntheses into Confluence highlights:** autopatrol cleanup-lambda playbook (§3), OOM/VPA-floor analysis (§18), fleet-arch + Watchman analyses (§5), RDS extended-support upgrade runbook (§33), dashboard signal catalog (§9), the firebat operations runbook (Workstream D).
+- [ ] **Surface high-value KB syntheses into Confluence highlights:** autopatrol cleanup-lambda playbook (§3), OOM/VPA-floor analysis (§18), fleet-arch + [[watchman-repo|Watchman]] analyses (§5), RDS extended-support upgrade runbook (§33), dashboard signal catalog (§9), the firebat operations runbook (Workstream D).
 - [x] **Handoff comments posted 2026-06-22 on all 13 still-open tickets** (via firebat) — each with current state + what's needed to pick up + pointers, neutral/factual. Of the original 17: ENG-352/309/136 were already Done; **ENG-289 transitioned to Done** (PRs #15/#16 merged). Full ledger below.
 - [ ] **Set assignees** — left to the team lead (don't unilaterally reassign). Don't-drop: CS3-31 (Highest), CS3-537/CS3-323 (High), ENG-300 (needs a named successor or stalls).
 - [x] **Offboarding epic FILED 2026-06-22 → [ENG-375](https://actuate-team.atlassian.net/browse/ENG-375)** (created via firebat — writes are IP-blocked from the laptop). No offboarding ticket existed before. 7 children, all assigned to Mark, time-boxed to close Fri 6/26: **ENG-376** WS-A (Highest, critical path) · **ENG-377** WS-0 · **ENG-378** WS-B · **ENG-379** WS-C1 · **ENG-380** WS-C2 (this reassignment ledger) · **ENG-381** WS-D · **ENG-382** WS-E. Hard rule in the epic: anything not Done by EOD Fri gets explicitly reassigned.
@@ -114,7 +126,7 @@ During the WS-B markkb push, GitHub push-protection caught a **live NR Personal 
 
 0. **Baseline:** `~/bin/firebat-identity-verify.py` → expect 0 FAIL / 3 WARN (github, tailscale, atlassian) + NR "still Mark".
 1. **GitHub (safest first, no connectivity impact):** on firebat — `gh auth logout`; then `gh auth login` as the org machine account, or `gh auth login --with-token < <org-pat-file>`. Verify: `gh api repos/aegissystems/vms-connector --jq .full_name`. Re-run harness → `github.identity` flips ✅.
-2. **New Relic + Atlassian:** mint a service-account NR key → `printf '%s' '<NRAK-new>' > ~/.config/newrelic/key`. Mint a service Atlassian token → edit `~/.config/atlassian/api-token` (JSON: email+token+site). Re-run harness → NR shows the service identity, `atlassian.token` flips ✅. *(This also retires the leaked-then-purged NR key.)*
+2. **[[new-relic|New Relic]] + Atlassian:** mint a service-account NR key → `printf '%s' '<NRAK-new>' > ~/.config/newrelic/key`. Mint a service Atlassian token → edit `~/.config/atlassian/api-token` (JSON: email+token+site). Re-run harness → NR shows the service identity, `atlassian.token` flips ✅. *(This also retires the leaked-then-purged NR key.)*
 3. **Tailscale (LAST — riskiest, do at the console):** mint a tagged auth key (`tag:server`) in the admin console; on firebat: `sudo tailscale up --authkey=tskey-… --advertise-tags=tag:server`. Repeat on npu-server. Re-run harness → `tailscale.identity` flips ✅ (tagged, tailnet-owned).
 4. **Full active verify:** `~/bin/firebat-identity-verify.py --run-timers` → all identities ✅, all credential-dependent timers exit 0 under the new identities.
 5. **WS-B org mirror (now unblocked by step 1):** create `aegissystems/markkb` + `aegissystems/claude-config`; `git remote add org …` + push (both are gitleaks-clean); set the org repo as canonical.
@@ -139,12 +151,12 @@ All 17 tickets currently assigned to Mark (`assignee = Mark Barbera AND statusCa
 |---|---|---|---|---|---|
 | ENG-289 | In Progress | Med | onboarder ops tooling + post-deploy verify | **WS-0** | Land open PR #16 this week, close out. |
 | ENG-352 | In Review | Med | AP per-camera tier + crowd-not-Tier3 fix | AP | If merge-close, push it; else → AP owner. |
-| ENG-300 | In Progress | Med | Watchman watch-mgmt service: fleet & scheduling arch design | §5 | **Design doc — needs a named successor or it stalls.** Hand to Watchman/ENG-292 owner. |
-| ENG-309 | In Progress | Med | PyAV 13.1→17 vms-connector + watchman (AmeriGas soak) | connector | → Jacob (owns connector rearch). Pairs w/ ENG-136. |
+| ENG-300 | In Progress | Med | [[watchman-repo|Watchman]] watch-mgmt service: fleet & scheduling arch design | §5 | **Design doc — needs a named successor or it stalls.** Hand to Watchman/ENG-292 owner. |
+| ENG-309 | In Progress | Med | [[pyav-entity|PyAV]] 13.1→17 vms-connector + watchman (AmeriGas soak) | connector | → Jacob (owns connector rearch). Pairs w/ ENG-136. |
 | ENG-269 | In Progress | Med | admin automated endpoints for custom branches (§29) | §29 | → Paolo. Sibling of ENG-282. |
 | ENG-247 | In Progress | Med | Research: move off raw SQL in non-admin contexts | research | Convert to doc + hand off, or reassign. |
 | ENG-282 | Ready-to-Deploy | Med | Custom-branch lifecycle: admin endpoints + connector CI/CD | §29 | → Paolo. Ships; low risk. |
-| ENG-246 | Ready-to-Deploy | Med | actuate-instrumentation perf extension (§30) | §30 | Reassign; ready, low risk. |
+| ENG-246 | Ready-to-Deploy | Med | [[actuate-instrumentation]] perf extension (§30) | §30 | Reassign; ready, low risk. |
 | ENG-136 | Ready-to-Deploy | High | PyAV upgrade 13.1→17 (nogil pixel conversion) | connector | → Jacob. Pairs w/ ENG-309. |
 | CS3-31 | Ready-to-Deploy | **Highest** | Automatically update the reference image | CS3 | **Highest priority — reassign explicitly, don't let it drop.** |
 | CS3-323 | Ready-to-Deploy | High | Cam count discrepancy dashboard vs report | CS3 | Land or reassign (CS3 owner). |

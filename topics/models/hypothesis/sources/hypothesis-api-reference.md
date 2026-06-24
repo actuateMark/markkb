@@ -9,7 +9,7 @@ author: mark
 
 # Hypothesis API reference (source notes)
 
-Source-note distillation of [https://hypothesis.readthedocs.io/en/latest/reference/api.html](https://hypothesis.readthedocs.io/en/latest/reference/api.html), captured 2026-05-21. See [[../notes/concepts/given-and-settings]] for our internal coverage.
+Source-note distillation of [https://hypothesis.readthedocs.io/en/latest/reference/api.html](https://hypothesis.readthedocs.io/en/latest/reference/api.html), captured 2026-05-21. See [[given-and-settings]] for our internal coverage.
 
 ## `@given(*args, **kwargs)`
 
@@ -116,7 +116,7 @@ Suppress all: `suppress_health_check=list(HealthCheck)`.
 
 ## Cross-references
 
-- [[../notes/concepts/given-and-settings]]
-- [[../notes/concepts/healthchecks]]
-- [[../notes/concepts/example-database]]
-- [[../notes/concepts/shrinking]]
+- [[given-and-settings]]
+- [[healthchecks]]
+- [[example-database]]
+- [[shrinking]]

@@ -7,17 +7,17 @@ created: 2026-05-21
 updated: 2026-05-21
 author: mark
 incoming:
-  - topics/hypothesis/_summary.md
-  - topics/hypothesis/notes/concepts/composite-strategies.md
-  - topics/hypothesis/notes/concepts/example-database.md
-  - topics/hypothesis/notes/concepts/healthchecks.md
-  - topics/hypothesis/notes/concepts/shrinking.md
-  - topics/hypothesis/notes/concepts/stateful-testing.md
-  - topics/hypothesis/notes/concepts/strategies.md
-  - topics/hypothesis/notes/syntheses/2026-05-21_hypothesis-in-actuate.md
-  - topics/hypothesis/reading-list.md
-  - topics/hypothesis/sources/hypothesis-api-reference.md
-incoming_updated: 2026-05-27
+  - topics/models/hypothesis/_summary.md
+  - topics/models/hypothesis/notes/concepts/composite-strategies.md
+  - topics/models/hypothesis/notes/concepts/example-database.md
+  - topics/models/hypothesis/notes/concepts/healthchecks.md
+  - topics/models/hypothesis/notes/concepts/shrinking.md
+  - topics/models/hypothesis/notes/concepts/stateful-testing.md
+  - topics/models/hypothesis/notes/concepts/strategies.md
+  - topics/models/hypothesis/notes/syntheses/2026-05-21_hypothesis-in-actuate.md
+  - topics/models/hypothesis/reading-list.md
+  - topics/models/hypothesis/sources/hypothesis-api-reference.md
+incoming_updated: 2026-06-24
 ---
 
 # `@given` and `settings()`

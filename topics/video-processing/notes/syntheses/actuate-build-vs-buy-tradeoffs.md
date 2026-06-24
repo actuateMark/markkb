@@ -154,5 +154,5 @@ In rough order of strategic value × ease of investigation:
 - AWS service positioning -- [[aws-kvs-entity]], [[aws-mediaconvert-entity]], [[aws-medialive-entity]], [[aws-mediapackage-entity]], [[aws-rekognition-video-entity]], [[aws-ivs-entity]], [[aws-video-services-decision-matrix]]
 - Codec / accel detail -- [[h264-deep-dive]], [[h265-hevc-deep-dive]], [[hardware-accelerated-codecs]], [[ffmpeg-hardware-acceleration]], [[nvidia-deepstream]]
 - Transport latency -- [[webrtc-deep-dive]], [[hls-and-dash]], [[protocol-latency-comparison]]
-- Topic landing -- [[reading-list]]
+- Topic landing -- [[knowledgebase/topics/billing/reading-list]]
 - Cross-topic -- [[fleet-architecture/_summary]], [[vms-connector/_summary]], [[actuate-libraries/_summary]], [[ai-models/_summary]], [[infrastructure/_summary]], [[integrations/kvs/_summary]]

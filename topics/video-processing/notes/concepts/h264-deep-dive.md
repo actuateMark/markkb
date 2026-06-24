@@ -105,4 +105,4 @@ There is also a brittle workaround at `url_puller.py:150-151, 1121-1122` where t
 - Per-hwaccel option dict / [[rtsp-deep-dive|RTSP]] low-latency tuning — `av_url_puller.py:412-494`
 - Deliberate-no-hwaccel-output-format note — `av_url_puller.py:454-456, 432-434`
 - URL-rewrite hack to force H.264 — `actuate-libraries/actuate-pullers/src/actuate_pullers/url/url_puller.py:150-151, 1121-1122`
-- Cross-topic: [[vms-connector/_summary]], [[hardware-accelerated-codecs]], [[gop-keyframe-fundamentals]], [[reading-list]] for x264/openh264 alternatives.
+- Cross-topic: [[vms-connector/_summary]], [[hardware-accelerated-codecs]], [[gop-keyframe-fundamentals]], [[knowledgebase/topics/billing/reading-list]] for x264/openh264 alternatives.

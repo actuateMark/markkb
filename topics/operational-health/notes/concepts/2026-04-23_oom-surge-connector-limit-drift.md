@@ -13,12 +13,12 @@ incoming:
   - topics/aws-cost/notes/syntheses/2026-04-28_s3-cost-reduction-action-plan.md
   - topics/aws-cost/sources/2026-04-27_s3-lifecycle-rules.md
   - topics/engineering-process/notes/concepts/2026-04-23_release-acceptance-criteria.md
+  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
   - topics/operational-health/notes/concepts/2026-04-23_dashboard-phase-1b-pickup.md
   - topics/operational-health/notes/concepts/2026-04-27_dashboard-signal-cookbook.md
   - topics/operational-health/notes/syntheses/2026-04-24_overnight-check.md
   - topics/personal-notes/notes/concepts/2026-04-29_cleanup-handoff.md
-  - topics/personal-notes/notes/daily/2026-04-23.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-06-24
 ---
 
 # OOM Surge 2026-04-23 — Memory-Limit Drift, Not a Code Regression

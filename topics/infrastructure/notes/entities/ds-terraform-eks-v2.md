@@ -16,8 +16,8 @@ incoming:
   - topics/inference-api/notes/concepts/lambda-to-k8s-migration.md
   - topics/infrastructure/notes/entities/argocd.md
   - topics/infrastructure/notes/syntheses/2026-06-02_dynamodb-fit-assessment-ait-phase-10.md
-  - topics/runbooks/notes/concepts/2026-04-29_iam-access-denied-missing-resource-arn.md
-incoming_updated: 2026-06-19
+  - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
+incoming_updated: 2026-06-24
 ---
 
 # ds-terraform-eks-v2

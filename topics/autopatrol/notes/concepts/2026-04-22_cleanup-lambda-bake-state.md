@@ -18,12 +18,13 @@ outgoing:
 incoming:
   - topics/autopatrol/notes/concepts/2026-04-23_cleanup-rollout-day.md
   - topics/autopatrol/notes/syntheses/2026-05-07_cleanup-lambda-state-matrix-verify.md
+  - topics/offboarding/notes/concepts/2026-06-23_autopatrol-handoff.md
   - topics/operational-health/notes/syntheses/2026-04-23_overnight-check.md
   - topics/personal-notes/notes/daily/2026-04-22.md
   - topics/personal-notes/notes/daily/2026-04-23.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-06-24
 ---
 
 > **Superseded 2026-04-23.** Step E.2 has happened: `CLEANUP_ENABLED=true` flipped at 17:59Z and `CLEANUP_TARGET_HOURS` lowered 48→18 at 18:12Z. For live state see [[autopatrol-cleanup-lambda]] entity. For 2026-04-23 incident + rollout changes see [[2026-04-23_postmortem-onboarder-healthcheck]].

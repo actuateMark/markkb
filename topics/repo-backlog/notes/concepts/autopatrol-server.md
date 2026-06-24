@@ -4,8 +4,8 @@ type: concept
 topic: repo-backlog
 tags: [backlog, github, autopatrol-server]
 repo: aegissystems/autopatrol-server
-created: 2026-06-23
-updated: 2026-06-23
+created: 2026-06-24
+updated: 2026-06-24
 author: kb-bot
 issue_count_open: 1
 issue_count_high_impact: 0
@@ -28,7 +28,7 @@ Full open-issue inventory for [aegissystems/autopatrol-server](https://github.co
 _(empty — populate on first curation pass)_
 
 <!-- BEGIN-AUTO-REFRESH repo-scan -->
-_Last refreshed: **2026-06-23** by [[skill-repo-scan]] — 1 open issues._
+_Last refreshed: **2026-06-24** by [[skill-repo-scan]] — 1 open issues._
 
 ### 🔥 High-impact (top 10 by score)
 
@@ -65,5 +65,5 @@ _(no labeled issues)_
 ## Related
 
 - [[repo-backlog/_summary|repo-backlog topic]]
-- Latest scan: [[2026-06-23_scan]]
+- Latest scan: [[2026-06-24_scan]]
 - GitHub: [aegissystems/autopatrol-server/issues](https://github.com/aegissystems/autopatrol-server/issues)

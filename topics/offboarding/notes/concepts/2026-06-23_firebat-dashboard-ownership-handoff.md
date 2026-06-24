@@ -6,6 +6,9 @@ tags: [offboarding, handoff, firebat, dashboard, ownership, monitoring, ops]
 created: 2026-06-23
 updated: 2026-06-23
 author: kb-bot
+incoming:
+  - topics/offboarding/_summary.md
+incoming_updated: 2026-06-24
 ---
 
 # Firebat automation + dashboard — ownership handoff
@@ -20,7 +23,7 @@ author: kb-bot
 - **Backed by**: the `actuate-dev-toolkit` repo (`local_network_scripts`) — phase scripts + `files/` deployed to firebat by `phase-13`.
 
 ## What owning it means (recurring duties)
-- **Watch the morning signal** — `~/bin/observations-snapshot` / the dashboard; triage RED. Most are chronic (billing-unbilled, OOM offenders) — know which are noise vs. new.
+- **[[watch-entity|Watch]] the morning signal** — `~/bin/observations-snapshot` / the dashboard; triage RED. Most are chronic (billing-unbilled, OOM offenders) — know which are noise vs. new.
 - **Keep timers green** — `~/bin/firebat-identity-verify.py` is the one-shot health check (identities + all timers). Run it if the morning cache looks stale.
 - **Rotate credentials** when they expire (NR key, Atlassian token, GitHub PAT, AWS cert) — the firebat runbook has the credential map + paths.
 - **Standing discipline (inherited):** every new inference-api E2M rule ships with a matching dashboard signal in `signals.json` (mark-todos §9). Don't let metric series exist without a regression-aware view.
@@ -35,7 +38,7 @@ author: kb-bot
 [[2026-06-22_firebat-operations-runbook]] → [[2026-06-22_dashboard-signals-catalog]] → [[2026-05-05_operational-dashboard-context]] → [[2026-04-30_three-tier-routine-check-pattern]] → [[2026-04-30_morning-prep-scripts-runbook]]. Break-glass: [[2026-06-22_dead-mans-checklist]].
 
 ## Owner profile + recommendation
-Best fit: someone **ops/devops/SRE-leaning** comfortable with systemd, AWS (Roles Anywhere), New Relic/NRQL, and the KB. It's a *light but real* ongoing load — minutes/day to watch signals + occasional maintenance — not a full workstream. Options:
+Best fit: someone **ops/devops/SRE-leaning** comfortable with systemd, AWS (Roles Anywhere), [[new-relic|New Relic]]/NRQL, and the KB. It's a *light but real* ongoing load — minutes/day to [[watch-entity|watch]] signals + occasional maintenance — not a full workstream. Options:
 - **A single named owner** (cleanest — they get the morning signal + maintenance).
 - **Fold into an existing on-call/infra rotation** (the dashboard becomes a rotation surface).
 - **Minimum viable:** at least assign the **credential-rotation + timer-health** duty to someone, even if signal-watching stays informal — otherwise a dead timer is invisible.

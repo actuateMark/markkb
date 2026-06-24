@@ -202,7 +202,7 @@ The design landing is the acceptance for *this* note. Implementation acceptance,
 
 ## Cross-references
 
-- [[_summary]] — topic overview
+- [[knowledgebase/topics/billing/_summary]] — topic overview
 - [[_todos]] R1 — the row this design closes (design-spec landing; implementation pending)
 - [[2026-05-11_billing-pain-post-mortem]] — the firefight whose unknown drift duration this signal closes
 - [[billing-events-catalog]] — schema authority for the right-side query

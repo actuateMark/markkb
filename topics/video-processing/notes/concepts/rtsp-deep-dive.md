@@ -123,4 +123,4 @@ The pipeline also re-encodes to JPEG (via `jpegenc`) before `appsink` so that th
 - **[[gstreamer-entity]] ([[h264-deep-dive|H.264]] only)**: [`gst_url_puller.py:11-62`](file:///home/mork/work/actuate-libraries/actuate-pullers/src/actuate_pullers/url/gst_url_puller.py) -> [`gstreamer_input_pipeline.py:86-101`](file:///home/mork/work/actuate-libraries/actuate-pullers/src/actuate_pullers/gstreamer/gstreamer_input_pipeline.py); pipeline is `rtspsrc ! rtph264depay ! h264parse ! avdec_h264 ! videorate ! videoconvert ! jpegenc ! appsink`. **[[h265-hevc-deep-dive|H.265]] silently fails on this path.**
 - See also [[actuate-frame-ingest-decode-paths]], [[integrations/rtsp/_summary]], [[vms-connector/_summary]].
 - For latency comparison against other transports: [[protocol-latency-comparison]].
-- For tooling alternatives (MediaMTX, Live555, GO2RTC) see [[reading-list]].
+- For tooling alternatives (MediaMTX, Live555, GO2RTC) see [[knowledgebase/topics/billing/reading-list]].

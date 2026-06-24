@@ -136,7 +136,7 @@ I've been writing this up extensively. Pointers if you want to dig in:
 - **Integration plan**: [[2026-05-21_ait-validator-integration-plan]] — fault-line analysis, alignment decisions, bucket-safety constraints
 - **Dovetail synthesis**: [[2026-05-21_ait-validator-dovetail]] — six plays (A-F) with effort estimates
 - **AIT entity note**: [[actuate-integration-tools]] — what AIT does + roadmap
-- **Phase 11 + Hypothesis context**: [[2026-05-21_ait-phase-11-simulate]] + [[hypothesis/_summary|Hypothesis (property-based testing)]]
+- **Phase 11 + Hypothesis context**: [[2026-05-21_ait-phase-11-simulate]] + [[knowledgebase/topics/models/hypothesis/_summary|Hypothesis (property-based testing)]]
 - **Phase 4 keystone**: [[2026-05-20_ait-phase-4-idp-serializer]]
 
 ## Ticket

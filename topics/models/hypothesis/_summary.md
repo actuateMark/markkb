@@ -73,7 +73,7 @@ def my_strategy(draw):
 
 ## Sources
 
-The KB sources/ dir mirrors the canonical Hypothesis docs by section. See [[reading-list]] for the full reading list across the upstream docs.
+The KB sources/ dir mirrors the canonical Hypothesis docs by section. See [[knowledgebase/topics/models/hypothesis/reading-list]] for the full reading list across the upstream docs.
 
 ## Cross-references
 

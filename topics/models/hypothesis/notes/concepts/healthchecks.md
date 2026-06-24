@@ -14,10 +14,10 @@ incoming:
   - topics/fleet-architecture/_summary.md
   - topics/fleet-architecture/notes/syntheses/2026-05-28_fleet-rearch-briefing-overview.md
   - topics/fleet-architecture/notes/syntheses/2026-06-01_adr-watchman-mvp-slim-connector.md
-  - topics/hypothesis/_summary.md
-  - topics/hypothesis/notes/concepts/given-and-settings.md
-  - topics/hypothesis/notes/syntheses/2026-05-21_hypothesis-in-actuate.md
-incoming_updated: 2026-06-02
+  - topics/integrations/vch/notes/entities/vch-components.md
+  - topics/models/hypothesis/_summary.md
+  - topics/models/hypothesis/notes/concepts/given-and-settings.md
+incoming_updated: 2026-06-24
 ---
 
 # Hypothesis health checks

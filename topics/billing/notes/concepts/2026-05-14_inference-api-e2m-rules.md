@@ -12,9 +12,10 @@ incoming:
   - topics/billing/notes/syntheses/2026-05-14_v5-tracking-fields-e2m-design.md
   - topics/inference-api/notes/concepts/2026-05-14_handoff-v5-release-verification.md
   - topics/inference-api/notes/syntheses/2026-05-14_v5-motion-history-single-frame-design.md
+  - topics/personal-notes/notes/concepts/2026-06-22_dashboard-signals-catalog.md
   - topics/personal-notes/notes/daily/2026-05-14.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-24
 ---
 
 # Inference API E2M billing rules

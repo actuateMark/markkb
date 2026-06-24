@@ -21,9 +21,9 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-d-event-driven.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-e-hybrid-sidecar.md
   - topics/integrations/rtsp/notes/syntheses/rtsp-robustness-enhancement-plan.md
+  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
   - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
-  - topics/profiling-and-performance/_summary.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-24
 ---
 
 # Performance Optimization Landscape

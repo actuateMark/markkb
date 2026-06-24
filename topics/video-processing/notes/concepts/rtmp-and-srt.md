@@ -78,7 +78,7 @@ SRT can achieve **120ms-1s glass-to-glass** over a noisy public internet path, w
 
 ## Reading-list pointers
 
-For experimenting with either protocol locally, see [[reading-list]]:
+For experimenting with either protocol locally, see [[knowledgebase/topics/billing/reading-list]]:
 
 - **MediaMTX** (formerly [[rtsp-deep-dive|rtsp]]-simple-server) -- bridges RTMP <-> [[rtsp-deep-dive|RTSP]] <-> [[hls-and-dash|HLS]] <-> [[webrtc-deep-dive|WebRTC]] <-> SRT in one binary. Single best test rig.
 - **OBS Studio** -- canonical RTMP/SRT publisher; useful as the encoder side of a test setup.

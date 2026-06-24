@@ -138,7 +138,7 @@ Once the libs PR merges + CI publishes each `[minor:...]`, these come out. Repla
 
 - [[actuate-integration-tools]] — entity
 - [[actuate-validator]] — entity (Zack's library survey)
-- [[hypothesis/_summary|Hypothesis (property-based testing)]] — full reference for property-based testing as we use it
+- [[knowledgebase/topics/models/hypothesis/_summary|Hypothesis (property-based testing)]] — full reference for property-based testing as we use it
 - [[2026-05-21_hypothesis-in-actuate]] — how we layer factories + [[strategies]]
 
 ### Memories

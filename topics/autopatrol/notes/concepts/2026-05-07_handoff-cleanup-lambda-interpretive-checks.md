@@ -8,9 +8,10 @@ updated: 2026-05-07
 author: kb-bot
 status: partial
 incoming:
+  - topics/offboarding/notes/concepts/2026-06-23_autopatrol-handoff.md
   - topics/personal-notes/notes/daily/2026-05-07.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-06-24
 ---
 
 # Handoff — cleanup-lambda Step 8b / 8c / 8d (interpretive checks)

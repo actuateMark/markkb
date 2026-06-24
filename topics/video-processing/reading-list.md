@@ -1,6 +1,6 @@
 # Reading List: Video Processing
 
-Catalog of alternatives, peripheral tools, and reference material for the [[_summary|video-processing topic]]. Major players are covered as full entity / concept notes inside `notes/`; this file is for **everything else worth knowing about** -- alternatives, niche tools, learning resources, and decision-relevant material.
+Catalog of alternatives, peripheral tools, and reference material for the [[knowledgebase/topics/video-processing/_summary|video-processing topic]]. Major players are covered as full entity / concept notes inside `notes/`; this file is for **everything else worth knowing about** -- alternatives, niche tools, learning resources, and decision-relevant material.
 
 Entries are unchecked checkboxes (`[ ]`) -- check them as we read / synthesize / decide they're not worth a deeper look.
 

@@ -82,7 +82,7 @@ Any hardware encoder (Haivision, AJA, Magewell, Teradek) almost always exposes M
 
 ## Tooling
 
-For testing MPEG-TS/UDP end-to-end, see [[reading-list]]:
+For testing MPEG-TS/UDP end-to-end, see [[knowledgebase/topics/billing/reading-list]]:
 
 - **[[ffmpeg-entity|FFmpeg]]**: `ffmpeg -i input.mp4 -c copy -f mpegts udp://239.0.0.1:5000?pkt_size=1316`
 - **[[gstreamer-entity|GStreamer]]**: `gst-launch-1.0 filesrc location=in.ts ! tsdemux ! ... ! udpsink host=239.0.0.1 port=5000`

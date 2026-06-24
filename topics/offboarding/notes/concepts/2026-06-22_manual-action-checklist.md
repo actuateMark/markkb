@@ -6,6 +6,13 @@ tags: [offboarding, checklist, manual, ws-a, handoff, credentials]
 created: 2026-06-22
 updated: 2026-06-22
 author: kb-bot
+incoming:
+  - topics/offboarding/_summary.md
+  - topics/offboarding/notes/concepts/2026-06-23_autopatrol-handoff.md
+  - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
+  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
+  - topics/offboarding/notes/concepts/2026-06-23_watchman-fleet-handoff-paolo-mike.md
+incoming_updated: 2026-06-24
 ---
 
 # Offboarding manual checklist (Mark — last day Fri 2026-06-26)
@@ -19,7 +26,7 @@ author: kb-bot
 
 ## §A — DECIDE FIRST (team): the automation identity  ⛔ blocks §B
 
-GitHub, New Relic, and Atlassian all need the **same** answer: *which team-owned identity does firebat's automation authenticate as?* Decide once, apply to all three.
+GitHub, [[new-relic|New Relic]], and Atlassian all need the **same** answer: *which team-owned identity does firebat's automation authenticate as?* Decide once, apply to all three.
 
 - [ ] **Pick the identity model** (team discussion — posted to [ENG-376](https://actuate-team.atlassian.net/browse/ENG-376)):
   - **Option 1 — staying teammate/owner credentials** *(fastest, ~5 min each)*: a person who's staying mints the PAT/keys. Durable past Mark; tied to that person.
@@ -74,6 +81,7 @@ Goal: make the firebat + npu-server nodes **tag-owned** (`tag:server`) so they s
 - [x] **KB → `aegissystems/actuate-kb` (private) — DONE 2026-06-23.** Pushed via actuateMark (org allows member repo creation; didn't need the §A decision after all). Scrubbed first: gitleaks-clean + a colleague's personal IP purged from all history + incident-note naming neutralized. All 3 remotes (org, firebat, personal) carry the cleaned history.
 - [ ] **claude-config → org** — still to mirror (gitleaks-clean, verified). Push to `aegissystems/claude-config` the same way.
 - [ ] Tell the team the KB now lives at `aegissystems/actuate-kb` (make it the canonical remote).
+- [ ] **Switch firebat KB sync → git-pull from `aegissystems/actuate-kb`** — firebat currently updates the vault via **Obsidian Sync (Mark's account)**, which freezes when that account ends. Replace with a `git pull` timer (pull-only, org canonical). At-the-box change; pairs with WS-A. Design + steps: [[2026-06-24_firebat-kb-git-sync-task]].
 
 ---
 
@@ -95,11 +103,11 @@ Goal: make the firebat + npu-server nodes **tag-owned** (`tag:server`) so they s
 - [ ] When green, transition the ENG-375 children to Done.
 
 ## §I — Successor handoffs  *(name an owner per workstream, then walk it)*
-- [x] **Watchman + fleet-arch** → Mike (ENG-300) + Paolo (ENG-383). Plan: [[2026-06-23_watchman-fleet-handoff-paolo-mike]].
+- [x] **[[watchman-repo|Watchman]] + fleet-arch** → Mike (ENG-300) + Paolo (ENG-383). Plan: [[2026-06-23_watchman-fleet-handoff-paolo-mike]].
 - [ ] **Run the Watchman walkthrough** (Mark + Mike + Paolo, 60–90 min) — the irreplaceable knowledge transfer; do before Friday.
 - [ ] **Park ENG-183** (S3 cost) with whoever takes infra.
-- [ ] **Name owners for the remaining unowned workstreams** and build a handoff plan for each (candidates: firebat automation + operational dashboard §9/§12; AutoPatrol §3/§14; billing §28; RDS upgrades §33; connector/PyAV §15). The dashboard/firebat-automation layer is the most uniquely Mark's — it runs without an owner but won't be *maintained or extended* without one.
-- [ ] **Review + merge the 10 repo-doc PRs** (CLAUDE.md / docs handoff — see [[2026-06-23_local-repo-audit]] § Execution status): autopatrol-server #29, actuate_bi #12, ds-terraform-eks-v2 #104, actuate-dev-toolkit #1, vms-connector #1765, actuate_admin #2537, actuate-inference-api #95, actuate-libraries #392, kubernetes-deployments #419, queue_consumer #194. Docs-only, low-risk.
+- [ ] **Name owners for the remaining unowned workstreams** and build a handoff plan for each (candidates: firebat automation + operational dashboard §9/§12; AutoPatrol §3/§14; billing §28; RDS upgrades §33; connector/[[pyav-entity|PyAV]] §15). The dashboard/firebat-automation layer is the most uniquely Mark's — it runs without an owner but won't be *maintained or extended* without one.
+- [ ] **Review + merge the 10 repo-doc PRs** (CLAUDE.md / docs handoff — see [[2026-06-23_local-repo-audit]] § Execution status): autopatrol-server #29, actuate_bi #12, [[ds-terraform-eks-v2]] #104, actuate-dev-toolkit #1, vms-connector #1765, [[actuate_admin]] #2537, actuate-inference-api #95, actuate-libraries #392, [[kubernetes-deployments]] #419, queue_consumer #194. Docs-only, low-risk.
 - [x] **Pushed 2 LOCAL-ONLY repos to the org 2026-06-23** — `aegissystems/actuate-integration-tools` + `aegissystems/software-arch-sketches` (private, with CLAUDE.md; both gitleaks-clean, .git ≈1M each). A full sweep of all 25 repos confirmed these were the ONLY two without a remote.
 - [ ] **camera-ui CLAUDE.md** — skipped (local main 249 behind, stale base); apply the small tech-stack + live-streaming note manually on current main if desired.
 

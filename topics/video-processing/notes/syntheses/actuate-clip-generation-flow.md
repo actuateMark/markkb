@@ -147,4 +147,4 @@ If we ever do bring muxing in-house, we should pick our format inputs carefully.
 - For end-to-end pipeline context -- [[actuate-video-pipeline-walkthrough]].
 - For codec-level encode tradeoffs -- [[h264-deep-dive]], [[h265-hevc-deep-dive]], [[hardware-accelerated-codecs]].
 - For container choice -- [[mjpeg-and-still-image-formats]] ([[mjpeg-and-still-image-formats|MJPEG]]-in-MP4 lossless option), [[gop-keyframe-fundamentals]].
-- For library positioning -- [[ffmpeg-entity]], [[pyav-entity]], [[opencv-entity]], [[aws-mediaconvert-entity]], [[aws-video-services-decision-matrix]], [[reading-list]].
+- For library positioning -- [[ffmpeg-entity]], [[pyav-entity]], [[opencv-entity]], [[aws-mediaconvert-entity]], [[aws-video-services-decision-matrix]], [[knowledgebase/topics/billing/reading-list]].

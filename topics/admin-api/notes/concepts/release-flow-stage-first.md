@@ -13,7 +13,8 @@ outgoing:
 incoming:
   - topics/admin-api/_summary.md
   - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
-incoming_updated: 2026-05-27
+  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
+incoming_updated: 2026-06-24
 ---
 
 # actuate_admin release flow — feature → staging → main

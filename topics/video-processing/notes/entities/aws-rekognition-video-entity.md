@@ -89,4 +89,4 @@ The plausible narrow use cases for Rekognition Video at Actuate, all niche:
 
 None of these are on the roadmap. Default verdict: **skip**, our home-rolled stack is the right call. Worth re-evaluating only if the per-stream economics of the AWS managed services improve dramatically, or if a contract specifically requires AWS-branded inference.
 
-Cross-references: [[ai-models/_summary]], [[watchman/_summary]], [[aws-video-services-decision-matrix]] for the side-by-side, [[reading-list]] for AWS GroundTruth Video labeling (the relevant tool if our training-data scope grows).
+Cross-references: [[ai-models/_summary]], [[watchman/_summary]], [[aws-video-services-decision-matrix]] for the side-by-side, [[knowledgebase/topics/billing/reading-list]] for AWS GroundTruth Video labeling (the relevant tool if our training-data scope grows).

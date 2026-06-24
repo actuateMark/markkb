@@ -5,11 +5,19 @@ created: 2026-05-29
 updated: 2026-05-29
 topic: engineering-process
 type: synthesis
-tags: [watchman, fleet-architecture, manager-service, ait, brain-in-jar, hypothesis, testing, instrumentation]
+tags:
+  - watchman
+  - fleet-architecture
+  - manager-service
+  - ait
+  - brain-in-jar
+  - hypothesis
+  - testing
+  - instrumentation
 related:
   - "[[topics/engineering-process/notes/syntheses/2026-05-20_ait-brain-in-jar-spec]]"
   - "[[topics/personal-notes/notes/syntheses/2026-05-27_brain-in-jar-handoff]]"
-  - "[[topics/hypothesis/notes/syntheses/2026-05-21_hypothesis-in-actuate]]"
+  - "[[2026-05-21_hypothesis-in-actuate]]"
   - "[[topics/engineering-process/notes/syntheses/2026-05-21_ait-phase-11-simulate]]"
   - "[[2026-05-28_watch-management-service-design]]"
   - "[[2026-05-29_watch-manager-observability]]"
@@ -74,7 +82,7 @@ Five library commits sit on `feat/idp-serializer-brain-in-jar-phase-4`, **not pu
 | F2 | `is_armed(watch, now)` property: armed(t) = base(t) ∧ ¬suppress(t) ∨ active_override(t) | Property | F1 + `@given` | Option B's "armed state is a pure function" | S |
 | F3 | `evaluate_schedule_at(now)` round-trip across `to_dict`/`from_dict` | Property + serializer | Phase 4 template | Calendar-set persistence layer | S |
 | F4 | `CapturingDeployerClient` recording every `start`/`stop`/`chm` call; never hits real deployer | Unit/integration | `CapturingAlertSender` template | Reconcile produces correct K8s mutations for arbitrary [[watch-entity|Watch]] states | M |
-| F5 | `ManualOverrideStateMachine` (`RuleBasedStateMachine`): rules `apply_override`, `advance_time`, `tick_reconcile`, `revoke`; TTL invariants | Stateful property | [[topics/hypothesis/notes/concepts/stateful-testing]] | Constraint #10: manual disarm at 23:59 cannot block next-day arm | M |
+| F5 | `ManualOverrideStateMachine` (`RuleBasedStateMachine`): rules `apply_override`, `advance_time`, `tick_reconcile`, `revoke`; TTL invariants | Stateful property | [[stateful-testing]] | Constraint #10: manual disarm at 23:59 cannot block next-day arm | M |
 | F6 | `simulate` scenario `arm_disarm_dance` — series of `(now, Watch, expected_armed)` fed through `evaluate(...)` | Scenario (mirrors `motion_signal_dance`) | AIT simulate scenario template | DST + suppress + manual-override interaction | M |
 | F7 | `CapturingSQSConsumer` (or Kafka) recording every `site_product_started/_ended` envelope | Integration | `CapturingAlertSender` template | T17 — manager's billing-event subscription is the "did it run" oracle | M |
 | F8 | Reconcile-loop replay: feed (observed K8s state, desired [[watch-entity|Watch]] state) into reconciler, assert mutations | Integration | Brain-in-jar dump format (Phase 4) repurposed | Manager reconcile is deterministic | L |

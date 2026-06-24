@@ -80,7 +80,7 @@ The `HW_DECODERS` table at `actuate-libraries/actuate-pullers/src/actuate_puller
 
 ## Reading-list pointers
 
-The encoder/decoder libraries themselves — **SVT-AV1**, **dav1d**, **aom-av1** — are cataloged in [[reading-list]]. Worth a deeper read if/when AV1 enters our ingestion path. **VVC / H.266** is also in the reading list as the *next* codec after [[h265-hevc-deep-dive|HEVC]]; effectively zero production deployment, even less surveillance-relevant than AV1.
+The encoder/decoder libraries themselves — **SVT-AV1**, **dav1d**, **aom-av1** — are cataloged in [[knowledgebase/topics/billing/reading-list]]. Worth a deeper read if/when AV1 enters our ingestion path. **VVC / H.266** is also in the reading list as the *next* codec after [[h265-hevc-deep-dive|HEVC]]; effectively zero production deployment, even less surveillance-relevant than AV1.
 
 ## Actuate touchpoints
 
@@ -94,4 +94,4 @@ Potential applications:
 
 Decoder mapping table (latent capability) — `actuate-libraries/actuate-pullers/src/actuate_pullers/url/av_url_puller.py:24-77` (`HW_DECODERS`).
 
-Cross-references: [[codecs-overview]], [[hardware-accelerated-codecs]], [[reading-list]].
+Cross-references: [[codecs-overview]], [[hardware-accelerated-codecs]], [[knowledgebase/topics/billing/reading-list]].

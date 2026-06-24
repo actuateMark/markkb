@@ -10,8 +10,7 @@ author: kb-bot
 incoming:
   - topics/personal-notes/notes/daily/2026-06-16.md
   - topics/personal-notes/notes/daily/2026-06-17.md
-  - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-06-19
+incoming_updated: 2026-06-24
 ---
 
 # Squash Merge CI-Skip Suppression: Recurrence #1731

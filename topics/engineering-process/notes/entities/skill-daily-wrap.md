@@ -7,6 +7,7 @@ created: 2026-04-17
 updated: 2026-04-20
 author: kb-bot
 incoming:
+  - _tooling/skills/kb-recap/SKILL.md
   - topics/engineering-process/notes/entities/skill-daily-scope.md
   - topics/engineering-process/notes/entities/skill-todos-add.md
   - topics/engineering-process/notes/entities/skill-todos-audit.md
@@ -16,8 +17,7 @@ incoming:
   - topics/personal-notes/notes/daily/2026-04-23.md
   - topics/personal-notes/notes/daily/2026-04-27.md
   - topics/personal-notes/notes/daily/2026-04-30.md
-  - topics/personal-notes/notes/daily/2026-05-02.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-24
 ---
 
 # /daily-wrap

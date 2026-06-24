@@ -61,7 +61,7 @@ For one-to-one calls, peers connect directly (P2P). For one-to-many or many-to-m
 - **MCU (Multipoint Control Unit)**: server decodes all inputs and re-encodes a single composite output. Heavy CPU, single bitrate output, mostly obsolete.
 - **SFU (Selective Forwarding Unit)**: server receives one stream from each publisher and forwards encrypted RTP to subscribers without decoding. Each subscriber gets its own SRTP session but shares the source RTP. Linear scale on bandwidth, no CPU cost. **This is the architecture every modern WebRTC product uses.**
 
-Reference SFUs in [[reading-list]]:
+Reference SFUs in [[knowledgebase/topics/billing/reading-list]]:
 - **Janus Gateway** -- C, plugin-based, the OG.
 - **Pion** (Go) -- the lower-level toolkit; building blocks rather than a product.
 - **LiveKit** -- room-model SDK on top of Pion. Open core, well-documented.

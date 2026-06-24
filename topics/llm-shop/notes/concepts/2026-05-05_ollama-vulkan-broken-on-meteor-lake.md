@@ -11,12 +11,13 @@ outgoing:
   - topics/llm-shop/notes/concepts/2026-05-06_model-routed-proxy.md
   - topics/llm-shop/notes/syntheses/2026-05-05_using-the-llm-shop.md
 incoming:
+  - topics/actuate-platform/notes/concepts/2026-06-22_npu-server-llm-shop-runbook.md
   - topics/llm-shop/_summary.md
   - topics/llm-shop/notes/concepts/2026-05-06_model-routed-proxy.md
   - topics/llm-shop/notes/syntheses/2026-05-05_using-the-llm-shop.md
   - topics/llm-shop/notes/syntheses/2026-05-07_kb-deep-intake-architecture.md
   - topics/llm-shop/notes/syntheses/2026-05-07_overnight-batch-pattern.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-06-24
 ---
 
 # Ollama 0.23 Vulkan broken on Intel Meteor Lake iGPU

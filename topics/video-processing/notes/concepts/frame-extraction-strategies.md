@@ -110,13 +110,13 @@ for frame in container.decode(video=0):
 
 ### 5. Decord-style batch reading (random access for ML)
 
-Libraries like [[reading-list#frame--stream-io-python|`decord`]] are optimized specifically for "give me frames at indices [i, j, k, ...] from this video file" use cases that ML training loops have. Internally they keep a more aggressive index of keyframe positions and overlap decode work across requests.
+Libraries like [[knowledgebase/topics/billing/reading-list#frame--stream-io-python|`decord`]] are optimized specifically for "give me frames at indices [i, j, k, ...] from this video file" use cases that ML training loops have. Internally they keep a more aggressive index of keyframe positions and overlap decode work across requests.
 
 **Use for:** ML training pipelines reading clip files, where the access pattern is "random subset of frame indices per epoch."
 
 **Don't use for:** streaming. `decord` is file-oriented. Not applicable for live [[rtsp-deep-dive|RTSP]] / HTTP streams.
 
-**Actuate usage:** none today. Could be relevant for model training pipelines if scope expands. See [[reading-list]] for the broader landscape.
+**Actuate usage:** none today. Could be relevant for model training pipelines if scope expands. See [[knowledgebase/topics/billing/reading-list]] for the broader landscape.
 
 ### 6. Per-stream FPS downsampling vs per-pipeline downsampling
 

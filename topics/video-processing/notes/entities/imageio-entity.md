@@ -95,5 +95,5 @@ If we ever pick it up, the lazy-install binary path is a particularly clean way 
 - **None today.** Listed here as a candidate library for ad-hoc scripting and dataset work.
 - See [[opencv-entity]] for current legacy-decode usage.
 - See [[pyav-entity]] for the canonical streaming-decode path.
-- See [[reading-list]] for adjacent libraries (decord, vidgear, moviepy, scikit-video) that occupy the same "friendly Python video I/O" niche.
+- See [[knowledgebase/topics/billing/reading-list]] for adjacent libraries (decord, vidgear, moviepy, scikit-video) that occupy the same "friendly Python video I/O" niche.
 - See [[ffmpeg-entity]] / [[ffmpeg-python-bindings]] for the underlying [[ffmpeg-entity|FFmpeg]] toolchain `imageio-ffmpeg` wraps.

@@ -129,7 +129,7 @@ If we ever ship adaptive playback, CMAF is the segment format to start with.
 
 ## Reading-list pointers
 
-For producing HLS / DASH segments from a stream we already have, the realistic options (see [[reading-list]]):
+For producing HLS / DASH segments from a stream we already have, the realistic options (see [[knowledgebase/topics/billing/reading-list]]):
 
 - **[[ffmpeg-entity|FFmpeg]]** with `-f hls` / `-f dash` -- one shell command from any [[rtsp-deep-dive|RTSP]] source.
 - **[[aws-mediaconvert-entity|AWS MediaConvert]]** -- batch transcoder, produces CMAF + manifests as a job output. Good for clip-replay UI on archived clips. See [[aws-mediaconvert-entity]].

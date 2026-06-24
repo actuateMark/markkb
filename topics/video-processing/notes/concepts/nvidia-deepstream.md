@@ -154,7 +154,7 @@ This is closer to a "GPU inference appliance" model than a full DeepStream-based
 - [[hardware-accelerated-codecs]] -- [[hardware-accelerated-codecs|NVENC]] / [[hardware-accelerated-codecs|NVDEC]] under DeepStream
 - [[h264-deep-dive]], [[h265-hevc-deep-dive]]
 - [[actuate-frame-ingest-decode-paths]], [[actuate-video-pipeline-walkthrough]]
-- Reading list: [[reading-list]] -- `nvidia-DeepStream-SDK`, `NVIDIA Video Codec SDK`, `NVIDIA DALI`, Frigate (the open-source comparison)
+- Reading list: [[knowledgebase/topics/billing/reading-list]] -- `nvidia-DeepStream-SDK`, `NVIDIA Video Codec SDK`, `NVIDIA DALI`, Frigate (the open-source comparison)
 
 ## Cross-topic
 

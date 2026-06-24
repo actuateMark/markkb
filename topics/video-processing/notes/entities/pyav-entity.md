@@ -22,7 +22,7 @@ incoming_updated: 2026-06-02
 
 # PyAV
 
-PyAV is a **Cython binding to the libav\* family** (`libavformat`, `libavcodec`, `libavutil`, `libswscale`, `libswresample`) -- the same C libraries that power [[ffmpeg-entity|the ffmpeg CLI]]. Unlike [[reading-list#frame--stream-io-python|`ffmpeg-python`]] (which builds shell command strings) or [[opencv-entity|OpenCV's `cv2.VideoCapture`]] (which wraps libav* but hides almost everything), PyAV exposes libav\*'s primitives **directly** as Python objects: `Container`, `Stream`, `Packet`, `Frame`, `CodecContext`, `BitStreamFilter`. If you can do it with the C API, you can do it with PyAV.
+PyAV is a **Cython binding to the libav\* family** (`libavformat`, `libavcodec`, `libavutil`, `libswscale`, `libswresample`) -- the same C libraries that power [[ffmpeg-entity|the ffmpeg CLI]]. Unlike [[knowledgebase/topics/billing/reading-list#frame--stream-io-python|`ffmpeg-python`]] (which builds shell command strings) or [[opencv-entity|OpenCV's `cv2.VideoCapture`]] (which wraps libav* but hides almost everything), PyAV exposes libav\*'s primitives **directly** as Python objects: `Container`, `Stream`, `Packet`, `Frame`, `CodecContext`, `BitStreamFilter`. If you can do it with the C API, you can do it with PyAV.
 
 This makes PyAV the only viable option in Python when you actually need to **control the decoder** -- presentation timestamps, packet-level filtering, hardware accel context, skip-frame modes, side-data extraction. See [[ffmpeg-libav-libraries]] for the C-side primitives PyAV mirrors.
 

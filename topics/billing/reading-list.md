@@ -1,6 +1,6 @@
 # Reading List: Customer Billing
 
-Sources informing the customer-billing-event topic ([[_summary]]). Organized by theme; biased toward what's directly applicable to the connector → SQS → Snowflake pipeline rather than abstract event-sourcing theory.
+Sources informing the customer-billing-event topic ([[knowledgebase/topics/billing/_summary]]). Organized by theme; biased toward what's directly applicable to the connector → SQS → Snowflake pipeline rather than abstract event-sourcing theory.
 
 Convention: `- [ ] [Title](url) -- short description`. Items marked `*(seed)*` need URL resolution before reading. Check off with `[x]` as read + extract findings into `notes/concepts/` or `notes/syntheses/`.
 
@@ -15,7 +15,7 @@ Convention: `- [ ] [Title](url) -- short description`. Items marked `*(seed)*` n
 - [ ] *(seed)* **Customer onboarding flow** — billing-profile creation step; site/SO assignment hierarchy rules.
 
 ### Companion KB notes (read before external material)
-- [x] [[_summary]] — topic overview
+- [x] [[knowledgebase/topics/billing/_summary]] — topic overview
 - [x] [[2026-05-11_billing-pain-post-mortem]] — founding doc
 - [x] [[billing-events-catalog]] — what events exist
 - [x] [[_todos|Topic todos]]
@@ -91,6 +91,6 @@ The "find a class of customer where something's wrong, label as Cohort X, run a 
 
 ## Related
 
-- [[_summary]] — parent topic
+- [[knowledgebase/topics/billing/_summary]] — parent topic
 - [[_todos]] — topic todo list
 - [[aws-cost/_summary]] — sibling topic (infra cost vs customer revenue)

@@ -16,8 +16,8 @@ incoming:
   - topics/engineering-process/notes/syntheses/2026-05-22_ait-phase-12-sweep.md
   - topics/engineering-process/notes/syntheses/2026-05-27_zack-coordination-brain-in-jar.md
   - topics/engineering-process/notes/syntheses/2026-05-29_ait-watch-manager-integration.md
-  - topics/hypothesis/_summary.md
-incoming_updated: 2026-05-30
+  - topics/models/hypothesis/_summary.md
+incoming_updated: 2026-06-24
 ---
 
 # AIT Phase 11 — `ait simulate`

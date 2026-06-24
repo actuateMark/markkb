@@ -7,6 +7,7 @@ created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
 incoming:
+  - topics/actuate-platform/notes/concepts/2026-06-22_npu-server-llm-shop-runbook.md
   - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
   - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
   - topics/ai-models/notes/concepts/vlm-pipeline-architecture.md
@@ -16,8 +17,7 @@ incoming:
   - topics/autopatrol/_summary.md
   - topics/autopatrol/notes/concepts/flex-ignore-zones.md
   - topics/aws-cost/notes/syntheses/cost-architecture.md
-  - topics/camera-health-monitoring/notes/concepts/chm-rd-opportunities.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-24
 ---
 
 # Watchman

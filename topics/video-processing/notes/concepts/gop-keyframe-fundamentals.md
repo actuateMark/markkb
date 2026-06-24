@@ -113,4 +113,4 @@ Tangentially related to GOP behavior: [[pyav-entity|PyAV]]'s `mov` demuxer leaks
 - Adaptive AVDiscard frame-skip with starvation fallback — `av_url_puller.py:617-753`
 - Keyframe-wait guard (drop packets until first IDR) — `av_url_puller.py:1318-1335`
 - fMP4 demuxer recycle every 300s + jitter ([[pyav-entity|PyAV]] mov frag_index leak workaround) — `av_url_puller.py:496-503, 1158-1185`
-- Cross-topic: [[h264-deep-dive]], [[h265-hevc-deep-dive]], [[hardware-accelerated-codecs]], [[actuate-frame-ingest-decode-paths]], [[reading-list]].
+- Cross-topic: [[h264-deep-dive]], [[h265-hevc-deep-dive]], [[hardware-accelerated-codecs]], [[actuate-frame-ingest-decode-paths]], [[knowledgebase/topics/billing/reading-list]].

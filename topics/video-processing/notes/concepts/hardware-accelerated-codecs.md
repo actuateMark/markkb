@@ -42,7 +42,7 @@ Cross-vendor coverage is uneven for newer [[codecs-overview|codecs]] — see [[a
 
 ## NVENC / NVDEC: what we run on
 
-Actuate's inference substrate runs on AWS EC2 G5 / G6 / G6e instances backed by NVIDIA T4 / A10 / L4 / L40S GPUs (see [[reading-list]] for the family overview). NVDEC is the relevant block — we decode camera streams; we don't encode. Per generation:
+Actuate's inference substrate runs on AWS EC2 G5 / G6 / G6e instances backed by NVIDIA T4 / A10 / L4 / L40S GPUs (see [[knowledgebase/topics/billing/reading-list]] for the family overview). NVDEC is the relevant block — we decode camera streams; we don't encode. Per generation:
 
 - **T4 (Turing)** — 1× NVDEC. [[h264-deep-dive|H.264]], [[h265-hevc-deep-dive|H.265]] (Main / Main10), [[av1-vp9-future|VP9]].
 - **A10 (Ampere)** — 1× NVDEC, plus [[av1-vp9-future|AV1]] decode added.
@@ -103,12 +103,12 @@ Several paths land us on CPU decode:
 3. **Hardware decoder rejects the bitstream** — profile/level mismatch, unsupported feature. NVDEC has tightened constraints across driver versions; an upgrade can break a stream that worked before. The puller catches the decoder-init exception and falls back.
 4. **Hardware decode succeeds but frame is unusable** — rarer; usually surfaces as `to_ndarray()` errors.
 
-Each path logs distinctively. The right operational signal for "we silently fell to software decode at scale" is a CPU-utilization regression on the inference pods, plus a spike in `_detect_hardware_acceleration()` log lines. We don't have a metric for this directly today — it's a [[reading-list]] follow-up to add.
+Each path logs distinctively. The right operational signal for "we silently fell to software decode at scale" is a CPU-utilization regression on the inference pods, plus a spike in `_detect_hardware_acceleration()` log lines. We don't have a metric for this directly today — it's a [[knowledgebase/topics/billing/reading-list]] follow-up to add.
 
 ## What's *not* in our hardware path
 
 - **No hardware encode.** We don't run NVENC anywhere — encode is JPEG-only and stays on CPU via libjpeg-turbo (see [[mjpeg-and-still-image-formats]]).
-- **No [[nvidia-deepstream|DeepStream]].** NVIDIA's full [[gstreamer-entity|GStreamer]]-based [[nvidia-deepstream|DeepStream]] SDK ([[reading-list]]) is "the right way" to do GPU-resident multi-stream inference. We don't use it. We do per-stream [[pyav-entity|PyAV]] decode → CPU numpy → CPU/GPU inference. Deviating from this is a [[actuate-build-vs-buy-tradeoffs]] question.
+- **No [[nvidia-deepstream|DeepStream]].** NVIDIA's full [[gstreamer-entity|GStreamer]]-based [[nvidia-deepstream|DeepStream]] SDK ([[knowledgebase/topics/billing/reading-list]]) is "the right way" to do GPU-resident multi-stream inference. We don't use it. We do per-stream [[pyav-entity|PyAV]] decode → CPU numpy → CPU/GPU inference. Deviating from this is a [[actuate-build-vs-buy-tradeoffs]] question.
 - **No GPU-resident pipeline.** The deliberate `hwaccel_output_format` omission is the line we drew. Crossing it requires a downstream pipeline rewrite.
 - **No transcode.** We never re-encode video, only decode + JPEG-encode.
 
@@ -127,4 +127,4 @@ Each path logs distinctively. The right operational signal for "we silently fell
 - Hardware decoder context construction — `av_url_puller.py:83-131` (`create_hw_decoder_context`)
 - Per-hwaccel option dicts — `av_url_puller.py:412-494`
 - `hwaccel_output_format` deliberate-omit comments — `av_url_puller.py:454-456, 432-434`
-- Cross-topic: [[h264-deep-dive]], [[h265-hevc-deep-dive]], [[av1-vp9-future]], [[gop-keyframe-fundamentals]], [[infrastructure/_summary]] for EC2 GPU substrate, [[ai-models/_summary]] for downstream inference, [[reading-list]] for [[nvidia-deepstream|DeepStream]] / DALI / Video Codec SDK reference material.
+- Cross-topic: [[h264-deep-dive]], [[h265-hevc-deep-dive]], [[av1-vp9-future]], [[gop-keyframe-fundamentals]], [[infrastructure/_summary]] for EC2 GPU substrate, [[ai-models/_summary]] for downstream inference, [[knowledgebase/topics/billing/reading-list]] for [[nvidia-deepstream|DeepStream]] / DALI / Video Codec SDK reference material.

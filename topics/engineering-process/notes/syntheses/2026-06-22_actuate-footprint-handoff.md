@@ -2,10 +2,18 @@
 title: "Mark's Actuate footprint — team handoff index (START HERE)"
 type: synthesis
 topic: engineering-process
-tags: [offboarding, handoff, footprint, index, firebat, kb, runbook]
+tags: [offboarding, handoff, footprint, index, firebat, kb, runbook, autopatrol]
 created: 2026-06-22
 updated: 2026-06-22
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/syntheses/2026-06-22_dead-mans-checklist.md
+  - topics/offboarding/_summary.md
+  - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
+  - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
+  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
+  - topics/offboarding/notes/concepts/2026-06-23_watchman-fleet-handoff-paolo-mike.md
+incoming_updated: 2026-06-24
 ---
 
 # Mark's Actuate footprint — handoff index
@@ -31,7 +39,7 @@ The firebat timers authenticate as Mark today. Status per identity (detail + the
 - ✅ **AWS** — already team-owned (IAM Roles Anywhere host cert → `dashboard-check-rolesanywhere`). Survives departure.
 - 🔧 **Tailscale** — firebat + npu-server nodes are user-owned by `mark@`; re-auth with a `tag:server` auth key to make them tailnet-owned. ⚠ do at the box (can drop SSH).
 - 🔧 **GitHub** — firebat `gh` is personal `actuateMark`; replace with an org machine account / fine-grained PAT.
-- ⏳ **New Relic** (`~/.config/newrelic/key`) + **Atlassian** (`~/.config/atlassian/api-token`) — personal `mark@`; rotate/re-issue under a team/service identity. *(A leaked NR key was found + purged from KB history 2026-06-22 — see plan §incident.)*
+- ⏳ **[[new-relic|New Relic]]** (`~/.config/newrelic/key`) + **Atlassian** (`~/.config/atlassian/api-token`) — personal `mark@`; rotate/re-issue under a team/service identity. *(A leaked NR key was found + purged from KB history 2026-06-22 — see plan §incident.)*
 
 Baseline captured pre-re-home: `~/identity-baseline-pre-rehome.json` (0 FAIL / 3 WARN = the 3 targets).
 
@@ -40,7 +48,7 @@ Baseline captured pre-re-home: `~/identity-baseline-pre-rehome.json` (0 FAIL / 3
 - **Content:** this Obsidian vault (`~/Documents/worklog/knowledgebase/`), one topic per directory, notes typed concept/synthesis/entity/source.
 - **Remotes:** ✅ **`aegissystems/actuate-kb`** (private, org-owned — the durable team home, pushed 2026-06-23) + firebat bare repo + `actuateMark/markkb` (personal). Scrubbed before mirroring (gitleaks-clean; a colleague IP + incident naming purged). gitleaks pre-commit hook enforced.
 - **How to query:** Obsidian app + the `obsidian` CLI (backlinks/tags/search/orphans). Health probe: `~/.local/bin/obsidian vault`.
-- **Self-host:** the repo bundles **`_tooling/`** (10 kb-* skills, 4 agents, ~19 automation scripts, the obsidian CLI, shared lib) + **`_tooling/SETUP.md`** — clone `aegissystems/actuate-kb` and stand up your own KB instance (content + tooling).
+- **Self-host:** the repo bundles **`_tooling/`** (10 kb-* skills, 4 agents, ~19 automation scripts, the [[obsidian-cli|obsidian CLI]], shared lib) + **`_tooling/SETUP.md`** — clone `aegissystems/actuate-kb` and stand up your own KB instance (content + tooling).
 - **High-value entry points:** each workstream below links its load-bearing notes.
 
 ## 4. Workstreams — status & where each lives
@@ -48,9 +56,9 @@ Baseline captured pre-re-home: `~/identity-baseline-pre-rehome.json` (0 FAIL / 3
 | § | Workstream | Status | Load-bearing notes / tickets |
 |---|---|---|---|
 | §3 | AutoPatrol stale-schedule cleanup Lambda | live; verify-only | [[2026-04-17_stale-schedule-cleanup-design]]; check `/autopatrol-cleanup-lambda-check` |
-| §5 | Fleet architecture / **Watchman** | design; PoC pending | [[2026-06-02_watchman-phase0-fleet-fit]], [[2026-06-16_watchman-pipeline-backend-meeting]]; **ENG-300** |
+| §5 | Fleet architecture / **[[watchman-repo|Watchman]]** | design; PoC pending | [[2026-06-02_watchman-phase0-fleet-fit]], [[2026-06-16_watchman-pipeline-backend-meeting]]; **ENG-300** |
 | §9 | Operational dashboard | live; Phase 1b | [[2026-05-05_operational-dashboard-context]] + [[2026-06-22_dashboard-signals-catalog]] |
-| §14 | AutoPatrol midnight arm-miss race | scoped, unimpl | actuate_admin#2310 |
+| §14 | AutoPatrol midnight arm-miss race | scoped, unimpl | [[actuate_admin]]#2310 |
 | §18 | Memory-limit / VPA-floor drift | handed to Paolo/Mike | [[2026-04-23_oom-surge-connector-limit-drift]]; ENG-214 |
 | §24 | Internal LLM shop | live | [[2026-06-22_npu-server-llm-shop-runbook]] |
 | §28 | Customer billing pipeline | live | `billing-reconcile-check` timer |
