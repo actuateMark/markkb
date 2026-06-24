@@ -83,7 +83,7 @@ Replace split manual + CI packaging with **a single source of truth**:
 
 ### 3. Document in [[branch-conventions]] (low, informational)
 
-The [[autopatrol_onboarder]] row already notes:
+The [[autopatrol-onboarder]] row already notes:
 > **Push to `master` AUTO-DEPLOYS the prod Lambda** via `.github/workflows/deploy.yml` (`on: push: branches: [master]`) — every merge to master is a prod deploy.
 
 Reinforce that contributors must test locally with the CI packaging path (not just manual `deploy_prod.sh`) before merging.

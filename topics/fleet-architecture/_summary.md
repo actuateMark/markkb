@@ -30,11 +30,11 @@ See [[vms-connector/notes/syntheses/performance-optimization-landscape]] for the
 
 | Proposal | Core idea | Scaling unit | Timeline | Cost delta |
 |----------|-----------|--------------|----------|-----------|
-| [[2026-04-16_proposal-a-minimal-split\|A — Minimal Split]] | Extract puller + alerts, keep pipeline monolith | Site | 12-16 wks | +10-15% |
-| [[2026-04-16_proposal-b-stage-fleets\|B — Stage Fleets]] | Every pipeline stage is its own fleet | Per-stage | 24-32 wks | +15-25% |
-| [[2026-04-16_proposal-c-camera-worker\|C — Camera-Worker Fleet]] | Generic workers, cameras bin-packed across sites | Camera | 13-20 wks | -15-30% |
-| [[2026-04-16_proposal-d-event-driven\|D — Event-Driven Pipeline]] | NATS JetStream + S3 frame refs | Per-stage | 20-29 wks | ~neutral |
-| [[2026-04-16_proposal-e-hybrid-sidecar\|E — Hybrid Sidecar]] | Smart pullers + stateful core + async alerts | Puller=cam, Core=cam-group | 14-20 wks | -20-40% |
+| [[2026-04-16_proposal-a-minimal-split|A — Minimal Split]] | Extract puller + alerts, keep pipeline monolith | Site | 12-16 wks | +10-15% |
+| [[2026-04-16_proposal-b-stage-fleets|B — Stage Fleets]] | Every pipeline stage is its own fleet | Per-stage | 24-32 wks | +15-25% |
+| [[2026-04-16_proposal-c-camera-worker|C — Camera-Worker Fleet]] | Generic workers, cameras bin-packed across sites | Camera | 13-20 wks | -15-30% |
+| [[2026-04-16_proposal-d-event-driven|D — Event-Driven Pipeline]] | NATS JetStream + S3 frame refs | Per-stage | 20-29 wks | ~neutral |
+| [[2026-04-16_proposal-e-hybrid-sidecar|E — Hybrid Sidecar]] | Smart pullers + stateful core + async alerts | Puller=cam, Core=cam-group | 14-20 wks | -20-40% |
 
 ## Cloud Video Analytics v10 Platform Reference (2026-06-01)
 
@@ -148,11 +148,11 @@ Rubric applied before any PoC runs. PoCs may move these numbers materially (cost
 
 | # | Proposal | Composite / 10 |
 |---|----------|---------------:|
-| 1 | [[2026-04-16_proposal-e-hybrid-sidecar\|E — Hybrid Sidecar]] | **8.05** |
-| 2 | [[2026-04-16_proposal-c-camera-worker\|C — Camera-Worker]] | 7.40 |
-| 3 | [[2026-04-16_proposal-b-stage-fleets\|B — Stage Fleets]] | 7.25 |
-| 4 | [[2026-04-16_proposal-d-event-driven\|D — Event-Driven]] | 6.85 |
-| 5 | [[2026-04-16_proposal-a-minimal-split\|A — Minimal Split]] | 4.25 |
+| 1 | [[2026-04-16_proposal-e-hybrid-sidecar|E — Hybrid Sidecar]] | **8.05** |
+| 2 | [[2026-04-16_proposal-c-camera-worker|C — Camera-Worker]] | 7.40 |
+| 3 | [[2026-04-16_proposal-b-stage-fleets|B — Stage Fleets]] | 7.25 |
+| 4 | [[2026-04-16_proposal-d-event-driven|D — Event-Driven]] | 6.85 |
+| 5 | [[2026-04-16_proposal-a-minimal-split|A — Minimal Split]] | 4.25 |
 | — | Today's baseline | 3.20 |
 
 ## Related Topics

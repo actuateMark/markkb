@@ -44,7 +44,7 @@ This synthesis maps the vms-connector's known performance bottlenecks to the sol
 
 - **Numpy vectorisation in StationaryFilterStep:** The bbox overlap mode (`_bbox_any_overlap()`) uses numpy operations that release the GIL, allowing other camera threads to run during the most expensive post-processing step. See [[filter-pipeline-ordering]].
 
-- **[[Sharding]]:** The nuclear option. When GIL contention still limits throughput (typically above 24 cameras), the connector forks into multiple processes via `ChunkedSiteManager`. Each shard has its own GIL. The empirical cost is 50-80% CPU overhead per shard boundary, so the default shard size of 24 represents the sweet spot between GIL contention and multiprocessing overhead.
+- **[[sharding]]:** The nuclear option. When GIL contention still limits throughput (typically above 24 cameras), the connector forks into multiple processes via `ChunkedSiteManager`. Each shard has its own GIL. The empirical cost is 50-80% CPU overhead per shard boundary, so the default shard size of 24 represents the sweet spot between GIL contention and multiprocessing overhead.
 
 ### 2. Memory Fragmentation
 
@@ -72,7 +72,7 @@ This synthesis maps the vms-connector's known performance bottlenecks to the sol
 
 ### 4. Multiprocessing Overhead
 
-**Problem:** [[Sharding]] is the most expensive operation in the connector. Splitting into N processes multiplies memory by ~N (each process copies pre-fork state) and adds 50-80% CPU overhead from OS scheduling, duplicated jemalloc arenas, and separate [[inference-pool]] instances per shard.
+**Problem:** [[sharding]] is the most expensive operation in the connector. Splitting into N processes multiplies memory by ~N (each process copies pre-fork state) and adds 50-80% CPU overhead from OS scheduling, duplicated jemalloc arenas, and separate [[inference-pool]] instances per shard.
 
 **Solutions implemented and proposed:**
 

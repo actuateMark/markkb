@@ -49,11 +49,11 @@ Minimum viable implementation — not production-ready. Goal is "feel" + metrics
 
 | Proposal | Stub focus |
 |----------|------------|
-| [[2026-04-16_proposal-a-minimal-split\|A — Minimal split]] | Puller + alerts as separate processes; monolith pipeline in between |
-| [[2026-04-16_proposal-b-stage-fleets\|B — Stage fleets]] | Each pipeline stage as an independent process, wired sequentially |
-| [[2026-04-16_proposal-c-camera-worker\|C — Camera-worker]] | Generic worker that accepts a list of cameras; bin-pack N cameras across M workers |
-| [[2026-04-16_proposal-d-event-driven\|D — Event-driven]] | NATS JetStream (or local broker) between stages; S3-ref or in-memory frame refs |
-| [[2026-04-16_proposal-e-hybrid-sidecar\|E — Hybrid sidecar]] | Smart puller sidecar + stateful core + async alert emitter |
+| [[2026-04-16_proposal-a-minimal-split|A — Minimal split]] | Puller + alerts as separate processes; monolith pipeline in between |
+| [[2026-04-16_proposal-b-stage-fleets|B — Stage fleets]] | Each pipeline stage as an independent process, wired sequentially |
+| [[2026-04-16_proposal-c-camera-worker|C — Camera-worker]] | Generic worker that accepts a list of cameras; bin-pack N cameras across M workers |
+| [[2026-04-16_proposal-d-event-driven|D — Event-driven]] | NATS JetStream (or local broker) between stages; S3-ref or in-memory frame refs |
+| [[2026-04-16_proposal-e-hybrid-sidecar|E — Hybrid sidecar]] | Smart puller sidecar + stateful core + async alert emitter |
 
 ## Per-pilot notes (if adopted)
 

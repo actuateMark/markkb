@@ -90,4 +90,4 @@ Primary caller is `/stage-release`. Also invoked ad-hoc by the parent when mergi
 
 - [[agents-catalog]]
 - [[agent-nrql-investigator]] — shares NRQL rules
-- [[connector-library-deployment-lifecycle]] — the lifecycle this agent traverses
+- [[2026-04-14_connector-library-deployment-lifecycle]] — the lifecycle this agent traverses

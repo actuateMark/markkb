@@ -68,7 +68,7 @@ Scored against Phase-0's actual requirements, not the original ephemeral-run rub
 | **A — Minimal Split** | ✅ puller+alert split | ❌ pipeline stays **per-site monolith** | partial | +10–15% | Transport *shape* fits; cardinality is exactly what we're shedding. Fallback (rescore 4.45). |
 | **C — Camera-Worker** | ❌ worker = puller **+** inference in one pod | ✅ cameras bin-packed regardless of site | ✅ (its thesis) | ✅ −15–30% | Right *packing & cardinality*, wrong *split*. Contradicts the separate-puller + Redis requirement. |
 | **E — Hybrid Sidecar** | ✅ puller → core → alert dispatch | ◑ camera-*group* affinity | ◑ pullers family-specialized (6–8 VMS) | ✅ −20–40% | **The drawn topology.** Top rescore (7.85). Simplifies cleanly under RTSP-only/per-camera. |
-| **[[2026-06-01_cloud-video-analytics-platform-v10\|v10 platform]]** | ✅ ingest vs detector pools | ✅ per-(camera,product) | ✅ | ✅ at scale | The **grow-into target**, not the Phase-0 build. |
+| **[[2026-06-01_cloud-video-analytics-platform-v10|v10 platform]]** | ✅ ingest vs detector pools | ✅ per-(camera,product) | ✅ | ✅ at scale | The **grow-into target**, not the Phase-0 build. |
 
 ## Recommendation
 

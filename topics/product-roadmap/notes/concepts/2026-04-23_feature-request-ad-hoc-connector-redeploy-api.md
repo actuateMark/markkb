@@ -59,7 +59,7 @@ Bookkeeping needed:
 
 Related to:
 - [[autopatrol-onboarder]] — which uses cron to reconcile new customer sites, but doesn't handle config changes
-- [[connector-library-deployment-lifecycle]] — existing multi-repo deployment pattern
+- [[2026-04-14_connector-library-deployment-lifecycle]] — existing multi-repo deployment pattern
 - [[2026-04-23_release-acceptance-criteria]] — config-surface drift rule (§5) — an ad-hoc redeploy API is the forcing function to close drift windows
 
 ## Status
@@ -71,5 +71,5 @@ Related to:
 ## Related
 
 - [[mark-todos]] §3 (autopatrol cleanup rollout) — Step F blocked-ish on this
-- [[connector-library-deployment-lifecycle]]
+- [[2026-04-14_connector-library-deployment-lifecycle]]
 - [[core-repo-suite]] — `connector_deployer` is where pod spawning lives

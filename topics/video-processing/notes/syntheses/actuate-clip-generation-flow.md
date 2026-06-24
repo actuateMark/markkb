@@ -36,9 +36,9 @@ When `use_mp4=True` on an Immix integration:
 3. **The Immix sender computes the expected frame count** and hands off to a FIFO queue: `actuate-libraries/actuate-alarm-senders/src/actuate_alarm_senders/immix/immix_alert_sender.py:88-100` calculates `attachment_frames = alert_data.attachment_frame_count * alert_data.product_fps` and pushes an event onto `event_queue_immix_alarm.fifo` with `event_type`, `s3_folder` (the prefix the JPEGs landed under), and the frame count.
 4. **A downstream FIFO consumer** (a Lambda / SQS worker that lives **outside** `actuate-libraries`, `vms-connector`, and `actuate-alarm-senders`) reads that FIFO message, downloads the JPEG sequence from `s3_folder`, muxes them into an MP4, and pushes the MP4 to Immix VCH.
 
-Step 4 is the seam. We do not own the muxer in this codebase. The scout pass confirmed this: **no `[[pyav-entity|av]].open(..., mode="w")`, no `[[opencv-entity|cv2]].VideoWriter`, no `[[imageio-entity|imageio]].get_writer`, no `subprocess.run([["ffmpeg-entity|ffmpeg"]], ...])` for muxing exists in `actuate-pullers`, `actuate-pipeline`, or `actuate-alarm-senders`**. The only [[ffmpeg-entity|ffmpeg]] subprocess invocations in the pullers are hardware-accel detection (`av_url_puller.py:546, 562, 567, 587, 597`) and they're bounded with `timeout=5`.
+Step 4 is the seam. We do not own the muxer in this codebase. The scout pass confirmed this: **no `[[pyav-entity|av]].open(..., mode="w")`, no `[[opencv-entity|cv2]].VideoWriter`, no `[[imageio-entity|imageio]].get_writer`, no `subprocess.run([[ffmpeg-entity|ffmpeg"]], ...])` for muxing exists in `actuate-pullers`, `actuate-pipeline`, or `actuate-alarm-senders`**. The only [[ffmpeg-entity|ffmpeg]] subprocess invocations in the pullers are hardware-accel detection (`av_url_puller.py:546, 562, 567, 587, 597`) and they're bounded with `timeout=5`.
 
-**Resolved:** the consumer is the `queue_consumer` ECS service `prod-queue-immix-consumer` (cluster `prod-queue-consumers-sqs`) running `consumers/immix/immix_consumer.py`. It muxes via raw `subprocess.run([["ffmpeg-entity|ffmpeg"]], "-vcodec", "libxvid", ...])` (so the bytes are actually **AVI/Xvid despite the `.mp4` MIME filename**) and ships the result via **SMTP** to the Immix server, not S3 or HTTP. Full breakdown in [[immix-mp4-mux-downstream]].
+**Resolved:** the consumer is the `queue_consumer` ECS service `prod-queue-immix-consumer` (cluster `prod-queue-consumers-sqs`) running `consumers/immix/immix_consumer.py`. It muxes via raw `subprocess.run([[ffmpeg-entity|ffmpeg"]], "-vcodec", "libxvid", ...])` (so the bytes are actually **AVI/Xvid despite the `.mp4` MIME filename**) and ships the result via **SMTP** to the Immix server, not S3 or HTTP. Full breakdown in [[immix-mp4-mux-downstream]].
 
 ### The AILink / Frontel / SQS-clip path
 
@@ -97,7 +97,7 @@ writer.release()
 
 **Cons:** [[opencv-entity|OpenCV]]'s mp4 muxing is **notorious** -- the `mp4v` fourcc is MPEG-4 Part 2, not [[h264-deep-dive|H.264]], and most mobile players + most monitoring centres hate it. Getting [[h264-deep-dive|H.264]] out of `[[opencv-entity|cv2]].VideoWriter` requires [[opencv-entity|OpenCV]] built with [[ffmpeg-entity|FFmpeg]] + a special fourcc (`avc1`), and it's flaky. Not recommended for any monitoring-centre handoff. See [[opencv-entity]], [[cv2-videocapture-internals]] (the `VideoWriter` complement is similarly quirky).
 
-### Option C -- `subprocess.run([["ffmpeg-entity|ffmpeg"]], ...])`
+### Option C -- `subprocess.run([[ffmpeg-entity|ffmpeg"]], ...])`
 
 The pragmatic choice. Pipe JPEGs into [[ffmpeg-entity|ffmpeg]] over stdin and let it mux:
 
@@ -131,7 +131,7 @@ If we ever need in-process MP4 assembly: **[[pyav-entity|PyAV]] write-mode (Opti
 The two paths to *avoid* unless deliberately chosen:
 
 - `[[opencv-entity|cv2]].VideoWriter` -- the format flakiness will burn us downstream.
-- Adding an unbounded `subprocess.run([["ffmpeg-entity|ffmpeg"]], ...])` without a timeout. We have one already (`fish2pano`) and that's enough.
+- Adding an unbounded `subprocess.run([[ffmpeg-entity|ffmpeg"]], ...])` without a timeout. We have one already (`fish2pano`) and that's enough.
 
 [[aws-mediaconvert-entity|MediaConvert]] is not the right tool for *alert* clip assembly because of latency. It might be the right tool for *archival* re-encoding (cold-storage clip transcoding for cost) -- discussed separately in [[actuate-build-vs-buy-tradeoffs]].
 

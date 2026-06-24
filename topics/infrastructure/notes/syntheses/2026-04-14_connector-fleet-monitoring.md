@@ -161,5 +161,5 @@ FACET message LIMIT 10
 
 ## Related
 
-- [[connector-library-deployment-lifecycle]] — full stage release process including the deploy steps that precede this monitoring
+- [[2026-04-14_connector-library-deployment-lifecycle]] — full stage release process including the deploy steps that precede this monitoring
 - [[vms-connector]] — connector architecture, site configuration, ECR image lifecycle

@@ -66,7 +66,7 @@ This is consistent with the broader stance taken 2026-05-06: **deactivate nothin
 
 Promote §25 back into [[mark-todos]] as an active workstream if any of the following becomes true:
 
-1. **Population grows materially** — Cohort B reaches >50 customers or >500 cameras at the next audit (run [[autopatrol_onboarder|diagnose_silent_cameras.py]] periodically). The current size is small enough to ignore; growth implies a regression somewhere upstream.
+1. **Population grows materially** — Cohort B reaches >50 customers or >500 cameras at the next audit (run [[autopatrol-onboarder|diagnose_silent_cameras.py]] periodically). The current size is small enough to ignore; growth implies a regression somewhere upstream.
 2. **Customer-facing complaint** — a customer or partner notices that their admin UI shows cameras as active for a deletion they intended.
 3. **Storage / cost pressure** from accumulated orphan camera state in admin DB.
 4. **Propagation hooks ADR lands** (admin-team scope, see [[autopatrol-deferred-backlog]]) — at that point we can re-evaluate Cohort B in light of cleaner semantics.

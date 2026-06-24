@@ -48,7 +48,7 @@ Already-shipped billing-and-revenue surfaces — these are reusable / extensible
 | Page | Purpose | Billing-relevance |
 |---|---|---|
 | `/` (index) | Master account table + KPIs + trend charts | High — KPIs include `Unbilled Cameras` |
-| `/unbilled` | **Cameras with 3h+ usage but not in `usage_monthly`** | **Directly relevant** — this is the [[2026-05-11_billing-reconciliation-dashboard-design\|R1]] surface already shipped, in a different form |
+| `/unbilled` | **Cameras with 3h+ usage but not in `usage_monthly`** | **Directly relevant** — this is the [[2026-05-11_billing-reconciliation-dashboard-design|R1]] surface already shipped, in a different form |
 | `/no-usage` | Cameras provisioned in admin Postgres but zero events in Snowflake | **High** — surfaces the "is it onboarding or genuinely silent" question |
 | `/billing-view` | Per-camera billing replica of Tableau "Total Cameras Report" | **High** — every camera with `is_billed` flag, source ∈ {Connector, VCH, CHM, Clip} |
 | `/clip-billing` | Clip-pipeline-specific billing surface | Medium — [[sentinel-components|Sentinel]] / AI Link / Umbo billing analysis |

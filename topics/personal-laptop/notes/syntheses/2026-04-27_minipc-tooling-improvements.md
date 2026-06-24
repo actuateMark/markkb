@@ -91,7 +91,7 @@ Wikilink resolution handles:
 - Exact rel-paths
 - Topic-name refs (`[[ai-models/_summary|AI Models & Evaluation]]` → `topics/ai-models/_summary.md`)
 - Sub-topic paths (`[[models/intruder-v5]]` → `topics/models/intruder-v5/_summary.md`)
-- Date-prefixed shortlinks (`[[connector-library-deployment-lifecycle]]` → `2026-04-14_connector-library-deployment-lifecycle.md`)
+- Date-prefixed shortlinks (`[[2026-04-14_connector-library-deployment-lifecycle]]` → `2026-04-14_connector-library-deployment-lifecycle.md`)
 - Strips fenced + inline code before parsing — avoids false positives on docs *about* wikilinks
 
 Down from 740 false-positive errors to ~250 real broken links + ~150 missing-frontmatter.

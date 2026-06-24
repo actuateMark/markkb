@@ -91,7 +91,7 @@ author: kb-bot
 4. Merge to main → stable version published
 5. Consumer pins stable version → merge to rearchitecture
 
-See [[dev-workflow]] for the conceptual model, [[ci-pipeline-mechanics]] for the CI publish pipeline internals and known workarounds, and [[connector-library-deployment-lifecycle]] for the full operational process.
+See [[dev-workflow]] for the conceptual model, [[ci-pipeline-mechanics]] for the CI publish pipeline internals and known workarounds, and [[2026-04-14_connector-library-deployment-lifecycle]] for the full operational process.
 
 ### Known CI Issues (April 2026)
 

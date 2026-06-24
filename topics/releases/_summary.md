@@ -10,7 +10,7 @@ author: kb-bot
 
 # Releases
 
-An append-only log of production releases across Actuate services. Each release note captures the PR summary, pre-merge testing and validation, patterns watched for post-deployment, deployment timeline, and any issues flagged for follow-up. Follows the [[connector-library-deployment-lifecycle]] in [[engineering-process/_summary|Engineering Process]].
+An append-only log of production releases across Actuate services. Each release note captures the PR summary, pre-merge testing and validation, patterns watched for post-deployment, deployment timeline, and any issues flagged for follow-up. Follows the [[2026-04-14_connector-library-deployment-lifecycle]] in [[engineering-process/_summary|Engineering Process]].
 
 Initially tracking **vms-connector** releases; will expand to other services as release discipline scales.
 

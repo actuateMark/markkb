@@ -20,7 +20,7 @@ incoming_updated: 2026-05-01
 ### 1. Fix CI JSON Quoting Bug in bump-version-stable.sh
 `xargs -P` mangles JSON args to `jq` when commit messages contain `[patch]`/`[minor]` tags. Forces 3-step manual workaround on every stable publish. Root cause is identified.
 - **Impact:** Medium (DX) | **Effort:** Small | **Jira:** None yet
-- **KB:** [[ci-pipeline-mechanics]], [[connector-library-deployment-lifecycle]]
+- **KB:** [[ci-pipeline-mechanics]], [[2026-04-14_connector-library-deployment-lifecycle]]
 
 ### 2. Fix gh pr merge CI Trigger Gap
 GitHub CLI merge uses a token that doesn't trigger the Publish Stable workflow. Requires manual empty commit after every library merge. Fix: use PAT or GitHub App token, or trigger on `pull_request` closed+merged.

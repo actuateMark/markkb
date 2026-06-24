@@ -31,7 +31,7 @@ The following metrics are selected because they are already computed during heal
 
 | Metric | Source | Unit | Degradation Signal |
 |--------|--------|------|--------------------|
-| `blur_score` | [[actuate-blur\|BlurHandler]].detect_blur_fft_image() | float | Lens fouling, defocus drift |
+| `blur_score` | [[actuate-blur|BlurHandler]].detect_blur_fft_image() | float | Lens fouling, defocus drift |
 | `entropy` | BlurHandler.calculate_entropy() | float (bits) | Progressive video loss, signal degradation |
 | `frame_interval_avg` | StreamProbe (Phase 2) | seconds | Recording gaps widening |
 | `fps_actual` | StreamQualityPacket.fps | float | Encoder degradation, bandwidth contention |

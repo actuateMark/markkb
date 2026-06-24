@@ -83,7 +83,7 @@ actuate_admin --config--> vms-connector --frames--> ds-server-container (Rust YO
 
 ## Development & Deployment Lifecycle
 
-Feature development follows the [[connector-library-deployment-lifecycle]]:
+Feature development follows the [[2026-04-14_connector-library-deployment-lifecycle]]:
 
 1. **Library branch** → dev version published to CodeArtifact
 2. **Connector pins dev version** → validate on stage fleet

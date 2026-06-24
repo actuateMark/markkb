@@ -70,10 +70,10 @@ Do not try to pack >4 into one question — it errors out (`too_big: maximum 4`)
 | Skill | Timing | Interactive? | Writes tasks? |
 |-------|--------|-------------|--------------|
 | `/daily-scope` | morning, manual | yes | yes |
-| [[skill-daily-wrap\|/daily-wrap]] | end-of-day, manual | yes | cosmetic (marks completed) |
-| [[skill-todos-audit\|/todos-audit]] | weekly, manual | optional (`--fix`) | no |
-| [[skill-todos-add\|/todos-add]] | on-demand | yes | no (writes workstream §) |
-| [[skill-repo-scan\|/repo-scan]] | on-demand or via `--with-repo-scan` | optional drill | no |
+| [[skill-daily-wrap|/daily-wrap]] | end-of-day, manual | yes | cosmetic (marks completed) |
+| [[skill-todos-audit|/todos-audit]] | weekly, manual | optional (`--fix`) | no |
+| [[skill-todos-add|/todos-add]] | on-demand | yes | no (writes workstream §) |
+| [[skill-repo-scan|/repo-scan]] | on-demand or via `--with-repo-scan` | optional drill | no |
 | `/autopatrol-overnight-check` | scheduled nightly | no | no |
 | `/validate-release` | pre-merge | no | no |
 | `/stage-release` | during release | some | no |

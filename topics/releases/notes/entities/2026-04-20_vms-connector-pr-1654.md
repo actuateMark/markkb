@@ -118,5 +118,5 @@ Alert flow must be verified for each core runner type. Missing alert volume post
 ## Cross-references
 
 - Skill chain: [[stage-regression-check]] → merge → release-chain-watcher agent → ScheduleWakeup check-ins
-- [[connector-library-deployment-lifecycle]] in [[engineering-process/_summary|Engineering Process]]
+- [[2026-04-14_connector-library-deployment-lifecycle]] in [[engineering-process/_summary|Engineering Process]]
 - [[agents-catalog]] — release-chain-watcher, nrql-investigator used

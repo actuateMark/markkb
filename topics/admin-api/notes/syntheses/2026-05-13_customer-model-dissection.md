@@ -219,4 +219,4 @@ vpn, wireguard FK
 - [[2026-05-12_internal-test-deploy-lane]] — §29 design surface
 - [[2026-05-13_v8-release-postgres-context]] — sibling synthesis; AI-184 Sensitivity FK will point at Customer
 - [[admin-api/_summary]] — parent topic; documents current focus on AutoPatrol dev settings + [[database-performance|database performance]]
-- [[2026-04-30_autopatrol-state-audit.md]] — related investigation that uncovered lead_implies_dev heuristic on Customer model
+- [[2026-04-30_autopatrol-state-audit]] — related investigation that uncovered lead_implies_dev heuristic on Customer model

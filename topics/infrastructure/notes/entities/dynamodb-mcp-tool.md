@@ -57,6 +57,6 @@ Hosted as part of the broader [[aws-mcp-toolkit|AWS MCP server]] suite. Encodes 
 
 ## Related
 
-- [[dynamodb-fit-assessment-ait-phase-10|DynamoDB fit assessment for AIT Phase 10]]
+- [[2026-06-02_dynamodb-fit-assessment-ait-phase-10|DynamoDB fit assessment for AIT Phase 10]]
 - [[autopatrol-cleanup-lambda]] — existing Actuate DynamoDB use case
 - [[infrastructure/_summary]] — our current infrastructure

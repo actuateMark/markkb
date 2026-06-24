@@ -134,7 +134,7 @@ Today, [[actuate-pullers]] has **two coexisting streaming decoders**:
 | | [[opencv-entity|OpenCV]] path | [[pyav-entity|PyAV]] path |
 |---|---|---|
 | File | `actuate-pullers/url/url_puller.py:17-395` | `actuate-pullers/url/av_url_puller.py:320-1438` |
-| Library | [[opencv-entity\|`cv2.VideoCapture`]] | [[pyav-entity\|PyAV]] |
+| Library | [[opencv-entity|`cv2.VideoCapture`]] | [[pyav-entity|PyAV]] |
 | PTS access | no | yes |
 | Adaptive skip-frame | no | yes |
 | fMP4 fragment recycle | no | yes |

@@ -67,7 +67,7 @@ Even when you don't use `imageio`'s reader API, `imageio-ffmpeg` is sometimes pu
 
 ## Comparison snapshot
 
-| | imageio | [[opencv-entity\|OpenCV]] | [[pyav-entity\|PyAV]] | [[ffmpeg-entity\|ffmpeg CLI]] |
+| | imageio | [[opencv-entity|OpenCV]] | [[pyav-entity|PyAV]] | [[ffmpeg-entity|ffmpeg CLI]] |
 |---|---|---|---|---|
 | Python ergonomics | excellent | good | medium | poor (shell only) |
 | Codec coverage | full ([[ffmpeg-entity|ffmpeg]]) | full (vendored [[ffmpeg-entity|ffmpeg]]) | full (libav\*) | full (libav\*) |

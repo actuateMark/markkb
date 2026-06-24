@@ -363,7 +363,7 @@ This lifecycle assumes Claude Code as the development environment with access to
 
 ### Connector-Specific Deployment
 
-For [[vms-connector]] features that involve [[actuate-libraries]] changes, the deployment process is significantly more complex — involving multi-repo CI coordination, library version stabilization, ECR image builds, and fleet monitoring. See **[[connector-library-deployment-lifecycle]]** for the full step-by-step process.
+For [[vms-connector]] features that involve [[actuate-libraries]] changes, the deployment process is significantly more complex — involving multi-repo CI coordination, library version stabilization, ECR image builds, and fleet monitoring. See **[[2026-04-14_connector-library-deployment-lifecycle]]** for the full step-by-step process.
 
 ### Outputs
 - Pre-merge checklist complete

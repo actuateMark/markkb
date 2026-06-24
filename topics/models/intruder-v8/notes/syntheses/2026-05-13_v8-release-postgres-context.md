@@ -73,7 +73,7 @@ The critical blocker, AI-211 (YAM re-evaluation after chip-generation change to 
 - [[ai-models/_summary]] — model evaluation methodology
 - [[vlad-sapeshka]] — YAM re-eval owner
 - [[zack-schmidt]] — YAM epic owner
-- [[actuate-admin]] — schema context
+- [[actuate_admin]] — schema context
 
 ## See Also
 

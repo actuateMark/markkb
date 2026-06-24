@@ -88,4 +88,4 @@ When a feature branch is squash-merged to main, any `dev` version strings in `py
 ## Related Notes
 
 - [[dev-workflow]]
-- [[connector-library-deployment-lifecycle]]
+- [[2026-04-14_connector-library-deployment-lifecycle]]

@@ -50,13 +50,13 @@ These integrations rely on the generic [[camera-health-monitoring/_summary|CHM]]
 
 | Integration | Notes |
 |---|---|
-| [[rtsp-components\|RTSP]] | HTTP GET connectivity check exists (basic). No VMS API. |
-| [[salient-components\|Salient]] | Server-level credentials, multi-server structure. No integration-calls module. |
-| [[luxriot-components\|Luxriot]] | Embedded-credential HTTP URLs. No integration-calls module. |
-| [[video-insight-components\|Video Insight]] | Token-based REST API exists (`/api/v1/`) but no integration-calls module built. Custom site manager suggests health data could be extracted. |
-| [[openeye-components\|OpenEye]] | OWS cloud API exists (`actuate.api.gp4f.com`) but no integration-calls module built. |
-| [[kvs-components\|KVS]] | AWS-native; [[kvs-components|KVS]] API provides stream health metrics (via CloudWatch) but no CHM integration. |
-| [[adpro-components\|Adpro]] | Rust binary re-serves as [[rtsp-deep-dive|RTSP]]. No Python-side API access to Adpro hardware. |
+| [[rtsp-components|RTSP]] | HTTP GET connectivity check exists (basic). No VMS API. |
+| [[salient-components|Salient]] | Server-level credentials, multi-server structure. No integration-calls module. |
+| [[luxriot-components|Luxriot]] | Embedded-credential HTTP URLs. No integration-calls module. |
+| [[video-insight-components|Video Insight]] | Token-based REST API exists (`/api/v1/`) but no integration-calls module built. Custom site manager suggests health data could be extracted. |
+| [[openeye-components|OpenEye]] | OWS cloud API exists (`actuate.api.gp4f.com`) but no integration-calls module built. |
+| [[kvs-components|KVS]] | AWS-native; [[kvs-components|KVS]] API provides stream health metrics (via CloudWatch) but no CHM integration. |
+| [[adpro-components|Adpro]] | Rust binary re-serves as [[rtsp-deep-dive|RTSP]]. No Python-side API access to Adpro hardware. |
 
 ### Tier 4: Alarm-Sender-Only Integrations (Not Applicable)
 
@@ -64,16 +64,16 @@ These integrations are outbound alert senders, not video sources. CHM diagnostic
 
 | Integration | Protocol |
 |---|---|
-| [[immix-components\|Immix]] | SMTP to monitoring station |
-| [[sentinel-components\|Sentinel]] | Pipe-delimited text via SQS |
-| [[bold-components\|Bold]] | SIA XML over raw TCP |
-| [[patriot-components\|Patriot]] | REST API via SQS |
-| [[sureview-components\|Sureview]] | SMTP (mirrors Immix) |
-| [[softguard-components\|Softguard]] | Proprietary TCP via SQS |
-| [[evalink-components\|Evalink]] | Cloud API via SQS |
-| [[lisa-components\|Lisa]] | HTTP webhook via SQS |
-| [[webhook-components\|Webhook]] | Generic HTTP POST |
-| [[autopatrol-integration-components\|AutoPatrol]] | Direct REST API (Azure APIM) |
+| [[immix-components|Immix]] | SMTP to monitoring station |
+| [[sentinel-components|Sentinel]] | Pipe-delimited text via SQS |
+| [[bold-components|Bold]] | SIA XML over raw TCP |
+| [[patriot-components|Patriot]] | REST API via SQS |
+| [[sureview-components|Sureview]] | SMTP (mirrors Immix) |
+| [[softguard-components|Softguard]] | Proprietary TCP via SQS |
+| [[evalink-components|Evalink]] | Cloud API via SQS |
+| [[lisa-components|Lisa]] | HTTP webhook via SQS |
+| [[webhook-components|Webhook]] | Generic HTTP POST |
+| [[autopatrol-integration-components|AutoPatrol]] | Direct REST API (Azure APIM) |
 
 ## Priority Recommendations
 

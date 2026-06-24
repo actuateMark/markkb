@@ -28,7 +28,7 @@ This topic exists to make that pipeline **tight** (no leaks) and **self-righting
 | [[billing-events-catalog]] | Catalog of every billing-relevant event we emit or consume: name, emit site, consumer, discriminator, current health |
 | [[2026-05-14_inference-api-e2m-rules]] | Inference-API E2M billing rules — the NR-side path (parallel to SQS→Snowflake), 3 rules created 2025-09-11 |
 | [[2026-05-14_v5-tracking-fields-e2m-design]] | v5 detect tracking fields → E2M design — what PR #71 adds to the NR pipeline, gap analysis, proposed follow-up rules |
-| [[_todos\|Topic todo list]] | Tightening / self-righting / reconciliation work — categorized, prioritized, mark-todos-linkable |
+| [[_todos|Topic todo list]] | Tightening / self-righting / reconciliation work — categorized, prioritized, mark-todos-linkable |
 | [[knowledgebase/topics/billing/reading-list]] | Internal Confluence + external (event-sourcing, idempotency, Snowpipe, reconciliation patterns) |
 
 ## Scope

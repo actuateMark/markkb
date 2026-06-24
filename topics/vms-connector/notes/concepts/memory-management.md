@@ -70,7 +70,7 @@ Frames follow a deterministic lifecycle managed by the [[pipeline-architecture]]
 
 ## Multiprocessing Memory Overhead
 
-[[Sharding]] creates separate Python processes, each carrying a full copy of pre-fork state. The empirical finding from [[worklog-sharding-strategy]] is stark: crossing a single shard boundary incurs 50-80% CPU overhead and proportional memory duplication. Each shard maintains its own `PooledTTLImageCache` instances, jemalloc arenas, and [[inference-pool|AsyncInferencePool]]. The memory formula scales linearly within a shard but has step-function jumps at shard boundaries, which is why the default shard size was raised to 24 and per-site tuning is planned.
+[[sharding]] creates separate Python processes, each carrying a full copy of pre-fork state. The empirical finding from [[worklog-sharding-strategy]] is stark: crossing a single shard boundary incurs 50-80% CPU overhead and proportional memory duplication. Each shard maintains its own `PooledTTLImageCache` instances, jemalloc arenas, and [[inference-pool|AsyncInferencePool]]. The memory formula scales linearly within a shard but has step-function jumps at shard boundaries, which is why the default shard size was raised to 24 and per-site tuning is planned.
 
 ## Monitoring
 

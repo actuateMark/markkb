@@ -29,11 +29,11 @@ One file per non-empty repo. Auto-refreshed daily (current cadence; review 2026-
 
 | Repo | Catalog | Open |
 |------|---------|-----:|
-| vms-connector | [[vms-connector\|catalog]] | 100 |
-| [[actuate_admin]] | [[actuate_admin\|catalog]] | 49 |
-| actuate-libraries | [[actuate-libraries\|catalog]] | 33 |
-| actuate-inference-api | [[actuate-inference-api\|catalog]] | 3 |
-| autopatrol-server | [[knowledgebase/topics/repo-backlog/notes/concepts/autopatrol-server\|catalog]] | 1 |
+| vms-connector | [[vms-connector|catalog]] | 100 |
+| [[actuate_admin]] | [[actuate_admin|catalog]] | 49 |
+| actuate-libraries | [[actuate-libraries|catalog]] | 33 |
+| actuate-inference-api | [[actuate-inference-api|catalog]] | 3 |
+| autopatrol-server | [[knowledgebase/topics/repo-backlog/notes/concepts/autopatrol-server|catalog]] | 1 |
 | autopatrol_onboarder | — (0 open) | 0 |
 | camera-ui | — (0 open) | 0 |
 

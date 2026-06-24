@@ -255,7 +255,7 @@ Phase-08 rsync seed from 2026-04-23 left the minipc vault in a 3-way mess. Diagn
 
 ### Obsidian short-wikilinks need alias redirects
 
-A whole class of 404s showed up post-deploy: Obsidian wikilinks like `[[connector-library-deployment-lifecycle]]` that reference a **date-prefixed file** (`2026-04-14_connector-library-deployment-lifecycle.md`) or a file at a deep path via just its basename. Obsidian's own fuzzy resolver handles this; Quartz's `markdownLinkResolution: "shortest"` emits the wikilink text verbatim as the URL, so the href points to a slug that doesn't exist on disk.
+A whole class of 404s showed up post-deploy: Obsidian wikilinks like `[[2026-04-14_connector-library-deployment-lifecycle]]` that reference a **date-prefixed file** (`2026-04-14_connector-library-deployment-lifecycle.md`) or a file at a deep path via just its basename. Obsidian's own fuzzy resolver handles this; Quartz's `markdownLinkResolution: "shortest"` emits the wikilink text verbatim as the URL, so the href points to a slug that doesn't exist on disk.
 
 Fix: **pre-build pass that adds the date-stripped (or basename) slug as an `aliases:` entry in each file's frontmatter**, combined with Quartz's `AliasRedirects()` plugin (already in our config). This creates a `/short-slug/index.html` that redirects to the real URL. Resolves transparently to the browser.
 

@@ -86,7 +86,7 @@ Each workflow runs parallel **ARM64** and **x86** build jobs. ARM64 uses a self-
 
 **Branch-to-tag mapping** is deterministic: branch name sanitized (non-alphanumeric stripped, capped at 128 chars). This enables per-branch ECR images for staging individual features on real hardware without touching the `stage` image.
 
-See [[connector-library-deployment-lifecycle]] for the full deployment process and [[connector-fleet-monitoring]] for NRQL query patterns used during release monitoring.
+See [[2026-04-14_connector-library-deployment-lifecycle]] for the full deployment process and [[connector-fleet-monitoring]] for NRQL query patterns used during release monitoring.
 
 ## IaC Repos
 
