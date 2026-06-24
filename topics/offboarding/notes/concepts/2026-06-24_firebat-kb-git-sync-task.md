@@ -10,6 +10,9 @@ author: kb-bot
 
 # Task — firebat KB auto-sync from the org repo
 
+## STATUS — ✅ CONFIGURED & LIVE (2026-06-24)
+Done on firebat: vault `~/Documents/worklog/work/knowledgebase` converted to a **git checkout of `aegissystems/actuate-kb`** (HTTPS via gh creds); **`kb-org-sync.timer`** runs every 30 min — `git pull --rebase --autostash` then commit + push local relink/enrichment back (so firebat's backlink-frontmatter flows to the org; **bidirectional, org = hub**). Both directions validated (pull "up to date"; push dry-run "everything up-to-date"). Vault backed up (`~/kb-vault-backup-pre-gitsync-*.tar.gz`). Timer registered in `firebat-identity-verify.py`. Scripts canonical in `actuate-dev-toolkit/files/kb-org-sync.*`. **Obsidian Sync** (Mark's account) is now redundant and stops harmlessly when the account ends — git is the durable path.
+
 > **Why (offboarding gap):** firebat's KB vault is currently kept current by **Obsidian Sync tied to Mark's personal Obsidian account** — *not* git. When that account ends, **firebat's KB freezes** (relink/lint/Quartz keep running but on stale content). The canonical source is now **`aegissystems/actuate-kb`** (git). Switch firebat to pull from it, removing the personal-account dependency. Ref: the Obsidian-Git folder-sync approach — https://forum.obsidian.md/t/easy-git-plugin-sync-individual-folders-from-github-repos-to-and-from-your-vault/114501
 
 ## Current plumbing (verified 2026-06-24)
