@@ -25,6 +25,10 @@ Copy-paste messages for the human-gated items + exact steps for the do-yourself 
 > 2. **Settings → Keys → Generate auth key**, tagged `tag:server` (reusable, not ephemeral).
 > 3. **At each box's console** (firebat, then npu-server — not over SSH, it can drop the session): `sudo tailscale up --authkey=tskey-… --advertise-tags=tag:server`.
 > Verify after: `~/bin/firebat-identity-verify.py` shows `tailscale.identity` ✅ tagged.
+>
+> **CLI reality (checked 2026-06-24):** the tailnet has **no tags defined yet** and Mark is **not a tailnet admin** (console bounces to the app), so the CLI can't do it solo — defining the tag + minting a tagged key are admin-only. Smallest admin action: **add `tag:server` to the ACL + mint a tagged auth key**, hand Mark the `tskey-…`; then Mark runs at each box's console: `sudo tailscale up --authkey=tskey-… --advertise-tags=tag:server`.
+> **No-admin stopgap (today, fully CLI at the box):** a *staying teammate* re-auths the node under their account — `sudo tailscale logout && sudo tailscale up` → they log in. Node becomes theirs (survives Mark; tied to that person). Tags are cleaner but this unblocks with zero admin.
+> ⚠ Always at the **box console**, never over SSH (re-auth can drop the session → unattended box goes dark).
 
 ## §B — GitHub / NR / Atlassian re-home on firebat  (after §A; I can drive over SSH once the identity's chosen)
 On firebat, per the chosen §A identity:
