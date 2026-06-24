@@ -24,6 +24,14 @@ Consolidates Mark's departure handoff (last day **2026-06-26**): transferring hi
 - [[2026-06-23_autopatrol-handoff]] — cleanup Lambda (§3) + arm-miss race (§14) + alert-flow (§2) → **Brad** (cleanup-Lambda internals are Mark's; reading list is load-bearing).
 - [[2026-06-23_local-repo-audit]] — CLAUDE.md / KB-port status across all 25 local repos; HIGH+MED repos being drafted as branch+PR per repo.
 
+## Setup / rebuild runbooks (enshrined — clone-and-rebuild)
+- [[DEVBOX-BOOTSTRAP|_tooling/DEVBOX-BOOTSTRAP.md]] — stand up the whole KB + Claude-Code workflow on a fresh machine.
+- [[SETUP|_tooling/SETUP.md]] — KB-only self-host instance.
+- [[2026-06-24_secrets-refresh-runbook]] — every credential + how to rotate it.
+- `actuate-dev-toolkit/npu-server-provisioning.md` — rebuild npu-server from bare OS (skeleton; Stage-2 driver stack needs §D box-capture).
+- `actuate-dev-toolkit/aws-rolesanywhere-rebuild.md` — reconstruct firebat's team-owned AWS identity.
+- `actuate-dev-toolkit/CLAUDE.md` + `phase-00…16` — rebuild firebat. `files/llm-shop/CLAUDE.md` — rebuild the llm-shop app layer.
+
 ## Operating runbooks (for whoever inherits each system)
 - [[2026-06-22_firebat-operations-runbook]] — the minipc: 14 timers, creds, dashboard, KB repo
 - [[2026-06-22_dashboard-signals-catalog]] — the ~89-signal operational dashboard
