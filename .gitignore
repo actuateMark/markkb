@@ -18,3 +18,7 @@ Thumbs.db
 *.bak-*
 *.bak.streamline*
 .~lock.*#
+
+# Obsidian per-machine state (workspace, cache, sync) — not versioned
+.obsidian/
+.trash/
