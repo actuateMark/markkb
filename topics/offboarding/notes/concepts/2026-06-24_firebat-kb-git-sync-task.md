@@ -41,5 +41,11 @@ Install the **Obsidian Git** plugin into firebat's Obsidian, configure auto-pull
 - Best done **at the office** alongside the WS-A firebat work (touches the live vault + container; pairs with the GitHub-identity re-home that makes the pull auth durable).
 - The relink/lint *write-back* question (pull-only vs bi-directional) is the one design decision to settle — recommend **pull-only, org canonical** for simplicity; relink/lint output then lives in whatever pushes to the org (the laptop today, or a firebat commit step later).
 
+## Operating notes / gotchas (learned 2026-06-24)
+## Operating notes / gotchas (learned 2026-06-24)
+- **Auth rides §A:** the sync uses `gh` as `actuateMark`. It keeps working until that account loses org access — then pull/push break. **The GitHub identity re-home (§A/§B) makes the sync durable; nothing sync-specific beyond it.**
+- **Cutover gotcha (resolved):** while Obsidian Sync was still on, it dropped *untracked* copies of new notes into the vault, which blocked `git pull` ("untracked working tree files would be overwritten"). Fix: `cd <vault> && git rebase --abort 2>/dev/null; git reset --hard origin/master && git clean -fd -e .obsidian -e .trash`. Won't recur now that Obsidian Sync is disabled.
+- **If the sync wedges again** (`kb-org-sync` exit 1 in `~/.local/state/claude-jobs/kb-org-sync-*`): it fails *loud and safe* (never auto-destroys local edits). Inspect `git -C <vault> status`; if it's just untracked collisions, the reset above clears it; a real content conflict needs a human merge.
+
 ## Related
 - [[2026-06-22_manual-action-checklist]] · [[2026-06-22_firebat-operations-runbook]] · [[2026-06-22_offboarding-plan]] (WS-A)
