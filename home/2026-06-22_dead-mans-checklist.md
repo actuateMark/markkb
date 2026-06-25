@@ -7,13 +7,15 @@ created: 2026-06-22
 updated: 2026-06-22
 author: kb-bot
 incoming:
-  - _tooling/DEVBOX-BOOTSTRAP.md
+  - home/2026-06-22_actuate-footprint-handoff.md
+  - home/2026-06-22_manual-action-checklist.md
+  - home/2026-06-22_offboarding-plan.md
+  - home/2026-06-23_firebat-dashboard-ownership-handoff.md
+  - home/DEVBOX-BOOTSTRAP.md
+  - home/README.md
+  - home/first-steps.md
+  - home/offboarding-overview.md
   - index.md
-  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
-  - topics/engineering-process/notes/syntheses/2026-06-22_offboarding-plan.md
-  - topics/offboarding-overview.md
-  - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
-  - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
 incoming_updated: 2026-06-25
 ---
 

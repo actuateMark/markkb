@@ -4,6 +4,14 @@ type: synthesis
 tags: [orientation, map, topics, navigation, home]
 updated: 2026-06-25
 author: kb-bot
+incoming:
+  - home/README.md
+  - home/first-steps.md
+  - home/how-to-use-this-kb.md
+  - home/system-architecture.md
+  - home/what-is-actuate.md
+  - index.md
+incoming_updated: 2026-06-25
 ---
 
 # The topic landscape — where to go to learn what
@@ -22,21 +30,21 @@ The KB has ~40 topics. This page groups them into **domains** and answers *"I wa
 | **Infra · fleet · cost · perf** | [[fleet-architecture/_summary\|fleet-architecture]], [[infrastructure/_summary\|infrastructure]], [[compute-fleet/_summary\|compute-fleet]], [[aws-cost/_summary\|aws-cost]], [[profiling-and-performance/_summary\|profiling]], [[new-relic/_summary\|new-relic]] | Running it at scale, economically, observably |
 | **Video & media** | [[video-processing/_summary\|video-processing]], [[webrtc-deep-dive/_summary\|webrtc]] | Decode, frame transport, streaming |
 | **Engineering & process** | [[engineering-process/_summary\|engineering-process]], [[runbooks/_summary\|runbooks]], [[releases/_summary\|releases]], [[repo-backlog/_summary\|repo-backlog]], [[software-architecture/_summary\|software-architecture]], [[team-structure/_summary\|team-structure]], [[data-access-control/_summary\|data-access-control]], [[billing/_summary\|billing]], [[local-test-stack/_summary\|local-test-stack]], [[jira-organization/_summary\|jira]] | How the team builds, ships, and governs |
-| **KB · tooling · ops** | [[operational-health/_summary\|operational-health]], [[personal-notes/_summary\|personal-notes]], [[personal-laptop/_summary\|personal-laptop]], [[llm-shop/_summary\|llm-shop]], [[obsidian/_summary\|obsidian]] | The KB, the automation, the dev environment |
+| **KB · tooling · ops** | [[operational-health/_summary\|operational-health]], [[personal-notes/_summary\|personal-notes]], [[personal-laptop/_summary\|personal-laptop]], [[llm-shop/_summary\|llm-shop]], [[obsidian/_summary\|obsidian]] | The KB, the automation, the [[dev-environment|dev environment]] |
 
 ## "I want to learn…" → go here
 
 - **…what Actuate does** → [[what-is-actuate]], then [[actuate-platform/_summary]].
-- **…how video gets ingested** → [[vms-connector/_summary]] (the pipeline) + [[integrations/_summary]] (per-VMS specifics: Milestone, Avigilon, Genetec, KVS, RTSP…).
+- **…how video gets ingested** → [[vms-connector/_summary]] (the pipeline) + [[integrations/_summary]] (per-VMS specifics: Milestone, Avigilon, Genetec, [[kvs-components|KVS]], [[rtsp-deep-dive|RTSP]]…).
 - **…how detection works** → [[models/_summary]] ("what does line-crossing/weapon/fire do?") vs [[ai-models/_summary]] ("how do we evaluate a candidate model?"). Serving: [[inference-api/_summary]].
-- **…how alerts reach a monitoring center** → [[integrations/_summary]] (monitoring centers: Immix, Sentinel, Bold…) + [[alerts-improvements/_summary]] + [[autopatrol/_summary]].
+- **…how alerts reach a monitoring center** → [[integrations/_summary]] (monitoring centers: Immix, [[sentinel-components|Sentinel]], [[bold-components|Bold]]…) + [[alerts-improvements/_summary]] + [[autopatrol/_summary]].
 - **…the connector internals** (filter/observer/sender/puller, AIMD back-pressure, config threading) → [[vms-connector/_summary]] + [[actuate-libraries/_summary]]. (There's a `connector-pipeline-expert` subagent for deep Q&A.)
 - **…running the fleet at scale / cost** → [[fleet-architecture/_summary]] (the redesign), [[compute-fleet/_summary]], [[aws-cost/_summary]], [[profiling-and-performance/_summary]].
 - **…the public API** → [[external-api/_summary]] (v5), with [[inference-api/_summary]] underneath.
 - **…how the team works** (CI, release chain, branch semantics, library publishing) → [[engineering-process/_summary]] + [[releases/_summary]]. Ops fix-its → [[runbooks/_summary]].
 - **…production health / monitoring** → [[operational-health/_summary]] + [[new-relic/_summary]] (query rules + dashboards).
 - **…the AutoPatrol product** → [[autopatrol/_summary]] (the biggest product topic).
-- **…video decode / streaming / WebRTC** → [[video-processing/_summary]] + [[webrtc-deep-dive/_summary]].
+- **…video decode / streaming / [[webrtc-deep-dive|WebRTC]]** → [[video-processing/_summary]] + [[webrtc-deep-dive/_summary]].
 - **…who owns what / team layout** → [[team-structure/_summary]].
 - **…the automation + dev setup** (firebat, dashboard, llm-shop, this KB) → the operational map [[2026-06-22_actuate-footprint-handoff]], and the runbooks in this folder.
 

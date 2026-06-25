@@ -4,6 +4,10 @@ type: concept
 tags: [orientation, onboarding, getting-started, repos, home]
 updated: 2026-06-25
 author: kb-bot
+incoming:
+  - home/README.md
+  - index.md
+incoming_updated: 2026-06-25
 ---
 
 # First steps — day one
@@ -13,16 +17,16 @@ You've read [[what-is-actuate]] and [[system-architecture]]. This page answers t
 ## Where's the code?
 The platform is a suite of GitHub repos under the **`aegissystems`** org. The canonical, always-current list (with "clone-on-need" vs "local" status) is **[[core-repo-suite]]**. The ones you'll touch most:
 
-| Repo | What it is |
-|---|---|
-| `vms-connector` | The per-customer pipeline (puller/filter/observer/sender). The most important repo. |
-| `actuate-libraries` | Shared packages the connector + services depend on (auto-publishes stable on merge to `main`). |
-| `actuate-inference-api` | Model serving (the v5 contract). |
-| `actuate_admin` | Admin / control-plane API. |
-| `autopatrol_onboarder`, `autopatrol-server` | The AutoPatrol product. |
-| `camera-ui` | Front-end. |
-| `actuate-dev-toolkit` | Provisions + operates the firebat automation host (see [[2026-06-22_firebat-operations-runbook]]). |
-| `actuate-kb` | This knowledge base. |
+| Repo | What it is | Topic |
+|---|---|---|
+| `vms-connector` | The per-customer pipeline (puller/filter/observer/sender). The most important repo. | [[vms-connector/_summary\|vms-connector]] |
+| `actuate-libraries` | Shared packages the connector + services depend on (auto-publishes stable on merge to `main`). | [[actuate-libraries/_summary\|actuate-libraries]] |
+| `actuate-inference-api` | Model serving (the v5 contract). | [[inference-api/_summary\|inference-api]] |
+| `actuate_admin` | Admin / control-plane API. | [[admin-api/_summary\|admin-api]] |
+| `autopatrol_onboarder`, `autopatrol-server` | The AutoPatrol product. | [[autopatrol/_summary\|autopatrol]] |
+| `camera-ui` | Front-end (live view / streaming). | [[video-processing/_summary\|video-processing]] · [[webrtc-deep-dive/_summary\|webrtc]] |
+| `actuate-dev-toolkit` | Provisions + operates the firebat automation host. | [[2026-06-22_firebat-operations-runbook\|firebat runbook]] · [[personal-laptop/_summary\|personal-laptop]] |
+| `actuate-kb` | This knowledge base. | [[how-to-use-this-kb]] · [[obsidian/_summary\|obsidian]] |
 
 Clone what you need: `cd ~/work && gh repo clone aegissystems/<repo>`.
 
@@ -33,11 +37,11 @@ Clone what you need: `cd ~/work && gh repo clone aegissystems/<repo>`.
 - **Before coding** in any repo, pull context: run `/kb-lookup` or read the repo's topic `_summary` (see [[how-to-use-this-kb]]). Most repos also have a `CLAUDE.md`.
 
 ## How code ships
-Branch flow **feature → stage → rearchitecture → prod**, deployed via GitHub Actions CI + ArgoCD onto EKS. `actuate-libraries` merging to `main` auto-publishes to CodeArtifact — update connector pins deliberately. Details + the pre-merge workflow: [[engineering-process/_summary]] and [[releases/_summary]].
+Branch flow **feature → stage → rearchitecture → prod**, deployed via GitHub Actions CI + [[argocd|ArgoCD]] onto EKS. `actuate-libraries` merging to `main` auto-publishes to CodeArtifact — update connector pins deliberately. Details + the pre-merge workflow: [[engineering-process/_summary]] and [[releases/_summary]].
 
 ## Who owns what
 Team layout + assignments: **[[team-structure/_summary]]**. As of the mid-2026 handoff, ownership of the systems documented here:
-- **Watchman / fleet architecture** → Paolo + Mike — [[2026-06-23_watchman-fleet-handoff-paolo-mike]]
+- **[[watchman-repo|Watchman]] / fleet architecture** → Paolo + Mike — [[2026-06-23_watchman-fleet-handoff-paolo-mike]]
 - **AutoPatrol** → Brad — [[2026-06-23_autopatrol-handoff]]
 - **Firebat automation host + the operational dashboard** → [[2026-06-23_firebat-dashboard-ownership-handoff]]
 

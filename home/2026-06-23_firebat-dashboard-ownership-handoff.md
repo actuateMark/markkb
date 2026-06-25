@@ -7,8 +7,10 @@ created: 2026-06-23
 updated: 2026-06-23
 author: kb-bot
 incoming:
-  - topics/offboarding-overview.md
-incoming_updated: 2026-06-24
+  - home/README.md
+  - home/first-steps.md
+  - home/offboarding-overview.md
+incoming_updated: 2026-06-25
 ---
 
 # Firebat automation + dashboard — ownership handoff

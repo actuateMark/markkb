@@ -7,9 +7,11 @@ created: 2026-06-24
 updated: 2026-06-24
 author: kb-bot
 incoming:
+  - home/2026-06-22_actuate-footprint-handoff.md
+  - home/2026-06-22_manual-action-checklist.md
+  - home/README.md
+  - home/how-to-use-this-kb.md
   - index.md
-  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
-  - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
 incoming_updated: 2026-06-25
 ---
 

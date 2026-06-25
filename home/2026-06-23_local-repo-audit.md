@@ -7,9 +7,10 @@ created: 2026-06-23
 updated: 2026-06-23
 author: kb-bot
 incoming:
-  - topics/offboarding-overview.md
-  - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
-incoming_updated: 2026-06-24
+  - home/2026-06-22_manual-action-checklist.md
+  - home/README.md
+  - home/offboarding-overview.md
+incoming_updated: 2026-06-25
 ---
 
 # Local-repo documentation audit (2026-06-23)

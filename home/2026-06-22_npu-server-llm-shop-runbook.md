@@ -6,12 +6,13 @@ created: 2026-06-22
 updated: 2026-06-22
 author: kb-bot
 incoming:
-  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
-  - topics/engineering-process/notes/syntheses/2026-06-22_dead-mans-checklist.md
-  - topics/engineering-process/notes/syntheses/2026-06-22_offboarding-plan.md
-  - topics/offboarding-overview.md
-  - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
-incoming_updated: 2026-06-24
+  - home/2026-06-22_actuate-footprint-handoff.md
+  - home/2026-06-22_dead-mans-checklist.md
+  - home/2026-06-22_manual-action-checklist.md
+  - home/2026-06-22_offboarding-plan.md
+  - home/README.md
+  - home/offboarding-overview.md
+incoming_updated: 2026-06-25
 ---
 
 # npu-server / LLM-shop operations runbook
@@ -55,7 +56,7 @@ Full host entity: [[host-npu-server]].
 | RAM | 30 GiB (+ 8 GiB swap) |
 | Disk | 937 GB NVMe |
 
-**Co-tenant — DO NOT DISTURB.** The box's primary tenant is the **[[watchman-repo|Watchman]] test service** (`~/actuate-watchman/`, a continuously-running process), plus benchmark scaffolding. All LLM-shop work is confined to `~/llm-shop/`. The shop is deliberately a *polite tenant* (RAM-capped, CPU-yielding) so it never starves [[watchman-repo|Watchman]]. Never modify `~/actuate-watchman/`, `~/intel/`, `~/venvs/`, `~/model_cache/`, or the benchmark scripts without coordinating with whoever owns Watchman dev.
+**Co-tenant — DO NOT DISTURB.** The box's primary tenant is the **[[watchman-repo|Watchman]] test service** (`~/actuate-watchman/`, a continuously-running process), plus benchmark scaffolding. All LLM-shop work is confined to `~/llm-shop/`. The shop is deliberately a *polite tenant* (RAM-capped, CPU-yielding) so it never starves [[watchman-repo|Watchman]]. Never modify `~/actuate-watchman/`, `~/intel/`, `~/venvs/`, `~/model_cache/`, or the benchmark scripts without coordinating with whoever owns [[watchman-repo|Watchman]] dev.
 
 ---
 

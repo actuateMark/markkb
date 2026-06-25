@@ -28,11 +28,11 @@ This repo is both **content** (the `topics/` Obsidian vault) and the **tooling**
    cp _tooling/agents/* ~/.claude/agents/
    mkdir -p ~/.claude/lib && cp _tooling/lib/* ~/.claude/lib/
    ```
-3. **Install the obsidian CLI** (Linux x86-64): `cp _tooling/bin/obsidian ~/.local/bin/ && chmod +x ~/.local/bin/obsidian`. Probe: `obsidian vault`.
+3. **Install the [[obsidian-cli|obsidian CLI]]** (Linux x86-64): `cp _tooling/bin/obsidian ~/.local/bin/ && chmod +x ~/.local/bin/obsidian`. Probe: `obsidian vault`.
 4. **Adjust paths.** The skills/scripts assume the vault at `~/Documents/worklog/knowledgebase` and user `mork`. Grep and fix: `grep -rl '/home/mork' _tooling/` → update to your home/vault path.
 5. **Credentials (only for the sync/ingest skills that pull external sources):**
    - Atlassian (kb-sync, kb-ingest of Confluence/Jira): `~/.config/atlassian/api-token` = `{"email","token","site"}`.
-   - New Relic (if you ingest NR data): `~/.config/newrelic/key`.
+   - [[new-relic|New Relic]] (if you ingest NR data): `~/.config/newrelic/key`.
    - *(local KB use — kb-ask/kb-lookup/kb-lint/kb-relink — needs none of these.)*
 6. **(Optional) cron automation:** copy `scripts/*` to `~/bin/`, the `.service`/`.timer` units to `~/.config/systemd/user/`, `systemctl --user enable --now <timer>`. This runs relink/lint/recap/batch-intake + the Quartz static-site rebuild on a schedule. See the firebat operations runbook for the full tier-1 pattern.
 7. **(Optional) local-LLM offload:** stand up the npu-server llm-shop (see its runbook) and the `llm-shop-delegate` agent + `kb-intake`/`kb-batch-*` scripts will route bulk intake there instead of burning Claude tokens.
