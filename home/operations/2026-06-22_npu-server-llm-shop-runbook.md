@@ -6,12 +6,12 @@ created: 2026-06-22
 updated: 2026-06-22
 author: kb-bot
 incoming:
-  - home/2026-06-22_actuate-footprint-handoff.md
-  - home/2026-06-22_dead-mans-checklist.md
-  - home/2026-06-22_manual-action-checklist.md
-  - home/2026-06-22_offboarding-plan.md
   - home/README.md
-  - home/offboarding-overview.md
+  - home/offboarding/2026-06-22_manual-action-checklist.md
+  - home/offboarding/2026-06-22_offboarding-plan.md
+  - home/offboarding/offboarding-overview.md
+  - home/operations/2026-06-22_actuate-footprint-handoff.md
+  - home/operations/2026-06-22_dead-mans-checklist.md
 incoming_updated: 2026-06-25
 ---
 

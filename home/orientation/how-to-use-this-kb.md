@@ -6,7 +6,7 @@ updated: 2026-06-25
 author: kb-bot
 incoming:
   - home/README.md
-  - home/first-steps.md
+  - home/orientation/first-steps.md
   - home/what-is-actuate.md
   - index.md
 incoming_updated: 2026-06-25

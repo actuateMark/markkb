@@ -12,6 +12,8 @@ author: kb-bot
 
 **New here?** Read **§1** top-to-bottom (≈20 min) and you'll know what Actuate is, how it's built, how to navigate the KB, and how to start. **§2–§4** are reference: pull them up when you're installing, operating, or picking up an owned system — not required reading to feel oriented.
 
+**Folder layout:** the two must-reads ([[what-is-actuate]], [[the-topic-landscape]]) + this README sit at the top level; everything else is grouped into `orientation/` · `operations/` · `setup/` · `offboarding/` (mirroring §1–§4 below).
+
 ---
 
 ## §1 · Orientation — *evergreen, read first*

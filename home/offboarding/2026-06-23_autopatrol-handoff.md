@@ -8,8 +8,8 @@ updated: 2026-06-23
 author: kb-bot
 incoming:
   - home/README.md
-  - home/first-steps.md
-  - home/offboarding-overview.md
+  - home/offboarding/offboarding-overview.md
+  - home/orientation/first-steps.md
 incoming_updated: 2026-06-25
 ---
 

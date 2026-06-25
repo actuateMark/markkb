@@ -7,8 +7,8 @@ created: 2026-06-24
 updated: 2026-06-24
 author: kb-bot
 incoming:
-  - home/2026-06-24_secrets-refresh-runbook.md
   - home/README.md
+  - home/operations/2026-06-24_secrets-refresh-runbook.md
 incoming_updated: 2026-06-25
 ---
 

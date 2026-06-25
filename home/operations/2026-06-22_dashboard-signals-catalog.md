@@ -6,14 +6,14 @@ created: 2026-06-22
 updated: 2026-06-22
 author: kb-bot
 incoming:
-  - home/2026-06-22_actuate-footprint-handoff.md
-  - home/2026-06-22_dead-mans-checklist.md
-  - home/2026-06-22_manual-action-checklist.md
-  - home/2026-06-22_offboarding-plan.md
-  - home/2026-06-23_firebat-dashboard-ownership-handoff.md
   - home/README.md
-  - home/first-steps.md
-  - home/offboarding-overview.md
+  - home/offboarding/2026-06-22_manual-action-checklist.md
+  - home/offboarding/2026-06-22_offboarding-plan.md
+  - home/offboarding/2026-06-23_firebat-dashboard-ownership-handoff.md
+  - home/offboarding/offboarding-overview.md
+  - home/operations/2026-06-22_actuate-footprint-handoff.md
+  - home/operations/2026-06-22_dead-mans-checklist.md
+  - home/orientation/first-steps.md
 incoming_updated: 2026-06-25
 ---
 

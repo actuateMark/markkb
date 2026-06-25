@@ -6,9 +6,9 @@ updated: 2026-06-25
 author: kb-bot
 incoming:
   - home/README.md
-  - home/first-steps.md
-  - home/how-to-use-this-kb.md
-  - home/system-architecture.md
+  - home/orientation/first-steps.md
+  - home/orientation/how-to-use-this-kb.md
+  - home/orientation/system-architecture.md
   - home/the-topic-landscape.md
   - index.md
 incoming_updated: 2026-06-25

@@ -7,10 +7,10 @@ created: 2026-06-23
 updated: 2026-06-23
 author: kb-bot
 incoming:
-  - home/2026-06-22_manual-action-checklist.md
   - home/README.md
-  - home/first-steps.md
-  - home/offboarding-overview.md
+  - home/offboarding/2026-06-22_manual-action-checklist.md
+  - home/offboarding/offboarding-overview.md
+  - home/orientation/first-steps.md
 incoming_updated: 2026-06-25
 ---
 

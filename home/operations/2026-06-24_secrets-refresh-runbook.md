@@ -6,9 +6,9 @@ created: 2026-06-24
 updated: 2026-06-24
 author: kb-bot
 incoming:
-  - home/DEVBOX-BOOTSTRAP.md
   - home/README.md
-  - home/offboarding-overview.md
+  - home/offboarding/offboarding-overview.md
+  - home/setup/DEVBOX-BOOTSTRAP.md
 incoming_updated: 2026-06-25
 ---
 
