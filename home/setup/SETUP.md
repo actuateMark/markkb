@@ -1,3 +1,11 @@
+---
+title: "KB system — set up your own instance"
+type: concept
+tags: [orientation, setup, kb, home]
+updated: 2026-06-25
+author: kb-bot
+---
+
 # KB system — set up your own instance
 
 This repo is both **content** (the `topics/` Obsidian vault) and the **tooling** that operates it. This guide stands up the whole system on a fresh machine. Originally built by Mark; paths/credentials below assume his setup — **adjust for yours** (search for `/home/mork` and the vault path).

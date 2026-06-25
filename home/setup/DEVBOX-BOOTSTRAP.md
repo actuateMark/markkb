@@ -1,3 +1,11 @@
+---
+title: "Dev-box bootstrap — run the KB + Claude-Code workflow on your own machine"
+type: concept
+tags: [orientation, setup, onboarding, home]
+updated: 2026-06-25
+author: kb-bot
+---
+
 # Dev-box bootstrap — run Mark's KB + Claude-Code workflow on your own machine
 
 > The umbrella guide: stand up the **whole workflow** (the Obsidian KB + the Claude-Code skills/agents/hooks + the daily rituals) on a fresh laptop/box, so a successor can work the way Mark did. It *composes* the other setup docs rather than repeating them. KB-only? use [[SETUP]] instead.
