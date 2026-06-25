@@ -11,7 +11,7 @@ incoming:
   - index.md
   - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
   - topics/engineering-process/notes/syntheses/2026-06-22_offboarding-plan.md
-  - topics/offboarding/_summary.md
+  - topics/offboarding-overview.md
   - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
   - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
 incoming_updated: 2026-06-25

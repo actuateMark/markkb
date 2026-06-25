@@ -7,7 +7,7 @@ created: 2026-06-23
 updated: 2026-06-23
 author: kb-bot
 incoming:
-  - topics/offboarding/_summary.md
+  - topics/offboarding-overview.md
 incoming_updated: 2026-06-24
 ---
 

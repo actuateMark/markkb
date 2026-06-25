@@ -7,7 +7,7 @@ created: 2026-06-22
 updated: 2026-06-22
 author: kb-bot
 incoming:
-  - topics/offboarding/_summary.md
+  - topics/offboarding-overview.md
   - topics/offboarding/notes/concepts/2026-06-23_autopatrol-handoff.md
   - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
   - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md

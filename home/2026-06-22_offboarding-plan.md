@@ -10,7 +10,7 @@ incoming:
   - topics/actuate-platform/notes/concepts/2026-06-22_npu-server-llm-shop-runbook.md
   - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
   - topics/engineering-process/notes/syntheses/2026-06-22_dead-mans-checklist.md
-  - topics/offboarding/_summary.md
+  - topics/offboarding-overview.md
   - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
   - topics/offboarding/notes/concepts/2026-06-23_autopatrol-handoff.md
   - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
