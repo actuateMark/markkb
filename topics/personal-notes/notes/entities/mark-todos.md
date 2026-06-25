@@ -4,7 +4,7 @@ type: entity
 topic: personal-notes
 tags: [todos, mark, work-plan, priorities, personal]
 created: 2026-04-16
-updated: 2026-06-24
+updated: 2026-06-25
 last_scope: 2026-06-22
 last_wrap: 2026-06-16
 author: kb-bot
@@ -1058,7 +1058,7 @@ Status (2026-05-11): Phase 2A/2A.2/2B/2C/2D.1/2D.2/2F/2G/2H + kb-deep-intake shi
 <!-- BEGIN-AUTOSYNC-JIRA -->
 ## Current Jira Queue (auto-synced)
 
-**Last synced:** 2026-06-24
+**Last synced:** 2026-06-25
 **Source:** `assignee = currentUser() AND statusCategory != Done ORDER BY updated DESC`
 
 This section is **fully replaced** on every sync by the `jira-sync` automation (see [[automation-jira-sync]]). Manual edits in this section will be lost — add notes against tickets in the workstream sections above instead.
@@ -1073,14 +1073,15 @@ This section is **fully replaced** on every sync by the `jira-sync` automation (
 | ENG-246 | Medium | Task | actuate-instrumentation: extend to better support performance instrumentation *(tracked in §30)* |
 | ENG-282 | Medium | Task | Custom-branch lifecycle: branch-scoped admin endpoints + vms-connector CI/CD cleanup wiri… *(tracked in §29)* |
 
-### In Progress / In Review (2)
+### In Progress / In Review (3)
 
 | Ticket | Status | Priority | Type | Summary |
 |--------|--------|----------|------|---------|
+| ENG-377 | In Progress | High | Task | WS-0: Land cheap in-flight PRs, then freeze code |
 | ENG-247 | In Progress | Medium | Task | Research: move away from raw SQL access to postgres in non-admin contexts |
 | ENG-269 | In Progress | Medium | Task | actuate_admin: automated endpoints for deploying/managing custom branches *(tracked in §29)* |
 
-### To Do (12)
+### To Do (11)
 
 | Ticket | Priority | Type | Summary |
 |--------|----------|------|---------|
@@ -1094,7 +1095,6 @@ This section is **fully replaced** on every sync by the `jira-sync` automation (
 | ENG-380 | High | Task | WS-C2: Reassign the 17 open assigned tickets |
 | ENG-379 | High | Task | WS-C1: Confluence 'Mark's Actuate footprint' handoff page + KB highlights |
 | ENG-378 | High | Task | WS-B: Mirror markkb + claude-config to the org (scrub first) |
-| ENG-377 | High | Task | WS-0: Land cheap in-flight PRs, then freeze code |
 | ENG-375 | High | Epic | Mark offboarding — knowledge & infra transfer (last day Fri 2026-06-26) |
 
 ### Open (1)
