@@ -31,11 +31,9 @@ incoming_updated: 2026-06-25
 
 GitHub, [[new-relic|New Relic]], and Atlassian all need the **same** answer: *which team-owned identity does firebat's automation authenticate as?* Decide once, apply to all three.
 
-- [ ] **Pick the identity model** (team discussion — posted to [ENG-376](https://actuate-team.atlassian.net/browse/ENG-376)):
-  - **Option 1 — staying teammate/owner credentials** *(fastest, ~5 min each)*: a person who's staying mints the PAT/keys. Durable past Mark; tied to that person.
-  - **Option 2 — dedicated service/bot identity** *(most durable, more [[SETUP|setup]])*: e.g. a GitHub `actuate-automation` account + an NR service user + an Atlassian service user. Decoupled from everyone; may cost seats.
-  - **Option 3 — defer**: leave on Mark's creds until deactivation, provision after (risk: timers break at deactivation).
-- [ ] Record the decision here once made: **____________________**
+- [x] **DECIDED 2026-06-25 — Option 1: named successor (the firebat/dashboard owner) credentials.** A seatless/no-signup *service* identity isn't easily available for any of the three: GitHub query+push needs a machine user (new email) or a GitHub App (1-hour tokens, too fiddly for the cron scripts); NR NerdGraph queries need a per-user User key; Atlassian API tokens are per-user (a service account = a new licensed seat). The team doesn't want a new email/seat, so the **named successor mints all three under their existing logins** (least-privilege where possible — see §B1's fine-grained PAT). If the team later wants to decouple from a person → GitHub App + NR/Jira service seats (future task, not blocking).
+  - Earlier options for the record: ~~Option 2 dedicated service/bot identity (needs new accounts/seats — declined)~~; ~~Option 3 defer (timers break at deactivation — declined)~~.
+- [x] **Named successor / firebat owner: ____________________** *(fill in the person who'll own firebat + the dashboard; their logins back the automation)*
 
 ---
 

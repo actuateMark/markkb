@@ -15,16 +15,24 @@ author: kb-bot
 
 ---
 
-## Phase 0 — DECIDE the identity model  (§A · 5 min · unblocks everything)
-Pick ONE and write it into [[2026-06-22_manual-action-checklist]] §A:
-- **(a) Org machine account** (e.g. `actuate-automation`) the team owns — its PAT + its NR/Atlassian identities. *Cleanest long-term; needs creating the account.*
-- **(b) Fine-grained org PAT under a service/existing identity** — no new account; PAT scoped to the repos + NR key + Atlassian token under a service owner. *Fastest today.* ← recommended if you want it done this session.
-- **(c) A named successor's personal creds** — quick, but re-couples firebat to one person.
+## Before the room — colleague pre-work (do in advance, ~15 min)
+The successor mints all creds under their **own existing logins** and brings them to the session in a password manager / secure note — **don't send secrets over chat/email in plaintext.**
+1. **GitHub fine-grained PAT** — github.com → avatar → *Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token*. Name `firebat-automation`; **Resource owner = `aegissystems`**; Repository access = All repositories; Permissions → **Contents: Read and write**, **Metadata: Read**, **Pull requests: Read**, **Issues: Read**. Generate → copy. *(If the org requires approval for fine-grained PATs, an org owner must approve it before it works.)*
+2. **New Relic User key** — one.newrelic.com → bottom-left user menu → *API keys → Create a key* → type **User**, name `firebat-automation` → copy the `NRAK-…`.
+3. **Atlassian API token** — id.atlassian.com → *Security → API tokens → Create API token* → label `firebat-jira-sync` → copy (note their account email + `https://actuate-team.atlassian.net`).
+4. **Tailscale (only if they're a tailnet admin of `aegissystems.ai`)** — login.tailscale.com → *Access controls*: ensure `tag:server` exists in `tagOwners` and ACLs let team devices reach `tag:server` over SSH/HTTP; then *Settings → Keys → Generate auth key* with **tag `tag:server`** → copy the `tskey-…`. **If they're NOT an admin**, line up aziz / jacob / michael to be reachable during the session (or to grant temporary admin) — this is the one prereq that can block.
+5. **Their SSH public key** (for npu-server §D) — `cat ~/.ssh/id_ed25519.pub` (or `id_rsa.pub`) → copy.
+6. **Access sanity check** — confirm they're an `aegissystems` org member who can read repos + approve PRs, have NR + Jira access, and **Tailscale installed on their own laptop** (needed for the verify step).
 
-Everything below uses "the §A identity."
+**Bring to the room (secure note):** GitHub PAT · NR `NRAK-…` · Atlassian token + email · Tailscale `tskey-…` (if admin) · their SSH pubkey.
+
+## Phase 0 — Identity model  (§A · DECIDED)
+**Decision (2026-06-25): named successor** — the person who'll own firebat + the dashboard mints all three creds under their **existing** GitHub / New Relic / Atlassian logins. No new email/account/seat (a seatless service identity isn't easily available: GitHub needs a machine user or a fiddly GitHub App; NR query keys are per-user; Atlassian service accounts cost a seat). Use **least privilege** where possible (fine-grained GitHub PAT — Phase 1). Decoupling from a person later = GitHub App + NR/Jira service seats (future, non-blocking).
+
+**→ Write the successor's name in [[2026-06-22_manual-action-checklist]] §A. "The §A identity" below = that person.**
 
 ## Phase 1 — Mint the 3 credentials  (colleague · ~10 min)
-1. **GitHub** — classic PAT scopes `repo` + `read:org`; *or* fine-grained: Contents/Metadata/Issues/PRs **read** on all `aegissystems` repos + Contents **write** on `actuate-kb` and `claude-config`.
+1. **GitHub** — **prefer a fine-grained PAT** (least privilege, since it's a person's account): Contents/Metadata/Issues/PRs **read** on all `aegissystems` repos + Contents **write** on `actuate-kb` and `claude-config`. *(Simpler fallback: a classic PAT with `repo` + `read:org`.)*
 2. **New Relic** — User API key (`NRAK-…`) minted as the §A identity.
 3. **Atlassian** — API token at `id.atlassian.com → Security → API tokens` (service email).
 
