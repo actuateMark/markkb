@@ -1,6 +1,6 @@
 # Dev-box bootstrap — run Mark's KB + Claude-Code workflow on your own machine
 
-> The umbrella guide: stand up the **whole workflow** (the Obsidian KB + the Claude-Code skills/agents/hooks + the daily rituals) on a fresh laptop/box, so a successor can work the way Mark did. It *composes* the other setup docs rather than repeating them. KB-only? use [[SETUP|_tooling/SETUP.md]] instead.
+> The umbrella guide: stand up the **whole workflow** (the Obsidian KB + the Claude-Code skills/agents/hooks + the daily rituals) on a fresh laptop/box, so a successor can work the way Mark did. It *composes* the other setup docs rather than repeating them. KB-only? use [[SETUP]] instead.
 
 ## What you get
 - The **Obsidian KB** (this vault) with cost-ordered retrieval + ingestion + maintenance skills.
@@ -24,7 +24,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
    - `~/.claude` **is** the Claude-Code config dir — cloning claude-config there installs all skills/agents/hooks/`CLAUDE.md`/`lib` at once. (If `~/.claude` already exists, merge or back it up first.)
    - Open the KB folder as an Obsidian vault.
-2. **KB tooling** — follow [[SETUP|_tooling/SETUP.md]] for the bits that live in the vault: the `obsidian` CLI (`_tooling/bin/obsidian` → `~/.local/bin/`, **x86-64 Linux**; rebuild from source elsewhere) and any vault-side scripts. *(The `kb-*` skills themselves come from claude-config in step 1 — `_tooling/skills/` is the standalone-mirror copy; don't double-install.)*
+2. **KB tooling** — follow [[SETUP]] for the bits that live in the vault: the `obsidian` CLI (`_tooling/bin/obsidian` → `~/.local/bin/`, **x86-64 Linux**; rebuild from source elsewhere) and any vault-side scripts. *(The `kb-*` skills themselves come from claude-config in step 1 — `_tooling/skills/` is the standalone-mirror copy; don't double-install.)*
 3. **Adjust paths.** The skills/scripts assume Mark's layout (`~/Documents/worklog/knowledgebase`, user `mork`). `grep -rl '/home/mork' ~/.claude ~/Documents/worklog/knowledgebase/_tooling` and fix to yours.
 4. **Credentials** — only what the workflow you'll use needs. Follow the consolidated **[[2026-06-24_secrets-refresh-runbook]]**: AWS SSO/CodeArtifact, `gh`, New Relic, Atlassian, Anthropic key. *(Local KB use — `/kb-ask`, `/kb-lookup`, `/daily-scope` reading — needs none of the cloud creds.)*
 5. **Clone the work repos** you'll touch (see [[core-repo-suite]] for the canonical list): `vms-connector`, `actuate-libraries`, `actuate_admin`, `actuate-inference-api`, `autopatrol_onboarder`, etc. into `~/work/`.

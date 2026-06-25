@@ -19,8 +19,9 @@ author: kb-bot
 **If you're an agent:** read this map → open the relevant **topic `_summary`** → then use the **`/kb-ask`** (free-form query) and **`/kb-lookup`** (pre-coding context) skills, which walk a cost-ordered retrieval ladder (CLI structural queries first, file reads last). Don't grep 1,000 files blind — the summaries + skills are the index.
 
 ## 🚀 Start here / high-value entry points
+*📁 These guides live in the **`home/`** folder ([[README|home/]]) — the one place to point newcomers.*
 - **[[2026-06-22_actuate-footprint-handoff]]** — "what runs where" map of the whole operational footprint (firebat, dashboard, llm-shop, KB) + who owns what.
-- **Set up your own instance:** [[DEVBOX-BOOTSTRAP|_tooling/DEVBOX-BOOTSTRAP.md]] (full workflow on a fresh machine) · [[SETUP|_tooling/SETUP.md]] (KB-only).
+- **Set up your own instance:** [[DEVBOX-BOOTSTRAP]] (full workflow on a fresh machine) · [[SETUP]] (KB-only).
 - **If something breaks:** [[2026-06-22_dead-mans-checklist]].
 - **Biggest-picture topic summaries:** [[actuate-platform/_summary|Platform overview]] · [[vms-connector/_summary|VMS Connector]] · [[fleet-architecture/_summary|Fleet architecture]] · [[autopatrol/_summary|AutoPatrol]].
 

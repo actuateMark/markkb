@@ -25,8 +25,8 @@ Consolidates Mark's departure handoff (last day **2026-06-26**): transferring hi
 - [[2026-06-23_local-repo-audit]] — CLAUDE.md / KB-port status across all 25 local repos; HIGH+MED repos being drafted as branch+PR per repo.
 
 ## Setup / rebuild runbooks (enshrined — clone-and-rebuild)
-- [[DEVBOX-BOOTSTRAP|_tooling/DEVBOX-BOOTSTRAP.md]] — stand up the whole KB + Claude-Code workflow on a fresh machine.
-- [[SETUP|_tooling/SETUP.md]] — KB-only self-host instance.
+- [[DEVBOX-BOOTSTRAP]] — stand up the whole KB + Claude-Code workflow on a fresh machine.
+- [[SETUP]] — KB-only self-host instance.
 - [[2026-06-24_secrets-refresh-runbook]] — every credential + how to rotate it.
 - `actuate-dev-toolkit/npu-server-provisioning.md` — rebuild npu-server from bare OS (skeleton; Stage-2 driver stack needs §D box-capture).
 - `actuate-dev-toolkit/aws-rolesanywhere-rebuild.md` — reconstruct firebat's team-owned AWS identity.
