@@ -21,6 +21,8 @@ incoming_updated: 2026-06-25
 - **The link:** [[watchman-repo|Watchman]] Phase 0 is the **first product built on the target fleet shape** — it proves the economics. The growth path is **monotonic** (nothing thrown away): `Phase 0 (E-simplified) → Proposal E proper → v10 Cloud Video Analytics (~100k cameras)`.
 
 ## Current state (decided vs open)
+*Snapshot 2026-06-25. For live status, the source of truth is **ENG-300 / ENG-383** (Jira) + [[2026-06-23_watchman-fleet-handoff-paolo-mike]]; the design notes below are dated.*
+
 **✅ Decided — Phase 0 shape:** E-simplified — uniform [[rtsp-deep-dive|RTSP]] puller fleet + stateless ("trimmed") detection fleet + alert dispatch + a **[[watch-entity|Watch]] Management Service** (fleet-singleton reconciler owning arm/disarm, lifecycle, schedule). Redis Streams frame bus (one stream/camera). RTSP-only, per-camera (no site grouping yet). Motion default-OFF. Backend = doubletake-pattern Lambda invoked during the connector run; dev AWS account + Terraform.
 
 **❌ Open — the blockers to sequence:**
@@ -35,7 +37,7 @@ incoming_updated: 2026-06-25
 | **Hot-reconfigure** (connector has no settings-reload path) | joint | Site Supervisor needs dynamic retune on mode change |
 
 ## Recommended path forward
-**This week:** joint walkthrough (done/ongoing) → **kick off the storage bake-off** (perf/cost/integration, target a pick by ~mid-July) → Valeri's connector-side Lambda lands, Paolo wires the deployer side → Mike scopes the Proposal E PoC.
+**This week:** hold the **joint walkthrough** (Mark + Mike + Paolo — *not yet held; §I, do before Fri 2026-06-26* — the irreplaceable knowledge transfer) → **kick off the storage bake-off** (perf/cost/integration, target a pick by ~mid-July) → Valeri's connector-side Lambda lands, Paolo wires the deployer side → Mike scopes the Proposal E PoC.
 
 **Phase 0 build (~4–6 wks from PoC start), in order:**
 1. **M0** repo + skeleton (uv, three base images: puller/detection/WMS, CI).

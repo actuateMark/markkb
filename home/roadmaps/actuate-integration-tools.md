@@ -28,6 +28,8 @@ Given a deployment ID (e.g. `connector-35831-autopatrol-259`), AIT loads that de
 It has since grown a **"brain-in-jar"** substrate: serialize in-memory pipeline state to a dump, then replay pipeline components in isolation on a laptop — plus a `simulate` synthetic-data + Hypothesis fuzz arc.
 
 ## Current state — working tool, bus-factor 1
+*Snapshot 2026-06-25. Per-phase status can drift as work resumes — trust the repo's `CLAUDE.md` + `uv run pytest` over this table if they disagree.*
+
 Single-author (Mark), ~107 tests, version 0.1.0, recently promoted to the org. **Unusually well-documented in the KB** (entity note + ~15 per-phase syntheses) — but **absent from product-roadmap and team-structure**, so it has no org ownership signal beyond Mark.
 
 | Arc | Surface | Status |
