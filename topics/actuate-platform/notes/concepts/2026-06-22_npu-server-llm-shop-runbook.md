@@ -55,7 +55,7 @@ Full host entity: [[host-npu-server]].
 | RAM | 30 GiB (+ 8 GiB swap) |
 | Disk | 937 GB NVMe |
 
-**Co-tenant — DO NOT DISTURB.** The box's primary tenant is the **[[watchman-repo|Watchman]] test service** (`~/actuate-watchman/`, a continuously-running process), plus benchmark scaffolding. All LLM-shop work is confined to `~/llm-shop/`. The shop is deliberately a *polite tenant* (RAM-capped, CPU-yielding) so it never starves Watchman. Never modify `~/actuate-watchman/`, `~/intel/`, `~/venvs/`, `~/model_cache/`, or the benchmark scripts without coordinating with whoever owns Watchman dev.
+**Co-tenant — DO NOT DISTURB.** The box's primary tenant is the **[[watchman-repo|Watchman]] test service** (`~/actuate-watchman/`, a continuously-running process), plus benchmark scaffolding. All LLM-shop work is confined to `~/llm-shop/`. The shop is deliberately a *polite tenant* (RAM-capped, CPU-yielding) so it never starves [[watchman-repo|Watchman]]. Never modify `~/actuate-watchman/`, `~/intel/`, `~/venvs/`, `~/model_cache/`, or the benchmark scripts without coordinating with whoever owns Watchman dev.
 
 ---
 
@@ -73,7 +73,7 @@ There are **three serving backends**, each on its own port, plus harness service
 
 **Models on disk (Ollama, `~/llm-shop/models/`):** `qwen2.5-coder:1.5b` (986 MB), `qwen2.5-coder:7b-instruct` (4.7 GB), `qwen2.5-coder:14b-instruct` (9.0 GB), `qwen2.5-coder:32b-instruct` (19 GB), `llama3.1:8b` (4.9 GB), `deepseek-coder-v2:16b` (8.9 GB). NPU side (`~/llm-shop/models-ov/`): `tinyllama-1.1b-int4-ov` (served) and a self-converted `qwen-1.5b` (NPU-incompatible, kept as CPU fallback).
 
-**iGPU mutual exclusion:** there is only ~5–9 GiB of iGPU memory free after Watchman, so **only one SYCL container runs at a time.** The 7B (`:8201`) and 8B (`:8202`) SYCL ports are pre-wired in the proxy routing table but **the systemd units were never shipped** — only the 14B SYCL service exists.
+**iGPU mutual exclusion:** there is only ~5–9 GiB of iGPU memory free after [[watchman-repo|Watchman]], so **only one SYCL container runs at a time.** The 7B (`:8201`) and 8B (`:8202`) SYCL ports are pre-wired in the proxy routing table but **the systemd units were never shipped** — only the 14B SYCL service exists.
 
 ### Harness / front-end services
 

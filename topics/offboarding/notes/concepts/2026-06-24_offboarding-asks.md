@@ -13,7 +13,7 @@ author: kb-bot
 Copy-paste messages for the human-gated items + exact steps for the do-yourself ones. Tracks the [[2026-06-22_manual-action-checklist]].
 
 ## §A — Automation-identity decision  (→ team channel; also on [ENG-376](https://actuate-team.atlassian.net/browse/ENG-376))
-> **Decision needed before I leave Fri:** the firebat automation box authenticates to GitHub / New Relic / Atlassian **as me** right now. When my accounts are deactivated, those timers (repo-scan, jira-sync, dashboard-check, etc.) break. We need to pick **one team-owned identity** for them to run as. Three options:
+> **Decision needed before I leave Fri:** the firebat automation box authenticates to GitHub / [[new-relic|New Relic]] / Atlassian **as me** right now. When my accounts are deactivated, those timers (repo-scan, jira-sync, dashboard-check, etc.) break. We need to pick **one team-owned identity** for them to run as. Three options:
 > 1. **Fastest (~5 min each):** a staying teammate or org owner mints the PAT/keys — durable past me, tied to that person.
 > 2. **Most durable (~30 min):** a dedicated service/bot identity (a GitHub `actuate-automation` account + NR service user + Atlassian service user) — decoupled from everyone; may cost seats.
 > 3. **Defer:** leave it on my creds until deactivation and provision after (risk: timers break the moment my account goes).
@@ -33,7 +33,7 @@ Copy-paste messages for the human-gated items + exact steps for the do-yourself 
 ## §B — GitHub / NR / Atlassian re-home on firebat  (after §A; I can drive over SSH once the identity's chosen)
 On firebat, per the chosen §A identity:
 - **GitHub:** `gh auth logout --hostname github.com` → `gh auth login --hostname github.com --git-protocol https` (paste the org token) → `gh auth setup-git`. Verify `gh api repos/aegissystems/vms-connector --jq .full_name`.
-- **New Relic:** `printf '%s' '<new NRAK>' > ~/.config/newrelic/key && chmod 600 ~/.config/newrelic/key`; revoke the old key.
+- **[[new-relic|New Relic]]:** `printf '%s' '<new NRAK>' > ~/.config/newrelic/key && chmod 600 ~/.config/newrelic/key`; revoke the old key.
 - **Atlassian:** edit `~/.config/atlassian/api-token` → `{"email":"<service-email>","token":"<new>","site":"https://actuate-team.atlassian.net"}`, `chmod 600`.
 - Verify all: `~/bin/firebat-identity-verify.py` — the 3 WARNs flip to ✅; then `--run-timers` to confirm each cred-dependent timer exits 0.
 
@@ -47,10 +47,10 @@ On firebat, per the chosen §A identity:
 *(Atlassian writes are blocked from my laptop, so this is a manual UI step.)*
 
 ## §G — Jira assignees  (→ team lead)
-> I've posted per-ticket handoff comments on all 13 of my open tickets (current state + what's needed to pick up). They just need owners assigned. **Don't-drop:** CS3-31 (Highest), CS3-537 / CS3-323 (High), and ENG-300 (Watchman design — already pointed at Mike, needs confirming). Full ledger + suggested owners: `2026-06-22_offboarding-plan` § "Jira reassignment ledger".
+> I've posted per-ticket handoff comments on all 13 of my open tickets (current state + what's needed to pick up). They just need owners assigned. **Don't-drop:** CS3-31 (Highest), CS3-537 / CS3-323 (High), and ENG-300 ([[watchman-repo|Watchman]] design — already pointed at Mike, needs confirming). Full ledger + suggested owners: `2026-06-22_offboarding-plan` § "Jira reassignment ledger".
 
 ## §I — Successor walkthroughs  (you schedule)
-> **Watchman + fleet-arch (Mike + Paolo), 60–90 min before Fri:** walk the Phase-0 shape + the deploy/connector vs fleet/k8s split. Tickets ENG-300 (Mike) + ENG-383 (Paolo); spine = `2026-06-02_watchman-phase0-fleet-fit` + `2026-06-16_watchman-pipeline-backend-meeting`; agenda in `2026-06-23_watchman-fleet-handoff-paolo-mike`.
+> **[[watchman-repo|Watchman]] + fleet-arch (Mike + Paolo), 60–90 min before Fri:** walk the Phase-0 shape + the deploy/connector vs fleet/k8s split. Tickets ENG-300 (Mike) + ENG-383 (Paolo); spine = `2026-06-02_watchman-phase0-fleet-fit` + `2026-06-16_watchman-pipeline-backend-meeting`; agenda in `2026-06-23_watchman-fleet-handoff-paolo-mike`.
 > **AutoPatrol (Brad), ~45 min:** the cleanup-Lambda state machine + `/autopatrol-cleanup-lambda-check`. Reading list in `2026-06-23_autopatrol-handoff`.
 
 ## §H — Friday: verify + decommission  (you + 1 teammate)

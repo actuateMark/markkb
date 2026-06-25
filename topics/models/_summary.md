@@ -17,7 +17,7 @@ Catalog of the **detection products** Actuate ships (~27 notes). Each is a sub-t
 [[intruder-v5/_summary|Intruder v5]] (YOLOv5, prod) · [[intruder-v8/_summary|Intruder v8]] (YOLOv8) · [[weapon-v8/_summary|Weapon v8]] (YOLOv8 XL) · [[fire-detection/_summary|Fire Detection]]
 
 ## Detection products
-[[loitering/_summary|Loitering]] (BoTSORT tracking) · [[line-crossing/_summary|Line Crossing]] · [[motion-plus/_summary|Motion+]] · [[crowd-detection/_summary|Crowd]] · [[fall-detection/_summary|Fall Detection]]
+[[loitering/_summary|Loitering]] ([[botsort-tracking|BoTSORT tracking]]) · [[line-crossing/_summary|Line Crossing]] · [[motion-plus/_summary|Motion+]] · [[crowd-detection/_summary|Crowd]] · [[fall-detection/_summary|Fall Detection]]
 
 ## Specialized
 [[blacklist-reid/_summary|Blacklist / Re-ID]] · [[pet-detection/_summary|Pet]] · [[hardhat-detection/_summary|Hard Hat]] · [[thermal-intruder/_summary|Thermal Intruder]]

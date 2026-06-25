@@ -2,7 +2,7 @@
 title: "vms-connector backlog"
 type: concept
 topic: repo-backlog
-tags: [backlog, github, vms-connector]
+tags: [backlog, github, vms-connector, rtsp]
 repo: aegissystems/vms-connector
 created: 2026-06-24
 updated: 2026-06-24
@@ -118,12 +118,12 @@ _(none)_
 | 1672 | [Site 36681 (Procimmo - St-Martin): VMS credential is wrong account type — /api/…](https://github.com/aegissystems/vms-connector/issues/1672) | — | — | 1mo | 1mo |
 | 1658 | [AP/VCH: WebSocket frame retrieval fails fleet-wide — dev.powerplus.com serves i…](https://github.com/aegissystems/vms-connector/issues/1658) | `bug` | actuateMark | 2mo | 2mo |
 | 1656 | [AP/VCH: Immix rejects CNCTNFAIL alerts with HTTP 400 — streamId null when strea…](https://github.com/aegissystems/vms-connector/issues/1656) | `bug` | — | 2mo | 2mo |
-| 1652 | [[Cleanup] Fix bare except: blocks in RTSP puller code](https://github.com/aegissystems/vms-connector/issues/1652) | — | — | 2mo | 2mo |
+| 1652 | [[Cleanup] Fix bare except: blocks in [[rtsp-deep-dive|RTSP]] puller code](https://github.com/aegissystems/vms-connector/issues/1652) | — | — | 2mo | 2mo |
 | 1651 | [[Enhancement] RTSP: Connection health scoring and graceful degradation](https://github.com/aegissystems/vms-connector/issues/1651) | — | — | 2mo | 2mo |
 | 1650 | [[Enhancement] RTSP: Transport fallback chain (TCP → UDP → interleaved)](https://github.com/aegissystems/vms-connector/issues/1650) | — | — | 2mo | 2mo |
 | 1649 | [[Enhancement] RTSP: Error code classification (401/403/453/461)](https://github.com/aegissystems/vms-connector/issues/1649) | — | — | 2mo | 2mo |
 | 1648 | [[Enhancement] RTSP: Exponential backoff with jitter on reconnection](https://github.com/aegissystems/vms-connector/issues/1648) | — | — | 2mo | 2mo |
-| 1647 | [[BUG] HikCentral healthcheck NoneType when API response data is null](https://github.com/aegissystems/vms-connector/issues/1647) | — | — | 2mo | 2mo |
+| 1647 | [[BUG] [[hikcentral-components|HikCentral]] healthcheck NoneType when API response data is null](https://github.com/aegissystems/vms-connector/issues/1647) | — | — | 2mo | 2mo |
 | 1646 | [[BUG] Exacq healthcheck KeyError 'Cameras' when API response format differs](https://github.com/aegissystems/vms-connector/issues/1646) | — | — | 2mo | 2mo |
 | 1645 | [[BUG] DW healthcheck NoneType error when config fields missing](https://github.com/aegissystems/vms-connector/issues/1645) | — | — | 2mo | 2mo |
 | 1642 | [WindowIdsV2: drop 3 unused GSIs to fix write amplification + hot partition thro…](https://github.com/aegissystems/vms-connector/issues/1642) | — | — | 2mo | 2mo |

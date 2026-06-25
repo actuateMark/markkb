@@ -9,10 +9,10 @@ author: kb-bot
 
 # WebRTC deep-dive
 
-Focused research deep-dive (5 notes) on WebRTC server/client implementations, evaluated for **live streaming + low-latency frame transport** (camera-ui live view, the KVS/WebRTC frame plane, fleet-arch frame transport).
+Focused research deep-dive (5 notes) on [[webrtc-deep-dive|WebRTC]] server/client implementations, evaluated for **live streaming + low-latency frame transport** (camera-ui live view, the [[kvs-components|KVS]]/WebRTC frame plane, fleet-arch frame transport).
 
 ## Implementations surveyed
-- [[notes/concepts/2026-05-18_janus|Janus]] — C WebRTC server (multistream, JSON signaling).
+- [[notes/concepts/2026-05-18_janus|Janus]] — C [[webrtc-deep-dive|WebRTC]] server (multistream, JSON signaling).
 - [[notes/concepts/2026-05-18_aiortc|aiortc]] — Python WebRTC/ORTC.
 - [[notes/concepts/2026-05-18_pion-webrtc|pion]] — Go WebRTC.
 

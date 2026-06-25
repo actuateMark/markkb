@@ -19,7 +19,7 @@ One place listing **every credential in Mark's automation ecosystem** — where 
 |---|---|---|---|
 | AWS (Roles Anywhere) | **Team** (host machine cert) | ✅ Survives departure — no action | none |
 | GitHub `gh` | Personal `actuateMark` | ⚠ Re-home (§A/§B) | swap to org PAT / machine account |
-| New Relic | Personal `mark@actuate.ai` NRAK | ⚠ Re-home + **rotate** (leaked key purged 2026-06-22) | mint team/service User key |
+| [[new-relic|New Relic]] | Personal `mark@actuate.ai` NRAK | ⚠ Re-home + **rotate** (leaked key purged 2026-06-22) | mint team/service User key |
 | Atlassian | Personal `mark@actuate.ai` | ⚠ Re-home (§A/§B) | re-issue under service account |
 | Tailscale | User-owned `mark@` (expiry 2026-10-20) | ⚠ Re-tag to `tag:server` | tagged auth key at box console (§C) |
 | CodeArtifact token | Derived from AWS (ephemeral, ~12h) | ✅ Follows AWS — no separate secret | re-fetch via `get-authorization-token` |
@@ -84,7 +84,7 @@ Full rebuild runbook (cert gen, trust anchor + profile creation, signing-helper 
 1. Mint a new User key in the NR UI (ideally under a team / service user, not a person).
 2. On the box: `printf '%s' '<new NRAK>' > ~/.config/newrelic/key && chmod 600 ~/.config/newrelic/key`
 3. Revoke the old key in the NR UI.
-4. **Verify:** `~/bin/firebat-identity-verify.py` — the New Relic WARN flips to PASS; or `--run-timers` to confirm `run-dashboard-check` exits 0.
+4. **Verify:** `~/bin/firebat-identity-verify.py` — the [[new-relic|New Relic]] WARN flips to PASS; or `--run-timers` to confirm `run-dashboard-check` exits 0.
 
 ---
 

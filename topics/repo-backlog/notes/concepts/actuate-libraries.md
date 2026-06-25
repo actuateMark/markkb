@@ -110,7 +110,7 @@ _(none)_
 | # | Title | Labels | Assignee | Age | Idle |
 |--:|-------|--------|----------|-----|------|
 | 348 | [actuate-movement: preallocate cv2 output buffers in frame-diff pipeline (~40% a…](https://github.com/aegissystems/actuate-libraries/issues/348) | — | actuateMark | 1mo | 1mo |
-| 337 | [[Enhancement] actuate-pullers: Expose stream diagnostics metadata from AvUrlFra…](https://github.com/aegissystems/actuate-libraries/issues/337) | — | — | 2mo | 2mo |
+| 337 | [[Enhancement] [[actuate-pullers]]: Expose stream diagnostics metadata from AvUrlFra…](https://github.com/aegissystems/actuate-libraries/issues/337) | — | — | 2mo | 2mo |
 | 327 | [Blacklist groups accumulate without bound on static scenes](https://github.com/aegissystems/actuate-libraries/issues/327) | — | — | 2mo | 2mo |
 | 305 | [Share internal executor pools across observers per camera](https://github.com/aegissystems/actuate-libraries/issues/305) | `enhancement` | — | 3mo | 3mo |
 | 297 | [Blacklist Filter: Storm & Weather Noise Mitigation](https://github.com/aegissystems/actuate-libraries/issues/297) | `enhancement` | — | 3mo | 3mo |

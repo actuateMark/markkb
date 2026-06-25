@@ -2,7 +2,7 @@
 title: "actuate-integration-tools (ait)"
 type: entity
 topic: engineering-process
-tags: [tooling, debugging, integration-tests, actuate-config, autopatrol, vch, vms-connector, cli]
+tags: [tooling, debugging, integration-tests, actuate-config, autopatrol, vch, vms-connector, cli, autopatrol]
 created: 2026-05-19
 updated: 2026-05-20
 author: mark

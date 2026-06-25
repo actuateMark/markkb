@@ -2,7 +2,7 @@
 title: "Billing-pipeline pain — post-mortem on the April-May 2026 emit-gap firefight"
 type: synthesis
 topic: billing
-tags: [billing, post-mortem, customer-events, site_product_ended, cohort-f, cohort-b, vms-connector, snowflake, reconciliation]
+tags: [billing, post-mortem, customer-events, site_product_ended, cohort-f, cohort-b, vms-connector, snowflake, reconciliation, vms-connector]
 created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot

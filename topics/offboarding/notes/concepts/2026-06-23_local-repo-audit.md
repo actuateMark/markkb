@@ -52,7 +52,7 @@ incoming_updated: 2026-06-24
 **🟠 [[actuate_admin]]** — add AutoPatrol PATCH camelCase-vs-snake_case silent-drop gotcha to CLAUDE.md; port release-flow + local-bringup to `docs/`. Sources: [[actuate-admin-api]], [[release-flow-stage-first]], [[2026-05-20_actuate-admin-local-bringup]].
 **🟠 actuate-inference-api** — add auth chain ([[rust-lambda-authorizer|Rust Lambda authorizer]] + DynamoDB RBAC), v5 design (unified endpoint + model registry), multi-model (InferenceContext caching, merge-then-filter). Sources: deep-dive-rust-authorizer, v5-api-design, multi-model-inference.
 **🟡 queue_consumer** — factory pattern (`consumer_factory.make_consumer`), 16 consumer types, per-consumer path-triggered CI, SIGTERM/liveness. Sources: [[queue-consumer]] entity, queue-consumer-aws-permissions.
-**🟡 [[kubernetes-deployments]]** — absorb ArgoCD/Helm/app-of-apps + Karpenter + 3-cluster RBAC beyond the existing Cognito incident runbook. Sources: [[kubernetes-deployments]] entity, [[argocd]], argocd-gitops-workflow.
+**🟡 [[kubernetes-deployments]]** — absorb [[argocd|ArgoCD]]/Helm/app-of-apps + Karpenter + 3-cluster RBAC beyond the existing Cognito incident runbook. Sources: [[kubernetes-deployments]] entity, [[argocd]], argocd-gitops-workflow.
 **🟡 camera-ui** — merge version/coverage/styling + the `enable-live-streaming` LD flag reference. Sources: [[camera-ui]] entity, [[2026-05-19_live-streaming-v1-plan]].
 **🟡 software-arch-sketches** — thin CLAUDE: make targets, `SKETCH_INPUT_REPO` env, `data/*.json` outputs, links to the 5 sketch-findings notes.
 

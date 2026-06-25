@@ -124,7 +124,7 @@ local shell on firebat/minipc; `external` = written by a separate firebat timer 
 | `queue_eagle_eye_errors_12h` *(off)* | Eagle Eye consumer ERROR rate | yellow>20, red>100 /12h | nr_log |
 | `smtp_frame_receiver_errors_12h` *(off)* | smtp-frame-receiver ERROR rate | yellow>50, red>500 /12h; baseline_drift | nr_log |
 | `queue_eagle_eye_volume_12h` | Eagle Eye total log volume (silent-stop) | yellow<500, red<50 /12h; silent_drop | nr_log |
-| `queue_evalink_volume_12h` | Evalink total log volume | yellow<500, red<50 /12h; silent_drop | nr_log |
+| `queue_evalink_volume_12h` | [[evalink-components|Evalink]] total log volume | yellow<500, red<50 /12h; silent_drop | nr_log |
 | `frontel_puller_volume_12h` | frontel-puller log volume | yellow<50, red<5 /12h; silent_drop | nr_log |
 | `clips_smtp_worker_volume_12h` | clips-smtp-worker log volume (low-volume) | yellow<5, red<0 /12h | nr_log |
 | `smtp_frame_receiver_volume_12h` | smtp-frame-receiver volume (high-throughput) | yellow<5M, red<100K /12h; silent_drop + baseline_drift | nr_log |

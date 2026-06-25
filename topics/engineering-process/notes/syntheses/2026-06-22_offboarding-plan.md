@@ -151,13 +151,13 @@ All 17 tickets currently assigned to Mark (`assignee = Mark Barbera AND statusCa
 |---|---|---|---|---|---|
 | ENG-289 | In Progress | Med | onboarder ops tooling + post-deploy verify | **WS-0** | Land open PR #16 this week, close out. |
 | ENG-352 | In Review | Med | AP per-camera tier + crowd-not-Tier3 fix | AP | If merge-close, push it; else → AP owner. |
-| ENG-300 | In Progress | Med | [[watchman-repo|Watchman]] watch-mgmt service: fleet & scheduling arch design | §5 | **Design doc — needs a named successor or it stalls.** Hand to Watchman/ENG-292 owner. |
+| ENG-300 | In Progress | Med | [[watchman-repo|Watchman]] watch-mgmt service: fleet & scheduling arch design | §5 | **Design doc — needs a named successor or it stalls.** Hand to [[watchman-repo|Watchman]]/ENG-292 owner. |
 | ENG-309 | In Progress | Med | [[pyav-entity|PyAV]] 13.1→17 vms-connector + watchman (AmeriGas soak) | connector | → Jacob (owns connector rearch). Pairs w/ ENG-136. |
 | ENG-269 | In Progress | Med | admin automated endpoints for custom branches (§29) | §29 | → Paolo. Sibling of ENG-282. |
 | ENG-247 | In Progress | Med | Research: move off raw SQL in non-admin contexts | research | Convert to doc + hand off, or reassign. |
 | ENG-282 | Ready-to-Deploy | Med | Custom-branch lifecycle: admin endpoints + connector CI/CD | §29 | → Paolo. Ships; low risk. |
 | ENG-246 | Ready-to-Deploy | Med | [[actuate-instrumentation]] perf extension (§30) | §30 | Reassign; ready, low risk. |
-| ENG-136 | Ready-to-Deploy | High | PyAV upgrade 13.1→17 (nogil pixel conversion) | connector | → Jacob. Pairs w/ ENG-309. |
+| ENG-136 | Ready-to-Deploy | High | [[pyav-entity|PyAV]] upgrade 13.1→17 (nogil pixel conversion) | connector | → Jacob. Pairs w/ ENG-309. |
 | CS3-31 | Ready-to-Deploy | **Highest** | Automatically update the reference image | CS3 | **Highest priority — reassign explicitly, don't let it drop.** |
 | CS3-323 | Ready-to-Deploy | High | Cam count discrepancy dashboard vs report | CS3 | Land or reassign (CS3 owner). |
 | CS3-58 | Ready-to-Deploy | Lowest | Configuration per camera | CS3 | Reassign; low. |

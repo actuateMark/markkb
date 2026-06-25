@@ -38,7 +38,7 @@ Owns the *how it gets built, deployed, and wired to the connector* questions. Ad
 - **doubletake-pattern Lambda** deploy + the window-id store plumbing. ([[doubletake]])
 - **Pipeline-vs-connector parity validation** — confirm [[watchman-repo|Watchman]] pipeline output matches connector capability (motion blobs, frames, upstream signals); no missing inputs before backend plumbing.
 - **The translator** — RunSpec.v1 → deployed pods (the deployer's domain); resolve the vestigial `customer.server_ip`/`username` fields under multi-camera [[rtsp-deep-dive|RTSP]].
-- **connector_deployer** changes for Watchman pods (carries naturally from his §18 VPA-floor work).
+- **connector_deployer** changes for [[watchman-repo|Watchman]] pods (carries naturally from his §18 VPA-floor work).
 
 ### 🟨 Joint (decide together — neither can own alone)
 - **Storage choice** (Postgres vs OpenSearch vs S3-vector) — affects Mike's cluster footprint + Paolo's backend plumbing. Run the prototype perf/cost/integration bake-off.
