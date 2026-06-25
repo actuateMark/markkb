@@ -2,31 +2,19 @@
 title: "vms-connector backlog"
 type: concept
 topic: repo-backlog
-tags: [backlog, github, vms-connector, rtsp]
+tags: [backlog, github, vms-connector]
 repo: aegissystems/vms-connector
-created: 2026-06-24
-updated: 2026-06-24
+created: 2026-06-25
+updated: 2026-06-25
 author: kb-bot
 issue_count_open: 111
 issue_count_high_impact: 10
 issue_count_lhf: 10
 issue_count_stale: 0
-high_impact_issue_numbers: [1656, 1754, 1703, 1691, 1658, 1629, 1622, 1559, 1549, 1483]
+high_impact_issue_numbers: [1656, 1703, 1691, 1658, 1629, 1622, 1559, 1549, 1483, 1766]
 lhf_issue_numbers: [1502, 1695, 1596, 1594, 1552, 1549, 1544, 1529, 1528, 1523]
 stale_issue_numbers: []
 full_issue_numbers: [1766, 1754, 1703, 1701, 1695, 1694, 1693, 1691, 1690, 1673, 1672, 1658, 1656, 1652, 1651, 1650, 1649, 1648, 1647, 1646, 1645, 1642, 1640, 1636, 1635, 1630, 1629, 1628, 1626, 1625, 1623, 1622, 1618, 1616, 1606, 1600, 1599, 1598, 1597, 1596, 1594, 1591, 1589, 1584, 1582, 1572, 1571, 1570, 1565, 1563, 1560, 1559, 1558, 1557, 1556, 1555, 1554, 1553, 1552, 1549, 1544, 1531, 1529, 1528, 1525, 1524, 1523, 1522, 1520, 1518, 1517, 1516, 1515, 1514, 1511, 1509, 1508, 1503, 1502, 1500, 1499, 1497, 1496, 1495, 1492, 1491, 1490, 1489, 1488, 1487, 1486, 1485, 1484, 1483, 1481, 1480, 1479, 1478, 1477, 1476, 1475, 1474, 1472, 1471, 1470, 1469, 1468, 1467, 1466, 1465, 1464]
-incoming:
-  - topics/actuate-libraries/notes/entities/actuate-config.md
-  - topics/actuate-platform/_summary.md
-  - topics/actuate-platform/notes/concepts/data-flow-architecture.md
-  - topics/actuate-platform/notes/concepts/multi-region-deployment.md
-  - topics/actuate-platform/notes/entities/actuate-admin-api.md
-  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
-  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
-  - topics/actuate-platform/notes/syntheses/integration-landscape.md
-  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
-  - topics/admin-api/_summary.md
-incoming_updated: 2026-06-25
 ---
 
 # vms-connector backlog
@@ -65,15 +53,14 @@ Groups of related open issues — when picking one up, consider whether adjacent
 vms-connector currently has **zero** issues >180d idle — active repo. If stale accumulates in future scans, walk `git log --since=...` for the relevant subsystem before commenting, then either bump with new context or close with `addressed by <commit>`. **Never bulk-close.**
 
 <!-- BEGIN-AUTO-REFRESH repo-scan -->
-_Last refreshed: **2026-06-24** by [[skill-repo-scan]] — 111 open issues._
+_Last refreshed: **2026-06-25** by [[skill-repo-scan]] — 111 open issues._
 
 ### 🔥 High-impact (top 10 by score)
 
 | # | Title | Labels | Assignee | Score | Idle |
 |--:|-------|--------|----------|------:|------|
 | 1656 | [AP/VCH: Immix rejects CNCTNFAIL alerts with HTTP 400 — streamId null when strea…](https://github.com/aegissystems/vms-connector/issues/1656) | `bug` | — | 9 | 2mo |
-| 1754 | [WindowIdsV2 retention: enable TTL (free, ~Aug) + decide on 7-year legacy cleanup](https://github.com/aegissystems/vms-connector/issues/1754) | — | — | 3 | 7d |
-| 1703 | [Bump FFmpeg 7.1.3 → 8.1.1, PyAV 13.1.0 → 17.0.1, OpenCV 4.11 → 4.13](https://github.com/aegissystems/vms-connector/issues/1703) | — | — | 3 | 22d |
+| 1703 | [Bump FFmpeg 7.1.3 → 8.1.1, PyAV 13.1.0 → 17.0.1, OpenCV 4.11 → 4.13](https://github.com/aegissystems/vms-connector/issues/1703) | — | — | 3 | 23d |
 | 1691 | [Docker/library optimization: Graviton 4 tuning, OpenCV/FFmpeg/PyAV bumps, GStre…](https://github.com/aegissystems/vms-connector/issues/1691) | — | — | 3 | 1mo |
 | 1658 | [AP/VCH: WebSocket frame retrieval fails fleet-wide — dev.powerplus.com serves i…](https://github.com/aegissystems/vms-connector/issues/1658) | `bug` | actuateMark | 3 | 2mo |
 | 1629 | [Eliminate 300s frame retention buffer for deferred tag-zone alerts](https://github.com/aegissystems/vms-connector/issues/1629) | — | — | 3 | 2mo |
@@ -81,6 +68,7 @@ _Last refreshed: **2026-06-24** by [[skill-repo-scan]] — 111 open issues._
 | 1559 | [[BUG] SMTP_per_camera integration type missing camera runner implementation](https://github.com/aegissystems/vms-connector/issues/1559) | — | — | 3 | 4mo |
 | 1549 | [Enable ruff T201 rule to catch print statements](https://github.com/aegissystems/vms-connector/issues/1549) | — | — | 3 | 4mo |
 | 1483 | [[BUG] Scene Change Analyzer Not Cleaned Up Before Replacement (AutoPatrol)](https://github.com/aegissystems/vms-connector/issues/1483) | `bug` | — | 3 | 5mo |
+| 1766 | [Convert all of this into an envera observer](https://github.com/aegissystems/vms-connector/issues/1766) | — | — | 2 | 1d |
 
 ### 🧹 Low-hanging fruit (top 10 by score)
 
@@ -117,9 +105,9 @@ _(none)_
 
 | # | Title | Labels | Assignee | Age | Idle |
 |--:|-------|--------|----------|-----|------|
-| 1766 | [Convert all of this into an envera observer](https://github.com/aegissystems/vms-connector/issues/1766) | — | — | today | today |
-| 1754 | [WindowIdsV2 retention: enable TTL (free, ~Aug) + decide on 7-year legacy cleanup](https://github.com/aegissystems/vms-connector/issues/1754) | — | — | 7d | 7d |
-| 1703 | [Bump FFmpeg 7.1.3 → 8.1.1, PyAV 13.1.0 → 17.0.1, OpenCV 4.11 → 4.13](https://github.com/aegissystems/vms-connector/issues/1703) | — | — | 1mo | 22d |
+| 1766 | [Convert all of this into an envera observer](https://github.com/aegissystems/vms-connector/issues/1766) | — | — | 1d | 1d |
+| 1754 | [WindowIdsV2 retention: enable TTL (free, ~Aug) + decide on 7-year legacy cleanup](https://github.com/aegissystems/vms-connector/issues/1754) | — | — | 8d | 8d |
+| 1703 | [Bump FFmpeg 7.1.3 → 8.1.1, PyAV 13.1.0 → 17.0.1, OpenCV 4.11 → 4.13](https://github.com/aegissystems/vms-connector/issues/1703) | — | — | 1mo | 23d |
 | 1701 | [Honor camera_duplicates.json billing_id as canonical camera_id on event emit](https://github.com/aegissystems/vms-connector/issues/1701) | — | — | 1mo | 1mo |
 | 1695 | [Redirect Logs to S3](https://github.com/aegissystems/vms-connector/issues/1695) | — | — | 1mo | 1mo |
 | 1694 | [Make _log_memory_breakdown interval env-var configurable (currently 100s hard-c…](https://github.com/aegissystems/vms-connector/issues/1694) | — | actuateMark | 1mo | 1mo |
@@ -130,12 +118,12 @@ _(none)_
 | 1672 | [Site 36681 (Procimmo - St-Martin): VMS credential is wrong account type — /api/…](https://github.com/aegissystems/vms-connector/issues/1672) | — | — | 1mo | 1mo |
 | 1658 | [AP/VCH: WebSocket frame retrieval fails fleet-wide — dev.powerplus.com serves i…](https://github.com/aegissystems/vms-connector/issues/1658) | `bug` | actuateMark | 2mo | 2mo |
 | 1656 | [AP/VCH: Immix rejects CNCTNFAIL alerts with HTTP 400 — streamId null when strea…](https://github.com/aegissystems/vms-connector/issues/1656) | `bug` | — | 2mo | 2mo |
-| 1652 | [[Cleanup] Fix bare except: blocks in [[rtsp-deep-dive|RTSP]] puller code](https://github.com/aegissystems/vms-connector/issues/1652) | — | — | 2mo | 2mo |
+| 1652 | [[Cleanup] Fix bare except: blocks in RTSP puller code](https://github.com/aegissystems/vms-connector/issues/1652) | — | — | 2mo | 2mo |
 | 1651 | [[Enhancement] RTSP: Connection health scoring and graceful degradation](https://github.com/aegissystems/vms-connector/issues/1651) | — | — | 2mo | 2mo |
 | 1650 | [[Enhancement] RTSP: Transport fallback chain (TCP → UDP → interleaved)](https://github.com/aegissystems/vms-connector/issues/1650) | — | — | 2mo | 2mo |
 | 1649 | [[Enhancement] RTSP: Error code classification (401/403/453/461)](https://github.com/aegissystems/vms-connector/issues/1649) | — | — | 2mo | 2mo |
 | 1648 | [[Enhancement] RTSP: Exponential backoff with jitter on reconnection](https://github.com/aegissystems/vms-connector/issues/1648) | — | — | 2mo | 2mo |
-| 1647 | [[BUG] [[hikcentral-components|HikCentral]] healthcheck NoneType when API response data is null](https://github.com/aegissystems/vms-connector/issues/1647) | — | — | 2mo | 2mo |
+| 1647 | [[BUG] HikCentral healthcheck NoneType when API response data is null](https://github.com/aegissystems/vms-connector/issues/1647) | — | — | 2mo | 2mo |
 | 1646 | [[BUG] Exacq healthcheck KeyError 'Cameras' when API response format differs](https://github.com/aegissystems/vms-connector/issues/1646) | — | — | 2mo | 2mo |
 | 1645 | [[BUG] DW healthcheck NoneType error when config fields missing](https://github.com/aegissystems/vms-connector/issues/1645) | — | — | 2mo | 2mo |
 | 1642 | [WindowIdsV2: drop 3 unused GSIs to fix write amplification + hot partition thro…](https://github.com/aegissystems/vms-connector/issues/1642) | — | — | 2mo | 2mo |
@@ -236,5 +224,5 @@ _(none)_
 ## Related
 
 - [[repo-backlog/_summary|repo-backlog topic]]
-- Latest scan: [[2026-06-24_scan]]
+- Latest scan: [[2026-06-25_scan]]
 - GitHub: [aegissystems/vms-connector/issues](https://github.com/aegissystems/vms-connector/issues)

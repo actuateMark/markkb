@@ -4,8 +4,8 @@ type: concept
 topic: repo-backlog
 tags: [backlog, github, actuate-libraries]
 repo: aegissystems/actuate-libraries
-created: 2026-06-24
-updated: 2026-06-24
+created: 2026-06-25
+updated: 2026-06-25
 author: kb-bot
 issue_count_open: 34
 issue_count_high_impact: 8
@@ -15,18 +15,6 @@ high_impact_issue_numbers: [236, 305, 290, 243, 242, 233, 256, 234]
 lhf_issue_numbers: [244, 234, 233, 327, 305, 297, 290, 285, 280, 266]
 stale_issue_numbers: []
 full_issue_numbers: [348, 337, 327, 305, 297, 290, 285, 283, 280, 266, 257, 256, 252, 251, 248, 247, 245, 244, 243, 242, 241, 240, 239, 238, 237, 236, 234, 233, 232, 231, 230, 229, 228, 51]
-incoming:
-  - topics/actuate-libraries/notes/entities/actuate-filterpy.md
-  - topics/actuate-platform/_summary.md
-  - topics/actuate-platform/notes/entities/camera-ui.md
-  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
-  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
-  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
-  - topics/admin-api/notes/entities/actuate-monitoring-api.md
-  - topics/autopatrol/notes/entities/autopatrol-onboarder.md
-  - topics/autopatrol/notes/entities/autopatrol-server.md
-  - topics/billing/_todos.md
-incoming_updated: 2026-06-25
 ---
 
 # actuate-libraries backlog
@@ -72,7 +60,7 @@ No >180d-idle issues. If stale accumulates: walk the relevant sub-library's `git
 Never push to `actuate-libraries` **main** without explicit user approval — auto-publishes stable versions to CodeArtifact.
 
 <!-- BEGIN-AUTO-REFRESH repo-scan -->
-_Last refreshed: **2026-06-24** by [[skill-repo-scan]] — 34 open issues._
+_Last refreshed: **2026-06-25** by [[skill-repo-scan]] — 34 open issues._
 
 ### 🔥 High-impact (top 10 by score)
 
@@ -94,7 +82,7 @@ _Last refreshed: **2026-06-24** by [[skill-repo-scan]] — 34 open issues._
 | 244 | [Reduce verbosity of 'after filters' log lines without losing context](https://github.com/aegissystems/actuate-libraries/issues/244) | — | — | 5 | 5mo |
 | 234 | [Create actuate-onvif Library](https://github.com/aegissystems/actuate-libraries/issues/234) | — | — | 5 | 5mo |
 | 233 | [S3 Frame Upload Batching - Connector Implementation](https://github.com/aegissystems/actuate-libraries/issues/233) | `enhancement` | — | 5 | 5mo |
-| 327 | [Blacklist groups accumulate without bound on static scenes](https://github.com/aegissystems/actuate-libraries/issues/327) | — | — | 3 | 2mo |
+| 327 | [Blacklist groups accumulate without bound on static scenes](https://github.com/aegissystems/actuate-libraries/issues/327) | — | — | 3 | 3mo |
 | 305 | [Share internal executor pools across observers per camera](https://github.com/aegissystems/actuate-libraries/issues/305) | `enhancement` | — | 3 | 3mo |
 | 297 | [Blacklist Filter: Storm & Weather Noise Mitigation](https://github.com/aegissystems/actuate-libraries/issues/297) | `enhancement` | — | 3 | 3mo |
 | 290 | [Switch version bump tagging from commit messages to PR labels](https://github.com/aegissystems/actuate-libraries/issues/290) | — | — | 3 | 4mo |
@@ -122,8 +110,8 @@ _(none)_
 | # | Title | Labels | Assignee | Age | Idle |
 |--:|-------|--------|----------|-----|------|
 | 348 | [actuate-movement: preallocate cv2 output buffers in frame-diff pipeline (~40% a…](https://github.com/aegissystems/actuate-libraries/issues/348) | — | actuateMark | 1mo | 1mo |
-| 337 | [[Enhancement] [[actuate-pullers]]: Expose stream diagnostics metadata from AvUrlFra…](https://github.com/aegissystems/actuate-libraries/issues/337) | — | — | 2mo | 2mo |
-| 327 | [Blacklist groups accumulate without bound on static scenes](https://github.com/aegissystems/actuate-libraries/issues/327) | — | — | 2mo | 2mo |
+| 337 | [[Enhancement] actuate-pullers: Expose stream diagnostics metadata from AvUrlFra…](https://github.com/aegissystems/actuate-libraries/issues/337) | — | — | 2mo | 2mo |
+| 327 | [Blacklist groups accumulate without bound on static scenes](https://github.com/aegissystems/actuate-libraries/issues/327) | — | — | 3mo | 3mo |
 | 305 | [Share internal executor pools across observers per camera](https://github.com/aegissystems/actuate-libraries/issues/305) | `enhancement` | — | 3mo | 3mo |
 | 297 | [Blacklist Filter: Storm & Weather Noise Mitigation](https://github.com/aegissystems/actuate-libraries/issues/297) | `enhancement` | — | 3mo | 3mo |
 | 290 | [Switch version bump tagging from commit messages to PR labels](https://github.com/aegissystems/actuate-libraries/issues/290) | — | — | 4mo | 4mo |
@@ -163,5 +151,5 @@ _(none)_
 ## Related
 
 - [[repo-backlog/_summary|repo-backlog topic]]
-- Latest scan: [[2026-06-24_scan]]
+- Latest scan: [[2026-06-25_scan]]
 - GitHub: [aegissystems/actuate-libraries/issues](https://github.com/aegissystems/actuate-libraries/issues)

@@ -4,8 +4,8 @@ type: concept
 topic: repo-backlog
 tags: [backlog, github, camera-ui]
 repo: aegissystems/camera-ui
-created: 2026-06-24
-updated: 2026-06-24
+created: 2026-06-25
+updated: 2026-06-25
 author: kb-bot
 issue_count_open: 3
 issue_count_high_impact: 2
@@ -15,11 +15,6 @@ high_impact_issue_numbers: [581, 568]
 lhf_issue_numbers: [581, 535, 568]
 stale_issue_numbers: []
 full_issue_numbers: [581, 568, 535]
-incoming:
-  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
-  - topics/camera-health-monitoring/notes/entities/health-report.md
-  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
-incoming_updated: 2026-06-25
 ---
 
 # camera-ui backlog
@@ -33,22 +28,22 @@ Full open-issue inventory for [aegissystems/camera-ui](https://github.com/aegiss
 _(empty — populate on first curation pass)_
 
 <!-- BEGIN-AUTO-REFRESH repo-scan -->
-_Last refreshed: **2026-06-24** by [[skill-repo-scan]] — 3 open issues._
+_Last refreshed: **2026-06-25** by [[skill-repo-scan]] — 3 open issues._
 
 ### 🔥 High-impact (top 10 by score)
 
 | # | Title | Labels | Assignee | Score | Idle |
 |--:|-------|--------|----------|------:|------|
-| 581 | [Live wall (HLS) doesn't play on iOS Safari — native HLS can't auth segments](https://github.com/aegissystems/camera-ui/issues/581) | — | — | 4 | 7d |
-| 568 | [Review 39 'Finder-duplicate' files (` 2`/` 3` suffixed copies) — keep or delete?](https://github.com/aegissystems/camera-ui/issues/568) | — | — | 1 | 11d |
+| 581 | [Live wall (HLS) doesn't play on iOS Safari — native HLS can't auth segments](https://github.com/aegissystems/camera-ui/issues/581) | — | — | 3 | 8d |
+| 568 | [Review 39 'Finder-duplicate' files (` 2`/` 3` suffixed copies) — keep or delete?](https://github.com/aegissystems/camera-ui/issues/568) | — | — | 1 | 12d |
 
 ### 🧹 Low-hanging fruit (top 10 by score)
 
 | # | Title | Labels | Assignee | Score | Idle |
 |--:|-------|--------|----------|------:|------|
-| 581 | [Live wall (HLS) doesn't play on iOS Safari — native HLS can't auth segments](https://github.com/aegissystems/camera-ui/issues/581) | — | — | 4 | 7d |
+| 581 | [Live wall (HLS) doesn't play on iOS Safari — native HLS can't auth segments](https://github.com/aegissystems/camera-ui/issues/581) | — | — | 4 | 8d |
 | 535 | [Speed up MP4 retrieval for users with high latency to S3 origin](https://github.com/aegissystems/camera-ui/issues/535) | — | — | 4 | 1mo |
-| 568 | [Review 39 'Finder-duplicate' files (` 2`/` 3` suffixed copies) — keep or delete?](https://github.com/aegissystems/camera-ui/issues/568) | — | — | 3 | 11d |
+| 568 | [Review 39 'Finder-duplicate' files (` 2`/` 3` suffixed copies) — keep or delete?](https://github.com/aegissystems/camera-ui/issues/568) | — | — | 3 | 12d |
 
 ### 🔍 Codebase-scan follow-up candidates (idle >180d)
 
@@ -66,8 +61,8 @@ _(no labeled issues)_
 
 | # | Title | Labels | Assignee | Age | Idle |
 |--:|-------|--------|----------|-----|------|
-| 581 | [Live wall (HLS) doesn't play on iOS Safari — native HLS can't auth segments](https://github.com/aegissystems/camera-ui/issues/581) | — | — | 7d | 7d |
-| 568 | [Review 39 'Finder-duplicate' files (` 2`/` 3` suffixed copies) — keep or delete?](https://github.com/aegissystems/camera-ui/issues/568) | — | — | 11d | 11d |
+| 581 | [Live wall (HLS) doesn't play on iOS Safari — native HLS can't auth segments](https://github.com/aegissystems/camera-ui/issues/581) | — | — | 8d | 8d |
+| 568 | [Review 39 'Finder-duplicate' files (` 2`/` 3` suffixed copies) — keep or delete?](https://github.com/aegissystems/camera-ui/issues/568) | — | — | 12d | 12d |
 | 535 | [Speed up MP4 retrieval for users with high latency to S3 origin](https://github.com/aegissystems/camera-ui/issues/535) | — | — | 1mo | 1mo |
 
 </details>
@@ -77,5 +72,5 @@ _(no labeled issues)_
 ## Related
 
 - [[repo-backlog/_summary|repo-backlog topic]]
-- Latest scan: [[2026-06-24_scan]]
+- Latest scan: [[2026-06-25_scan]]
 - GitHub: [aegissystems/camera-ui/issues](https://github.com/aegissystems/camera-ui/issues)

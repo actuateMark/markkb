@@ -4,8 +4,8 @@ type: concept
 topic: repo-backlog
 tags: [backlog, github, autopatrol-server]
 repo: aegissystems/autopatrol-server
-created: 2026-06-24
-updated: 2026-06-24
+created: 2026-06-25
+updated: 2026-06-25
 author: kb-bot
 issue_count_open: 1
 issue_count_high_impact: 0
@@ -15,18 +15,6 @@ high_impact_issue_numbers: []
 lhf_issue_numbers: [17]
 stale_issue_numbers: []
 full_issue_numbers: [17]
-incoming:
-  - topics/autopatrol/notes/concepts/2026-05-04_autopatrol-server-release-process.md
-  - topics/autopatrol/notes/concepts/autopatrol-alert-lifecycle.md
-  - topics/autopatrol/notes/entities/autopatrol-aws-objects.md
-  - topics/autopatrol/notes/entities/autopatrol-server-deployment.md
-  - topics/autopatrol/notes/entities/immix-vendor-api.md
-  - topics/autopatrol/notes/entities/todo-list.md
-  - topics/autopatrol/notes/syntheses/2026-04-16_deferred-alert-race-condition.md
-  - topics/autopatrol/notes/syntheses/2026-05-04_autopatrol-server-nr-upgrade-plan.md
-  - topics/autopatrol/notes/syntheses/2026-05-07_consumer-side-websocket-close-feasibility.md
-  - topics/autopatrol/notes/syntheses/2026-05-20_ap-summary-disable-plan.md
-incoming_updated: 2026-06-25
 ---
 
 # autopatrol-server backlog
@@ -40,7 +28,7 @@ Full open-issue inventory for [aegissystems/autopatrol-server](https://github.co
 _(empty — populate on first curation pass)_
 
 <!-- BEGIN-AUTO-REFRESH repo-scan -->
-_Last refreshed: **2026-06-24** by [[skill-repo-scan]] — 1 open issues._
+_Last refreshed: **2026-06-25** by [[skill-repo-scan]] — 1 open issues._
 
 ### 🔥 High-impact (top 10 by score)
 
@@ -77,5 +65,5 @@ _(no labeled issues)_
 ## Related
 
 - [[repo-backlog/_summary|repo-backlog topic]]
-- Latest scan: [[2026-06-24_scan]]
+- Latest scan: [[2026-06-25_scan]]
 - GitHub: [aegissystems/autopatrol-server/issues](https://github.com/aegissystems/autopatrol-server/issues)
