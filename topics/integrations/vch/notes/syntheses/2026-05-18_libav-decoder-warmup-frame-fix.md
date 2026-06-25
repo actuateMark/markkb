@@ -2,7 +2,7 @@
 title: "VCH NOVIDEO root cause: libav decoder warmup-frame artifact (validated fix)"
 type: synthesis
 topic: integrations/vch
-tags: [vch, healthcheck, libav, pyav, decoder, downsampling, novideo, false-positive, root-cause, fix, autopatrol, autopatrol]
+tags: [vch, healthcheck, libav, pyav, decoder, downsampling, novideo, false-positive, root-cause, fix, autopatrol]
 created: 2026-05-18
 updated: 2026-05-18
 author: mark
