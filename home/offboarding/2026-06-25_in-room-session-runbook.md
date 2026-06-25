@@ -20,7 +20,7 @@ The successor mints all creds under their **own existing logins** and brings the
 1. **GitHub fine-grained PAT** — github.com → avatar → *Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token*. Name `firebat-automation`; **Resource owner = `aegissystems`**; Repository access = All repositories; Permissions → **Contents: Read and write**, **Metadata: Read**, **Pull requests: Read**, **Issues: Read**. Generate → copy. *(If the org requires approval for fine-grained PATs, an org owner must approve it before it works.)*
 2. **New Relic User key** — one.newrelic.com → bottom-left user menu → *API keys → Create a key* → type **User**, name `firebat-automation` → copy the `NRAK-…`.
 3. **Atlassian API token** — id.atlassian.com → *Security → API tokens → Create API token* → label `firebat-jira-sync` → copy (note their account email + `https://actuate-team.atlassian.net`).
-4. **Tailscale (only if they're a tailnet admin of `aegissystems.ai`)** — login.tailscale.com → *Access controls*: ensure `tag:server` exists in `tagOwners` and ACLs let team devices reach `tag:server` over SSH/HTTP; then *Settings → Keys → Generate auth key* with **tag `tag:server`** → copy the `tskey-…`. **If they're NOT an admin**, line up aziz / jacob / michael to be reachable during the session (or to grant temporary admin) — this is the one prereq that can block.
+4. **Tailscale — needs a tailnet admin** (likely **Jacob Weiss**, maybe **Tatiana Hanazaki**; Mark/Mike/Aziz are not admins). Confirm with Jacob beforehand. (Admin) login.tailscale.com → *Access controls*: ensure `tag:server` exists in `tagOwners` + ACLs let team devices reach `tag:server` over SSH/HTTP; *Settings → Keys → Generate auth key* tagged `tag:server` → copy `tskey-…`. *Not a hard blocker — see Phase 3's fallback.*
 5. **Their SSH public key** (for npu-server §D) — `cat ~/.ssh/id_ed25519.pub` (or `id_rsa.pub`) → copy.
 6. **Access sanity check** — confirm they're an `aegissystems` org member who can read repos + approve PRs, have NR + Jira access, and **Tailscale installed on their own laptop** (needed for the verify step).
 
@@ -62,9 +62,10 @@ ${EDITOR:-nano} ~/.config/atlassian/api-token
 ~/bin/firebat-identity-verify.py | grep -iE 'github|newrelic|atlassian'
 ```
 
-## Phase 3 — Tailscale re-tag  (admin + AT THE BOX CONSOLE · ~10 min · highest priority)
+## Phase 3 — Tailscale re-tag  (admin + AT THE BOX CONSOLE · ~10 min)
+**Admin needed: likely Jacob Weiss (maybe Tatiana); Mark/Mike/Aziz aren't admins.** *Reframe: this is **not** a "box goes dark" emergency — Tailscale is only remote reachability, not a functional dependency. The timers + KB git-sync (over the internet) + dashboard keep running, and the box stays LAN-reachable at the office (`actuate-dev.local`). What lapses without the re-tag is off-LAN access via `mork-firebat` once Mark's account is deactivated — and an admin can re-tag/re-add it later from the box console. Do it with Jacob if you can; if it slips, it's recoverable.*
 ⚠ **Do this at the firebat keyboard/monitor (or direct cable), NOT over SSH — re-auth drops the SSH session.**
-1. **Admin** in `login.tailscale.com → Access controls`: ensure `tag:server` exists with `tagOwners`, and ACLs let team devices reach `tag:server` over SSH/HTTP (else the box goes unreachable).
+1. **Admin** in `login.tailscale.com → Access controls`: ensure `tag:server` exists with `tagOwners`, and ACLs let team devices reach `tag:server` over SSH/HTTP.
 2. **Admin → Settings → Keys → Generate auth key**, tagged `tag:server`.
 3. **At the firebat console:**
    ```bash

@@ -63,11 +63,11 @@ For each: **mint the token in the provider UI → write it on the box (you type 
 
 Goal: make the firebat + npu-server nodes **tag-owned** (`tag:server`) so they survive Mark's deactivation. Currently user-owned by `mark@`.
 
-- [ ] **Find a tailnet admin/owner** of `aegissystems.ai` (candidates seen on the tailnet: aziz.yousif@, jacob@, michael@). Either have them do it, or have them grant Mark temporary admin.
+- [ ] **Find a tailnet admin/owner** of `aegissystems.ai`. The tailnet has 5 members (aziz.yousif@, jacob@, mark@, michael@, tatiana@); Mark/Mike/Aziz are **not** admins, so the owner is most likely **Jacob Weiss (`jacob@`)** or **Tatiana Hanazaki (`tatiana@`)** — ask Jacob first. Either have them do it, or grant Mark temporary admin.
 - [ ] Admin: in `login.tailscale.com` → **Access controls**, ensure `"tag:server"` exists with `tagOwners`, and grants let team devices reach `tag:server` over SSH/HTTP (or the box becomes unreachable).
 - [ ] Admin: **Settings → Keys → Generate auth key**, tagged `tag:server`.
 - [ ] **At each box's console** (firebat, then npu-server): `sudo tailscale up --authkey=tskey-… --advertise-tags=tag:server`. ⚠ Do at the physical/console terminal — it can drop SSH.
-- [ ] Verify: harness `tailscale.identity` ✅ (tagged). *This is the "box goes dark Friday" item — highest priority of the lot.*
+- [ ] Verify: harness `tailscale.identity` ✅ (tagged). *Reframe: **not** a "box goes dark" emergency — Tailscale is only remote reachability, not a functional dependency. Timers + KB git-sync (over the internet) + dashboard keep running, and the box stays LAN-reachable at the office (`actuate-dev.local`). Without the re-tag, only off-LAN access via `mork-firebat` lapses when Mark's account is deactivated — recoverable later by any admin from the box console. Do it with Jacob if available; if it slips, it's not catastrophic.*
 
 ---
 

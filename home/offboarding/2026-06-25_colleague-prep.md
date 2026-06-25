@@ -27,10 +27,11 @@ Quick context: **firebat** is the always-on mini-PC that runs our morning-routin
 - id.atlassian.com → **Security → API tokens → Create API token**
 - Label: `firebat-jira-sync` → copy and save it. (Also note your Atlassian account email.)
 
-## 4. Tailscale — only if you're a tailnet admin of `aegissystems.ai`
-- login.tailscale.com → **Access controls**: make sure `tag:server` exists under `tagOwners`, and the ACLs let team devices reach `tag:server` over SSH/HTTP.
-- **Settings → Keys → Generate auth key** with the tag **`tag:server`** → copy the `tskey-…` and save it.
-- **If you're NOT a Tailscale admin:** please line up one (aziz / jacob / michael) to be reachable during our session, or to grant you temporary admin. *This is the one item that can block us — best sorted beforehand.*
+## 4. Tailscale — needs a tailnet admin of `aegissystems.ai`
+The owner/admin is most likely **Jacob Weiss** (or possibly **Tatiana Hanazaki**) — Mike, Aziz, and I aren't admins. **Could you confirm with Jacob and have him either do this or be reachable during our session?**
+- (Admin) login.tailscale.com → **Access controls**: ensure `tag:server` exists under `tagOwners`, and ACLs let team devices reach `tag:server` over SSH/HTTP.
+- (Admin) **Settings → Keys → Generate auth key** with tag **`tag:server`** → copy the `tskey-…`.
+- *Not a hard blocker:* if no admin is available in time, the box still runs and stays reachable on the office LAN (`actuate-dev.local`); only off-LAN access via `mork-firebat` lapses when my account is deactivated, and an admin can re-tag it later from the box console. But sorting it with Jacob beforehand is cleanest.
 
 ## 5. Your SSH public key
 - Run `cat ~/.ssh/id_ed25519.pub` (or `id_rsa.pub`) → copy it. (For maintenance access to the npu-server box.)
