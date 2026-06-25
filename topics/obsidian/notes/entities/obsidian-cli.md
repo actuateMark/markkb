@@ -14,7 +14,6 @@ outgoing:
   - topics/personal-notes/notes/daily/2026-05-01.md
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
-  - _index.md
   - topics/engineering-process/notes/concepts/2026-05-05_open-questions-inbox-idea.md
   - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
   - topics/llm-shop/notes/concepts/2026-05-05_first-real-tasks-experiments.md
@@ -22,7 +21,7 @@ incoming:
   - topics/obsidian/notes/syntheses/2026-04-30_kb-skill-cli-retrofit.md
   - topics/obsidian/notes/syntheses/2026-05-01_context-efficient-kb-retrieval.md
   - topics/personal-notes/notes/daily/2026-05-01.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 Stripped ELF binary that talks to a running Obsidian instance over a unix socket and exposes the vault's data model (files, tags, links, search) as a structured CLI. Shipped with recent Obsidian builds when the user enables CLI access in Settings → Tools. Once enabled, Obsidian writes the binary to `~/.local/bin/obsidian` and the socket to `~/.obsidian-cli.sock`.

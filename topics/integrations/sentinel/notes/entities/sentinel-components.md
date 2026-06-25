@@ -15,9 +15,9 @@ incoming:
   - topics/admin-api/notes/concepts/integration-architecture.md
   - topics/admin-api/notes/syntheses/2026-05-13_customer-model-dissection.md
   - topics/billing/notes/entities/snowflake-billing-tables.md
-  - topics/camera-health-monitoring/notes/syntheses/chm-diagnostics-gap-analysis.md
   - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
-incoming_updated: 2026-05-27
+  - topics/camera-health-monitoring/notes/syntheses/chm-phase4-generic-diagnostics.md
+incoming_updated: 2026-06-25
 ---
 
 # Sentinel Integration Components

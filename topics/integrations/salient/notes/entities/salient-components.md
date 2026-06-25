@@ -9,9 +9,8 @@ author: kb-bot
 incoming:
   - topics/camera-health-monitoring/notes/concepts/chm-diagnostics-architecture.md
   - topics/camera-health-monitoring/notes/concepts/chm-rd-opportunities.md
-  - topics/camera-health-monitoring/notes/syntheses/chm-diagnostics-gap-analysis.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase1-network-probe.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-06-25
 ---
 
 # Salient Integration Components

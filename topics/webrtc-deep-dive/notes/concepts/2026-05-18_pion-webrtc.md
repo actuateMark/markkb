@@ -10,9 +10,10 @@ origin: "https://github.com/pion/webrtc"
 incoming:
   - topics/personal-notes/notes/daily/2026-05-18.md
   - topics/vms-connector/notes/syntheses/2026-05-19_live-streaming-v1-plan.md
+  - topics/webrtc-deep-dive/_summary.md
   - topics/webrtc-deep-dive/notes/concepts/2026-05-18_aiortc.md
   - topics/webrtc-deep-dive/notes/concepts/2026-05-18_janus.md
-incoming_updated: 2026-05-20
+incoming_updated: 2026-06-25
 ---
 
 # Pion WebRTC: pure Go WebRTC implementation

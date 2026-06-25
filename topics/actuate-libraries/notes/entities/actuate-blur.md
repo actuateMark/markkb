@@ -11,9 +11,8 @@ incoming:
   - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase2-stream-probe.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase5-frame-probe.md
-  - topics/camera-health-monitoring/notes/syntheses/chm-phase7-historical-trending.md
   - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-06-25
 ---
 
 # actuate-blur

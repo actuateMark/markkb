@@ -18,7 +18,6 @@ outgoing:
   - topics/video-processing/notes/concepts/nvidia-deepstream.md
   - topics/video-processing/notes/concepts/rtsp-deep-dive.md
 incoming:
-  - _index.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/video-processing/_summary.md
   - topics/video-processing/notes/concepts/ffmpeg-filtergraphs.md
@@ -28,7 +27,8 @@ incoming:
   - topics/video-processing/notes/concepts/nvidia-deepstream.md
   - topics/video-processing/notes/concepts/rtsp-deep-dive.md
   - topics/video-processing/notes/entities/ffmpeg-entity.md
-incoming_updated: 2026-05-08
+  - topics/video-processing/notes/entities/gstreamer-entity.md
+incoming_updated: 2026-06-25
 ---
 
 # [[gstreamer-entity|GStreamer]] vs [[ffmpeg-entity|FFmpeg]]

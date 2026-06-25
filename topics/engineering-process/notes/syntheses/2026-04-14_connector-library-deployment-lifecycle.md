@@ -8,12 +8,17 @@ created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot
 incoming:
+  - topics/actuate-libraries/_summary.md
+  - topics/actuate-libraries/notes/syntheses/2026-04-14_ci-pipeline-mechanics.md
   - topics/actuate-platform/notes/entities/branch-conventions.md
+  - topics/engineering-process/_summary.md
+  - topics/engineering-process/notes/entities/agent-release-chain-watcher.md
+  - topics/engineering-process/notes/syntheses/2026-04-14_feature-development-lifecycle.md
   - topics/engineering-process/notes/syntheses/2026-05-19_ait-extensions-spec.md
   - topics/engineering-process/notes/syntheses/2026-05-19_ait-phase-2-validate.md
   - topics/engineering-process/notes/syntheses/2026-05-19_ait-phase-3-audit-tier-emissions.md
-  - topics/personal-notes/notes/daily/2026-05-19.md
-incoming_updated: 2026-05-27
+  - topics/infrastructure/_summary.md
+incoming_updated: 2026-06-25
 ---
 
 # Connector & Library Deployment Lifecycle

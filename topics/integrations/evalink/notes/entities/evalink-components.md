@@ -12,12 +12,12 @@ incoming:
   - topics/actuate-platform/notes/concepts/data-flow-architecture.md
   - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
   - topics/admin-api/notes/concepts/integration-architecture.md
-  - topics/camera-health-monitoring/notes/syntheses/chm-diagnostics-gap-analysis.md
   - topics/data-access-control/notes/concepts/2026-05-11_admin-incident-catalog.md
   - topics/data-access-control/notes/syntheses/2026-05-11_admin-reliability-fix-plan.md
   - topics/integrations/evalink/_summary.md
   - topics/integrations/evalink/evalink-integration/_summary.md
-incoming_updated: 2026-05-27
+  - topics/integrations/evalink/evalink-integration/notes/concepts/alarm-push-pattern.md
+incoming_updated: 2026-06-25
 ---
 
 # Evalink Integration Components

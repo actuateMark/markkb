@@ -8,7 +8,6 @@ updated: 2026-04-27
 author: kb-bot
 related: [[immix-mp4-mux-downstream]]
 incoming:
-  - _index.md
   - topics/personal-notes/notes/daily/2026-04-27.md
   - topics/video-processing/_summary.md
   - topics/video-processing/notes/concepts/ffmpeg-filtergraphs.md
@@ -18,7 +17,8 @@ incoming:
   - topics/video-processing/notes/entities/aws-mediaconvert-entity.md
   - topics/video-processing/notes/entities/aws-mediapackage-entity.md
   - topics/video-processing/notes/syntheses/actuate-build-vs-buy-tradeoffs.md
-incoming_updated: 2026-05-01
+  - topics/video-processing/notes/syntheses/actuate-frame-ingest-decode-paths.md
+incoming_updated: 2026-06-25
 ---
 
 # Actuate Clip Generation Flow

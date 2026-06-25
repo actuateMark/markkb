@@ -6,6 +6,9 @@ tags: [offboarding, asks, handoff, checklist]
 created: 2026-06-24
 updated: 2026-06-24
 author: kb-bot
+incoming:
+  - topics/engineering-process/notes/concepts/2026-06-24_secrets-refresh-runbook.md
+incoming_updated: 2026-06-25
 ---
 
 # Remaining-item asks + steps

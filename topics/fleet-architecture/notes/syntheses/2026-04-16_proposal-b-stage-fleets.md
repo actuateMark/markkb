@@ -7,7 +7,6 @@ created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
 incoming:
-  - topics/fleet-architecture/_summary.md
   - topics/fleet-architecture/notes/concepts/blacklist-filter-locality.md
   - topics/fleet-architecture/notes/concepts/customer-site-connectivity.md
   - topics/fleet-architecture/notes/concepts/k8s-controller-selection-guide.md
@@ -17,7 +16,8 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
   - topics/fleet-architecture/notes/syntheses/2026-05-05_fleet-architecture-workstream-context.md
-incoming_updated: 2026-05-27
+  - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
+incoming_updated: 2026-06-25
 ---
 
 # Proposal B — Stage Fleets

@@ -5,6 +5,10 @@ tags: [secrets, credentials, runbook, offboarding, rotation]
 created: 2026-06-24
 updated: 2026-06-24
 author: kb-bot
+incoming:
+  - _tooling/DEVBOX-BOOTSTRAP.md
+  - topics/offboarding/_summary.md
+incoming_updated: 2026-06-25
 ---
 
 # Consolidated secrets / credentials refresh runbook

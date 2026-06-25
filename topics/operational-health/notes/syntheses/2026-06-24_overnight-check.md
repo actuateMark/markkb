@@ -7,6 +7,9 @@ created: 2026-06-24
 updated: 2026-06-24
 author: kb-bot
 status: failed
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-06-25
 ---
 
 # FAILED: Overnight Check 2026-06-24

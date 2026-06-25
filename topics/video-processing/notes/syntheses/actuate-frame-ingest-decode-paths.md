@@ -7,7 +7,6 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
-  - _index.md
   - topics/personal-notes/notes/daily/2026-04-27.md
   - topics/video-processing/_summary.md
   - topics/video-processing/notes/concepts/codecs-overview.md
@@ -17,7 +16,8 @@ incoming:
   - topics/video-processing/notes/concepts/ffmpeg-libav-libraries.md
   - topics/video-processing/notes/concepts/ffmpeg-python-bindings.md
   - topics/video-processing/notes/concepts/frame-extraction-strategies.md
-incoming_updated: 2026-05-01
+  - topics/video-processing/notes/concepts/gop-keyframe-fundamentals.md
+incoming_updated: 2026-06-25
 ---
 
 # Actuate Frame Ingest & Decode Paths

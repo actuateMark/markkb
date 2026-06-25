@@ -7,7 +7,6 @@ created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
 incoming:
-  - _index.md
   - topics/engineering-process/notes/entities/agent-issue-auditor.md
   - topics/fleet-architecture/notes/concepts/observability-and-tracing.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
@@ -17,7 +16,8 @@ incoming:
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
   - topics/software-architecture/_summary.md
-incoming_updated: 2026-05-27
+  - topics/software-architecture/notes/concepts/2026-04-23_sketch-findings-metrics.md
+incoming_updated: 2026-06-25
 ---
 
 # Code Health Dashboard — Design

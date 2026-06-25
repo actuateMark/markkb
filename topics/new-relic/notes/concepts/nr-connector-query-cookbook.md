@@ -18,7 +18,6 @@ outgoing:
   - topics/new-relic/notes/concepts/actuate-nr-data-model.md
   - topics/new-relic/notes/concepts/nr-log-level-strategy.md
 incoming:
-  - _index.md
   - topics/autopatrol/notes/syntheses/2026-04-28_failed-patrol-investigation-handoff.md
   - topics/engineering-process/notes/concepts/2026-04-27_headless-mcp-bypass.md
   - topics/engineering-process/notes/entities/agent-nrql-investigator.md
@@ -28,7 +27,8 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-c-camera-worker.md
   - topics/fleet-architecture/notes/syntheses/2026-05-29_watch-manager-observability.md
   - topics/new-relic/_summary.md
-incoming_updated: 2026-05-30
+  - topics/new-relic/notes/concepts/actuate-nr-data-model.md
+incoming_updated: 2026-06-25
 ---
 
 # New Relic Connector Query Cookbook

@@ -8,7 +8,6 @@ updated: 2026-04-17
 author: kb-bot
 incoming:
   - topics/engineering-process/notes/entities/agent-issue-auditor.md
-  - topics/engineering-process/notes/entities/skill-daily-scope.md
   - topics/engineering-process/notes/entities/skill-daily-wrap.md
   - topics/engineering-process/notes/entities/skill-repo-scan.md
   - topics/engineering-process/notes/entities/skill-todos-audit.md
@@ -17,7 +16,8 @@ incoming:
   - topics/personal-notes/notes/entities/mark-todos.md
   - topics/repo-backlog/_summary.md
   - topics/repo-backlog/notes/concepts/2026-04-27_scan.md
-incoming_updated: 2026-05-01
+  - topics/repo-backlog/notes/scans/2026-04-17_scan.md
+incoming_updated: 2026-06-25
 ---
 
 # /todos-add

@@ -7,7 +7,6 @@ created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
 incoming:
-  - topics/fleet-architecture/_summary.md
   - topics/fleet-architecture/notes/concepts/customer-site-connectivity.md
   - topics/fleet-architecture/notes/concepts/k8s-controller-selection-guide.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_frame-transport-comparison.md
@@ -17,7 +16,8 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
   - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-proposal-a.md
   - topics/fleet-architecture/notes/syntheses/2026-06-01_adr-watchman-mvp-slim-connector.md
-incoming_updated: 2026-06-02
+  - topics/fleet-architecture/notes/syntheses/2026-06-02_watchman-phase0-fleet-fit.md
+incoming_updated: 2026-06-25
 ---
 
 # Proposal A — Minimal Split

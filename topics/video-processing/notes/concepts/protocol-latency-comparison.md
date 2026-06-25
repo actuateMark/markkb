@@ -7,7 +7,6 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
-  - _index.md
   - topics/video-processing/_summary.md
   - topics/video-processing/notes/concepts/hls-and-dash.md
   - topics/video-processing/notes/concepts/mpeg-ts-over-udp.md
@@ -17,7 +16,8 @@ incoming:
   - topics/video-processing/notes/syntheses/actuate-build-vs-buy-tradeoffs.md
   - topics/video-processing/notes/syntheses/actuate-frame-ingest-decode-paths.md
   - topics/video-processing/notes/syntheses/frame-transport-payload-formats.md
-incoming_updated: 2026-05-01
+  - topics/video-processing/notes/syntheses/kvs-webrtc-as-fleet-frame-plane.md
+incoming_updated: 2026-06-25
 ---
 
 # Protocol Latency Comparison

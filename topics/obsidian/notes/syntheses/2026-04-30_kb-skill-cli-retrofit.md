@@ -13,11 +13,10 @@ outgoing:
   - topics/obsidian/notes/syntheses/2026-05-01_context-efficient-kb-retrieval.md
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
-  - _index.md
   - topics/obsidian/_summary.md
   - topics/obsidian/notes/entities/obsidian-cli.md
   - topics/obsidian/notes/syntheses/2026-05-01_context-efficient-kb-retrieval.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-06-25
 ---
 
 On 2026-04-30, the user enabled CLI access on both Obsidian instances (laptop and firebat). The CLI exposes structured discovery primitives — tags, backlinks, orphans, search — that the KB skills had previously been emulating with recursive Glob/Grep over `~/Documents/worklog/knowledgebase/`. This synthesis captures the retrofit: which skills changed, what they now prefer, and what's still open.

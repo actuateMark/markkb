@@ -15,6 +15,18 @@ high_impact_issue_numbers: [236, 305, 290, 243, 242, 233, 256, 234]
 lhf_issue_numbers: [244, 234, 233, 327, 305, 297, 290, 285, 280, 266]
 stale_issue_numbers: []
 full_issue_numbers: [348, 337, 327, 305, 297, 290, 285, 283, 280, 266, 257, 256, 252, 251, 248, 247, 245, 244, 243, 242, 241, 240, 239, 238, 237, 236, 234, 233, 232, 231, 230, 229, 228, 51]
+incoming:
+  - topics/actuate-libraries/notes/entities/actuate-filterpy.md
+  - topics/actuate-platform/_summary.md
+  - topics/actuate-platform/notes/entities/camera-ui.md
+  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
+  - topics/admin-api/notes/entities/actuate-monitoring-api.md
+  - topics/autopatrol/notes/entities/autopatrol-onboarder.md
+  - topics/autopatrol/notes/entities/autopatrol-server.md
+  - topics/billing/_todos.md
+incoming_updated: 2026-06-25
 ---
 
 # actuate-libraries backlog

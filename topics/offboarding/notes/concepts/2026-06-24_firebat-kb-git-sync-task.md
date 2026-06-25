@@ -6,6 +6,11 @@ tags: [offboarding, firebat, kb, obsidian, git-sync, task]
 created: 2026-06-24
 updated: 2026-06-24
 author: kb-bot
+incoming:
+  - index.md
+  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
+  - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
+incoming_updated: 2026-06-25
 ---
 
 # Task — firebat KB auto-sync from the org repo

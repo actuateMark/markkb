@@ -14,11 +14,12 @@ incoming:
   - topics/admin-api/notes/concepts/2026-05-21_deploy-branch-e2e-cycle-verified.md
   - topics/admin-api/notes/entities/actuate-admin-safe-test-sites.md
   - topics/admin-api/notes/syntheses/2026-05-20_deploy-branch-full-scope.md
+  - topics/engineering-process/notes/concepts/2026-06-24_secrets-refresh-runbook.md
   - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
   - topics/personal-laptop/notes/entities/local-service-ports.md
   - topics/personal-notes/notes/daily/2026-05-21.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # actuate_admin local bring-up — command-line runbook

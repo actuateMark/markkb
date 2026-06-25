@@ -7,7 +7,6 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
-  - _index.md
   - topics/personal-notes/notes/daily/2026-04-27.md
   - topics/video-processing/_summary.md
   - topics/video-processing/notes/entities/aws-ivs-entity.md
@@ -17,7 +16,7 @@ incoming:
   - topics/video-processing/notes/syntheses/actuate-build-vs-buy-tradeoffs.md
   - topics/video-processing/notes/syntheses/actuate-clip-generation-flow.md
   - topics/video-processing/notes/syntheses/kvs-webrtc-as-fleet-frame-plane.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-06-25
 ---
 
 # AWS Video Services Decision Matrix (for Actuate)

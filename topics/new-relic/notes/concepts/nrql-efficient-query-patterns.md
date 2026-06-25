@@ -7,7 +7,6 @@ created: 2026-04-16
 updated: 2026-04-16
 tags: [nrql, query-optimization, context-management, new-relic, observability]
 incoming:
-  - _index.md
   - topics/aws-cost/notes/concepts/aws-cost-explorer-access-pattern.md
   - topics/billing/notes/concepts/2026-05-14_inference-api-e2m-rules.md
   - topics/engineering-process/notes/entities/agent-nrql-investigator.md
@@ -17,7 +16,8 @@ incoming:
   - topics/new-relic/_summary.md
   - topics/new-relic/notes/concepts/actuate-nr-data-model.md
   - topics/new-relic/notes/concepts/nr-connector-query-cookbook.md
-incoming_updated: 2026-05-30
+  - topics/new-relic/notes/concepts/nr-log-level-strategy.md
+incoming_updated: 2026-06-25
 ---
 
 # NRQL Efficient Query Patterns

@@ -9,11 +9,10 @@ author: kb-bot
 incoming:
   - topics/actuate-libraries/notes/entities/actuate-config.md
   - topics/admin-api/notes/concepts/integration-architecture.md
-  - topics/camera-health-monitoring/notes/syntheses/chm-diagnostics-gap-analysis.md
   - topics/engineering-process/notes/syntheses/2026-05-20_ait-phase-7-alert-capture-replay.md
   - topics/integrations/softguard/_summary.md
   - topics/vms-connector/notes/entities/queue-consumer.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-25
 ---
 
 # Softguard Integration Components

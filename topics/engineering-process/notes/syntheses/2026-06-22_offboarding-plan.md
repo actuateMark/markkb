@@ -16,8 +16,8 @@ incoming:
   - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
   - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
   - topics/offboarding/notes/concepts/2026-06-23_watchman-fleet-handoff-paolo-mike.md
-  - topics/personal-laptop/notes/concepts/2026-06-22_firebat-operations-runbook.md
-incoming_updated: 2026-06-24
+  - topics/offboarding/notes/concepts/2026-06-24_firebat-kb-git-sync-task.md
+incoming_updated: 2026-06-25
 ---
 
 # Offboarding plan of attack (last day: Fri 2026-06-26)

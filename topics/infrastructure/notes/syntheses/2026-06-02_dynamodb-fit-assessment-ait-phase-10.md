@@ -10,7 +10,8 @@ updated: 2026-06-02
 author: kb-bot
 incoming:
   - topics/infrastructure/_summary.md
-incoming_updated: 2026-06-19
+  - topics/infrastructure/notes/entities/dynamodb-mcp-tool.md
+incoming_updated: 2026-06-25
 ---
 
 # DynamoDB MCP Tool Fit Assessment

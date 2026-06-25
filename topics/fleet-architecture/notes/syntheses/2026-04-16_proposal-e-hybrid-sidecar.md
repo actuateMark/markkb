@@ -7,7 +7,6 @@ created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
 incoming:
-  - topics/fleet-architecture/_summary.md
   - topics/fleet-architecture/notes/concepts/blacklist-filter-locality.md
   - topics/fleet-architecture/notes/concepts/customer-site-connectivity.md
   - topics/fleet-architecture/notes/concepts/k8s-controller-selection-guide.md
@@ -17,7 +16,8 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-04-22_fleet-proposal-rescore-with-delta.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
-incoming_updated: 2026-05-01
+  - topics/fleet-architecture/notes/syntheses/2026-05-01_ephemeral-run-pilot/_overview.md
+incoming_updated: 2026-06-25
 ---
 
 # Proposal E — Hybrid Sidecar

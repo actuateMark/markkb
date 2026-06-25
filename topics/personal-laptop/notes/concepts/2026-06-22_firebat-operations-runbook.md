@@ -7,6 +7,8 @@ created: 2026-06-22
 updated: 2026-06-22
 author: kb-bot
 incoming:
+  - _tooling/DEVBOX-BOOTSTRAP.md
+  - topics/engineering-process/notes/concepts/2026-06-24_secrets-refresh-runbook.md
   - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
   - topics/engineering-process/notes/syntheses/2026-06-22_dead-mans-checklist.md
   - topics/engineering-process/notes/syntheses/2026-06-22_offboarding-plan.md
@@ -14,7 +16,8 @@ incoming:
   - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
   - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
   - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
-incoming_updated: 2026-06-24
+  - topics/offboarding/notes/concepts/2026-06-24_firebat-kb-git-sync-task.md
+incoming_updated: 2026-06-25
 ---
 
 # Firebat operations runbook

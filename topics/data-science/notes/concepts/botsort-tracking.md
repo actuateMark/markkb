@@ -9,8 +9,9 @@ incoming:
   - topics/data-science/notes/concepts/detection-pipeline.md
   - topics/data-science/notes/concepts/line-crossing-detection.md
   - topics/infrastructure/notes/concepts/vpa-behavior.md
+  - topics/models/_summary.md
   - topics/models/loitering/_summary.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-25
 ---
 
 # BoTSORT Tracking for Loitering

@@ -18,7 +18,6 @@ outgoing:
   - topics/fleet-architecture/reading-list.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
 incoming:
-  - topics/fleet-architecture/_summary.md
   - topics/fleet-architecture/notes/concepts/customer-site-connectivity.md
   - topics/fleet-architecture/notes/concepts/k8s-controller-selection-guide.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_frame-transport-comparison.md
@@ -28,7 +27,8 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-05-01_ephemeral-run-pilot/paradigm-d.md
   - topics/fleet-architecture/notes/syntheses/2026-05-05_fleet-architecture-workstream-context.md
   - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
-incoming_updated: 2026-05-27
+  - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-proposal-d.md
+incoming_updated: 2026-06-25
 ---
 
 # Proposal D — Event-Driven Pipeline

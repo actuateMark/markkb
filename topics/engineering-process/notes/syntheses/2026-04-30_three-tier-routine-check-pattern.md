@@ -13,6 +13,7 @@ outgoing:
   - topics/personal-notes/notes/daily/2026-05-01.md
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
+  - _tooling/DEVBOX-BOOTSTRAP.md
   - topics/billing/notes/concepts/2026-05-11_billing-reconciliation-dashboard-design.md
   - topics/engineering-process/notes/entities/automation-jira-sync.md
   - topics/engineering-process/notes/syntheses/2026-05-20_ait-phase-10-s3-sink-review-ux.md
@@ -22,8 +23,7 @@ incoming:
   - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
   - topics/operational-health/notes/syntheses/2026-05-21_overnight-check.md
   - topics/personal-laptop/notes/concepts/2026-04-30_morning-prep-scripts-runbook.md
-  - topics/personal-laptop/notes/concepts/2026-06-22_firebat-operations-runbook.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # Three-tier routine check pattern: script first, LLM as fallback

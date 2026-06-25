@@ -7,7 +7,6 @@ created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
 incoming:
-  - _index.md
   - topics/engineering-process/notes/entities/agent-issue-auditor.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
@@ -17,7 +16,8 @@ incoming:
   - topics/software-architecture/notes/syntheses/2026-04-16_code-health-dashboard.md
   - topics/software-architecture/notes/syntheses/2026-04-16_tech-debt-agent.md
   - topics/software-architecture/notes/syntheses/2026-04-16_tooling-landscape.md
-incoming_updated: 2026-05-01
+  - topics/software-architecture/notes/syntheses/2026-04-17_issue-hygiene-plan.md
+incoming_updated: 2026-06-25
 ---
 
 # Code Health Metrics to Track

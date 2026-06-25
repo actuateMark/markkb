@@ -7,7 +7,6 @@ created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
 incoming:
-  - _index.md
   - topics/fleet-architecture/notes/concepts/library-decomposition-required.md
   - topics/fleet-architecture/notes/concepts/observability-and-tracing.md
   - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
@@ -17,7 +16,8 @@ incoming:
   - topics/software-architecture/_summary.md
   - topics/software-architecture/notes/concepts/2026-05-11_enforcement-as-proposal-scorer.md
   - topics/software-architecture/notes/concepts/2026-05-11_sketch-findings-enforcement.md
-incoming_updated: 2026-05-27
+  - topics/software-architecture/notes/syntheses/2026-04-16_code-health-dashboard.md
+incoming_updated: 2026-06-25
 ---
 
 # Architecture Enforcement & Fitness Functions

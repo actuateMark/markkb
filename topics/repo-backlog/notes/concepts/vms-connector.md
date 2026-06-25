@@ -15,6 +15,18 @@ high_impact_issue_numbers: [1656, 1754, 1703, 1691, 1658, 1629, 1622, 1559, 1549
 lhf_issue_numbers: [1502, 1695, 1596, 1594, 1552, 1549, 1544, 1529, 1528, 1523]
 stale_issue_numbers: []
 full_issue_numbers: [1766, 1754, 1703, 1701, 1695, 1694, 1693, 1691, 1690, 1673, 1672, 1658, 1656, 1652, 1651, 1650, 1649, 1648, 1647, 1646, 1645, 1642, 1640, 1636, 1635, 1630, 1629, 1628, 1626, 1625, 1623, 1622, 1618, 1616, 1606, 1600, 1599, 1598, 1597, 1596, 1594, 1591, 1589, 1584, 1582, 1572, 1571, 1570, 1565, 1563, 1560, 1559, 1558, 1557, 1556, 1555, 1554, 1553, 1552, 1549, 1544, 1531, 1529, 1528, 1525, 1524, 1523, 1522, 1520, 1518, 1517, 1516, 1515, 1514, 1511, 1509, 1508, 1503, 1502, 1500, 1499, 1497, 1496, 1495, 1492, 1491, 1490, 1489, 1488, 1487, 1486, 1485, 1484, 1483, 1481, 1480, 1479, 1478, 1477, 1476, 1475, 1474, 1472, 1471, 1470, 1469, 1468, 1467, 1466, 1465, 1464]
+incoming:
+  - topics/actuate-libraries/notes/entities/actuate-config.md
+  - topics/actuate-platform/_summary.md
+  - topics/actuate-platform/notes/concepts/data-flow-architecture.md
+  - topics/actuate-platform/notes/concepts/multi-region-deployment.md
+  - topics/actuate-platform/notes/entities/actuate-admin-api.md
+  - topics/actuate-platform/notes/syntheses/camera-onboarding-end-to-end.md
+  - topics/actuate-platform/notes/syntheses/how-a-frame-becomes-an-alert.md
+  - topics/actuate-platform/notes/syntheses/integration-landscape.md
+  - topics/actuate-platform/notes/syntheses/watchman-vs-current-platform.md
+  - topics/admin-api/_summary.md
+incoming_updated: 2026-06-25
 ---
 
 # vms-connector backlog
