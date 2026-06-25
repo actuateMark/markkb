@@ -20,7 +20,7 @@ author: kb-bot
 
 ## 🚀 Start here / high-value entry points
 *📁 The orientation packet lives in the **`home/`** folder ([[README|home/]]) — read just that folder and you're oriented to the whole KB. New here? Point people there.*
-- **New to Actuate or the KB:** [[what-is-actuate]] · [[the-topic-landscape]] (where to go to learn what) · [[how-to-use-this-kb]].
+- **New to Actuate or the KB:** [[what-is-actuate]] · [[system-architecture]] · [[the-topic-landscape]] (where to go to learn what) · [[how-to-use-this-kb]] · [[first-steps]] (day one).
 - **[[2026-06-22_actuate-footprint-handoff]]** — "what runs where" map of the whole operational footprint (firebat, dashboard, llm-shop, KB) + who owns what.
 - **Set up your own instance:** [[DEVBOX-BOOTSTRAP]] (full workflow on a fresh machine) · [[SETUP]] (KB-only).
 - **If something breaks:** [[2026-06-22_dead-mans-checklist]].
