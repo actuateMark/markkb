@@ -7,6 +7,7 @@ created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-23_local-repo-audit.md
   - topics/actuate-platform/notes/concepts/rbac-model.md
   - topics/actuate-platform/notes/syntheses/integration-landscape.md
   - topics/admin-api/notes/concepts/integration-architecture.md
@@ -16,8 +17,7 @@ incoming:
   - topics/external-api/notes/concepts/shared-auth-pattern.md
   - topics/external-api/notes/entities/alarmwatch-customer.md
   - topics/inference-api/_summary.md
-  - topics/inference-api/notes/concepts/2026-04-14_dev-deployment-issues.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-25
 ---
 
 # Rust Lambda Authorizer

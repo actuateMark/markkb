@@ -7,13 +7,13 @@ created: 2026-04-28
 updated: 2026-04-28
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-22_offboarding-plan.md
   - topics/engineering-process/notes/concepts/2026-04-28_minting-github-pats-for-automation.md
-  - topics/engineering-process/notes/syntheses/2026-06-22_offboarding-plan.md
   - topics/personal-laptop/notes/concepts/2026-04-27_handoff-repos-architectural-dashboard.md
   - topics/personal-laptop/notes/concepts/2026-04-28_handoff-repos-dashboard-phase-2-code-health.md
   - topics/personal-laptop/notes/syntheses/2026-04-27_minipc-tooling-improvements.md
   - topics/personal-notes/notes/daily/2026-04-28.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # Long-lived credentials on headless personal boxes

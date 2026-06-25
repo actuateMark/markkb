@@ -18,6 +18,8 @@ outgoing:
   - topics/infrastructure/notes/concepts/argocd-gitops-workflow.md
   - topics/infrastructure/notes/concepts/secrets-management.md
 incoming:
+  - home/offboarding/2026-06-22_manual-action-checklist.md
+  - home/offboarding/2026-06-23_local-repo-audit.md
   - topics/actuate-platform/notes/entities/branch-conventions.md
   - topics/actuate-platform/notes/entities/core-repo-suite.md
   - topics/admin-api/notes/entities/admin-auto-onboarding.md
@@ -26,9 +28,7 @@ incoming:
   - topics/autopatrol/notes/entities/autopatrol-server-deployment.md
   - topics/autopatrol/notes/entities/autopatrol-server.md
   - topics/autopatrol/notes/syntheses/2026-05-04_autopatrol-server-nr-upgrade-plan.md
-  - topics/autopatrol/notes/syntheses/2026-05-22_immix-finished-without-raise-marked-failed.md
-  - topics/autopatrol/notes/syntheses/2026-05-27_ap-summary-disable-handoff.md
-incoming_updated: 2026-05-28
+incoming_updated: 2026-06-25
 ---
 
 # kubernetes-deployments

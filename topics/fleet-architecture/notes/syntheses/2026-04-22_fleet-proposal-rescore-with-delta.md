@@ -7,6 +7,7 @@ created: 2026-04-22
 updated: 2026-04-22
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/aws-cost/_summary.md
   - topics/aws-cost/notes/concepts/2026-04-23_s3-tier3-breakdown.md
   - topics/aws-cost/notes/syntheses/2026-04-23_s3-tier3-cost-investigation.md
@@ -15,9 +16,8 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-05-05_fleet-architecture-workstream-context.md
   - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
   - topics/fleet-architecture/notes/syntheses/2026-06-02_watchman-phase0-fleet-fit.md
-  - topics/offboarding/notes/concepts/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/personal-notes/notes/concepts/2026-05-11_billing-and-followups-handoff.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # Fleet Proposal Re-Score with 2026-04-22 Delta + Real CE Data

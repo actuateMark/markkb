@@ -8,12 +8,12 @@ created: 2026-06-02
 updated: 2026-06-02
 author: kb-bot
 incoming:
-  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
-  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
+  - home/offboarding/2026-06-23_local-repo-audit.md
+  - home/operations/2026-06-22_actuate-footprint-handoff.md
   - topics/personal-notes/notes/daily/2026-06-03.md
   - topics/personal-notes/notes/entities/mark-todos.md
   - topics/runbooks/_summary.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # RDS & Aurora PostgreSQL Extended-Support Upgrade

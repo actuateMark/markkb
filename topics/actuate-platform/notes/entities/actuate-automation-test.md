@@ -7,9 +7,9 @@ created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-23_local-repo-audit.md
   - topics/actuate-platform/notes/entities/core-repo-suite.md
-  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # actuate-automation-test

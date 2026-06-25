@@ -7,11 +7,11 @@ created: 2026-05-04
 updated: 2026-05-04
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-23_local-repo-audit.md
   - topics/autopatrol/notes/entities/autopatrol-server.md
   - topics/autopatrol/notes/syntheses/2026-05-04_autopatrol-server-nr-upgrade-plan.md
-  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
   - topics/personal-notes/notes/daily/2026-05-04.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 ## Two-repo chain — DO NOT skip steps

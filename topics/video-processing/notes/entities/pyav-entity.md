@@ -7,6 +7,7 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-22_manual-action-checklist.md
   - topics/actuate-libraries/notes/concepts/2026-05-19_pyav17-ffmpeg8-migration.md
   - topics/actuate-libraries/notes/concepts/2026-05-19_stream-publisher-design.md
   - topics/actuate-libraries/notes/entities/actuate-pullers.md
@@ -16,8 +17,7 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-04-22_fleet-proposal-rescore-with-delta.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
-  - topics/fleet-architecture/notes/syntheses/2026-06-01_adr-watchman-mvp-slim-connector.md
-incoming_updated: 2026-06-02
+incoming_updated: 2026-06-25
 ---
 
 # PyAV

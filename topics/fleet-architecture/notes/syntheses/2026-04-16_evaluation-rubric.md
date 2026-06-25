@@ -7,6 +7,7 @@ created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/fleet-architecture/_summary.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-a-minimal-split.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
@@ -16,8 +17,7 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-04-17_preliminary-pilot-option.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_frame-storage-design-deltas.md
   - topics/fleet-architecture/notes/syntheses/2026-04-22_proposal-b-prime-stateless-with-coordinator.md
-  - topics/fleet-architecture/notes/syntheses/2026-05-01_ephemeral-run-pilot/_overview.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-25
 ---
 
 # Evaluation Rubric

@@ -7,9 +7,9 @@ created: 2026-04-14
 updated: 2026-04-14
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-23_local-repo-audit.md
   - topics/engineering-process/notes/concepts/2026-06-16_squash-merge-ci-skip-suppression-recurrence.md
-  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # CI Pipeline Mechanics and Workarounds

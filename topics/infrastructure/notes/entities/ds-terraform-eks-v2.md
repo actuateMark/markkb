@@ -7,6 +7,8 @@ created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-22_manual-action-checklist.md
+  - home/offboarding/2026-06-23_local-repo-audit.md
   - topics/actuate-platform/notes/entities/branch-conventions.md
   - topics/actuate-platform/notes/entities/core-repo-suite.md
   - topics/actuate-platform/notes/syntheses/2026-04-29_iam-tf-import-pattern.md
@@ -15,9 +17,7 @@ incoming:
   - topics/engineering-process/notes/concepts/2026-05-12_stale-pr-triage-punchlist.md
   - topics/inference-api/notes/concepts/lambda-to-k8s-migration.md
   - topics/infrastructure/notes/entities/argocd.md
-  - topics/infrastructure/notes/syntheses/2026-06-02_dynamodb-fit-assessment-ait-phase-10.md
-  - topics/offboarding/notes/concepts/2026-06-22_manual-action-checklist.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # ds-terraform-eks-v2

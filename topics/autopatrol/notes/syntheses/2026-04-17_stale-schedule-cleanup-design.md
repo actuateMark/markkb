@@ -19,6 +19,8 @@ outgoing:
   - topics/autopatrol/notes/entities/autopatrol-onboarder.md
   - topics/autopatrol/notes/entities/todo-list.md
 incoming:
+  - home/offboarding/2026-06-23_autopatrol-handoff.md
+  - home/operations/2026-06-22_actuate-footprint-handoff.md
   - topics/autopatrol/notes/concepts/2026-04-17_autopatrol-sync-endpoint-behavior.md
   - topics/autopatrol/notes/concepts/2026-04-17_no-patrols-emit-points.md
   - topics/autopatrol/notes/concepts/2026-04-17_onboarder-nr-instrumentation-gap.md
@@ -27,9 +29,7 @@ incoming:
   - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
   - topics/autopatrol/notes/concepts/2026-04-23_immix-api-error-patterns.md
   - topics/autopatrol/notes/concepts/2026-04-24_morning-watch-list.md
-  - topics/autopatrol/notes/concepts/2026-04-24_stale-schedule-cleanup-investigation.md
-  - topics/autopatrol/notes/concepts/2026-04-28_tenant-status-sync-gap.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-06-25
 ---
 
 # AutoPatrol Stale-Schedule Cleanup — Event-Driven Design

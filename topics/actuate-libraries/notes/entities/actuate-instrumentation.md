@@ -7,17 +7,17 @@ created: 2026-04-13
 updated: 2026-04-13
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-22_offboarding-plan.md
   - topics/actuate-libraries/_summary.md
   - topics/actuate-libraries/notes/concepts/dependency-graph.md
   - topics/actuate-libraries/notes/syntheses/2026-05-12_adr-actuate-instrumentation-v1.md
   - topics/engineering-process/notes/syntheses/2026-05-22_actuate-testing-toolkit-overview.md
-  - topics/engineering-process/notes/syntheses/2026-06-22_offboarding-plan.md
   - topics/infrastructure/notes/entities/new-relic.md
   - topics/new-relic/_summary.md
   - topics/new-relic/notes/concepts/actuate-nr-data-model.md
   - topics/personal-notes/notes/syntheses/2026-05-27_brain-in-jar-handoff.md
   - topics/profiling-and-performance/notes/concepts/2026-05-12_actuate-instrumentation-v1-installed.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 ## Purpose

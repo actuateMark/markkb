@@ -7,12 +7,12 @@ created: 2026-05-06
 updated: 2026-05-06
 author: kb-bot
 incoming:
-  - topics/actuate-platform/notes/concepts/2026-06-22_npu-server-llm-shop-runbook.md
+  - home/operations/2026-06-22_npu-server-llm-shop-runbook.md
   - topics/llm-shop/_summary.md
   - topics/llm-shop/notes/concepts/2026-05-05_phase-2-next-steps.md
   - topics/personal-notes/notes/daily/2026-05-06.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # LLM Shop — model-routed `/api/proxy/chat` + source-control sync

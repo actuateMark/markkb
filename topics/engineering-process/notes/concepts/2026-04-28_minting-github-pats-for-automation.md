@@ -7,10 +7,10 @@ created: 2026-04-28
 updated: 2026-04-28
 author: kb-bot
 incoming:
-  - topics/engineering-process/notes/concepts/2026-06-24_secrets-refresh-runbook.md
-  - topics/engineering-process/notes/syntheses/2026-06-22_offboarding-plan.md
+  - home/offboarding/2026-06-22_offboarding-plan.md
+  - home/operations/2026-06-22_firebat-operations-runbook.md
+  - home/operations/2026-06-24_secrets-refresh-runbook.md
   - topics/personal-laptop/notes/concepts/2026-04-27_handoff-repos-architectural-dashboard.md
-  - topics/personal-laptop/notes/concepts/2026-06-22_firebat-operations-runbook.md
   - topics/personal-laptop/notes/syntheses/2026-04-28_long-lived-credentials-on-headless-boxes.md
   - topics/personal-notes/notes/daily/2026-04-28.md
 incoming_updated: 2026-06-25

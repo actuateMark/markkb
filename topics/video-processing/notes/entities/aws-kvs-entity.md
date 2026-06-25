@@ -18,6 +18,7 @@ outgoing:
   - topics/personal-notes/notes/entities/mark-todos.md
   - topics/video-processing/_summary.md
 incoming:
+  - home/what-is-actuate.md
   - topics/actuate-libraries/notes/entities/actuate-pullers.md
   - topics/engineering-process/notes/syntheses/2026-04-21_rd-agent-pilot-learnings.md
   - topics/fleet-architecture/notes/concepts/frame-storage-current-state.md
@@ -27,8 +28,7 @@ incoming:
   - topics/personal-notes/notes/daily/2026-04-27.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/video-processing/_summary.md
-  - topics/video-processing/notes/concepts/av1-vp9-future.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-06-25
 ---
 
 # AWS Kinesis Video Streams (KVS)

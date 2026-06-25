@@ -19,6 +19,7 @@ outgoing:
   - topics/team-structure/notes/entities/clarissa-herman.md
   - topics/team-structure/notes/entities/paolo-zilioti.md
 incoming:
+  - home/offboarding/2026-06-23_local-repo-audit.md
   - topics/actuate-libraries/notes/concepts/dependency-graph.md
   - topics/autopatrol/notes/entities/autopatrol-onboarder.md
   - topics/autopatrol/notes/syntheses/2026-04-24_stale-schedule-cleanup-aar.md
@@ -28,8 +29,7 @@ incoming:
   - topics/integrations/ajax/_summary.md
   - topics/integrations/ajax/notes/entities/ajax-components.md
   - topics/integrations/evalink/evalink-integration/notes/concepts/alarm-push-pattern.md
-  - topics/local-test-stack/notes/syntheses/2026-05-20_local-ap-e2e-stack-installed.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # Actuate Admin API — endpoint catalog

@@ -5,11 +5,11 @@ created: 2026-04-13
 updated: 2026-04-13
 tags: [person, engineering, inference, ml]
 incoming:
+  - home/offboarding/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/actuate-platform/notes/concepts/data-flow-architecture.md
   - topics/inference-api/_summary.md
-  - topics/offboarding/notes/concepts/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/watchman/_summary.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # Michael Aleksa

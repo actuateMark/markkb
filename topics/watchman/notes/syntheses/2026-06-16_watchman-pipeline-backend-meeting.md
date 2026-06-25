@@ -15,11 +15,11 @@ related:
   - "[[2026-06-02_frontend-sketch-ui]]"
   - "[[topics/fleet-architecture/_summary]]"
 incoming:
-  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
-  - topics/offboarding/notes/concepts/2026-06-23_watchman-fleet-handoff-paolo-mike.md
+  - home/offboarding/2026-06-23_watchman-fleet-handoff-paolo-mike.md
+  - home/operations/2026-06-22_actuate-footprint-handoff.md
   - topics/personal-notes/notes/daily/2026-06-17.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # 2026-06-16 Watchman Pipeline & Backend Architecture Meeting

@@ -16,6 +16,9 @@ outgoing:
   - topics/data-science/notes/syntheses/model-lifecycle.md
   - topics/engineering-process/notes/entities/agent-connector-pipeline-expert.md
 incoming:
+  - home/offboarding/2026-06-23_local-repo-audit.md
+  - home/orientation/first-steps.md
+  - home/orientation/system-architecture.md
   - topics/actuate-platform/_summary.md
   - topics/actuate-platform/notes/concepts/multi-region-deployment.md
   - topics/ai-models/notes/concepts/vlm-pipeline-architecture.md
@@ -23,10 +26,7 @@ incoming:
   - topics/autopatrol/notes/concepts/2026-05-04_autopatrol-server-release-process.md
   - topics/autopatrol/notes/entities/autopatrol-server.md
   - topics/autopatrol/notes/syntheses/2026-05-04_autopatrol-server-nr-upgrade-plan.md
-  - topics/autopatrol/notes/syntheses/2026-05-22_guardrail-B-admin-reconciliation-scoping.md
-  - topics/aws-cost/notes/entities/actuate-cost-analysis.md
-  - topics/billing/_todos.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-25
 ---
 
 # ArgoCD

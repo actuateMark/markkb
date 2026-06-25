@@ -10,6 +10,7 @@ outgoing:
   - topics/engineering-process/notes/entities/actuate-integration-tools.md
   - topics/engineering-process/notes/syntheses/2026-05-19_ait-extensions-spec.md
 incoming:
+  - home/offboarding/2026-06-23_local-repo-audit.md
   - topics/engineering-process/notes/entities/actuate-integration-tools.md
   - topics/engineering-process/notes/entities/actuate-validator.md
   - topics/engineering-process/notes/syntheses/2026-05-19_ait-phase-1-diff.md
@@ -19,8 +20,7 @@ incoming:
   - topics/engineering-process/notes/syntheses/2026-05-20_ait-phase-4-idp-serializer.md
   - topics/engineering-process/notes/syntheses/2026-05-20_ait-phase-5-dump-replay-puller.md
   - topics/engineering-process/notes/syntheses/2026-05-20_ait-phase-6-pipeline-replay.md
-  - topics/engineering-process/notes/syntheses/2026-05-20_ait-phase-7-alert-capture-replay.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-25
 ---
 
 # AIT brain-in-jar — spec & phase map (Phases 4–10)

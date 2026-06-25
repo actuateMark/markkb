@@ -7,6 +7,7 @@ created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
 incoming:
+  - home/the-topic-landscape.md
   - topics/actuate-libraries/notes/entities/actuate-pullers.md
   - topics/camera-health-monitoring/notes/concepts/chm-diagnostics-architecture.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase1-network-probe.md
@@ -16,7 +17,6 @@ incoming:
   - topics/integrations/kvs/_summary.md
   - topics/obsidian/notes/syntheses/2026-05-01_context-efficient-kb-retrieval.md
   - topics/video-processing/_summary.md
-  - topics/video-processing/notes/concepts/av1-vp9-future.md
 incoming_updated: 2026-06-25
 ---
 

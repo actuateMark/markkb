@@ -12,13 +12,13 @@ outgoing:
   - topics/llm-shop/notes/syntheses/2026-05-07_kb-deep-intake-architecture.md
   - topics/personal-notes/notes/daily/2026-05-07.md
 incoming:
-  - topics/actuate-platform/notes/concepts/2026-06-22_npu-server-llm-shop-runbook.md
+  - home/operations/2026-06-22_npu-server-llm-shop-runbook.md
   - topics/llm-shop/_summary.md
   - topics/llm-shop/notes/syntheses/2026-05-07_kb-deep-intake-architecture.md
   - topics/personal-notes/notes/daily/2026-05-07.md
   - topics/personal-notes/notes/daily/2026-05-08.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # Long-running multi-agent orchestration pattern for the LLM shop

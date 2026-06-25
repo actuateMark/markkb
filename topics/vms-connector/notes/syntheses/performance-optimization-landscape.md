@@ -13,6 +13,7 @@ sources:
   - "[[worklog-temperature-adaptive-processing]]"
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-23_local-repo-audit.md
   - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
   - topics/camera-health-monitoring/notes/syntheses/chm-phase7-historical-trending.md
   - topics/fleet-architecture/_summary.md
@@ -21,9 +22,8 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-d-event-driven.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-e-hybrid-sidecar.md
   - topics/integrations/rtsp/notes/syntheses/rtsp-robustness-enhancement-plan.md
-  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
   - topics/product-roadmap/notes/syntheses/improvement-opportunities.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # Performance Optimization Landscape

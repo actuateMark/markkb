@@ -7,6 +7,7 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
+  - home/the-topic-landscape.md
   - topics/fleet-architecture/notes/syntheses/2026-05-29_watch-manager-observability.md
   - topics/infrastructure/notes/concepts/2026-05-19_mediamtx-chart-design.md
   - topics/video-processing/_summary.md
@@ -16,8 +17,7 @@ incoming:
   - topics/video-processing/notes/concepts/gstreamer-vs-ffmpeg.md
   - topics/video-processing/notes/concepts/hls-and-dash.md
   - topics/video-processing/notes/concepts/mpeg-ts-over-udp.md
-  - topics/video-processing/notes/concepts/protocol-latency-comparison.md
-incoming_updated: 2026-05-30
+incoming_updated: 2026-06-25
 ---
 
 # WebRTC Deep Dive

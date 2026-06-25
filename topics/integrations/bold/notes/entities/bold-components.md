@@ -7,6 +7,8 @@ created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
 incoming:
+  - home/the-topic-landscape.md
+  - home/what-is-actuate.md
   - topics/actuate-libraries/notes/entities/actuate-config.md
   - topics/actuate-platform/notes/concepts/job-executor-architecture.md
   - topics/admin-api/notes/concepts/integration-architecture.md

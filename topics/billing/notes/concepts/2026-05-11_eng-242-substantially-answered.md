@@ -7,13 +7,13 @@ created: 2026-05-11
 updated: 2026-05-11
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-23_local-repo-audit.md
   - topics/billing/_todos.md
   - topics/billing/notes/entities/actuate-bi-repo.md
   - topics/billing/notes/entities/sales-dashboard-repo.md
   - topics/billing/notes/entities/snowflake-billing-tables.md
-  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
   - topics/personal-notes/notes/daily/2026-05-11.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # ENG-242 — substantially answered by sales-dashboard repo

@@ -15,6 +15,18 @@ high_impact_issue_numbers: []
 lhf_issue_numbers: [17]
 stale_issue_numbers: []
 full_issue_numbers: [17]
+incoming:
+  - topics/autopatrol/notes/concepts/2026-05-04_autopatrol-server-release-process.md
+  - topics/autopatrol/notes/concepts/autopatrol-alert-lifecycle.md
+  - topics/autopatrol/notes/entities/autopatrol-aws-objects.md
+  - topics/autopatrol/notes/entities/autopatrol-server-deployment.md
+  - topics/autopatrol/notes/entities/immix-vendor-api.md
+  - topics/autopatrol/notes/entities/todo-list.md
+  - topics/autopatrol/notes/syntheses/2026-04-16_deferred-alert-race-condition.md
+  - topics/autopatrol/notes/syntheses/2026-05-04_autopatrol-server-nr-upgrade-plan.md
+  - topics/autopatrol/notes/syntheses/2026-05-07_consumer-side-websocket-close-feasibility.md
+  - topics/autopatrol/notes/syntheses/2026-05-20_ap-summary-disable-plan.md
+incoming_updated: 2026-06-25
 ---
 
 # autopatrol-server backlog

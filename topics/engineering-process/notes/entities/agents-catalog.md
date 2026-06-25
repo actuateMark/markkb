@@ -7,6 +7,7 @@ created: 2026-04-16
 updated: 2026-04-16
 author: kb-bot
 incoming:
+  - home/operations/2026-06-22_actuate-footprint-handoff.md
   - topics/engineering-process/_summary.md
   - topics/engineering-process/notes/entities/agent-actuate-pr-reviewer.md
   - topics/engineering-process/notes/entities/agent-connector-pipeline-expert.md
@@ -16,8 +17,7 @@ incoming:
   - topics/engineering-process/notes/entities/agent-nrql-investigator.md
   - topics/engineering-process/notes/entities/agent-release-chain-watcher.md
   - topics/engineering-process/notes/entities/automation-jira-sync.md
-  - topics/engineering-process/notes/entities/automation-overnight-check.md
-incoming_updated: 2026-05-01
+incoming_updated: 2026-06-25
 ---
 
 # Agents Catalog

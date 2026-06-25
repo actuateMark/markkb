@@ -11,10 +11,10 @@ outgoing:
   - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
   - topics/personal-notes/notes/daily/2026-05-01.md
 incoming:
+  - home/offboarding/2026-06-23_local-repo-audit.md
   - topics/admin-api/_summary.md
   - topics/admin-api/notes/syntheses/2026-04-30_autopatrol-state-audit.md
-  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # actuate_admin release flow — feature → staging → main

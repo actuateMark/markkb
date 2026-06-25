@@ -7,6 +7,8 @@ created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
 incoming:
+  - home/the-topic-landscape.md
+  - home/what-is-actuate.md
   - topics/actuate-libraries/notes/entities/actuate-blur.md
   - topics/actuate-libraries/notes/entities/actuate-config.md
   - topics/actuate-platform/_summary.md
@@ -15,8 +17,6 @@ incoming:
   - topics/admin-api/notes/concepts/integration-architecture.md
   - topics/admin-api/notes/syntheses/2026-05-13_customer-model-dissection.md
   - topics/billing/notes/entities/snowflake-billing-tables.md
-  - topics/camera-health-monitoring/notes/syntheses/chm-enhanced-diagnostics-proposal.md
-  - topics/camera-health-monitoring/notes/syntheses/chm-phase4-generic-diagnostics.md
 incoming_updated: 2026-06-25
 ---
 

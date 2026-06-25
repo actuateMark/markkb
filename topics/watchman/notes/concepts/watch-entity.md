@@ -13,6 +13,8 @@ related:
   - "[[2026-05-28_watchman-scheduling-brainstorm-correlation]]"
   - "[[2026-05-29_watchman-prds-summary]]"
 incoming:
+  - home/offboarding/2026-06-23_firebat-dashboard-ownership-handoff.md
+  - home/offboarding/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/autopatrol/notes/concepts/2026-04-20_cleanup-lambda-runbook.md
   - topics/autopatrol/notes/concepts/2026-04-23_cleanup-rollout-day.md
   - topics/autopatrol/notes/concepts/2026-04-23_immix-api-error-patterns.md
@@ -21,9 +23,7 @@ incoming:
   - topics/billing/notes/concepts/2026-05-11_billing-reconciliation-dashboard-design.md
   - topics/billing/notes/concepts/2026-05-11_eng-242-substantially-answered.md
   - topics/billing/notes/entities/billing-deferred-backlog.md
-  - topics/billing/notes/syntheses/2026-05-11_billing-pain-post-mortem.md
-  - topics/billing/notes/syntheses/2026-05-14_v5-tracking-fields-e2m-design.md
-incoming_updated: 2026-05-30
+incoming_updated: 2026-06-25
 ---
 
 # Watch (entity)

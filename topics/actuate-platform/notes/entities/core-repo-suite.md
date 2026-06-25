@@ -7,7 +7,8 @@ created: 2026-04-15
 updated: 2026-04-22
 author: kb-bot
 incoming:
-  - _tooling/DEVBOX-BOOTSTRAP.md
+  - home/orientation/first-steps.md
+  - home/setup/DEVBOX-BOOTSTRAP.md
   - topics/actuate-platform/notes/entities/branch-conventions.md
   - topics/billing/notes/concepts/2026-05-11_eng-242-substantially-answered.md
   - topics/billing/notes/entities/actuate-bi-repo.md
@@ -16,7 +17,6 @@ incoming:
   - topics/personal-laptop/notes/concepts/2026-04-27_handoff-repos-architectural-dashboard.md
   - topics/personal-laptop/notes/syntheses/2026-05-05_laptop-config-portability-context.md
   - topics/personal-notes/notes/daily/2026-04-22.md
-  - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
 incoming_updated: 2026-06-25
 ---
 

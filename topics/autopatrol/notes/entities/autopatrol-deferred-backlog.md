@@ -9,6 +9,7 @@ author: kb-bot
 outgoing:
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
+  - home/offboarding/2026-06-23_autopatrol-handoff.md
   - topics/autopatrol/notes/syntheses/2026-05-07_cleanup-lambda-state-matrix-verify.md
   - topics/autopatrol/notes/syntheses/2026-05-07_cohort-b-no-backfill-decision.md
   - topics/autopatrol/notes/syntheses/2026-06-03_ap-redeploy-flag-calendar-day-stranding.md
@@ -18,8 +19,7 @@ incoming:
   - topics/billing/notes/entities/billing-deferred-backlog.md
   - topics/billing/notes/entities/billing-events-catalog.md
   - topics/billing/notes/syntheses/2026-05-11_billing-pain-post-mortem.md
-  - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
-incoming_updated: 2026-06-19
+incoming_updated: 2026-06-25
 ---
 
 # AutoPatrol Deferred Backlog

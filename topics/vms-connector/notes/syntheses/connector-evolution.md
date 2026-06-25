@@ -7,8 +7,8 @@ created: 2026-04-15
 updated: 2026-04-15
 author: kb-bot
 incoming:
-  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
-incoming_updated: 2026-06-24
+  - home/offboarding/2026-06-23_local-repo-audit.md
+incoming_updated: 2026-06-25
 ---
 
 # Connector Evolution

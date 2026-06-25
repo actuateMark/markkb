@@ -7,12 +7,12 @@ created: 2026-05-05
 updated: 2026-05-05
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/fleet-architecture/notes/syntheses/2026-05-28_fleet-rearch-briefing-overview.md
-  - topics/offboarding/notes/concepts/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/personal-laptop/notes/syntheses/2026-05-05_claude-context-optimization.md
   - topics/personal-notes/notes/concepts/2026-05-11_pre-impl-research-priority-reorder.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 Factored out of mark-todos §5 on 2026-05-05 to keep the live workstream tracker lean. See [[mark-todos]] §5 for active checkboxes.

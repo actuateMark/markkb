@@ -7,7 +7,7 @@ created: 2026-04-27
 updated: 2026-04-27
 author: kb-bot
 incoming:
-  - topics/engineering-process/notes/concepts/2026-06-24_secrets-refresh-runbook.md
+  - home/operations/2026-06-24_secrets-refresh-runbook.md
   - topics/operational-health/notes/concepts/2026-04-27_dashboard-signal-cookbook.md
   - topics/personal-laptop/notes/syntheses/2026-04-27_minipc-tooling-improvements.md
   - topics/personal-laptop/notes/syntheses/2026-04-28_long-lived-credentials-on-headless-boxes.md

@@ -5,16 +5,16 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 incoming:
+  - home/offboarding/2026-06-23_local-repo-audit.md
   - topics/actuate-libraries/_summary.md
   - topics/actuate-libraries/notes/concepts/dependency-graph.md
   - topics/actuate-libraries/notes/syntheses/2026-04-14_ci-pipeline-mechanics.md
   - topics/actuate-platform/notes/entities/camera-ui.md
   - topics/autopatrol/notes/entities/autopatrol-server-deployment.md
   - topics/engineering-process/notes/syntheses/2026-04-14_connector-library-deployment-lifecycle.md
-  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
   - topics/profiling-and-performance/notes/concepts/2026-05-19_handoff-cv2-dst-stage-deploy.md
   - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # Library Development Workflow

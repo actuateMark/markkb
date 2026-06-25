@@ -9,11 +9,11 @@ created: 2026-06-02
 updated: 2026-06-02
 author: kb-bot
 incoming:
+  - home/offboarding/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/fleet-architecture/notes/syntheses/2026-06-02_watchman-phase0-fleet-fit.md
-  - topics/offboarding/notes/concepts/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/personal-notes/notes/entities/mark-todos.md
   - topics/watchman/notes/syntheses/2026-06-16_watchman-pipeline-backend-meeting.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 Look-and-feel prototype of the [[watchman-repo|Watchman]] cloud product UX. Auth-gated demo at demo.watchmansecurity.ai. Validates the agentic-first, terminal-style conversational design already outlined in [[watchman-repo|Watchman]] architecture docs. Not functional; conveys visual direction and interaction flow.

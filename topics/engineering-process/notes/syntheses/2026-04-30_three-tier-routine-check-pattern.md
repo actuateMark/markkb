@@ -13,16 +13,16 @@ outgoing:
   - topics/personal-notes/notes/daily/2026-05-01.md
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
-  - _tooling/DEVBOX-BOOTSTRAP.md
+  - home/offboarding/2026-06-23_firebat-dashboard-ownership-handoff.md
+  - home/offboarding/2026-06-23_local-repo-audit.md
+  - home/operations/2026-06-22_actuate-footprint-handoff.md
+  - home/operations/2026-06-22_firebat-operations-runbook.md
+  - home/setup/DEVBOX-BOOTSTRAP.md
   - topics/billing/notes/concepts/2026-05-11_billing-reconciliation-dashboard-design.md
   - topics/engineering-process/notes/entities/automation-jira-sync.md
   - topics/engineering-process/notes/syntheses/2026-05-20_ait-phase-10-s3-sink-review-ux.md
-  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
   - topics/fleet-architecture/notes/syntheses/2026-05-11_rubric-monitoring-billing-dimensions.md
-  - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
-  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
   - topics/operational-health/notes/syntheses/2026-05-21_overnight-check.md
-  - topics/personal-laptop/notes/concepts/2026-04-30_morning-prep-scripts-runbook.md
 incoming_updated: 2026-06-25
 ---
 

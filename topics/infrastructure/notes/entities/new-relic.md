@@ -5,17 +5,17 @@ created: 2026-04-15
 updated: 2026-04-15
 tags: [observability, monitoring, nrql, nerdgraph, alerting, apm, new-relic]
 incoming:
-  - topics/actuate-libraries/notes/entities/actuate-daos.md
-  - topics/actuate-libraries/notes/entities/actuate-monitoring.md
-  - topics/actuate-libraries/notes/entities/actuate-secrets.md
-  - topics/actuate-libraries/notes/syntheses/2026-05-12_adr-actuate-instrumentation-v1.md
-  - topics/actuate-platform/_summary.md
-  - topics/actuate-platform/notes/concepts/multi-region-deployment.md
-  - topics/actuate-platform/notes/concepts/rollout-process.md
-  - topics/actuate-platform/notes/entities/actuate-claude-agents.md
-  - topics/admin-api/notes/concepts/2026-05-21_deploy-branch-e2e-cycle-verified.md
-  - topics/admin-api/notes/entities/admin-nr-integration.md
-incoming_updated: 2026-05-27
+  - home/offboarding/2026-06-22_manual-action-checklist.md
+  - home/offboarding/2026-06-22_offboarding-plan.md
+  - home/offboarding/2026-06-23_firebat-dashboard-ownership-handoff.md
+  - home/offboarding/2026-06-24_offboarding-asks.md
+  - home/operations/2026-06-22_actuate-footprint-handoff.md
+  - home/operations/2026-06-22_dashboard-signals-catalog.md
+  - home/operations/2026-06-24_secrets-refresh-runbook.md
+  - home/orientation/system-architecture.md
+  - home/setup/DEVBOX-BOOTSTRAP.md
+  - home/setup/SETUP.md
+incoming_updated: 2026-06-25
 ---
 
 # New Relic

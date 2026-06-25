@@ -14,6 +14,7 @@ related:
   - "[[2026-04-22_fleet-coordinator-api-sketch]]"
 confluence: "https://actuate-team.atlassian.net/wiki/spaces/PM/pages/601686018"
 incoming:
+  - home/offboarding/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/engineering-process/notes/syntheses/2026-05-29_ait-watch-manager-integration.md
   - topics/fleet-architecture/_summary.md
   - topics/fleet-architecture/notes/concepts/2026-06-01_terminology-conflict-watchman-ambiguity.md
@@ -23,8 +24,7 @@ incoming:
   - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-proposal-a.md
   - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-proposal-b-prime.md
   - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-proposal-b.md
-  - topics/fleet-architecture/notes/syntheses/2026-05-28_watch-management-proposal-c.md
-incoming_updated: 2026-06-02
+incoming_updated: 2026-06-25
 ---
 
 # Watch Management Service — Cross-Architecture Design and Constellation Baseline

@@ -10,12 +10,12 @@ outgoing:
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
+  - home/offboarding/2026-06-23_autopatrol-handoff.md
   - topics/autopatrol/notes/entities/autopatrol-deferred-backlog.md
   - topics/billing/_summary.md
-  - topics/offboarding/notes/concepts/2026-06-23_autopatrol-handoff.md
   - topics/personal-notes/notes/daily/_archive-snapshots/2026-04-27_mark-todos-pre-cleanup.md
   - topics/personal-notes/notes/entities/mark-todos.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # AutoPatrol Team Todo List

@@ -14,8 +14,9 @@ outgoing:
   - topics/personal-notes/notes/daily/2026-05-01.md
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
+  - home/operations/2026-06-22_actuate-footprint-handoff.md
+  - home/setup/SETUP.md
   - topics/engineering-process/notes/concepts/2026-05-05_open-questions-inbox-idea.md
-  - topics/engineering-process/notes/syntheses/2026-06-22_actuate-footprint-handoff.md
   - topics/llm-shop/notes/concepts/2026-05-05_first-real-tasks-experiments.md
   - topics/obsidian/_summary.md
   - topics/obsidian/notes/syntheses/2026-04-30_kb-skill-cli-retrofit.md

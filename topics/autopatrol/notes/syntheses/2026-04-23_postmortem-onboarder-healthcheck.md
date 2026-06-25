@@ -20,6 +20,7 @@ outgoing:
   - topics/operational-health/notes/concepts/2026-04-24_dashboard-1b-continuation.md
   - topics/operational-health/notes/concepts/2026-04-27_dashboard-signal-cookbook.md
 incoming:
+  - home/operations/2026-06-22_dashboard-signals-catalog.md
   - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
   - topics/autopatrol/notes/concepts/2026-04-23_cleanup-rollout-day.md
   - topics/autopatrol/notes/concepts/2026-04-24_morning-watch-list.md
@@ -29,8 +30,7 @@ incoming:
   - topics/autopatrol/notes/syntheses/2026-05-05_admin-deploy-customer-name-incident.md
   - topics/autopatrol/notes/syntheses/2026-05-22_autopatrol-onboarding-silent-deploy-failure.md
   - topics/engineering-process/_summary.md
-  - topics/engineering-process/notes/syntheses/2026-04-14_feature-development-lifecycle.md
-incoming_updated: 2026-05-27
+incoming_updated: 2026-06-25
 ---
 
 # Post-Mortem — AutoPatrol Onboarder Silent Failure

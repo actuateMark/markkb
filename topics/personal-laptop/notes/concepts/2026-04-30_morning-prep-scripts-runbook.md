@@ -11,12 +11,12 @@ outgoing:
   - topics/personal-laptop/notes/syntheses/2026-04-30_firebat-script-conversion-candidates.md
   - topics/personal-notes/notes/entities/mark-todos.md
 incoming:
+  - home/offboarding/2026-06-23_firebat-dashboard-ownership-handoff.md
+  - home/offboarding/2026-06-23_local-repo-audit.md
+  - home/operations/2026-06-22_firebat-operations-runbook.md
   - topics/engineering-process/notes/syntheses/2026-04-30_three-tier-routine-check-pattern.md
-  - topics/offboarding/notes/concepts/2026-06-23_firebat-dashboard-ownership-handoff.md
-  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
-  - topics/personal-laptop/notes/concepts/2026-06-22_firebat-operations-runbook.md
   - topics/personal-laptop/notes/syntheses/2026-04-30_firebat-script-conversion-candidates.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # Morning-prep scripts — operations runbook

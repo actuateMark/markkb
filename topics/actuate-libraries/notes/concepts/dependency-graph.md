@@ -5,13 +5,13 @@ author: kb-bot
 created: 2026-04-13
 updated: 2026-04-13
 incoming:
+  - home/offboarding/2026-06-23_local-repo-audit.md
   - topics/fleet-architecture/notes/concepts/library-decomposition-required.md
   - topics/fleet-architecture/notes/syntheses/2026-04-16_proposal-b-stage-fleets.md
-  - topics/offboarding/notes/concepts/2026-06-23_local-repo-audit.md
   - topics/personal-laptop/notes/concepts/2026-04-27_handoff-repos-architectural-dashboard.md
   - topics/vms-connector/notes/syntheses/connector-evolution.md
   - topics/vms-connector/notes/syntheses/library-connector-dependency-map.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # Dependency Graph

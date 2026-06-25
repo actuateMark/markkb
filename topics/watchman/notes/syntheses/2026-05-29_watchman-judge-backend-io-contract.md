@@ -14,16 +14,16 @@ related:
   - "[[2026-05-29_watchman-judge-immix-integration]]"
 source: "_research-inbox/2026-05-29_watchman-judge-backend-io-contract-source.md"
 incoming:
+  - home/offboarding/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/fleet-architecture/_summary.md
   - topics/fleet-architecture/notes/syntheses/2026-05-28_fleet-rearch-briefing-overview.md
   - topics/fleet-architecture/notes/syntheses/2026-06-01_adr-watchman-mvp-slim-connector.md
   - topics/fleet-architecture/notes/syntheses/2026-06-02_watchman-phase0-fleet-fit.md
-  - topics/offboarding/notes/concepts/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - topics/watchman/_summary.md
   - topics/watchman/notes/syntheses/2026-05-28_watch-management-service-index.md
   - topics/watchman/notes/syntheses/2026-05-29_watchman-judge-immix-integration.md
   - topics/watchman/notes/syntheses/2026-06-16_watchman-pipeline-backend-meeting.md
-incoming_updated: 2026-06-24
+incoming_updated: 2026-06-25
 ---
 
 # Watchman Judge ⇔ Backend I/O Contract — Analysis & Correlation

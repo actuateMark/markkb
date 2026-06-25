@@ -19,6 +19,7 @@ outgoing:
   - topics/autopatrol/notes/concepts/2026-04-24_morning-watch-list.md
   - topics/autopatrol/notes/entities/autopatrol-onboarder.md
 incoming:
+  - home/offboarding/2026-06-23_autopatrol-handoff.md
   - topics/actuate-platform/notes/entities/actuate-admin-api.md
   - topics/actuate-platform/notes/entities/core-repo-suite.md
   - topics/autopatrol/notes/concepts/2026-04-17_no-patrols-emit-points.md
@@ -28,8 +29,7 @@ incoming:
   - topics/autopatrol/notes/concepts/2026-04-22_cleanup-lambda-bake-state.md
   - topics/autopatrol/notes/concepts/2026-04-23_cleanup-rollout-day.md
   - topics/autopatrol/notes/concepts/2026-04-23_immix-api-error-patterns.md
-  - topics/autopatrol/notes/concepts/2026-04-24_morning-watch-list.md
-incoming_updated: 2026-05-08
+incoming_updated: 2026-06-25
 ---
 
 # AutoPatrol Cleanup Lambda
