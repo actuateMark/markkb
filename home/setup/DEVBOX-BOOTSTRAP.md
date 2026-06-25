@@ -4,11 +4,18 @@ type: concept
 tags: [orientation, setup, onboarding, home]
 updated: 2026-06-25
 author: kb-bot
+incoming:
+  - home/README.md
+  - home/offboarding/offboarding-overview.md
+  - home/orientation/first-steps.md
+  - home/orientation/how-to-use-this-kb.md
+  - index.md
+incoming_updated: 2026-06-25
 ---
 
 # Dev-box bootstrap — run Mark's KB + Claude-Code workflow on your own machine
 
-> The umbrella guide: stand up the **whole workflow** (the Obsidian KB + the Claude-Code skills/agents/hooks + the daily rituals) on a fresh laptop/box, so a successor can work the way Mark did. It *composes* the other setup docs rather than repeating them. KB-only? use [[SETUP]] instead.
+> The umbrella guide: stand up the **whole workflow** (the Obsidian KB + the Claude-Code skills/agents/hooks + the daily rituals) on a fresh laptop/box, so a successor can work the way Mark did. It *composes* the other [[SETUP|setup]] docs rather than repeating them. KB-only? use [[SETUP]] instead.
 
 ## What you get
 - The **Obsidian KB** (this vault) with cost-ordered retrieval + ingestion + maintenance skills.

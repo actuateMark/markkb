@@ -64,7 +64,7 @@ On firebat, per the chosen §A identity:
 4. Transition the ENG-375 children to Done.
 
 ## Announce  (→ team channel)
-> **The KB now lives at `aegissystems/actuate-kb`** (private). It has the full vault + a `_tooling/` bundle (skills, agents, scripts, SETUP.md) so anyone can clone-and-run their own instance. firebat auto-pulls it every 30 min. My Claude config is at `aegissystems/claude-config`. Start-here map: the `2026-06-22_actuate-footprint-handoff` note (also going to Confluence).
+> **The KB now lives at `aegissystems/actuate-kb`** (private). It has the full vault + a `_tooling/` bundle (skills, agents, scripts, [[SETUP]].md) so anyone can clone-and-run their own instance. firebat auto-pulls it every 30 min. My Claude config is at `aegissystems/claude-config`. Start-here map: the `2026-06-22_actuate-footprint-handoff` note (also going to Confluence).
 
 ## Related
 - [[2026-06-22_manual-action-checklist]] · [[2026-06-22_offboarding-plan]] · [[2026-06-22_actuate-footprint-handoff]]

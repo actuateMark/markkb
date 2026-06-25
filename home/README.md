@@ -10,9 +10,9 @@ author: kb-bot
 
 **Read just this folder and you should be oriented to the whole knowledge base and the team's setup.** That's the job of `home/`: a self-contained orientation packet. The *detail* for any subsystem lives out in `topics/` (mapped from [[index]]) — `home/` is the hub that tells you what exists and where to go.
 
-**New here?** Read **§1** top-to-bottom (≈20 min) and you'll know what Actuate is, how it's built, how to navigate the KB, and how to start. **§2–§4** are reference: pull them up when you're installing, operating, or picking up an owned system — not required reading to feel oriented.
+**New here?** Read **§1** top-to-bottom (≈20 min) and you'll know what Actuate is, how it's built, how to navigate the KB, and how to start. **§2** (roadmaps) is where the team is headed next; **§3–§5** are reference — pull them up when you're installing, operating, or picking up an owned system.
 
-**Folder layout:** the two must-reads ([[what-is-actuate]], [[the-topic-landscape]]) + this README sit at the top level; everything else is grouped into `orientation/` · `operations/` · `setup/` · `offboarding/` (mirroring §1–§4 below).
+**Folder layout:** the two must-reads ([[what-is-actuate]], [[the-topic-landscape]]) + this README sit at the top level; everything else is grouped into `orientation/` · `roadmaps/` · `operations/` · `setup/` · `offboarding/` (mirroring the sections below).
 
 ---
 
@@ -25,13 +25,20 @@ author: kb-bot
 | [[how-to-use-this-kb]] | Note types, the retrieval ladder, the `obsidian` CLI + `/kb-ask` & `/kb-lookup`, conventions |
 | [[first-steps]] | Day one: where's the code (repos), dev setup, who owns what, where work is tracked |
 
-## §2 · Set up your own instance — *reference*
+## §2 · Roadmaps — *where the team is headed next*
+| Note | What it covers |
+|---|---|
+| [[roadmaps]] | Index of the high-leverage initiatives + other in-flight workstreams |
+| [[watchman-fleet-architecture]] | The flagship: VMS-connector redesign (Proposal E) + the Watchman product on its Phase 0 shape (Mike/Paolo) |
+| [[actuate-integration-tools]] | The `ait` testing/inspection toolkit + its Watch-Manager expansion vector |
+
+## §3 · Set up your own instance — *reference*
 | Note | For |
 |---|---|
 | [[DEVBOX-BOOTSTRAP]] | Stand up the full KB + Claude-Code workflow on a fresh machine |
 | [[SETUP]] | Just the KB (Obsidian vault + Quartz) |
 
-## §3 · Operational footprint — *what the team runs (reference)*
+## §4 · Operational footprint — *what the team runs (reference)*
 | Note | What it covers |
 |---|---|
 | [[2026-06-22_actuate-footprint-handoff]] | **"What runs where"** — firebat mini-PC, the dashboard, the llm-shop, the KB — and who owns what |
@@ -41,8 +48,8 @@ author: kb-bot
 | [[2026-06-24_secrets-refresh-runbook]] | Rotating/refreshing every credential the automation depends on |
 | [[2026-06-22_dead-mans-checklist]] | **If the automation breaks:** symptom → cause → fix |
 
-## §4 · Offboarding handoff — *time-bound (Mark → team, June 2026)*
-History/reference once complete, but the handoffs double as the ownership docs for the systems in §3. Start at [[offboarding-overview]].
+## §5 · Offboarding handoff — *time-bound (Mark → team, June 2026)*
+History/reference once complete, but the handoffs double as the ownership docs for the systems in §4. Start at [[offboarding-overview]].
 | Note | What it is |
 |---|---|
 | [[offboarding-overview]] | The offboarding summary / index |

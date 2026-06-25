@@ -11,6 +11,7 @@ incoming:
   - home/offboarding/2026-06-22_manual-action-checklist.md
   - home/offboarding/offboarding-overview.md
   - home/orientation/first-steps.md
+  - home/roadmaps/watchman-fleet-architecture.md
 incoming_updated: 2026-06-25
 ---
 

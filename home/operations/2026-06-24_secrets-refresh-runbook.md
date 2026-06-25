@@ -187,7 +187,7 @@ umask 077 && touch ~/.config/minipc-secrets/<file> && chmod 600 ~/.config/minipc
 
 - [[2026-06-22_firebat-operations-runbook]] — the deep team-handoff operations runbook (read alongside this).
 - [[2026-06-24_offboarding-asks]] — §A automation-identity decision, §B GitHub/NR/Atlassian re-home steps, §C Tailscale re-tag, §H Friday verify + decommission.
-- [[2026-04-27_iam-rolesanywhere-minipc]] — full AWS Roles Anywhere rebuild/setup procedure.
+- [[2026-04-27_iam-rolesanywhere-minipc]] — full AWS Roles Anywhere rebuild/[[SETUP|setup]] procedure.
 - [[2026-04-28_minting-github-pats-for-automation]] — GitHub PAT minting prior art.
 - [[2026-05-20_actuate-admin-local-bringup]] — CodeArtifact token fetch for `uv`/`pip`.
 - `aegissystems/actuate-dev-toolkit` (`/home/mork/work/local_network_scripts`) — `CLAUDE.md` cred table + deployed script/unit sources (canonical source).

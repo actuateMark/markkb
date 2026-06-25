@@ -46,7 +46,7 @@ The KB has ~40 topics. This page groups them into **domains** and answers *"I wa
 - **…the AutoPatrol product** → [[autopatrol/_summary]] (the biggest product topic).
 - **…video decode / streaming / [[webrtc-deep-dive|WebRTC]]** → [[video-processing/_summary]] + [[webrtc-deep-dive/_summary]].
 - **…who owns what / team layout** → [[team-structure/_summary]].
-- **…the automation + dev setup** (firebat, dashboard, llm-shop, this KB) → the operational map [[2026-06-22_actuate-footprint-handoff]], and the runbooks in this folder.
+- **…the automation + dev [[SETUP|setup]]** (firebat, dashboard, llm-shop, this KB) → the operational map [[2026-06-22_actuate-footprint-handoff]], and the runbooks in this folder.
 
 ## How the spine maps onto topics
 Reading the [[what-is-actuate]] data-flow left-to-right, each stage is a topic cluster:

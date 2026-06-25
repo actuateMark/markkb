@@ -9,6 +9,7 @@ incoming:
   - home/orientation/first-steps.md
   - home/orientation/how-to-use-this-kb.md
   - home/orientation/system-architecture.md
+  - home/roadmaps/roadmaps.md
   - home/the-topic-landscape.md
   - index.md
 incoming_updated: 2026-06-25

@@ -33,7 +33,7 @@ GitHub, [[new-relic|New Relic]], and Atlassian all need the **same** answer: *wh
 
 - [ ] **Pick the identity model** (team discussion — posted to [ENG-376](https://actuate-team.atlassian.net/browse/ENG-376)):
   - **Option 1 — staying teammate/owner credentials** *(fastest, ~5 min each)*: a person who's staying mints the PAT/keys. Durable past Mark; tied to that person.
-  - **Option 2 — dedicated service/bot identity** *(most durable, more setup)*: e.g. a GitHub `actuate-automation` account + an NR service user + an Atlassian service user. Decoupled from everyone; may cost seats.
+  - **Option 2 — dedicated service/bot identity** *(most durable, more [[SETUP|setup]])*: e.g. a GitHub `actuate-automation` account + an NR service user + an Atlassian service user. Decoupled from everyone; may cost seats.
   - **Option 3 — defer**: leave on Mark's creds until deactivation, provision after (risk: timers break at deactivation).
 - [ ] Record the decision here once made: **____________________**
 

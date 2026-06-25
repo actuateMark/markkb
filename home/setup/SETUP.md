@@ -4,6 +4,15 @@ type: concept
 tags: [orientation, setup, kb, home]
 updated: 2026-06-25
 author: kb-bot
+incoming:
+  - home/offboarding/2026-06-22_manual-action-checklist.md
+  - home/offboarding/2026-06-23_local-repo-audit.md
+  - home/offboarding/2026-06-24_offboarding-asks.md
+  - home/offboarding/offboarding-overview.md
+  - home/operations/2026-06-24_secrets-refresh-runbook.md
+  - home/orientation/first-steps.md
+  - home/orientation/how-to-use-this-kb.md
+incoming_updated: 2026-06-25
 ---
 
 # KB system — set up your own instance

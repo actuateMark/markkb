@@ -34,7 +34,7 @@ incoming_updated: 2026-06-25
 | **Operational dashboard** | Silent-regression detection, ~89 signals across 15 components; web UI | `http://mork-firebat/app/` + `~/Documents/worklog/dashboard/` | [[2026-06-22_dashboard-signals-catalog]] |
 | **npu-server LLM shop** (§24) | Local LLMs (TinyLlama/Qwen) for token-saving KB + code tasks | `npu-server.tail9b2a4e.ts.net` | [[2026-06-22_npu-server-llm-shop-runbook]] |
 | **Knowledge base** (this vault) | ~1000+ notes of Actuate R&D, runbooks, ADRs, investigations | org mirror (see §3) + firebat bare repo | §3 below |
-| **Minipc provisioning** | Reproducible firebat setup (`phase-00`…`phase-13`) | `aegissystems/actuate-dev-toolkit` | repo README |
+| **Minipc provisioning** | Reproducible firebat [[SETUP|setup]] (`phase-00`…`phase-13`) | `aegissystems/actuate-dev-toolkit` | repo README |
 
 ## 2. Credentials & access (WS-A re-home — finish at the office Wed/Thu)
 
