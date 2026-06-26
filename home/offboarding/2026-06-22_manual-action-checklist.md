@@ -14,8 +14,10 @@ incoming:
   - home/offboarding/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - home/offboarding/2026-06-24_firebat-kb-git-sync-task.md
   - home/offboarding/2026-06-24_offboarding-asks.md
+  - home/offboarding/2026-06-25_in-room-session-runbook.md
+  - home/offboarding/2026-06-25_team-handoff-announcement.md
   - home/offboarding/offboarding-overview.md
-incoming_updated: 2026-06-25
+incoming_updated: 2026-06-26
 ---
 
 # Offboarding manual checklist (Mark — last day Fri 2026-06-26)
@@ -63,7 +65,7 @@ For each: **mint the token in the provider UI → write it on the box (you type 
 
 Goal: make the firebat + npu-server nodes **tag-owned** (`tag:server`) so they survive Mark's deactivation. Currently user-owned by `mark@`.
 
-- [ ] **Find a tailnet admin/owner** of `aegissystems.ai`. The tailnet has 5 members (aziz.yousif@, jacob@, mark@, michael@, tatiana@); Mark/Mike/Aziz are **not** admins, so the owner is most likely **Jacob Weiss (`jacob@`)** or **Tatiana Hanazaki (`tatiana@`)** — ask Jacob first. Either have them do it, or grant Mark temporary admin.
+- [ ] **Find a tailnet admin/owner** of `aegissystems.ai`. The tailnet has 5 members (aziz.yousif@, jacob@, mark@, michael@, tatiana@); Mark/Mike/Aziz are **not** admins, so the owner is most likely **[[jacob-weiss|Jacob Weiss]] (`jacob@`)** or **[[tatiana-hanazaki|Tatiana Hanazaki]] (`tatiana@`)** — ask Jacob first. Either have them do it, or grant Mark temporary admin.
 - [ ] Admin: in `login.tailscale.com` → **Access controls**, ensure `"tag:server"` exists with `tagOwners`, and grants let team devices reach `tag:server` over SSH/HTTP (or the box becomes unreachable).
 - [ ] Admin: **Settings → Keys → Generate auth key**, tagged `tag:server`.
 - [ ] **At each box's console** (firebat, then npu-server): `sudo tailscale up --authkey=tskey-… --advertise-tags=tag:server`. ⚠ Do at the physical/console terminal — it can drop SSH.

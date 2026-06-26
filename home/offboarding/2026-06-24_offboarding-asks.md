@@ -8,8 +8,9 @@ updated: 2026-06-24
 author: kb-bot
 incoming:
   - home/README.md
+  - home/offboarding/2026-06-25_team-handoff-announcement.md
   - home/operations/2026-06-24_secrets-refresh-runbook.md
-incoming_updated: 2026-06-25
+incoming_updated: 2026-06-26
 ---
 
 # Remaining-item asks + steps

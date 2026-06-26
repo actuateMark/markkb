@@ -15,9 +15,9 @@ incoming:
   - home/offboarding/2026-06-23_watchman-fleet-handoff-paolo-mike.md
   - home/offboarding/2026-06-24_firebat-kb-git-sync-task.md
   - home/offboarding/2026-06-24_offboarding-asks.md
-  - home/offboarding/offboarding-overview.md
-  - home/operations/2026-06-22_actuate-footprint-handoff.md
-incoming_updated: 2026-06-25
+  - home/offboarding/2026-06-25_in-room-session-runbook.md
+  - home/offboarding/2026-06-25_team-handoff-announcement.md
+incoming_updated: 2026-06-26
 ---
 
 # Offboarding plan of attack (last day: Fri 2026-06-26)

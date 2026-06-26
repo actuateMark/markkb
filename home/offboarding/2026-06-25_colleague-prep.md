@@ -4,6 +4,9 @@ type: concept
 tags: [offboarding, handoff, prep, home]
 updated: 2026-06-25
 author: kb-bot
+incoming:
+  - No backlinks found.
+incoming_updated: 2026-06-26
 ---
 
 # Firebat handoff — please prep before our session (~15 min)
@@ -28,7 +31,7 @@ Quick context: **firebat** is the always-on mini-PC that runs our morning-routin
 - Label: `firebat-jira-sync` → copy and save it. (Also note your Atlassian account email.)
 
 ## 4. Tailscale — needs a tailnet admin of `aegissystems.ai`
-The owner/admin is most likely **Jacob Weiss** (or possibly **Tatiana Hanazaki**) — Mike, Aziz, and I aren't admins. **Could you confirm with Jacob and have him either do this or be reachable during our session?**
+The owner/admin is most likely **[[jacob-weiss|Jacob Weiss]]** (or possibly **[[tatiana-hanazaki|Tatiana Hanazaki]]**) — Mike, Aziz, and I aren't admins. **Could you confirm with Jacob and have him either do this or be reachable during our session?**
 - (Admin) login.tailscale.com → **Access controls**: ensure `tag:server` exists under `tagOwners`, and ACLs let team devices reach `tag:server` over SSH/HTTP.
 - (Admin) **Settings → Keys → Generate auth key** with tag **`tag:server`** → copy the `tskey-…`.
 - *Not a hard blocker:* if no admin is available in time, the box still runs and stays reachable on the office LAN (`actuate-dev.local`); only off-LAN access via `mork-firebat` lapses when my account is deactivated, and an admin can re-tag it later from the box console. But sorting it with Jacob beforehand is cleanest.
@@ -37,7 +40,7 @@ The owner/admin is most likely **Jacob Weiss** (or possibly **Tatiana Hanazaki**
 - Run `cat ~/.ssh/id_ed25519.pub` (or `id_rsa.pub`) → copy it. (For maintenance access to the npu-server box.)
 
 ## 6. Quick access check
-- Confirm you can read the `aegissystems` repos and approve PRs, have New Relic + Jira access, and have **Tailscale installed on your laptop** (we'll use it to verify the box is reachable at the end).
+- Confirm you can read the `aegissystems` repos and approve PRs, have [[new-relic|New Relic]] + Jira access, and have **Tailscale installed on your laptop** (we'll use it to verify the box is reachable at the end).
 
 ---
 
